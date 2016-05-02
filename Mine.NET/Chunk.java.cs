@@ -1,12 +1,8 @@
-package org.bukkit;
 
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
-import org.bukkit.entity.Entity;
-
+using System;
 /**
- * Represents a chunk of blocks
- */
+* Represents a chunk of blocks
+*/
 public interface Chunk {
 
     /**
@@ -58,7 +54,7 @@ public interface Chunk {
      *     raw biome temperature and rainfall
      * @return ChunkSnapshot
      */
-    ChunkSnapshot getChunkSnapshot(boolean includeMaxblocky, boolean includeBiome, boolean includeBiomeTempRain);
+    ChunkSnapshot getChunkSnapshot(bool includeMaxblocky, bool includeBiome, bool includeBiomeTempRain);
 
     /**
      * Get a list of all entities in the chunk.
@@ -79,7 +75,7 @@ public interface Chunk {
      *
      * @return True if it is loaded.
      */
-    boolean isLoaded();
+    bool isLoaded();
 
     /**
      * Loads the chunk.
@@ -88,14 +84,14 @@ public interface Chunk {
      *     already exist
      * @return true if the chunk has loaded successfully, otherwise false
      */
-    boolean load(boolean generate);
+    bool load(bool generate);
 
     /**
      * Loads the chunk.
      *
      * @return true if the chunk has loaded successfully, otherwise false
      */
-    boolean load();
+    bool load();
 
     /**
      * Unloads and optionally saves the Chunk
@@ -107,7 +103,7 @@ public interface Chunk {
      * [Obsolete] it is never safe to remove a chunk in use
      */
     [Obsolete]
-    boolean unload(boolean save, boolean safe);
+    bool unload(bool save, bool safe);
 
     /**
      * Unloads and optionally saves the Chunk
@@ -115,12 +111,12 @@ public interface Chunk {
      * @param save Controls whether the chunk is saved
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    boolean unload(boolean save);
+    bool unload(bool save);
 
     /**
      * Unloads and optionally saves the Chunk
      *
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    boolean unload();
+    bool unload();
 }

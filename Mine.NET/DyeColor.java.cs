@@ -1,89 +1,156 @@
-package org.bukkit;
 
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
-
+using System;
+using System.Collections.Generic;
 /**
- * All supported color values for dyes and cloth
- */
-public enum DyeColor {
+* All supported color values for dyes and cloth
+*/
+public class DyeColor {
+    public enum Colors
+    {
+        /**
+         * Represents white dye.
+         */
+        WHITE,
+        /**
+         * Represents orange dye.
+         */
+        ORANGE,
+        /**
+         * Represents magenta dye.
+         */
+        MAGENTA,
+        /**
+         * Represents light blue dye.
+         */
+        LIGHT_BLUE,
+        /**
+         * Represents yellow dye.
+         */
+        YELLOW,
+        /**
+         * Represents lime dye.
+         */
+        LIME,
+        /**
+         * Represents pink dye.
+         */
+        PINK,
+        /**
+         * Represents gray dye.
+         */
+        GRAY,
+        /**
+         * Represents silver dye.
+         */
+        SILVER,
+        /**
+         * Represents cyan dye.
+         */
+        CYAN,
+        /**
+         * Represents purple dye.
+         */
+        PURPLE,
+        /**
+         * Represents blue dye.
+         */
+        BLUE,
+        /**
+         * Represents brown dye.
+         */
+        BROWN,
+        /**
+         * Represents green dye.
+         */
+        GREEN,
+        /**
+         * Represents red dye.
+         */
+        RED,
+        /**
+         * Represents black dye.
+         */
+        BLACK
+    }
 
-    /**
-     * Represents white dye.
-     */
-    WHITE(0x0, 0xF, Color.WHITE, Color.fromRGB(0xF0F0F0)),
-    /**
-     * Represents orange dye.
-     */
-    ORANGE(0x1, 0xE, Color.fromRGB(0xD87F33), Color.fromRGB(0xEB8844)),
-    /**
-     * Represents magenta dye.
-     */
-    MAGENTA(0x2, 0xD, Color.fromRGB(0xB24CD8), Color.fromRGB(0xC354CD)),
-    /**
-     * Represents light blue dye.
-     */
-    LIGHT_BLUE(0x3, 0xC, Color.fromRGB(0x6699D8), Color.fromRGB(0x6689D3)),
-    /**
-     * Represents yellow dye.
-     */
-    YELLOW(0x4, 0xB, Color.fromRGB(0xE5E533), Color.fromRGB(0xDECF2A)),
-    /**
-     * Represents lime dye.
-     */
-    LIME(0x5, 0xA, Color.fromRGB(0x7FCC19), Color.fromRGB(0x41CD34)),
-    /**
-     * Represents pink dye.
-     */
-    PINK(0x6, 0x9, Color.fromRGB(0xF27FA5), Color.fromRGB(0xD88198)),
-    /**
-     * Represents gray dye.
-     */
-    GRAY(0x7, 0x8, Color.fromRGB(0x4C4C4C), Color.fromRGB(0x434343)),
-    /**
-     * Represents silver dye.
-     */
-    SILVER(0x8, 0x7, Color.fromRGB(0x999999), Color.fromRGB(0xABABAB)),
-    /**
-     * Represents cyan dye.
-     */
-    CYAN(0x9, 0x6, Color.fromRGB(0x4C7F99), Color.fromRGB(0x287697)),
-    /**
-     * Represents purple dye.
-     */
-    PURPLE(0xA, 0x5, Color.fromRGB(0x7F3FB2), Color.fromRGB(0x7B2FBE)),
-    /**
-     * Represents blue dye.
-     */
-    BLUE(0xB, 0x4, Color.fromRGB(0x334CB2), Color.fromRGB(0x253192)),
-    /**
-     * Represents brown dye.
-     */
-    BROWN(0xC, 0x3, Color.fromRGB(0x664C33), Color.fromRGB(0x51301A)),
-    /**
-     * Represents green dye.
-     */
-    GREEN(0xD, 0x2, Color.fromRGB(0x667F33), Color.fromRGB(0x3B511A)),
-    /**
-     * Represents red dye.
-     */
-    RED(0xE, 0x1, Color.fromRGB(0x993333), Color.fromRGB(0xB3312C)),
-    /**
-     * Represents black dye.
-     */
-    BLACK(0xF, 0x0, Color.fromRGB(0x191919), Color.fromRGB(0x1E1B1B));
+    private static Dictionary<Colors, DyeColor> AllColors = new Dictionary<Colors, DyeColor>
+    {
+        /**
+         * Represents white dye.
+         */
+        { Colors.WHITE, new DyeColor(0x0, 0xF, Color.WHITE, Color.fromRGB(0xF0F0F0)) },
+        /**
+         * Represents orange dye.
+         */
+        { Colors.ORANGE, new DyeColor(0x1, 0xE, Color.fromRGB(0xD87F33), Color.fromRGB(0xEB8844)) },
+        /**
+         * Represents magenta dye.
+         */
+        { Colors.MAGENTA, new DyeColor(0x2, 0xD, Color.fromRGB(0xB24CD8), Color.fromRGB(0xC354CD)) },
+        /**
+         * Represents light blue dye.
+         */
+        { Colors.LIGHT_BLUE, new DyeColor(0x3, 0xC, Color.fromRGB(0x6699D8), Color.fromRGB(0x6689D3)) },
+        /**
+         * Represents yellow dye.
+         */
+        { Colors.YELLOW, new DyeColor(0x4, 0xB, Color.fromRGB(0xE5E533), Color.fromRGB(0xDECF2A)) },
+        /**
+         * Represents lime dye.
+         */
+        { Colors.LIME, new DyeColor(0x5, 0xA, Color.fromRGB(0x7FCC19), Color.fromRGB(0x41CD34)) },
+        /**
+         * Represents pink dye.
+         */
+        { Colors.PINK, new DyeColor(0x6, 0x9, Color.fromRGB(0xF27FA5), Color.fromRGB(0xD88198)) },
+        /**
+         * Represents gray dye.
+         */
+        { Colors.GRAY, new DyeColor(0x7, 0x8, Color.fromRGB(0x4C4C4C), Color.fromRGB(0x434343)) },
+        /**
+         * Represents silver dye.
+         */
+        { Colors.SILVER, new DyeColor(0x8, 0x7, Color.fromRGB(0x999999), Color.fromRGB(0xABABAB)) },
+        /**
+         * Represents cyan dye.
+         */
+        { Colors.CYAN, new DyeColor(0x9, 0x6, Color.fromRGB(0x4C7F99), Color.fromRGB(0x287697)) },
+        /**
+         * Represents purple dye.
+         */
+        { Colors.PURPLE, new DyeColor(0xA, 0x5, Color.fromRGB(0x7F3FB2), Color.fromRGB(0x7B2FBE)) },
+        /**
+         * Represents blue dye.
+         */
+        { Colors.BLUE, new DyeColor(0xB, 0x4, Color.fromRGB(0x334CB2), Color.fromRGB(0x253192)) },
+        /**
+         * Represents brown dye.
+         */
+        { Colors.BROWN, new DyeColor(0xC, 0x3, Color.fromRGB(0x664C33), Color.fromRGB(0x51301A)) },
+        /**
+         * Represents green dye.
+         */
+        { Colors.GREEN, new DyeColor(0xD, 0x2, Color.fromRGB(0x667F33), Color.fromRGB(0x3B511A)) },
+        /**
+         * Represents red dye.
+         */
+        { Colors.RED, new DyeColor(0xE, 0x1, Color.fromRGB(0x993333), Color.fromRGB(0xB3312C)) },
+        /**
+         * Represents black dye.
+         */
+        { Colors.BLACK, new DyeColor(0xF, 0x0, Color.fromRGB(0x191919), Color.fromRGB(0x1E1B1B)) }
+    };
 
-    private final byte woolData;
-    private final byte dyeData;
-    private final Color color;
-    private final Color firework;
-    private final static DyeColor[] BY_WOOL_DATA;
-    private final static DyeColor[] BY_DYE_DATA;
-    private final static Map<Color, DyeColor> BY_COLOR;
-    private final static Map<Color, DyeColor> BY_FIREWORK;
+    private readonly byte woolData;
+    private readonly byte dyeData;
+    private readonly Color color;
+    private readonly Color firework;
+    private readonly static DyeColor[] BY_WOOL_DATA;
+    private readonly static DyeColor[] BY_DYE_DATA;
+    private readonly static Dictionary<Color, DyeColor> BY_COLOR;
+    private readonly static Dictionary<Color, DyeColor> BY_FIREWORK;
 
-    private DyeColor(final int woolData, final int dyeData, Color color, Color firework) {
+    private DyeColor(int woolData, int dyeData, Color color, Color firework) {
         this.woolData = (byte) woolData;
         this.dyeData = (byte) dyeData;
         this.color = color;
@@ -158,7 +225,7 @@ public enum DyeColor {
      * @see #getByWoolData(byte)
      */
     [Obsolete]
-    public static DyeColor getByData(final byte data) {
+    public static DyeColor getByData(byte data) {
         return getByWoolData(data);
     }
 
@@ -172,9 +239,9 @@ public enum DyeColor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static DyeColor getByWoolData(final byte data) {
+    public static DyeColor getByWoolData(byte data) {
         int i = 0xff & data;
-        if (i >= BY_WOOL_DATA.length) {
+        if (i >= BY_WOOL_DATA.Length) {
             return null;
         }
         return BY_WOOL_DATA[i];
@@ -190,9 +257,9 @@ public enum DyeColor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static DyeColor getByDyeData(final byte data) {
+    public static DyeColor getByDyeData(byte data) {
         int i = 0xff & data;
-        if (i >= BY_DYE_DATA.length) {
+        if (i >= BY_DYE_DATA.Length) {
             return null;
         }
         return BY_DYE_DATA[i];
@@ -205,8 +272,8 @@ public enum DyeColor {
      * @return The {@link DyeColor} representing the given value, or null if
      *     it doesn't exist
      */
-    public static DyeColor getByColor(final Color color) {
-        return BY_COLOR.get(color);
+    public static DyeColor getByColor(Color color) {
+        return BY_COLOR[color];
     }
 
     /**
@@ -216,24 +283,17 @@ public enum DyeColor {
      * @return The {@link DyeColor} representing the given value, or null if
      *     it doesn't exist
      */
-    public static DyeColor getByFireworkColor(final Color color) {
-        return BY_FIREWORK.get(color);
+    public static DyeColor getByFireworkColor(Color color) {
+        return BY_FIREWORK[color];
     }
 
-    static {
-        BY_WOOL_DATA = values();
-        BY_DYE_DATA = values();
-        ImmutableMap.Builder<Color, DyeColor> byColor = ImmutableMap.builder();
-        ImmutableMap.Builder<Color, DyeColor> byFirework = ImmutableMap.builder();
+    static DyeColor() {
+        BY_WOOL_DATA = new DyeColor[AllColors.Values.Count];
+        BY_DYE_DATA = new DyeColor[AllColors.Values.Count];
 
-        for (DyeColor color : values()) {
+        foreach (DyeColor color in AllColors.Values) {
             BY_WOOL_DATA[color.woolData & 0xff] = color;
             BY_DYE_DATA[color.dyeData & 0xff] = color;
-            byColor.put(color.getColor(), color);
-            byFirework.put(color.getFireworkColor(), color);
         }
-
-        BY_COLOR = byColor.build();
-        BY_FIREWORK = byFirework.build();
     }
 }

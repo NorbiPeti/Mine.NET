@@ -38,7 +38,7 @@ public interface Horse extends Animals, Vehicle, InventoryHolder, Tameable {
     /**
      * Represents the base color that the horse has.
      */
-    public enum Color {
+    public enum Color_ {
         /**
          * Snow white
          */

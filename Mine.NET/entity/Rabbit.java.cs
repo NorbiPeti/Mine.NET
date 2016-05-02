@@ -15,7 +15,7 @@ public interface Rabbit extends Animals {
     /**
      * Represents the various types a Rabbit might be.
      */
-    public enum Type {
+    public enum RabbitType {
 
         /**
          * Chocolate colored rabbit.

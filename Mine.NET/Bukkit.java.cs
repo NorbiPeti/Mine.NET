@@ -1,61 +1,19 @@
-package org.bukkit;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
-import java.util.logging.Logger;
-
-import org.bukkit.Warning.WarningState;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarFlag;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
-import org.bukkit.command.CommandException;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.server.ServerListPingEvent;
-import org.bukkit.help.HelpMap;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
-import org.bukkit.map.MapView;
-import org.bukkit.permissions.Permissible;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.ServicesManager;
-import org.bukkit.plugin.messaging.Messenger;
-import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.scoreboard.ScoreboardManager;
-import org.bukkit.util.CachedServerIcon;
-
-import com.avaje.ebean.config.ServerConfig;
-import com.google.common.collect.ImmutableList;
-import org.bukkit.generator.ChunkGenerator;
-
-import org.bukkit.inventory.ItemFactory;
-import org.bukkit.inventory.meta.ItemMeta;
-
+using Mine.NET;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 /**
- * Represents the Bukkit core, for version and Server singleton handling
- */
-public final class Bukkit {
+* Represents the Bukkit core, for version and Server singleton handling
+*/
+public sealed class Bukkit {
     private static Server server;
 
     /**
      * Static class cannot be initialized.
      */
-    private Bukkit() {}
+    private Bukkit() {} //TODO: Make it actually static?
 
     /**
      * Gets the current {@link Server} singleton
@@ -75,7 +33,7 @@ public final class Bukkit {
      */
     public static void setServer(Server server) {
         if (Bukkit.server != null) {
-            throw new UnsupportedOperationException("Cannot redefine singleton Server");
+            throw new NotSupportedException("Cannot redefine singleton Server");
         }
 
         Bukkit.server = server;
@@ -151,7 +109,7 @@ public final class Bukkit {
      *
      * @return a view of currently online players.
      */
-    public static Collection<? extends Player> getOnlinePlayers() {
+    public static Collection<Player> getOnlinePlayers() {
         return server.getOnlinePlayers();
     }
 
@@ -226,7 +184,7 @@ public final class Bukkit {
      *
      * @return true if structure generation is enabled, false otherwise
      */
-    public static boolean getGenerateStructures() {
+    public static bool getGenerateStructures() {
         return server.getGenerateStructures();
     }
 
@@ -235,7 +193,7 @@ public final class Bukkit {
      *
      * @return whether this server allows the End or not
      */
-    public static boolean getAllowEnd() {
+    public static bool getAllowEnd() {
         return server.getAllowEnd();
     }
 
@@ -244,7 +202,7 @@ public final class Bukkit {
      *
      * @return whether this server allows the Nether or not
      */
-    public static boolean getAllowNether() {
+    public static bool getAllowNether() {
         return server.getAllowNether();
     }
 
@@ -253,7 +211,7 @@ public final class Bukkit {
      *
      * @return whether this server has a whitelist or not
      */
-    public static boolean hasWhitelist() {
+    public static bool hasWhitelist() {
         return server.hasWhitelist();
     }
 
@@ -262,7 +220,7 @@ public final class Bukkit {
      *
      * @param value true for whitelist on, false for off
      */
-    public static void setWhitelist(boolean value) {
+    public static void setWhitelist(bool value) {
         server.setWhitelist(value);
     }
 
@@ -271,7 +229,7 @@ public final class Bukkit {
      *
      * @return a set containing all whitelisted players
      */
-    public static Set<OfflinePlayer> getWhitelistedPlayers() {
+    public static HashSet<OfflinePlayer> getWhitelistedPlayers() {
         return server.getWhitelistedPlayers();
     }
 
@@ -423,7 +381,7 @@ public final class Bukkit {
      * @param id UUID of the player to retrieve
      * @return a player object if one was found, null otherwise
      */
-    public static Player getPlayer(UUID id) {
+    public static Player getPlayer(GUID id) {
         return server.getPlayer(id);
     }
 
@@ -484,7 +442,7 @@ public final class Bukkit {
      * @param save whether to save the chunks before unloading
      * @return true if successful, false otherwise
      */
-    public static boolean unloadWorld(String name, boolean save) {
+    public static bool unloadWorld(String name, bool save) {
         return server.unloadWorld(name, save);
     }
 
@@ -495,7 +453,7 @@ public final class Bukkit {
      * @param save whether to save the chunks before unloading
      * @return true if successful, false otherwise
      */
-    public static boolean unloadWorld(World world, boolean save) {
+    public static bool unloadWorld(World world, bool save) {
         return server.unloadWorld(world, save);
     }
 
@@ -584,7 +542,7 @@ public final class Bukkit {
      * @throws CommandException thrown when the executor for the given command
      *     fails with an unhandled exception
      */
-    public static boolean dispatchCommand(CommandSender sender, String commandLine) throws CommandException {
+    public static bool dispatchCommand(CommandSender sender, String commandLine) {
         return server.dispatchCommand(sender, commandLine);
     }
 
@@ -605,7 +563,7 @@ public final class Bukkit {
      * @return true if the recipe was added, false if it wasn't for some
      *     reason
      */
-    public static boolean addRecipe(Recipe recipe) {
+    public static bool addRecipe(Recipe recipe) {
         return server.addRecipe(recipe);
     }
 
@@ -625,7 +583,7 @@ public final class Bukkit {
      *
      * @return an iterator
      */
-    public static Iterator<Recipe> recipeIterator() {
+    public static IEnumerator<Recipe> recipeIterator() {
         return server.recipeIterator();
     }
 
@@ -648,7 +606,7 @@ public final class Bukkit {
      *
      * @return a map of aliases to command names
      */
-    public static Map<String, String[]> getCommandAliases() {
+    public static Dictionary<String, String[]> getCommandAliases() {
         return server.getCommandAliases();
     }
 
@@ -675,7 +633,7 @@ public final class Bukkit {
      *
      * @return true if the server authenticates clients, false otherwise
      */
-    public static boolean getOnlineMode() {
+    public static bool getOnlineMode() {
         return server.getOnlineMode();
     }
 
@@ -684,7 +642,7 @@ public final class Bukkit {
      *
      * @return true if the server allows flight, false otherwise
      */
-    public static boolean getAllowFlight() {
+    public static bool getAllowFlight() {
         return server.getAllowFlight();
     }
 
@@ -693,7 +651,7 @@ public final class Bukkit {
      *
      * @return true if the server mode is hardcore, false otherwise
      */
-    public static boolean isHardcore() {
+    public static bool isHardcore() {
         return server.isHardcore();
     }
 
@@ -712,7 +670,7 @@ public final class Bukkit {
      * [Obsolete] non standard and unused feature.
      */
     [Obsolete]
-    public static boolean useExactLoginLocation() {
+    public static bool useExactLoginLocation() {
         return server.useExactLoginLocation();
     }
  
@@ -776,7 +734,7 @@ public final class Bukkit {
      *
      * @return a set containing banned IP addresses
      */
-    public static Set<String> getIPBans() {
+    public static HashSet<String> getIPBans() {
         return server.getIPBans();
     }
 
@@ -803,7 +761,7 @@ public final class Bukkit {
      *
      * @return a set containing banned players
      */
-    public static Set<OfflinePlayer> getBannedPlayers() {
+    public static HashSet<OfflinePlayer> getBannedPlayers() {
         return server.getBannedPlayers();
     }
 
@@ -825,7 +783,7 @@ public final class Bukkit {
      *
      * @return a set containing player operators
      */
-    public static Set<OfflinePlayer> getOperators() {
+    public static HashSet<OfflinePlayer> getOperators() {
         return server.getOperators();
     }
 
@@ -931,7 +889,7 @@ public final class Bukkit {
      * @return a new inventory
      * @throws IllegalArgumentException if the size is not a multiple of 9
      */
-    public static Inventory createInventory(InventoryHolder owner, int size) throws IllegalArgumentException {
+    public static Inventory createInventory(InventoryHolder owner, int size) {
         return server.createInventory(owner, size);
     }
 
@@ -946,7 +904,7 @@ public final class Bukkit {
      * @return a new inventory
      * @throws IllegalArgumentException if the size is not a multiple of 9
      */
-    public static Inventory createInventory(InventoryHolder owner, int size, String title) throws IllegalArgumentException {
+    public static Inventory createInventory(InventoryHolder owner, int size, String title) {
         return server.createInventory(owner, size, title);
     }
 
@@ -1002,7 +960,7 @@ public final class Bukkit {
      * @return true if the current thread matches the expected primary thread,
      *     false otherwise
      */
-    public static boolean isPrimaryThread() {
+    public static bool isPrimaryThread() {
         return server.isPrimaryThread();
     }
 
@@ -1079,7 +1037,7 @@ public final class Bukkit {
      * @return a cached server-icon that can be used for a {@link
      *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
      */
-    public static CachedServerIcon loadServerIcon(File file) throws IllegalArgumentException, Exception {
+    public static CachedServerIcon loadServerIcon(File file) {
         return server.loadServerIcon(file);
     }
 
@@ -1096,7 +1054,7 @@ public final class Bukkit {
      * @return a cached server-icon that can be used for a {@link
      *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
      */
-    public static CachedServerIcon loadServerIcon(BufferedImage image) throws IllegalArgumentException, Exception {
+    public static CachedServerIcon loadServerIcon(BufferedImage image) {
         return server.loadServerIcon(image);
     }
 
@@ -1144,7 +1102,7 @@ public final class Bukkit {
      * @param flags an optional list of flags to set on the boss bar
      * @return the created boss bar
      */
-    public static BossBar createBossBar(String title, BarColor color, BarStyle style, BarFlag... flags) {
+    public static BossBar createBossBar(String title, BarColor color, BarStyle style, params BarFlag[] flags) {
         return server.createBossBar(title, color, style, flags);
     }
 

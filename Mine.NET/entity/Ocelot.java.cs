@@ -38,7 +38,7 @@ public interface Ocelot extends Animals, Tameable {
     /**
      * Represents the various different cat types there are.
      */
-    public enum Type {
+    public enum OcelotType {
         WILD_OCELOT(0),
         BLACK_CAT(1),
         RED_CAT(2),

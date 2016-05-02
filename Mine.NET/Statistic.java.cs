@@ -113,7 +113,7 @@ public enum Statistic {
      * The type of statistic.
      *
      */
-    public enum Type {
+    public enum StatisticType {
         /**
          * Statistics of this type do not require a qualifier.
          */

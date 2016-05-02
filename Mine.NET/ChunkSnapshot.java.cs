@@ -1,13 +1,11 @@
-package org.bukkit;
 
-import org.bukkit.block.Biome;
-
+using System;
 /**
- * Represents a static, thread-safe snapshot of chunk of blocks.
- * <p>
- * Purpose is to allow clean, efficient copy of a chunk data to be made, and
- * then handed off for processing in another thread (e.g. map rendering)
- */
+* Represents a static, thread-safe snapshot of chunk of blocks.
+* <p>
+* Purpose is to allow clean, efficient copy of a chunk data to be made, and
+* then handed off for processing in another thread (e.g. map rendering)
+*/
 public interface ChunkSnapshot {
 
     /**
@@ -125,5 +123,5 @@ public interface ChunkSnapshot {
      * @param sy - section Y coordinate (block Y / 16)
      * @return true if empty, false if not
      */
-    boolean isSectionEmpty(int sy);
+    bool isSectionEmpty(int sy);
 }

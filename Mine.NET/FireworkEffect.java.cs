@@ -19,7 +19,7 @@ public final class FireworkEffect implements ConfigurationSerializable {
     /**
      * The type or shape of the effect.
      */
-    public enum Type {
+    public enum FireworkType {
         /**
          * A small ball effect.
          */
