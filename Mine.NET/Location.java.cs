@@ -1,18 +1,10 @@
-package org.bukkit;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.bukkit.block.Block;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.util.NumberConversions;
-import static org.bukkit.util.NumberConversions.checkFinite;
-import org.bukkit.util.Vector;
-
+using System;
+using System.Collections.Generic;
 /**
- * Represents a 3-dimensional position in a world
- */
-public class Location implements Cloneable, ConfigurationSerializable {
+* Represents a 3-dimensional position in a world
+*/
+public class Location : ICloneable, ConfigurationSerializable {
     private World world;
     private double x;
     private double y;
@@ -28,8 +20,8 @@ public class Location implements Cloneable, ConfigurationSerializable {
      * @param y The y-coordinate of this new location
      * @param z The z-coordinate of this new location
      */
-    public Location(final World world, final double x, final double y, final double z) {
-        this(world, x, y, z, 0, 0);
+    public Location(World world, double x, double y, double z) {
+        new Location(world, x, y, z, 0, 0);
     }
 
     /**
@@ -42,7 +34,7 @@ public class Location implements Cloneable, ConfigurationSerializable {
      * @param yaw The absolute rotation on the x-plane, in degrees
      * @param pitch The absolute rotation on the y-plane, in degrees
      */
-    public Location(final World world, final double x, final double y, final double z, final float yaw, final float pitch) {
+    public Location(World world, double x, double y, double z, float yaw, float pitch) {
         this.world = world;
         this.x = x;
         this.y = y;
@@ -252,12 +244,12 @@ public class Location implements Cloneable, ConfigurationSerializable {
         double rotX = this.getYaw();
         double rotY = this.getPitch();
 
-        vector.setY(-Math.sin(Math.toRadians(rotY)));
+        vector.setY(-Math.Sin((Math.PI / 180) * rotY));
 
-        double xz = Math.cos(Math.toRadians(rotY));
+        double xz = Math.Cos((Math.PI / 180) * rotY);
 
-        vector.setX(-xz * Math.sin(Math.toRadians(rotX)));
-        vector.setZ(xz * Math.cos(Math.toRadians(rotX)));
+        vector.setX(-xz * Math.Sin((Math.PI / 180) * rotX));
+        vector.setZ(xz * Math.Cos((Math.PI / 180) * rotX));
 
         return vector;
     }
@@ -278,22 +270,22 @@ public class Location implements Cloneable, ConfigurationSerializable {
          * x = -Opp
          * z = Adj
          */
-        final double _2PI = 2 * Math.PI;
-        final double x = vector.getX();
-        final double z = vector.getZ();
+        double _2PI = 2 * Math.PI;
+        double x = vector.getX();
+        double z = vector.getZ();
 
         if (x == 0 && z == 0) {
             pitch = vector.getY() > 0 ? -90 : 90;
             return this;
         }
 
-        double theta = Math.atan2(-x, z);
-        yaw = (float) Math.toDegrees((theta + _2PI) % _2PI);
+        double theta = Math.Atan2(-x, z);
+        yaw = (float)(((theta + _2PI) % _2PI) * (180.0 / Math.PI));
 
         double x2 = NumberConversions.square(x);
         double z2 = NumberConversions.square(z);
-        double xz = Math.sqrt(x2 + z2);
-        pitch = (float) Math.toDegrees(Math.atan(-vector.getY() / xz));
+        double xz = Math.Sqrt(x2 + z2);
+        pitch = (float)(Math.Atan(-vector.getY() / xz) * (180.0 / Math.PI));
 
         return this;
     }
@@ -308,7 +300,7 @@ public class Location implements Cloneable, ConfigurationSerializable {
      */
     public Location add(Location vec) {
         if (vec == null || vec.getWorld() != getWorld()) {
-            throw new IllegalArgumentException("Cannot add Locations of differing worlds");
+            throw new ArgumentException("Cannot add Locations of differing worlds");
         }
 
         x += vec.x;
@@ -357,7 +349,7 @@ public class Location implements Cloneable, ConfigurationSerializable {
      */
     public Location subtract(Location vec) {
         if (vec == null || vec.getWorld() != getWorld()) {
-            throw new IllegalArgumentException("Cannot add Locations of differing worlds");
+            throw new ArgumentException("Cannot add Locations of differing worlds");
         }
 
         x -= vec.x;
@@ -409,7 +401,7 @@ public class Location implements Cloneable, ConfigurationSerializable {
      * @return the magnitude
      */
     public double length() {
-        return Math.sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
+        return Math.Sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
     }
 
     /**
@@ -436,7 +428,7 @@ public class Location implements Cloneable, ConfigurationSerializable {
      * @throws IllegalArgumentException for differing worlds
      */
     public double distance(Location o) {
-        return Math.sqrt(distanceSquared(o));
+        return Math.Sqrt(distanceSquared(o));
     }
 
     /**
@@ -449,11 +441,11 @@ public class Location implements Cloneable, ConfigurationSerializable {
      */
     public double distanceSquared(Location o) {
         if (o == null) {
-            throw new IllegalArgumentException("Cannot measure distance to a null location");
+            throw new ArgumentException("Cannot measure distance to a null location");
         } else if (o.getWorld() == null || getWorld() == null) {
-            throw new IllegalArgumentException("Cannot measure distance to a null world");
+            throw new ArgumentException("Cannot measure distance to a null world");
         } else if (o.getWorld() != getWorld()) {
-            throw new IllegalArgumentException("Cannot measure distance between " + getWorld().getName() + " and " + o.getWorld().getName());
+            throw new ArgumentException("Cannot measure distance between " + getWorld().getName() + " and " + o.getWorld().getName());
         }
 
         return NumberConversions.square(x - o.x) + NumberConversions.square(y - o.y) + NumberConversions.square(z - o.z);
@@ -487,52 +479,51 @@ public class Location implements Cloneable, ConfigurationSerializable {
         return this;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (GetType() != obj.GetType()) {
             return false;
         }
-        final Location other = (Location) obj;
+        Location other = (Location)obj;
 
-        if (this.world != other.world && (this.world == null || !this.world.equals(other.world))) {
+        if (this.world != other.world && (this.world == null || !this.world.Equals(other.world))) {
             return false;
         }
-        if (Double.doubleToLongBits(this.x) != Double.doubleToLongBits(other.x)) {
+        if (Math.Abs(this.x - other.x) > 0.0000001) {
             return false;
         }
-        if (Double.doubleToLongBits(this.y) != Double.doubleToLongBits(other.y)) {
+        if (Math.Abs(this.y - other.y) > 0.0000001)
+        {
             return false;
         }
-        if (Double.doubleToLongBits(this.z) != Double.doubleToLongBits(other.z)) {
+        if (Math.Abs(this.z - other.z) > 0.0000001)
+        {
             return false;
         }
-        if (Float.floatToIntBits(this.pitch) != Float.floatToIntBits(other.pitch)) {
+        if (Math.Abs(this.pitch - other.pitch) > 0.0000001) {
             return false;
         }
-        if (Float.floatToIntBits(this.yaw) != Float.floatToIntBits(other.yaw)) {
+        if (Math.Abs(this.yaw - other.yaw) > 0.0000001) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 3;
-
-        hash = 19 * hash + (this.world != null ? this.world.hashCode() : 0);
+        //TODO
+        /*hash = 19 * hash + (this.world != null ? this.world.GetH    ashCode() : 0);
         hash = 19 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
         hash = 19 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
         hash = 19 * hash + (int) (Double.doubleToLongBits(this.z) ^ (Double.doubleToLongBits(this.z) >>> 32));
         hash = 19 * hash + Float.floatToIntBits(this.pitch);
-        hash = 19 * hash + Float.floatToIntBits(this.yaw);
+        hash = 19 * hash + Float.floatToIntBits(this.yaw);*/
         return hash;
     }
 
-    @Override
-    public String toString() {
+    public override String ToString() {
         return "Location{" + "world=" + world + ",x=" + x + ",y=" + y + ",z=" + z + ",pitch=" + pitch + ",yaw=" + yaw + '}';
     }
 
@@ -546,13 +537,9 @@ public class Location implements Cloneable, ConfigurationSerializable {
         return new Vector(x, y, z);
     }
 
-    @Override
-    public Location clone() {
-        try {
-            return (Location) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new Error(e);
-        }
+    public override object Clone()
+    {
+        return base.MemberwiseClone();
     }
 
     /**
@@ -566,35 +553,35 @@ public class Location implements Cloneable, ConfigurationSerializable {
         return NumberConversions.floor(loc);
     }
 
-	@Utility
-	public Map<String, Object> serialize() {
-		Map<String, Object> data = new HashMap<String, Object>();
-		data.put("world", this.world.getName());
+    [Utility]
+    public Dictionary<String, Object> Serialize() {
+        Dictionary<String, Object> data = new Dictionary<string, object>();
+        data.Add("world", this.world.getName());
 
-		data.put("x", this.x);
-		data.put("y", this.y);
-		data.put("z", this.z);
+        data.Add("x", this.x);
+        data.Add("y", this.y);
+        data.Add("z", this.z);
 
-		data.put("yaw", this.yaw);
-		data.put("pitch", this.pitch);
+        data.Add("yaw", this.yaw);
+        data.Add("pitch", this.pitch);
 
-		return data;
-	}
-	
-	 /**
-     * Required method for deserialization
-     *
-     * @param args map to deserialize
-     * @return deserialized location
-     * @throws IllegalArgumentException if the world don't exists
-     * @see ConfigurationSerializable
-     */
-	public static Location deserialize(Map<String, Object> args) {
-		World world = Bukkit.getWorld((String) args.get("world"));
-		if (world == null) {
-			throw new IllegalArgumentException("unknown world");
-		}
+        return data;
+    }
 
-		return new Location(world, NumberConversions.toDouble(args.get("x")), NumberConversions.toDouble(args.get("y")), NumberConversions.toDouble(args.get("z")), NumberConversions.toFloat(args.get("yaw")), NumberConversions.toFloat(args.get("pitch")));
-	}
+    /**
+    * Required method for deserialization
+    *
+    * @param args map to deserialize
+    * @return deserialized location
+    * @throws IllegalArgumentException if the world don't exists
+    * @see ConfigurationSerializable
+    */
+    public static Location deserialize(Dictionary<String, Object> args) {
+        World world = Bukkit.getWorld((String)args.get("world"));
+        if (world == null) {
+            throw new ArgumentException("unknown world");
+        }
+
+        return new Location(world, NumberConversions.toDouble(args[("x"]), NumberConversions.toDouble(args[("y"]), NumberConversions.toDouble(args["z"]), NumberConversions.toFloat(args["yaw"]), NumberConversions.toFloat(args["pitch"]));
+    }
 }

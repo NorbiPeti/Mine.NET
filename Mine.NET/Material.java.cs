@@ -1,538 +1,900 @@
-package org.bukkit;
 
-import java.lang.reflect.Constructor;
-import java.util.Map;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.map.MapView;
-import org.bukkit.material.Bed;
-import org.bukkit.material.Button;
-import org.bukkit.material.Cake;
-import org.bukkit.material.Cauldron;
-import org.bukkit.material.Chest;
-import org.bukkit.material.Coal;
-import org.bukkit.material.CocoaPlant;
-import org.bukkit.material.Command;
-import org.bukkit.material.Comparator;
-import org.bukkit.material.Crops;
-import org.bukkit.material.DetectorRail;
-import org.bukkit.material.Diode;
-import org.bukkit.material.Dispenser;
-import org.bukkit.material.Door;
-import org.bukkit.material.Dye;
-import org.bukkit.material.EnderChest;
-import org.bukkit.material.FlowerPot;
-import org.bukkit.material.Furnace;
-import org.bukkit.material.Gate;
-import org.bukkit.material.Hopper;
-import org.bukkit.material.Ladder;
-import org.bukkit.material.Leaves;
-import org.bukkit.material.Lever;
-import org.bukkit.material.LongGrass;
-import org.bukkit.material.MaterialData;
-import org.bukkit.material.MonsterEggs;
-import org.bukkit.material.Mushroom;
-import org.bukkit.material.NetherWarts;
-import org.bukkit.material.PistonBaseMaterial;
-import org.bukkit.material.PistonExtensionMaterial;
-import org.bukkit.material.PoweredRail;
-import org.bukkit.material.PressurePlate;
-import org.bukkit.material.Pumpkin;
-import org.bukkit.material.Rails;
-import org.bukkit.material.RedstoneTorch;
-import org.bukkit.material.RedstoneWire;
-import org.bukkit.material.Sandstone;
-import org.bukkit.material.Sapling;
-import org.bukkit.material.Sign;
-import org.bukkit.material.Skull;
-import org.bukkit.material.SmoothBrick;
-import org.bukkit.material.SpawnEgg;
-import org.bukkit.material.Stairs;
-import org.bukkit.material.Step;
-import org.bukkit.material.Torch;
-import org.bukkit.material.TrapDoor;
-import org.bukkit.material.Tree;
-import org.bukkit.material.Tripwire;
-import org.bukkit.material.TripwireHook;
-import org.bukkit.material.Vine;
-import org.bukkit.material.Wood;
-import org.bukkit.material.WoodenStep;
-import org.bukkit.material.Wool;
-import org.bukkit.potion.Potion;
-import org.bukkit.util.Java15Compat;
-
-import com.google.common.collect.Maps;
-
-import org.bukkit.material.Banner;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 /**
- * An enum of all material IDs accepted by the official server and client
- */
-public enum Material {
-    AIR(0, 0),
-    STONE(1),
-    GRASS(2),
-    DIRT(3),
-    COBBLESTONE(4),
-    WOOD(5, Wood.class),
-    SAPLING(6, Sapling.class),
-    BEDROCK(7),
-    WATER(8, MaterialData.class),
-    STATIONARY_WATER(9, MaterialData.class),
-    LAVA(10, MaterialData.class),
-    STATIONARY_LAVA(11, MaterialData.class),
-    SAND(12),
-    GRAVEL(13),
-    GOLD_ORE(14),
-    IRON_ORE(15),
-    COAL_ORE(16),
-    LOG(17, Tree.class),
-    LEAVES(18, Leaves.class),
-    SPONGE(19),
-    GLASS(20),
-    LAPIS_ORE(21),
-    LAPIS_BLOCK(22),
-    DISPENSER(23, Dispenser.class),
-    SANDSTONE(24, Sandstone.class),
-    NOTE_BLOCK(25),
-    BED_BLOCK(26, Bed.class),
-    POWERED_RAIL(27, PoweredRail.class),
-    DETECTOR_RAIL(28, DetectorRail.class),
-    PISTON_STICKY_BASE(29, PistonBaseMaterial.class),
-    WEB(30),
-    LONG_GRASS(31, LongGrass.class),
-    DEAD_BUSH(32),
-    PISTON_BASE(33, PistonBaseMaterial.class),
-    PISTON_EXTENSION(34, PistonExtensionMaterial.class),
-    WOOL(35, Wool.class),
-    PISTON_MOVING_PIECE(36),
-    YELLOW_FLOWER(37),
-    RED_ROSE(38),
-    BROWN_MUSHROOM(39),
-    RED_MUSHROOM(40),
-    GOLD_BLOCK(41),
-    IRON_BLOCK(42),
-    DOUBLE_STEP(43, Step.class),
-    STEP(44, Step.class),
-    BRICK(45),
-    TNT(46),
-    BOOKSHELF(47),
-    MOSSY_COBBLESTONE(48),
-    OBSIDIAN(49),
-    TORCH(50, Torch.class),
-    FIRE(51),
-    MOB_SPAWNER(52),
-    WOOD_STAIRS(53, Stairs.class),
-    CHEST(54, Chest.class),
-    REDSTONE_WIRE(55, RedstoneWire.class),
-    DIAMOND_ORE(56),
-    DIAMOND_BLOCK(57),
-    WORKBENCH(58),
-    CROPS(59, Crops.class),
-    SOIL(60, MaterialData.class),
-    FURNACE(61, Furnace.class),
-    BURNING_FURNACE(62, Furnace.class),
-    SIGN_POST(63, 64, Sign.class),
-    WOODEN_DOOR(64, Door.class),
-    LADDER(65, Ladder.class),
-    RAILS(66, Rails.class),
-    COBBLESTONE_STAIRS(67, Stairs.class),
-    WALL_SIGN(68, 64, Sign.class),
-    LEVER(69, Lever.class),
-    STONE_PLATE(70, PressurePlate.class),
-    IRON_DOOR_BLOCK(71, Door.class),
-    WOOD_PLATE(72, PressurePlate.class),
-    REDSTONE_ORE(73),
-    GLOWING_REDSTONE_ORE(74),
-    REDSTONE_TORCH_OFF(75, RedstoneTorch.class),
-    REDSTONE_TORCH_ON(76, RedstoneTorch.class),
-    STONE_BUTTON(77, Button.class),
-    SNOW(78),
-    ICE(79),
-    SNOW_BLOCK(80),
-    CACTUS(81, MaterialData.class),
-    CLAY(82),
-    SUGAR_CANE_BLOCK(83, MaterialData.class),
-    JUKEBOX(84),
-    FENCE(85),
-    PUMPKIN(86, Pumpkin.class),
-    NETHERRACK(87),
-    SOUL_SAND(88),
-    GLOWSTONE(89),
-    PORTAL(90),
-    JACK_O_LANTERN(91, Pumpkin.class),
-    CAKE_BLOCK(92, 64, Cake.class),
-    DIODE_BLOCK_OFF(93, Diode.class),
-    DIODE_BLOCK_ON(94, Diode.class),
-    STAINED_GLASS(95),
-    TRAP_DOOR(96, TrapDoor.class),
-    MONSTER_EGGS(97, MonsterEggs.class),
-    SMOOTH_BRICK(98, SmoothBrick.class),
-    HUGE_MUSHROOM_1(99, Mushroom.class),
-    HUGE_MUSHROOM_2(100, Mushroom.class),
-    IRON_FENCE(101),
-    THIN_GLASS(102),
-    MELON_BLOCK(103),
-    PUMPKIN_STEM(104, MaterialData.class),
-    MELON_STEM(105, MaterialData.class),
-    VINE(106, Vine.class),
-    FENCE_GATE(107, Gate.class),
-    BRICK_STAIRS(108, Stairs.class),
-    SMOOTH_STAIRS(109, Stairs.class),
-    MYCEL(110),
-    WATER_LILY(111),
-    NETHER_BRICK(112),
-    NETHER_FENCE(113),
-    NETHER_BRICK_STAIRS(114, Stairs.class),
-    NETHER_WARTS(115, NetherWarts.class),
-    ENCHANTMENT_TABLE(116),
-    BREWING_STAND(117, MaterialData.class),
-    CAULDRON(118, Cauldron.class),
-    ENDER_PORTAL(119),
-    ENDER_PORTAL_FRAME(120),
-    ENDER_STONE(121),
-    DRAGON_EGG(122),
-    REDSTONE_LAMP_OFF(123),
-    REDSTONE_LAMP_ON(124),
-    WOOD_DOUBLE_STEP(125, Wood.class),
-    WOOD_STEP(126, WoodenStep.class),
-    COCOA(127, CocoaPlant.class),
-    SANDSTONE_STAIRS(128, Stairs.class),
-    EMERALD_ORE(129),
-    ENDER_CHEST(130, EnderChest.class),
-    TRIPWIRE_HOOK(131, TripwireHook.class),
-    TRIPWIRE(132, Tripwire.class),
-    EMERALD_BLOCK(133),
-    SPRUCE_WOOD_STAIRS(134, Stairs.class),
-    BIRCH_WOOD_STAIRS(135, Stairs.class),
-    JUNGLE_WOOD_STAIRS(136, Stairs.class),
-    COMMAND(137, Command.class),
-    BEACON(138),
-    COBBLE_WALL(139),
-    FLOWER_POT(140, FlowerPot.class),
-    CARROT(141, Crops.class),
-    POTATO(142, Crops.class),
-    WOOD_BUTTON(143, Button.class),
-    SKULL(144, Skull.class),
-    ANVIL(145),
-    TRAPPED_CHEST(146, Chest.class),
-    GOLD_PLATE(147),
-    IRON_PLATE(148),
-    REDSTONE_COMPARATOR_OFF(149, Comparator.class),
-    REDSTONE_COMPARATOR_ON(150, Comparator.class),
-    DAYLIGHT_DETECTOR(151),
-    REDSTONE_BLOCK(152),
-    QUARTZ_ORE(153),
-    HOPPER(154, Hopper.class),
-    QUARTZ_BLOCK(155),
-    QUARTZ_STAIRS(156, Stairs.class),
-    ACTIVATOR_RAIL(157, PoweredRail.class),
-    DROPPER(158, Dispenser.class),
-    STAINED_CLAY(159),
-    STAINED_GLASS_PANE(160),
-    LEAVES_2(161, Leaves.class),
-    LOG_2(162, Tree.class),
-    ACACIA_STAIRS(163, Stairs.class),
-    DARK_OAK_STAIRS(164, Stairs.class),
-    SLIME_BLOCK(165),
-    BARRIER(166),
-    IRON_TRAPDOOR(167, TrapDoor.class),
-    PRISMARINE(168),
-    SEA_LANTERN(169),
-    HAY_BLOCK(170),
-    CARPET(171),
-    HARD_CLAY(172),
-    COAL_BLOCK(173),
-    PACKED_ICE(174),
-    DOUBLE_PLANT(175),
-    STANDING_BANNER(176, Banner.class),
-    WALL_BANNER(177, Banner.class),
-    DAYLIGHT_DETECTOR_INVERTED(178),
-    RED_SANDSTONE(179),
-    RED_SANDSTONE_STAIRS(180, Stairs.class),
-    DOUBLE_STONE_SLAB2(181),
-    STONE_SLAB2(182),
-    SPRUCE_FENCE_GATE(183, Gate.class),
-    BIRCH_FENCE_GATE(184, Gate.class),
-    JUNGLE_FENCE_GATE(185, Gate.class),
-    DARK_OAK_FENCE_GATE(186, Gate.class),
-    ACACIA_FENCE_GATE(187, Gate.class),
-    SPRUCE_FENCE(188),
-    BIRCH_FENCE(189),
-    JUNGLE_FENCE(190),
-    DARK_OAK_FENCE(191),
-    ACACIA_FENCE(192),
-    SPRUCE_DOOR(193, Door.class),
-    BIRCH_DOOR(194, Door.class),
-    JUNGLE_DOOR(195, Door.class),
-    ACACIA_DOOR(196, Door.class),
-    DARK_OAK_DOOR(197, Door.class),
-    END_ROD(198),
-    CHORUS_PLANT(199),
-    CHORUS_FLOWER(200),
-    PURPUR_BLOCK(201),
-    PURPUR_PILLAR(202),
-    PURPUR_STAIRS(203, Stairs.class),
-    PURPUR_DOUBLE_SLAB(204),
-    PURPUR_SLAB(205),
-    END_BRICKS(206),
-    BEETROOT_BLOCK(207, Crops.class),
-    GRASS_PATH(208),
-    END_GATEWAY(209),
-    COMMAND_REPEATING(210),
-    COMMAND_CHAIN(211),
-    FROSTED_ICE(212),
-    STRUCTURE_BLOCK(255),
-    // ----- Item Separator -----
-    IRON_SPADE(256, 1, 250),
-    IRON_PICKAXE(257, 1, 250),
-    IRON_AXE(258, 1, 250),
-    FLINT_AND_STEEL(259, 1, 64),
-    APPLE(260),
-    BOW(261, 1, 384),
-    ARROW(262),
-    COAL(263, Coal.class),
-    DIAMOND(264),
-    IRON_INGOT(265),
-    GOLD_INGOT(266),
-    IRON_SWORD(267, 1, 250),
-    WOOD_SWORD(268, 1, 59),
-    WOOD_SPADE(269, 1, 59),
-    WOOD_PICKAXE(270, 1, 59),
-    WOOD_AXE(271, 1, 59),
-    STONE_SWORD(272, 1, 131),
-    STONE_SPADE(273, 1, 131),
-    STONE_PICKAXE(274, 1, 131),
-    STONE_AXE(275, 1, 131),
-    DIAMOND_SWORD(276, 1, 1561),
-    DIAMOND_SPADE(277, 1, 1561),
-    DIAMOND_PICKAXE(278, 1, 1561),
-    DIAMOND_AXE(279, 1, 1561),
-    STICK(280),
-    BOWL(281),
-    MUSHROOM_SOUP(282, 1),
-    GOLD_SWORD(283, 1, 32),
-    GOLD_SPADE(284, 1, 32),
-    GOLD_PICKAXE(285, 1, 32),
-    GOLD_AXE(286, 1, 32),
-    STRING(287),
-    FEATHER(288),
-    SULPHUR(289),
-    WOOD_HOE(290, 1, 59),
-    STONE_HOE(291, 1, 131),
-    IRON_HOE(292, 1, 250),
-    DIAMOND_HOE(293, 1, 1561),
-    GOLD_HOE(294, 1, 32),
-    SEEDS(295),
-    WHEAT(296),
-    BREAD(297),
-    LEATHER_HELMET(298, 1, 55),
-    LEATHER_CHESTPLATE(299, 1, 80),
-    LEATHER_LEGGINGS(300, 1, 75),
-    LEATHER_BOOTS(301, 1, 65),
-    CHAINMAIL_HELMET(302, 1, 165),
-    CHAINMAIL_CHESTPLATE(303, 1, 240),
-    CHAINMAIL_LEGGINGS(304, 1, 225),
-    CHAINMAIL_BOOTS(305, 1, 195),
-    IRON_HELMET(306, 1, 165),
-    IRON_CHESTPLATE(307, 1, 240),
-    IRON_LEGGINGS(308, 1, 225),
-    IRON_BOOTS(309, 1, 195),
-    DIAMOND_HELMET(310, 1, 363),
-    DIAMOND_CHESTPLATE(311, 1, 528),
-    DIAMOND_LEGGINGS(312, 1, 495),
-    DIAMOND_BOOTS(313, 1, 429),
-    GOLD_HELMET(314, 1, 77),
-    GOLD_CHESTPLATE(315, 1, 112),
-    GOLD_LEGGINGS(316, 1, 105),
-    GOLD_BOOTS(317, 1, 91),
-    FLINT(318),
-    PORK(319),
-    GRILLED_PORK(320),
-    PAINTING(321),
-    GOLDEN_APPLE(322),
-    SIGN(323, 16),
-    WOOD_DOOR(324, 64),
-    BUCKET(325, 16),
-    WATER_BUCKET(326, 1),
-    LAVA_BUCKET(327, 1),
-    MINECART(328, 1),
-    SADDLE(329, 1),
-    IRON_DOOR(330, 64),
-    REDSTONE(331),
-    SNOW_BALL(332, 16),
-    BOAT(333, 1),
-    LEATHER(334),
-    MILK_BUCKET(335, 1),
-    CLAY_BRICK(336),
-    CLAY_BALL(337),
-    SUGAR_CANE(338),
-    PAPER(339),
-    BOOK(340),
-    SLIME_BALL(341),
-    STORAGE_MINECART(342, 1),
-    POWERED_MINECART(343, 1),
-    EGG(344, 16),
-    COMPASS(345),
-    FISHING_ROD(346, 1, 64),
-    WATCH(347),
-    GLOWSTONE_DUST(348),
-    RAW_FISH(349),
-    COOKED_FISH(350),
-    INK_SACK(351, Dye.class),
-    BONE(352),
-    SUGAR(353),
-    CAKE(354, 1),
-    BED(355, 1),
-    DIODE(356),
-    COOKIE(357),
-    /**
-     * @see MapView
-     */
-    MAP(358, MaterialData.class),
-    SHEARS(359, 1, 238),
-    MELON(360),
-    PUMPKIN_SEEDS(361),
-    MELON_SEEDS(362),
-    RAW_BEEF(363),
-    COOKED_BEEF(364),
-    RAW_CHICKEN(365),
-    COOKED_CHICKEN(366),
-    ROTTEN_FLESH(367),
-    ENDER_PEARL(368, 16),
-    BLAZE_ROD(369),
-    GHAST_TEAR(370),
-    GOLD_NUGGET(371),
-    NETHER_STALK(372),
-    POTION(373, 1, MaterialData.class),
-    GLASS_BOTTLE(374),
-    SPIDER_EYE(375),
-    FERMENTED_SPIDER_EYE(376),
-    BLAZE_POWDER(377),
-    MAGMA_CREAM(378),
-    BREWING_STAND_ITEM(379),
-    CAULDRON_ITEM(380),
-    EYE_OF_ENDER(381),
-    SPECKLED_MELON(382),
-    MONSTER_EGG(383, 64, SpawnEgg.class),
-    EXP_BOTTLE(384, 64),
-    FIREBALL(385, 64),
-    BOOK_AND_QUILL(386, 1),
-    WRITTEN_BOOK(387, 16),
-    EMERALD(388, 64),
-    ITEM_FRAME(389),
-    FLOWER_POT_ITEM(390),
-    CARROT_ITEM(391),
-    POTATO_ITEM(392),
-    BAKED_POTATO(393),
-    POISONOUS_POTATO(394),
-    EMPTY_MAP(395),
-    GOLDEN_CARROT(396),
-    SKULL_ITEM(397),
-    CARROT_STICK(398, 1, 25),
-    NETHER_STAR(399),
-    PUMPKIN_PIE(400),
-    FIREWORK(401),
-    FIREWORK_CHARGE(402),
-    ENCHANTED_BOOK(403, 1),
-    REDSTONE_COMPARATOR(404),
-    NETHER_BRICK_ITEM(405),
-    QUARTZ(406),
-    EXPLOSIVE_MINECART(407, 1),
-    HOPPER_MINECART(408, 1),
-    PRISMARINE_SHARD(409),
-    PRISMARINE_CRYSTALS(410),
-    RABBIT(411),
-    COOKED_RABBIT(412),
-    RABBIT_STEW(413, 1),
-    RABBIT_FOOT(414),
-    RABBIT_HIDE(415),
-    ARMOR_STAND(416, 16),
-    IRON_BARDING(417, 1),
-    GOLD_BARDING(418, 1),
-    DIAMOND_BARDING(419, 1),
-    LEASH(420),
-    NAME_TAG(421),
-    COMMAND_MINECART(422, 1),
-    MUTTON(423),
-    COOKED_MUTTON(424),
-    BANNER(425, 16),
-    END_CRYSTAL(426),
-    SPRUCE_DOOR_ITEM(427),
-    BIRCH_DOOR_ITEM(428),
-    JUNGLE_DOOR_ITEM(429),
-    ACACIA_DOOR_ITEM(430),
-    DARK_OAK_DOOR_ITEM(431),
-    CHORUS_FRUIT(432),
-    CHORUS_FRUIT_POPPED(433),
-    BEETROOT(434),
-    BEETROOT_SEEDS(435),
-    BEETROOT_SOUP(436, 1),
-    DRAGONS_BREATH(437),
-    SPLASH_POTION(438, 1),
-    SPECTRAL_ARROW(439),
-    TIPPED_ARROW(440),
-    LINGERING_POTION(441, 1),
-    SHIELD(442, 1, 336),
-    ELYTRA(443, 1, 431),
-    BOAT_SPRUCE(444, 1),
-    BOAT_BIRCH(445, 1),
-    BOAT_JUNGLE(446, 1),
-    BOAT_ACACIA(447, 1),
-    BOAT_DARK_OAK(448, 1),
-    GOLD_RECORD(2256, 1),
-    GREEN_RECORD(2257, 1),
-    RECORD_3(2258, 1),
-    RECORD_4(2259, 1),
-    RECORD_5(2260, 1),
-    RECORD_6(2261, 1),
-    RECORD_7(2262, 1),
-    RECORD_8(2263, 1),
-    RECORD_9(2264, 1),
-    RECORD_10(2265, 1),
-    RECORD_11(2266, 1),
-    RECORD_12(2267, 1),
-    ;
-
-    private final int id;
-    private final Constructor<? extends MaterialData> ctor;
-    private static Material[] byId = new Material[383];
-    private final static Map<String, Material> BY_NAME = Maps.newHashMap();
-    private final int maxStack;
-    private final short durability;
-
-    private Material(final int id) {
-        this(id, 64);
+* An enum of all material IDs accepted by the official server and client
+*/
+public class Material
+{
+    public enum Materials
+    {
+        AIR,
+        STONE,
+        GRASS,
+        DIRT,
+        COBBLESTONE,
+        WOOD,
+        SAPLING,
+        BEDROCK,
+        WATER,
+        STATIONARY_WATER,
+        LAVA,
+        STATIONARY_LAVA,
+        SAND,
+        GRAVEL,
+        GOLD_ORE,
+        IRON_ORE,
+        COAL_ORE,
+        LOG,
+        LEAVES,
+        SPONGE,
+        GLASS,
+        LAPIS_ORE,
+        LAPIS_BLOCK,
+        DISPENSER,
+        SANDSTONE,
+        NOTE_BLOCK,
+        BED_BLOCK,
+        POWERED_RAIL,
+        DETECTOR_RAIL,
+        PISTON_STICKY_BASE,
+        WEB,
+        LONG_GRASS,
+        DEAD_BUSH,
+        PISTON_BASE,
+        PISTON_EXTENSION,
+        WOOL,
+        PISTON_MOVING_PIECE,
+        YELLOW_FLOWER,
+        RED_ROSE,
+        BROWN_MUSHROOM,
+        RED_MUSHROOM,
+        GOLD_BLOCK,
+        IRON_BLOCK,
+        DOUBLE_STEP,
+        STEP,
+        BRICK,
+        TNT,
+        BOOKSHELF,
+        MOSSY_COBBLESTONE,
+        OBSIDIAN,
+        TORCH,
+        FIRE,
+        MOB_SPAWNER,
+        WOOD_STAIRS,
+        CHEST,
+        REDSTONE_WIRE,
+        DIAMOND_ORE,
+        DIAMOND_BLOCK,
+        WORKBENCH,
+        CROPS,
+        SOIL,
+        FURNACE,
+        BURNING_FURNACE,
+        SIGN_POST,
+        WOODEN_DOOR,
+        LADDER,
+        RAILS,
+        COBBLESTONE_STAIRS,
+        WALL_SIGN,
+        LEVER,
+        STONE_PLATE,
+        IRON_DOOR_BLOCK,
+        WOOD_PLATE,
+        REDSTONE_ORE,
+        GLOWING_REDSTONE_ORE,
+        REDSTONE_TORCH_OFF,
+        REDSTONE_TORCH_ON,
+        STONE_BUTTON,
+        SNOW,
+        ICE,
+        SNOW_BLOCK,
+        CACTUS,
+        CLAY,
+        SUGAR_CANE_BLOCK,
+        JUKEBOX,
+        FENCE,
+        PUMPKIN,
+        NETHERRACK,
+        SOUL_SAND,
+        GLOWSTONE,
+        PORTAL,
+        JACK_O_LANTERN,
+        CAKE_BLOCK,
+        DIODE_BLOCK_OFF,
+        DIODE_BLOCK_ON,
+        STAINED_GLASS,
+        TRAP_DOOR,
+        MONSTER_EGGS,
+        SMOOTH_BRICK,
+        HUGE_MUSHROOM_1,
+        HUGE_MUSHROOM_2,
+        IRON_FENCE,
+        THIN_GLASS,
+        MELON_BLOCK,
+        PUMPKIN_STEM,
+        MELON_STEM,
+        VINE,
+        FENCE_GATE,
+        BRICK_STAIRS,
+        SMOOTH_STAIRS,
+        MYCEL,
+        WATER_LILY,
+        NETHER_BRICK,
+        NETHER_FENCE,
+        NETHER_BRICK_STAIRS,
+        NETHER_WARTS,
+        ENCHANTMENT_TABLE,
+        BREWING_STAND,
+        CAULDRON,
+        ENDER_PORTAL,
+        ENDER_PORTAL_FRAME,
+        ENDER_STONE,
+        DRAGON_EGG,
+        REDSTONE_LAMP_OFF,
+        REDSTONE_LAMP_ON,
+        WOOD_DOUBLE_STEP,
+        WOOD_STEP,
+        COCOA,
+        SANDSTONE_STAIRS,
+        EMERALD_ORE,
+        ENDER_CHEST,
+        TRIPWIRE_HOOK,
+        TRIPWIRE,
+        EMERALD_BLOCK,
+        SPRUCE_WOOD_STAIRS,
+        BIRCH_WOOD_STAIRS,
+        JUNGLE_WOOD_STAIRS,
+        COMMAND,
+        BEACON,
+        COBBLE_WALL,
+        FLOWER_POT,
+        CARROT,
+        POTATO,
+        WOOD_BUTTON,
+        SKULL,
+        ANVIL,
+        TRAPPED_CHEST,
+        GOLD_PLATE,
+        IRON_PLATE,
+        REDSTONE_COMPARATOR_OFF,
+        REDSTONE_COMPARATOR_ON,
+        DAYLIGHT_DETECTOR,
+        REDSTONE_BLOCK,
+        QUARTZ_ORE,
+        HOPPER,
+        QUARTZ_BLOCK,
+        QUARTZ_STAIRS,
+        ACTIVATOR_RAIL,
+        DROPPER,
+        STAINED_CLAY,
+        STAINED_GLASS_PANE,
+        LEAVES_2,
+        LOG_2,
+        ACACIA_STAIRS,
+        DARK_OAK_STAIRS,
+        SLIME_BLOCK,
+        BARRIER,
+        IRON_TRAPDOOR,
+        PRISMARINE,
+        SEA_LANTERN,
+        HAY_BLOCK,
+        CARPET,
+        HARD_CLAY,
+        COAL_BLOCK,
+        PACKED_ICE,
+        DOUBLE_PLANT,
+        STANDING_BANNER,
+        WALL_BANNER,
+        DAYLIGHT_DETECTOR_INVERTED,
+        RED_SANDSTONE,
+        RED_SANDSTONE_STAIRS,
+        DOUBLE_STONE_SLAB2,
+        STONE_SLAB2,
+        SPRUCE_FENCE_GATE,
+        BIRCH_FENCE_GATE,
+        JUNGLE_FENCE_GATE,
+        DARK_OAK_FENCE_GATE,
+        ACACIA_FENCE_GATE,
+        SPRUCE_FENCE,
+        BIRCH_FENCE,
+        JUNGLE_FENCE,
+        DARK_OAK_FENCE,
+        ACACIA_FENCE,
+        SPRUCE_DOOR,
+        BIRCH_DOOR,
+        JUNGLE_DOOR,
+        ACACIA_DOOR,
+        DARK_OAK_DOOR,
+        END_ROD,
+        CHORUS_PLANT,
+        CHORUS_FLOWER,
+        PURPUR_BLOCK,
+        PURPUR_PILLAR,
+        PURPUR_STAIRS,
+        PURPUR_DOUBLE_SLAB,
+        PURPUR_SLAB,
+        END_BRICKS,
+        BEETROOT_BLOCK,
+        GRASS_PATH,
+        END_GATEWAY,
+        COMMAND_REPEATING,
+        COMMAND_CHAIN,
+        FROSTED_ICE,
+        STRUCTURE_BLOCK,
+        // ----- Item Separator -----
+        IRON_SPADE,
+        IRON_PICKAXE,
+        IRON_AXE,
+        FLINT_AND_STEEL,
+        APPLE,
+        BOW,
+        ARROW,
+        COAL,
+        DIAMOND,
+        IRON_INGOT,
+        GOLD_INGOT,
+        IRON_SWORD,
+        WOOD_SWORD,
+        WOOD_SPADE,
+        WOOD_PICKAXE,
+        WOOD_AXE,
+        STONE_SWORD,
+        STONE_SPADE,
+        STONE_PICKAXE,
+        STONE_AXE,
+        DIAMOND_SWORD,
+        DIAMOND_SPADE,
+        DIAMOND_PICKAXE,
+        DIAMOND_AXE,
+        STICK,
+        BOWL,
+        MUSHROOM_SOUP,
+        GOLD_SWORD,
+        GOLD_SPADE,
+        GOLD_PICKAXE,
+        GOLD_AXE,
+        STRING,
+        FEATHER,
+        SULPHUR,
+        WOOD_HOE,
+        STONE_HOE,
+        IRON_HOE,
+        DIAMOND_HOE,
+        GOLD_HOE,
+        SEEDS,
+        WHEAT,
+        BREAD,
+        LEATHER_HELMET,
+        LEATHER_CHESTPLATE,
+        LEATHER_LEGGINGS,
+        LEATHER_BOOTS,
+        CHAINMAIL_HELMET,
+        CHAINMAIL_CHESTPLATE,
+        CHAINMAIL_LEGGINGS,
+        CHAINMAIL_BOOTS,
+        IRON_HELMET,
+        IRON_CHESTPLATE,
+        IRON_LEGGINGS,
+        IRON_BOOTS,
+        DIAMOND_HELMET,
+        DIAMOND_CHESTPLATE,
+        DIAMOND_LEGGINGS,
+        DIAMOND_BOOTS,
+        GOLD_HELMET,
+        GOLD_CHESTPLATE,
+        GOLD_LEGGINGS,
+        GOLD_BOOTS,
+        FLINT,
+        PORK,
+        GRILLED_PORK,
+        PAINTING,
+        GOLDEN_APPLE,
+        SIGN,
+        WOOD_DOOR,
+        BUCKET,
+        WATER_BUCKET,
+        LAVA_BUCKET,
+        MINECART,
+        SADDLE,
+        IRON_DOOR,
+        REDSTONE,
+        SNOW_BALL,
+        BOAT,
+        LEATHER,
+        MILK_BUCKET,
+        CLAY_BRICK,
+        CLAY_BALL,
+        SUGAR_CANE,
+        PAPER,
+        BOOK,
+        SLIME_BALL,
+        STORAGE_MINECART,
+        POWERED_MINECART,
+        EGG,
+        COMPASS,
+        FISHING_ROD,
+        WATCH,
+        GLOWSTONE_DUST,
+        RAW_FISH,
+        COOKED_FISH,
+        INK_SACK,
+        BONE,
+        SUGAR,
+        CAKE,
+        BED,
+        DIODE,
+        COOKIE,
+        /**
+         * @see MapView
+         */
+        MAP,
+        SHEARS,
+        MELON,
+        PUMPKIN_SEEDS,
+        MELON_SEEDS,
+        RAW_BEEF,
+        COOKED_BEEF,
+        RAW_CHICKEN,
+        COOKED_CHICKEN,
+        ROTTEN_FLESH,
+        ENDER_PEARL,
+        BLAZE_ROD,
+        GHAST_TEAR,
+        GOLD_NUGGET,
+        NETHER_STALK,
+        POTION,
+        GLASS_BOTTLE,
+        SPIDER_EYE,
+        FERMENTED_SPIDER_EYE,
+        BLAZE_POWDER,
+        MAGMA_CREAM,
+        BREWING_STAND_ITEM,
+        CAULDRON_ITEM,
+        EYE_OF_ENDER,
+        SPECKLED_MELON,
+        MONSTER_EGG,
+        EXP_BOTTLE,
+        FIREBALL,
+        BOOK_AND_QUILL,
+        WRITTEN_BOOK,
+        EMERALD,
+        ITEM_FRAME,
+        FLOWER_POT_ITEM,
+        CARROT_ITEM,
+        POTATO_ITEM,
+        BAKED_POTATO,
+        POISONOUS_POTATO,
+        EMPTY_MAP,
+        GOLDEN_CARROT,
+        SKULL_ITEM,
+        CARROT_STICK,
+        NETHER_STAR,
+        PUMPKIN_PIE,
+        FIREWORK,
+        FIREWORK_CHARGE,
+        ENCHANTED_BOOK,
+        REDSTONE_COMPARATOR,
+        NETHER_BRICK_ITEM,
+        QUARTZ,
+        EXPLOSIVE_MINECART,
+        HOPPER_MINECART,
+        PRISMARINE_SHARD,
+        PRISMARINE_CRYSTALS,
+        RABBIT,
+        COOKED_RABBIT,
+        RABBIT_STEW,
+        RABBIT_FOOT,
+        RABBIT_HIDE,
+        ARMOR_STAND,
+        IRON_BARDING,
+        GOLD_BARDING,
+        DIAMOND_BARDING,
+        LEASH,
+        NAME_TAG,
+        COMMAND_MINECART,
+        MUTTON,
+        COOKED_MUTTON,
+        BANNER,
+        END_CRYSTAL,
+        SPRUCE_DOOR_ITEM,
+        BIRCH_DOOR_ITEM,
+        JUNGLE_DOOR_ITEM,
+        ACACIA_DOOR_ITEM,
+        DARK_OAK_DOOR_ITEM,
+        CHORUS_FRUIT,
+        CHORUS_FRUIT_POPPED,
+        BEETROOT,
+        BEETROOT_SEEDS,
+        BEETROOT_SOUP,
+        DRAGONS_BREATH,
+        SPLASH_POTION,
+        SPECTRAL_ARROW,
+        TIPPED_ARROW,
+        LINGERING_POTION,
+        SHIELD,
+        ELYTRA,
+        BOAT_SPRUCE,
+        BOAT_BIRCH,
+        BOAT_JUNGLE,
+        BOAT_ACACIA,
+        BOAT_DARK_OAK,
+        GOLD_RECORD,
+        GREEN_RECORD,
+        RECORD_3,
+        RECORD_4,
+        RECORD_5,
+        RECORD_6,
+        RECORD_7,
+        RECORD_8,
+        RECORD_9,
+        RECORD_10,
+        RECORD_11,
+        RECORD_12
     }
 
-    private Material(final int id, final int stack) {
-        this(id, stack, MaterialData.class);
+    public static Dictionary<Materials, Material> AllMaterials = new Dictionary<Materials, Material>
+    {
+        { Materials.AIR, new Material(0, 0) },
+        { Materials.STONE, new Material(1) },
+        { Materials.GRASS, new Material(2) },
+        { Materials.DIRT, new Material(3) },
+        { Materials.COBBLESTONE, new Material(4) },
+        { Materials.WOOD, new Material(5, typeof(Wood)) },
+        { Materials.SAPLING, new Material(6, typeof(Sapling)) },
+        { Materials.BEDROCK, new Material(7) },
+        { Materials.WATER, new Material(8, typeof(MaterialData)) },
+        { Materials.STATIONARY_WATER, new Material(9, typeof(MaterialData)) },
+        { Materials.LAVA, new Material(10, typeof(MaterialData)) },
+        { Materials.STATIONARY_LAVA, new Material(11, typeof(MaterialData)) },
+        { Materials.SAND, new Material(12) },
+        { Materials.GRAVEL, new Material(13) },
+        { Materials.GOLD_ORE, new Material(14) },
+        { Materials.IRON_ORE, new Material(15) },
+        { Materials.COAL_ORE, new Material(16) },
+        { Materials.LOG, new Material(17, typeof(Tree)) },
+        { Materials.LEAVES, new Material(18, typeof(Leaves)) },
+        { Materials.SPONGE, new Material(19) },
+        { Materials.GLASS, new Material(20) },
+        { Materials.LAPIS_ORE, new Material(21) },
+        { Materials.LAPIS_BLOCK, new Material(22) },
+        { Materials.DISPENSER, new Material(23, typeof(Dispenser)) },
+        { Materials.SANDSTONE, new Material(24, typeof(Sandstone)) },
+        { Materials.NOTE_BLOCK, new Material(25) },
+        { Materials.BED_BLOCK, new Material(26, typeof(Bed)) },
+        { Materials.POWERED_RAIL, new Material(27, typeof(PoweredRail)) },
+        { Materials.DETECTOR_RAIL, new Material(28, typeof(DetectorRail)) },
+        { Materials.PISTON_STICKY_BASE, new Material(29, typeof(PistonBaseMaterial)) },
+        { Materials.WEB, new Material(30) },
+        { Materials.LONG_GRASS, new Material(31, typeof(LongGrass)) },
+        { Materials.DEAD_BUSH, new Material(32) },
+        { Materials.PISTON_BASE, new Material(33, typeof(PistonBaseMaterial)) },
+        { Materials.PISTON_EXTENSION, new Material(34, typeof(PistonExtensionMaterial)) },
+        { Materials.WOOL, new Material(35, typeof(Wool)) },
+        { Materials.PISTON_MOVING_PIECE, new Material(36) },
+        { Materials.YELLOW_FLOWER, new Material(37) },
+        { Materials.RED_ROSE, new Material(38) },
+        { Materials.BROWN_MUSHROOM, new Material(39) },
+        { Materials.RED_MUSHROOM, new Material(40) },
+        { Materials.GOLD_BLOCK, new Material(41) },
+        { Materials.IRON_BLOCK, new Material(42) },
+        { Materials.DOUBLE_STEP, new Material(43, typeof(Step)) },
+        { Materials.STEP, new Material(44, typeof(Step)) },
+        { Materials.BRICK, new Material(45) },
+        { Materials.TNT, new Material(46) },
+        { Materials.BOOKSHELF, new Material(47) },
+        { Materials.MOSSY_COBBLESTONE, new Material(48) },
+        { Materials.OBSIDIAN, new Material(49) },
+        { Materials.TORCH, new Material(50, typeof(Torch)) },
+        { Materials.FIRE, new Material(51) },
+        { Materials.MOB_SPAWNER, new Material(52) },
+        { Materials.WOOD_STAIRS, new Material(53, typeof(Stairs)) },
+        { Materials.CHEST, new Material(54, typeof(Chest)) },
+        { Materials.REDSTONE_WIRE, new Material(55, typeof(RedstoneWire)) },
+        { Materials.DIAMOND_ORE, new Material(56) },
+        { Materials.DIAMOND_BLOCK, new Material(57) },
+        { Materials.WORKBENCH, new Material(58) },
+        { Materials.CROPS, new Material(59, typeof(Crops)) },
+        { Materials.SOIL, new Material(60, typeof(MaterialData)) },
+        { Materials.FURNACE, new Material(61, typeof(Furnace)) },
+        { Materials.BURNING_FURNACE, new Material(62, typeof(Furnace)) },
+        { Materials.SIGN_POST, new Material(63, 64, typeof(Sign)) },
+        { Materials.WOODEN_DOOR, new Material(64, typeof(Door)) },
+        { Materials.LADDER, new Material(65, typeof(Ladder)) },
+        { Materials.RAILS, new Material(66, typeof(Rails)) },
+        { Materials.COBBLESTONE_STAIRS, new Material(67, typeof(Stairs)) },
+        { Materials.WALL_SIGN, new Material(68, 64, typeof(Sign)) },
+        { Materials.LEVER, new Material(69, typeof(Lever)) },
+        { Materials.STONE_PLATE, new Material(70, typeof(PressurePlate)) },
+        { Materials.IRON_DOOR_BLOCK, new Material(71, typeof(Door)) },
+        { Materials.WOOD_PLATE, new Material(72, typeof(PressurePlate)) },
+        { Materials.REDSTONE_ORE, new Material(73) },
+        { Materials.GLOWING_REDSTONE_ORE, new Material(74) },
+        { Materials.REDSTONE_TORCH_OFF, new Material(75, typeof(RedstoneTorch)) },
+        { Materials.REDSTONE_TORCH_ON, new Material(76, typeof(RedstoneTorch)) },
+        { Materials.STONE_BUTTON, new Material(77, typeof(Button)) },
+        { Materials.SNOW, new Material(78) },
+        { Materials.ICE, new Material(79) },
+        { Materials.SNOW_BLOCK, new Material(80) },
+        { Materials.CACTUS, new Material(81, typeof(MaterialData)) },
+        { Materials.CLAY, new Material(82) },
+        { Materials.SUGAR_CANE_BLOCK, new Material(83, typeof(MaterialData)) },
+        { Materials.JUKEBOX, new Material(84) },
+        { Materials.FENCE, new Material(85) },
+        { Materials.PUMPKIN, new Material(86, typeof(Pumpkin)) },
+        { Materials.NETHERRACK, new Material(87) },
+        { Materials.SOUL_SAND, new Material(88) },
+        { Materials.GLOWSTONE, new Material(89) },
+        { Materials.PORTAL, new Material(90) },
+        { Materials.JACK_O_LANTERN, new Material(91, typeof(Pumpkin)) },
+        { Materials.CAKE_BLOCK, new Material(92, 64, typeof(Cake)) },
+        { Materials.DIODE_BLOCK_OFF, new Material(93, typeof(Diode)) },
+        { Materials.DIODE_BLOCK_ON, new Material(94, typeof(Diode)) },
+        { Materials.STAINED_GLASS, new Material(95) },
+        { Materials.TRAP_DOOR, new Material(96, typeof(TrapDoor)) },
+        { Materials.MONSTER_EGGS, new Material(97, typeof(MonsterEggs)) },
+        { Materials.SMOOTH_BRICK, new Material(98, typeof(SmoothBrick)) },
+        { Materials.HUGE_MUSHROOM_1, new Material(99, typeof(Mushroom)) },
+        { Materials.HUGE_MUSHROOM_2, new Material(100, typeof(Mushroom)) },
+        { Materials.IRON_FENCE, new Material(101) },
+        { Materials.THIN_GLASS, new Material(102) },
+        { Materials.MELON_BLOCK, new Material(103) },
+        { Materials.PUMPKIN_STEM, new Material(104, typeof(MaterialData)) },
+        { Materials.MELON_STEM, new Material(105, typeof(MaterialData)) },
+        { Materials.VINE, new Material(106, typeof(Vine)) },
+        { Materials.FENCE_GATE, new Material(107, typeof(Gate)) },
+        { Materials.BRICK_STAIRS, new Material(108, typeof(Stairs)) },
+        { Materials.SMOOTH_STAIRS, new Material(109, typeof(Stairs)) },
+        { Materials.MYCEL, new Material(110) },
+        { Materials.WATER_LILY, new Material(111) },
+        { Materials.NETHER_BRICK, new Material(112) },
+        { Materials.NETHER_FENCE, new Material(113) },
+        { Materials.NETHER_BRICK_STAIRS, new Material(114, typeof(Stairs)) },
+        { Materials.NETHER_WARTS, new Material(115, typeof(NetherWarts)) },
+        { Materials.ENCHANTMENT_TABLE, new Material(116) },
+        { Materials.BREWING_STAND, new Material(117, typeof(MaterialData)) },
+        { Materials.CAULDRON, new Material(118, typeof(Cauldron)) },
+        { Materials.ENDER_PORTAL, new Material(119) },
+        { Materials.ENDER_PORTAL_FRAME, new Material(120) },
+        { Materials.ENDER_STONE, new Material(121) },
+        { Materials.DRAGON_EGG, new Material(122) },
+        { Materials.REDSTONE_LAMP_OFF, new Material(123) },
+        { Materials.REDSTONE_LAMP_ON, new Material(124) },
+        { Materials.WOOD_DOUBLE_STEP, new Material(125, typeof(Wood)) },
+        { Materials.WOOD_STEP, new Material(126, typeof(WoodenStep)) },
+        { Materials.COCOA, new Material(127, typeof(CocoaPlant)) },
+        { Materials.SANDSTONE_STAIRS, new Material(128, typeof(Stairs)) },
+        { Materials.EMERALD_ORE, new Material(129) },
+        { Materials.ENDER_CHEST, new Material(130, typeof(EnderChest)) },
+        { Materials.TRIPWIRE_HOOK, new Material(131, typeof(TripwireHook)) },
+        { Materials.TRIPWIRE, new Material(132, typeof(Tripwire)) },
+        { Materials.EMERALD_BLOCK, new Material(133) },
+        { Materials.SPRUCE_WOOD_STAIRS, new Material(134, typeof(Stairs)) },
+        { Materials.BIRCH_WOOD_STAIRS, new Material(135, typeof(Stairs)) },
+        { Materials.JUNGLE_WOOD_STAIRS, new Material(136, typeof(Stairs)) },
+        { Materials.COMMAND, new Material(137, typeof(Command)) },
+        { Materials.BEACON, new Material(138) },
+        { Materials.COBBLE_WALL, new Material(139) },
+        { Materials.FLOWER_POT, new Material(140, typeof(FlowerPot)) },
+        { Materials.CARROT, new Material(141, typeof(Crops)) },
+        { Materials.POTATO, new Material(142, typeof(Crops)) },
+        { Materials.WOOD_BUTTON, new Material(143, typeof(Button)) },
+        { Materials.SKULL, new Material(144, typeof(Skull)) },
+        { Materials.ANVIL, new Material(145) },
+        { Materials.TRAPPED_CHEST, new Material(146, typeof(Chest)) },
+        { Materials.GOLD_PLATE, new Material(147) },
+        { Materials.IRON_PLATE, new Material(148) },
+        { Materials.REDSTONE_COMPARATOR_OFF, new Material(149, typeof(Comparator)) },
+        { Materials.REDSTONE_COMPARATOR_ON, new Material(150, typeof(Comparator)) },
+        { Materials.DAYLIGHT_DETECTOR, new Material(151) },
+        { Materials.REDSTONE_BLOCK, new Material(152) },
+        { Materials.QUARTZ_ORE, new Material(153) },
+        { Materials.HOPPER, new Material(154, typeof(Hopper)) },
+        { Materials.QUARTZ_BLOCK, new Material(155) },
+        { Materials.QUARTZ_STAIRS, new Material(156, typeof(Stairs)) },
+        { Materials.ACTIVATOR_RAIL, new Material(157, typeof(PoweredRail)) },
+        { Materials.DROPPER, new Material(158, typeof(Dispenser)) },
+        { Materials.STAINED_CLAY, new Material(159) },
+        { Materials.STAINED_GLASS_PANE, new Material(160) },
+        { Materials.LEAVES_2, new Material(161, typeof(Leaves)) },
+        { Materials.LOG_2, new Material(162, typeof(Tree)) },
+        { Materials.ACACIA_STAIRS, new Material(163, typeof(Stairs)) },
+        { Materials.DARK_OAK_STAIRS, new Material(164, typeof(Stairs)) },
+        { Materials.SLIME_BLOCK, new Material(165) },
+        { Materials.BARRIER, new Material(166) },
+        { Materials.IRON_TRAPDOOR, new Material(167, typeof(TrapDoor)) },
+        { Materials.PRISMARINE, new Material(168) },
+        { Materials.SEA_LANTERN, new Material(169) },
+        { Materials.HAY_BLOCK, new Material(170) },
+        { Materials.CARPET, new Material(171) },
+        { Materials.HARD_CLAY, new Material(172) },
+        { Materials.COAL_BLOCK, new Material(173) },
+        { Materials.PACKED_ICE, new Material(174) },
+        { Materials.DOUBLE_PLANT, new Material(175) },
+        { Materials.STANDING_BANNER, new Material(176, typeof(Banner)) },
+        { Materials.WALL_BANNER, new Material(177, typeof(Banner)) },
+        { Materials.DAYLIGHT_DETECTOR_INVERTED, new Material(178) },
+        { Materials.RED_SANDSTONE, new Material(179) },
+        { Materials.RED_SANDSTONE_STAIRS, new Material(180, typeof(Stairs)) },
+        { Materials.DOUBLE_STONE_SLAB2, new Material(181) },
+        { Materials.STONE_SLAB2, new Material(182) },
+        { Materials.SPRUCE_FENCE_GATE, new Material(183, typeof(Gate)) },
+        { Materials.BIRCH_FENCE_GATE, new Material(184, typeof(Gate)) },
+        { Materials.JUNGLE_FENCE_GATE, new Material(185, typeof(Gate)) },
+        { Materials.DARK_OAK_FENCE_GATE, new Material(186, typeof(Gate)) },
+        { Materials.ACACIA_FENCE_GATE, new Material(187, typeof(Gate)) },
+        { Materials.SPRUCE_FENCE, new Material(188) },
+        { Materials.BIRCH_FENCE, new Material(189) },
+        { Materials.JUNGLE_FENCE, new Material(190) },
+        { Materials.DARK_OAK_FENCE, new Material(191) },
+        { Materials.ACACIA_FENCE, new Material(192) },
+        { Materials.SPRUCE_DOOR, new Material(193, typeof(Door)) },
+        { Materials.BIRCH_DOOR, new Material(194, typeof(Door)) },
+        { Materials.JUNGLE_DOOR, new Material(195, typeof(Door)) },
+        { Materials.ACACIA_DOOR, new Material(196, typeof(Door)) },
+        { Materials.DARK_OAK_DOOR, new Material(197, typeof(Door)) },
+        { Materials.END_ROD, new Material(198) },
+        { Materials.CHORUS_PLANT, new Material(199) },
+        { Materials.CHORUS_FLOWER, new Material(200) },
+        { Materials.PURPUR_BLOCK, new Material(201) },
+        { Materials.PURPUR_PILLAR, new Material(202) },
+        { Materials.PURPUR_STAIRS, new Material(203, typeof(Stairs)) },
+        { Materials.PURPUR_DOUBLE_SLAB, new Material(204) },
+        { Materials.PURPUR_SLAB, new Material(205) },
+        { Materials.END_BRICKS, new Material(206) },
+        { Materials.BEETROOT_BLOCK, new Material(207, typeof(Crops)) },
+        { Materials.GRASS_PATH, new Material(208) },
+        { Materials.END_GATEWAY, new Material(209) },
+        { Materials.COMMAND_REPEATING, new Material(210) },
+        { Materials.COMMAND_CHAIN, new Material(211) },
+        { Materials.FROSTED_ICE, new Material(212) },
+        { Materials.STRUCTURE_BLOCK, new Material(255) },
+        // ----- Item Separator -----
+        { Materials.IRON_SPADE, new Material(256, 1, 250) },
+        { Materials.IRON_PICKAXE, new Material(257, 1, 250) },
+        { Materials.IRON_AXE, new Material(258, 1, 250) },
+        { Materials.FLINT_AND_STEEL, new Material(259, 1, 64) },
+        { Materials.APPLE, new Material(260) },
+        { Materials.BOW, new Material(261, 1, 384) },
+            { Materials.ARROW, new Material(262) },
+        { Materials.COAL, new Material(263, typeof(Coal)) },
+        { Materials.DIAMOND, new Material(264) },
+        { Materials.IRON_INGOT, new Material(265) },
+        { Materials.GOLD_INGOT, new Material(266) },
+        { Materials.IRON_SWORD, new Material(267, 1, 250) },
+        { Materials.WOOD_SWORD, new Material(268, 1, 59) },
+        { Materials.WOOD_SPADE, new Material(269, 1, 59) },
+        { Materials.WOOD_PICKAXE, new Material(270, 1, 59) },
+        { Materials.WOOD_AXE, new Material(271, 1, 59) },
+        { Materials.STONE_SWORD, new Material(272, 1, 131) },
+        { Materials.STONE_SPADE, new Material(273, 1, 131) },
+        { Materials.STONE_PICKAXE, new Material(274, 1, 131) },
+        { Materials.STONE_AXE, new Material(275, 1, 131) },
+        { Materials.DIAMOND_SWORD, new Material(276, 1, 1561) },
+        { Materials.DIAMOND_SPADE, new Material(277, 1, 1561) },
+        { Materials.DIAMOND_PICKAXE, new Material(278, 1, 1561) },
+        { Materials.DIAMOND_AXE, new Material(279, 1, 1561) },
+        { Materials.STICK, new Material(280) },
+        { Materials.BOWL, new Material(281) },
+        { Materials.MUSHROOM_SOUP, new Material(282, 1) },
+        { Materials.GOLD_SWORD, new Material(283, 1, 32) },
+        { Materials.GOLD_SPADE, new Material(284, 1, 32) },
+        { Materials.GOLD_PICKAXE, new Material(285, 1, 32) },
+        { Materials.GOLD_AXE, new Material(286, 1, 32) },
+        { Materials.STRING, new Material(287) },
+        { Materials.FEATHER, new Material(288) },
+        { Materials.SULPHUR, new Material(289) },
+        { Materials.WOOD_HOE, new Material(290, 1, 59) },
+        { Materials.STONE_HOE, new Material(291, 1, 131) },
+        { Materials.IRON_HOE, new Material(292, 1, 250) },
+        { Materials.DIAMOND_HOE, new Material(293, 1, 1561) },
+        { Materials.GOLD_HOE, new Material(294, 1, 32) },
+        { Materials.SEEDS, new Material(295) },
+        { Materials.WHEAT, new Material(296) },
+        { Materials.BREAD, new Material(297) },
+        { Materials.LEATHER_HELMET, new Material(298, 1, 55) },
+        { Materials.LEATHER_CHESTPLATE, new Material(299, 1, 80) },
+        { Materials.LEATHER_LEGGINGS, new Material(300, 1, 75) },
+        { Materials.LEATHER_BOOTS, new Material(301, 1, 65) },
+        { Materials.CHAINMAIL_HELMET, new Material(302, 1, 165) },
+        { Materials.CHAINMAIL_CHESTPLATE, new Material(303, 1, 240) },
+        { Materials.CHAINMAIL_LEGGINGS, new Material(304, 1, 225) },
+        { Materials.CHAINMAIL_BOOTS, new Material(305, 1, 195) },
+        { Materials.IRON_HELMET, new Material(306, 1, 165) },
+        { Materials.IRON_CHESTPLATE, new Material(307, 1, 240) },
+        { Materials.IRON_LEGGINGS, new Material(308, 1, 225) },
+        { Materials.IRON_BOOTS, new Material(309, 1, 195) },
+        { Materials.DIAMOND_HELMET, new Material(310, 1, 363) },
+        { Materials.DIAMOND_CHESTPLATE, new Material(311, 1, 528) },
+        { Materials.DIAMOND_LEGGINGS, new Material(312, 1, 495) },
+        { Materials.DIAMOND_BOOTS, new Material(313, 1, 429) },
+        { Materials.GOLD_HELMET, new Material(314, 1, 77) },
+        { Materials.GOLD_CHESTPLATE, new Material(315, 1, 112) },
+        { Materials.GOLD_LEGGINGS, new Material(316, 1, 105) },
+        { Materials.GOLD_BOOTS, new Material(317, 1, 91) },
+        { Materials.FLINT, new Material(318) },
+        { Materials.PORK, new Material(319) },
+        { Materials.GRILLED_PORK, new Material(320) },
+        { Materials.PAINTING, new Material(321) },
+        { Materials.GOLDEN_APPLE, new Material(322) },
+        { Materials.SIGN, new Material(323, 16) },
+        { Materials.WOOD_DOOR, new Material(324, 64) },
+        { Materials.BUCKET, new Material(325, 16) },
+        { Materials.WATER_BUCKET, new Material(326, 1) },
+        { Materials.LAVA_BUCKET, new Material(327, 1) },
+        { Materials.MINECART, new Material(328, 1) },
+        { Materials.SADDLE, new Material(329, 1) },
+        { Materials.IRON_DOOR, new Material(330, 64) },
+        { Materials.REDSTONE, new Material(331) },
+        { Materials.SNOW_BALL, new Material(332, 16) },
+        { Materials.BOAT, new Material(333, 1) },
+        { Materials.LEATHER, new Material(334) },
+        { Materials.MILK_BUCKET, new Material(335, 1) },
+        { Materials.CLAY_BRICK, new Material(336) },
+        { Materials.CLAY_BALL, new Material(337) },
+        { Materials.SUGAR_CANE, new Material(338) },
+        { Materials.PAPER, new Material(339) },
+        { Materials.BOOK, new Material(340) },
+        { Materials.SLIME_BALL, new Material(341) },
+        { Materials.STORAGE_MINECART, new Material(342, 1) },
+        { Materials.POWERED_MINECART, new Material(343, 1) },
+        { Materials.EGG, new Material(344, 16) },
+        { Materials.COMPASS, new Material(345) },
+        { Materials.FISHING_ROD, new Material(346, 1, 64) },
+        { Materials.WATCH, new Material(347) },
+        { Materials.GLOWSTONE_DUST, new Material(348) },
+        { Materials.RAW_FISH, new Material(349) },
+        { Materials.COOKED_FISH, new Material(350) },
+        { Materials.INK_SACK, new Material(351, typeof(Dye)) },
+        { Materials.BONE, new Material(352) },
+        { Materials.SUGAR, new Material(353) },
+        { Materials.CAKE, new Material(354, 1) },
+        { Materials.BED, new Material(355, 1) },
+        { Materials.DIODE, new Material(356) },
+        { Materials.COOKIE, new Material(357) },
+        /**
+         * @see MapView
+         */
+        { Materials.MAP, new Material(358, typeof(MaterialData)) },
+        { Materials.SHEARS, new Material(359, 1, 238) },
+        { Materials.MELON, new Material(360) },
+        { Materials.PUMPKIN_SEEDS, new Material(361) },
+        { Materials.MELON_SEEDS, new Material(362) },
+        { Materials.RAW_BEEF, new Material(363) },
+        { Materials.COOKED_BEEF, new Material(364) },
+        { Materials.RAW_CHICKEN, new Material(365) },
+        { Materials.COOKED_CHICKEN, new Material(366) },
+        { Materials.ROTTEN_FLESH, new Material(367) },
+        { Materials.ENDER_PEARL, new Material(368, 16) },
+        { Materials.BLAZE_ROD, new Material(369) },
+        { Materials.GHAST_TEAR, new Material(370) },
+        { Materials.GOLD_NUGGET, new Material(371) },
+        { Materials.NETHER_STALK, new Material(372) },
+        { Materials.POTION, new Material(373, 1, typeof(MaterialData)) },
+        { Materials.GLASS_BOTTLE, new Material(374) },
+        { Materials.SPIDER_EYE, new Material(375) },
+        { Materials.FERMENTED_SPIDER_EYE, new Material(376) },
+        { Materials.BLAZE_POWDER, new Material(377) },
+        { Materials.MAGMA_CREAM, new Material(378) },
+        { Materials.BREWING_STAND_ITEM, new Material(379) },
+        { Materials.CAULDRON_ITEM, new Material(380) },
+        { Materials.EYE_OF_ENDER, new Material(381) },
+        { Materials.SPECKLED_MELON, new Material(382) },
+        { Materials.MONSTER_EGG, new Material(383, 64, typeof(SpawnEgg)) },
+        { Materials.EXP_BOTTLE, new Material(384, 64) },
+        { Materials.FIREBALL, new Material(385, 64) },
+        { Materials.BOOK_AND_QUILL, new Material(386, 1) },
+        { Materials.WRITTEN_BOOK, new Material(387, 16) },
+        { Materials.EMERALD, new Material(388, 64) },
+        { Materials.ITEM_FRAME, new Material(389) },
+        { Materials.FLOWER_POT_ITEM, new Material(390) },
+        { Materials.CARROT_ITEM, new Material(391) },
+        { Materials.POTATO_ITEM, new Material(392) },
+        { Materials.BAKED_POTATO, new Material(393) },
+        { Materials.POISONOUS_POTATO, new Material(394) },
+        { Materials.EMPTY_MAP, new Material(395) },
+        { Materials.GOLDEN_CARROT, new Material(396) },
+        { Materials.SKULL_ITEM, new Material(397) },
+        { Materials.CARROT_STICK, new Material(398, 1, 25) },
+        { Materials.NETHER_STAR, new Material(399) },
+        { Materials.PUMPKIN_PIE, new Material(400) },
+        { Materials.FIREWORK, new Material(401) },
+        { Materials.FIREWORK_CHARGE, new Material(402) },
+        { Materials.ENCHANTED_BOOK, new Material(403, 1) },
+        { Materials.REDSTONE_COMPARATOR, new Material(404) },
+        { Materials.NETHER_BRICK_ITEM, new Material(405) },
+        { Materials.QUARTZ, new Material(406) },
+        { Materials.EXPLOSIVE_MINECART, new Material(407, 1) },
+        { Materials.HOPPER_MINECART, new Material(408, 1) },
+        { Materials.PRISMARINE_SHARD, new Material(409) },
+        { Materials.PRISMARINE_CRYSTALS, new Material(410) },
+        { Materials.RABBIT, new Material(411) },
+        { Materials.COOKED_RABBIT, new Material(412) },
+        { Materials.RABBIT_STEW, new Material(413, 1) },
+        { Materials.RABBIT_FOOT, new Material(414) },
+        { Materials.RABBIT_HIDE, new Material(415) },
+        { Materials.ARMOR_STAND, new Material(416, 16) },
+        { Materials.IRON_BARDING, new Material(417, 1) },
+        { Materials.GOLD_BARDING, new Material(418, 1) },
+        { Materials.DIAMOND_BARDING, new Material(419, 1) },
+        { Materials.LEASH, new Material(420) },
+        { Materials.NAME_TAG, new Material(421) },
+        { Materials.COMMAND_MINECART, new Material(422, 1) },
+        { Materials.MUTTON, new Material(423) },
+        { Materials.COOKED_MUTTON, new Material(424) },
+        { Materials.BANNER, new Material(425, 16) },
+        { Materials.END_CRYSTAL, new Material(426) },
+        { Materials.SPRUCE_DOOR_ITEM, new Material(427) },
+        { Materials.BIRCH_DOOR_ITEM, new Material(428) },
+        { Materials.JUNGLE_DOOR_ITEM, new Material(429) },
+        { Materials.ACACIA_DOOR_ITEM, new Material(430) },
+        { Materials.DARK_OAK_DOOR_ITEM, new Material(431) },
+        { Materials.CHORUS_FRUIT, new Material(432) },
+        { Materials.CHORUS_FRUIT_POPPED, new Material(433) },
+        { Materials.BEETROOT, new Material(434) },
+        { Materials.BEETROOT_SEEDS, new Material(435) },
+        { Materials.BEETROOT_SOUP, new Material(436, 1) },
+        { Materials.DRAGONS_BREATH, new Material(437) },
+        { Materials.SPLASH_POTION, new Material(438, 1) },
+        { Materials.SPECTRAL_ARROW, new Material(439) },
+        { Materials.TIPPED_ARROW, new Material(440) },
+        { Materials.LINGERING_POTION, new Material(441, 1) },
+        { Materials.SHIELD, new Material(442, 1, 336) },
+        { Materials.ELYTRA, new Material(443, 1, 431) },
+        { Materials.BOAT_SPRUCE, new Material(444, 1) },
+        { Materials.BOAT_BIRCH, new Material(445, 1) },
+        { Materials.BOAT_JUNGLE, new Material(446, 1) },
+        { Materials.BOAT_ACACIA, new Material(447, 1) },
+        { Materials.BOAT_DARK_OAK, new Material(448, 1) },
+        { Materials.GOLD_RECORD, new Material(2256, 1) },
+        { Materials.GREEN_RECORD, new Material(2257, 1) },
+        { Materials.RECORD_3, new Material(2258, 1) },
+        { Materials.RECORD_4, new Material(2259, 1) },
+        { Materials.RECORD_5, new Material(2260, 1) },
+        { Materials.RECORD_6, new Material(2261, 1) },
+        { Materials.RECORD_7, new Material(2262, 1) },
+        { Materials.RECORD_8, new Material(2263, 1) },
+        { Materials.RECORD_9, new Material(2264, 1) },
+        { Materials.RECORD_10, new Material(2265, 1) },
+        { Materials.RECORD_11, new Material(2266, 1) },
+        { Materials.RECORD_12, new Material(2267, 1) }
+    };
+
+    private readonly int id;
+    //private readonly Constructor<? extends MaterialData> ctor;
+    private readonly int maxStack;
+    private readonly short durability;
+
+    private Material(int id) {
+        new Material(id, 64);
     }
 
-    private Material(final int id, final int stack, final int durability) {
-        this(id, stack, durability, MaterialData.class);
+    private Material(int id, int stack) {
+        new Material(id, stack, typeof(MaterialData));
     }
 
-    private Material(final int id, final Class<? extends MaterialData> data) {
-        this(id, 64, data);
+    private Material(int id, int stack, int durability) {
+        new Material(id, stack, durability, typeof(MaterialData));
     }
 
-    private Material(final int id, final int stack, final Class<? extends MaterialData> data) {
-        this(id, stack, 0, data);
+    private Material(int id, Type data) {
+        new Material(id, 64, data);
     }
 
-    private Material(final int id, final int stack, final int durability, final Class<? extends MaterialData> data) {
+    private Material(int id, int stack, Type data) {
+        new Material(id, stack, 0, data);
+    }
+
+    private Type datatype;
+    private Material(int id, int stack, int durability, Type data) {
         this.id = id;
         this.durability = (short) durability;
         this.maxStack = stack;
-        // try to cache the constructor for this material
-        try {
-            this.ctor = data.getConstructor(int.class, byte.class);
-        } catch (NoSuchMethodException ex) {
-            throw new AssertionError(ex);
-        } catch (SecurityException ex) {
-            throw new AssertionError(ex);
-        }
+        if (!typeof(MaterialData).IsAssignableFrom(data))
+            throw new ArgumentException("Data must be a MaterialData type", nameof(data));
+        this.datatype = data;
     }
 
     /**
@@ -569,8 +931,8 @@ public enum Material {
      *
      * @return MaterialData associated with this Material
      */
-    public Class<? extends MaterialData> getData() {
-        return ctor.getDeclaringClass();
+    public Type getData() {
+        return datatype;
     }
 
     /**
@@ -582,21 +944,8 @@ public enum Material {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData getNewData(final byte raw) {
-        try {
-            return ctor.newInstance(id, raw);
-        } catch (InstantiationException ex) {
-            final Throwable t = ex.getCause();
-            if (t instanceof RuntimeException) {
-                throw (RuntimeException) t;
-            }
-            if (t instanceof Error) {
-                throw (Error) t;
-            }
-            throw new AssertionError(t);
-        } catch (Throwable t) {
-            throw new AssertionError(t);
-        }
+    public MaterialData getNewData(byte raw) {
+            return (MaterialData)Activator.CreateInstance(datatype, id, raw);
     }
 
     /**
@@ -604,7 +953,7 @@ public enum Material {
      *
      * @return true if this material is a block
      */
-    public boolean isBlock() {
+    public bool isBlock() {
         return id < 256;
     }
 
@@ -613,73 +962,43 @@ public enum Material {
      *
      * @return true if this Material is edible.
      */
-    public boolean isEdible() {
-        switch (this) {
-            case BREAD:
-            case CARROT_ITEM:
-            case BAKED_POTATO:
-            case POTATO_ITEM:
-            case POISONOUS_POTATO:
-            case GOLDEN_CARROT:
-            case PUMPKIN_PIE:
-            case COOKIE:
-            case MELON:
-            case MUSHROOM_SOUP:
-            case RAW_CHICKEN:
-            case COOKED_CHICKEN:
-            case RAW_BEEF:
-            case COOKED_BEEF:
-            case RAW_FISH:
-            case COOKED_FISH:
-            case PORK:
-            case GRILLED_PORK:
-            case APPLE:
-            case GOLDEN_APPLE:
-            case ROTTEN_FLESH:
-            case SPIDER_EYE:
-            case RABBIT:
-            case COOKED_RABBIT:
-            case RABBIT_STEW:
-            case MUTTON:
-            case COOKED_MUTTON:
-            case BEETROOT:
-            case CHORUS_FRUIT:
-            case BEETROOT_SOUP:
+    public bool isEdible() {
+        switch (AllMaterials.First(m=>m.Value==this).Key) {
+            case Materials.BREAD:
+            case Materials.CARROT_ITEM:
+            case Materials.BAKED_POTATO:
+            case Materials.POTATO_ITEM:
+            case Materials.POISONOUS_POTATO:
+            case Materials.GOLDEN_CARROT:
+            case Materials.PUMPKIN_PIE:
+            case Materials.COOKIE:
+            case Materials.MELON:
+            case Materials.MUSHROOM_SOUP:
+            case Materials.RAW_CHICKEN:
+            case Materials.COOKED_CHICKEN:
+            case Materials.RAW_BEEF:
+            case Materials.COOKED_BEEF:
+            case Materials.RAW_FISH:
+            case Materials.COOKED_FISH:
+            case Materials.PORK:
+            case Materials.GRILLED_PORK:
+            case Materials.APPLE:
+            case Materials.GOLDEN_APPLE:
+            case Materials.ROTTEN_FLESH:
+            case Materials.SPIDER_EYE:
+            case Materials.RABBIT:
+            case Materials.COOKED_RABBIT:
+            case Materials.RABBIT_STEW:
+            case Materials.MUTTON:
+            case Materials.COOKED_MUTTON:
+            case Materials.BEETROOT:
+            case Materials.CHORUS_FRUIT:
+            case Materials.BEETROOT_SOUP:
                 return true;
             default:
                 return false;
         }
     }
-
-    /**
-     * Attempts to get the Material with the given ID
-     *
-     * @param id ID of the material to get
-     * @return Material if found, or null
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static Material getMaterial(final int id) {
-        if (byId.length > id && id >= 0) {
-            return byId[id];
-        } else {
-            return null;
-        }
-    }
-
-    /**
-     * Attempts to get the Material with the given name.
-     * <p>
-     * This is a normal lookup, names must be the precise name they are given
-     * in the enum.
-     *
-     * @param name Name of the material to get
-     * @return Material if found, or null
-     */
-    public static Material getMaterial(final String name) {
-        return BY_NAME.get(name);
-    }
-
     /**
      * Attempts to match the Material with the given name.
      * <p>
@@ -692,19 +1011,20 @@ public enum Material {
      * @param name Name of the material to get
      * @return Material if found, or null
      */
-    public static Material matchMaterial(final String name) {
-        Validate.notNull(name, "Name cannot be null");
+    public static Material matchMaterial(String name) {
+        if (name == null)
+            throw new ArgumentNullException(nameof(name), "Name cannot be null");
 
         Material result = null;
+        int iresult = 0;
 
-        try {
-            result = getMaterial(Integer.parseInt(name));
-        } catch (NumberFormatException ex) {}
+        if (int.TryParse(name, out iresult)
+            result = getMaterial(iresult);
 
         if (result == null) {
-            String filtered = name.toUpperCase();
+            String filtered = name.ToUpper();
 
-            filtered = filtered.replaceAll("\\s+", "_").replaceAll("\\W", "");
+            filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
             result = BY_NAME.get(filtered);
         }
 
