@@ -21,11 +21,11 @@ public class NetherWarts extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(final int type) {
+    public NetherWarts(int type) {
         super(type);
     }
 
-    public NetherWarts(final Material type) {
+    public NetherWarts(Material type) {
         super (type);
     }
 
@@ -35,7 +35,7 @@ public class NetherWarts extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(final int type, final byte data) {
+    public NetherWarts(int type, final byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class NetherWarts extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(final Material type, final byte data) {
+    public NetherWarts(Material type, final byte data) {
         super(type, data);
     }
 

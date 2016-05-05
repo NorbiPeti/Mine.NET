@@ -28,16 +28,16 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
     private final DamageCause cause;
 
     [Obsolete]
-    public EntityDamageEvent(final Entity damagee, final DamageCause cause, final int damage) {
+    public EntityDamageEvent(Entity damagee, final DamageCause cause, final int damage) {
         this(damagee, cause, (double) damage);
     }
 
     [Obsolete]
-    public EntityDamageEvent(final Entity damagee, final DamageCause cause, final double damage) {
+    public EntityDamageEvent(Entity damagee, final DamageCause cause, final double damage) {
         this(damagee, cause, new EnumMap<DamageModifier, Double>(ImmutableMap.of(DamageModifier.BASE, damage)), new EnumMap<DamageModifier, Function<? super Double, Double>>(ImmutableMap.of(DamageModifier.BASE, ZERO)));
     }
 
-    public EntityDamageEvent(final Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageEvent(Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee);
         Validate.isTrue(modifiers.containsKey(DamageModifier.BASE), "BASE DamageModifier missing");
         Validate.isTrue(!modifiers.containsKey(null), "Cannot have null DamageModifier");

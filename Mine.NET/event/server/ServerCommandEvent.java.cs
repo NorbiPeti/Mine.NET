@@ -44,7 +44,7 @@ public class ServerCommandEvent extends ServerEvent implements Cancellable {
     private final CommandSender sender;
     private boolean cancel = false;
 
-    public ServerCommandEvent(final CommandSender sender, final String command) {
+    public ServerCommandEvent(CommandSender sender, final String command) {
         this.command = command;
         this.sender = sender;
     }

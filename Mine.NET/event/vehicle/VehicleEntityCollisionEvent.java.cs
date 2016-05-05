@@ -15,7 +15,7 @@ public class VehicleEntityCollisionEvent extends VehicleCollisionEvent implement
     private boolean cancelledPickup = false;
     private boolean cancelledCollision = false;
 
-    public VehicleEntityCollisionEvent(final Vehicle vehicle, final Entity entity) {
+    public VehicleEntityCollisionEvent(Vehicle vehicle, final Entity entity) {
         super(vehicle);
         this.entity = entity;
     }

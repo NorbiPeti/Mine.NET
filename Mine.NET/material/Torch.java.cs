@@ -16,11 +16,11 @@ public class Torch extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(final int type) {
+    public Torch(int type) {
         super(type);
     }
 
-    public Torch(final Material type) {
+    public Torch(Material type) {
         super(type);
     }
 
@@ -30,7 +30,7 @@ public class Torch extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(final int type, final byte data) {
+    public Torch(int type, final byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Torch extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(final Material type, final byte data) {
+    public Torch(Material type, final byte data) {
         super(type, data);
     }
 

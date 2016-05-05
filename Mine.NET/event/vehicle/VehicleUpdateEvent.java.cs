@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 public class VehicleUpdateEvent extends VehicleEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public VehicleUpdateEvent(final Vehicle vehicle) {
+    public VehicleUpdateEvent(Vehicle vehicle) {
         super(vehicle);
     }
 

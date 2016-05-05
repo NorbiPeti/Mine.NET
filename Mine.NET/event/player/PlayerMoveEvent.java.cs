@@ -15,7 +15,7 @@ public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
     private Location from;
     private Location to;
 
-    public PlayerMoveEvent(final Player player, final Location from, final Location to) {
+    public PlayerMoveEvent(Player player, final Location from, final Location to) {
         super(player);
         this.from = from;
         this.to = to;

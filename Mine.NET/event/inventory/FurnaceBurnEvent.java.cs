@@ -16,7 +16,7 @@ public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
     private boolean cancelled;
     private boolean burning;
 
-    public FurnaceBurnEvent(final Block furnace, final ItemStack fuel, final int burnTime) {
+    public FurnaceBurnEvent(Block furnace, final ItemStack fuel, final int burnTime) {
         super(furnace);
         this.fuel = fuel;
         this.burnTime = burnTime;

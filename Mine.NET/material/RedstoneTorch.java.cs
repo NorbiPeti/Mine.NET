@@ -15,11 +15,11 @@ public class RedstoneTorch extends Torch implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(final int type) {
+    public RedstoneTorch(int type) {
         super(type);
     }
 
-    public RedstoneTorch(final Material type) {
+    public RedstoneTorch(Material type) {
         super(type);
     }
 
@@ -29,7 +29,7 @@ public class RedstoneTorch extends Torch implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(final int type, final byte data) {
+    public RedstoneTorch(int type, final byte data) {
         super(type, data);
     }
 
@@ -39,7 +39,7 @@ public class RedstoneTorch extends Torch implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(final Material type, final byte data) {
+    public RedstoneTorch(Material type, final byte data) {
         super(type, data);
     }
 

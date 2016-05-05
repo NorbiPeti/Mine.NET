@@ -12,7 +12,7 @@ public class VehicleMoveEvent extends VehicleEvent {
     private final Location from;
     private final Location to;
 
-    public VehicleMoveEvent(final Vehicle vehicle, final Location from, final Location to) {
+    public VehicleMoveEvent(Vehicle vehicle, final Location from, final Location to) {
         super(vehicle);
 
         this.from = from;

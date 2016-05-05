@@ -27,11 +27,11 @@ public class Pumpkin extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(final int type) {
+    public Pumpkin(int type) {
         super(type);
     }
 
-    public Pumpkin(final Material type) {
+    public Pumpkin(Material type) {
         super(type);
     }
 
@@ -41,7 +41,7 @@ public class Pumpkin extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(final int type, final byte data) {
+    public Pumpkin(int type, final byte data) {
         super(type, data);
     }
 
@@ -51,7 +51,7 @@ public class Pumpkin extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(final Material type, final byte data) {
+    public Pumpkin(Material type, final byte data) {
         super(type, data);
     }
 

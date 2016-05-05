@@ -11,7 +11,7 @@ public class BlockRedstoneEvent extends BlockEvent {
     private final int oldCurrent;
     private int newCurrent;
 
-    public BlockRedstoneEvent(final Block block, final int oldCurrent, final int newCurrent) {
+    public BlockRedstoneEvent(Block block, final int oldCurrent, final int newCurrent) {
         super(block);
         this.oldCurrent = oldCurrent;
         this.newCurrent = newCurrent;

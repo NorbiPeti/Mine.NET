@@ -13,7 +13,7 @@ public class LightningStrikeEvent extends WeatherEvent implements Cancellable {
     private boolean canceled;
     private final LightningStrike bolt;
 
-    public LightningStrikeEvent(final World world, final LightningStrike bolt) {
+    public LightningStrikeEvent(World world, final LightningStrike bolt) {
         super(world);
         this.bolt = bolt;
     }

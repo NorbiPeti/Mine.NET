@@ -20,11 +20,11 @@ public class AsyncPlayerPreLoginEvent extends Event {
     private final UUID uniqueId;
 
     [Obsolete]
-    public AsyncPlayerPreLoginEvent(final String name, final InetAddress ipAddress) {
+    public AsyncPlayerPreLoginEvent(String name, final InetAddress ipAddress) {
         this(name, ipAddress, null);
     }
 
-    public AsyncPlayerPreLoginEvent(final String name, final InetAddress ipAddress, final UUID uniqueId) {
+    public AsyncPlayerPreLoginEvent(String name, final InetAddress ipAddress, final UUID uniqueId) {
         super(true);
         this.result = Result.ALLOWED;
         this.message = "";
@@ -60,7 +60,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      *
      * @param result New result to set
      */
-    public void setLoginResult(final Result result) {
+    public void setLoginResult(Result result) {
         this.result = result;
     }
 
@@ -73,7 +73,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      * @see #setLoginResult(Result)
      */
     [Obsolete]
-    public void setResult(final PlayerPreLoginEvent.Result result) {
+    public void setResult(PlayerPreLoginEvent.Result result) {
         this.result = result == null ? null : Result.valueOf(result.name());
     }
 
@@ -92,7 +92,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      *
      * @param message New kick message
      */
-    public void setKickMessage(final String message) {
+    public void setKickMessage(String message) {
         this.message = message;
     }
 
@@ -110,7 +110,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(final Result result, final String message) {
+    public void disallow(Result result, final String message) {
         this.result = result;
         this.message = message;
     }
@@ -125,7 +125,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      * @see #disallow(Result, String)
      */
     [Obsolete]
-    public void disallow(final PlayerPreLoginEvent.Result result, final String message) {
+    public void disallow(PlayerPreLoginEvent.Result result, final String message) {
         this.result = result == null ? null : Result.valueOf(result.name());
         this.message = message;
     }

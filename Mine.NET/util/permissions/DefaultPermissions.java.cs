@@ -5,7 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
-public final class DefaultPermissions {
+public sealed class DefaultPermissions {
     private static final String ROOT = "craftbukkit";
     private static final String LEGACY_PREFIX = "craft";
 

@@ -17,7 +17,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TripwireHook(final int type) {
+    public TripwireHook(int type) {
         super(type);
     }
 
@@ -27,7 +27,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TripwireHook(final int type, final byte data) {
+    public TripwireHook(int type, final byte data) {
         super(type, data);
     }
 

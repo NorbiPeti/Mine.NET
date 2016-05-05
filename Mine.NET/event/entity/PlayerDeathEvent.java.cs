@@ -16,15 +16,15 @@ public class PlayerDeathEvent extends EntityDeathEvent {
     private boolean keepLevel = false;
     private boolean keepInventory = false;
 
-    public PlayerDeathEvent(final Player player, final List<ItemStack> drops, final int droppedExp, final String deathMessage) {
+    public PlayerDeathEvent(Player player, final List<ItemStack> drops, final int droppedExp, final String deathMessage) {
         this(player, drops, droppedExp, 0, deathMessage);
     }
 
-    public PlayerDeathEvent(final Player player, final List<ItemStack> drops, final int droppedExp, final int newExp, final String deathMessage) {
+    public PlayerDeathEvent(Player player, final List<ItemStack> drops, final int droppedExp, final int newExp, final String deathMessage) {
         this(player, drops, droppedExp, newExp, 0, 0, deathMessage);
     }
 
-    public PlayerDeathEvent(final Player player, final List<ItemStack> drops, final int droppedExp, final int newExp, final int newTotalExp, final int newLevel, final String deathMessage) {
+    public PlayerDeathEvent(Player player, final List<ItemStack> drops, final int droppedExp, final int newExp, final int newTotalExp, final int newLevel, final String deathMessage) {
         super(player, drops, droppedExp);
         this.newExp = newExp;
         this.newTotalExp = newTotalExp;

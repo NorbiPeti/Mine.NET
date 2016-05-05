@@ -12,7 +12,7 @@ public class PlayerToggleSprintEvent extends PlayerEvent implements Cancellable 
     private final boolean isSprinting;
     private boolean cancel = false;
 
-    public PlayerToggleSprintEvent(final Player player, final boolean isSprinting) {
+    public PlayerToggleSprintEvent(Player player, final boolean isSprinting) {
         super(player);
         this.isSprinting = isSprinting;
     }

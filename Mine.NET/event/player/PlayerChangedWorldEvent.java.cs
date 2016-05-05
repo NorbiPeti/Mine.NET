@@ -11,7 +11,7 @@ public class PlayerChangedWorldEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final World from;
 
-    public PlayerChangedWorldEvent(final Player player, final World from) {
+    public PlayerChangedWorldEvent(Player player, final World from) {
         super(player);
         this.from = from;
     }

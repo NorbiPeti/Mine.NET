@@ -15,7 +15,7 @@ public enum SandstoneType {
     private final byte data;
     private final static Map<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
 
-    private SandstoneType(final int data) {
+    private SandstoneType(int data) {
         this.data = (byte) data;
     }
 
@@ -39,7 +39,7 @@ public enum SandstoneType {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static SandstoneType getByData(final byte data) {
+    public static SandstoneType getByData(byte data) {
         return BY_DATA.get(data);
     }
 

@@ -17,7 +17,7 @@ public class PlayerAnimationEvent extends PlayerEvent implements Cancellable {
      *
      * @param player The player instance
      */
-    public PlayerAnimationEvent(final Player player) {
+    public PlayerAnimationEvent(Player player) {
         super(player);
 
         // Only supported animation type for now:

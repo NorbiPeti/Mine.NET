@@ -12,7 +12,7 @@ public class PlayerResourcePackStatusEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Status status;
 
-    public PlayerResourcePackStatusEvent(final Player who, Status resourcePackStatus) {
+    public PlayerResourcePackStatusEvent(Player who, Status resourcePackStatus) {
         super(who);
         this.status = resourcePackStatus;
     }

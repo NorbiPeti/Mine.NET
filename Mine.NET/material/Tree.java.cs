@@ -46,7 +46,7 @@ public class Tree extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(final int type) {
+    public Tree(int type) {
         super(type);
     }
 
@@ -55,7 +55,7 @@ public class Tree extends Wood {
      *
      * @param type the type of tree block
      */
-    public Tree(final Material type) {
+    public Tree(Material type) {
         this(type, DEFAULT_SPECIES, DEFAULT_DIRECTION);
     }
 
@@ -65,7 +65,7 @@ public class Tree extends Wood {
      * @param type the type of tree block
      * @param species the species of the tree block
      */
-    public Tree(final Material type, TreeSpecies species) {
+    public Tree(Material type, TreeSpecies species) {
         this(type, species, DEFAULT_DIRECTION);
     }
 
@@ -77,7 +77,7 @@ public class Tree extends Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(final Material type, TreeSpecies species, BlockFace dir) {
+    public Tree(Material type, TreeSpecies species, BlockFace dir) {
         super(type, species);
         setDirection(dir);
     }
@@ -88,7 +88,7 @@ public class Tree extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(final int type, final byte data) {
+    public Tree(int type, final byte data) {
         super(type, data);
     }
 
@@ -98,7 +98,7 @@ public class Tree extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(final Material type, final byte data) {
+    public Tree(Material type, final byte data) {
         super(type, data);
     }
 

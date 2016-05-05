@@ -30,11 +30,11 @@ public class Step extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(final int type) {
+    public Step(int type) {
         super(type);
     }
 
-    public Step(final Material type) {
+    public Step(Material type) {
         super((textures.contains(type)) ? Material.STEP : type);
         if (textures.contains(type)) {
             setMaterial(type);
@@ -47,7 +47,7 @@ public class Step extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(final int type, final byte data) {
+    public Step(int type, final byte data) {
         super(type, data);
     }
 
@@ -57,7 +57,7 @@ public class Step extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(final Material type, final byte data) {
+    public Step(Material type, final byte data) {
         super(type, data);
     }
 

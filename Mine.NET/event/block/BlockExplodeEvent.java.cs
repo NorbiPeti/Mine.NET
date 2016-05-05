@@ -15,7 +15,7 @@ public class BlockExplodeEvent extends BlockEvent implements Cancellable {
     private final List<Block> blocks;
     private float yield;
 
-    public BlockExplodeEvent(final Block what, final List<Block> blocks, final float yield) {
+    public BlockExplodeEvent(Block what, final List<Block> blocks, final float yield) {
         super(what);
         this.blocks = blocks;
         this.yield = yield;

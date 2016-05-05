@@ -25,7 +25,7 @@ public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
      * @param player the player consuming
      * @param item the ItemStack being consumed
      */
-    public PlayerItemConsumeEvent(final Player player, final ItemStack item) {
+    public PlayerItemConsumeEvent(Player player, final ItemStack item) {
         super(player);
 
         this.item = item;

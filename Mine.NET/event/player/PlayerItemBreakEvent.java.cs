@@ -14,7 +14,7 @@ public class PlayerItemBreakEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final ItemStack brokenItem;
 
-    public PlayerItemBreakEvent(final Player player, final ItemStack brokenItem) {
+    public PlayerItemBreakEvent(Player player, final ItemStack brokenItem) {
         super(player);
         this.brokenItem = brokenItem;
     }

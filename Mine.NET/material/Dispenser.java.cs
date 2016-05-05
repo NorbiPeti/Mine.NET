@@ -22,11 +22,11 @@ public class Dispenser extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(final int type) {
+    public Dispenser(int type) {
         super(type);
     }
 
-    public Dispenser(final Material type) {
+    public Dispenser(Material type) {
         super(type);
     }
 
@@ -36,7 +36,7 @@ public class Dispenser extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(final int type, final byte data) {
+    public Dispenser(int type, final byte data) {
         super(type, data);
     }
 
@@ -46,7 +46,7 @@ public class Dispenser extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(final Material type, final byte data) {
+    public Dispenser(Material type, final byte data) {
         super(type, data);
     }
 

@@ -16,7 +16,7 @@ public class CreatureSpawnEvent extends EntityEvent implements Cancellable {
     private boolean canceled;
     private final SpawnReason spawnReason;
 
-    public CreatureSpawnEvent(final LivingEntity spawnee, final SpawnReason spawnReason) {
+    public CreatureSpawnEvent(LivingEntity spawnee, final SpawnReason spawnReason) {
         super(spawnee);
         this.spawnReason = spawnReason;
     }

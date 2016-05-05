@@ -25,11 +25,11 @@ public class PlayerFishEvent extends PlayerEvent implements Cancellable {
      * @param state the state of fishing
      */
     [Obsolete]
-    public PlayerFishEvent(final Player player, final Entity entity, final State state) {
+    public PlayerFishEvent(Player player, final Entity entity, final State state) {
         this(player, entity, null, state);
     }
 
-    public PlayerFishEvent(final Player player, final Entity entity, final Fish hookEntity, final State state) {
+    public PlayerFishEvent(Player player, final Entity entity, final Fish hookEntity, final State state) {
         super(player);
         this.entity = entity;
         this.hookEntity = hookEntity;

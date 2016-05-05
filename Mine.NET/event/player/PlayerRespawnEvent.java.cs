@@ -13,7 +13,7 @@ public class PlayerRespawnEvent extends PlayerEvent {
     private Location respawnLocation;
     private final boolean isBedSpawn;
 
-    public PlayerRespawnEvent(final Player respawnPlayer, final Location respawnLocation, final boolean isBedSpawn) {
+    public PlayerRespawnEvent(Player respawnPlayer, final Location respawnLocation, final boolean isBedSpawn) {
         super(respawnPlayer);
         this.respawnLocation = respawnLocation;
         this.isBedSpawn = isBedSpawn;

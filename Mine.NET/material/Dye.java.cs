@@ -16,11 +16,11 @@ public class Dye extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(final int type) {
+    public Dye(int type) {
         super(type);
     }
 
-    public Dye(final Material type) {
+    public Dye(Material type) {
         super(type);
     }
 
@@ -30,7 +30,7 @@ public class Dye extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(final int type, final byte data) {
+    public Dye(int type, final byte data) {
         super(type, data);
     }
 
@@ -40,14 +40,14 @@ public class Dye extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(final Material type, final byte data) {
+    public Dye(Material type, final byte data) {
         super(type, data);
     }
 
     /**
      * @param color color of the dye
      */
-    public Dye(final DyeColor color) {
+    public Dye(DyeColor color) {
         super(Material.INK_SACK, color.getDyeData());
     }
 

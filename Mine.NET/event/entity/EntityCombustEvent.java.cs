@@ -14,7 +14,7 @@ public class EntityCombustEvent extends EntityEvent implements Cancellable {
     private int duration;
     private boolean cancel;
 
-    public EntityCombustEvent(final Entity combustee, final int duration) {
+    public EntityCombustEvent(Entity combustee, final int duration) {
         super(combustee);
         this.duration = duration;
         this.cancel = false;

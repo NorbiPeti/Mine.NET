@@ -20,7 +20,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
     private final int numPlayers;
     private int maxPlayers;
 
-    public ServerListPingEvent(final InetAddress address, final String motd, final int numPlayers, final int maxPlayers) {
+    public ServerListPingEvent(InetAddress address, final String motd, final int numPlayers, final int maxPlayers) {
         Validate.isTrue(numPlayers >= 0, "Cannot have negative number of players online", numPlayers);
         this.address = address;
         this.motd = motd;
@@ -37,7 +37,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
      * @param motd the message of the day
      * @param maxPlayers the max number of players
      */
-    protected ServerListPingEvent(final InetAddress address, final String motd, final int maxPlayers) {
+    protected ServerListPingEvent(InetAddress address, final String motd, final int maxPlayers) {
         this.numPlayers = MAGIC_PLAYER_COUNT;
         this.address = address;
         this.motd = motd;

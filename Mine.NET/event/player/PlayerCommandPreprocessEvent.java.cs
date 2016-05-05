@@ -52,13 +52,13 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
     private String format = "<%1$s> %2$s";
     private final Set<Player> recipients;
 
-    public PlayerCommandPreprocessEvent(final Player player, final String message) {
+    public PlayerCommandPreprocessEvent(Player player, final String message) {
         super(player);
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
         this.message = message;
     }
 
-    public PlayerCommandPreprocessEvent(final Player player, final String message, final Set<Player> recipients) {
+    public PlayerCommandPreprocessEvent(Player player, final String message, final Set<Player> recipients) {
         super(player);
         this.recipients = recipients;
         this.message = message;
@@ -105,7 +105,7 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
      * @param player New player which this event will execute as
      * @throws IllegalArgumentException if the player provided is null
      */
-    public void setPlayer(final Player player) throws IllegalArgumentException {
+    public void setPlayer(Player player) throws IllegalArgumentException {
         Validate.notNull(player, "Player cannot be null");
         this.player = player;
     }
@@ -130,7 +130,7 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
      * @param format String.Format compatible format string
      */
     [Obsolete]
-    public void setFormat(final String format) {
+    public void setFormat(String format) {
         // Oh for a better way to do this!
         try {
             String.format(format, player, message);

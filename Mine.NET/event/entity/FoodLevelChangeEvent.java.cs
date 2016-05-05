@@ -12,7 +12,7 @@ public class FoodLevelChangeEvent extends EntityEvent implements Cancellable {
     private boolean cancel = false;
     private int level;
 
-    public FoodLevelChangeEvent(final HumanEntity what, final int level) {
+    public FoodLevelChangeEvent(HumanEntity what, final int level) {
         super(what);
         this.level = level;
     }

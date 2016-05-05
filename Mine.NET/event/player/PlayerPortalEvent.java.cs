@@ -16,7 +16,7 @@ public class PlayerPortalEvent extends PlayerTeleportEvent {
     protected boolean useTravelAgent = true;
     protected TravelAgent travelAgent;
 
-    public PlayerPortalEvent(final Player player, final Location from, final Location to, final TravelAgent pta) {
+    public PlayerPortalEvent(Player player, final Location from, final Location to, final TravelAgent pta) {
         super(player, from, to);
         this.travelAgent = pta;
     }

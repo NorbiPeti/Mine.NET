@@ -9,7 +9,7 @@ public class AuthorNagException extends RuntimeException {
      *
      * @param message Brief message explaining the cause of the exception
      */
-    public AuthorNagException(final String message) {
+    public AuthorNagException(String message) {
         this.message = message;
     }
 

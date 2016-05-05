@@ -37,7 +37,7 @@ import com.google.common.collect.ImmutableSet;
 /**
  * Handles all plugin management from the Server
  */
-public final class SimplePluginManager implements PluginManager {
+public sealed class SimplePluginManager implements PluginManager {
     private final Server server;
     private final Map<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
     private final List<Plugin> plugins = new ArrayList<Plugin>();
@@ -392,7 +392,7 @@ public final class SimplePluginManager implements PluginManager {
         }
     }
 
-    public void enablePlugin(final Plugin plugin) {
+    public void enablePlugin(Plugin plugin) {
         if (!plugin.isEnabled()) {
             List<Command> pluginCommands = PluginCommandYamlParser.parse(plugin);
 
@@ -417,7 +417,7 @@ public final class SimplePluginManager implements PluginManager {
         }
     }
 
-    public void disablePlugin(final Plugin plugin) {
+    public void disablePlugin(Plugin plugin) {
         if (plugin.isEnabled()) {
             try {
                 plugin.getPluginLoader().disablePlugin(plugin);

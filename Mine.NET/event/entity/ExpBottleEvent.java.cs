@@ -11,7 +11,7 @@ public class ExpBottleEvent extends ProjectileHitEvent {
     private int exp;
     private boolean showEffect = true;
 
-    public ExpBottleEvent(final ThrownExpBottle bottle, final int exp) {
+    public ExpBottleEvent(ThrownExpBottle bottle, final int exp) {
         super(bottle);
         this.exp = exp;
     }
@@ -38,7 +38,7 @@ public class ExpBottleEvent extends ProjectileHitEvent {
      * @param showEffect true indicates the effect will be shown, false
      *     indicates no effect will be shown
      */
-    public void setShowEffect(final boolean showEffect) {
+    public void setShowEffect(boolean showEffect) {
         this.showEffect = showEffect;
     }
 
@@ -60,7 +60,7 @@ public class ExpBottleEvent extends ProjectileHitEvent {
      *
      * @param exp the total amount of experience to be created
      */
-    public void setExperience(final int exp) {
+    public void setExperience(int exp) {
         this.exp = exp;
     }
 

@@ -13,7 +13,7 @@ public class ItemSpawnEvent extends EntityEvent implements Cancellable {
     private final Location location;
     private boolean canceled;
 
-    public ItemSpawnEvent(final Item spawnee, final Location loc) {
+    public ItemSpawnEvent(Item spawnee, final Location loc) {
         super(spawnee);
         this.location = loc;
     }

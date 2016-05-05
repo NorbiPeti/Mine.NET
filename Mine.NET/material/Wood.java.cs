@@ -35,7 +35,7 @@ public class Wood extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(final int type) {
+    public Wood(int type) {
         super(type);
     }
 
@@ -44,7 +44,7 @@ public class Wood extends MaterialData {
      *
      * @param type the type of wood block
      */
-    public Wood(final Material type) {
+    public Wood(Material type) {
         this(type, DEFAULT_SPECIES);
     }
 
@@ -54,7 +54,7 @@ public class Wood extends MaterialData {
      * @param type the type of wood block
      * @param species the species of the wood block
      */
-    public Wood(final Material type, final TreeSpecies species) {
+    public Wood(Material type, final TreeSpecies species) {
         // Ensure only valid species-type combinations
         super(getSpeciesType(type, species));
         setSpecies(species);
@@ -66,7 +66,7 @@ public class Wood extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(final int type, final byte data) {
+    public Wood(int type, final byte data) {
         super(type, data);
     }
 
@@ -76,7 +76,7 @@ public class Wood extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(final Material type, final byte data) {
+    public Wood(Material type, final byte data) {
         super(type, data);
     }
 
@@ -144,7 +144,7 @@ public class Wood extends MaterialData {
      *
      * @param species New species of this wood block
      */
-    public void setSpecies(final TreeSpecies species) {
+    public void setSpecies(TreeSpecies species) {
         boolean firstType = false;
         switch (getItemType()) {
             case WOOD:

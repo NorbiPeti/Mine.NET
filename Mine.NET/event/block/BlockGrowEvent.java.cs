@@ -24,7 +24,7 @@ public class BlockGrowEvent extends BlockEvent implements Cancellable {
     private final BlockState newState;
     private boolean cancelled = false;
 
-    public BlockGrowEvent(final Block block, final BlockState newState) {
+    public BlockGrowEvent(Block block, final BlockState newState) {
         super(block);
         this.newState = newState;
     }

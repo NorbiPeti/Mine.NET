@@ -42,7 +42,7 @@ public class ShapedRecipe implements Recipe {
      * @param shape The rows of the recipe (up to 3 rows).
      * @return The changed recipe, so you can chain calls.
      */
-    public ShapedRecipe shape(final String... shape) {
+    public ShapedRecipe shape(String... shape) {
         Validate.notNull(shape, "Must provide a shape");
         Validate.isTrue(shape.length > 0 && shape.length < 4, "Crafting recipes should be 1, 2, 3 rows, not ", shape.length);
 

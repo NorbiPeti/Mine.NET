@@ -12,7 +12,7 @@ public class SpawnChangeEvent extends WorldEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Location previousLocation;
 
-    public SpawnChangeEvent(final World world, final Location previousLocation) {
+    public SpawnChangeEvent(World world, final Location previousLocation) {
         super(world);
         this.previousLocation = previousLocation;
     }

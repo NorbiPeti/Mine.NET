@@ -26,11 +26,11 @@ public class MonsterEggs extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(final int type) {
+    public MonsterEggs(int type) {
         super(type);
     }
 
-    public MonsterEggs(final Material type) {
+    public MonsterEggs(Material type) {
         super((textures.contains(type)) ? Material.MONSTER_EGGS : type);
         if (textures.contains(type)) {
             setMaterial(type);
@@ -43,7 +43,7 @@ public class MonsterEggs extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(final int type, final byte data) {
+    public MonsterEggs(int type, final byte data) {
         super(type, data);
     }
 
@@ -53,7 +53,7 @@ public class MonsterEggs extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(final Material type, final byte data) {
+    public MonsterEggs(Material type, final byte data) {
         super(type, data);
     }
 

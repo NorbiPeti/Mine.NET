@@ -33,7 +33,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ItemStack(final int type) {
+    public ItemStack(int type) {
         this(type, 1);
     }
 
@@ -42,7 +42,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      *
      * @param type item material
      */
-    public ItemStack(final Material type) {
+    public ItemStack(Material type) {
         this(type, 1);
     }
 
@@ -54,7 +54,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ItemStack(final int type, final int amount) {
+    public ItemStack(int type, final int amount) {
         this(type, amount, (short) 0);
     }
 
@@ -64,7 +64,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param type item material
      * @param amount stack size
      */
-    public ItemStack(final Material type, final int amount) {
+    public ItemStack(Material type, final int amount) {
         this(type.getId(), amount);
     }
 
@@ -77,7 +77,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ItemStack(final int type, final int amount, final short damage) {
+    public ItemStack(int type, final int amount, final short damage) {
         this.type = type;
         this.amount = amount;
         this.durability = damage;
@@ -90,7 +90,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param amount stack size
      * @param damage durability / damage
      */
-    public ItemStack(final Material type, final int amount, final short damage) {
+    public ItemStack(Material type, final int amount, final short damage) {
         this(type.getId(), amount, damage);
     }
 
@@ -102,7 +102,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] this method uses an ambiguous data byte object
      */
     [Obsolete]
-    public ItemStack(final int type, final int amount, final short damage, final Byte data) {
+    public ItemStack(int type, final int amount, final short damage, final Byte data) {
         this.type = type;
         this.amount = amount;
         this.durability = damage;
@@ -120,7 +120,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] this method uses an ambiguous data byte object
      */
     [Obsolete]
-    public ItemStack(final Material type, final int amount, final short damage, final Byte data) {
+    public ItemStack(Material type, final int amount, final short damage, final Byte data) {
         this(type.getId(), amount, damage, data);
     }
 
@@ -131,7 +131,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @throws IllegalArgumentException if the specified stack is null or
      *     returns an item meta not created by the item factory
      */
-    public ItemStack(final ItemStack stack) throws IllegalArgumentException {
+    public ItemStack(ItemStack stack) throws IllegalArgumentException {
         Validate.notNull(stack, "Cannot copy null stack");
         this.type = stack.getTypeId();
         this.amount = stack.getAmount();
@@ -258,7 +258,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      *
      * @param durability Durability of this item
      */
-    public void setDurability(final short durability) {
+    public void setDurability(short durability) {
         this.durability = durability;
     }
 
@@ -286,7 +286,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
         return -1;
     }
 
-    private void createData(final byte data) {
+    private void createData(byte data) {
         Material mat = Material.getMaterial(type);
 
         if (mat == null) {

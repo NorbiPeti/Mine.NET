@@ -37,11 +37,11 @@ public class Door extends MaterialData implements Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(final int type) {
+    public Door(int type) {
         super(type);
     }
 
-    public Door(final Material type) {
+    public Door(Material type) {
         super(type);
     }
 
@@ -64,7 +64,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(final Material type, BlockFace face) {
+    public Door(Material type, BlockFace face) {
         this(type, face, false);
     }
 
@@ -89,7 +89,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(final Material type, BlockFace face, boolean isOpen) {
+    public Door(Material type, BlockFace face, boolean isOpen) {
         super(type);
         setTopHalf(false);
         setFacingDirection(face);
@@ -110,7 +110,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see Material#ACACIA_DOOR
      * @see Material#DARK_OAK_DOOR
      */
-    public Door(final Material type, boolean isHingeRight) {
+    public Door(Material type, boolean isHingeRight) {
         super(type);
         setTopHalf(true);
         setHinge(isHingeRight);
@@ -130,7 +130,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(final TreeSpecies species, BlockFace face) {
+    public Door(TreeSpecies species, BlockFace face) {
         this(getWoodDoorOfSpecies(species), face, false);
     }
 
@@ -149,7 +149,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(final TreeSpecies species, BlockFace face, boolean isOpen) {
+    public Door(TreeSpecies species, BlockFace face, boolean isOpen) {
         this(getWoodDoorOfSpecies(species), face, isOpen);
     }
 
@@ -161,7 +161,7 @@ public class Door extends MaterialData implements Directional, Openable {
      *
      * @see TreeSpecies
      */
-    public Door(final TreeSpecies species, boolean isHingeRight) {
+    public Door(TreeSpecies species, boolean isHingeRight) {
         this(getWoodDoorOfSpecies(species), isHingeRight);
     }
 
@@ -171,7 +171,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(final int type, final byte data) {
+    public Door(int type, final byte data) {
         super(type, data);
     }
 
@@ -181,7 +181,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(final Material type, final byte data) {
+    public Door(Material type, final byte data) {
         super(type, data);
     }
 

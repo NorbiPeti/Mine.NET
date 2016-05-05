@@ -23,7 +23,7 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public CocoaPlant(final int type) {
+    public CocoaPlant(int type) {
         super(type);
     }
 
@@ -33,7 +33,7 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public CocoaPlant(final int type, final byte data) {
+    public CocoaPlant(int type, final byte data) {
         super(type, data);
     }
 

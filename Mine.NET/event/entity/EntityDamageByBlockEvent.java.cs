@@ -13,17 +13,17 @@ public class EntityDamageByBlockEvent extends EntityDamageEvent {
     private final Block damager;
 
     [Obsolete]
-    public EntityDamageByBlockEvent(final Block damager, final Entity damagee, final DamageCause cause, final int damage) {
+    public EntityDamageByBlockEvent(Block damager, final Entity damagee, final DamageCause cause, final int damage) {
         this(damager, damagee, cause, (double) damage);
     }
 
     [Obsolete]
-    public EntityDamageByBlockEvent(final Block damager, final Entity damagee, final DamageCause cause, final double damage) {
+    public EntityDamageByBlockEvent(Block damager, final Entity damagee, final DamageCause cause, final double damage) {
         super(damagee, cause, damage);
         this.damager = damager;
     }
 
-    public EntityDamageByBlockEvent(final Block damager, final Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageByBlockEvent(Block damager, final Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }

@@ -17,7 +17,7 @@ public class ItemDespawnEvent extends EntityEvent implements Cancellable {
     private boolean canceled;
     private final Location location;
 
-    public ItemDespawnEvent(final Item despawnee, final Location loc) {
+    public ItemDespawnEvent(Item despawnee, final Location loc) {
         super(despawnee);
         location = loc;
     }

@@ -13,7 +13,7 @@ public class PlayerItemHeldEvent extends PlayerEvent implements Cancellable {
     private final int previous;
     private final int current;
 
-    public PlayerItemHeldEvent(final Player player, final int previous, final int current) {
+    public PlayerItemHeldEvent(Player player, final int previous, final int current) {
         super(player);
         this.previous = previous;
         this.current = current;

@@ -17,11 +17,11 @@ public class Rails extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(final int type) {
+    public Rails(int type) {
         super(type);
     }
 
-    public Rails(final Material type) {
+    public Rails(Material type) {
         super(type);
     }
 
@@ -31,7 +31,7 @@ public class Rails extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(final int type, final byte data) {
+    public Rails(int type, final byte data) {
         super(type, data);
     }
 
@@ -41,7 +41,7 @@ public class Rails extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(final Material type, final byte data) {
+    public Rails(Material type, final byte data) {
         super(type, data);
     }
 

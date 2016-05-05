@@ -3,7 +3,7 @@ package org.bukkit.util.permissions;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
-public final class CommandPermissions {
+public sealed class CommandPermissions {
     private static final String ROOT = "bukkit.command";
     private static final String PREFIX = ROOT + ".";
 

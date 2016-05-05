@@ -21,11 +21,11 @@ public class Sandstone extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(final int type) {
+    public Sandstone(int type) {
         super(type);
     }
 
-    public Sandstone(final Material type) {
+    public Sandstone(Material type) {
         super(type);
     }
 
@@ -35,7 +35,7 @@ public class Sandstone extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(final int type, final byte data) {
+    public Sandstone(int type, final byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class Sandstone extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(final Material type, final byte data) {
+    public Sandstone(Material type, final byte data) {
         super(type, data);
     }
 

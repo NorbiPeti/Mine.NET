@@ -20,7 +20,7 @@ public class LingeringPotionSplashEvent extends ProjectileHitEvent implements Ca
     private boolean cancelled;
     private final AreaEffectCloud entity;
 
-    public LingeringPotionSplashEvent(final ThrownPotion potion, final AreaEffectCloud entity) {
+    public LingeringPotionSplashEvent(ThrownPotion potion, final AreaEffectCloud entity) {
         super(potion);
         this.entity = entity;
     }

@@ -2,7 +2,7 @@ package org.bukkit.potion;
 
 import org.apache.commons.lang.Validate;
 
-public final class PotionData {
+public sealed class PotionData {
 
     private final PotionType type;
     private final boolean extended;

@@ -174,7 +174,7 @@ import com.google.common.collect.ImmutableSet;
  *      inferno.burningdeaths: true
  *</pre></blockquote>
  */
-public final class PluginDescriptionFile {
+public sealed class PluginDescriptionFile {
     private static final ThreadLocal<Yaml> YAML = new ThreadLocal<Yaml>() {
         @Override
         protected Yaml initialValue() {
@@ -182,7 +182,7 @@ public final class PluginDescriptionFile {
                 {
                     yamlConstructors.put(null, new AbstractConstruct() {
                         @Override
-                        public Object construct(final Node node) {
+                        public Object construct(Node node) {
                             if (!node.getTag().startsWith("!@")) {
                                 // Unknown tag - will fail
                                 return SafeConstructor.undefinedConstructor.construct(node);
@@ -196,10 +196,10 @@ public final class PluginDescriptionFile {
                             };
                         }
                     });
-                    for (final PluginAwareness.Flags flag : PluginAwareness.Flags.values()) {
+                    for (PluginAwareness.Flags flag : PluginAwareness.Flags.values()) {
                         yamlConstructors.put(new Tag("!@" + flag.name()), new AbstractConstruct() {
                             @Override
-                            public PluginAwareness.Flags construct(final Node node) {
+                            public PluginAwareness.Flags construct(Node node) {
                                 return flag;
                             }
                         });
@@ -228,7 +228,7 @@ public final class PluginDescriptionFile {
     private PermissionDefault defaultPerm = PermissionDefault.OP;
     private Set<PluginAwareness> awareness = ImmutableSet.of();
 
-    public PluginDescriptionFile(final InputStream stream) throws InvalidDescriptionException {
+    public PluginDescriptionFile(InputStream stream) throws InvalidDescriptionException {
         loadMap(asMap(YAML.get().load(stream)));
     }
 
@@ -239,7 +239,7 @@ public final class PluginDescriptionFile {
      * @throws InvalidDescriptionException If the PluginDescriptionFile is
      *     invalid
      */
-    public PluginDescriptionFile(final Reader reader) throws InvalidDescriptionException {
+    public PluginDescriptionFile(Reader reader) throws InvalidDescriptionException {
         loadMap(asMap(YAML.get().load(reader)));
     }
 
@@ -250,7 +250,7 @@ public final class PluginDescriptionFile {
      * @param pluginVersion Version of this plugin
      * @param mainClass Full location of the main class of this plugin
      */
-    public PluginDescriptionFile(final String pluginName, final String pluginVersion, final String mainClass) {
+    public PluginDescriptionFile(String pluginName, final String pluginVersion, final String mainClass) {
         name = pluginName.replace(' ', '_');
         version = pluginVersion;
         main = mainClass;
@@ -1036,7 +1036,7 @@ public final class PluginDescriptionFile {
         }
     }
 
-    private static List<String> makePluginNameList(final Map<?, ?> map, final String key) throws InvalidDescriptionException {
+    private static List<String> makePluginNameList(Map<?, ?> map, final String key) throws InvalidDescriptionException {
         final Object value = map.get(key);
         if (value == null) {
             return ImmutableList.of();
@@ -1044,7 +1044,7 @@ public final class PluginDescriptionFile {
 
         final ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
         try {
-            for (final Object entry : (Iterable<?>) value) {
+            for (Object entry : (Iterable<?>) value) {
                 builder.add(entry.toString().replace(' ', '_'));
             }
         } catch (ClassCastException ex) {

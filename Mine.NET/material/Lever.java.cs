@@ -16,11 +16,11 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(final int type) {
+    public Lever(int type) {
         super(type);
     }
 
-    public Lever(final Material type) {
+    public Lever(Material type) {
         super(type);
     }
 
@@ -30,7 +30,7 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(final int type, final byte data) {
+    public Lever(int type, final byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(final Material type, final byte data) {
+    public Lever(Material type, final byte data) {
         super(type, data);
     }
 

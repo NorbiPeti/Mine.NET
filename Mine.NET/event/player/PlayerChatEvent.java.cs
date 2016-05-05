@@ -28,14 +28,14 @@ public class PlayerChatEvent extends PlayerEvent implements Cancellable {
     private String format;
     private final Set<Player> recipients;
 
-    public PlayerChatEvent(final Player player, final String message) {
+    public PlayerChatEvent(Player player, final String message) {
         super(player);
         this.message = message;
         this.format = "<%1$s> %2$s";
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
     }
 
-    public PlayerChatEvent(final Player player, final String message, final String format, final Set<Player> recipients) {
+    public PlayerChatEvent(Player player, final String message, final String format, final Set<Player> recipients) {
         super(player);
         this.message = message;
         this.format = format;
@@ -74,7 +74,7 @@ public class PlayerChatEvent extends PlayerEvent implements Cancellable {
      *
      * @param player New player which this event will execute as
      */
-    public void setPlayer(final Player player) {
+    public void setPlayer(Player player) {
         Validate.notNull(player, "Player cannot be null");
         this.player = player;
     }
@@ -93,7 +93,7 @@ public class PlayerChatEvent extends PlayerEvent implements Cancellable {
      *
      * @param format String.Format compatible format string
      */
-    public void setFormat(final String format) {
+    public void setFormat(String format) {
         // Oh for a better way to do this!
         try {
             String.format(format, player, message);

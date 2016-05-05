@@ -11,7 +11,7 @@ public class VehicleBlockCollisionEvent extends VehicleCollisionEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Block block;
 
-    public VehicleBlockCollisionEvent(final Vehicle vehicle, final Block block) {
+    public VehicleBlockCollisionEvent(Vehicle vehicle, final Block block) {
         super(vehicle);
         this.block = block;
     }

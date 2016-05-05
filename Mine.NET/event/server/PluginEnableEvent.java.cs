@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 public class PluginEnableEvent extends PluginEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public PluginEnableEvent(final Plugin plugin) {
+    public PluginEnableEvent(Plugin plugin) {
         super(plugin);
     }
 

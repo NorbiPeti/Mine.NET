@@ -19,7 +19,7 @@ public class PlayerInventoryEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     protected Inventory inventory;
 
-    public PlayerInventoryEvent(final Player player, final Inventory inventory) {
+    public PlayerInventoryEvent(Player player, final Inventory inventory) {
         super(player);
         this.inventory = inventory;
     }

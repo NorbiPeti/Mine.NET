@@ -16,11 +16,11 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Button(final int type) {
+    public Button(int type) {
         super(type);
     }
 
-    public Button(final Material type) {
+    public Button(Material type) {
         super(type);
     }
 
@@ -30,7 +30,7 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Button(final int type, final byte data) {
+    public Button(int type, final byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Button(final Material type, final byte data) {
+    public Button(Material type, final byte data) {
         super(type, data);
     }
 

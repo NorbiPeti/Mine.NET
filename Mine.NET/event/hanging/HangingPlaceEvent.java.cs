@@ -17,7 +17,7 @@ public class HangingPlaceEvent extends HangingEvent implements Cancellable {
     private final Block block;
     private final BlockFace blockFace;
 
-    public HangingPlaceEvent(final Hanging hanging, final Player player, final Block block, final BlockFace blockFace) {
+    public HangingPlaceEvent(Hanging hanging, final Player player, final Block block, final BlockFace blockFace) {
         super(hanging);
         this.player = player;
         this.block = block;

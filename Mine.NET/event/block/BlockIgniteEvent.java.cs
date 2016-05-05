@@ -20,19 +20,19 @@ public class BlockIgniteEvent extends BlockEvent implements Cancellable {
     private boolean cancel;
 
     [Obsolete]
-    public BlockIgniteEvent(final Block theBlock, final IgniteCause cause, final Player thePlayer) {
+    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Player thePlayer) {
         this(theBlock, cause, (Entity) thePlayer);
     }
 
-    public BlockIgniteEvent(final Block theBlock, final IgniteCause cause, final Entity ignitingEntity) {
+    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Entity ignitingEntity) {
         this(theBlock, cause, ignitingEntity, null);
     }
 
-    public BlockIgniteEvent(final Block theBlock, final IgniteCause cause, final Block ignitingBlock) {
+    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Block ignitingBlock) {
         this(theBlock, cause, null, ignitingBlock);
     }
 
-    public BlockIgniteEvent(final Block theBlock, final IgniteCause cause, final Entity ignitingEntity, final Block ignitingBlock) {
+    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Entity ignitingEntity, final Block ignitingBlock) {
         super(theBlock);
         this.cause = cause;
         this.ignitingEntity = ignitingEntity;

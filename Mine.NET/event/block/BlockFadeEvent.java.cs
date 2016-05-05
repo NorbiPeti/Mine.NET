@@ -23,7 +23,7 @@ public class BlockFadeEvent extends BlockEvent implements Cancellable {
     private boolean cancelled;
     private final BlockState newState;
 
-    public BlockFadeEvent(final Block block, final BlockState newState) {
+    public BlockFadeEvent(Block block, final BlockState newState) {
         super(block);
         this.newState = newState;
         this.cancelled = false;

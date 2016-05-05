@@ -7,7 +7,7 @@ import java.util.List;
  * Represents all the map cursors on a {@link MapCanvas}. Like MapCanvas, a
  * MapCursorCollection is linked to a specific {@link MapRenderer}.
  */
-public final class MapCursorCollection {
+public sealed class MapCursorCollection {
     private List<MapCursor> cursors = new ArrayList<MapCursor>();
 
     /**

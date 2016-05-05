@@ -15,7 +15,7 @@ public class InventoryPickupItemEvent extends Event implements Cancellable {
     private final Inventory inventory;
     private final Item item;
 
-    public InventoryPickupItemEvent(final Inventory inventory, final Item item) {
+    public InventoryPickupItemEvent(Inventory inventory, final Item item) {
         super();
         this.inventory = inventory;
         this.item = item;

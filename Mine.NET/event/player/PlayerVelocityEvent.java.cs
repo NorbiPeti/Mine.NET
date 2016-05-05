@@ -13,7 +13,7 @@ public class PlayerVelocityEvent extends PlayerEvent implements Cancellable {
     private boolean cancel = false;
     private Vector velocity;
 
-    public PlayerVelocityEvent(final Player player, final Vector velocity) {
+    public PlayerVelocityEvent(Player player, final Vector velocity) {
         super(player);
         this.velocity = velocity;
     }

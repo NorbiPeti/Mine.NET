@@ -13,11 +13,11 @@ public class EntityDeathEvent extends EntityEvent {
     private final List<ItemStack> drops;
     private int dropExp = 0;
 
-    public EntityDeathEvent(final LivingEntity entity, final List<ItemStack> drops) {
+    public EntityDeathEvent(LivingEntity entity, final List<ItemStack> drops) {
         this(entity, drops, 0);
     }
 
-    public EntityDeathEvent(final LivingEntity what, final List<ItemStack> drops, final int droppedExp) {
+    public EntityDeathEvent(LivingEntity what, final List<ItemStack> drops, final int droppedExp) {
         super(what);
         this.drops = drops;
         this.dropExp = droppedExp;

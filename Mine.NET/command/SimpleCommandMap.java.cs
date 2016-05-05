@@ -22,7 +22,7 @@ public class SimpleCommandMap implements CommandMap {
     protected final Map<String, Command> knownCommands = new HashMap<String, Command>();
     private final Server server;
 
-    public SimpleCommandMap(final Server server) {
+    public SimpleCommandMap(Server server) {
         this.server = server;
         setDefaultCommands();
     }

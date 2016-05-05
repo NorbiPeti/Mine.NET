@@ -80,7 +80,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @param file the location of the plugin
      */
     [Obsolete]
-    protected JavaPlugin(final PluginLoader loader, final Server server, final PluginDescriptionFile description, final File dataFolder, final File file) {
+    protected JavaPlugin(PluginLoader loader, final Server server, final PluginDescriptionFile description, final File dataFolder, final File file) {
         final ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader instanceof PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
@@ -88,7 +88,7 @@ public abstract class JavaPlugin extends PluginBase {
         init(loader, server, description, dataFolder, file, classLoader);
     }
 
-    protected JavaPlugin(final JavaPluginLoader loader, final PluginDescriptionFile description, final File dataFolder, final File file) {
+    protected JavaPlugin(JavaPluginLoader loader, final PluginDescriptionFile description, final File dataFolder, final File file) {
         final ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader instanceof PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
@@ -284,7 +284,7 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @param enabled true if enabled, otherwise false
      */
-    protected final void setEnabled(final boolean enabled) {
+    protected final void setEnabled(boolean enabled) {
         if (isEnabled != enabled) {
             isEnabled = enabled;
 

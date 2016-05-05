@@ -51,7 +51,7 @@ public enum Particle {
     DAMAGE_INDICATOR,
     SWEEP_ATTACK;
 
-    private final Class<?> dataType;
+    private sealed class<?> dataType;
 
     Particle() {
         dataType = Void.class;

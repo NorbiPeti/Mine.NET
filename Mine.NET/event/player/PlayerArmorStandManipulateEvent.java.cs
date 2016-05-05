@@ -17,7 +17,7 @@ public class PlayerArmorStandManipulateEvent extends PlayerInteractEntityEvent {
     private final ItemStack armorStandItem;
     private final EquipmentSlot slot;
 
-    public PlayerArmorStandManipulateEvent(final Player who, final ArmorStand clickedEntity, final ItemStack playerItem, final ItemStack armorStandItem, final EquipmentSlot slot) {
+    public PlayerArmorStandManipulateEvent(Player who, final ArmorStand clickedEntity, final ItemStack playerItem, final ItemStack armorStandItem, final EquipmentSlot slot) {
         super(who, clickedEntity);
         this.playerItem = playerItem;
         this.armorStandItem = armorStandItem;

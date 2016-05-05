@@ -38,7 +38,7 @@ public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
      * @param players the players to receive the message. This may be a lazy
      *     or unmodifiable collection.
      */
-    public AsyncPlayerChatEvent(final boolean async, final Player who, final String message, final Set<Player> players) {
+    public AsyncPlayerChatEvent(boolean async, final Player who, final String message, final Set<Player> players) {
         super(who, async);
         this.message = message;
         recipients = players;
@@ -92,7 +92,7 @@ public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
      * @throws NullPointerException if format is null
      * @see String#format(String, Object...)
      */
-    public void setFormat(final String format) throws IllegalFormatException, NullPointerException {
+    public void setFormat(String format) throws IllegalFormatException, NullPointerException {
         // Oh for a better way to do this!
         try {
             String.format(format, player, message);

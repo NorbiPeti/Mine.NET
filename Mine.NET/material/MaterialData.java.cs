@@ -15,11 +15,11 @@ public class MaterialData implements Cloneable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData(final int type) {
+    public MaterialData(int type) {
         this(type, (byte) 0);
     }
 
-    public MaterialData(final Material type) {
+    public MaterialData(Material type) {
         this(type, (byte) 0);
     }
 
@@ -29,7 +29,7 @@ public class MaterialData implements Cloneable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData(final int type, final byte data) {
+    public MaterialData(int type, final byte data) {
         this.type = type;
         this.data = data;
     }
@@ -40,7 +40,7 @@ public class MaterialData implements Cloneable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData(final Material type, final byte data) {
+    public MaterialData(Material type, final byte data) {
         this(type.getId(), data);
     }
 

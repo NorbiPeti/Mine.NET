@@ -15,11 +15,11 @@ public class PlayerInteractEntityEvent extends PlayerEvent implements Cancellabl
     boolean cancelled = false;
     private EquipmentSlot hand;
 
-    public PlayerInteractEntityEvent(final Player who, final Entity clickedEntity) {
+    public PlayerInteractEntityEvent(Player who, final Entity clickedEntity) {
         this(who, clickedEntity, EquipmentSlot.HAND);
     }
 
-    public PlayerInteractEntityEvent(final Player who, final Entity clickedEntity, final EquipmentSlot hand) {
+    public PlayerInteractEntityEvent(Player who, final Entity clickedEntity, final EquipmentSlot hand) {
         super(who);
         this.clickedEntity = clickedEntity;
         this.hand = hand;

@@ -11,7 +11,7 @@ public class PlayerPickupArrowEvent extends PlayerPickupItemEvent {
 
     private final Arrow arrow;
 
-    public PlayerPickupArrowEvent(final Player player, final Item item, final Arrow arrow) {
+    public PlayerPickupArrowEvent(Player player, final Item item, final Arrow arrow) {
         super(player, item, 0);
         this.arrow = arrow;
     }

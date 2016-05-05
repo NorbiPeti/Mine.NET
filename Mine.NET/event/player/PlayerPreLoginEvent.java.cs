@@ -25,11 +25,11 @@ public class PlayerPreLoginEvent extends Event {
     private final UUID uniqueId;
 
     [Obsolete]
-    public PlayerPreLoginEvent(final String name, final InetAddress ipAddress) {
+    public PlayerPreLoginEvent(String name, final InetAddress ipAddress) {
         this(name, ipAddress, null);
     }
 
-    public PlayerPreLoginEvent(final String name, final InetAddress ipAddress, final UUID uniqueId) {
+    public PlayerPreLoginEvent(String name, final InetAddress ipAddress, final UUID uniqueId) {
         this.result = Result.ALLOWED;
         this.message = "";
         this.name = name;
@@ -51,7 +51,7 @@ public class PlayerPreLoginEvent extends Event {
      *
      * @param result New result to set
      */
-    public void setResult(final Result result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
@@ -70,7 +70,7 @@ public class PlayerPreLoginEvent extends Event {
      *
      * @param message New kick message
      */
-    public void setKickMessage(final String message) {
+    public void setKickMessage(String message) {
         this.message = message;
     }
 
@@ -88,7 +88,7 @@ public class PlayerPreLoginEvent extends Event {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(final Result result, final String message) {
+    public void disallow(Result result, final String message) {
         this.result = result;
         this.message = message;
     }

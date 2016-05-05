@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
  * These fields are hee base color ranges. Each entry corresponds to four
  * colors of varying shades with values entry to entry + 3.
  */
-public final class MapPalette {
+public sealed class MapPalette {
     // Internal mechanisms
     private MapPalette() {}
 

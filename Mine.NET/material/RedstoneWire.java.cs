@@ -15,11 +15,11 @@ public class RedstoneWire extends MaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(final int type) {
+    public RedstoneWire(int type) {
         super(type);
     }
 
-    public RedstoneWire(final Material type) {
+    public RedstoneWire(Material type) {
         super(type);
     }
 
@@ -29,7 +29,7 @@ public class RedstoneWire extends MaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(final int type, final byte data) {
+    public RedstoneWire(int type, final byte data) {
         super(type, data);
     }
 
@@ -39,7 +39,7 @@ public class RedstoneWire extends MaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(final Material type, final byte data) {
+    public RedstoneWire(Material type, final byte data) {
         super(type, data);
     }
 

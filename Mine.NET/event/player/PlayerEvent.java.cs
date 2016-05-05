@@ -9,11 +9,11 @@ import org.bukkit.event.Event;
 public abstract class PlayerEvent extends Event {
     protected Player player;
 
-    public PlayerEvent(final Player who) {
+    public PlayerEvent(Player who) {
         player = who;
     }
 
-    PlayerEvent(final Player who, boolean async) {
+    PlayerEvent(Player who, boolean async) {
         super(async);
         player = who;
 

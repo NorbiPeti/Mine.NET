@@ -20,7 +20,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param player The {@link Player} for this event
      */
     [Obsolete]
-    public PlayerLoginEvent(final Player player) {
+    public PlayerLoginEvent(Player player) {
         this(player, "", null);
     }
 
@@ -30,7 +30,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param hostname The hostname that was used to connect to the server
      */
     [Obsolete]
-    public PlayerLoginEvent(final Player player, final String hostname) {
+    public PlayerLoginEvent(Player player, final String hostname) {
         this(player, hostname, null);
     }
 
@@ -43,7 +43,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param address The address the player used to connect, provided for
      *     timing issues
      */
-    public PlayerLoginEvent(final Player player, final String hostname, final InetAddress address) {
+    public PlayerLoginEvent(Player player, final String hostname, final InetAddress address) {
         super(player);
         this.hostname = hostname;
         this.address = address;
@@ -57,7 +57,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param message The message to be displayed if result denies login
      */
     [Obsolete]
-    public PlayerLoginEvent(final Player player, final Result result, final String message) {
+    public PlayerLoginEvent(Player player, final Result result, final String message) {
         this(player, "", null, result, message);
     }
 
@@ -71,7 +71,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param result The result status for this event
      * @param message The message to be displayed if result denies login
      */
-    public PlayerLoginEvent(final Player player, String hostname, final InetAddress address, final Result result, final String message) {
+    public PlayerLoginEvent(Player player, String hostname, final InetAddress address, final Result result, final String message) {
         this(player, hostname, address);
         this.result = result;
         this.message = message;
@@ -91,7 +91,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      *
      * @param result New result to set
      */
-    public void setResult(final Result result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
@@ -110,7 +110,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      *
      * @param message New kick message
      */
-    public void setKickMessage(final String message) {
+    public void setKickMessage(String message) {
         this.message = message;
     }
 
@@ -138,7 +138,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(final Result result, final String message) {
+    public void disallow(Result result, final String message) {
         this.result = result;
         this.message = message;
     }

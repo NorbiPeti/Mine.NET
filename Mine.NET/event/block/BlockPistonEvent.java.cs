@@ -12,7 +12,7 @@ public abstract class BlockPistonEvent extends BlockEvent implements Cancellable
     private boolean cancelled;
     private final BlockFace direction;
 
-    public BlockPistonEvent(final Block block, final BlockFace direction) {
+    public BlockPistonEvent(Block block, final BlockFace direction) {
         super(block);
         this.direction = direction;
     }

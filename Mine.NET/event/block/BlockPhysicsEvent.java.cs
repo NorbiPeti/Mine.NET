@@ -20,7 +20,7 @@ public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
      * @param changed the changed block's type id
      */
     [Obsolete]
-    public BlockPhysicsEvent(final Block block, final int changed) {
+    public BlockPhysicsEvent(Block block, final int changed) {
         super(block);
         this.changed = changed;
     }

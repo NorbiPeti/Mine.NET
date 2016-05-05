@@ -15,7 +15,7 @@ public class PlayerChatTabCompleteEvent extends PlayerEvent {
     private final String lastToken;
     private final Collection<String> completions;
 
-    public PlayerChatTabCompleteEvent(final Player who, final String message, final Collection<String> completions) {
+    public PlayerChatTabCompleteEvent(Player who, final String message, final Collection<String> completions) {
         super(who);
         Validate.notNull(message, "Message cannot be null");
         Validate.notNull(completions, "Completions cannot be null");

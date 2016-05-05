@@ -18,7 +18,7 @@ public class BlockDamageEvent extends BlockEvent implements Cancellable {
     private boolean cancel;
     private final ItemStack itemstack;
 
-    public BlockDamageEvent(final Player player, final Block block, final ItemStack itemInHand, final boolean instaBreak) {
+    public BlockDamageEvent(Player player, final Block block, final ItemStack itemInHand, final boolean instaBreak) {
         super(block);
         this.instaBreak = instaBreak;
         this.player = player;

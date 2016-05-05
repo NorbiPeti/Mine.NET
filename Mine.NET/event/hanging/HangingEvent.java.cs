@@ -9,7 +9,7 @@ import org.bukkit.event.Event;
 public abstract class HangingEvent extends Event {
     protected Hanging hanging;
 
-    protected HangingEvent(final Hanging painting) {
+    protected HangingEvent(Hanging painting) {
         this.hanging = painting;
     }
 

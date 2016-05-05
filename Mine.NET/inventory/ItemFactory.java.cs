@@ -23,7 +23,7 @@ public interface ItemFactory {
      * @return a new ItemMeta that could be applied to an item stack of the
      *     specified material
      */
-    ItemMeta getItemMeta(final Material material);
+    ItemMeta getItemMeta(Material material);
 
     /**
      * This method checks the item meta to confirm that it is applicable (no
@@ -39,7 +39,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the meta was not created by this
      *     factory
      */
-    boolean isApplicable(final ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
+    boolean isApplicable(ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
 
     /**
      * This method checks the item meta to confirm that it is applicable (no
@@ -55,7 +55,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the meta was not created by this
      *     factory
      */
-    boolean isApplicable(final ItemMeta meta, final Material material) throws IllegalArgumentException;
+    boolean isApplicable(ItemMeta meta, final Material material) throws IllegalArgumentException;
 
     /**
      * This method is used to compare two item meta data objects.
@@ -68,7 +68,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if either meta was not created by this
      *     factory
      */
-    boolean equals(final ItemMeta meta1, final ItemMeta meta2) throws IllegalArgumentException;
+    boolean equals(ItemMeta meta1, final ItemMeta meta2) throws IllegalArgumentException;
 
     /**
      * Returns an appropriate item meta for the specified stack.
@@ -91,7 +91,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(final ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
 
     /**
      * Returns an appropriate item meta for the specified material.
@@ -113,7 +113,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(final ItemMeta meta, final Material material) throws IllegalArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, final Material material) throws IllegalArgumentException;
 
     /**
      * Returns the default color for all leather armor.

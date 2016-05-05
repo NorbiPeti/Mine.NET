@@ -11,11 +11,11 @@ public class PlayerTeleportEvent extends PlayerMoveEvent {
     private static final HandlerList handlers = new HandlerList();
     private TeleportCause cause = TeleportCause.UNKNOWN;
 
-    public PlayerTeleportEvent(final Player player, final Location from, final Location to) {
+    public PlayerTeleportEvent(Player player, final Location from, final Location to) {
         super(player, from, to);
     }
 
-    public PlayerTeleportEvent(final Player player, final Location from, final Location to, final TeleportCause cause) {
+    public PlayerTeleportEvent(Player player, final Location from, final Location to, final TeleportCause cause) {
         this(player, from, to);
 
         this.cause = cause;

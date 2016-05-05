@@ -9,7 +9,7 @@ import org.bukkit.event.Event;
 public abstract class BlockEvent extends Event {
     protected Block block;
 
-    public BlockEvent(final Block theBlock) {
+    public BlockEvent(Block theBlock) {
         block = theBlock;
     }
 

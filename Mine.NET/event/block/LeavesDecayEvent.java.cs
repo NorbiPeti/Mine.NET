@@ -13,7 +13,7 @@ public class LeavesDecayEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
 
-    public LeavesDecayEvent(final Block block) {
+    public LeavesDecayEvent(Block block) {
         super(block);
     }
 

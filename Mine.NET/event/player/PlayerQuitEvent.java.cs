@@ -10,7 +10,7 @@ public class PlayerQuitEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private String quitMessage;
 
-    public PlayerQuitEvent(final Player who, final String quitMessage) {
+    public PlayerQuitEvent(Player who, final String quitMessage) {
         super(who);
         this.quitMessage = quitMessage;
     }

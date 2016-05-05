@@ -27,11 +27,11 @@ public class SmoothBrick extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(final int type) {
+    public SmoothBrick(int type) {
         super(type);
     }
 
-    public SmoothBrick(final Material type) {
+    public SmoothBrick(Material type) {
         super((textures.contains(type)) ? Material.SMOOTH_BRICK : type);
         if (textures.contains(type)) {
             setMaterial(type);
@@ -44,7 +44,7 @@ public class SmoothBrick extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(final int type, final byte data) {
+    public SmoothBrick(int type, final byte data) {
         super(type, data);
     }
 
@@ -54,7 +54,7 @@ public class SmoothBrick extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(final Material type, final byte data) {
+    public SmoothBrick(Material type, final byte data) {
         super(type, data);
     }
 

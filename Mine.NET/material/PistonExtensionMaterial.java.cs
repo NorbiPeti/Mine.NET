@@ -12,11 +12,11 @@ public class PistonExtensionMaterial extends MaterialData implements Attachable 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(final int type) {
+    public PistonExtensionMaterial(int type) {
         super(type);
     }
 
-    public PistonExtensionMaterial(final Material type) {
+    public PistonExtensionMaterial(Material type) {
         super(type);
     }
 
@@ -26,7 +26,7 @@ public class PistonExtensionMaterial extends MaterialData implements Attachable 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(final int type, final byte data) {
+    public PistonExtensionMaterial(int type, final byte data) {
         super(type, data);
     }
 
@@ -36,7 +36,7 @@ public class PistonExtensionMaterial extends MaterialData implements Attachable 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(final Material type, final byte data) {
+    public PistonExtensionMaterial(Material type, final byte data) {
         super(type, data);
     }
 

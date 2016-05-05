@@ -17,13 +17,13 @@ public class BlockPistonExtendEvent extends BlockPistonEvent {
     private List<Block> blocks;
 
     [Obsolete]
-    public BlockPistonExtendEvent(final Block block, final int length, final BlockFace direction) {
+    public BlockPistonExtendEvent(Block block, final int length, final BlockFace direction) {
         super(block, direction);
 
         this.length = length;
     }
 
-    public BlockPistonExtendEvent(final Block block, final List<Block> blocks, final BlockFace direction) {
+    public BlockPistonExtendEvent(Block block, final List<Block> blocks, final BlockFace direction) {
         super(block, direction);
 
         this.length = blocks.size();

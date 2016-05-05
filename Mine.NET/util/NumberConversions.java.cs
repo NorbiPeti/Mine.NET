@@ -3,7 +3,7 @@ package org.bukkit.util;
 /**
  * Utils for casting number types to other number types
  */
-public final class NumberConversions {
+public sealed class NumberConversions {
     private NumberConversions() {}
 
     public static int floor(double num) {
@@ -11,7 +11,7 @@ public final class NumberConversions {
         return floor == num ? floor : floor - (int) (Double.doubleToRawLongBits(num) >>> 63);
     }
 
-    public static int ceil(final double num) {
+    public static int ceil(double num) {
         final int floor = (int) num;
         return floor == num ? floor : floor + (int) (~Double.doubleToRawLongBits(num) >>> 63);
     }

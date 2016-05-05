@@ -9,7 +9,7 @@ import org.bukkit.event.Event;
 public abstract class VehicleEvent extends Event {
     protected Vehicle vehicle;
 
-    public VehicleEvent(final Vehicle vehicle) {
+    public VehicleEvent(Vehicle vehicle) {
         this.vehicle = vehicle;
     }
 

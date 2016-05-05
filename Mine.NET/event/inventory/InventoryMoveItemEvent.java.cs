@@ -31,7 +31,7 @@ public class InventoryMoveItemEvent extends Event implements Cancellable {
     private ItemStack itemStack;
     private final boolean didSourceInitiate;
 
-    public InventoryMoveItemEvent(final Inventory sourceInventory, final ItemStack itemStack, final Inventory destinationInventory, final boolean didSourceInitiate) {
+    public InventoryMoveItemEvent(Inventory sourceInventory, final ItemStack itemStack, final Inventory destinationInventory, final boolean didSourceInitiate) {
         Validate.notNull(itemStack, "ItemStack cannot be null");
         this.sourceInventory = sourceInventory;
         this.itemStack = itemStack;

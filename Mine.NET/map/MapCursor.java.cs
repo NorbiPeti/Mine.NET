@@ -3,7 +3,7 @@ package org.bukkit.map;
 /**
  * Represents a cursor on a map.
  */
-public final class MapCursor {
+public sealed class MapCursor {
     private byte x, y;
     private byte direction, type;
     private boolean visible;

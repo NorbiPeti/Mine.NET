@@ -13,7 +13,7 @@ public class EntityTameEvent extends EntityEvent implements Cancellable {
     private boolean cancelled;
     private final AnimalTamer owner;
 
-    public EntityTameEvent(final LivingEntity entity, final AnimalTamer owner) {
+    public EntityTameEvent(LivingEntity entity, final AnimalTamer owner) {
         super(entity);
         this.owner = owner;
     }

@@ -12,7 +12,7 @@ public class HangingBreakEvent extends HangingEvent implements Cancellable {
     private boolean cancelled;
     private final HangingBreakEvent.RemoveCause cause;
 
-    public HangingBreakEvent(final Hanging hanging, final HangingBreakEvent.RemoveCause cause) {
+    public HangingBreakEvent(Hanging hanging, final HangingBreakEvent.RemoveCause cause) {
         super(hanging);
         this.cause = cause;
     }

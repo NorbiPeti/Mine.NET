@@ -13,7 +13,7 @@ public class BlockPistonRetractEvent extends BlockPistonEvent {
     private static final HandlerList handlers = new HandlerList();
     private List<Block> blocks;
     
-    public BlockPistonRetractEvent(final Block block, final List<Block> blocks, final BlockFace direction) {
+    public BlockPistonRetractEvent(Block block, final List<Block> blocks, final BlockFace direction) {
         super(block, direction);
         
         this.blocks = blocks;

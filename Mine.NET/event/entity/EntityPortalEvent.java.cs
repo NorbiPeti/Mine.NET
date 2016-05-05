@@ -16,7 +16,7 @@ public class EntityPortalEvent extends EntityTeleportEvent {
     protected boolean useTravelAgent = true;
     protected TravelAgent travelAgent;
 
-    public EntityPortalEvent(final Entity entity, final Location from, final Location to, final TravelAgent pta) {
+    public EntityPortalEvent(Entity entity, final Location from, final Location to, final TravelAgent pta) {
         super(entity, from, to);
         this.travelAgent = pta;
     }

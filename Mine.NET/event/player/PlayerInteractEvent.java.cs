@@ -26,11 +26,11 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
     private Result useItemInHand;
     private EquipmentSlot hand;
 
-    public PlayerInteractEvent(final Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace) {
+    public PlayerInteractEvent(Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace) {
         this(who, action, item, clickedBlock, clickedFace, EquipmentSlot.HAND);
     }
 
-    public PlayerInteractEvent(final Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace, final EquipmentSlot hand) {
+    public PlayerInteractEvent(Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace, final EquipmentSlot hand) {
         super(who);
         this.action = action;
         this.item = item;

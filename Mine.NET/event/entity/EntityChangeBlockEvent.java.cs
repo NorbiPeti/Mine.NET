@@ -26,7 +26,7 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
      *     was provided, and type increased to all entities
      */
     [Obsolete]
-    public EntityChangeBlockEvent(final LivingEntity what, final Block block, final Material to) {
+    public EntityChangeBlockEvent(LivingEntity what, final Block block, final Material to) {
         this (what, block, to, (byte) 0);
     }
 
@@ -39,7 +39,7 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EntityChangeBlockEvent(final Entity what, final Block block, final Material to, final byte data) {
+    public EntityChangeBlockEvent(Entity what, final Block block, final Material to, final byte data) {
         super(what);
         this.block = block;
         this.cancel = false;

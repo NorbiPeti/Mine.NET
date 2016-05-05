@@ -16,11 +16,11 @@ public class Ladder extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(final int type) {
+    public Ladder(int type) {
         super(type);
     }
 
-    public Ladder(final Material type) {
+    public Ladder(Material type) {
         super(type);
     }
 
@@ -30,7 +30,7 @@ public class Ladder extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(final int type, final byte data) {
+    public Ladder(int type, final byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Ladder extends SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(final Material type, final byte data) {
+    public Ladder(Material type, final byte data) {
         super(type, data);
     }
 

@@ -12,7 +12,7 @@ public class FireworkExplodeEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel;
 
-    public FireworkExplodeEvent(final Firework what) {
+    public FireworkExplodeEvent(Firework what) {
         super(what);
     }
 

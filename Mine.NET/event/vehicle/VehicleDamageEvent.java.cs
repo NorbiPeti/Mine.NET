@@ -16,11 +16,11 @@ public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
     private boolean cancelled;
 
     [Obsolete]
-    public VehicleDamageEvent(final Vehicle vehicle, final Entity attacker, final int damage) {
+    public VehicleDamageEvent(Vehicle vehicle, final Entity attacker, final int damage) {
         this(vehicle, attacker, (double) damage);
     }
 
-    public VehicleDamageEvent(final Vehicle vehicle, final Entity attacker, final double damage) {
+    public VehicleDamageEvent(Vehicle vehicle, final Entity attacker, final double damage) {
         super(vehicle);
         this.attacker = attacker;
         this.damage = damage;

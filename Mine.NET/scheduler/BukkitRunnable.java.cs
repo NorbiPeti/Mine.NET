@@ -142,7 +142,7 @@ public abstract class BukkitRunnable implements Runnable {
         }
     }
 
-    private BukkitTask setupId(final BukkitTask task) {
+    private BukkitTask setupId(BukkitTask task) {
         this.taskId = task.getTaskId();
         return task;
     }

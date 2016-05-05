@@ -15,11 +15,11 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(final int type) {
+    public PistonBaseMaterial(int type) {
         super(type);
     }
 
-    public PistonBaseMaterial(final Material type) {
+    public PistonBaseMaterial(Material type) {
         super(type);
     }
 
@@ -31,7 +31,7 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(final int type, final byte data) {
+    public PistonBaseMaterial(int type, final byte data) {
         super(type, data);
     }
 
@@ -43,7 +43,7 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(final Material type, final byte data) {
+    public PistonBaseMaterial(Material type, final byte data) {
         super(type, data);
     }
 

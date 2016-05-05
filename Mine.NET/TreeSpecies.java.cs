@@ -38,7 +38,7 @@ public enum TreeSpecies {
     private final byte data;
     private final static Map<Byte, TreeSpecies> BY_DATA = Maps.newHashMap();
 
-    private TreeSpecies(final int data) {
+    private TreeSpecies(int data) {
         this.data = (byte) data;
     }
 
@@ -62,7 +62,7 @@ public enum TreeSpecies {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static TreeSpecies getByData(final byte data) {
+    public static TreeSpecies getByData(byte data) {
         return BY_DATA.get(data);
     }
 

@@ -24,7 +24,7 @@ public class BlockSpreadEvent extends BlockFormEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Block source;
 
-    public BlockSpreadEvent(final Block block, final Block source, final BlockState newState) {
+    public BlockSpreadEvent(Block block, final Block source, final BlockState newState) {
         super(block, newState);
         this.source = source;
     }

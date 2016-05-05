@@ -42,7 +42,7 @@ public class Sapling extends Wood {
      *
      * @param type the type of tree block
      */
-    public Sapling(final Material type) {
+    public Sapling(Material type) {
         this(type, DEFAULT_SPECIES, false);
     }
 
@@ -52,7 +52,7 @@ public class Sapling extends Wood {
      * @param type the type of sapling
      * @param species the species of the sapling
      */
-    public Sapling(final Material type, TreeSpecies species) {
+    public Sapling(Material type, TreeSpecies species) {
         this(type, species, false);
     }
 
@@ -65,7 +65,7 @@ public class Sapling extends Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked
      * with bonemeal
      */
-    public Sapling(final Material type, TreeSpecies species, boolean isInstantGrowable) {
+    public Sapling(Material type, TreeSpecies species, boolean isInstantGrowable) {
         super(type, species);
         setIsInstantGrowable(isInstantGrowable);
     }
@@ -76,7 +76,7 @@ public class Sapling extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(final int type, final byte data) {
+    public Sapling(int type, final byte data) {
         super(type, data);
     }
 
@@ -86,7 +86,7 @@ public class Sapling extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(final Material type, final byte data) {
+    public Sapling(Material type, final byte data) {
         super(type, data);
     }
 

@@ -10,7 +10,7 @@ public class MapInitializeEvent extends ServerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final MapView mapView;
 
-    public MapInitializeEvent(final MapView mapView) {
+    public MapInitializeEvent(MapView mapView) {
         this.mapView = mapView;
     }
 

@@ -16,12 +16,12 @@ public class CreeperPowerEvent extends EntityEvent implements Cancellable {
     private final PowerCause cause;
     private LightningStrike bolt;
 
-    public CreeperPowerEvent(final Creeper creeper, final LightningStrike bolt, final PowerCause cause) {
+    public CreeperPowerEvent(Creeper creeper, final LightningStrike bolt, final PowerCause cause) {
         this(creeper, cause);
         this.bolt = bolt;
     }
 
-    public CreeperPowerEvent(final Creeper creeper, final PowerCause cause) {
+    public CreeperPowerEvent(Creeper creeper, final PowerCause cause) {
         super(creeper);
         this.cause = cause;
     }

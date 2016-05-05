@@ -12,7 +12,7 @@ public class ThunderChangeEvent extends WeatherEvent implements Cancellable {
     private boolean canceled;
     private final boolean to;
 
-    public ThunderChangeEvent(final World world, final boolean to) {
+    public ThunderChangeEvent(World world, final boolean to) {
         super(world);
         this.to = to;
     }

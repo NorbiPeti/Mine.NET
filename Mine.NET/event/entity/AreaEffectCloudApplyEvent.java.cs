@@ -20,7 +20,7 @@ public class AreaEffectCloudApplyEvent extends EntityEvent {
     private static final HandlerList handlers = new HandlerList();
     private final List<LivingEntity> affectedEntities;
 
-    public AreaEffectCloudApplyEvent(final AreaEffectCloud entity, final List<LivingEntity> affectedEntities) {
+    public AreaEffectCloudApplyEvent(AreaEffectCloud entity, final List<LivingEntity> affectedEntities) {
         super(entity);
         this.affectedEntities = affectedEntities;
     }

@@ -11,7 +11,7 @@ public class PlayerBedLeaveEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Block bed;
 
-    public PlayerBedLeaveEvent(final Player who, final Block bed) {
+    public PlayerBedLeaveEvent(Player who, final Block bed) {
         super(who);
         this.bed = bed;
     }

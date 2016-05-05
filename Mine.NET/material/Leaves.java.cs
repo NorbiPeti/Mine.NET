@@ -46,7 +46,7 @@ public class Leaves extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(final int type) {
+    public Leaves(int type) {
         super(type);
     }
 
@@ -55,7 +55,7 @@ public class Leaves extends Wood {
      *
      * @param type the type of leaf block
      */
-    public Leaves(final Material type) {
+    public Leaves(Material type) {
         this(type, DEFAULT_SPECIES, DEFAULT_DECAYABLE);
     }
 
@@ -65,7 +65,7 @@ public class Leaves extends Wood {
      * @param type the type of leaf block
      * @param species the species of the wood block
      */
-    public Leaves(final Material type, TreeSpecies species) {
+    public Leaves(Material type, TreeSpecies species) {
         this(type, species, DEFAULT_DECAYABLE);
     }
 
@@ -77,7 +77,7 @@ public class Leaves extends Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(final Material type, TreeSpecies species, boolean isDecayable) {
+    public Leaves(Material type, TreeSpecies species, boolean isDecayable) {
         super(type, species);
         setDecayable(isDecayable);
     }
@@ -88,7 +88,7 @@ public class Leaves extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(final int type, final byte data) {
+    public Leaves(int type, final byte data) {
         super(type, data);
     }
 
@@ -98,7 +98,7 @@ public class Leaves extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(final Material type, final byte data) {
+    public Leaves(Material type, final byte data) {
         super(type, data);
     }
 

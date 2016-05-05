@@ -35,7 +35,7 @@ public class WoodenStep extends Wood {
      * @param species the species of the wooden step
      * @param inv true the step is at the top of the block
      */
-    public WoodenStep(final TreeSpecies species, boolean inv) {
+    public WoodenStep(TreeSpecies species, boolean inv) {
         super(DEFAULT_TYPE, species);
         setInverted(inv);
     }
@@ -45,7 +45,7 @@ public class WoodenStep extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(final int type) {
+    public WoodenStep(int type) {
         super(type);
     }
 
@@ -55,7 +55,7 @@ public class WoodenStep extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(final int type, final byte data) {
+    public WoodenStep(int type, final byte data) {
         super(type, data);
     }
 
@@ -65,7 +65,7 @@ public class WoodenStep extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(final Material type, final byte data) {
+    public WoodenStep(Material type, final byte data) {
         super(type, data);
     }
 

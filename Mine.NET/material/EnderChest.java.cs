@@ -27,11 +27,11 @@ public class EnderChest extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(final int type) {
+    public EnderChest(int type) {
         super(type);
     }
 
-    public EnderChest(final Material type) {
+    public EnderChest(Material type) {
         super(type);
     }
 
@@ -41,7 +41,7 @@ public class EnderChest extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(final int type, final byte data) {
+    public EnderChest(int type, final byte data) {
         super(type, data);
     }
 
@@ -51,7 +51,7 @@ public class EnderChest extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(final Material type, final byte data) {
+    public EnderChest(Material type, final byte data) {
         super(type, data);
     }
 

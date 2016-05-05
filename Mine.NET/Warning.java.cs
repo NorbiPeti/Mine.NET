@@ -80,7 +80,7 @@ public @interface Warning {
          * @return {@link #DEFAULT} if not found, or the respective
          *     WarningState
          */
-        public static WarningState value(final String value) {
+        public static WarningState value(String value) {
             if (value == null) {
                 return DEFAULT;
             }

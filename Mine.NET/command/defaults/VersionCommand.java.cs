@@ -101,7 +101,7 @@ public class VersionCommand extends BukkitCommand {
         }
     }
 
-    private String getAuthors(final PluginDescriptionFile desc) {
+    private String getAuthors(PluginDescriptionFile desc) {
         StringBuilder result = new StringBuilder();
         List<String> authors = desc.getAuthors();
 

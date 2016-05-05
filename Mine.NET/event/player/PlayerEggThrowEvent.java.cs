@@ -15,7 +15,7 @@ public class PlayerEggThrowEvent extends PlayerEvent {
     private EntityType hatchType;
     private byte numHatches;
 
-    public PlayerEggThrowEvent(final Player player, final Egg egg, final boolean hatching, final byte numHatches, final EntityType hatchingType) {
+    public PlayerEggThrowEvent(Player player, final Egg egg, final boolean hatching, final byte numHatches, final EntityType hatchingType) {
         super(player);
         this.egg = egg;
         this.hatching = hatching;

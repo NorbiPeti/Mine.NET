@@ -11,7 +11,7 @@ public class EntityPortalEnterEvent extends EntityEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Location location;
 
-    public EntityPortalEnterEvent(final Entity entity, final Location location) {
+    public EntityPortalEnterEvent(Entity entity, final Location location) {
         super(entity);
         this.location = location;
     }

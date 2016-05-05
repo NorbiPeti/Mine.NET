@@ -44,7 +44,7 @@ import org.yaml.snakeyaml.error.YAMLException;
 /**
  * Represents a Java plugin loader, allowing plugins in the form of .jar
  */
-public final class JavaPluginLoader implements PluginLoader {
+public sealed class JavaPluginLoader implements PluginLoader {
     final Server server;
     private final Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
     private final Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
@@ -61,7 +61,7 @@ public final class JavaPluginLoader implements PluginLoader {
         server = instance;
     }
 
-    public Plugin loadPlugin(final File file) throws InvalidPluginException {
+    public Plugin loadPlugin(File file) throws InvalidPluginException {
         Validate.notNull(file, "File cannot be null");
 
         if (!file.exists()) {
@@ -113,7 +113,7 @@ public final class JavaPluginLoader implements PluginLoader {
             ));
         }
 
-        for (final String pluginName : description.getDepend()) {
+        for (String pluginName : description.getDepend()) {
             if (loaders == null) {
                 throw new UnknownDependencyException(pluginName);
             }
@@ -180,7 +180,7 @@ public final class JavaPluginLoader implements PluginLoader {
         return fileFilters.clone();
     }
 
-    Class<?> getClassByName(final String name) {
+    Class<?> getClassByName(String name) {
         Class<?> cachedClass = classes.get(name);
 
         if (cachedClass != null) {
@@ -200,7 +200,7 @@ public final class JavaPluginLoader implements PluginLoader {
         return null;
     }
 
-    void setClass(final String name, final Class<?> clazz) {
+    void setClass(String name, sealed class<?> clazz) {
         if (!classes.containsKey(name)) {
             classes.put(name, clazz);
 
@@ -247,7 +247,7 @@ public final class JavaPluginLoader implements PluginLoader {
             return ret;
         }
 
-        for (final Method method : methods) {
+        for (Method method : methods) {
             final EventHandler eh = method.getAnnotation(EventHandler.class);
             if (eh == null) continue;
             // Do not register bridge or synthetic methods to avoid event duplication
@@ -255,12 +255,12 @@ public final class JavaPluginLoader implements PluginLoader {
             if (method.isBridge() || method.isSynthetic()) {
                 continue;
             }
-            final Class<?> checkClass;
+            sealed class<?> checkClass;
             if (method.getParameterTypes().length != 1 || !Event.class.isAssignableFrom(checkClass = method.getParameterTypes()[0])) {
                 plugin.getLogger().severe(plugin.getDescription().getFullName() + " attempted to register an invalid EventHandler method signature \"" + method.toGenericString() + "\" in " + listener.getClass());
                 continue;
             }
-            final Class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
+            sealed class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
             method.setAccessible(true);
             Set<RegisteredListener> eventSet = ret.get(eventClass);
             if (eventSet == null) {
@@ -314,7 +314,7 @@ public final class JavaPluginLoader implements PluginLoader {
         return ret;
     }
 
-    public void enablePlugin(final Plugin plugin) {
+    public void enablePlugin(Plugin plugin) {
         Validate.isTrue(plugin instanceof JavaPlugin, "Plugin is not associated with this PluginLoader");
 
         if (!plugin.isEnabled()) {

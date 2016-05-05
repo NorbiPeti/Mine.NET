@@ -12,7 +12,7 @@ public class HorseJumpEvent extends EntityEvent implements Cancellable {
     private boolean cancelled;
     private float power;
 
-    public HorseJumpEvent(final Horse horse, final float power) {
+    public HorseJumpEvent(Horse horse, final float power) {
         super(horse);
         this.power = power;
     }

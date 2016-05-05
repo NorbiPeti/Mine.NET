@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
 public class RemoteServerCommandEvent extends ServerCommandEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public RemoteServerCommandEvent(final CommandSender sender, final String command) {
+    public RemoteServerCommandEvent(CommandSender sender, final String command) {
         super(sender, command);
     }
 

@@ -11,7 +11,7 @@ public class SheepRegrowWoolEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel;
 
-    public SheepRegrowWoolEvent(final Sheep sheep) {
+    public SheepRegrowWoolEvent(Sheep sheep) {
         super(sheep);
         this.cancel = false;
     }

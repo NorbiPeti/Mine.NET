@@ -22,7 +22,7 @@ public class StringUtil {
      * @throws IllegalArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static <T extends Collection<? super String>> T copyPartialMatches(final String token, final Iterable<String> originals, final T collection) throws UnsupportedOperationException, IllegalArgumentException {
+    public static <T extends Collection<? super String>> T copyPartialMatches(String token, final Iterable<String> originals, final T collection) throws UnsupportedOperationException, IllegalArgumentException {
         Validate.notNull(token, "Search token cannot be null");
         Validate.notNull(collection, "Collection cannot be null");
         Validate.notNull(originals, "Originals cannot be null");
@@ -48,7 +48,7 @@ public class StringUtil {
      * @throws NullPointerException if prefix is null
      * @throws IllegalArgumentException if string is null
      */
-    public static boolean startsWithIgnoreCase(final String string, final String prefix) throws IllegalArgumentException, NullPointerException {
+    public static boolean startsWithIgnoreCase(String string, final String prefix) throws IllegalArgumentException, NullPointerException {
         Validate.notNull(string, "Cannot check a null string for a match");
         if (string.length() < prefix.length()) {
             return false;

@@ -17,7 +17,7 @@ public class PortalCreateEvent extends WorldEvent implements Cancellable {
     private final ArrayList<Block> blocks = new ArrayList<Block>();
     private CreateReason reason = CreateReason.FIRE;
 
-    public PortalCreateEvent(final Collection<Block> blocks, final World world, CreateReason reason) {
+    public PortalCreateEvent(Collection<Block> blocks, final World world, CreateReason reason) {
         super(world);
 
         this.blocks.addAll(blocks);

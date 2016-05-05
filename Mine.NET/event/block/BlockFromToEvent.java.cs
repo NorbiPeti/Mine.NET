@@ -18,13 +18,13 @@ public class BlockFromToEvent extends BlockEvent implements Cancellable {
     protected BlockFace face;
     protected boolean cancel;
 
-    public BlockFromToEvent(final Block block, final BlockFace face) {
+    public BlockFromToEvent(Block block, final BlockFace face) {
         super(block);
         this.face = face;
         this.cancel = false;
     }
 
-    public BlockFromToEvent(final Block block, final Block toBlock) {
+    public BlockFromToEvent(Block block, final Block toBlock) {
         super(block);
         this.to = toBlock;
         this.face = BlockFace.SELF;

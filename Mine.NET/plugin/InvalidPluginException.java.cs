@@ -11,7 +11,7 @@ public class InvalidPluginException extends Exception {
      *
      * @param cause Exception that triggered this Exception
      */
-    public InvalidPluginException(final Throwable cause) {
+    public InvalidPluginException(Throwable cause) {
         super(cause);
     }
 
@@ -32,7 +32,7 @@ public class InvalidPluginException extends Exception {
      *     getCause() method). (A null value is permitted, and indicates that
      *     the cause is nonexistent or unknown.)
      */
-    public InvalidPluginException(final String message, final Throwable cause) {
+    public InvalidPluginException(String message, final Throwable cause) {
         super(message, cause);
     }
 
@@ -43,7 +43,7 @@ public class InvalidPluginException extends Exception {
      * @param message TThe detail message is saved for later retrieval by the
      *     getMessage() method.
      */
-    public InvalidPluginException(final String message) {
+    public InvalidPluginException(String message) {
         super(message);
     }
 }

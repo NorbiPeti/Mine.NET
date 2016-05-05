@@ -8,7 +8,7 @@ import org.bukkit.entity.LivingEntity;
  * LivingEntity's.
  */
 public class EntityTargetLivingEntityEvent extends EntityTargetEvent{
-    public EntityTargetLivingEntityEvent(final Entity entity, final LivingEntity target, final TargetReason reason) {
+    public EntityTargetLivingEntityEvent(Entity entity, final LivingEntity target, final TargetReason reason) {
         super(entity, target, reason);
     }
 

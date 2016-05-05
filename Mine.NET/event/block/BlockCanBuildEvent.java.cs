@@ -34,7 +34,7 @@ public class BlockCanBuildEvent extends BlockEvent {
      * @param canBuild whether we can build 
      */
     [Obsolete]
-    public BlockCanBuildEvent(final Block block, final int id, final boolean canBuild) {
+    public BlockCanBuildEvent(Block block, final int id, final boolean canBuild) {
         super(block);
         buildable = canBuild;
         material = id;

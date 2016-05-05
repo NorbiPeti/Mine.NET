@@ -3,7 +3,7 @@ package org.bukkit.util.permissions;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
-public final class BroadcastPermissions {
+public sealed class BroadcastPermissions {
     private static final String ROOT = "bukkit.broadcast";
     private static final String PREFIX = ROOT + ".";
 

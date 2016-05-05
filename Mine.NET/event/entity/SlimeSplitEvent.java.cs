@@ -12,7 +12,7 @@ public class SlimeSplitEvent extends EntityEvent implements Cancellable {
     private boolean cancel = false;
     private int count;
 
-    public SlimeSplitEvent(final Slime slime, final int count) {
+    public SlimeSplitEvent(Slime slime, final int count) {
         super(slime);
         this.count = count;
     }

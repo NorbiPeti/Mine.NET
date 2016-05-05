@@ -21,11 +21,11 @@ public class Wool extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(final int type) {
+    public Wool(int type) {
         super(type);
     }
 
-    public Wool(final Material type) {
+    public Wool(Material type) {
         super(type);
     }
 
@@ -35,7 +35,7 @@ public class Wool extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(final int type, final byte data) {
+    public Wool(int type, final byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class Wool extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(final Material type, final byte data) {
+    public Wool(Material type, final byte data) {
         super(type, data);
     }
 

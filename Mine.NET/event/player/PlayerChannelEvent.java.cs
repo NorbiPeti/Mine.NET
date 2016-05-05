@@ -11,7 +11,7 @@ public abstract class PlayerChannelEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final String channel;
 
-    public PlayerChannelEvent(final Player player, final String channel) {
+    public PlayerChannelEvent(Player player, final String channel) {
         super(player);
         this.channel = channel;
     }

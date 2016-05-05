@@ -10,7 +10,7 @@ public class PlayerExpChangeEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private int exp;
 
-    public PlayerExpChangeEvent(final Player player, final int expAmount) {
+    public PlayerExpChangeEvent(Player player, final int expAmount) {
          super(player);
          exp = expAmount;
     }

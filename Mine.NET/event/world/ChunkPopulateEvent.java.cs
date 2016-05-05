@@ -13,7 +13,7 @@ import org.bukkit.generator.BlockPopulator;
 public class ChunkPopulateEvent extends ChunkEvent {
     private static final HandlerList handlers = new HandlerList();
 
-    public ChunkPopulateEvent(final Chunk chunk) {
+    public ChunkPopulateEvent(Chunk chunk) {
         super(chunk);
     }
 
