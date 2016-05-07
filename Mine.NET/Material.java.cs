@@ -1018,36 +1018,24 @@ public class Material
         Material result = null;
         int iresult = 0;
 
-        if (int.TryParse(name, out iresult)
+        if (int.TryParse(name, out iresult))
             result = getMaterial(iresult);
 
         if (result == null) {
             String filtered = name.ToUpper();
 
             filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
-            result = BY_NAME.get(filtered);
+            result = AllMaterials[Enum.Parse(typeof(Materials), (filtered))];
         }
 
         return result;
     }
 
-    static {
-        for (Material material : values()) {
-            if (byId.length > material.id) {
-                byId[material.id] = material;
-            } else {
-                byId = Java15Compat.Arrays_copyOfRange(byId, 0, material.id + 2);
-                byId[material.id] = material;
-            }
-            BY_NAME.put(material.name(), material);
-        }
-    }
-
     /**
      * @return True if this material represents a playable music disk.
      */
-    public boolean isRecord() {
-        return id >= GOLD_RECORD.id && id <= RECORD_12.id;
+    public bool isRecord() {
+        return id >= Materials.GOLD_RECORD.id && id <= Materials.RECORD_12.id;
     }
 
     /**
