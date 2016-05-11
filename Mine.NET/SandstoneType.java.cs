@@ -13,7 +13,7 @@ public enum SandstoneType {
     SMOOTH(0x2);
 
     private readonly byte data;
-    private readonly static Map<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
+    private readonly static Dictionary<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
 
     private SandstoneType(int data) {
         this.data = (byte) data;

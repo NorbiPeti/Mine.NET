@@ -12,9 +12,9 @@ public class PermissionAttachmentInfo {
 
     public PermissionAttachmentInfo(Permissible permissible, String permission, PermissionAttachment attachment, bool value) {
         if (permissible == null) {
-            throw new IllegalArgumentException("Permissible may not be null");
+            throw new ArgumentException("Permissible may not be null");
         } else if (permission == null) {
-            throw new IllegalArgumentException("Permissions may not be null");
+            throw new ArgumentException("Permissions may not be null");
         }
 
         this.permissible = permissible;

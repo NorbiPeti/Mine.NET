@@ -25,7 +25,7 @@ public interface Messenger {
      *
      * @param channel Channel name to check.
      * @return True if the channel is reserved, otherwise false.
-     * @throws IllegalArgumentException Thrown if channel is null.
+     * @throws ArgumentException Thrown if channel is null.
      */
     public bool isReservedChannel(String channel);
 
@@ -35,7 +35,7 @@ public interface Messenger {
      *
      * @param plugin Plugin that wishes to send messages through the channel.
      * @param channel Channel to register.
-     * @throws IllegalArgumentException Thrown if plugin or channel is null.
+     * @throws ArgumentException Thrown if plugin or channel is null.
      */
     public void registerOutgoingPluginChannel(Plugin plugin, String channel);
 
@@ -47,7 +47,7 @@ public interface Messenger {
      * @param plugin Plugin that no longer wishes to send messages through the
      *     channel.
      * @param channel Channel to unregister.
-     * @throws IllegalArgumentException Thrown if plugin or channel is null.
+     * @throws ArgumentException Thrown if plugin or channel is null.
      */
     public void unregisterOutgoingPluginChannel(Plugin plugin, String channel);
 
@@ -56,7 +56,7 @@ public interface Messenger {
      * longer allowing it to send any plugin messages.
      *
      * @param plugin Plugin that no longer wishes to send plugin messages.
-     * @throws IllegalArgumentException Thrown if plugin is null.
+     * @throws ArgumentException Thrown if plugin is null.
      */
     public void unregisterOutgoingPluginChannel(Plugin plugin);
 
@@ -69,7 +69,7 @@ public interface Messenger {
      * @param listener Listener to receive messages on.
      * @return The resulting registration that was made as a result of this
      *     method.
-     * @throws IllegalArgumentException Thrown if plugin, channel or listener
+     * @throws ArgumentException Thrown if plugin, channel or listener
      *     is null, or the listener is already registered for this channel.
      */
     public PluginMessageListenerRegistration registerIncomingPluginChannel(Plugin plugin, String channel, PluginMessageListener listener);
@@ -82,7 +82,7 @@ public interface Messenger {
      * @param plugin Plugin that wishes to unregister from this channel.
      * @param channel Channel to unregister.
      * @param listener Listener to stop receiving messages on.
-     * @throws IllegalArgumentException Thrown if plugin, channel or listener
+     * @throws ArgumentException Thrown if plugin, channel or listener
      *     is null.
      */
     public void unregisterIncomingPluginChannel(Plugin plugin, String channel, PluginMessageListener listener);
@@ -94,7 +94,7 @@ public interface Messenger {
      *
      * @param plugin Plugin that wishes to unregister from this channel.
      * @param channel Channel to unregister.
-     * @throws IllegalArgumentException Thrown if plugin or channel is null.
+     * @throws ArgumentException Thrown if plugin or channel is null.
      */
     public void unregisterIncomingPluginChannel(Plugin plugin, String channel);
 
@@ -103,7 +103,7 @@ public interface Messenger {
      * through all listeners.
      *
      * @param plugin Plugin that wishes to unregister from this channel.
-     * @throws IllegalArgumentException Thrown if plugin is null.
+     * @throws ArgumentException Thrown if plugin is null.
      */
     public void unregisterIncomingPluginChannel(Plugin plugin);
 
@@ -121,7 +121,7 @@ public interface Messenger {
      * @param plugin Plugin to retrieve channels for.
      * @return List of all registered outgoing plugin channels that a plugin
      *     is registered to.
-     * @throws IllegalArgumentException Thrown if plugin is null.
+     * @throws ArgumentException Thrown if plugin is null.
      */
     public Set<String> getOutgoingChannels(Plugin plugin);
 
@@ -139,7 +139,7 @@ public interface Messenger {
      * @param plugin Plugin to retrieve channels for.
      * @return List of all registered incoming plugin channels that the plugin
      *     is registered for.
-     * @throws IllegalArgumentException Thrown if plugin is null.
+     * @throws ArgumentException Thrown if plugin is null.
      */
     public Set<String> getIncomingChannels(Plugin plugin);
 
@@ -149,7 +149,7 @@ public interface Messenger {
      *
      * @param plugin Plugin to retrieve registrations for.
      * @return List of all registrations that the plugin has.
-     * @throws IllegalArgumentException Thrown if plugin is null.
+     * @throws ArgumentException Thrown if plugin is null.
      */
     public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin);
 
@@ -159,7 +159,7 @@ public interface Messenger {
      *
      * @param channel Channel to retrieve registrations for.
      * @return List of all registrations that are on the channel.
-     * @throws IllegalArgumentException Thrown if channel is null.
+     * @throws ArgumentException Thrown if channel is null.
      */
     public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel);
 
@@ -170,7 +170,7 @@ public interface Messenger {
      * @param plugin Plugin to retrieve registrations for.
      * @param channel Channel to filter registrations by.
      * @return List of all registrations that the plugin has.
-     * @throws IllegalArgumentException Thrown if plugin or channel is null.
+     * @throws ArgumentException Thrown if plugin or channel is null.
      */
     public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin, String channel);
 

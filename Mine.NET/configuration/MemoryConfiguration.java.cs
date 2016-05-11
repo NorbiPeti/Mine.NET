@@ -23,7 +23,7 @@ public class MemoryConfiguration extends MemorySection implements Configuration 
      * Configuration} as a source for all default values.
      *
      * @param defaults Default value provider
-     * @throws IllegalArgumentException Thrown if defaults is null
+     * @throws ArgumentException Thrown if defaults is null
      */
     public MemoryConfiguration(Configuration defaults) {
         this.defaults = defaults;

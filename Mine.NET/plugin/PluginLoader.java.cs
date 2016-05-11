@@ -53,7 +53,7 @@ public interface PluginLoader {
      * @param plugin The plugin to use when creating registered listeners
      * @return The registered listeners.
      */
-    public Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, Plugin plugin);
+    public Dictionary<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, Plugin plugin);
 
     /**
      * Enables the specified plugin

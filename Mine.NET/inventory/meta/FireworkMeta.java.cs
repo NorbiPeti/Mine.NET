@@ -14,30 +14,30 @@ public interface FireworkMeta extends ItemMeta {
      * Add another effect to this firework.
      *
      * @param effect The firework effect to add
-     * @throws IllegalArgumentException If effect is null
+     * @throws ArgumentException If effect is null
      */
-    void addEffect(FireworkEffect effect) throws IllegalArgumentException;
+    void addEffect(FireworkEffect effect) throws ArgumentException;
 
     /**
      * Add several effects to this firework.
      *
      * @param effects The firework effects to add
-     * @throws IllegalArgumentException If effects is null
-     * @throws IllegalArgumentException If any effect is null (may be thrown
+     * @throws ArgumentException If effects is null
+     * @throws ArgumentException If any effect is null (may be thrown
      *     after changes have occurred)
      */
-    void addEffects(FireworkEffect...effects) throws IllegalArgumentException;
+    void addEffects(FireworkEffect...effects) throws ArgumentException;
 
     /**
      * Add several firework effects to this firework.
      *
      * @param effects An iterable object whose iterator yields the desired
      *     firework effects
-     * @throws IllegalArgumentException If effects is null
-     * @throws IllegalArgumentException If any effect is null (may be thrown
+     * @throws ArgumentException If effects is null
+     * @throws ArgumentException If any effect is null (may be thrown
      *     after changes have occurred)
      */
-    void addEffects(Iterable<FireworkEffect> effects) throws IllegalArgumentException;
+    void addEffects(Iterable<FireworkEffect> effects) throws ArgumentException;
 
     /**
      * Get the effects in this firework.
@@ -86,9 +86,9 @@ public interface FireworkMeta extends ItemMeta {
      * a second of flight time.
      *
      * @param power the power of the firework, from 0-128
-     * @throws IllegalArgumentException if {@literal height<0 or height>128}
+     * @throws ArgumentException if {@literal height<0 or height>128}
      */
-    void setPower(int power) throws IllegalArgumentException;
+    void setPower(int power) throws ArgumentException;
 
     FireworkMeta clone();
 }

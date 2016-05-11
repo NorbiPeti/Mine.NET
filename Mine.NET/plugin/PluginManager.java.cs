@@ -18,10 +18,10 @@ public interface PluginManager {
      * Registers the specified plugin loader
      *
      * @param loader Class name of the PluginLoader to register
-     * @throws IllegalArgumentException Thrown when the given Class is not a
+     * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? extends PluginLoader> loader) throws IllegalArgumentException;
+    public void registerInterface(Class<? extends PluginLoader> loader) throws ArgumentException;
 
     /**
      * Checks if the given plugin is loaded and returns it when applicable
@@ -169,7 +169,7 @@ public interface PluginManager {
      * permission, an exception will be thrown.
      *
      * @param perm Permission to add
-     * @throws IllegalArgumentException Thrown when a permission with the same
+     * @throws ArgumentException Thrown when a permission with the same
      *     name already exists
      */
     public void addPermission(Permission perm);

@@ -14,7 +14,7 @@ public enum WorldType {
     AMPLIFIED("AMPLIFIED"),
     CUSTOMIZED("CUSTOMIZED");
 
-    private readonly static Map<String, WorldType> BY_NAME = Maps.newHashMap();
+    private readonly static Dictionary<String, WorldType> BY_NAME = Maps.newHashMap();
     private readonly String name;
 
     private WorldType(String name) {

@@ -39,15 +39,15 @@ import com.google.common.collect.ImmutableSet;
  */
 public sealed class SimplePluginManager implements PluginManager {
     private readonly Server server;
-    private readonly Map<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
+    private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
     private readonly List<Plugin> plugins = new ArrayList<Plugin>();
-    private readonly Map<String, Plugin> lookupNames = new HashMap<String, Plugin>();
+    private readonly Dictionary<String, Plugin> lookupNames = new HashMap<String, Plugin>();
     private static File updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
-    private readonly Map<String, Permission> permissions = new HashMap<String, Permission>();
-    private readonly Map<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
-    private readonly Map<String, Map<Permissible, bool>> permSubs = new HashMap<String, Map<Permissible, bool>>();
-    private readonly Map<bool, Map<Permissible, bool>> defSubs = new HashMap<bool, Map<Permissible, bool>>();
+    private readonly Dictionary<String, Permission> permissions = new HashMap<String, Permission>();
+    private readonly Dictionary<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
+    private readonly Dictionary<String, Dictionary<Permissible, bool>> permSubs = new HashMap<String, Dictionary<Permissible, bool>>();
+    private readonly Dictionary<bool, Dictionary<Permissible, bool>> defSubs = new HashMap<bool, Dictionary<Permissible, bool>>();
     private bool useTimings = false;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {
@@ -62,10 +62,10 @@ public sealed class SimplePluginManager implements PluginManager {
      * Registers the specified plugin loader
      *
      * @param loader Class name of the PluginLoader to register
-     * @throws IllegalArgumentException Thrown when the given Class is not a
+     * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? extends PluginLoader> loader) throws IllegalArgumentException {
+    public void registerInterface(Class<? extends PluginLoader> loader) throws ArgumentException {
         PluginLoader instance;
 
         if (PluginLoader.class.isAssignableFrom(loader)) {
@@ -77,12 +77,12 @@ public sealed class SimplePluginManager implements PluginManager {
             } catch (NoSuchMethodException ex) {
                 String className = loader.getName();
 
-                throw new IllegalArgumentException(String.format("Class %s does not have a public %s(Server) constructor", className, className), ex);
+                throw new ArgumentException(String.format("Class %s does not have a public %s(Server) constructor", className, className), ex);
             } catch (Exception ex) {
-                throw new IllegalArgumentException(String.format("Unexpected exception %s while attempting to construct a new instance of %s", ex.getClass().getName(), loader.getName()), ex);
+                throw new ArgumentException(String.format("Unexpected exception %s while attempting to construct a new instance of %s", ex.getClass().getName(), loader.getName()), ex);
             }
         } else {
-            throw new IllegalArgumentException(String.format("Class %s does not implement interface PluginLoader", loader.getName()));
+            throw new ArgumentException(String.format("Class %s does not implement interface PluginLoader", loader.getName()));
         }
 
         Pattern[] patterns = instance.getPluginFileFilters();
@@ -102,7 +102,7 @@ public sealed class SimplePluginManager implements PluginManager {
      */
     public Plugin[] loadPlugins(File directory) {
         Validate.notNull(directory, "Directory cannot be null");
-        Validate.isTrue(directory.isDirectory(), "Directory must be a directory");
+        if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
 
         List<Plugin> result = new ArrayList<Plugin>();
         Set<Pattern> filters = fileAssociations.keySet();
@@ -111,10 +111,10 @@ public sealed class SimplePluginManager implements PluginManager {
             updateDirectory = new File(directory, server.getUpdateFolder());
         }
 
-        Map<String, File> plugins = new HashMap<String, File>();
+        Dictionary<String, File> plugins = new HashMap<String, File>();
         Set<String> loadedPlugins = new HashSet<String>();
-        Map<String, Collection<String>> dependencies = new HashMap<String, Collection<String>>();
-        Map<String, Collection<String>> softDependencies = new HashMap<String, Collection<String>>();
+        Dictionary<String, Collection<String>> dependencies = new HashMap<String, Collection<String>>();
+        Dictionary<String, Collection<String>> softDependencies = new HashMap<String, Collection<String>>();
 
         // This is where it figures out all possible plugins
         for (File file : directory.listFiles()) {
@@ -595,7 +595,7 @@ public sealed class SimplePluginManager implements PluginManager {
         String name = perm.getName().toLowerCase();
 
         if (permissions.containsKey(name)) {
-            throw new IllegalArgumentException("The permission " + name + " is already defined!");
+            throw new ArgumentException("The permission " + name + " is already defined!");
         }
 
         permissions.put(name, perm);
@@ -644,7 +644,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public void subscribeToPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Map<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs.get(name);
 
         if (map == null) {
             map = new WeakHashMap<Permissible, bool>();
@@ -656,7 +656,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public void unsubscribeFromPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Map<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs.get(name);
 
         if (map != null) {
             map.remove(permissible);
@@ -669,7 +669,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public Set<Permissible> getPermissionSubscriptions(String permission) {
         String name = permission.toLowerCase();
-        Map<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs.get(name);
 
         if (map == null) {
             return ImmutableSet.of();
@@ -679,7 +679,7 @@ public sealed class SimplePluginManager implements PluginManager {
     }
 
     public void subscribeToDefaultPerms(bool op, Permissible permissible) {
-        Map<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs.get(op);
 
         if (map == null) {
             map = new WeakHashMap<Permissible, bool>();
@@ -690,7 +690,7 @@ public sealed class SimplePluginManager implements PluginManager {
     }
 
     public void unsubscribeFromDefaultPerms(bool op, Permissible permissible) {
-        Map<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs.get(op);
 
         if (map != null) {
             map.remove(permissible);
@@ -702,7 +702,7 @@ public sealed class SimplePluginManager implements PluginManager {
     }
 
     public Set<Permissible> getDefaultPermSubscriptions(bool op) {
-        Map<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs.get(op);
 
         if (map == null) {
             return ImmutableSet.of();

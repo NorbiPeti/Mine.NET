@@ -64,7 +64,7 @@ public class Conversation {
      * @param initialSessionData Any initial values to put in the conversation
      *     context sessionData map.
      */
-    public Conversation(Plugin plugin, Conversable forWhom, Prompt firstPrompt, Map<Object, Object> initialSessionData) {
+    public Conversation(Plugin plugin, Conversable forWhom, Prompt firstPrompt, Dictionary<Object, Object> initialSessionData) {
         this.firstPrompt = firstPrompt;
         this.context = new ConversationContext(plugin, forWhom, initialSessionData);
         this.modal = true;

@@ -45,7 +45,7 @@ public enum PatternType {
     MOJANG("moj");
 
     private readonly String identifier;
-    private static readonly Map<String, PatternType> byString = new HashMap<String, PatternType>();
+    private static readonly Dictionary<String, PatternType> byString = new HashMap<String, PatternType>();
 
     static {
         for (PatternType p : values()) {

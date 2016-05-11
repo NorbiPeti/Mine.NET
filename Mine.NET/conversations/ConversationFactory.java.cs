@@ -25,7 +25,7 @@ public class ConversationFactory {
     protected bool localEchoEnabled;
     protected ConversationPrefix prefix;
     protected Prompt firstPrompt;
-    protected Map<Object, Object> initialSessionData;
+    protected Dictionary<Object, Object> initialSessionData;
     protected String playerOnlyMessage;
     protected List<ConversationCanceller> cancellers;
     protected List<ConversationAbandonedListener> abandonedListeners;
@@ -192,7 +192,7 @@ public class ConversationFactory {
         }
 
         //Clone any initial session data
-        Map<Object, Object> copiedInitialSessionData = new HashMap<Object, Object>();
+        Dictionary<Object, Object> copiedInitialSessionData = new HashMap<Object, Object>();
         copiedInitialSessionData.putAll(initialSessionData);
 
         //Build and return a conversation

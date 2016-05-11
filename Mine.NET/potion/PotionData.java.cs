@@ -20,9 +20,9 @@ public sealed class PotionData {
      */
     public PotionData(PotionType type, bool extended, bool upgraded) {
         Validate.notNull(type, "Potion Type must not be null");
-        Validate.isTrue(!upgraded || type.isUpgradeable(), "Potion Type is not upgradable");
-        Validate.isTrue(!extended || type.isExtendable(), "Potion Type is not extendable");
-        Validate.isTrue(!upgraded || !extended, "Potion cannot be both extended and upgraded");
+        if(!upgraded || type.isUpgradeable()) throw new ArgumentException("Potion Type is not upgradable");
+        if(!extended || type.isExtendable()) throw new ArgumentException("Potion Type is not extendable");
+        if(!upgraded || !extended) throw new ArgumentException("Potion cannot be both extended and upgraded");
         this.type = type;
         this.extended = extended;
         this.upgraded = upgraded;

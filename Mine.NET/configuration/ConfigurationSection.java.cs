@@ -43,7 +43,7 @@ public interface ConfigurationSection {
      *     list.
      * @return Map of keys and values of this section.
      */
-    public Map<String, Object> getValues(bool deep);
+    public Dictionary<String, Object> getValues(bool deep);
 
     /**
      * Checks if this {@link ConfigurationSection} contains the given path.
@@ -54,7 +54,7 @@ public interface ConfigurationSection {
      * @param path Path to check for existence.
      * @return True if this section contains the requested path, either via
      *     default or being set.
-     * @throws IllegalArgumentException Thrown when path is null.
+     * @throws ArgumentException Thrown when path is null.
      */
     public bool contains(String path);
 
@@ -68,7 +68,7 @@ public interface ConfigurationSection {
      * @param path Path to check for existence.
      * @return True if this section contains the requested path, regardless of
      *     having a default.
-     * @throws IllegalArgumentException Thrown when path is null.
+     * @throws ArgumentException Thrown when path is null.
      */
     public bool isSet(String path);
 
@@ -193,7 +193,7 @@ public interface ConfigurationSection {
      * @param map The values to used.
      * @return Newly created section
      */
-    public ConfigurationSection createSection(String path, Map<?, ?> map);
+    public ConfigurationSection createSection(String path, Dictionary<?, ?> map);
 
     // Primitives
     /**
@@ -803,7 +803,7 @@ public interface ConfigurationSection {
      *
      * @param path Path of the value to set.
      * @param value Value to set the default to.
-     * @throws IllegalArgumentException Thrown if path is null.
+     * @throws ArgumentException Thrown if path is null.
      */
     public void addDefault(String path, Object value);
 }

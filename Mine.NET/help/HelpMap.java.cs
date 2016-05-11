@@ -60,7 +60,7 @@ public interface HelpMap {
      *     or {@link org.bukkit.command.CommandExecutor}.
      * @param factory The {@link HelpTopicFactory} implementation to associate
      *     with the {@code commandClass}.
-     * @throws IllegalArgumentException Thrown if {@code commandClass} does
+     * @throws ArgumentException Thrown if {@code commandClass} does
      *     not derive from a legal base class.
      */
     public void registerHelpTopicFactory(Class<?> commandClass, HelpTopicFactory<?> factory);

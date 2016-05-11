@@ -91,7 +91,7 @@ public class EnchantCommand extends VanillaCommand {
                             }
                         }
 
-                        Map<Enchantment, Integer> enchantments = item.getEnchantments();
+                        Dictionary<Enchantment, Integer> enchantments = item.getEnchantments();
                         bool conflicts = false;
 
                         if (!force && !enchantments.isEmpty()) { // TODO: Improve this to use a "hasEnchantments" call
@@ -121,7 +121,7 @@ public class EnchantCommand extends VanillaCommand {
     }
 
      @Override
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(args, "Arguments cannot be null");
         Validate.notNull(alias, "Alias cannot be null");

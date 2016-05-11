@@ -30,7 +30,7 @@ public interface CraftingInventory extends Inventory {
      * Replace the contents of the crafting matrix
      *
      * @param contents The new contents.
-     * @throws IllegalArgumentException if the length of contents is greater
+     * @throws ArgumentException if the length of contents is greater
      *     than the size of the crafting matrix.
      */
     void setMatrix(ItemStack[] contents);

@@ -21,7 +21,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
     private int maxPlayers;
 
     public ServerListPingEvent(InetAddress address, readonly String motd, readonly int numPlayers, readonly int maxPlayers) {
-        Validate.isTrue(numPlayers >= 0, "Cannot have negative number of players online", numPlayers);
+        if(numPlayers >= 0, "Cannot have negative number of players online") throw new ArgumentException(numPlayers);
         this.address = address;
         this.motd = motd;
         this.numPlayers = numPlayers;
@@ -109,13 +109,13 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
      * Sets the server-icon sent to the client.
      *
      * @param icon the icon to send to the client
-     * @throws IllegalArgumentException if the {@link CachedServerIcon} is not
+     * @throws ArgumentException if the {@link CachedServerIcon} is not
      *     created by the caller of this event; null may be accepted for some
      *     implementations
      * @throws UnsupportedOperationException if the caller of this event does
      *     not support setting the server icon
      */
-    public void setServerIcon(CachedServerIcon icon) throws IllegalArgumentException, UnsupportedOperationException {
+    public void setServerIcon(CachedServerIcon icon) throws ArgumentException, UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
 

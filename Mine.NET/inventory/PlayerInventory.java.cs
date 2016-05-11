@@ -192,7 +192,7 @@ public interface PlayerInventory extends Inventory {
      * This validates whether the slot is between 0 and 8 inclusive.
      *
      * @param slot The new slot number
-     * @throws IllegalArgumentException Thrown if slot is not between 0 and 8
+     * @throws ArgumentException Thrown if slot is not between 0 and 8
      *     inclusive
      */
     public void setHeldItemSlot(int slot);

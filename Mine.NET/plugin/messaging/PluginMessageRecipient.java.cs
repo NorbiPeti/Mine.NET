@@ -18,9 +18,9 @@ public interface PluginMessageRecipient {
      * @param source The plugin that sent this message.
      * @param channel The channel to send this message on.
      * @param message The raw message to send.
-     * @throws IllegalArgumentException Thrown if the source plugin is
+     * @throws ArgumentException Thrown if the source plugin is
      *     disabled.
-     * @throws IllegalArgumentException Thrown if source, channel or message
+     * @throws ArgumentException Thrown if source, channel or message
      *     is null.
      * @throws MessageTooLargeException Thrown if the message is too big.
      * @throws ChannelNotRegisteredException Thrown if the channel is not

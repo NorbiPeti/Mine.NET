@@ -128,10 +128,10 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * Creates a new item stack derived from the specified stack
      *
      * @param stack the stack to copy
-     * @throws IllegalArgumentException if the specified stack is null or
+     * @throws ArgumentException if the specified stack is null or
      *     returns an item meta not created by the item factory
      */
-    public ItemStack(ItemStack stack) throws IllegalArgumentException {
+    public ItemStack(ItemStack stack) throws ArgumentException {
         Validate.notNull(stack, "Cannot copy null stack");
         this.type = stack.getTypeId();
         this.amount = stack.getAmount();
@@ -248,7 +248,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
             if ((data.getClass() == mat.getData()) || (data.getClass() == MaterialData.class)) {
                 this.data = data;
             } else {
-                throw new IllegalArgumentException("Provided data is not of type " + mat.getData().getName() + ", found " + data.getClass().getName());
+                throw new ArgumentException("Provided data is not of type " + mat.getData().getName() + ", found " + data.getClass().getName());
             }
         }
     }
@@ -395,7 +395,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      *
      * @return Map of enchantments.
      */
-    public Map<Enchantment, Integer> getEnchantments() {
+    public Dictionary<Enchantment, Integer> getEnchantments() {
         return meta == null ? ImmutableMap.<Enchantment, Integer>of() : meta.getEnchants();
     }
 
@@ -407,8 +407,8 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * element of the map.
      *
      * @param enchantments Enchantments to add
-     * @throws IllegalArgumentException if the specified enchantments is null
-     * @throws IllegalArgumentException if any specific enchantment or level
+     * @throws ArgumentException if the specified enchantments is null
+     * @throws ArgumentException if any specific enchantment or level
      *     is null. <b>Warning</b>: Some enchantments may be added before this
      *     exception is thrown.
      */
@@ -428,16 +428,16 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      *
      * @param ench Enchantment to add
      * @param level Level of the enchantment
-     * @throws IllegalArgumentException if enchantment null, or enchantment is
+     * @throws ArgumentException if enchantment null, or enchantment is
      *     not applicable
      */
     @Utility
     public void addEnchantment(Enchantment ench, int level) {
         Validate.notNull(ench, "Enchantment cannot be null");
         if ((level < ench.getStartLevel()) || (level > ench.getMaxLevel())) {
-            throw new IllegalArgumentException("Enchantment level is either too low or too high (given " + level + ", bounds are " + ench.getStartLevel() + " to " + ench.getMaxLevel() + ")");
+            throw new ArgumentException("Enchantment level is either too low or too high (given " + level + ", bounds are " + ench.getStartLevel() + " to " + ench.getMaxLevel() + ")");
         } else if (!ench.canEnchantItem(this)) {
-            throw new IllegalArgumentException("Specified enchantment cannot be applied to this itemstack");
+            throw new ArgumentException("Specified enchantment cannot be applied to this itemstack");
         }
 
         addUnsafeEnchantment(ench, level);
@@ -492,8 +492,8 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
     }
 
     @Utility
-    public Map<String, Object> serialize() {
-        Map<String, Object> result = new LinkedHashMap<String, Object>();
+    public Dictionary<String, Object> serialize() {
+        Dictionary<String, Object> result = new LinkedHashMap<String, Object>();
 
         result.put("type", getType().name());
 
@@ -539,7 +539,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
             Object raw = args.get("enchantments");
 
             if (raw instanceof Map) {
-                Map<?, ?> map = (Map<?, ?>) raw;
+                Dictionary<?, ?> map = (Map<?, ?>) raw;
 
                 for (Map.Entry<?, ?> entry : map.entrySet()) {
                     Enchantment enchantment = Enchantment.getByName(entry.getKey().toString());
@@ -583,7 +583,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param itemMeta new ItemMeta, or null to indicate meta data be cleared.
      * @return True if successfully applied ItemMeta, see {@link
      *     ItemFactory#isApplicable(ItemMeta, ItemStack)}
-     * @throws IllegalArgumentException if the item meta was not created by
+     * @throws ArgumentException if the item meta was not created by
      *     the {@link ItemFactory}
      */
     public bool setItemMeta(ItemMeta itemMeta) {

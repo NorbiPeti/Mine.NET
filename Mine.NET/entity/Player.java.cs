@@ -72,9 +72,9 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * the end to allow the addition of the two digits.
      *
      * @param name new player list name
-     * @throws IllegalArgumentException if the name is already used by someone
+     * @throws ArgumentException if the name is already used by someone
      *     else
-     * @throws IllegalArgumentException if the length of the name is too long
+     * @throws ArgumentException if the length of the name is too long
      */
     public void setPlayerListName(String name);
 
@@ -318,10 +318,10 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param loc the location of the sign
      * @param lines the new text on the sign or null to clear it
-     * @throws IllegalArgumentException if location is null
-     * @throws IllegalArgumentException if lines is non-null and has a length less than 4
+     * @throws ArgumentException if location is null
+     * @throws ArgumentException if lines is non-null and has a length less than 4
      */
-    public void sendSignChange(Location loc, String[] lines) throws IllegalArgumentException;
+    public void sendSignChange(Location loc, String[] lines) throws ArgumentException;
 
     /**
      * Render a map and send it to the player in its entirety. This may be
@@ -345,7 +345,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * player does not have.
      *
      * @param achievement Achievement to award
-     * @throws IllegalArgumentException if achievement is null
+     * @throws ArgumentException if achievement is null
      */
     public void awardAchievement(Achievement achievement);
 
@@ -354,7 +354,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * player has.
      *
      * @param achievement Achievement to remove
-     * @throws IllegalArgumentException if achievement is null
+     * @throws ArgumentException if achievement is null
      */
     public void removeAchievement(Achievement achievement);
 
@@ -363,7 +363,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param achievement the achievement to check
      * @return whether the player has the achievement
-     * @throws IllegalArgumentException if achievement is null
+     * @throws ArgumentException if achievement is null
      */
     public bool hasAchievement(Achievement achievement);
 
@@ -374,11 +374,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * <code>incrementStatistic(Statistic, 1)</code>
      *
      * @param statistic Statistic to increment
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void incrementStatistic(Statistic statistic) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player.
@@ -387,58 +387,58 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * <code>decrementStatistic(Statistic, 1)</code>
      *
      * @param statistic Statistic to decrement
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void decrementStatistic(Statistic statistic) throws IllegalArgumentException;
+    public void decrementStatistic(Statistic statistic) throws ArgumentException;
 
     /**
      * Increments the given statistic for this player.
      *
      * @param statistic Statistic to increment
      * @param amount Amount to increment this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void incrementStatistic(Statistic statistic, int amount) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic, int amount) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player.
      *
      * @param statistic Statistic to decrement
      * @param amount Amount to decrement this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void decrementStatistic(Statistic statistic, int amount) throws IllegalArgumentException;
+    public void decrementStatistic(Statistic statistic, int amount) throws ArgumentException;
 
     /**
      * Sets the given statistic for this player.
      *
      * @param statistic Statistic to set
      * @param newValue The value to set this statistic to
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if newValue is negative
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if newValue is negative
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void setStatistic(Statistic statistic, int newValue) throws IllegalArgumentException;
+    public void setStatistic(Statistic statistic, int newValue) throws ArgumentException;
 
     /**
      * Gets the value of the given statistic for this player.
      *
      * @param statistic Statistic to check
      * @return the value of the given statistic
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if the statistic requires an
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public int getStatistic(Statistic statistic) throws IllegalArgumentException;
+    public int getStatistic(Statistic statistic) throws ArgumentException;
 
     /**
      * Increments the given statistic for this player for the given material.
@@ -448,12 +448,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param statistic Statistic to increment
      * @param material Material to offset the statistic with
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic, Material material) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player for the given material.
@@ -463,12 +463,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param statistic Statistic to decrement
      * @param material Material to offset the statistic with
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, Material material) throws IllegalArgumentException;
+    public void decrementStatistic(Statistic statistic, Material material) throws ArgumentException;
 
     /**
      * Gets the value of the given statistic for this player.
@@ -476,12 +476,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to check
      * @param material Material offset of the statistic
      * @return the value of the given statistic
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public int getStatistic(Statistic statistic, Material material) throws IllegalArgumentException;
+    public int getStatistic(Statistic statistic, Material material) throws ArgumentException;
 
     /**
      * Increments the given statistic for this player for the given material.
@@ -489,13 +489,13 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to increment
      * @param material Material to offset the statistic with
      * @param amount Amount to increment this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, Material material, int amount) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic, Material material, int amount) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player for the given material.
@@ -503,13 +503,13 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to decrement
      * @param material Material to offset the statistic with
      * @param amount Amount to decrement this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, Material material, int amount) throws IllegalArgumentException;
+    public void decrementStatistic(Statistic statistic, Material material, int amount) throws ArgumentException;
 
     /**
      * Sets the given statistic for this player for the given material.
@@ -517,13 +517,13 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to set
      * @param material Material to offset the statistic with
      * @param newValue The value to set this statistic to
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if material is null
-     * @throws IllegalArgumentException if newValue is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if material is null
+     * @throws ArgumentException if newValue is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void setStatistic(Statistic statistic, Material material, int newValue) throws IllegalArgumentException;
+    public void setStatistic(Statistic statistic, Material material, int newValue) throws ArgumentException;
 
     /**
      * Increments the given statistic for this player for the given entity.
@@ -533,12 +533,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param statistic Statistic to increment
      * @param entityType EntityType to offset the statistic with
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player for the given entity.
@@ -548,12 +548,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param statistic Statistic to decrement
      * @param entityType EntityType to offset the statistic with
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException;
+    public void decrementStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
 
     /**
      * Gets the value of the given statistic for this player.
@@ -561,12 +561,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to check
      * @param entityType EntityType offset of the statistic
      * @return the value of the given statistic
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public int getStatistic(Statistic statistic, EntityType entityType) throws IllegalArgumentException;
+    public int getStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
 
     /**
      * Increments the given statistic for this player for the given entity.
@@ -574,13 +574,13 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to increment
      * @param entityType EntityType to offset the statistic with
      * @param amount Amount to increment this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, EntityType entityType, int amount) throws IllegalArgumentException;
+    public void incrementStatistic(Statistic statistic, EntityType entityType, int amount) throws ArgumentException;
 
     /**
      * Decrements the given statistic for this player for the given entity.
@@ -588,10 +588,10 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to decrement
      * @param entityType EntityType to offset the statistic with
      * @param amount Amount to decrement this statistic by
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if amount is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if amount is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
     public void decrementStatistic(Statistic statistic, EntityType entityType, int amount);
@@ -602,10 +602,10 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param statistic Statistic to set
      * @param entityType EntityType to offset the statistic with
      * @param newValue The value to set this statistic to
-     * @throws IllegalArgumentException if statistic is null
-     * @throws IllegalArgumentException if entityType is null
-     * @throws IllegalArgumentException if newValue is negative
-     * @throws IllegalArgumentException if the given parameter is not valid
+     * @throws ArgumentException if statistic is null
+     * @throws ArgumentException if entityType is null
+     * @throws ArgumentException if newValue is negative
+     * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
     public void setStatistic(Statistic statistic, EntityType entityType, int newValue);
@@ -886,20 +886,20 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * reverse directions.
      *
      * @param value The new speed, from -1 to 1.
-     * @throws IllegalArgumentException If new speed is less than -1 or
+     * @throws ArgumentException If new speed is less than -1 or
      *     greater than 1
      */
-    public void setFlySpeed(float value) throws IllegalArgumentException;
+    public void setFlySpeed(float value) throws ArgumentException;
 
     /**
      * Sets the speed at which a client will walk. Negative values indicate
      * reverse directions.
      *
      * @param value The new speed, from -1 to 1.
-     * @throws IllegalArgumentException If new speed is less than -1 or
+     * @throws ArgumentException If new speed is less than -1 or
      *     greater than 1
      */
-    public void setWalkSpeed(float value) throws IllegalArgumentException;
+    public void setWalkSpeed(float value) throws ArgumentException;
 
     /**
      * Gets the current allowed speed that a client can fly.
@@ -938,8 +938,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param url The URL from which the client will download the texture
      *     pack. The string must contain only US-ASCII characters and should
      *     be encoded as per RFC 1738.
-     * @throws IllegalArgumentException Thrown if the URL is null.
-     * @throws IllegalArgumentException Thrown if the URL is too long.
+     * @throws ArgumentException Thrown if the URL is null.
+     * @throws ArgumentException Thrown if the URL is too long.
      * [Obsolete] Minecraft no longer uses textures packs. Instead you
      *     should use {@link #setResourcePack(String)}.
      */
@@ -969,8 +969,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param url The URL from which the client will download the resource
      *     pack. The string must contain only US-ASCII characters and should
      *     be encoded as per RFC 1738.
-     * @throws IllegalArgumentException Thrown if the URL is null.
-     * @throws IllegalArgumentException Thrown if the URL is too long. The
+     * @throws ArgumentException Thrown if the URL is null.
+     * @throws ArgumentException Thrown if the URL is too long. The
      *     length restriction is an implementation specific arbitrary value.
      */
     public void setResourcePack(String url);
@@ -986,13 +986,13 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * Sets the player's visible Scoreboard.
      *
      * @param scoreboard New Scoreboard for the player
-     * @throws IllegalArgumentException if scoreboard is null
-     * @throws IllegalArgumentException if scoreboard was not created by the
+     * @throws ArgumentException if scoreboard is null
+     * @throws ArgumentException if scoreboard was not created by the
      *     {@link org.bukkit.scoreboard.ScoreboardManager scoreboard manager}
      * @throws IllegalStateException if this is a player that is not logged
      *     yet or has logged out
      */
-    public void setScoreboard(Scoreboard scoreboard) throws IllegalArgumentException, IllegalStateException;
+    public void setScoreboard(Scoreboard scoreboard) throws ArgumentException, IllegalStateException;
 
     /**
      * Gets if the client is displayed a 'scaled' health, that is, health on a
@@ -1022,11 +1022,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * getHealth() / getMaxHealth() * getHealthScale()</code>.
      *
      * @param scale the number to scale health to
-     * @throws IllegalArgumentException if scale is &lt;0
-     * @throws IllegalArgumentException if scale is {@link Double#NaN}
-     * @throws IllegalArgumentException if scale is too high
+     * @throws ArgumentException if scale is &lt;0
+     * @throws ArgumentException if scale is {@link Double#NaN}
+     * @throws ArgumentException if scale is too high
      */
-    public void setHealthScale(double scale) throws IllegalArgumentException;
+    public void setHealthScale(double scale) throws ArgumentException;
 
     /**
      * Gets the number that health is scaled to for the client.

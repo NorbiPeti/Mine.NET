@@ -690,10 +690,10 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param clazz the class of the {@link Entity} to spawn
      * @param <T> the class of the {@link Entity} to spawn
      * @return an instance of the spawned {@link Entity}
-     * @throws IllegalArgumentException if either parameter is null or the
+     * @throws ArgumentException if either parameter is null or the
      *     {@link Entity} requested cannot be spawned
      */
-    public <T extends Entity> T spawn(Location location, Class<T> clazz) throws IllegalArgumentException;
+    public <T extends Entity> T spawn(Location location, Class<T> clazz) throws ArgumentException;
 
     /**
      * Spawn a {@link FallingBlock} entity at the given {@link Location} of
@@ -707,12 +707,12 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param material The block {@link Material} type
      * @param data The block data
      * @return The spawned {@link FallingBlock} instance
-     * @throws IllegalArgumentException if {@link Location} or {@link
+     * @throws ArgumentException if {@link Location} or {@link
      *     Material} are null or {@link Material} is not a block
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FallingBlock spawnFallingBlock(Location location, Material material, byte data) throws IllegalArgumentException;
+    public FallingBlock spawnFallingBlock(Location location, Material material, byte data) throws ArgumentException;
 
     /**
      * Spawn a {@link FallingBlock} entity at the given {@link Location} of
@@ -722,13 +722,13 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param blockId The id of the intended material
      * @param blockData The block data
      * @return The spawned FallingBlock instance
-     * @throws IllegalArgumentException if location is null, or blockId is
+     * @throws ArgumentException if location is null, or blockId is
      *     invalid
      * @see #spawnFallingBlock(org.bukkit.Location, org.bukkit.Material, byte)
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FallingBlock spawnFallingBlock(Location location, int blockId, byte blockData) throws IllegalArgumentException;
+    public FallingBlock spawnFallingBlock(Location location, int blockId, byte blockData) throws ArgumentException;
 
     /**
      * Plays an effect to all players within a default radius around a given
@@ -1409,7 +1409,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
         THE_END(1);
 
         private readonly int id;
-        private static readonly Map<Integer, Environment> lookup = new HashMap<Integer, Environment>();
+        private static readonly Dictionary<Integer, Environment> lookup = new HashMap<Integer, Environment>();
 
         private Environment(int id) {
             this.id = id;

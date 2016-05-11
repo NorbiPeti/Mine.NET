@@ -30,11 +30,11 @@ public interface Objective {
      *
      * @param displayName Display name to set
      * @throws IllegalStateException if this objective has been unregistered
-     * @throws IllegalArgumentException if displayName is null
-     * @throws IllegalArgumentException if displayName is longer than 32
+     * @throws ArgumentException if displayName is null
+     * @throws ArgumentException if displayName is longer than 32
      *     characters.
      */
-    void setDisplayName(String displayName) throws IllegalStateException, IllegalArgumentException;
+    void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
 
     /**
      * Gets the criteria this objective tracks.
@@ -90,21 +90,21 @@ public interface Objective {
      *
      * @param player Player for the Score
      * @return Score tracking the Objective and player specified
-     * @throws IllegalArgumentException if player is null
+     * @throws ArgumentException if player is null
      * @throws IllegalStateException if this objective has been unregistered
      * [Obsolete] Scoreboards can contain entries that aren't players
      * @see #getScore(String)
      */
     [Obsolete]
-    Score getScore(OfflinePlayer player) throws IllegalArgumentException, IllegalStateException;
+    Score getScore(OfflinePlayer player) throws ArgumentException, IllegalStateException;
 
     /**
      * Gets an entry's Score for an Objective on this Scoreboard.
      *
      * @param entry Entry for the Score
      * @return Score tracking the Objective and entry specified
-     * @throws IllegalArgumentException if entry is null
+     * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this objective has been unregistered
      */
-    Score getScore(String entry) throws IllegalArgumentException, IllegalStateException;
+    Score getScore(String entry) throws ArgumentException, IllegalStateException;
 }

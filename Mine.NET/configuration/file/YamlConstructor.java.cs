@@ -23,17 +23,17 @@ public class YamlConstructor extends SafeConstructor {
                 throw new YAMLException("Unexpected referential mapping structure. Node: " + node);
             }
 
-            Map<?, ?> raw = (Map<?, ?>) super.construct(node);
+            Dictionary<?, ?> raw = (Map<?, ?>) super.construct(node);
 
             if (raw.containsKey(ConfigurationSerialization.SERIALIZED_TYPE_KEY)) {
-                Map<String, Object> typed = new LinkedHashMap<String, Object>(raw.size());
+                Dictionary<String, Object> typed = new LinkedHashMap<String, Object>(raw.size());
                 for (Map.Entry<?, ?> entry : raw.entrySet()) {
                     typed.put(entry.getKey().toString(), entry.getValue());
                 }
 
                 try {
                     return ConfigurationSerialization.deserializeObject(typed);
-                } catch (IllegalArgumentException ex) {
+                } catch (ArgumentException ex) {
                     throw new YAMLException("Could not deserialize object", ex);
                 }
             }

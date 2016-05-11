@@ -69,7 +69,7 @@ public class Potion {
     public Potion(PotionType type, int level) {
         this(type);
         Validate.notNull(type, "Type cannot be null");
-        Validate.isTrue(level > 0 && level < 3, "Level must be 1 or 2");
+        if(level > 0 && level < 3) throw new ArgumentException("Level must be 1 or 2");
         this.level = level;
     }
 
@@ -140,8 +140,8 @@ public class Potion {
      */
     public void apply(ItemStack to) {
         Validate.notNull(to, "itemstack cannot be null");
-        Validate.isTrue(to.hasItemMeta(), "given itemstack is not a potion");
-        Validate.isTrue(to.getItemMeta() instanceof PotionMeta, "given itemstack is not a potion");
+        if(to.hasItemMeta()) throw new ArgumentException("given itemstack is not a potion");
+        if(to.getItemMeta() instanceof PotionMeta) throw new ArgumentException("given itemstack is not a potion");
         PotionMeta meta = (PotionMeta) to.getItemMeta();
         meta.setBasePotionData(new PotionData(type, extended, level == 2));
         to.setItemMeta(meta);
@@ -247,7 +247,7 @@ public class Potion {
      * @param isExtended Whether the potion should have extended duration
      */
     public void setHasExtendedDuration(bool isExtended) {
-        Validate.isTrue(type == null || !type.isInstant(), "Instant potions cannot be extended");
+        if(type == null || !type.isInstant()) throw new ArgumentException("Instant potions cannot be extended");
         extended = isExtended;
     }
 
@@ -289,7 +289,7 @@ public class Potion {
      */
     public void setLevel(int level) {
         Validate.notNull(this.type, "No-effect potions don't have a level.");
-        Validate.isTrue(level > 0 && level <= 2, "Level must be between 1 and 2 for this potion");
+        if(level > 0 && level <= 2) throw new ArgumentException("Level must be between 1 and 2 for this potion");
         this.level = level;
     }
 
@@ -431,7 +431,7 @@ public class Potion {
     public static Potion fromItemStack(ItemStack item) {
         Validate.notNull(item, "item cannot be null");
         if (item.getType() != Material.POTION)
-            throw new IllegalArgumentException("item is not a potion");
+            throw new ArgumentException("item is not a potion");
         return fromDamage(item.getDurability());
     }
 
@@ -452,7 +452,7 @@ public class Potion {
      */
     public static void setPotionBrewer(PotionBrewer other) {
         if (brewer != null)
-            throw new IllegalArgumentException("brewer can only be set internally");
+            throw new ArgumentException("brewer can only be set internally");
         brewer = other;
     }
 

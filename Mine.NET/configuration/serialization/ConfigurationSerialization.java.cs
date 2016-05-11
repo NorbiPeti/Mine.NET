@@ -26,7 +26,7 @@ import org.bukkit.util.Vector;
 public class ConfigurationSerialization {
     public static readonly String SERIALIZED_TYPE_KEY = "==";
     private sealed class<? extends ConfigurationSerializable> clazz;
-    private static Map<String, Class<? extends ConfigurationSerializable>> aliases = new HashMap<String, Class<? extends ConfigurationSerializable>>();
+    private static Dictionary<String, Class<? extends ConfigurationSerializable>> aliases = new HashMap<String, Class<? extends ConfigurationSerializable>>();
 
     static {
         registerClass(Vector.class);
@@ -72,7 +72,7 @@ public class ConfigurationSerialization {
         }
     }
 
-    protected ConfigurationSerializable deserializeViaMethod(Method method, Map<String, ?> args) {
+    protected ConfigurationSerializable deserializeViaMethod(Method method, Dictionary<String, ?> args) {
         try {
             ConfigurationSerializable result = (ConfigurationSerializable) method.invoke(null, args);
 
@@ -91,7 +91,7 @@ public class ConfigurationSerialization {
         return null;
     }
 
-    protected ConfigurationSerializable deserializeViaCtor(Constructor<? extends ConfigurationSerializable> ctor, Map<String, ?> args) {
+    protected ConfigurationSerializable deserializeViaCtor(Constructor<? extends ConfigurationSerializable> ctor, Dictionary<String, ?> args) {
         try {
             return ctor.newInstance(args);
         } catch (Throwable ex) {
@@ -178,18 +178,18 @@ public class ConfigurationSerialization {
                 String alias = (String) args.get(SERIALIZED_TYPE_KEY);
 
                 if (alias == null) {
-                    throw new IllegalArgumentException("Cannot have null alias");
+                    throw new ArgumentException("Cannot have null alias");
                 }
                 clazz = getClassByAlias(alias);
                 if (clazz == null) {
-                    throw new IllegalArgumentException("Specified class does not exist ('" + alias + "')");
+                    throw new ArgumentException("Specified class does not exist ('" + alias + "')");
                 }
             } catch (ClassCastException ex) {
                 ex.fillInStackTrace();
                 throw ex;
             }
         } else {
-            throw new IllegalArgumentException("Args doesn't contain type key ('" + SERIALIZED_TYPE_KEY + "')");
+            throw new ArgumentException("Args doesn't contain type key ('" + SERIALIZED_TYPE_KEY + "')");
         }
 
         return new ConfigurationSerialization(clazz).deserialize(args);

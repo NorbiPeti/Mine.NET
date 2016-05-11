@@ -47,7 +47,7 @@ public class Pattern implements ConfigurationSerializable {
     }
     
     @Override
-    public Map<String, Object> serialize() {
+    public Dictionary<String, Object> serialize() {
         return ImmutableMap.<String, Object>of(
             COLOR, color.toString(),
             PATTERN, pattern.getIdentifier()

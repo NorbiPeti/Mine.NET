@@ -24,7 +24,7 @@ public class WorldCreator {
      */
     public WorldCreator(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("World name cannot be null");
+            throw new ArgumentException("World name cannot be null");
         }
 
         this.name = name;
@@ -39,7 +39,7 @@ public class WorldCreator {
      */
     public WorldCreator copy(World world) {
         if (world == null) {
-            throw new IllegalArgumentException("World cannot be null");
+            throw new ArgumentException("World cannot be null");
         }
 
         seed = world.getSeed();
@@ -57,7 +57,7 @@ public class WorldCreator {
      */
     public WorldCreator copy(WorldCreator creator) {
         if (creator == null) {
-            throw new IllegalArgumentException("Creator cannot be null");
+            throw new ArgumentException("Creator cannot be null");
         }
 
         seed = creator.seed();
@@ -291,7 +291,7 @@ public class WorldCreator {
         ChunkGenerator result = null;
 
         if (world == null) {
-            throw new IllegalArgumentException("World name must be specified");
+            throw new ArgumentException("World name must be specified");
         }
 
         if (output == null) {

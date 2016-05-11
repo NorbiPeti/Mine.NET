@@ -47,8 +47,8 @@ import org.yaml.snakeyaml.error.YAMLException;
 public sealed class JavaPluginLoader implements PluginLoader {
     readonly Server server;
     private readonly Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
-    private readonly Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
-    private readonly Map<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
+    private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly Dictionary<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
 
     /**
      * This class was not meant to be constructed explicitly
@@ -225,12 +225,12 @@ public sealed class JavaPluginLoader implements PluginLoader {
         }
     }
 
-    public Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
+    public Dictionary<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
         Validate.notNull(plugin, "Plugin can not be null");
         Validate.notNull(listener, "Listener can not be null");
 
         bool useTimings = server.getPluginManager().useTimings();
-        Map<Class<? extends Event>, Set<RegisteredListener>> ret = new HashMap<Class<? extends Event>, Set<RegisteredListener>>();
+        Dictionary<Class<? extends Event>, Set<RegisteredListener>> ret = new HashMap<Class<? extends Event>, Set<RegisteredListener>>();
         Set<Method> methods;
         try {
             Method[] publicMethods = listener.getClass().getMethods();
@@ -315,7 +315,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
     }
 
     public void enablePlugin(Plugin plugin) {
-        Validate.isTrue(plugin instanceof JavaPlugin, "Plugin is not associated with this PluginLoader");
+        if(plugin instanceof JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
         if (!plugin.isEnabled()) {
             plugin.getLogger().info("Enabling " + plugin.getDescription().getFullName());
@@ -341,7 +341,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
     }
 
     public void disablePlugin(Plugin plugin) {
-        Validate.isTrue(plugin instanceof JavaPlugin, "Plugin is not associated with this PluginLoader");
+        if(plugin instanceof JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
         if (plugin.isEnabled()) {
             String message = String.format("Disabling %s", plugin.getDescription().getFullName());

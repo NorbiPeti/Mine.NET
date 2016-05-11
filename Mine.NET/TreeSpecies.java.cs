@@ -36,7 +36,7 @@ public enum TreeSpecies {
     ;
 
     private readonly byte data;
-    private readonly static Map<Byte, TreeSpecies> BY_DATA = Maps.newHashMap();
+    private readonly static Dictionary<Byte, TreeSpecies> BY_DATA = Maps.newHashMap();
 
     private TreeSpecies(int data) {
         this.data = (byte) data;

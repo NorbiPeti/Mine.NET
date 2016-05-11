@@ -55,7 +55,7 @@ public interface TippedArrow extends Arrow {
      *
      * @param type the potion effect type to remove
      * @return true if the an effect was removed as a result of this call
-     * @throws IllegalArgumentException if this operation would leave the Arrow
+     * @throws ArgumentException if this operation would leave the Arrow
      * in a state with no Custom Effects and PotionType.UNCRAFTABLE
      */
     bool removeCustomEffect(PotionEffectType type);
@@ -71,7 +71,7 @@ public interface TippedArrow extends Arrow {
     /**
      * Removes all custom potion effects from this arrow.
      *
-     * @throws IllegalArgumentException if this operation would leave the Arrow
+     * @throws ArgumentException if this operation would leave the Arrow
      * in a state with no Custom Effects and PotionType.UNCRAFTABLE
      */
     void clearCustomEffects();

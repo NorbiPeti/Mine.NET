@@ -75,7 +75,7 @@ public interface Plugin extends TabExecutor {
      *     plugin's .jar file. (No preceding slash).
      * @param replace if true, the embedded resource will overwrite the
      *     contents of an existing file.
-     * @throws IllegalArgumentException if the resource path is null, empty,
+     * @throws ArgumentException if the resource path is null, empty,
      *     or points to a nonexistent resource.
      */
     public void saveResource(String resourcePath, bool replace);

@@ -92,9 +92,9 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param items The ItemStacks to add
      * @return A HashMap containing items that didn't fit.
-     * @throws IllegalArgumentException if items or any element in it is null
+     * @throws ArgumentException if items or any element in it is null
      */
-    public HashMap<Integer, ItemStack> addItem(ItemStack... items) throws IllegalArgumentException;
+    public HashMap<Integer, ItemStack> addItem(ItemStack... items) throws ArgumentException;
 
     /**
      * Removes the given ItemStacks from the inventory.
@@ -113,9 +113,9 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param items The ItemStacks to remove
      * @return A HashMap containing items that couldn't be removed.
-     * @throws IllegalArgumentException if items is null
+     * @throws ArgumentException if items is null
      */
-    public HashMap<Integer, ItemStack> removeItem(ItemStack... items) throws IllegalArgumentException;
+    public HashMap<Integer, ItemStack> removeItem(ItemStack... items) throws ArgumentException;
 
     /**
      * Returns all ItemStacks from the inventory
@@ -130,10 +130,10 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param items A complete replacement for the contents; the length must
      *     be less than or equal to {@link #getSize()}.
-     * @throws IllegalArgumentException If the array has more items than the
+     * @throws ArgumentException If the array has more items than the
      *     inventory.
      */
-    public void setContents(ItemStack[] items) throws IllegalArgumentException;
+    public void setContents(ItemStack[] items) throws ArgumentException;
 
     /**
      * Return the contents from the section of the inventory where items can
@@ -152,10 +152,10 @@ public interface Inventory extends Iterable<ItemStack> {
      * Put the given ItemStacks into the storage slots
      *
      * @param items The ItemStacks to use as storage contents
-     * @throws IllegalArgumentException If the array has more items than the
+     * @throws ArgumentException If the array has more items than the
      * inventory.
      */
-    public void setStorageContents(ItemStack[] items) throws IllegalArgumentException;
+    public void setStorageContents(ItemStack[] items) throws ArgumentException;
 
     /**
      * Checks if the inventory contains any ItemStacks with the given
@@ -174,9 +174,9 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param material The material to check for
      * @return true if an ItemStack is found with the given Material
-     * @throws IllegalArgumentException if material is null
+     * @throws ArgumentException if material is null
      */
-    public bool contains(Material material) throws IllegalArgumentException;
+    public bool contains(Material material) throws ArgumentException;
 
     /**
      * Checks if the inventory contains any ItemStacks matching the given
@@ -212,9 +212,9 @@ public interface Inventory extends Iterable<ItemStack> {
      * @param amount The minimum amount
      * @return true if amount is less than 1, true if enough ItemStacks were
      *     found to add to the given amount
-     * @throws IllegalArgumentException if material is null
+     * @throws ArgumentException if material is null
      */
-    public bool contains(Material material, int amount) throws IllegalArgumentException;
+    public bool contains(Material material, int amount) throws ArgumentException;
 
     /**
      * Checks if the inventory contains at least the minimum amount specified
@@ -267,9 +267,9 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param material The material to look for
      * @return A HashMap containing the slot index, ItemStack pairs
-     * @throws IllegalArgumentException if material is null
+     * @throws ArgumentException if material is null
      */
-    public HashMap<Integer, ? extends ItemStack> all(Material material) throws IllegalArgumentException;
+    public HashMap<Integer, ? extends ItemStack> all(Material material) throws ArgumentException;
 
     /**
      * Finds all slots in the inventory containing any ItemStacks with the
@@ -302,9 +302,9 @@ public interface Inventory extends Iterable<ItemStack> {
      *
      * @param material The material to look for
      * @return The slot index of the given Material or -1 if not found
-     * @throws IllegalArgumentException if material is null
+     * @throws ArgumentException if material is null
      */
-    public int first(Material material) throws IllegalArgumentException;
+    public int first(Material material) throws ArgumentException;
 
     /**
      * Returns the first slot in the inventory containing an ItemStack with
@@ -336,9 +336,9 @@ public interface Inventory extends Iterable<ItemStack> {
      * Removes all stacks in the inventory matching the given material.
      *
      * @param material The material to remove
-     * @throws IllegalArgumentException if material is null
+     * @throws ArgumentException if material is null
      */
-    public void remove(Material material) throws IllegalArgumentException;
+    public void remove(Material material) throws ArgumentException;
 
     /**
      * Removes all stacks in the inventory matching the given stack.

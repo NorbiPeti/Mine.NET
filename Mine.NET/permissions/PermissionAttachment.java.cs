@@ -10,15 +10,15 @@ import org.bukkit.plugin.Plugin;
  */
 public class PermissionAttachment {
     private PermissionRemovedExecutor removed;
-    private readonly Map<String, bool> permissions = new LinkedHashMap<String, bool>();
+    private readonly Dictionary<String, bool> permissions = new LinkedHashMap<String, bool>();
     private readonly Permissible permissible;
     private readonly Plugin plugin;
 
     public PermissionAttachment(Plugin plugin, Permissible Permissible) {
         if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
+            throw new ArgumentException("Plugin cannot be null");
         } else if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
         }
 
         this.permissible = Permissible;
@@ -72,7 +72,7 @@ public class PermissionAttachment {
      *
      * @return Copy of all permissions and values expressed by this attachment
      */
-    public Map<String, bool> getPermissions() {
+    public Dictionary<String, bool> getPermissions() {
         return new LinkedHashMap<String, bool>(permissions);
     }
 
@@ -132,7 +132,7 @@ public class PermissionAttachment {
         try {
             permissible.removeAttachment(this);
             return true;
-        } catch (IllegalArgumentException ex) {
+        } catch (ArgumentException ex) {
             return false;
         }
     }

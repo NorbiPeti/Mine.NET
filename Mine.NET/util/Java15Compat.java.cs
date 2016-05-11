@@ -14,7 +14,7 @@ public class Java15Compat {
                 System.arraycopy(original, start, copy, 0, copyLength);
                 return copy;
             }
-            throw new IllegalArgumentException();
+            throw new ArgumentException();
         }
         throw new ArrayIndexOutOfBoundsException();
     }

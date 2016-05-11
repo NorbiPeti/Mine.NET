@@ -63,7 +63,7 @@ public interface Damageable extends Entity {
      * dead.
      *
      * @param health New health represented from 0 to max
-     * @throws IllegalArgumentException Thrown if the health is {@literal < 0 or >}
+     * @throws ArgumentException Thrown if the health is {@literal < 0 or >}
      *     {@link #getMaxHealth()}
      */
     void setHealth(double health);
@@ -74,7 +74,7 @@ public interface Damageable extends Entity {
      * under any circumstances.
      *
      * @param health New health represented from 0 to max
-     * @throws IllegalArgumentException Thrown if the health is {@literal < 0 or >}
+     * @throws ArgumentException Thrown if the health is {@literal < 0 or >}
      *     {@link #getMaxHealth()}
      */
     [Obsolete]

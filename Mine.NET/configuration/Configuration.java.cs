@@ -18,7 +18,7 @@ public interface Configuration extends ConfigurationSection {
      *
      * @param path Path of the value to set.
      * @param value Value to set the default to.
-     * @throws IllegalArgumentException Thrown if path is null.
+     * @throws ArgumentException Thrown if path is null.
      */
     public void addDefault(String path, Object value);
 
@@ -30,7 +30,7 @@ public interface Configuration extends ConfigurationSection {
      * hold the new default values.
      *
      * @param defaults A map of Path{@literal ->}Values to add to defaults.
-     * @throws IllegalArgumentException Thrown if defaults is null.
+     * @throws ArgumentException Thrown if defaults is null.
      */
     public void addDefaults(Map<String, Object> defaults);
 
@@ -47,7 +47,7 @@ public interface Configuration extends ConfigurationSection {
      * #setDefaults(org.bukkit.configuration.Configuration)}.
      *
      * @param defaults A configuration holding a list of defaults to copy.
-     * @throws IllegalArgumentException Thrown if defaults is null or this.
+     * @throws ArgumentException Thrown if defaults is null or this.
      */
     public void addDefaults(Configuration defaults);
 
@@ -58,7 +58,7 @@ public interface Configuration extends ConfigurationSection {
      * then they will not be copied to the new source.
      *
      * @param defaults New source of default values for this configuration.
-     * @throws IllegalArgumentException Thrown if defaults is null or this.
+     * @throws ArgumentException Thrown if defaults is null or this.
      */
     public void setDefaults(Configuration defaults);
 

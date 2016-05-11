@@ -28,7 +28,7 @@ public interface BlockStateMeta extends ItemMeta {
      * Attaches a copy of the passed block state to the item.
      *
      * @param blockState the block state to attach to the block.
-     * @throws IllegalArgumentException if the blockState is null
+     * @throws ArgumentException if the blockState is null
      *         or invalid for this item.
      */
     void setBlockState(BlockState blockState);

@@ -887,7 +887,7 @@ public sealed class Bukkit {
      * @param owner the holder of the inventory, or null to indicate no holder
      * @param size a multiple of 9 as the size of inventory to create
      * @return a new inventory
-     * @throws IllegalArgumentException if the size is not a multiple of 9
+     * @throws ArgumentException if the size is not a multiple of 9
      */
     public static Inventory createInventory(InventoryHolder owner, int size) {
         return server.createInventory(owner, size);
@@ -902,7 +902,7 @@ public sealed class Bukkit {
      * @param title the title of the inventory, displayed when inventory is
      *     viewed
      * @return a new inventory
-     * @throws IllegalArgumentException if the size is not a multiple of 9
+     * @throws ArgumentException if the size is not a multiple of 9
      */
     public static Inventory createInventory(InventoryHolder owner, int size, String title) {
         return server.createInventory(owner, size, title);
@@ -1031,7 +1031,7 @@ public sealed class Bukkit {
      * guaranteed to throw an implementation-defined {@link Exception}.
      *
      * @param file the file to load the from
-     * @throws IllegalArgumentException if image is null
+     * @throws ArgumentException if image is null
      * @throws Exception if the image does not meet current server server-icon
      *     specifications
      * @return a cached server-icon that can be used for a {@link
@@ -1048,7 +1048,7 @@ public sealed class Bukkit {
      * guaranteed to throw an implementation-defined {@link Exception}.
      *
      * @param image the image to use
-     * @throws IllegalArgumentException if image is null
+     * @throws ArgumentException if image is null
      * @throws Exception if the image does not meet current server
      *     server-icon specifications
      * @return a cached server-icon that can be used for a {@link

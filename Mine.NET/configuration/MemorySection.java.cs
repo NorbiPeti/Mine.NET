@@ -19,7 +19,7 @@ import org.bukkit.util.Vector;
  * A type of {@link ConfigurationSection} that is stored in memory.
  */
 public class MemorySection implements ConfigurationSection {
-    protected readonly Map<String, Object> map = new LinkedHashMap<String, Object>();
+    protected readonly Dictionary<String, Object> map = new LinkedHashMap<String, Object>();
     private readonly Configuration root;
     private readonly ConfigurationSection parent;
     private readonly String path;
@@ -52,7 +52,7 @@ public class MemorySection implements ConfigurationSection {
      * @param parent Parent section that contains this own section.
      * @param path Path that you may access this section from via the root
      *     {@link Configuration}.
-     * @throws IllegalArgumentException Thrown is parent or path is null, or
+     * @throws ArgumentException Thrown is parent or path is null, or
      *     if parent contains no root Configuration.
      */
     protected MemorySection(ConfigurationSection parent, String path) {
@@ -85,8 +85,8 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
-    public Map<String, Object> getValues(bool deep) {
-        Map<String, Object> result = new LinkedHashMap<String, Object>();
+    public Dictionary<String, Object> getValues(bool deep) {
+        Dictionary<String, Object> result = new LinkedHashMap<String, Object>();
 
         Configuration root = getRoot();
         if (root != null && root.options().copyDefaults()) {
@@ -261,7 +261,7 @@ public class MemorySection implements ConfigurationSection {
         return section.createSection(key);
     }
 
-    public ConfigurationSection createSection(String path, Map<?, ?> map) {
+    public ConfigurationSection createSection(String path, Dictionary<?, ?> map) {
         ConfigurationSection section = createSection(path);
 
         for (Map.Entry<?, ?> entry : map.entrySet()) {
@@ -740,7 +740,7 @@ public class MemorySection implements ConfigurationSection {
                 }
             }
         } else {
-            Map<String, Object> values = section.getValues(deep);
+            Dictionary<String, Object> values = section.getValues(deep);
 
             for (Map.Entry<String, Object> entry : values.entrySet()) {
                 output.put(createPath(section, entry.getKey(), this), entry.getValue());

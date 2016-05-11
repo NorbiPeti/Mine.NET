@@ -99,7 +99,7 @@ public interface Permissible extends ServerOperator {
      * Removes the given {@link PermissionAttachment} from this object
      *
      * @param attachment Attachment to remove
-     * @throws IllegalArgumentException Thrown when the specified attachment
+     * @throws ArgumentException Thrown when the specified attachment
      *     isn't part of this object
      */
     public void removeAttachment(PermissionAttachment attachment);

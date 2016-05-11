@@ -19,7 +19,7 @@ import org.bukkit.util.StringUtil;
 
 public class SimpleCommandMap implements CommandMap {
     private static readonly Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
-    protected readonly Map<String, Command> knownCommands = new HashMap<String, Command>();
+    protected readonly Dictionary<String, Command> knownCommands = new HashMap<String, Command>();
     private readonly Server server;
 
     public SimpleCommandMap(Server server) {
@@ -169,7 +169,7 @@ public class SimpleCommandMap implements CommandMap {
 
         if (spaceIndex == -1) {
             ArrayList<String> completions = new ArrayList<String>();
-            Map<String, Command> knownCommands = this.knownCommands;
+            Dictionary<String, Command> knownCommands = this.knownCommands;
 
             readonly String prefix = (sender instanceof Player ? "/" : "");
 
@@ -219,7 +219,7 @@ public class SimpleCommandMap implements CommandMap {
     }
 
     public void registerServerAliases() {
-        Map<String, String[]> values = server.getCommandAliases();
+        Dictionary<String, String[]> values = server.getCommandAliases();
 
         for (String alias : values.keySet()) {
             if (alias.contains(":") || alias.contains(" ")) {

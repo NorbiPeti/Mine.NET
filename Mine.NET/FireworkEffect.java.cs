@@ -61,7 +61,7 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          *
          * @param type The effect type
          * @return This object, for chaining
-         * @throws IllegalArgumentException If type is null
+         * @throws ArgumentException If type is null
          */
         public Builder with(FireworkType type) {
             this.type = type;
@@ -115,7 +115,7 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          *
          * @param color The color to add
          * @return This object, for chaining
-         * @throws IllegalArgumentException If color is null
+         * @throws ArgumentException If color is null
          */
         public Builder withColor(Color color) {
             if (color == null)
@@ -131,8 +131,8 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          *
          * @param colors The colors to add
          * @return This object, for chaining
-         * @throws IllegalArgumentException If colors is null
-         * @throws IllegalArgumentException If any color is null (may be
+         * @throws ArgumentException If colors is null
+         * @throws ArgumentException If any color is null (may be
          *     thrown after changes have occurred)
          */
         public Builder withColor(params Color[] colors)
@@ -160,8 +160,8 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          * @param colors An iterable object whose iterator yields the desired
          *     colors
          * @return This object, for chaining
-         * @throws IllegalArgumentException If colors is null
-         * @throws IllegalArgumentException If any color is null (may be
+         * @throws ArgumentException If colors is null
+         * @throws ArgumentException If any color is null (may be
          *     thrown after changes have occurred)
          */
         public Builder withColor(IEnumerable<Color> colors)
@@ -179,8 +179,8 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          *
          * @param color The color to add
          * @return This object, for chaining
-         * @throws IllegalArgumentException If colors is null
-         * @throws IllegalArgumentException If any color is null (may be
+         * @throws ArgumentException If colors is null
+         * @throws ArgumentException If any color is null (may be
          *     thrown after changes have occurred)
          */
         public Builder withFade(Color color)
@@ -202,8 +202,8 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          *
          * @param colors The colors to add
          * @return This object, for chaining
-         * @throws IllegalArgumentException If colors is null
-         * @throws IllegalArgumentException If any color is null (may be
+         * @throws ArgumentException If colors is null
+         * @throws ArgumentException If any color is null (may be
          *     thrown after changes have occurred)
          */
         public Builder withFade(params Color[] colors)
@@ -235,8 +235,8 @@ public sealed class FireworkEffect : ConfigurationSerializable {
          * @param colors An iterable object whose iterator yields the desired
          *     colors
          * @return This object, for chaining
-         * @throws IllegalArgumentException If colors is null
-         * @throws IllegalArgumentException If any color is null (may be
+         * @throws ArgumentException If colors is null
+         * @throws ArgumentException If any color is null (may be
          *     thrown after changes have occurred)
          */
         public Builder withFade(IEnumerable<Color> colors)

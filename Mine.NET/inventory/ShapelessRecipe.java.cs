@@ -100,7 +100,7 @@ public class ShapelessRecipe implements Recipe {
      */
     [Obsolete]
     public ShapelessRecipe addIngredient(int count, Material ingredient, int rawdata) {
-        Validate.isTrue(ingredients.size() + count <= 9, "Shapeless recipes cannot have more than 9 ingredients");
+        if(ingredients.size() + count <= 9) throw new ArgumentException("Shapeless recipes cannot have more than 9 ingredients");
 
         // -1 is the old wildcard, map to Short.MAX_VALUE as the new one
         if (rawdata == -1) {

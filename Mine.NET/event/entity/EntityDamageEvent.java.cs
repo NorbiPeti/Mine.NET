@@ -21,9 +21,9 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private static readonly DamageModifier[] MODIFIERS = DamageModifier.values();
     private static readonly Function<? super Double, Double> ZERO = Functions.constant(-0.0);
-    private readonly Map<DamageModifier, Double> modifiers;
-    private readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
-    private readonly Map<DamageModifier, Double> originals;
+    private readonly Dictionary<DamageModifier, Double> modifiers;
+    private readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
+    private readonly Dictionary<DamageModifier, Double> originals;
     private bool cancelled;
     private readonly DamageCause cause;
 
@@ -37,12 +37,12 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
         this(damagee, cause, new EnumMap<DamageModifier, Double>(ImmutableMap.of(DamageModifier.BASE, damage)), new EnumMap<DamageModifier, Function<? super Double, Double>>(ImmutableMap.of(DamageModifier.BASE, ZERO)));
     }
 
-    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Map<DamageModifier, Double> modifiers, readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee);
-        Validate.isTrue(modifiers.containsKey(DamageModifier.BASE), "BASE DamageModifier missing");
-        Validate.isTrue(!modifiers.containsKey(null), "Cannot have null DamageModifier");
+        if(modifiers.containsKey(DamageModifier.BASE)) throw new ArgumentException("BASE DamageModifier missing");
+        if(!modifiers.containsKey(null)) throw new ArgumentException("Cannot have null DamageModifier");
         Validate.noNullElements(modifiers.values(), "Cannot have null modifier values");
-        Validate.isTrue(modifiers.keySet().equals(modifierFunctions.keySet()), "Must have a modifier function for each DamageModifier");
+        if(modifiers.keySet().equals(modifierFunctions.keySet())) throw new ArgumentException("Must have a modifier function for each DamageModifier");
         Validate.noNullElements(modifierFunctions.values(), "Cannot have null modifier function");
         this.originals = new EnumMap<DamageModifier, Double>(modifiers);
         this.cause = cause;
@@ -64,15 +64,15 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      *
      * @param type the modifier
      * @return the original damage
-     * @throws IllegalArgumentException if type is null
+     * @throws ArgumentException if type is null
      */
-    public double getOriginalDamage(DamageModifier type) throws IllegalArgumentException {
+    public double getOriginalDamage(DamageModifier type) throws ArgumentException {
         readonly Double damage = originals.get(type);
         if (damage != null) {
             return damage;
         }
         if (type == null) {
-            throw new IllegalArgumentException("Cannot have null DamageModifier");
+            throw new ArgumentException("Cannot have null DamageModifier");
         }
         return 0;
     }
@@ -83,14 +83,14 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      * @param type the damage modifier
      * @param damage the scalar value of the damage's modifier
      * @see #getFinalDamage()
-     * @throws IllegalArgumentException if type is null
+     * @throws ArgumentException if type is null
      * @throws UnsupportedOperationException if the caller does not support
      *     the particular DamageModifier, or to rephrase, when {@link
      *     #isApplicable(DamageModifier)} returns false
      */
-    public void setDamage(DamageModifier type, double damage) throws IllegalArgumentException, UnsupportedOperationException {
+    public void setDamage(DamageModifier type, double damage) throws ArgumentException, UnsupportedOperationException {
         if (!modifiers.containsKey(type)) {
-            throw type == null ? new IllegalArgumentException("Cannot have null DamageModifier") : new UnsupportedOperationException(type + " is not applicable to " + getEntity());
+            throw type == null ? new ArgumentException("Cannot have null DamageModifier") : new UnsupportedOperationException(type + " is not applicable to " + getEntity());
         }
         modifiers.put(type, damage);
     }
@@ -100,10 +100,10 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      *
      * @param type the damage modifier
      * @return The raw amount of damage caused by the event
-     * @throws IllegalArgumentException if type is null
+     * @throws ArgumentException if type is null
      * @see DamageModifier#BASE
      */
-    public double getDamage(DamageModifier type) throws IllegalArgumentException {
+    public double getDamage(DamageModifier type) throws ArgumentException {
         Validate.notNull(type, "Cannot have null DamageModifier");
         readonly Double damage = modifiers.get(type);
         return damage == null ? 0 : damage;
@@ -118,9 +118,9 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      *
      * @param type the modifier
      * @return true if the modifier is supported by the caller, false otherwise
-     * @throws IllegalArgumentException if type is null
+     * @throws ArgumentException if type is null
      */
-    public bool isApplicable(DamageModifier type) throws IllegalArgumentException {
+    public bool isApplicable(DamageModifier type) throws ArgumentException {
         Validate.notNull(type, "Cannot have null DamageModifier");
         return modifiers.containsKey(type);
     }

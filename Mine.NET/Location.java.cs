@@ -296,7 +296,7 @@ public class Location : ICloneable, ConfigurationSerializable {
      * @see Vector
      * @param vec The other location
      * @return the same location
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     public Location add(Location vec) {
         if (vec == null || vec.getWorld() != getWorld()) {
@@ -345,7 +345,7 @@ public class Location : ICloneable, ConfigurationSerializable {
      * @see Vector
      * @param vec The other location
      * @return the same location
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     public Location subtract(Location vec) {
         if (vec == null || vec.getWorld() != getWorld()) {
@@ -425,7 +425,7 @@ public class Location : ICloneable, ConfigurationSerializable {
      * @see Vector
      * @param o The other location
      * @return the distance
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     public double distance(Location o) {
         return Math.Sqrt(distanceSquared(o));
@@ -437,7 +437,7 @@ public class Location : ICloneable, ConfigurationSerializable {
      * @see Vector
      * @param o The other location
      * @return the distance
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     public double distanceSquared(Location o) {
         if (o == null) {
@@ -573,7 +573,7 @@ public class Location : ICloneable, ConfigurationSerializable {
     *
     * @param args map to deserialize
     * @return deserialized location
-    * @throws IllegalArgumentException if the world don't exists
+    * @throws ArgumentException if the world don't exists
     * @see ConfigurationSerializable
     */
     public static Location deserialize(Dictionary<String, Object> args) {

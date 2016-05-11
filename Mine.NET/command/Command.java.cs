@@ -80,9 +80,9 @@ public abstract class Command {
      * @param args All arguments passed to the command, split via ' '
      * @return a list of tab-completions for the specified arguments. This
      *     will never be null. List may be immutable.
-     * @throws IllegalArgumentException if sender, alias, or args is null
+     * @throws ArgumentException if sender, alias, or args is null
      */
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(args, "Arguments cannot be null");
         Validate.notNull(alias, "Alias cannot be null");

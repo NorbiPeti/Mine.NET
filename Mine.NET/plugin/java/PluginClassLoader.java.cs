@@ -17,7 +17,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
  */
 sealed class PluginClassLoader extends URLClassLoader {
     private readonly JavaPluginLoader loader;
-    private readonly Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
     private readonly PluginDescriptionFile description;
     private readonly File dataFolder;
     private readonly File file;
@@ -93,9 +93,9 @@ sealed class PluginClassLoader extends URLClassLoader {
 
     synchronized void initialize(JavaPlugin javaPlugin) {
         Validate.notNull(javaPlugin, "Initializing plugin cannot be null");
-        Validate.isTrue(javaPlugin.getClass().getClassLoader() == this, "Cannot initialize plugin outside of this class loader");
+        if(javaPlugin.getClass().getClassLoader() == this) throw new ArgumentException("Cannot initialize plugin outside of this class loader");
         if (this.plugin != null || this.pluginInit != null) {
-            throw new IllegalArgumentException("Plugin already initialized!", pluginState);
+            throw new ArgumentException("Plugin already initialized!", pluginState);
         }
 
         pluginState = new IllegalStateException("Initial initialization");

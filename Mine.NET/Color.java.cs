@@ -107,7 +107,7 @@ public class Color : ConfigurationSerializable
      * @param green integer from 0-255
      * @param blue integer from 0-255
      * @return a new Color object for the red, green, blue
-     * @throws IllegalArgumentException if any value is strictly {@literal >255 or <0}
+     * @throws ArgumentException if any value is strictly {@literal >255 or <0}
      */
     public static Color fromRGB(int red, int green, int blue)
     {
@@ -121,7 +121,7 @@ public class Color : ConfigurationSerializable
      * @param green integer from 0-255
      * @param red integer from 0-255
      * @return a new Color object for the red, green, blue
-     * @throws IllegalArgumentException if any value is strictly {@literal >255 or <0}
+     * @throws ArgumentException if any value is strictly {@literal >255 or <0}
      */
     public static Color fromBGR(int blue, int green, int red)
     {
@@ -134,7 +134,7 @@ public class Color : ConfigurationSerializable
      *
      * @param rgb the integer storing the red, green, and blue values
      * @return a new color object for specified values
-     * @throws IllegalArgumentException if any data is in the highest order 8
+     * @throws ArgumentException if any data is in the highest order 8
      *     bits
      */
     public static Color fromRGB(int rgb)
@@ -150,7 +150,7 @@ public class Color : ConfigurationSerializable
      *
      * @param bgr the integer storing the blue, green, and red values
      * @return a new color object for specified values
-     * @throws IllegalArgumentException if any data is in the highest order 8
+     * @throws ArgumentException if any data is in the highest order 8
      *     bits
      */
     public static Color fromBGR(int bgr)

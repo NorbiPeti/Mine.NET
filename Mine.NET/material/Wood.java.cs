@@ -100,7 +100,7 @@ public class Wood extends MaterialData {
             case WOOD_STEP:
                 return TreeSpecies.getByData((byte) (getData() & 0x7));
             default:
-                throw new IllegalArgumentException("Invalid block type for tree species");
+                throw new ArgumentException("Invalid block type for tree species");
         }
     }
 
@@ -163,13 +163,13 @@ public class Wood extends MaterialData {
                     case BIRCH:
                     case JUNGLE:
                         if (!firstType) {
-                            throw new IllegalArgumentException("Invalid tree species for block type, use block type 2 instead");
+                            throw new ArgumentException("Invalid tree species for block type, use block type 2 instead");
                         }
                         break;
                     case ACACIA:
                     case DARK_OAK:
                         if (firstType) {
-                            throw new IllegalArgumentException("Invalid tree species for block type 2, use block type instead");
+                            throw new ArgumentException("Invalid tree species for block type 2, use block type instead");
                         }
                         break;
                 }
@@ -180,7 +180,7 @@ public class Wood extends MaterialData {
                 setData((byte) ((getData() & 0x8) | species.getData()));
                 break;
             default:
-                throw new IllegalArgumentException("Invalid block type for tree species");
+                throw new ArgumentException("Invalid block type for tree species");
         }
     }
 

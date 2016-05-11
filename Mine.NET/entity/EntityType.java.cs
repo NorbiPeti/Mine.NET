@@ -208,8 +208,8 @@ public enum EntityType {
     private short typeId;
     private bool independent, living;
 
-    private static readonly Map<String, EntityType> NAME_MAP = new HashMap<String, EntityType>();
-    private static readonly Map<Short, EntityType> ID_MAP = new HashMap<Short, EntityType>();
+    private static readonly Dictionary<String, EntityType> NAME_MAP = new HashMap<String, EntityType>();
+    private static readonly Dictionary<Short, EntityType> ID_MAP = new HashMap<Short, EntityType>();
 
     static {
         for (EntityType type : values()) {

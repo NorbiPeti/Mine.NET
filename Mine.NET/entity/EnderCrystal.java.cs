@@ -35,7 +35,7 @@ public interface EnderCrystal extends Entity {
      * value will remove the current beam.
      *
      * @param location the location to point the beam to
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     void setBeamTarget(Location location);
 }

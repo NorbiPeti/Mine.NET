@@ -17,7 +17,7 @@ public class PermissibleBase implements Permissible {
     private ServerOperator opable = null;
     private Permissible parent = this;
     private readonly List<PermissionAttachment> attachments = new LinkedList<PermissionAttachment>();
-    private readonly Map<String, PermissionAttachmentInfo> permissions = new HashMap<String, PermissionAttachmentInfo>();
+    private readonly Dictionary<String, PermissionAttachmentInfo> permissions = new HashMap<String, PermissionAttachmentInfo>();
 
     public PermissibleBase(ServerOperator opable) {
         this.opable = opable;
@@ -47,7 +47,7 @@ public class PermissibleBase implements Permissible {
 
     public bool isPermissionSet(String name) {
         if (name == null) {
-            throw new IllegalArgumentException("Permission name cannot be null");
+            throw new ArgumentException("Permission name cannot be null");
         }
 
         return permissions.containsKey(name.toLowerCase());
@@ -55,7 +55,7 @@ public class PermissibleBase implements Permissible {
 
     public bool isPermissionSet(Permission perm) {
         if (perm == null) {
-            throw new IllegalArgumentException("Permission cannot be null");
+            throw new ArgumentException("Permission cannot be null");
         }
 
         return isPermissionSet(perm.getName());
@@ -63,7 +63,7 @@ public class PermissibleBase implements Permissible {
 
     public bool hasPermission(String inName) {
         if (inName == null) {
-            throw new IllegalArgumentException("Permission name cannot be null");
+            throw new ArgumentException("Permission name cannot be null");
         }
 
         String name = inName.toLowerCase();
@@ -83,7 +83,7 @@ public class PermissibleBase implements Permissible {
 
     public bool hasPermission(Permission perm) {
         if (perm == null) {
-            throw new IllegalArgumentException("Permission cannot be null");
+            throw new ArgumentException("Permission cannot be null");
         }
 
         String name = perm.getName().toLowerCase();
@@ -96,11 +96,11 @@ public class PermissibleBase implements Permissible {
 
     public PermissionAttachment addAttachment(Plugin plugin, String name, bool value) {
         if (name == null) {
-            throw new IllegalArgumentException("Permission name cannot be null");
+            throw new ArgumentException("Permission name cannot be null");
         } else if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
+            throw new ArgumentException("Plugin cannot be null");
         } else if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
         }
 
         PermissionAttachment result = addAttachment(plugin);
@@ -113,9 +113,9 @@ public class PermissibleBase implements Permissible {
 
     public PermissionAttachment addAttachment(Plugin plugin) {
         if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
+            throw new ArgumentException("Plugin cannot be null");
         } else if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
         }
 
         PermissionAttachment result = new PermissionAttachment(plugin, parent);
@@ -128,7 +128,7 @@ public class PermissibleBase implements Permissible {
 
     public void removeAttachment(PermissionAttachment attachment) {
         if (attachment == null) {
-            throw new IllegalArgumentException("Attachment cannot be null");
+            throw new ArgumentException("Attachment cannot be null");
         }
 
         if (attachments.contains(attachment)) {
@@ -141,7 +141,7 @@ public class PermissibleBase implements Permissible {
 
             recalculatePermissions();
         } else {
-            throw new IllegalArgumentException("Given attachment is not part of Permissible object " + parent);
+            throw new ArgumentException("Given attachment is not part of Permissible object " + parent);
         }
     }
 
@@ -194,11 +194,11 @@ public class PermissibleBase implements Permissible {
 
     public PermissionAttachment addAttachment(Plugin plugin, String name, bool value, int ticks) {
         if (name == null) {
-            throw new IllegalArgumentException("Permission name cannot be null");
+            throw new ArgumentException("Permission name cannot be null");
         } else if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
+            throw new ArgumentException("Plugin cannot be null");
         } else if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
         }
 
         PermissionAttachment result = addAttachment(plugin, ticks);
@@ -212,9 +212,9 @@ public class PermissibleBase implements Permissible {
 
     public PermissionAttachment addAttachment(Plugin plugin, int ticks) {
         if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
+            throw new ArgumentException("Plugin cannot be null");
         } else if (!plugin.isEnabled()) {
-            throw new IllegalArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+            throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
         }
 
         PermissionAttachment result = addAttachment(plugin);

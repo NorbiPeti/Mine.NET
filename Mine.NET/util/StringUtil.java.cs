@@ -18,11 +18,11 @@ public class StringUtil {
      * @throws UnsupportedOperationException if the collection is immutable
      *     and originals contains a string which starts with the specified
      *     search string.
-     * @throws IllegalArgumentException if any parameter is is null
-     * @throws IllegalArgumentException if originals contains a null element.
+     * @throws ArgumentException if any parameter is is null
+     * @throws ArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static <T extends Collection<? super String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) throws UnsupportedOperationException, IllegalArgumentException {
+    public static <T extends Collection<? super String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) throws UnsupportedOperationException, ArgumentException {
         Validate.notNull(token, "Search token cannot be null");
         Validate.notNull(collection, "Collection cannot be null");
         Validate.notNull(originals, "Originals cannot be null");
@@ -46,9 +46,9 @@ public class StringUtil {
      * @return true if provided string starts with, ignoring case, the prefix
      *     provided
      * @throws NullPointerException if prefix is null
-     * @throws IllegalArgumentException if string is null
+     * @throws ArgumentException if string is null
      */
-    public static bool startsWithIgnoreCase(String string, readonly String prefix) throws IllegalArgumentException, NullPointerException {
+    public static bool startsWithIgnoreCase(String string, readonly String prefix) throws ArgumentException, NullPointerException {
         Validate.notNull(string, "Cannot check a null string for a match");
         if (string.length() < prefix.length()) {
             return false;

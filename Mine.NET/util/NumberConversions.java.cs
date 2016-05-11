@@ -112,13 +112,13 @@ public sealed class NumberConversions {
 
     public static void checkFinite(double d, String message) {
         if (!isFinite(d)) {
-            throw new IllegalArgumentException(message);
+            throw new ArgumentException(message);
         }
     }
 
     public static void checkFinite(float d, String message) {
         if (!isFinite(d)) {
-            throw new IllegalArgumentException(message);
+            throw new ArgumentException(message);
         }
     }
 }

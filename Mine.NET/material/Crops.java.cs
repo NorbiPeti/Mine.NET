@@ -103,7 +103,7 @@ public class Crops extends MaterialData {
                 // Will return SEEDED, SMALL, TALL, RIPE for the three growth data values
                 return CropState.getByData((byte)(((getData() & 0x3)*7+2)/3)) ;
             default:
-                throw new IllegalArgumentException("Block type is not a crop");
+                throw new ArgumentException("Block type is not a crop");
         }
     }
 
@@ -135,7 +135,7 @@ public class Crops extends MaterialData {
                 setData((byte)((getData() & 0xC)|(state.getData() >> 1)));
                 break;
             default:
-                throw new IllegalArgumentException("Block type is not a crop");
+                throw new ArgumentException("Block type is not a crop");
         }
     }
 

@@ -13,13 +13,13 @@ public class PluginCommandYamlParser {
     public static List<Command> parse(Plugin plugin) {
         List<Command> pluginCmds = new ArrayList<Command>();
 
-        Map<String, Map<String, Object>> map = plugin.getDescription().getCommands();
+        Dictionary<String, Dictionary<String, Object>> map = plugin.getDescription().getCommands();
 
         if (map == null) {
             return pluginCmds;
         }
 
-        for (Entry<String, Map<String, Object>> entry : map.entrySet()) {
+        for (Entry<String, Dictionary<String, Object>> entry : map.entrySet()) {
             if (entry.getKey().contains(":")) {
                 Bukkit.getServer().getLogger().severe("Could not load command " + entry.getKey() + " for plugin " + plugin.getName() + ": Illegal Characters");
                 continue;

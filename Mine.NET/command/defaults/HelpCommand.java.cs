@@ -198,7 +198,7 @@ public class HelpCommand extends VanillaCommand {
             H[0][j + 1] = INF;
         }
 
-        Map<Character, Integer> sd = new HashMap<Character, Integer>();
+        Dictionary<Character, Integer> sd = new HashMap<Character, Integer>();
         for (char Letter : (s1 + s2).toCharArray()) {
             if (!sd.containsKey(Letter)) {
                 sd.put(Letter, 0);

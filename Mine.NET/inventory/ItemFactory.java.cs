@@ -36,10 +36,10 @@ public interface ItemFactory {
      * @param stack Item that meta will be applied to
      * @return true if the meta can be applied without losing data, false
      *     otherwise
-     * @throws IllegalArgumentException if the meta was not created by this
+     * @throws ArgumentException if the meta was not created by this
      *     factory
      */
-    bool isApplicable(ItemMeta meta, readonly ItemStack stack) throws IllegalArgumentException;
+    bool isApplicable(ItemMeta meta, readonly ItemStack stack) throws ArgumentException;
 
     /**
      * This method checks the item meta to confirm that it is applicable (no
@@ -52,10 +52,10 @@ public interface ItemFactory {
      * @param material Material that meta will be applied to
      * @return true if the meta can be applied without losing data, false
      *     otherwise
-     * @throws IllegalArgumentException if the meta was not created by this
+     * @throws ArgumentException if the meta was not created by this
      *     factory
      */
-    bool isApplicable(ItemMeta meta, readonly Material material) throws IllegalArgumentException;
+    bool isApplicable(ItemMeta meta, readonly Material material) throws ArgumentException;
 
     /**
      * This method is used to compare two item meta data objects.
@@ -65,10 +65,10 @@ public interface ItemFactory {
      *     data
      * @return false if one of the meta has data the other does not, otherwise
      *     true
-     * @throws IllegalArgumentException if either meta was not created by this
+     * @throws ArgumentException if either meta was not created by this
      *     factory
      */
-    bool equals(ItemMeta meta1, readonly ItemMeta meta2) throws IllegalArgumentException;
+    bool equals(ItemMeta meta1, readonly ItemMeta meta2) throws ArgumentException;
 
     /**
      * Returns an appropriate item meta for the specified stack.
@@ -88,10 +88,10 @@ public interface ItemFactory {
      * @return An appropriate item meta for the specified item stack. No
      *     guarantees are made as to if a copy is returned. This will be null
      *     for a stack of air.
-     * @throws IllegalArgumentException if the specified meta was not created
+     * @throws ArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(ItemMeta meta, readonly ItemStack stack) throws IllegalArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, readonly ItemStack stack) throws ArgumentException;
 
     /**
      * Returns an appropriate item meta for the specified material.
@@ -110,10 +110,10 @@ public interface ItemFactory {
      * @param material the material to convert the meta for
      * @return An appropriate item meta for the specified item material. No
      *     guarantees are made as to if a copy is returned. This will be null for air.
-     * @throws IllegalArgumentException if the specified meta was not created
+     * @throws ArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(ItemMeta meta, readonly Material material) throws IllegalArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, readonly Material material) throws ArgumentException;
 
     /**
      * Returns the default color for all leather armor.

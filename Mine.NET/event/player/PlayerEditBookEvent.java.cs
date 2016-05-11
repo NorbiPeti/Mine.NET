@@ -23,7 +23,7 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
     public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, bool isSigning) {
         super(who);
 
-        Validate.isTrue(slot >= 0 && slot <=8, "Slot must be in range 0-8 inclusive");
+        if(slot >= 0 && slot <=8) throw new ArgumentException("Slot must be in range 0-8 inclusive");
         Validate.notNull(previousBookMeta, "Previous book meta must not be null");
         Validate.notNull(newBookMeta, "New book meta must not be null");
 
@@ -77,9 +77,9 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
      * Sets the book meta that will actually be added to the book.
      *
      * @param newBookMeta new book meta
-     * @throws IllegalArgumentException if the new book meta is null
+     * @throws ArgumentException if the new book meta is null
      */
-    public void setNewBookMeta(BookMeta newBookMeta) throws IllegalArgumentException {
+    public void setNewBookMeta(BookMeta newBookMeta) throws ArgumentException {
         Validate.notNull(newBookMeta, "New book meta must not be null");
         Bukkit.getItemFactory().equals(newBookMeta, null);
         this.newBookMeta = newBookMeta.clone();

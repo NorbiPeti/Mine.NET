@@ -108,7 +108,7 @@ public sealed class MapCursor {
      */
     public void setDirection(byte direction) {
         if (direction < 0 || direction > 15) {
-            throw new IllegalArgumentException("Direction must be in the range 0-15");
+            throw new ArgumentException("Direction must be in the range 0-15");
         }
         this.direction = direction;
     }
@@ -131,7 +131,7 @@ public sealed class MapCursor {
     [Obsolete]
     public void setRawType(byte type) {
         if (type < 0 || type > 15) {
-            throw new IllegalArgumentException("Type must be in the range 0-15");
+            throw new ArgumentException("Type must be in the range 0-15");
         }
         this.type = type;
     }

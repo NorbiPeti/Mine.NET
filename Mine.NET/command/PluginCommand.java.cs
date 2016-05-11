@@ -118,10 +118,10 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
      *
      * @throws CommandException if the completer or executor throw an
      *     exception during the process of tab-completing.
-     * @throws IllegalArgumentException if sender, alias, or args is null
+     * @throws ArgumentException if sender, alias, or args is null
      */
     @Override
-    public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, IllegalArgumentException {
+    public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, ArgumentException {
         Validate.notNull(sender, "Sender cannot be null");
         Validate.notNull(args, "Arguments cannot be null");
         Validate.notNull(alias, "Alias cannot be null");

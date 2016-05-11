@@ -62,8 +62,8 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
      * @return This object, for chaining
      */
     public YamlConfigurationOptions indent(int value) {
-        Validate.isTrue(value >= 2, "Indent must be at least 2 characters");
-        Validate.isTrue(value <= 9, "Indent cannot be greater than 9 characters");
+        if(value >= 2) throw new ArgumentException("Indent must be at least 2 characters");
+        if(value <= 9) throw new ArgumentException("Indent cannot be greater than 9 characters");
 
         this.indent = value;
         return this;

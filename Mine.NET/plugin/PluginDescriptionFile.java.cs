@@ -216,7 +216,7 @@ public sealed class PluginDescriptionFile {
     private List<String> softDepend = ImmutableList.of();
     private List<String> loadBefore = ImmutableList.of();
     private String version = null;
-    private Map<String, Map<String, Object>> commands = null;
+    private Dictionary<String, Dictionary<String, Object>> commands = null;
     private String description = null;
     private List<String> authors = null;
     private String website = null;
@@ -224,7 +224,7 @@ public sealed class PluginDescriptionFile {
     private bool database = false;
     private PluginLoadOrder order = PluginLoadOrder.POSTWORLD;
     private List<Permission> permissions = null;
-    private Map<?, ?> lazyPermissions = null;
+    private Dictionary<?, ?> lazyPermissions = null;
     private PermissionDefault defaultPerm = PermissionDefault.OP;
     private Set<PluginAwareness> awareness = ImmutableSet.of();
 
@@ -669,7 +669,7 @@ public sealed class PluginDescriptionFile {
      *
      * @return the commands this plugin will register
      */
-    public Map<String, Map<String, Object>> getCommands() {
+    public Dictionary<String, Dictionary<String, Object>> getCommands() {
         return commands;
     }
 
@@ -920,7 +920,7 @@ public sealed class PluginDescriptionFile {
         }
 
         if (map.get("commands") != null) {
-            ImmutableMap.Builder<String, Map<String, Object>> commandsBuilder = ImmutableMap.<String, Map<String, Object>>builder();
+            ImmutableMap.Builder<String, Dictionary<String, Object>> commandsBuilder = ImmutableMap.<String, Dictionary<String, Object>>builder();
             try {
                 for (Map.Entry<?, ?> command : ((Map<?, ?>) map.get("commands")).entrySet()) {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
@@ -977,7 +977,7 @@ public sealed class PluginDescriptionFile {
                 order = PluginLoadOrder.valueOf(((String) map.get("load")).toUpperCase().replaceAll("\\W", ""));
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "load is of wrong type");
-            } catch (IllegalArgumentException ex) {
+            } catch (ArgumentException ex) {
                 throw new InvalidDescriptionException(ex, "load is not a valid choice");
             }
         }
@@ -1008,7 +1008,7 @@ public sealed class PluginDescriptionFile {
                 defaultPerm = PermissionDefault.getByName(map.get("default-permission").toString());
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "default-permission is of wrong type");
-            } catch (IllegalArgumentException ex) {
+            } catch (ArgumentException ex) {
                 throw new InvalidDescriptionException(ex, "default-permission is not a valid choice");
             }
         }
@@ -1055,8 +1055,8 @@ public sealed class PluginDescriptionFile {
         return builder.build();
     }
 
-    private Map<String, Object> saveMap() {
-        Map<String, Object> map = new HashMap<String, Object>();
+    private Dictionary<String, Object> saveMap() {
+        Dictionary<String, Object> map = new HashMap<String, Object>();
 
         map.put("name", name);
         map.put("main", main);
@@ -1098,7 +1098,7 @@ public sealed class PluginDescriptionFile {
         return map;
     }
 
-    private Map<?,?> asMap(Object object) throws InvalidDescriptionException {
+    private Dictionary<?,?> asMap(Object object) throws InvalidDescriptionException {
         if (object instanceof Map) {
             return (Map<?,?>) object;
         }

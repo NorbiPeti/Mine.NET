@@ -213,10 +213,10 @@ public interface BukkitScheduler {
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTask(Plugin plugin, Runnable task) throws IllegalArgumentException;
+    public BukkitTask runTask(Plugin plugin, Runnable task) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTask(Plugin)}
@@ -224,11 +224,11 @@ public interface BukkitScheduler {
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTask(Plugin plugin, BukkitRunnable task) throws IllegalArgumentException;
+    public BukkitTask runTask(Plugin plugin, BukkitRunnable task) throws ArgumentException;
 
     /**
      * <b>Asynchronous tasks should never access any API in Bukkit. Great care
@@ -239,21 +239,21 @@ public interface BukkitScheduler {
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTaskAsynchronously(Plugin plugin, Runnable task) throws IllegalArgumentException;
+    public BukkitTask runTaskAsynchronously(Plugin plugin, Runnable task) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTaskAsynchronously(Plugin)}
      * @param plugin the reference to the plugin scheduling task
      * @param task the task to be run
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTaskAsynchronously(Plugin plugin, BukkitRunnable task) throws IllegalArgumentException;
+    public BukkitTask runTaskAsynchronously(Plugin plugin, BukkitRunnable task) throws ArgumentException;
 
     /**
      * Returns a task that will run after the specified number of server
@@ -263,10 +263,10 @@ public interface BukkitScheduler {
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTaskLater(Plugin plugin, Runnable task, long delay) throws IllegalArgumentException;
+    public BukkitTask runTaskLater(Plugin plugin, Runnable task, long delay) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTaskLater(Plugin, long)}
@@ -274,11 +274,11 @@ public interface BukkitScheduler {
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTaskLater(Plugin plugin, BukkitRunnable task, long delay) throws IllegalArgumentException;
+    public BukkitTask runTaskLater(Plugin plugin, BukkitRunnable task, long delay) throws ArgumentException;
 
     /**
      * <b>Asynchronous tasks should never access any API in Bukkit. Great care
@@ -291,10 +291,10 @@ public interface BukkitScheduler {
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTaskLaterAsynchronously(Plugin plugin, Runnable task, long delay) throws IllegalArgumentException;
+    public BukkitTask runTaskLaterAsynchronously(Plugin plugin, Runnable task, long delay) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTaskLaterAsynchronously(Plugin, long)}
@@ -302,11 +302,11 @@ public interface BukkitScheduler {
      * @param task the task to be run
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTaskLaterAsynchronously(Plugin plugin, BukkitRunnable task, long delay) throws IllegalArgumentException;
+    public BukkitTask runTaskLaterAsynchronously(Plugin plugin, BukkitRunnable task, long delay) throws ArgumentException;
 
     /**
      * Returns a task that will repeatedly run until cancelled, starting after
@@ -317,10 +317,10 @@ public interface BukkitScheduler {
      * @param delay the ticks to wait before running the task
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTaskTimer(Plugin plugin, Runnable task, long delay, long period) throws IllegalArgumentException;
+    public BukkitTask runTaskTimer(Plugin plugin, Runnable task, long delay, long period) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTaskTimer(Plugin, long, long)}
@@ -329,11 +329,11 @@ public interface BukkitScheduler {
      * @param delay the ticks to wait before running the task
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTaskTimer(Plugin plugin, BukkitRunnable task, long delay, long period) throws IllegalArgumentException;
+    public BukkitTask runTaskTimer(Plugin plugin, BukkitRunnable task, long delay, long period) throws ArgumentException;
 
     /**
      * <b>Asynchronous tasks should never access any API in Bukkit. Great care
@@ -348,10 +348,10 @@ public interface BukkitScheduler {
      *     time
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
-    public BukkitTask runTaskTimerAsynchronously(Plugin plugin, Runnable task, long delay, long period) throws IllegalArgumentException;
+    public BukkitTask runTaskTimerAsynchronously(Plugin plugin, Runnable task, long delay, long period) throws ArgumentException;
 
     /**
      * [Obsolete] Use {@link BukkitRunnable#runTaskTimerAsynchronously(Plugin, long, long)}
@@ -361,9 +361,9 @@ public interface BukkitScheduler {
      *     time
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
-     * @throws IllegalArgumentException if plugin is null
-     * @throws IllegalArgumentException if task is null
+     * @throws ArgumentException if plugin is null
+     * @throws ArgumentException if task is null
      */
     [Obsolete]
-    public BukkitTask runTaskTimerAsynchronously(Plugin plugin, BukkitRunnable task, long delay, long period) throws IllegalArgumentException;
+    public BukkitTask runTaskTimerAsynchronously(Plugin plugin, BukkitRunnable task, long delay, long period) throws ArgumentException;
 }

@@ -146,8 +146,8 @@ public abstract class Enchantment {
      */
     public static readonly Enchantment MENDING = new EnchantmentWrapper(70);
 
-    private static readonly Map<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
-    private static readonly Map<String, Enchantment> byName = new HashMap<String, Enchantment>();
+    private static readonly Dictionary<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
+    private static readonly Dictionary<String, Enchantment> byName = new HashMap<String, Enchantment>();
     private static bool acceptingNew = true;
     private readonly int id;
 
@@ -248,7 +248,7 @@ public abstract class Enchantment {
      */
     public static void registerEnchantment(Enchantment enchantment) {
         if (byId.containsKey(enchantment.id) || byName.containsKey(enchantment.getName())) {
-            throw new IllegalArgumentException("Cannot set already-set enchantment");
+            throw new ArgumentException("Cannot set already-set enchantment");
         } else if (!isAcceptingRegistrations()) {
             throw new IllegalStateException("No longer accepting new enchantments (can only be done by the server implementation)");
         }

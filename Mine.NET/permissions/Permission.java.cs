@@ -19,7 +19,7 @@ public class Permission {
     public static readonly PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
 
     private readonly String name;
-    private readonly Map<String, bool> children = new LinkedHashMap<String, bool>();
+    private readonly Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
     private PermissionDefault defaultValue = DEFAULT_PERMISSION;
     private String description;
 
@@ -39,19 +39,19 @@ public class Permission {
         this(name, description, defaultValue, null);
     }
 
-    public Permission(String name, Map<String, bool> children) {
+    public Permission(String name, Dictionary<String, bool> children) {
         this(name, null, null, children);
     }
 
-    public Permission(String name, String description, Map<String, bool> children) {
+    public Permission(String name, String description, Dictionary<String, bool> children) {
         this(name, description, null, children);
     }
 
-    public Permission(String name, PermissionDefault defaultValue, Map<String, bool> children) {
+    public Permission(String name, PermissionDefault defaultValue, Dictionary<String, bool> children) {
         this(name, null, defaultValue, children);
     }
 
-    public Permission(String name, String description, PermissionDefault defaultValue, Map<String, bool> children) {
+    public Permission(String name, String description, PermissionDefault defaultValue, Dictionary<String, bool> children) {
         Validate.notNull(name, "Name cannot be null");
         this.name = name;
         this.description = (description == null) ? "" : description;
@@ -84,7 +84,7 @@ public class Permission {
      *
      * @return Permission children
      */
-    public Map<String, bool> getChildren() {
+    public Dictionary<String, bool> getChildren() {
         return children;
     }
 
@@ -109,7 +109,7 @@ public class Permission {
      */
     public void setDefault(PermissionDefault value) {
         if (defaultValue == null) {
-            throw new IllegalArgumentException("Default value cannot be null");
+            throw new ArgumentException("Default value cannot be null");
         }
 
         defaultValue = value;
@@ -214,7 +214,7 @@ public class Permission {
      * following keys:
      * <ul>
      * <li>default: bool true or false. If not specified, false.
-     * <li>children: {@code Map<String, bool>} of child permissions. If not
+     * <li>children: {@code Dictionary<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -246,7 +246,7 @@ public class Permission {
      * The data may contain the following keys:
      * <ul>
      * <li>default: bool true or false. If not specified, false.
-     * <li>children: {@code Map<String, bool>} of child permissions. If not
+     * <li>children: {@code Dictionary<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -256,7 +256,7 @@ public class Permission {
      * @param data Map of keys
      * @return Permission object
      */
-    public static Permission loadPermission(String name, Map<String, Object> data) {
+    public static Permission loadPermission(String name, Dictionary<String, Object> data) {
         return loadPermission(name, data, DEFAULT_PERMISSION, null);
     }
 
@@ -267,7 +267,7 @@ public class Permission {
      * The data may contain the following keys:
      * <ul>
      * <li>default: bool true or false. If not specified, false.
-     * <li>children: {@code Map<String, bool>} of child permissions. If not
+     * <li>children: {@code Dictionary<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -279,19 +279,19 @@ public class Permission {
      * @param output A list to append any created child-Permissions to, may be null
      * @return Permission object
      */
-    public static Permission loadPermission(String name, Map<?, ?> data, PermissionDefault def, List<Permission> output) {
+    public static Permission loadPermission(String name, Dictionary<?, ?> data, PermissionDefault def, List<Permission> output) {
         Validate.notNull(name, "Name cannot be null");
         Validate.notNull(data, "Data cannot be null");
 
         String desc = null;
-        Map<String, bool> children = null;
+        Dictionary<String, bool> children = null;
 
         if (data.get("default") != null) {
             PermissionDefault value = PermissionDefault.getByName(data.get("default").toString());
             if (value != null) {
                 def = value;
             } else {
-                throw new IllegalArgumentException("'default' key contained unknown value");
+                throw new ArgumentException("'default' key contained unknown value");
             }
         }
 
@@ -307,7 +307,7 @@ public class Permission {
             } else if (childrenNode instanceof Map) {
                 children = extractChildren((Map<?,?>) childrenNode, name, def, output);
             } else {
-                throw new IllegalArgumentException("'children' key is of wrong type");
+                throw new ArgumentException("'children' key is of wrong type");
             }
         }
 
@@ -318,8 +318,8 @@ public class Permission {
         return new Permission(name, desc, def, children);
     }
 
-    private static Map<String, bool> extractChildren(Map<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
-        Map<String, bool> children = new LinkedHashMap<String, bool>();
+    private static Dictionary<String, bool> extractChildren(Map<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
+        Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
             if ((entry.getValue() instanceof bool)) {
@@ -333,10 +333,10 @@ public class Permission {
                         output.add(perm);
                     }
                 } catch (Throwable ex) {
-                    throw new IllegalArgumentException("Permission node '" + entry.getKey().toString() + "' in child of " + name + " is invalid", ex);
+                    throw new ArgumentException("Permission node '" + entry.getKey().toString() + "' in child of " + name + " is invalid", ex);
                 }
             } else {
-                throw new IllegalArgumentException("Child '" + entry.getKey().toString() + "' contains invalid value");
+                throw new ArgumentException("Child '" + entry.getKey().toString() + "' contains invalid value");
             }
         }
 

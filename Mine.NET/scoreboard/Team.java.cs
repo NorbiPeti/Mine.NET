@@ -32,11 +32,11 @@ public interface Team {
      * Sets the name displayed to entries for this team
      *
      * @param displayName New display name
-     * @throws IllegalArgumentException if displayName is longer than 32
+     * @throws ArgumentException if displayName is longer than 32
      *     characters.
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setDisplayName(String displayName) throws IllegalStateException, IllegalArgumentException;
+    void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
 
     /**
      * Gets the prefix prepended to the display of entries on this team.
@@ -50,12 +50,12 @@ public interface Team {
      * Sets the prefix prepended to the display of entries on this team.
      *
      * @param prefix New prefix
-     * @throws IllegalArgumentException if prefix is null
-     * @throws IllegalArgumentException if prefix is longer than 16
+     * @throws ArgumentException if prefix is null
+     * @throws ArgumentException if prefix is longer than 16
      *     characters
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setPrefix(String prefix) throws IllegalStateException, IllegalArgumentException;
+    void setPrefix(String prefix) throws IllegalStateException, ArgumentException;
 
     /**
      * Gets the suffix appended to the display of entries on this team.
@@ -69,12 +69,12 @@ public interface Team {
      * Sets the suffix appended to the display of entries on this team.
      *
      * @param suffix the new suffix for this team.
-     * @throws IllegalArgumentException if suffix is null
-     * @throws IllegalArgumentException if suffix is longer than 16
+     * @throws ArgumentException if suffix is null
+     * @throws ArgumentException if suffix is longer than 16
      *     characters
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setSuffix(String suffix) throws IllegalStateException, IllegalArgumentException;
+    void setSuffix(String suffix) throws IllegalStateException, ArgumentException;
 
     /**
      * Gets the team friendly fire state
@@ -114,22 +114,22 @@ public interface Team {
      * Gets the team's ability to see name tags
      *
      * @return the current name tag visibilty for the team
-     * @throws IllegalArgumentException if this team has been unregistered
+     * @throws ArgumentException if this team has been unregistered
      * [Obsolete] see {@link #getOption(org.bukkit.scoreboard.Team.Option)}
      */
     [Obsolete]
-    NameTagVisibility getNameTagVisibility() throws IllegalArgumentException;
+    NameTagVisibility getNameTagVisibility() throws ArgumentException;
 
     /**
      * Set's the team's ability to see name tags
      *
      * @param visibility The nameTagVisibilty to set
-     * @throws IllegalArgumentException if this team has been unregistered
+     * @throws ArgumentException if this team has been unregistered
      * [Obsolete] see
      * {@link #setOption(org.bukkit.scoreboard.Team.Option, org.bukkit.scoreboard.Team.OptionStatus)}
      */
     [Obsolete]
-    void setNameTagVisibility(NameTagVisibility visibility) throws IllegalArgumentException;
+    void setNameTagVisibility(NameTagVisibility visibility) throws ArgumentException;
 
     /**
      * Gets the Set of players on the team
@@ -172,13 +172,13 @@ public interface Team {
      * This will remove the player from any other team on the scoreboard.
      *
      * @param player the player to add
-     * @throws IllegalArgumentException if player is null
+     * @throws ArgumentException if player is null
      * @throws IllegalStateException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #addEntry(String)
      */
     [Obsolete]
-    void addPlayer(OfflinePlayer player) throws IllegalStateException, IllegalArgumentException;
+    void addPlayer(OfflinePlayer player) throws IllegalStateException, ArgumentException;
 
     /**
      * This puts the specified entry onto this team for the scoreboard.
@@ -186,33 +186,33 @@ public interface Team {
      * This will remove the entry from any other team on the scoreboard.
      *
      * @param entry the entry to add
-     * @throws IllegalArgumentException if entry is null
+     * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    void addEntry(String entry) throws IllegalStateException, IllegalArgumentException;
+    void addEntry(String entry) throws IllegalStateException, ArgumentException;
 
     /**
      * Removes the player from this team.
      *
      * @param player the player to remove
      * @return if the player was on this team
-     * @throws IllegalArgumentException if player is null
+     * @throws ArgumentException if player is null
      * @throws IllegalStateException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #removeEntry(String)
      */
     [Obsolete]
-    bool removePlayer(OfflinePlayer player) throws IllegalStateException, IllegalArgumentException;
+    bool removePlayer(OfflinePlayer player) throws IllegalStateException, ArgumentException;
 
     /**
      * Removes the entry from this team.
      *
      * @param entry the entry to remove
-     * @throws IllegalArgumentException if entry is null
+     * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      * @return if the entry was a part of this team
      */
-    bool removeEntry(String entry) throws IllegalStateException, IllegalArgumentException;
+    bool removeEntry(String entry) throws IllegalStateException, ArgumentException;
 
     /**
      * Unregisters this team from the Scoreboard
@@ -226,22 +226,22 @@ public interface Team {
      *
      * @param player the player to search for
      * @return true if the player is a member of this team
-     * @throws IllegalArgumentException if player is null
+     * @throws ArgumentException if player is null
      * @throws IllegalStateException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #hasEntry(String)
      */
     [Obsolete]
-    bool hasPlayer(OfflinePlayer player) throws IllegalArgumentException, IllegalStateException;
+    bool hasPlayer(OfflinePlayer player) throws ArgumentException, IllegalStateException;
     /**
      * Checks to see if the specified entry is a member of this team.
      *
      * @param entry the entry to search for
      * @return true if the entry is a member of this team
-     * @throws IllegalArgumentException if entry is null
+     * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    bool hasEntry(String entry) throws IllegalArgumentException, IllegalStateException;
+    bool hasEntry(String entry) throws ArgumentException, IllegalStateException;
 
     /**
      * Get an option for this team

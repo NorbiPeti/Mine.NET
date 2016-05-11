@@ -41,7 +41,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      *
      * @return An immutable copy of the stored enchantments
      */
-    Map<Enchantment, Integer> getStoredEnchants();
+    Dictionary<Enchantment, Integer> getStoredEnchants();
 
     /**
      * Stores the specified enchantment in this item meta.
@@ -52,7 +52,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      *     applied, ignoring the level limit
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
-     * @throws IllegalArgumentException if enchantment is null
+     * @throws ArgumentException if enchantment is null
      */
     bool addStoredEnchant(Enchantment ench, int level, bool ignoreLevelRestriction);
 
@@ -62,9 +62,9 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      * @param ench Enchantment to remove
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
-     * @throws IllegalArgumentException if enchantment is null
+     * @throws ArgumentException if enchantment is null
      */
-    bool removeStoredEnchant(Enchantment ench) throws IllegalArgumentException;
+    bool removeStoredEnchant(Enchantment ench) throws ArgumentException;
 
     /**
      * Checks if the specified enchantment conflicts with any enchantments in

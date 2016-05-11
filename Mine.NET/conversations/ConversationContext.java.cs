@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class ConversationContext {
     private Conversable forWhom;
-    private Map<Object, Object> sessionData;
+    private Dictionary<Object, Object> sessionData;
     private Plugin plugin;
 
     /**
@@ -21,7 +21,7 @@ public class ConversationContext {
      * @param initialSessionData Any initial values to put in the sessionData
      *     map.
      */
-    public ConversationContext(Plugin plugin, Conversable forWhom, Map<Object, Object> initialSessionData) {
+    public ConversationContext(Plugin plugin, Conversable forWhom, Dictionary<Object, Object> initialSessionData) {
         this.plugin = plugin;
         this.forWhom = forWhom;
         this.sessionData = initialSessionData;

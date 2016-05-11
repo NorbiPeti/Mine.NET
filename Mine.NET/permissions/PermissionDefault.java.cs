@@ -13,7 +13,7 @@ public enum PermissionDefault {
     NOT_OP("!op", "notop", "!operator", "notoperator", "!admin", "notadmin");
 
     private readonly String[] names;
-    private readonly static Map<String, PermissionDefault> lookup = new HashMap<String, PermissionDefault>();
+    private readonly static Dictionary<String, PermissionDefault> lookup = new HashMap<String, PermissionDefault>();
 
     private PermissionDefault(String... names) {
         this.names = names;

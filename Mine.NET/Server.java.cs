@@ -532,7 +532,7 @@ public interface Server extends PluginMessageRecipient {
      *
      * @return a map of aliases to command names
      */
-    public Map<String, String[]> getCommandAliases();
+    public Dictionary<String, String[]> getCommandAliases();
 
     /**
      * Gets the radius, in blocks, around each worlds spawn point to protect.
@@ -761,9 +761,9 @@ public interface Server extends PluginMessageRecipient {
      * @param owner the holder of the inventory, or null to indicate no holder
      * @param size a multiple of 9 as the size of inventory to create
      * @return a new inventory
-     * @throws IllegalArgumentException if the size is not a multiple of 9
+     * @throws ArgumentException if the size is not a multiple of 9
      */
-    Inventory createInventory(InventoryHolder owner, int size) throws IllegalArgumentException;
+    Inventory createInventory(InventoryHolder owner, int size) throws ArgumentException;
 
     /**
      * Creates an empty inventory of type {@link InventoryType#CHEST} with the
@@ -774,9 +774,9 @@ public interface Server extends PluginMessageRecipient {
      * @param title the title of the inventory, displayed when inventory is
      *     viewed
      * @return a new inventory
-     * @throws IllegalArgumentException if the size is not a multiple of 9
+     * @throws ArgumentException if the size is not a multiple of 9
      */
-    Inventory createInventory(InventoryHolder owner, int size, String title) throws IllegalArgumentException;
+    Inventory createInventory(InventoryHolder owner, int size, String title) throws ArgumentException;
 
     /**
      * Gets user-specified limit for number of monsters that can spawn in a
@@ -879,13 +879,13 @@ public interface Server extends PluginMessageRecipient {
      * guaranteed to throw an implementation-defined {@link Exception}.
      *
      * @param file the file to load the from
-     * @throws IllegalArgumentException if image is null
+     * @throws ArgumentException if image is null
      * @throws Exception if the image does not meet current server server-icon
      *     specifications
      * @return a cached server-icon that can be used for a {@link
      *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
      */
-    CachedServerIcon loadServerIcon(File file) throws IllegalArgumentException, Exception;
+    CachedServerIcon loadServerIcon(File file) throws ArgumentException, Exception;
 
     /**
      * Creates a cached server-icon for the specific image.
@@ -894,13 +894,13 @@ public interface Server extends PluginMessageRecipient {
      * guaranteed to throw an implementation-defined {@link Exception}.
      *
      * @param image the image to use
-     * @throws IllegalArgumentException if image is null
+     * @throws ArgumentException if image is null
      * @throws Exception if the image does not meet current server
      *     server-icon specifications
      * @return a cached server-icon that can be used for a {@link
      *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
      */
-    CachedServerIcon loadServerIcon(BufferedImage image) throws IllegalArgumentException, Exception;
+    CachedServerIcon loadServerIcon(BufferedImage image) throws ArgumentException, Exception;
 
     /**
      * Set the idle kick timeout. Any players idle for the specified amount of

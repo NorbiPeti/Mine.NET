@@ -14,7 +14,7 @@ import org.bukkit.material.MaterialData;
 public class ShapedRecipe implements Recipe {
     private ItemStack output;
     private String[] rows;
-    private Map<Character, ItemStack> ingredients = new HashMap<Character, ItemStack>();
+    private Dictionary<Character, ItemStack> ingredients = new HashMap<Character, ItemStack>();
 
     /**
      * Create a shaped recipe to craft the specified ItemStack. The
@@ -44,11 +44,11 @@ public class ShapedRecipe implements Recipe {
      */
     public ShapedRecipe shape(String... shape) {
         Validate.notNull(shape, "Must provide a shape");
-        Validate.isTrue(shape.length > 0 && shape.length < 4, "Crafting recipes should be 1, 2, 3 rows, not ", shape.length);
+        if(shape.length > 0 && shape.length < 4, "Crafting recipes should be 1, 2, 3 rows, not ") throw new ArgumentException(shape.length);
 
         for (String row : shape) {
             Validate.notNull(row, "Shape cannot have null rows");
-            Validate.isTrue(row.length() > 0 && row.length() < 4, "Crafting rows should be 1, 2, or 3 characters, not ", row.length());
+            if(row.length() > 0 && row.length() < 4, "Crafting rows should be 1, 2, or 3 characters, not ") throw new ArgumentException(row.length());
         }
         this.rows = new String[shape.length];
         for (int i = 0; i < shape.length; i++) {
@@ -100,7 +100,7 @@ public class ShapedRecipe implements Recipe {
      */
     [Obsolete]
     public ShapedRecipe setIngredient(char key, Material ingredient, int raw) {
-        Validate.isTrue(ingredients.containsKey(key), "Symbol does not appear in the shape:", key);
+        if(ingredients.containsKey(key), "Symbol does not appear in the shape:") throw new ArgumentException(key);
 
         // -1 is the old wildcard, map to Short.MAX_VALUE as the new one
         if (raw == -1) {
@@ -116,7 +116,7 @@ public class ShapedRecipe implements Recipe {
      *
      * @return The mapping of character to ingredients.
      */
-    public Map<Character, ItemStack> getIngredientMap() {
+    public Dictionary<Character, ItemStack> getIngredientMap() {
         HashMap<Character, ItemStack> result = new HashMap<Character, ItemStack>();
         for (Map.Entry<Character, ItemStack> ingredient : ingredients.entrySet()) {
             if (ingredient.getValue() == null) {

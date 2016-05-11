@@ -49,7 +49,7 @@ public class YamlConfiguration extends FileConfiguration {
     public void loadFromString(String contents) throws InvalidConfigurationException {
         Validate.notNull(contents, "Contents cannot be null");
 
-        Map<?, ?> input;
+        Dictionary<?, ?> input;
         try {
             input = (Map<?, ?>) yaml.load(contents);
         } catch (YAMLException e) {
@@ -168,7 +168,7 @@ public class YamlConfiguration extends FileConfiguration {
      *
      * @param file Input file
      * @return Resulting configuration
-     * @throws IllegalArgumentException Thrown if file is null
+     * @throws ArgumentException Thrown if file is null
      */
     public static YamlConfiguration loadConfiguration(File file) {
         Validate.notNull(file, "File cannot be null");
@@ -196,7 +196,7 @@ public class YamlConfiguration extends FileConfiguration {
      *
      * @param stream Input stream
      * @return Resulting configuration
-     * @throws IllegalArgumentException Thrown if stream is null
+     * @throws ArgumentException Thrown if stream is null
      * [Obsolete] does not properly consider encoding
      * @see #load(InputStream)
      * @see #loadConfiguration(Reader)
@@ -228,7 +228,7 @@ public class YamlConfiguration extends FileConfiguration {
      *
      * @param reader input
      * @return resulting configuration
-     * @throws IllegalArgumentException Thrown if stream is null
+     * @throws ArgumentException Thrown if stream is null
      */
     public static YamlConfiguration loadConfiguration(Reader reader) {
         Validate.notNull(reader, "Stream cannot be null");

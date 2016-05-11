@@ -172,7 +172,7 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @param file the filename of the resource to load
      * @return null if {@link #getResource(String)} returns null
-     * @throws IllegalArgumentException if file is null
+     * @throws ArgumentException if file is null
      * @see ClassLoader#getResourceAsStream(String)
      */
     @SuppressWarnings("deprecation")
@@ -214,13 +214,13 @@ public abstract class JavaPlugin extends PluginBase {
     @Override
     public void saveResource(String resourcePath, bool replace) {
         if (resourcePath == null || resourcePath.equals("")) {
-            throw new IllegalArgumentException("ResourcePath cannot be null or empty");
+            throw new ArgumentException("ResourcePath cannot be null or empty");
         }
 
         resourcePath = resourcePath.replace('\\', '/');
         InputStream in = getResource(resourcePath);
         if (in == null) {
-            throw new IllegalArgumentException("The embedded resource '" + resourcePath + "' cannot be found in " + file);
+            throw new ArgumentException("The embedded resource '" + resourcePath + "' cannot be found in " + file);
         }
 
         File outFile = new File(dataFolder, resourcePath);
@@ -252,7 +252,7 @@ public abstract class JavaPlugin extends PluginBase {
     @Override
     public InputStream getResource(String filename) {
         if (filename == null) {
-            throw new IllegalArgumentException("Filename cannot be null");
+            throw new ArgumentException("Filename cannot be null");
         }
 
         try {
@@ -479,8 +479,8 @@ public abstract class JavaPlugin extends PluginBase {
      * @param <T> a class that extends JavaPlugin
      * @param clazz the class desired
      * @return the plugin that provides and implements said class
-     * @throws IllegalArgumentException if clazz is null
-     * @throws IllegalArgumentException if clazz does not extend {@link
+     * @throws ArgumentException if clazz is null
+     * @throws ArgumentException if clazz does not extend {@link
      *     JavaPlugin}
      * @throws IllegalStateException if clazz was not provided by a plugin,
      *     for example, if called with
@@ -493,11 +493,11 @@ public abstract class JavaPlugin extends PluginBase {
     public static <T extends JavaPlugin> T getPlugin(Class<T> clazz) {
         Validate.notNull(clazz, "Null class cannot have a plugin");
         if (!JavaPlugin.class.isAssignableFrom(clazz)) {
-            throw new IllegalArgumentException(clazz + " does not extend " + JavaPlugin.class);
+            throw new ArgumentException(clazz + " does not extend " + JavaPlugin.class);
         }
         readonly ClassLoader cl = clazz.getClassLoader();
         if (!(cl instanceof PluginClassLoader)) {
-            throw new IllegalArgumentException(clazz + " is not initialized by " + PluginClassLoader.class);
+            throw new ArgumentException(clazz + " is not initialized by " + PluginClassLoader.class);
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;
         if (plugin == null) {
@@ -512,9 +512,9 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @param clazz a class belonging to a plugin
      * @return the plugin that provided the class
-     * @throws IllegalArgumentException if the class is not provided by a
+     * @throws ArgumentException if the class is not provided by a
      *     JavaPlugin
-     * @throws IllegalArgumentException if class is null
+     * @throws ArgumentException if class is null
      * @throws IllegalStateException if called from the static initializer for
      *     given JavaPlugin
      */
@@ -522,7 +522,7 @@ public abstract class JavaPlugin extends PluginBase {
         Validate.notNull(clazz, "Null class cannot have a plugin");
         readonly ClassLoader cl = clazz.getClassLoader();
         if (!(cl instanceof PluginClassLoader)) {
-            throw new IllegalArgumentException(clazz + " is not provided by " + PluginClassLoader.class);
+            throw new ArgumentException(clazz + " is not provided by " + PluginClassLoader.class);
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;
         if (plugin == null) {

@@ -64,8 +64,8 @@ public enum MushroomBlockTexture {
      * Stem texture on all faces.
      */
     ALL_STEM(15, null);
-    private readonly static Map<Byte, MushroomBlockTexture> BY_DATA = Maps.newHashMap();
-    private readonly static Map<BlockFace, MushroomBlockTexture> BY_BLOCKFACE = Maps.newHashMap();
+    private readonly static Dictionary<Byte, MushroomBlockTexture> BY_DATA = Maps.newHashMap();
+    private readonly static Dictionary<BlockFace, MushroomBlockTexture> BY_BLOCKFACE = Maps.newHashMap();
 
     private readonly Byte data;
     private readonly BlockFace capFace;

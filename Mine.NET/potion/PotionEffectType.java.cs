@@ -223,7 +223,7 @@ public abstract class PotionEffectType {
     }
 
     private static readonly PotionEffectType[] byId = new PotionEffectType[28];
-    private static readonly Map<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
+    private static readonly Dictionary<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
     // will break on updates.
     private static bool acceptingNew = true;
 
@@ -261,7 +261,7 @@ public abstract class PotionEffectType {
      */
     public static void registerPotionEffectType(PotionEffectType type) {
         if (byId[type.id] != null || byName.containsKey(type.getName().toLowerCase())) {
-            throw new IllegalArgumentException("Cannot set already-set type");
+            throw new ArgumentException("Cannot set already-set type");
         } else if (!acceptingNew) {
             throw new IllegalStateException(
                     "No longer accepting new potion effect types (can only be done by the server implementation)");

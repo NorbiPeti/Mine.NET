@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.*;
 
 public abstract class MetadataStoreBase<T> {
-    private Map<String, Map<Plugin, MetadataValue>> metadataMap = new HashMap<String, Map<Plugin, MetadataValue>>();
+    private Dictionary<String, Dictionary<Plugin, MetadataValue>> metadataMap = new HashMap<String, Dictionary<Plugin, MetadataValue>>();
 
     /**
      * Adds a metadata value to an object. Each metadata value is owned by a
@@ -27,7 +27,7 @@ public abstract class MetadataStoreBase<T> {
      * @param metadataKey A unique key to identify this metadata.
      * @param newMetadataValue The metadata value to apply.
      * @see MetadataStore#setMetadata(Object, String, MetadataValue)
-     * @throws IllegalArgumentException If value is null, or the owning plugin
+     * @throws ArgumentException If value is null, or the owning plugin
      *     is null
      */
     public synchronized void setMetadata(T subject, String metadataKey, MetadataValue newMetadataValue) {
@@ -35,7 +35,7 @@ public abstract class MetadataStoreBase<T> {
         Plugin owningPlugin = newMetadataValue.getOwningPlugin();
         Validate.notNull(owningPlugin, "Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
-        Map<Plugin, MetadataValue> entry = metadataMap.get(key);
+        Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
         if (entry == null) {
             entry = new WeakHashMap<Plugin, MetadataValue>(1);
             metadataMap.put(key, entry);
@@ -85,12 +85,12 @@ public abstract class MetadataStoreBase<T> {
      * @param owningPlugin the plugin attempting to remove a metadata item.
      * @see MetadataStore#removeMetadata(Object, String,
      *     org.bukkit.plugin.Plugin)
-     * @throws IllegalArgumentException If plugin is null
+     * @throws ArgumentException If plugin is null
      */
     public synchronized void removeMetadata(T subject, String metadataKey, Plugin owningPlugin) {
         Validate.notNull(owningPlugin, "Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
-        Map<Plugin, MetadataValue> entry = metadataMap.get(key);
+        Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
         if (entry == null) {
             return;
         }
@@ -108,7 +108,7 @@ public abstract class MetadataStoreBase<T> {
      *
      * @param owningPlugin the plugin requesting the invalidation.
      * @see MetadataStore#invalidateAll(org.bukkit.plugin.Plugin)
-     * @throws IllegalArgumentException If plugin is null
+     * @throws ArgumentException If plugin is null
      */
     public synchronized void invalidateAll(Plugin owningPlugin) {
         Validate.notNull(owningPlugin, "Plugin cannot be null");

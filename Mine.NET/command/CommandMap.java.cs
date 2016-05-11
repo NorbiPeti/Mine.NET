@@ -103,7 +103,7 @@ public interface CommandMap {
      *     Will be null if no matching command of which sender has permission.
      * @throws CommandException Thrown when the tab-completer for the given
      *     command fails with an unhandled exception
-     * @throws IllegalArgumentException if either sender or cmdLine are null
+     * @throws ArgumentException if either sender or cmdLine are null
      */
-    public List<String> tabComplete(CommandSender sender, String cmdLine) throws IllegalArgumentException;
+    public List<String> tabComplete(CommandSender sender, String cmdLine) throws ArgumentException;
 }

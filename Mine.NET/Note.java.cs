@@ -1,6 +1,9 @@
+
+using System;
+using System.Collections.Generic;
 /**
- * A note class to store a specific note.
- */
+* A note class to store a specific note.
+*/
 public class Note {
 
     /**
@@ -14,16 +17,17 @@ public class Note {
         public static readonly Tone D = new Tone(0x8, true);
         public static readonly Tone E = new Tone(0xA, false);
         public static readonly Tone F = new Tone(0xB, true);
+        public static readonly Tone[] Tones = { G, A, B, C, D, E, F };
 
         private readonly bool sharpable;
         private readonly byte id;
 
-        private static readonly Map<Byte, Note.Tone> BY_DATA = Maps.newHashMap();
+        private static readonly Dictionary<Byte, Note.Tone> BY_DATA = new Dictionary<byte, Tone>();
         /** The number of tones including sharped tones. */
         public static readonly byte TONES_COUNT = 12;
 
         private Tone(int id, bool sharpable) {
-            this.id = (byte) (id % TONES_COUNT);
+            this.id = (byte)(id % TONES_COUNT);
             this.sharpable = sharpable;
         }
 
@@ -49,9 +53,9 @@ public class Note {
          */
         [Obsolete]
         public byte getId(bool sharped) {
-            byte id = (byte) (sharped && sharpable ? this.id + 1 : this.id);
+            byte id = (byte)(sharped && sharpable ? this.id + 1 : this.id);
 
-            return (byte) (id % TONES_COUNT);
+            return (byte)(id % TONES_COUNT);
         }
 
         /**
@@ -68,7 +72,7 @@ public class Note {
          *
          * @param id the id of the tone.
          * @return if the tone id is the sharped id of the tone.
-         * @throws IllegalArgumentException if neither the tone nor the
+         * @throws ArgumentException if neither the tone nor the
          *     semitone have the id.
          * [Obsolete] Magic value
          */
@@ -80,31 +84,7 @@ public class Note {
                 return true;
             } else {
                 // The id isn't matching to the tone!
-                throw new IllegalArgumentException("The id isn't matching to the tone.");
-            }
-        }
-
-        /**
-         * Returns the tone to id. Also returning the semitones.
-         *
-         * @param id the id of the tone.
-         * @return the tone to id.
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public static Tone getById(byte id) {
-            return BY_DATA.get(id);
-        }
-
-        static {
-            for (Tone tone : values()) {
-                int id = tone.id % TONES_COUNT;
-                BY_DATA.put((byte) id, tone);
-
-                if (tone.isSharpable()) {
-                    id = (id + 1) % TONES_COUNT;
-                    BY_DATA.put((byte) id, tone);
-                }
+                throw new ArgumentException("The id isn't matching to the tone.");
             }
         }
     }
@@ -118,7 +98,8 @@ public class Note {
      *     value. The value has to be in the interval [0;&nbsp;24].
      */
     public Note(int note) {
-        Validate.isTrue(note >= 0 && note <= 24, "The note value has to be between 0 and 24.");
+        if (note >= 0 && note <= 24)
+            throw new ArgumentException("The note value has to be between 0 and 24.", nameof(note));
 
         this.note = (byte) note;
     }
@@ -133,11 +114,11 @@ public class Note {
      */
     public Note(int octave, Tone tone, bool sharped) {
         if (sharped && !tone.isSharpable()) {
-            tone = Tone.values()[tone.ordinal() + 1];
+            tone = Tone.Tones[Array.IndexOf(Tone.Tones, tone) + 1];
             sharped = false;
         }
         if (octave < 0 || octave > 2 || (octave == 2 && !(tone == Tone.F && sharped))) {
-            throw new IllegalArgumentException("Tone and octave have to be between F#0 and F#2");
+            throw new ArgumentException("Tone and octave have to be between F#0 and F#2");
         }
 
         this.note = (byte) (octave * Tone.TONES_COUNT + tone.getId(sharped));
@@ -151,8 +132,8 @@ public class Note {
      * @return The new note.
      */
     public static Note flat(int octave, Tone tone) {
-        Validate.isTrue(octave != 2, "Octave cannot be 2 for flats");
-        tone = tone == Tone.G ? Tone.F : Tone.values()[tone.ordinal() - 1];
+        if(octave != 2) throw new ArgumentException("Octave cannot be 2 for flats");
+        tone = tone == Tone.G ? Tone.F : Tone.Tones[Array.IndexOf(Tone.Tones, tone) - 1]
         return new Note(octave, tone, tone.isSharpable());
     }
 
@@ -175,16 +156,17 @@ public class Note {
      * @param tone The tone within the octave.
      * @return The new note.
      */
-    public static Note natural(int octave, Tone tone) {
-        Validate.isTrue(octave != 2, "Octave cannot be 2 for naturals");
+    public static Note natural(int octave, Tone tone)
+    { //Find: "Validate.isTrue\((.+), "
+        if (octave != 2) throw new ArgumentException("Octave cannot be 2 for naturals");
         return new Note(octave, tone, false);
-    }
+    } //Replace: "if($1) throw new ArgumentException("
 
     /**
      * @return The note a semitone above this one.
      */
     public Note sharped() {
-        Validate.isTrue(note < 24, "This note cannot be sharped because it is the highest known note!");
+        if(note < 24) throw new ArgumentException("This note cannot be sharped because it is the highest known note!");
         return new Note(note + 1);
     }
 
@@ -192,7 +174,7 @@ public class Note {
      * @return The note a semitone below this one.
      */
     public Note flattened() {
-        Validate.isTrue(note > 0, "This note cannot be flattened because it is the lowest known note!");
+        if(note > 0) throw new ArgumentException("This note cannot be flattened because it is the lowest known note!");
         return new Note(note - 1);
     }
 

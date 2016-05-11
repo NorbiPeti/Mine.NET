@@ -91,9 +91,9 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
      * consider the first character when executing the content.
      *
      * @param command New message that the player will send
-     * @throws IllegalArgumentException if command is null or empty
+     * @throws ArgumentException if command is null or empty
      */
-    public void setMessage(String command) throws IllegalArgumentException {
+    public void setMessage(String command) throws ArgumentException {
         Validate.notNull(command, "Command cannot be null");
         Validate.notEmpty(command, "Command cannot be empty");
         this.message = command;
@@ -103,9 +103,9 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
      * Sets the player that this command will be executed as.
      *
      * @param player New player which this event will execute as
-     * @throws IllegalArgumentException if the player provided is null
+     * @throws ArgumentException if the player provided is null
      */
-    public void setPlayer(Player player) throws IllegalArgumentException {
+    public void setPlayer(Player player) throws ArgumentException {
         Validate.notNull(player, "Player cannot be null");
         this.player = player;
     }

@@ -34,7 +34,7 @@ public class Mushroom extends MaterialData {
      */
     public Mushroom(Material shroom) {
         super(shroom);
-        Validate.isTrue(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2, "Not a mushroom!");
+        if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -79,7 +79,7 @@ public class Mushroom extends MaterialData {
     [Obsolete]
     public Mushroom(Material shroom, byte data) {
         super(shroom, data);
-        Validate.isTrue(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2, "Not a mushroom!");
+        if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -90,7 +90,7 @@ public class Mushroom extends MaterialData {
     [Obsolete]
     public Mushroom(int type, byte data){
         super(type, data);
-        Validate.isTrue(type == Material.HUGE_MUSHROOM_1.getId() || type == Material.HUGE_MUSHROOM_2.getId(), "Not a mushroom!");
+        if(type == Material.HUGE_MUSHROOM_1.getId() || type == Material.HUGE_MUSHROOM_2.getId()) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -243,7 +243,7 @@ public class Mushroom extends MaterialData {
                 }
                 break;
             default:
-                throw new IllegalArgumentException("Can't paint that face of a mushroom!");
+                throw new ArgumentException("Can't paint that face of a mushroom!");
         }
 
         setData(data);

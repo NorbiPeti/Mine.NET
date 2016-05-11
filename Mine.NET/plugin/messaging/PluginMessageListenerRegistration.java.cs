@@ -14,16 +14,16 @@ public sealed class PluginMessageListenerRegistration {
 
     public PluginMessageListenerRegistration(Messenger messenger, Plugin plugin, String channel, PluginMessageListener listener) {
         if (messenger == null) {
-            throw new IllegalArgumentException("Messenger cannot be null!");
+            throw new ArgumentException("Messenger cannot be null!");
         }
         if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null!");
+            throw new ArgumentException("Plugin cannot be null!");
         }
         if (channel == null) {
-            throw new IllegalArgumentException("Channel cannot be null!");
+            throw new ArgumentException("Channel cannot be null!");
         }
         if (listener == null) {
-            throw new IllegalArgumentException("Listener cannot be null!");
+            throw new ArgumentException("Listener cannot be null!");
         }
 
         this.messenger = messenger;

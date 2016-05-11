@@ -49,7 +49,7 @@ public class MapFont {
      */
     public int getWidth(String text) {
         if (!isValid(text)) {
-            throw new IllegalArgumentException("text contains invalid characters");
+            throw new ArgumentException("text contains invalid characters");
         }
 
         if (text.length() == 0){
@@ -105,7 +105,7 @@ public class MapFont {
             this.data = data;
 
             if (data.length != width * height) {
-                throw new IllegalArgumentException("size of data does not match dimensions");
+                throw new ArgumentException("size of data does not match dimensions");
             }
         }
 

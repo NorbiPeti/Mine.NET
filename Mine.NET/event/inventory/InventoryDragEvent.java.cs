@@ -57,12 +57,12 @@ import com.google.common.collect.ImmutableSet;
 public class InventoryDragEvent extends InventoryInteractEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly DragType type;
-    private readonly Map<Integer, ItemStack> addedItems;
+    private readonly Dictionary<Integer, ItemStack> addedItems;
     private readonly Set<Integer> containerSlots;
     private readonly ItemStack oldCursor;
     private ItemStack newCursor;
 
-    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Map<Integer, ItemStack> slots) {
+    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<Integer, ItemStack> slots) {
         super(what);
 
         Validate.notNull(oldCursor);
@@ -84,7 +84,7 @@ public class InventoryDragEvent extends InventoryInteractEvent {
      *
      * @return map from raw slot id to new ItemStack
      */
-    public Map<Integer, ItemStack> getNewItems() {
+    public Dictionary<Integer, ItemStack> getNewItems() {
         return Collections.unmodifiableMap(addedItems);
     }
 

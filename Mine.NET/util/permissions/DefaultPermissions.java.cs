@@ -20,7 +20,7 @@ public sealed class DefaultPermissions {
 
         try {
             Bukkit.getPluginManager().addPermission(perm);
-        } catch (IllegalArgumentException ex) {
+        } catch (ArgumentException ex) {
             result = Bukkit.getPluginManager().getPermission(perm.getName());
         }
 
@@ -60,12 +60,12 @@ public sealed class DefaultPermissions {
         return perm;
     }
 
-    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, bool> children) {
+    public static Permission registerPermission(String name, String desc, PermissionDefault def, Dictionary<String, bool> children) {
         Permission perm = registerPermission(new Permission(name, desc, def, children));
         return perm;
     }
 
-    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, bool> children, Permission parent) {
+    public static Permission registerPermission(String name, String desc, PermissionDefault def, Dictionary<String, bool> children, Permission parent) {
         Permission perm = registerPermission(name, desc, def, children);
         parent.getChildren().put(perm.getName(), true);
         return perm;

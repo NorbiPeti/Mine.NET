@@ -25,7 +25,7 @@ public class FormattedCommandAlias extends Command {
             try {
                 commands.add(buildCommand(formatString, args));
             } catch (Throwable throwable) {
-                if (throwable instanceof IllegalArgumentException) {
+                if (throwable instanceof ArgumentException) {
                     sender.sendMessage(throwable.getMessage());
                 } else {
                     sender.sendMessage(org.bukkit.ChatColor.RED + "An internal error occurred while attempting to perform this command");
@@ -69,14 +69,14 @@ public class FormattedCommandAlias extends Command {
 
             // No numbers found
             if (argStart == index) {
-                throw new IllegalArgumentException("Invalid replacement token");
+                throw new ArgumentException("Invalid replacement token");
             }
 
             int position = Integer.valueOf(formatString.substring(argStart, index));
 
             // Arguments are not 0 indexed
             if (position == 0) {
-                throw new IllegalArgumentException("Invalid replacement token");
+                throw new ArgumentException("Invalid replacement token");
             }
 
             // Convert position to 0 index
@@ -92,7 +92,7 @@ public class FormattedCommandAlias extends Command {
             int end = index;
 
             if (required && position >= args.length) {
-                throw new IllegalArgumentException("Missing required argument " + (position + 1));
+                throw new ArgumentException("Missing required argument " + (position + 1));
             }
 
             StringBuilder replacement = new StringBuilder();

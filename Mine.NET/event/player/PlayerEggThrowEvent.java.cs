@@ -67,7 +67,7 @@ public class PlayerEggThrowEvent extends PlayerEvent {
      * @param hatchType The type of the mob being hatched by the egg
      */
     public void setHatchingType(EntityType hatchType) {
-        if(!hatchType.isSpawnable()) throw new IllegalArgumentException("Can't spawn that entity type from an egg!");
+        if(!hatchType.isSpawnable()) throw new ArgumentException("Can't spawn that entity type from an egg!");
         this.hatchType = hatchType;
     }
 

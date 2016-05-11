@@ -23,7 +23,7 @@ public class EntityDamageByBlockEvent extends EntityDamageEvent {
         this.damager = damager;
     }
 
-    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Map<DamageModifier, Double> modifiers, readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }

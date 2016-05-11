@@ -20,7 +20,7 @@ public interface EndGateway extends BlockState {
      * they enter the gateway portal.
      * 
      * @param location the new exit location
-     * @throws IllegalArgumentException for differing worlds
+     * @throws ArgumentException for differing worlds
      */
     void setExitLocation(Location location);
 
