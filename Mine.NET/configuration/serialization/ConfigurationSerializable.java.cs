@@ -1,6 +1,5 @@
-package org.bukkit.configuration.serialization;
-
-import java.util.Map;
+using System;
+using System.Collections.Generic;
 
 /**
  * Represents an object that may be serialized.
@@ -31,5 +30,5 @@ public interface ConfigurationSerializable {
      *
      * @return Map containing the current state of this class
      */
-    public Dictionary<String, Object> serialize();
+    Dictionary<String, Object> serialize();
 }

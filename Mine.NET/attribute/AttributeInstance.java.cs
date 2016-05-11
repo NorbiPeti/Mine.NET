@@ -1,60 +1,62 @@
-package org.bukkit.attribute;
+using System.Collections.ObjectModel;
 
-import java.util.Collection;
-
-/**
- * Represents a mutable instance of an attribute and its associated modifiers
- * and values.
- */
-public interface AttributeInstance {
-
+namespace Mine.NET
+{
     /**
-     * The attribute pertaining to this instance.
-     *
-     * @return the attribute
+     * Represents a mutable instance of an attribute and its associated modifiers
+     * and values.
      */
-    Attribute getAttribute();
+    public interface AttributeInstance
+    {
 
-    /**
-     * Base value of this instance before modifiers are applied.
-     *
-     * @return base value
-     */
-    double getBaseValue();
+        /**
+         * The attribute pertaining to this instance.
+         *
+         * @return the attribute
+         */
+        Attribute getAttribute();
 
-    /**
-     * Set the base value of this instance.
-     *
-     * @param value new base value
-     */
-    void setBaseValue(double value);
+        /**
+         * Base value of this instance before modifiers are applied.
+         *
+         * @return base value
+         */
+        double getBaseValue();
 
-    /**
-     * Get all modifiers present on this instance.
-     *
-     * @return a copied collection of all modifiers
-     */
-    Collection<AttributeModifier> getModifiers();
+        /**
+         * Set the base value of this instance.
+         *
+         * @param value new base value
+         */
+        void setBaseValue(double value);
 
-    /**
-     * Add a modifier to this instance.
-     *
-     * @param modifier to add
-     */
-    void addModifier(AttributeModifier modifier);
+        /**
+         * Get all modifiers present on this instance.
+         *
+         * @return a copied collection of all modifiers
+         */
+        Collection<AttributeModifier> getModifiers();
 
-    /**
-     * Remove a modifier from this instance.
-     *
-     * @param modifier to remove
-     */
-    void removeModifier(AttributeModifier modifier);
+        /**
+         * Add a modifier to this instance.
+         *
+         * @param modifier to add
+         */
+        void addModifier(AttributeModifier modifier);
 
-    /**
-     * Get the value of this instance after all associated modifiers have been
-     * applied.
-     *
-     * @return the total attribute value
-     */
-    double getValue();
+        /**
+         * Remove a modifier from this instance.
+         *
+         * @param modifier to remove
+         */
+        void removeModifier(AttributeModifier modifier);
+
+        /**
+         * Get the value of this instance after all associated modifiers have been
+         * applied.
+         *
+         * @return the total attribute value
+         */
+        double getValue();
+    }
 }
