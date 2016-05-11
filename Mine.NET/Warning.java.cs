@@ -1,12 +1,5 @@
-package org.bukkit;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.util.Map;
-
-import com.google.common.collect.ImmutableMap;
+using System;
+using System.Collections.Generic;
 
 /**
  * This designates the warning state for a specific item.
@@ -14,14 +7,17 @@ import com.google.common.collect.ImmutableMap;
  * When the server settings dictate 'default' warnings, warnings are printed
  * if the {@link #value()} is true.
  */
-@Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.TYPE})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface Warning {
+//@Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.TYPE})
+//@Retention(RetentionPolicy.RUNTIME)
+[AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Struct)]
+public class Warning : System.Attribute
+{
 
     /**
      * This represents the states that server verbose for warnings may be.
      */
-    public enum WarningState {
+    public enum WarningState
+    {
 
         /**
          * Indicates all warnings should be printed for deprecated items.
@@ -35,61 +31,67 @@ public @interface Warning {
          * Indicates each warning would default to the configured {@link
          * Warning} annotation, or always if annotation not found.
          */
-        DEFAULT;
+        DEFAULT
+    }
 
-        private static readonly Dictionary<String, WarningState> values = ImmutableMap.<String,WarningState>builder()
-                .put("off", OFF)
-                .put("false", OFF)
-                .put("f", OFF)
-                .put("no", OFF)
-                .put("n", OFF)
-                .put("on", ON)
-                .put("true", ON)
-                .put("t", ON)
-                .put("yes", ON)
-                .put("y", ON)
-                .put("", DEFAULT)
-                .put("d", DEFAULT)
-                .put("default", DEFAULT)
-                .build();
+    private static readonly Dictionary<String, WarningState> values = new Dictionary<string, WarningState>
+    {
+        { "off", WarningState.OFF },
+        { "false", WarningState.OFF },
+        { "f", WarningState.OFF },
+        { "no", WarningState.OFF },
+        { "n", WarningState.OFF },
+        { "on", WarningState.ON },
+        { "true", WarningState.ON },
+        { "t", WarningState.ON },
+        { "yes", WarningState.ON },
+        { "y", WarningState.ON },
+        { "", WarningState.DEFAULT },
+        { "d", WarningState.DEFAULT },
+        { "default", WarningState.DEFAULT },
+    };
 
-        /**
-         * This method checks the provided warning should be printed for this
-         * state
-         *
-         * @param warning The warning annotation added to a deprecated item
-         * @return <ul>
-         *     <li>ON is always True
-         *     <li>OFF is always false
-         *     <li>DEFAULT is false if and only if annotation is not null and
-         *     specifies false for {@link Warning#value()}, true otherwise.
-         *     </ul>
-         */
-        public bool printFor(Warning warning) {
-            if (this == DEFAULT) {
-                return warning == null || warning.value();
-            }
-            return this == ON;
+    /**
+     * This method checks the provided warning should be printed for this
+     * state
+     *
+     * @param warning The warning annotation added to a deprecated item
+     * @return <ul>
+     *     <li>WarningState.ON is always True
+     *     <li>WarningState.OFF is always false
+     *     <li>WarningState.DEFAULT is false if and only if annotation is not null and
+     *     specifies false for {@link Warning#value()}, true otherwise.
+     *     </ul>
+     */
+    public static bool printFor(WarningState state, Warning warning)
+    {
+        if (state == WarningState.DEFAULT)
+        {
+            return warning == null || warning.value;
         }
+        return state == WarningState.ON;
+    }
 
-        /**
-         * This method returns the corresponding warning state for the given
-         * string value.
-         *
-         * @param value The string value to check
-         * @return {@link #DEFAULT} if not found, or the respective
-         *     WarningState
-         */
-        public static WarningState value(String value) {
-            if (value == null) {
-                return DEFAULT;
-            }
-            WarningState state = values.get(value.toLowerCase());
-            if (state == null) {
-                return DEFAULT;
-            }
-            return state;
+    /**
+     * This method returns the corresponding warning state for the given
+     * string value.
+     *
+     * @param value The string value to check
+     * @return {@link #WarningState.DEFAULT} if not found, or the respective
+     *     WarningState
+     */
+    public static WarningState FromValue(String value)
+    {
+        if (value == null)
+        {
+            return WarningState.DEFAULT;
         }
+        WarningState state;
+        if (!values.TryGetValue(value, out state))
+        {
+            return WarningState.DEFAULT;
+        }
+        return state;
     }
 
     /**
@@ -98,12 +100,12 @@ public @interface Warning {
      *
      * @return false normally, or true to encourage warning printout
      */
-    bool value() default false;
+    bool value { get; set; } = false;
 
     /**
      * This can provide detailed information on why the event is deprecated.
      *
      * @return The reason an event is deprecated
      */
-    String reason() default "";
+    String reason { get; set; } = "";
 }

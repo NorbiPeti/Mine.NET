@@ -1,5 +1,3 @@
-package org.bukkit;
-
 /**
  * Tree and organic structure types.
  */
