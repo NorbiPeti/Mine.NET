@@ -4,8 +4,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 public sealed class BroadcastPermissions {
-    private static final String ROOT = "bukkit.broadcast";
-    private static final String PREFIX = ROOT + ".";
+    private static readonly String ROOT = "bukkit.broadcast";
+    private static readonly String PREFIX = ROOT + ".";
 
     private BroadcastPermissions() {}
 

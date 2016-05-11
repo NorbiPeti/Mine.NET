@@ -24,14 +24,14 @@ import org.bukkit.inventory.ItemStack;
  * former state. Otherwise any additional items will be discarded.
  */
 public class InventoryMoveItemEvent extends Event implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final Inventory sourceInventory;
-    private final Inventory destinationInventory;
+    private readonly Inventory sourceInventory;
+    private readonly Inventory destinationInventory;
     private ItemStack itemStack;
-    private final bool didSourceInitiate;
+    private readonly bool didSourceInitiate;
 
-    public InventoryMoveItemEvent(Inventory sourceInventory, final ItemStack itemStack, final Inventory destinationInventory, final bool didSourceInitiate) {
+    public InventoryMoveItemEvent(Inventory sourceInventory, readonly ItemStack itemStack, readonly Inventory destinationInventory, readonly bool didSourceInitiate) {
         Validate.notNull(itemStack, "ItemStack cannot be null");
         this.sourceInventory = sourceInventory;
         this.itemStack = itemStack;

@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Raised when a vehicle moves.
  */
 public class VehicleMoveEvent extends VehicleEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Location from;
-    private final Location to;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Location from;
+    private readonly Location to;
 
-    public VehicleMoveEvent(Vehicle vehicle, final Location from, final Location to) {
+    public VehicleMoveEvent(Vehicle vehicle, readonly Location from, readonly Location to) {
         super(vehicle);
 
         this.from = from;

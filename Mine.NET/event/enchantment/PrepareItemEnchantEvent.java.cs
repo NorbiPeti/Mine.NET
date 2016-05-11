@@ -13,15 +13,15 @@ import org.bukkit.inventory.ItemStack;
  * called multiple times
  */
 public class PrepareItemEnchantEvent extends InventoryEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Block table;
-    private final ItemStack item;
-    private final int[] levelsOffered;
-    private final int bonus;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Block table;
+    private readonly ItemStack item;
+    private readonly int[] levelsOffered;
+    private readonly int bonus;
     private bool cancelled;
-    private final Player enchanter;
+    private readonly Player enchanter;
 
-    public PrepareItemEnchantEvent(Player enchanter, InventoryView view, final Block table, final ItemStack item, final int[] levelsOffered, final int bonus) {
+    public PrepareItemEnchantEvent(Player enchanter, InventoryView view, readonly Block table, readonly ItemStack item, readonly int[] levelsOffered, readonly int bonus) {
         super(view);
         this.enchanter = enchanter;
         this.table = table;

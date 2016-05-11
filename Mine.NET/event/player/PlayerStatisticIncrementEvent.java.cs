@@ -15,13 +15,13 @@ import org.bukkit.event.HandlerList;
  *
  */
 public class PlayerStatisticIncrementEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    protected final Statistic statistic;
-    private final int initialValue;
-    private final int newValue;
+    private static readonly HandlerList handlers = new HandlerList();
+    protected readonly Statistic statistic;
+    private readonly int initialValue;
+    private readonly int newValue;
     private bool isCancelled = false;
-    private final EntityType entityType;
-    private final Material material;
+    private readonly EntityType entityType;
+    private readonly Material material;
 
     public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue) {
         super (player);

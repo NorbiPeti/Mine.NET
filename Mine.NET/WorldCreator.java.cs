@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
  * Represents various types of options that may be used to create a world.
  */
 public class WorldCreator {
-    private final String name;
+    private readonly String name;
     private long seed;
     private World.Environment environment = World.Environment.NORMAL;
     private ChunkGenerator generator = null;

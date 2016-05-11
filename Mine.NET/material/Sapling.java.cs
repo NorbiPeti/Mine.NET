@@ -76,7 +76,7 @@ public class Sapling extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(int type, final byte data) {
+    public Sapling(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -86,7 +86,7 @@ public class Sapling extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(Material type, final byte data) {
+    public Sapling(Material type, readonly byte data) {
         super(type, data);
     }
 

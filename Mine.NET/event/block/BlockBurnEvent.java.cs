@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  * result of being burnt by fire.
  */
 public class BlockBurnEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
 
     public BlockBurnEvent(Block block) {

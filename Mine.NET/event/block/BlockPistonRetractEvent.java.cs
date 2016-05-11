@@ -10,10 +10,10 @@ import org.bukkit.event.HandlerList;
  * Called when a piston retracts
  */
 public class BlockPistonRetractEvent extends BlockPistonEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private List<Block> blocks;
     
-    public BlockPistonRetractEvent(Block block, final List<Block> blocks, final BlockFace direction) {
+    public BlockPistonRetractEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
         super(block, direction);
         
         this.blocks = blocks;

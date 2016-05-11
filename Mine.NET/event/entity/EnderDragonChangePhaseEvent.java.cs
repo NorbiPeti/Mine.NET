@@ -10,9 +10,9 @@ import org.bukkit.event.HandlerList;
  */
 public class EnderDragonChangePhaseEvent extends EntityEvent implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
-    private final EnderDragon.Phase currentPhase;
+    private readonly EnderDragon.Phase currentPhase;
     private EnderDragon.Phase newPhase;
 
     public EnderDragonChangePhaseEvent(EnderDragon enderDragon, EnderDragon.Phase currentPhase, EnderDragon.Phase newPhase) {

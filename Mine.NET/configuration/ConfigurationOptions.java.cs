@@ -7,7 +7,7 @@ package org.bukkit.configuration;
 public class ConfigurationOptions {
     private char pathSeparator = '.';
     private bool copyDefaults = false;
-    private final Configuration configuration;
+    private readonly Configuration configuration;
 
     protected ConfigurationOptions(Configuration configuration) {
         this.configuration = configuration;

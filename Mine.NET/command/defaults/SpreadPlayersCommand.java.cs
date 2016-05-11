@@ -18,7 +18,7 @@ import org.bukkit.scoreboard.Team;
 
 [Obsolete]
 public class SpreadPlayersCommand extends VanillaCommand {
-    private static final Random random = new Random();
+    private static readonly Random random = new Random();
 
     public SpreadPlayersCommand() {
         super("spreadplayers");
@@ -38,10 +38,10 @@ public class SpreadPlayersCommand extends VanillaCommand {
             return false;
         }
 
-        final double x = getDouble(sender, args[0], -30000000, 30000000);
-        final double z = getDouble(sender, args[1], -30000000, 30000000);
-        final double distance = getDouble(sender, args[2]);
-        final double range = getDouble(sender, args[3]);
+        readonly double x = getDouble(sender, args[0], -30000000, 30000000);
+        readonly double z = getDouble(sender, args[1], -30000000, 30000000);
+        readonly double distance = getDouble(sender, args[2]);
+        readonly double range = getDouble(sender, args[3]);
 
         if (distance < 0.0D) {
             sender.sendMessage(ChatColor.RED + "Distance is too small.");
@@ -53,7 +53,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
             return false;
         }
 
-        final String respectTeams = args[4];
+        readonly String respectTeams = args[4];
         bool teams = false;
 
         if (respectTeams.equalsIgnoreCase("true")) {
@@ -82,22 +82,22 @@ public class SpreadPlayersCommand extends VanillaCommand {
             return true;
         }
 
-        final double xRangeMin = x - range;
-        final double zRangeMin = z - range;
-        final double xRangeMax = x + range;
-        final double zRangeMax = z + range;
+        readonly double xRangeMin = x - range;
+        readonly double zRangeMin = z - range;
+        readonly double xRangeMax = x + range;
+        readonly double zRangeMax = z + range;
 
-        final int spreadSize = teams ? getTeams(players) : players.size();
+        readonly int spreadSize = teams ? getTeams(players) : players.size();
 
-        final Location[] locations = getSpreadLocations(world, spreadSize, xRangeMin, zRangeMin, xRangeMax, zRangeMax);
-        final int rangeSpread = range(world, distance, xRangeMin, zRangeMin, xRangeMax, zRangeMax, locations);
+        readonly Location[] locations = getSpreadLocations(world, spreadSize, xRangeMin, zRangeMin, xRangeMax, zRangeMax);
+        readonly int rangeSpread = range(world, distance, xRangeMin, zRangeMin, xRangeMax, zRangeMax, locations);
 
         if (rangeSpread == -1) {
             sender.sendMessage(String.format("Could not spread %d %s around %s,%s (too many players for space - try using spread of at most %s)", spreadSize, teams ? "teams" : "players", x, z));
             return false;
         }
 
-        final double distanceSpread = spread(world, players, locations, teams);
+        readonly double distanceSpread = spread(world, players, locations, teams);
 
         sender.sendMessage(String.format("Succesfully spread %d %s around %s,%s", locations.length, teams ? "teams" : "players", x, z));
         if (locations.length > 1) {

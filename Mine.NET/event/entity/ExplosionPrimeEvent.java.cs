@@ -9,12 +9,12 @@ import org.bukkit.event.HandlerList;
  * Called when an entity has made a decision to explode.
  */
 public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private float radius;
     private bool fire;
 
-    public ExplosionPrimeEvent(Entity what, final float radius, final bool fire) {
+    public ExplosionPrimeEvent(Entity what, readonly float radius, readonly bool fire) {
         super(what);
         this.cancel = false;
         this.radius = radius;

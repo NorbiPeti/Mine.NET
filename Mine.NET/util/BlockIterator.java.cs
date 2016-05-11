@@ -16,10 +16,10 @@ import java.util.NoSuchElementException;
  */
 public class BlockIterator implements Iterator<Block> {
 
-    private final World world;
-    private final int maxDistance;
+    private readonly World world;
+    private readonly int maxDistance;
 
-    private static final int gridSize = 1 << 24;
+    private static readonly int gridSize = 1 << 24;
 
     private bool end = false;
 

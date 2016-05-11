@@ -17,14 +17,14 @@ import static org.bukkit.util.NumberConversions.checkFinite;
  */
 @SerializableAs("Vector")
 public class Vector implements Cloneable, ConfigurationSerializable {
-    private static final long serialVersionUID = -2657651106777219169L;
+    private static readonly long serialVersionUID = -2657651106777219169L;
 
     private static Random random = new Random();
 
     /**
      * Threshold for fuzzy equals().
      */
-    private static final double epsilon = 0.000001;
+    private static readonly double epsilon = 0.000001;
 
     protected double x;
     protected double y;

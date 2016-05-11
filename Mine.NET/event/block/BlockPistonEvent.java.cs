@@ -10,9 +10,9 @@ import org.bukkit.event.Cancellable;
  */
 public abstract class BlockPistonEvent extends BlockEvent implements Cancellable {
     private bool cancelled;
-    private final BlockFace direction;
+    private readonly BlockFace direction;
 
-    public BlockPistonEvent(Block block, final BlockFace direction) {
+    public BlockPistonEvent(Block block, readonly BlockFace direction) {
         super(block);
         this.direction = direction;
     }

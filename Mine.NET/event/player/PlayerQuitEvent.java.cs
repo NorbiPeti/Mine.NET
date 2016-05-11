@@ -7,10 +7,10 @@ import org.bukkit.event.HandlerList;
  * Called when a player leaves a server
  */
 public class PlayerQuitEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private String quitMessage;
 
-    public PlayerQuitEvent(Player who, final String quitMessage) {
+    public PlayerQuitEvent(Player who, readonly String quitMessage) {
         super(who);
         this.quitMessage = quitMessage;
     }

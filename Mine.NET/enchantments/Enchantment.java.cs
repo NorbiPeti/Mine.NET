@@ -13,143 +13,143 @@ public abstract class Enchantment {
     /**
      * Provides protection against environmental damage
      */
-    public static final Enchantment PROTECTION_ENVIRONMENTAL = new EnchantmentWrapper(0);
+    public static readonly Enchantment PROTECTION_ENVIRONMENTAL = new EnchantmentWrapper(0);
 
     /**
      * Provides protection against fire damage
      */
-    public static final Enchantment PROTECTION_FIRE = new EnchantmentWrapper(1);
+    public static readonly Enchantment PROTECTION_FIRE = new EnchantmentWrapper(1);
 
     /**
      * Provides protection against fall damage
      */
-    public static final Enchantment PROTECTION_FALL = new EnchantmentWrapper(2);
+    public static readonly Enchantment PROTECTION_FALL = new EnchantmentWrapper(2);
 
     /**
      * Provides protection against explosive damage
      */
-    public static final Enchantment PROTECTION_EXPLOSIONS = new EnchantmentWrapper(3);
+    public static readonly Enchantment PROTECTION_EXPLOSIONS = new EnchantmentWrapper(3);
 
     /**
      * Provides protection against projectile damage
      */
-    public static final Enchantment PROTECTION_PROJECTILE = new EnchantmentWrapper(4);
+    public static readonly Enchantment PROTECTION_PROJECTILE = new EnchantmentWrapper(4);
 
     /**
      * Decreases the rate of air loss whilst underwater
      */
-    public static final Enchantment OXYGEN = new EnchantmentWrapper(5);
+    public static readonly Enchantment OXYGEN = new EnchantmentWrapper(5);
 
     /**
      * Increases the speed at which a player may mine underwater
      */
-    public static final Enchantment WATER_WORKER = new EnchantmentWrapper(6);
+    public static readonly Enchantment WATER_WORKER = new EnchantmentWrapper(6);
 
     /**
      * Damages the attacker
      */
-    public static final Enchantment THORNS = new EnchantmentWrapper(7);
+    public static readonly Enchantment THORNS = new EnchantmentWrapper(7);
 
     /**
      * Increases walking speed while in water
      */
-    public static final Enchantment DEPTH_STRIDER = new EnchantmentWrapper(8);
+    public static readonly Enchantment DEPTH_STRIDER = new EnchantmentWrapper(8);
 
     /**
      * Freezes any still water adjacent to ice / frost which player is walking on
      */
-    public static final Enchantment FROST_WALKER = new EnchantmentWrapper(9);
+    public static readonly Enchantment FROST_WALKER = new EnchantmentWrapper(9);
 
     /**
      * Increases damage against all targets
      */
-    public static final Enchantment DAMAGE_ALL = new EnchantmentWrapper(16);
+    public static readonly Enchantment DAMAGE_ALL = new EnchantmentWrapper(16);
 
     /**
      * Increases damage against undead targets
      */
-    public static final Enchantment DAMAGE_UNDEAD = new EnchantmentWrapper(17);
+    public static readonly Enchantment DAMAGE_UNDEAD = new EnchantmentWrapper(17);
 
     /**
      * Increases damage against arthropod targets
      */
-    public static final Enchantment DAMAGE_ARTHROPODS = new EnchantmentWrapper(18);
+    public static readonly Enchantment DAMAGE_ARTHROPODS = new EnchantmentWrapper(18);
 
     /**
      * All damage to other targets will knock them back when hit
      */
-    public static final Enchantment KNOCKBACK = new EnchantmentWrapper(19);
+    public static readonly Enchantment KNOCKBACK = new EnchantmentWrapper(19);
 
     /**
      * When attacking a target, has a chance to set them on fire
      */
-    public static final Enchantment FIRE_ASPECT = new EnchantmentWrapper(20);
+    public static readonly Enchantment FIRE_ASPECT = new EnchantmentWrapper(20);
 
     /**
      * Provides a chance of gaining extra loot when killing monsters
      */
-    public static final Enchantment LOOT_BONUS_MOBS = new EnchantmentWrapper(21);
+    public static readonly Enchantment LOOT_BONUS_MOBS = new EnchantmentWrapper(21);
 
     /**
      * Increases the rate at which you mine/dig
      */
-    public static final Enchantment DIG_SPEED = new EnchantmentWrapper(32);
+    public static readonly Enchantment DIG_SPEED = new EnchantmentWrapper(32);
 
     /**
      * Allows blocks to drop themselves instead of fragments (for example,
      * stone instead of cobblestone)
      */
-    public static final Enchantment SILK_TOUCH = new EnchantmentWrapper(33);
+    public static readonly Enchantment SILK_TOUCH = new EnchantmentWrapper(33);
 
     /**
      * Decreases the rate at which a tool looses durability
      */
-    public static final Enchantment DURABILITY = new EnchantmentWrapper(34);
+    public static readonly Enchantment DURABILITY = new EnchantmentWrapper(34);
 
     /**
      * Provides a chance of gaining extra loot when destroying blocks
      */
-    public static final Enchantment LOOT_BONUS_BLOCKS = new EnchantmentWrapper(35);
+    public static readonly Enchantment LOOT_BONUS_BLOCKS = new EnchantmentWrapper(35);
 
     /**
      * Provides extra damage when shooting arrows from bows
      */
-    public static final Enchantment ARROW_DAMAGE = new EnchantmentWrapper(48);
+    public static readonly Enchantment ARROW_DAMAGE = new EnchantmentWrapper(48);
 
     /**
      * Provides a knockback when an entity is hit by an arrow from a bow
      */
-    public static final Enchantment ARROW_KNOCKBACK = new EnchantmentWrapper(49);
+    public static readonly Enchantment ARROW_KNOCKBACK = new EnchantmentWrapper(49);
 
     /**
      * Sets entities on fire when hit by arrows shot from a bow
      */
-    public static final Enchantment ARROW_FIRE = new EnchantmentWrapper(50);
+    public static readonly Enchantment ARROW_FIRE = new EnchantmentWrapper(50);
 
     /**
      * Provides infinite arrows when shooting a bow
      */
-    public static final Enchantment ARROW_INFINITE = new EnchantmentWrapper(51);
+    public static readonly Enchantment ARROW_INFINITE = new EnchantmentWrapper(51);
 
     /**
      * Decreases odds of catching worthless junk
      */
-    public static final Enchantment LUCK = new EnchantmentWrapper(61);
+    public static readonly Enchantment LUCK = new EnchantmentWrapper(61);
 
     /**
      * Increases rate of fish biting your hook
      */
-    public static final Enchantment LURE = new EnchantmentWrapper(62);
+    public static readonly Enchantment LURE = new EnchantmentWrapper(62);
 
     /**
      * Allows mending the item using experience orbs
      */
-    public static final Enchantment MENDING = new EnchantmentWrapper(70);
+    public static readonly Enchantment MENDING = new EnchantmentWrapper(70);
 
-    private static final Map<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
-    private static final Map<String, Enchantment> byName = new HashMap<String, Enchantment>();
+    private static readonly Map<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
+    private static readonly Map<String, Enchantment> byName = new HashMap<String, Enchantment>();
     private static bool acceptingNew = true;
-    private final int id;
+    private readonly int id;
 
     public Enchantment(int id) {
         this.id = id;
@@ -222,7 +222,7 @@ public abstract class Enchantment {
         if (!(obj instanceof Enchantment)) {
             return false;
         }
-        final Enchantment other = (Enchantment) obj;
+        readonly Enchantment other = (Enchantment) obj;
         if (this.id != other.id) {
             return false;
         }

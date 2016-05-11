@@ -10,12 +10,12 @@ import org.bukkit.event.HandlerList;
  * Called when a player attempts to tab-complete a chat message.
  */
 public class PlayerChatTabCompleteEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final String message;
-    private final String lastToken;
-    private final Collection<String> completions;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly String message;
+    private readonly String lastToken;
+    private readonly Collection<String> completions;
 
-    public PlayerChatTabCompleteEvent(Player who, final String message, final Collection<String> completions) {
+    public PlayerChatTabCompleteEvent(Player who, readonly String message, readonly Collection<String> completions) {
         super(who);
         Validate.notNull(message, "Message cannot be null");
         Validate.notNull(completions, "Completions cannot be null");

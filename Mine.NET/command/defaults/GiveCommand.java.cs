@@ -102,11 +102,11 @@ public class GiveCommand extends VanillaCommand {
             return super.tabComplete(sender, alias, args);
         }
         if (args.length == 2) {
-            final String arg = args[1];
-            final List<String> materials = GiveCommand.materials;
+            readonly String arg = args[1];
+            readonly List<String> materials = GiveCommand.materials;
             List<String> completion = new ArrayList<String>();
 
-            final int size = materials.size();
+            readonly int size = materials.size();
             int i = Collections.binarySearch(materials, arg, String.CASE_INSENSITIVE_ORDER);
 
             if (i < 0) {

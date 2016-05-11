@@ -12,18 +12,18 @@ import org.bukkit.event.HandlerList;
  * Called when a piston extends
  */
 public class BlockPistonExtendEvent extends BlockPistonEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final int length;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly int length;
     private List<Block> blocks;
 
     [Obsolete]
-    public BlockPistonExtendEvent(Block block, final int length, final BlockFace direction) {
+    public BlockPistonExtendEvent(Block block, readonly int length, readonly BlockFace direction) {
         super(block, direction);
 
         this.length = length;
     }
 
-    public BlockPistonExtendEvent(Block block, final List<Block> blocks, final BlockFace direction) {
+    public BlockPistonExtendEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
         super(block, direction);
 
         this.length = blocks.size();

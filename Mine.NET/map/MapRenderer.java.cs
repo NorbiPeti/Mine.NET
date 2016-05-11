@@ -33,7 +33,7 @@ public abstract class MapRenderer {
      *
      * @return True if contextual, false otherwise.
      */
-    final public bool isContextual() {
+    readonly public bool isContextual() {
         return contextual;
     }
 

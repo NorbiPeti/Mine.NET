@@ -8,14 +8,14 @@ import org.bukkit.event.HandlerList;
  * Holds information for player teleport events
  */
 public class PlayerTeleportEvent extends PlayerMoveEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private TeleportCause cause = TeleportCause.UNKNOWN;
 
-    public PlayerTeleportEvent(Player player, final Location from, final Location to) {
+    public PlayerTeleportEvent(Player player, readonly Location from, readonly Location to) {
         super(player, from, to);
     }
 
-    public PlayerTeleportEvent(Player player, final Location from, final Location to, final TeleportCause cause) {
+    public PlayerTeleportEvent(Player player, readonly Location from, readonly Location to, readonly TeleportCause cause) {
         this(player, from, to);
 
         this.cause = cause;

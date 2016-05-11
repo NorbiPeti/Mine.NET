@@ -9,8 +9,8 @@ import org.bukkit.TreeSpecies;
  * @see Material#WOOD_STEP
  */
 public class WoodenStep extends Wood {
-    protected static final Material DEFAULT_TYPE = Material.WOOD_STEP;
-    protected static final bool DEFAULT_INVERTED = false;
+    protected static readonly Material DEFAULT_TYPE = Material.WOOD_STEP;
+    protected static readonly bool DEFAULT_INVERTED = false;
 
     /**
      * Constructs a wooden step.
@@ -55,7 +55,7 @@ public class WoodenStep extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(int type, final byte data) {
+    public WoodenStep(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -65,7 +65,7 @@ public class WoodenStep extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(Material type, final byte data) {
+    public WoodenStep(Material type, readonly byte data) {
         super(type, data);
     }
 

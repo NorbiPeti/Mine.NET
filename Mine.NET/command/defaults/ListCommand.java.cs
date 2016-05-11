@@ -25,7 +25,7 @@ public class ListCommand extends VanillaCommand {
 
         StringBuilder online = new StringBuilder();
 
-        final Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+        readonly Collection<? extends Player> players = Bukkit.getOnlinePlayers();
 
         for (Player player : players) {
             // If a player is hidden from the sender don't show them in the list

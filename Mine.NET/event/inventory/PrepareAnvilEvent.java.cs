@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PrepareAnvilEvent extends InventoryEvent {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private ItemStack result;
 
     public PrepareAnvilEvent(InventoryView inventory, ItemStack result) {

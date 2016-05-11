@@ -11,12 +11,12 @@ import org.bukkit.event.HandlerList;
  * If a Sign Change event is cancelled, the sign will not be changed.
  */
 public class SignChangeEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
-    private final Player player;
-    private final String[] lines;
+    private readonly Player player;
+    private readonly String[] lines;
 
-    public SignChangeEvent(Block theBlock, final Player thePlayer, final String[] theLines) {
+    public SignChangeEvent(Block theBlock, readonly Player thePlayer, readonly String[] theLines) {
         super(theBlock);
         this.player = thePlayer;
         this.lines = theLines;

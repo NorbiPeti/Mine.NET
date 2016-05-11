@@ -13,7 +13,7 @@ import org.bukkit.event.inventory.InventoryType;
  * as it should.
  */
 public abstract class InventoryView {
-    public final static int OUTSIDE = -999;
+    public readonly static int OUTSIDE = -999;
     /**
      * Represents various extra properties of certain inventory windows.
      */
@@ -144,7 +144,7 @@ public abstract class InventoryView {
      * @param item The item to put on the cursor, or null to remove the item
      *     on their cursor.
      */
-    public final void setCursor(ItemStack item) {
+    public readonly void setCursor(ItemStack item) {
         getPlayer().setItemOnCursor(item);
     }
 
@@ -154,7 +154,7 @@ public abstract class InventoryView {
      * @return The item on the player's cursor, or null if they aren't holding
      *     one.
      */
-    public final ItemStack getCursor() {
+    public readonly ItemStack getCursor() {
         return getPlayer().getItemOnCursor();
     }
 
@@ -170,7 +170,7 @@ public abstract class InventoryView {
      * @param rawSlot The raw slot ID.
      * @return The converted slot ID.
      */
-    public final int convertSlot(int rawSlot) {
+    public readonly int convertSlot(int rawSlot) {
         int numInTop = getTopInventory().getSize();
         if (rawSlot < numInTop) {
             return rawSlot;
@@ -191,7 +191,7 @@ public abstract class InventoryView {
     /**
      * Closes the inventory view.
      */
-    public final void close() {
+    public readonly void close() {
         getPlayer().closeInventory();
     }
 
@@ -204,7 +204,7 @@ public abstract class InventoryView {
      *
      * @return The total size
      */
-    public final int countSlots() {
+    public readonly int countSlots() {
         return getTopInventory().getSize() + getBottomInventory().getSize();
     }
 
@@ -217,7 +217,7 @@ public abstract class InventoryView {
      * @return true if the property was updated successfully, false if the
      *     property is not supported by that inventory
      */
-    public final bool setProperty(Property prop, int value) {
+    public readonly bool setProperty(Property prop, int value) {
         return getPlayer().setWindowProperty(prop, value);
     }
 
@@ -226,7 +226,7 @@ public abstract class InventoryView {
      *
      * @return The title.
      */
-    public final String getTitle() {
+    public readonly String getTitle() {
         return getTopInventory().getTitle();
     }
 }

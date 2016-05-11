@@ -17,19 +17,19 @@ import org.bukkit.event.HandlerList;
 [Obsolete]
 @Warning(reason="This event causes a login thread to synchronize with the main thread")
 public class PlayerPreLoginEvent extends Event {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private Result result;
     private String message;
-    private final String name;
-    private final InetAddress ipAddress;
-    private final UUID uniqueId;
+    private readonly String name;
+    private readonly InetAddress ipAddress;
+    private readonly UUID uniqueId;
 
     [Obsolete]
-    public PlayerPreLoginEvent(String name, final InetAddress ipAddress) {
+    public PlayerPreLoginEvent(String name, readonly InetAddress ipAddress) {
         this(name, ipAddress, null);
     }
 
-    public PlayerPreLoginEvent(String name, final InetAddress ipAddress, final UUID uniqueId) {
+    public PlayerPreLoginEvent(String name, readonly InetAddress ipAddress, readonly UUID uniqueId) {
         this.result = Result.ALLOWED;
         this.message = "";
         this.name = name;
@@ -88,7 +88,7 @@ public class PlayerPreLoginEvent extends Event {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(Result result, final String message) {
+    public void disallow(Result result, readonly String message) {
         this.result = result;
         this.message = message;
     }

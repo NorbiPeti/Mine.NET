@@ -18,9 +18,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 public class SimpleCommandMap implements CommandMap {
-    private static final Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
-    protected final Map<String, Command> knownCommands = new HashMap<String, Command>();
-    private final Server server;
+    private static readonly Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
+    protected readonly Map<String, Command> knownCommands = new HashMap<String, Command>();
+    private readonly Server server;
 
     public SimpleCommandMap(Server server) {
         this.server = server;
@@ -171,7 +171,7 @@ public class SimpleCommandMap implements CommandMap {
             ArrayList<String> completions = new ArrayList<String>();
             Map<String, Command> knownCommands = this.knownCommands;
 
-            final String prefix = (sender instanceof Player ? "/" : "");
+            readonly String prefix = (sender instanceof Player ? "/" : "");
 
             for (Map.Entry<String, Command> commandEntry : knownCommands.entrySet()) {
                 Command command = commandEntry.getValue();

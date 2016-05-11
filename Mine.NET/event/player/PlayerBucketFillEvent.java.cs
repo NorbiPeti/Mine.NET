@@ -11,9 +11,9 @@ import org.bukkit.inventory.ItemStack;
  * Called when a player fills a bucket
  */
 public class PlayerBucketFillEvent extends PlayerBucketEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
-    public PlayerBucketFillEvent(Player who, final Block blockClicked, final BlockFace blockFace, final Material bucket, final ItemStack itemInHand) {
+    public PlayerBucketFillEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {
         super(who, blockClicked, blockFace, bucket, itemInHand);
     }
 

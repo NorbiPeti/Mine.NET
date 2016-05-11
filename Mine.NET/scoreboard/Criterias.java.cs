@@ -4,10 +4,10 @@ package org.bukkit.scoreboard;
  * Criteria names which trigger an objective to be modified by actions in-game
  */
 public class Criterias {
-    public static final String HEALTH;
-    public static final String PLAYER_KILLS;
-    public static final String TOTAL_KILLS;
-    public static final String DEATHS;
+    public static readonly String HEALTH;
+    public static readonly String PLAYER_KILLS;
+    public static readonly String TOTAL_KILLS;
+    public static readonly String DEATHS;
 
     static {
         HEALTH="health";

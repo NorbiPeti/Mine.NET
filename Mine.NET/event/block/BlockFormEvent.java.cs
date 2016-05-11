@@ -22,9 +22,9 @@ import org.bukkit.event.HandlerList;
  * @see BlockSpreadEvent
  */
 public class BlockFormEvent extends BlockGrowEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
-    public BlockFormEvent(Block block, final BlockState newState) {
+    public BlockFormEvent(Block block, readonly BlockState newState) {
         super(block, newState);
     }
 

@@ -9,8 +9,8 @@ import org.bukkit.event.HandlerList;
  * Thrown when a block physics check is called
  */
 public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final int changed;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly int changed;
     private bool cancel = false;
 
     /**
@@ -20,7 +20,7 @@ public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
      * @param changed the changed block's type id
      */
     [Obsolete]
-    public BlockPhysicsEvent(Block block, final int changed) {
+    public BlockPhysicsEvent(Block block, readonly int changed) {
         super(block);
         this.changed = changed;
     }

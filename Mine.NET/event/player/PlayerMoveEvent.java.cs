@@ -10,12 +10,12 @@ import org.bukkit.event.HandlerList;
  * Holds information for player movement events
  */
 public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private Location from;
     private Location to;
 
-    public PlayerMoveEvent(Player player, final Location from, final Location to) {
+    public PlayerMoveEvent(Player player, readonly Location from, readonly Location to) {
         super(player);
         this.from = from;
         this.to = to;

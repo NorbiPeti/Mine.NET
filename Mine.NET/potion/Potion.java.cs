@@ -223,7 +223,7 @@ public class Potion {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
+        readonly int prime = 31;
         int result = prime + level;
         result = prime * result + (extended ? 1231 : 1237);
         result = prime * result + (splash ? 1231 : 1237);
@@ -352,11 +352,11 @@ public class Potion {
 
     private static PotionBrewer brewer;
 
-    private static final int EXTENDED_BIT = 0x40;
-    private static final int POTION_BIT = 0xF;
-    private static final int SPLASH_BIT = 0x4000;
-    private static final int TIER_BIT = 0x20;
-    private static final int TIER_SHIFT = 5;
+    private static readonly int EXTENDED_BIT = 0x40;
+    private static readonly int POTION_BIT = 0xF;
+    private static readonly int SPLASH_BIT = 0x4000;
+    private static readonly int TIER_BIT = 0x20;
+    private static readonly int TIER_SHIFT = 5;
 
     /**
      *

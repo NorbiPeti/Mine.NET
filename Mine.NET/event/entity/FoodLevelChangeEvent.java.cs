@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Called when a human entity's food level changes
  */
 public class FoodLevelChangeEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private int level;
 
-    public FoodLevelChangeEvent(HumanEntity what, final int level) {
+    public FoodLevelChangeEvent(HumanEntity what, readonly int level) {
         super(what);
         this.level = level;
     }

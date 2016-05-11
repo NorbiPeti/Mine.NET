@@ -30,7 +30,7 @@ public class Dye extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(int type, final byte data) {
+    public Dye(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Dye extends MaterialData implements Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(Material type, final byte data) {
+    public Dye(Material type, readonly byte data) {
         super(type, data);
     }
 

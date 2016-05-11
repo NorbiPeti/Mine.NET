@@ -9,9 +9,9 @@ import org.bukkit.entity.Player;
  */
 public class PlayerPickupArrowEvent extends PlayerPickupItemEvent {
 
-    private final Arrow arrow;
+    private readonly Arrow arrow;
 
-    public PlayerPickupArrowEvent(Player player, final Item item, final Arrow arrow) {
+    public PlayerPickupArrowEvent(Player player, readonly Item item, readonly Arrow arrow) {
         super(player, item, 0);
         this.arrow = arrow;
     }

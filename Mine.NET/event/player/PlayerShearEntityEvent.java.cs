@@ -9,11 +9,11 @@ import org.bukkit.event.HandlerList;
  * Called when a player shears an entity
  */
 public class PlayerShearEntityEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
-    private final Entity what;
+    private readonly Entity what;
 
-    public PlayerShearEntityEvent(Player who, final Entity what) {
+    public PlayerShearEntityEvent(Player who, readonly Entity what) {
         super(who);
         this.cancel = false;
         this.what = what;

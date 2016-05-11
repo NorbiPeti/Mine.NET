@@ -24,11 +24,11 @@ import org.bukkit.event.HandlerList;
  * appropriately.
  */
 public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private String message;
     private String format = "<%1$s> %2$s";
-    private final Set<Player> recipients;
+    private readonly Set<Player> recipients;
 
     /**
      *
@@ -38,7 +38,7 @@ public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
      * @param players the players to receive the message. This may be a lazy
      *     or unmodifiable collection.
      */
-    public AsyncPlayerChatEvent(bool async, final Player who, final String message, final Set<Player> players) {
+    public AsyncPlayerChatEvent(bool async, readonly Player who, readonly String message, readonly Set<Player> players) {
         super(who, async);
         this.message = message;
         recipients = players;

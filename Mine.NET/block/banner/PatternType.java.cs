@@ -44,8 +44,8 @@ public enum PatternType {
     FLOWER("flo"),
     MOJANG("moj");
 
-    private final String identifier;
-    private static final Map<String, PatternType> byString = new HashMap<String, PatternType>();
+    private readonly String identifier;
+    private static readonly Map<String, PatternType> byString = new HashMap<String, PatternType>();
 
     static {
         for (PatternType p : values()) {

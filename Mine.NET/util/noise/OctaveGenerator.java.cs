@@ -4,7 +4,7 @@ package org.bukkit.util.noise;
  * Creates noise using unbiased octaves
  */
 public abstract class OctaveGenerator {
-    protected final NoiseGenerator[] octaves;
+    protected readonly NoiseGenerator[] octaves;
     protected double xScale = 1;
     protected double yScale = 1;
     protected double zScale = 1;

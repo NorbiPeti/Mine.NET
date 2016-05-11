@@ -9,13 +9,13 @@ import org.bukkit.event.HandlerList;
  * Called when a player throws an egg and it might hatch
  */
 public class PlayerEggThrowEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Egg egg;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Egg egg;
     private bool hatching;
     private EntityType hatchType;
     private byte numHatches;
 
-    public PlayerEggThrowEvent(Player player, final Egg egg, final bool hatching, final byte numHatches, final EntityType hatchingType) {
+    public PlayerEggThrowEvent(Player player, readonly Egg egg, readonly bool hatching, readonly byte numHatches, readonly EntityType hatchingType) {
         super(player);
         this.egg = egg;
         this.hatching = hatching;

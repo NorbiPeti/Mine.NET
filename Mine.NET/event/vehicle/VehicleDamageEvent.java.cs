@@ -10,17 +10,17 @@ import org.bukkit.util.NumberConversions;
  * Raised when a vehicle receives damage.
  */
 public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Entity attacker;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Entity attacker;
     private double damage;
     private bool cancelled;
 
     [Obsolete]
-    public VehicleDamageEvent(Vehicle vehicle, final Entity attacker, final int damage) {
+    public VehicleDamageEvent(Vehicle vehicle, readonly Entity attacker, readonly int damage) {
         this(vehicle, attacker, (double) damage);
     }
 
-    public VehicleDamageEvent(Vehicle vehicle, final Entity attacker, final double damage) {
+    public VehicleDamageEvent(Vehicle vehicle, readonly Entity attacker, readonly double damage) {
         super(vehicle);
         this.attacker = attacker;
         this.damage = damage;

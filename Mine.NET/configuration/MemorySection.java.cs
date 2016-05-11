@@ -19,11 +19,11 @@ import org.bukkit.util.Vector;
  * A type of {@link ConfigurationSection} that is stored in memory.
  */
 public class MemorySection implements ConfigurationSection {
-    protected final Map<String, Object> map = new LinkedHashMap<String, Object>();
-    private final Configuration root;
-    private final ConfigurationSection parent;
-    private final String path;
-    private final String fullPath;
+    protected readonly Map<String, Object> map = new LinkedHashMap<String, Object>();
+    private readonly Configuration root;
+    private readonly ConfigurationSection parent;
+    private readonly String path;
+    private readonly String fullPath;
 
     /**
      * Creates an empty MemorySection for use as a root {@link Configuration}
@@ -167,7 +167,7 @@ public class MemorySection implements ConfigurationSection {
             throw new IllegalStateException("Cannot use section without a root");
         }
 
-        final char separator = root.options().pathSeparator();
+        readonly char separator = root.options().pathSeparator();
         // i1 is the leading (higher) index
         // i2 is the trailing (lower) index
         int i1 = -1, i2;
@@ -210,7 +210,7 @@ public class MemorySection implements ConfigurationSection {
             throw new IllegalStateException("Cannot access section without a root");
         }
 
-        final char separator = root.options().pathSeparator();
+        readonly char separator = root.options().pathSeparator();
         // i1 is the leading (higher) index
         // i2 is the trailing (lower) index
         int i1 = -1, i2;
@@ -237,7 +237,7 @@ public class MemorySection implements ConfigurationSection {
             throw new IllegalStateException("Cannot create section without a root");
         }
 
-        final char separator = root.options().pathSeparator();
+        readonly char separator = root.options().pathSeparator();
         // i1 is the leading (higher) index
         // i2 is the trailing (lower) index
         int i1 = -1, i2;

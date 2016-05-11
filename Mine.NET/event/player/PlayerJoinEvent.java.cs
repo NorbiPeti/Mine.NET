@@ -7,10 +7,10 @@ import org.bukkit.event.HandlerList;
  * Called when a player joins a server
  */
 public class PlayerJoinEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private String joinMessage;
 
-    public PlayerJoinEvent(Player playerJoined, final String joinMessage) {
+    public PlayerJoinEvent(Player playerJoined, readonly String joinMessage) {
         super(playerJoined);
         this.joinMessage = joinMessage;
     }

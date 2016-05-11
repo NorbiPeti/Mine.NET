@@ -9,11 +9,11 @@ public class EulerAngle {
     /**
      * A EulerAngle with every axis set to 0
      */
-    public static final EulerAngle ZERO = new EulerAngle(0, 0, 0);
+    public static readonly EulerAngle ZERO = new EulerAngle(0, 0, 0);
 
-    private final double x;
-    private final double y;
-    private final double z;
+    private readonly double x;
+    private readonly double y;
+    private readonly double z;
 
     /**
      * Creates a EularAngle with each axis set to the

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PlayerSwapHandItemsEvent extends PlayerEvent implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     //
     private ItemStack mainHandItem;
     private ItemStack offHandItem;

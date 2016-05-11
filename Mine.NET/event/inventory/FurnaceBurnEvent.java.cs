@@ -10,13 +10,13 @@ import org.bukkit.inventory.ItemStack;
  * Called when an ItemStack is successfully burned as fuel in a furnace.
  */
 public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final ItemStack fuel;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly ItemStack fuel;
     private int burnTime;
     private bool cancelled;
     private bool burning;
 
-    public FurnaceBurnEvent(Block furnace, final ItemStack fuel, final int burnTime) {
+    public FurnaceBurnEvent(Block furnace, readonly ItemStack fuel, readonly int burnTime) {
         super(furnace);
         this.fuel = fuel;
         this.burnTime = burnTime;

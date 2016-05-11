@@ -24,7 +24,7 @@ public class SimpleServicesManager implements ServicesManager {
     /**
      * Map of providers.
      */
-    private final Map<Class<?>, List<RegisteredServiceProvider<?>>> providers = new HashMap<Class<?>, List<RegisteredServiceProvider<?>>>();
+    private readonly Map<Class<?>, List<RegisteredServiceProvider<?>>> providers = new HashMap<Class<?>, List<RegisteredServiceProvider<?>>>();
 
     /**
      * Register a provider of a service.

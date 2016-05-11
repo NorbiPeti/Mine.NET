@@ -44,9 +44,9 @@ import org.bukkit.plugin.Plugin;
  * work as well.
  */
 public class InventoryClickEvent extends InventoryInteractEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final ClickType click;
-    private final InventoryAction action;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly ClickType click;
+    private readonly InventoryAction action;
     private SlotType slot_type;
     private int whichSlot;
     private int rawSlot;

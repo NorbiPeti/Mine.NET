@@ -44,8 +44,8 @@ public interface Ocelot extends Animals, Tameable {
         RED_CAT(2),
         SIAMESE_CAT(3);
 
-        private static final Type[] types = new Type[Type.values().length];
-        private final int id;
+        private static readonly Type[] types = new Type[Type.values().length];
+        private readonly int id;
 
         static {
             for (Type type : values()) {

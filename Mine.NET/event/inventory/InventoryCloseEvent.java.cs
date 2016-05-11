@@ -9,7 +9,7 @@ import org.bukkit.inventory.InventoryView;
  * Represents a player related inventory event
  */
 public class InventoryCloseEvent extends InventoryEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     public InventoryCloseEvent(InventoryView transaction) {
         super(transaction);
@@ -20,7 +20,7 @@ public class InventoryCloseEvent extends InventoryEvent {
      *
      * @return Player who is involved in this event
      */
-    public final HumanEntity getPlayer() {
+    public readonly HumanEntity getPlayer() {
         return transaction.getPlayer();
     }
 

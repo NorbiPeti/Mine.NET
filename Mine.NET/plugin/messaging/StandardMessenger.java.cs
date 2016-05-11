@@ -13,12 +13,12 @@ import org.bukkit.plugin.Plugin;
  * Standard implementation to {@link Messenger}
  */
 public class StandardMessenger implements Messenger {
-    private final Map<String, Set<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<String, Set<PluginMessageListenerRegistration>>();
-    private final Map<Plugin, Set<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<Plugin, Set<PluginMessageListenerRegistration>>();
-    private final Map<String, Set<Plugin>> outgoingByChannel = new HashMap<String, Set<Plugin>>();
-    private final Map<Plugin, Set<String>> outgoingByPlugin = new HashMap<Plugin, Set<String>>();
-    private final Object incomingLock = new Object();
-    private final Object outgoingLock = new Object();
+    private readonly Map<String, Set<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<String, Set<PluginMessageListenerRegistration>>();
+    private readonly Map<Plugin, Set<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<Plugin, Set<PluginMessageListenerRegistration>>();
+    private readonly Map<String, Set<Plugin>> outgoingByChannel = new HashMap<String, Set<Plugin>>();
+    private readonly Map<Plugin, Set<String>> outgoingByPlugin = new HashMap<Plugin, Set<String>>();
+    private readonly Object incomingLock = new Object();
+    private readonly Object outgoingLock = new Object();
 
     private void addToOutgoing(Plugin plugin, String channel) {
         synchronized (outgoingLock) {

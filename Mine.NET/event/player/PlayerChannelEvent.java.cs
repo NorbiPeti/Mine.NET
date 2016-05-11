@@ -8,15 +8,15 @@ import org.bukkit.event.HandlerList;
  * channel.
  */
 public abstract class PlayerChannelEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final String channel;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly String channel;
 
-    public PlayerChannelEvent(Player player, final String channel) {
+    public PlayerChannelEvent(Player player, readonly String channel) {
         super(player);
         this.channel = channel;
     }
 
-    public final String getChannel() {
+    public readonly String getChannel() {
         return channel;
     }
 

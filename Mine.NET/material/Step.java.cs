@@ -9,7 +9,7 @@ import org.bukkit.Material;
  * Represents the different types of steps.
  */
 public class Step extends TexturedMaterial {
-    private static final List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new ArrayList<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.SANDSTONE);
@@ -47,7 +47,7 @@ public class Step extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(int type, final byte data) {
+    public Step(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -57,7 +57,7 @@ public class Step extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(Material type, final byte data) {
+    public Step(Material type, readonly byte data) {
         super(type, data);
     }
 

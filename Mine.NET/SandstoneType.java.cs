@@ -12,8 +12,8 @@ public enum SandstoneType {
     GLYPHED(0x1),
     SMOOTH(0x2);
 
-    private final byte data;
-    private final static Map<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
+    private readonly byte data;
+    private readonly static Map<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
 
     private SandstoneType(int data) {
         this.data = (byte) data;

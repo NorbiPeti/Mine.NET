@@ -1009,27 +1009,22 @@ public class Material
      * stripped of special characters in an attempt to format it like the
      * enum.
      * <p>
-     * Using this for match by ID is deprecated.
+     * Using this for match by ID is not supported.
      *
      * @param name Name of the material to get
      * @return Material if found, or null
      */
-    public static Material matchMaterial(String name) {
+    public static Material matchMaterial(String name)
+    {
         if (name == null)
             throw new ArgumentNullException(nameof(name), "Name cannot be null");
 
         Material result = null;
-        int iresult = 0;
 
-        if (int.TryParse(name, out iresult))
-            result = getMaterial(iresult);
+        String filtered = name.ToUpper();
 
-        if (result == null) {
-            String filtered = name.ToUpper();
-
-            filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
-            result = AllMaterials[(Materials)Enum.Parse(typeof(Materials), (filtered))];
-        }
+        filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
+        result = AllMaterials[(Materials)Enum.Parse(typeof(Materials), (filtered))];
 
         return result;
     }

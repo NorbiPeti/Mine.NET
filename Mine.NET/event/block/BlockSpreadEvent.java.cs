@@ -21,10 +21,10 @@ import org.bukkit.event.HandlerList;
  * @see BlockFormEvent
  */
 public class BlockSpreadEvent extends BlockFormEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Block source;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Block source;
 
-    public BlockSpreadEvent(Block block, final Block source, final BlockState newState) {
+    public BlockSpreadEvent(Block block, readonly Block source, readonly BlockState newState) {
         super(block, newState);
         this.source = source;
     }

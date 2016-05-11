@@ -46,19 +46,19 @@ import org.bukkit.event.HandlerList;
  * removed, unexpected behavior may result.
  */
 public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private String message;
     private String format = "<%1$s> %2$s";
-    private final Set<Player> recipients;
+    private readonly Set<Player> recipients;
 
-    public PlayerCommandPreprocessEvent(Player player, final String message) {
+    public PlayerCommandPreprocessEvent(Player player, readonly String message) {
         super(player);
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
         this.message = message;
     }
 
-    public PlayerCommandPreprocessEvent(Player player, final String message, final Set<Player> recipients) {
+    public PlayerCommandPreprocessEvent(Player player, readonly String message, readonly Set<Player> recipients) {
         super(player);
         this.recipients = recipients;
         this.message = message;

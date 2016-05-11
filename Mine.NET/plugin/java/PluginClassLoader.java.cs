@@ -16,16 +16,16 @@ import org.bukkit.plugin.PluginDescriptionFile;
  * A ClassLoader for plugins, to allow shared classes across multiple plugins
  */
 sealed class PluginClassLoader extends URLClassLoader {
-    private final JavaPluginLoader loader;
-    private final Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
-    private final PluginDescriptionFile description;
-    private final File dataFolder;
-    private final File file;
-    final JavaPlugin plugin;
+    private readonly JavaPluginLoader loader;
+    private readonly Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly PluginDescriptionFile description;
+    private readonly File dataFolder;
+    private readonly File file;
+    readonly JavaPlugin plugin;
     private JavaPlugin pluginInit;
     private IllegalStateException pluginState;
 
-    PluginClassLoader(JavaPluginLoader loader, final ClassLoader parent, final PluginDescriptionFile description, final File dataFolder, final File file) throws InvalidPluginException, MalformedURLException {
+    PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) throws InvalidPluginException, MalformedURLException {
         super(new URL[] {file.toURI().toURL()}, parent);
         Validate.notNull(loader, "Loader cannot be null");
 

@@ -10,16 +10,16 @@ import org.bukkit.inventory.EquipmentSlot;
  * Represents an event that is called when a player right clicks an entity.
  */
 public class PlayerInteractEntityEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected Entity clickedEntity;
     bool cancelled = false;
     private EquipmentSlot hand;
 
-    public PlayerInteractEntityEvent(Player who, final Entity clickedEntity) {
+    public PlayerInteractEntityEvent(Player who, readonly Entity clickedEntity) {
         this(who, clickedEntity, EquipmentSlot.HAND);
     }
 
-    public PlayerInteractEntityEvent(Player who, final Entity clickedEntity, final EquipmentSlot hand) {
+    public PlayerInteractEntityEvent(Player who, readonly Entity clickedEntity, readonly EquipmentSlot hand) {
         super(who);
         this.clickedEntity = clickedEntity;
         this.hand = hand;

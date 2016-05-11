@@ -125,7 +125,7 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
         Validate.notNull(file, "File cannot be null");
 
-        final FileInputStream stream = new FileInputStream(file);
+        readonly FileInputStream stream = new FileInputStream(file);
 
         load(new InputStreamReader(stream, Charsets.UTF_8));
     }

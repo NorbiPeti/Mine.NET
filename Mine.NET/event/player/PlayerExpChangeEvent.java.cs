@@ -7,10 +7,10 @@ import org.bukkit.event.HandlerList;
  * Called when a players experience changes naturally
  */
 public class PlayerExpChangeEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private int exp;
 
-    public PlayerExpChangeEvent(Player player, final int expAmount) {
+    public PlayerExpChangeEvent(Player player, readonly int expAmount) {
          super(player);
          exp = expAmount;
     }

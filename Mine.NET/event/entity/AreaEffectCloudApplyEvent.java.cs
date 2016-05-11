@@ -17,10 +17,10 @@ import org.bukkit.event.HandlerList;
  * once every 5 ticks
  */
 public class AreaEffectCloudApplyEvent extends EntityEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final List<LivingEntity> affectedEntities;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly List<LivingEntity> affectedEntities;
 
-    public AreaEffectCloudApplyEvent(AreaEffectCloud entity, final List<LivingEntity> affectedEntities) {
+    public AreaEffectCloudApplyEvent(AreaEffectCloud entity, readonly List<LivingEntity> affectedEntities) {
         super(entity);
         this.affectedEntities = affectedEntities;
     }

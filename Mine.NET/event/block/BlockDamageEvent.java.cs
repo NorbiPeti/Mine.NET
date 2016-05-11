@@ -12,13 +12,13 @@ import org.bukkit.inventory.ItemStack;
  * If a Block Damage event is cancelled, the block will not be damaged.
  */
 public class BlockDamageEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Player player;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Player player;
     private bool instaBreak;
     private bool cancel;
-    private final ItemStack itemstack;
+    private readonly ItemStack itemstack;
 
-    public BlockDamageEvent(Player player, final Block block, final ItemStack itemInHand, final bool instaBreak) {
+    public BlockDamageEvent(Player player, readonly Block block, readonly ItemStack itemInHand, readonly bool instaBreak) {
         super(block);
         this.instaBreak = instaBreak;
         this.player = player;

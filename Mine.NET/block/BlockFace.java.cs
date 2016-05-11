@@ -24,17 +24,17 @@ public enum BlockFace {
     WEST_SOUTH_WEST(WEST, SOUTH_WEST),
     SELF(0, 0, 0);
 
-    private final int modX;
-    private final int modY;
-    private final int modZ;
+    private readonly int modX;
+    private readonly int modY;
+    private readonly int modZ;
 
-    private BlockFace(int modX, final int modY, final int modZ) {
+    private BlockFace(int modX, readonly int modY, readonly int modZ) {
         this.modX = modX;
         this.modY = modY;
         this.modZ = modZ;
     }
 
-    private BlockFace(BlockFace face1, final BlockFace face2) {
+    private BlockFace(BlockFace face1, readonly BlockFace face2) {
         this.modX = face1.getModX() + face2.getModX();
         this.modY = face1.getModY() + face2.getModY();
         this.modZ = face1.getModZ() + face2.getModZ();

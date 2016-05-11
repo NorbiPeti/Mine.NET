@@ -15,7 +15,7 @@ import java.util.Random;
 
 [Obsolete]
 public class WeatherCommand extends VanillaCommand {
-    private static final List<String> WEATHER_TYPES = ImmutableList.of("clear", "rain", "thunder");
+    private static readonly List<String> WEATHER_TYPES = ImmutableList.of("clear", "rain", "thunder");
 
     public WeatherCommand() {
         super("weather");

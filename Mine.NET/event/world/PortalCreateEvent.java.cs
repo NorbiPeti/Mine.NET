@@ -12,12 +12,12 @@ import java.util.Collection;
  * Called when a portal is created
  */
 public class PortalCreateEvent extends WorldEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
-    private final ArrayList<Block> blocks = new ArrayList<Block>();
+    private readonly ArrayList<Block> blocks = new ArrayList<Block>();
     private CreateReason reason = CreateReason.FIRE;
 
-    public PortalCreateEvent(Collection<Block> blocks, final World world, CreateReason reason) {
+    public PortalCreateEvent(Collection<Block> blocks, readonly World world, CreateReason reason) {
         super(world);
 
         this.blocks.addAll(blocks);

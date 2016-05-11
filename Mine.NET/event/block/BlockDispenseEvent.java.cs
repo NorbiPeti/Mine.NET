@@ -13,12 +13,12 @@ import org.bukkit.util.Vector;
  * item.
  */
 public class BlockDispenseEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled = false;
     private ItemStack item;
     private Vector velocity;
 
-    public BlockDispenseEvent(Block block, final ItemStack dispensed, final Vector velocity) {
+    public BlockDispenseEvent(Block block, readonly ItemStack dispensed, readonly Vector velocity) {
         super(block);
         this.item = dispensed;
         this.velocity = velocity;

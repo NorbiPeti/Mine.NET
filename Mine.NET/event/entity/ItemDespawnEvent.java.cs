@@ -13,11 +13,11 @@ import org.bukkit.event.HandlerList;
  * minutes. This behavior is not guaranteed and may change in future versions.
  */
 public class ItemDespawnEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
-    private final Location location;
+    private readonly Location location;
 
-    public ItemDespawnEvent(Item despawnee, final Location loc) {
+    public ItemDespawnEvent(Item despawnee, readonly Location loc) {
         super(despawnee);
         location = loc;
     }

@@ -11,11 +11,11 @@ import org.bukkit.event.HandlerList;
  * Called when any Entity, excluding players, changes a block.
  */
 public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Block block;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Block block;
     private bool cancel;
-    private final Material to;
-    private final byte data;
+    private readonly Material to;
+    private readonly byte data;
 
     /**
      *
@@ -26,7 +26,7 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
      *     was provided, and type increased to all entities
      */
     [Obsolete]
-    public EntityChangeBlockEvent(LivingEntity what, final Block block, final Material to) {
+    public EntityChangeBlockEvent(LivingEntity what, readonly Block block, readonly Material to) {
         this (what, block, to, (byte) 0);
     }
 
@@ -39,7 +39,7 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EntityChangeBlockEvent(Entity what, final Block block, final Material to, final byte data) {
+    public EntityChangeBlockEvent(Entity what, readonly Block block, readonly Material to, readonly byte data) {
         super(what);
         this.block = block;
         this.cancel = false;

@@ -24,7 +24,7 @@ import org.bukkit.util.Vector;
  * Utility class for storing and retrieving classes for {@link Configuration}.
  */
 public class ConfigurationSerialization {
-    public static final String SERIALIZED_TYPE_KEY = "==";
+    public static readonly String SERIALIZED_TYPE_KEY = "==";
     private sealed class<? extends ConfigurationSerializable> clazz;
     private static Map<String, Class<? extends ConfigurationSerializable>> aliases = new HashMap<String, Class<? extends ConfigurationSerializable>>();
 

@@ -12,13 +12,13 @@ import java.util.List;
  * Called when an entity explodes
  */
 public class EntityExplodeEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
-    private final Location location;
-    private final List<Block> blocks;
+    private readonly Location location;
+    private readonly List<Block> blocks;
     private float yield;
 
-    public EntityExplodeEvent(Entity what, final Location location, final List<Block> blocks, final float yield) {
+    public EntityExplodeEvent(Entity what, readonly Location location, readonly List<Block> blocks, readonly float yield) {
         super(what);
         this.location = location;
         this.blocks = blocks;

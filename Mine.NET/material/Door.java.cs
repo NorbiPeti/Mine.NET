@@ -171,7 +171,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(int type, final byte data) {
+    public Door(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -181,7 +181,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(Material type, final byte data) {
+    public Door(Material type, readonly byte data) {
         super(type, data);
     }
 

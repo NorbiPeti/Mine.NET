@@ -1408,8 +1408,8 @@ public interface World extends PluginMessageRecipient, Metadatable {
          */
         THE_END(1);
 
-        private final int id;
-        private static final Map<Integer, Environment> lookup = new HashMap<Integer, Environment>();
+        private readonly int id;
+        private static readonly Map<Integer, Environment> lookup = new HashMap<Integer, Environment>();
 
         private Environment(int id) {
             this.id = id;

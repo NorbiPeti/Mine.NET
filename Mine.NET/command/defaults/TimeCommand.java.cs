@@ -15,8 +15,8 @@ import com.google.common.collect.ImmutableList;
 
 [Obsolete]
 public class TimeCommand extends VanillaCommand {
-    private static final List<String> TABCOMPLETE_ADD_SET = ImmutableList.of("add", "set");
-    private static final List<String> TABCOMPLETE_DAY_NIGHT = ImmutableList.of("day", "night");
+    private static readonly List<String> TABCOMPLETE_ADD_SET = ImmutableList.of("add", "set");
+    private static readonly List<String> TABCOMPLETE_DAY_NIGHT = ImmutableList.of("day", "night");
 
     public TimeCommand() {
         super("time");

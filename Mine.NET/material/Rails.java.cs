@@ -31,7 +31,7 @@ public class Rails extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(int type, final byte data) {
+    public Rails(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -41,7 +41,7 @@ public class Rails extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(Material type, final byte data) {
+    public Rails(Material type, readonly byte data) {
         super(type, data);
     }
 

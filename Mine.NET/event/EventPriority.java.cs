@@ -24,7 +24,7 @@ public enum EventPriority {
      */
     HIGH(3),
     /**
-     * Event call is critical and must have the final say in what happens
+     * Event call is critical and must have the readonly say in what happens
      * to the event
      */
     HIGHEST(4),
@@ -35,7 +35,7 @@ public enum EventPriority {
      */
     MONITOR(5);
 
-    private final int slot;
+    private readonly int slot;
 
     private EventPriority(int slot) {
         this.slot = slot;

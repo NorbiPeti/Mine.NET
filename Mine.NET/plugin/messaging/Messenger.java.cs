@@ -13,12 +13,12 @@ public interface Messenger {
     /**
      * Represents the largest size that an individual Plugin Message may be.
      */
-    public static final int MAX_MESSAGE_SIZE = 32766;
+    public static readonly int MAX_MESSAGE_SIZE = 32766;
 
     /**
      * Represents the largest size that a Plugin Channel may be.
      */
-    public static final int MAX_CHANNEL_SIZE = 20;
+    public static readonly int MAX_CHANNEL_SIZE = 20;
 
     /**
      * Checks if the specified channel is a reserved name.

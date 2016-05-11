@@ -12,10 +12,10 @@ import org.bukkit.inventory.meta.BookMeta;
  * cancelled, no changes are made to the BookMeta
  */
 public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
-    private final BookMeta previousBookMeta;
-    private final int slot;
+    private readonly BookMeta previousBookMeta;
+    private readonly int slot;
     private BookMeta newBookMeta;
     private bool isSigning;
     private bool cancel;

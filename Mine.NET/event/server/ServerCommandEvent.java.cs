@@ -39,12 +39,12 @@ import org.bukkit.event.HandlerList;
  * removed, unexpected behavior may result.
  */
 public class ServerCommandEvent extends ServerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private String command;
-    private final CommandSender sender;
+    private readonly CommandSender sender;
     private bool cancel = false;
 
-    public ServerCommandEvent(CommandSender sender, final String command) {
+    public ServerCommandEvent(CommandSender sender, readonly String command) {
         this.command = command;
         this.sender = sender;
     }

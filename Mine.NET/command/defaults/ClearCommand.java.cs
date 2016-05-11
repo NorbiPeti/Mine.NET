@@ -82,11 +82,11 @@ public class ClearCommand extends VanillaCommand {
             return super.tabComplete(sender, alias, args);
         }
         if (args.length == 2) {
-            final String arg = args[1];
-            final List<String> materials = ClearCommand.materials;
+            readonly String arg = args[1];
+            readonly List<String> materials = ClearCommand.materials;
             List<String> completion = null;
 
-            final int size = materials.size();
+            readonly int size = materials.size();
             int i = Collections.binarySearch(materials, arg, String.CASE_INSENSITIVE_ORDER);
 
             if (i < 0) {

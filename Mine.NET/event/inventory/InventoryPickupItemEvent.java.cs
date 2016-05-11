@@ -10,12 +10,12 @@ import org.bukkit.inventory.Inventory;
  * Called when a hopper or hopper minecart picks up a dropped item.
  */
 public class InventoryPickupItemEvent extends Event implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final Inventory inventory;
-    private final Item item;
+    private readonly Inventory inventory;
+    private readonly Item item;
 
-    public InventoryPickupItemEvent(Inventory inventory, final Item item) {
+    public InventoryPickupItemEvent(Inventory inventory, readonly Item item) {
         super();
         this.inventory = inventory;
         this.item = item;

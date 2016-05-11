@@ -16,7 +16,7 @@ import org.bukkit.event.HandlerList;
  * </ul>
  */
 public class BlockCanBuildEvent extends BlockEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected bool buildable;
 
     /**
@@ -34,7 +34,7 @@ public class BlockCanBuildEvent extends BlockEvent {
      * @param canBuild whether we can build 
      */
     [Obsolete]
-    public BlockCanBuildEvent(Block block, final int id, final bool canBuild) {
+    public BlockCanBuildEvent(Block block, readonly int id, readonly bool canBuild) {
         super(block);
         buildable = canBuild;
         material = id;

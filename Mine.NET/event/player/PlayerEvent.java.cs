@@ -24,7 +24,7 @@ public abstract class PlayerEvent extends Event {
      *
      * @return Player who is involved in this event
      */
-    public final Player getPlayer() {
+    public readonly Player getPlayer() {
         return player;
     }
 }

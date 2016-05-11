@@ -21,7 +21,7 @@ import org.bukkit.util.StringUtil;
 
 [Obsolete]
 public class EnchantCommand extends VanillaCommand {
-    private static final List<String> ENCHANTMENT_NAMES = new ArrayList<String>();
+    private static readonly List<String> ENCHANTMENT_NAMES = new ArrayList<String>();
 
     public EnchantCommand() {
         super("enchant");

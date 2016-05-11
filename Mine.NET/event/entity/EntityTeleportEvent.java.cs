@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  * from one location to another.
  */
 public class EntityTeleportEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private Location from;
     private Location to;

@@ -8,10 +8,10 @@ import org.bukkit.event.HandlerList;
  * This event is fired when the player is leaving a bed.
  */
 public class PlayerBedLeaveEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Block bed;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Block bed;
 
-    public PlayerBedLeaveEvent(Player who, final Block bed) {
+    public PlayerBedLeaveEvent(Player who, readonly Block bed) {
         super(who);
         this.bed = bed;
     }

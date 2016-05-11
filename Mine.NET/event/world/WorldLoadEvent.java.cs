@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
  * Called when a World is loaded
  */
 public class WorldLoadEvent extends WorldEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     public WorldLoadEvent(World world) {
         super(world);

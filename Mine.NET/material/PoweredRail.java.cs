@@ -29,7 +29,7 @@ public class PoweredRail extends ExtendedRails implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(int type, final byte data) {
+    public PoweredRail(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -39,7 +39,7 @@ public class PoweredRail extends ExtendedRails implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(Material type, final byte data) {
+    public PoweredRail(Material type, readonly byte data) {
         super(type, data);
     }
 

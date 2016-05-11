@@ -45,10 +45,10 @@ import org.yaml.snakeyaml.error.YAMLException;
  * Represents a Java plugin loader, allowing plugins in the form of .jar
  */
 public sealed class JavaPluginLoader implements PluginLoader {
-    final Server server;
-    private final Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
-    private final Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
-    private final Map<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
+    readonly Server server;
+    private readonly Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
+    private readonly Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly Map<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
 
     /**
      * This class was not meant to be constructed explicitly
@@ -68,17 +68,17 @@ public sealed class JavaPluginLoader implements PluginLoader {
             throw new InvalidPluginException(new FileNotFoundException(file.getPath() + " does not exist"));
         }
 
-        final PluginDescriptionFile description;
+        readonly PluginDescriptionFile description;
         try {
             description = getPluginDescription(file);
         } catch (InvalidDescriptionException ex) {
             throw new InvalidPluginException(ex);
         }
 
-        final File parentFile = file.getParentFile();
-        final File dataFolder = new File(parentFile, description.getName());
+        readonly File parentFile = file.getParentFile();
+        readonly File dataFolder = new File(parentFile, description.getName());
         @SuppressWarnings("deprecation")
-        final File oldDataFolder = new File(parentFile, description.getRawName());
+        readonly File oldDataFolder = new File(parentFile, description.getRawName());
 
         // Found old data folder
         if (dataFolder.equals(oldDataFolder)) {
@@ -124,7 +124,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
             }
         }
 
-        final PluginClassLoader loader;
+        readonly PluginClassLoader loader;
         try {
             loader = new PluginClassLoader(this, getClass().getClassLoader(), description, dataFolder, file);
         } catch (InvalidPluginException ex) {
@@ -225,7 +225,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
         }
     }
 
-    public Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, final Plugin plugin) {
+    public Map<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
         Validate.notNull(plugin, "Plugin can not be null");
         Validate.notNull(listener, "Listener can not be null");
 
@@ -248,7 +248,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
         }
 
         for (Method method : methods) {
-            final EventHandler eh = method.getAnnotation(EventHandler.class);
+            readonly EventHandler eh = method.getAnnotation(EventHandler.class);
             if (eh == null) continue;
             // Do not register bridge or synthetic methods to avoid event duplication
             // Fixes SPIGOT-893

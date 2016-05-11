@@ -9,11 +9,11 @@ import org.bukkit.util.Vector;
  * Called when the velocity of a player changes.
  */
 public class PlayerVelocityEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private Vector velocity;
 
-    public PlayerVelocityEvent(Player player, final Vector velocity) {
+    public PlayerVelocityEvent(Player player, readonly Vector velocity) {
         super(player);
         this.velocity = velocity;
     }

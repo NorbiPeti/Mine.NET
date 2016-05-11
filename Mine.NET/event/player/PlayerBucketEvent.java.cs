@@ -13,11 +13,11 @@ import org.bukkit.inventory.ItemStack;
 public abstract class PlayerBucketEvent extends PlayerEvent implements Cancellable {
     private ItemStack itemStack;
     private bool cancelled = false;
-    private final Block blockClicked;
-    private final BlockFace blockFace;
-    private final Material bucket;
+    private readonly Block blockClicked;
+    private readonly BlockFace blockFace;
+    private readonly Material bucket;
 
-    public PlayerBucketEvent(Player who, final Block blockClicked, final BlockFace blockFace, final Material bucket, final ItemStack itemInHand) {
+    public PlayerBucketEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {
         super(who);
         this.blockClicked = blockClicked;
         this.blockFace = blockFace;

@@ -41,7 +41,7 @@ public class Furnace extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(int type, final byte data) {
+    public Furnace(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -51,7 +51,7 @@ public class Furnace extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(Material type, final byte data) {
+    public Furnace(Material type, readonly byte data) {
         super(type, data);
     }
 

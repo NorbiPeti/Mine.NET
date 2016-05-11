@@ -45,7 +45,7 @@ public class Bed extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Bed(int type, final byte data) {
+    public Bed(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -55,7 +55,7 @@ public class Bed extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Bed(Material type, final byte data) {
+    public Bed(Material type, readonly byte data) {
         super(type, data);
     }
 

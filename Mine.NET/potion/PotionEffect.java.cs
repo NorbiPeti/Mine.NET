@@ -19,17 +19,17 @@ import com.google.common.collect.ImmutableMap;
  */
 @SerializableAs("PotionEffect")
 public class PotionEffect implements ConfigurationSerializable {
-    private static final String AMPLIFIER = "amplifier";
-    private static final String DURATION = "duration";
-    private static final String TYPE = "effect";
-    private static final String AMBIENT = "ambient";
-    private static final String PARTICLES = "has-particles";
-    private final int amplifier;
-    private final int duration;
-    private final PotionEffectType type;
-    private final bool ambient;
-    private final bool particles;
-    private final Color color;
+    private static readonly String AMPLIFIER = "amplifier";
+    private static readonly String DURATION = "duration";
+    private static readonly String TYPE = "effect";
+    private static readonly String AMBIENT = "ambient";
+    private static readonly String PARTICLES = "has-particles";
+    private readonly int amplifier;
+    private readonly int duration;
+    private readonly PotionEffectType type;
+    private readonly bool ambient;
+    private readonly bool particles;
+    private readonly Color color;
 
     /**
      * Creates a potion effect.

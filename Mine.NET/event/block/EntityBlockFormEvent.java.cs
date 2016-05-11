@@ -14,9 +14,9 @@ import org.bukkit.entity.Entity;
  * </ul>
  */
 public class EntityBlockFormEvent extends BlockFormEvent {
-    private final Entity entity;
+    private readonly Entity entity;
 
-    public EntityBlockFormEvent(Entity entity, final Block block, final BlockState blockstate) {
+    public EntityBlockFormEvent(Entity entity, readonly Block block, readonly BlockState blockstate) {
         super(block, blockstate);
 
         this.entity = entity;

@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
  * Called when a plugin is enabled.
  */
 public class PluginEnableEvent extends PluginEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     public PluginEnableEvent(Plugin plugin) {
         super(plugin);

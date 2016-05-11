@@ -38,16 +38,16 @@ import com.google.common.collect.ImmutableSet;
  * Handles all plugin management from the Server
  */
 public sealed class SimplePluginManager implements PluginManager {
-    private final Server server;
-    private final Map<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
-    private final List<Plugin> plugins = new ArrayList<Plugin>();
-    private final Map<String, Plugin> lookupNames = new HashMap<String, Plugin>();
+    private readonly Server server;
+    private readonly Map<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
+    private readonly List<Plugin> plugins = new ArrayList<Plugin>();
+    private readonly Map<String, Plugin> lookupNames = new HashMap<String, Plugin>();
     private static File updateDirectory = null;
-    private final SimpleCommandMap commandMap;
-    private final Map<String, Permission> permissions = new HashMap<String, Permission>();
-    private final Map<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
-    private final Map<String, Map<Permissible, bool>> permSubs = new HashMap<String, Map<Permissible, bool>>();
-    private final Map<bool, Map<Permissible, bool>> defSubs = new HashMap<bool, Map<Permissible, bool>>();
+    private readonly SimpleCommandMap commandMap;
+    private readonly Map<String, Permission> permissions = new HashMap<String, Permission>();
+    private readonly Map<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
+    private readonly Map<String, Map<Permissible, bool>> permSubs = new HashMap<String, Map<Permissible, bool>>();
+    private readonly Map<bool, Map<Permissible, bool>> defSubs = new HashMap<bool, Map<Permissible, bool>>();
     private bool useTimings = false;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {

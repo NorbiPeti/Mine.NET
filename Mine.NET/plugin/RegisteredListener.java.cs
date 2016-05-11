@@ -6,13 +6,13 @@ import org.bukkit.event.*;
  * Stores relevant information for plugin listeners
  */
 public class RegisteredListener {
-    private final Listener listener;
-    private final EventPriority priority;
-    private final Plugin plugin;
-    private final EventExecutor executor;
-    private final bool ignoreCancelled;
+    private readonly Listener listener;
+    private readonly EventPriority priority;
+    private readonly Plugin plugin;
+    private readonly EventExecutor executor;
+    private readonly bool ignoreCancelled;
 
-    public RegisteredListener(Listener listener, final EventExecutor executor, final EventPriority priority, final Plugin plugin, final bool ignoreCancelled) {
+    public RegisteredListener(Listener listener, readonly EventExecutor executor, readonly EventPriority priority, readonly Plugin plugin, readonly bool ignoreCancelled) {
         this.listener = listener;
         this.priority = priority;
         this.plugin = plugin;

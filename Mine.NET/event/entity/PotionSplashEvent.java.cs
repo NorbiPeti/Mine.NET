@@ -14,11 +14,11 @@ import org.bukkit.event.HandlerList;
  * Called when a splash potion hits an area
  */
 public class PotionSplashEvent extends ProjectileHitEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final Map<LivingEntity, Double> affectedEntities;
+    private readonly Map<LivingEntity, Double> affectedEntities;
 
-    public PotionSplashEvent(ThrownPotion potion, final Map<LivingEntity, Double> affectedEntities) {
+    public PotionSplashEvent(ThrownPotion potion, readonly Map<LivingEntity, Double> affectedEntities) {
         super(potion);
 
         this.affectedEntities = affectedEntities;

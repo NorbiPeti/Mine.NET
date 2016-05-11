@@ -13,18 +13,18 @@ import org.bukkit.event.HandlerList;
  * will not flow).
  */
 public class BlockFromToEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected Block to;
     protected BlockFace face;
     protected bool cancel;
 
-    public BlockFromToEvent(Block block, final BlockFace face) {
+    public BlockFromToEvent(Block block, readonly BlockFace face) {
         super(block);
         this.face = face;
         this.cancel = false;
     }
 
-    public BlockFromToEvent(Block block, final Block toBlock) {
+    public BlockFromToEvent(Block block, readonly Block toBlock) {
         super(block);
         this.to = toBlock;
         this.face = BlockFace.SELF;

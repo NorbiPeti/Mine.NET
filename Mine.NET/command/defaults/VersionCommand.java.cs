@@ -142,10 +142,10 @@ public class VersionCommand extends BukkitCommand {
         return ImmutableList.of();
     }
 
-    private final ReentrantLock versionLock = new ReentrantLock();
+    private readonly ReentrantLock versionLock = new ReentrantLock();
     private bool hasVersion = false;
     private String versionMessage = null;
-    private final Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
+    private readonly Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
     private bool versionTaskStarted = false;
     private long lastCheck = 0;
 

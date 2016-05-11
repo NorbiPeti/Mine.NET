@@ -6,7 +6,7 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.Recipe;
 
 public class PrepareItemCraftEvent extends InventoryEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool repair;
     private CraftingInventory matrix;
 

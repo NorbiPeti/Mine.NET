@@ -10,7 +10,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
  * should not be relied upon.
  */
 public class ServiceUnregisterEvent extends ServiceEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     public ServiceUnregisterEvent(RegisteredServiceProvider<?> serviceProvider) {
         super(serviceProvider);

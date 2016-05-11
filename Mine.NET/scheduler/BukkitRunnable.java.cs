@@ -129,7 +129,7 @@ public abstract class BukkitRunnable implements Runnable {
      * @throws IllegalStateException if task was not scheduled yet
      */
     public synchronized int getTaskId() throws IllegalStateException {
-        final int id = taskId;
+        readonly int id = taskId;
         if (id == -1) {
             throw new IllegalStateException("Not scheduled yet");
         }

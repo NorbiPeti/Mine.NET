@@ -20,7 +20,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 public class TimingsCommand extends BukkitCommand {
-    private static final List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("merged", "reset", "separate");
+    private static readonly List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("merged", "reset", "separate");
 
     public TimingsCommand(String name) {
         super(name);

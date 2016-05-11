@@ -29,14 +29,14 @@ import com.google.common.collect.ImmutableMap;
 [Obsolete]
 public class ScoreboardCommand extends VanillaCommand {
 
-    private static final List<String> MAIN_CHOICES = ImmutableList.of("objectives", "players", "teams");
-    private static final List<String> OBJECTIVES_CHOICES = ImmutableList.of("list", "add", "remove", "setdisplay");
-    private static final List<String> OBJECTIVES_CRITERIA = ImmutableList.of("health", "playerKillCount", "totalKillCount", "deathCount", "dummy");
-    private static final List<String> PLAYERS_CHOICES = ImmutableList.of("set", "add", "remove", "reset", "list");
-    private static final List<String> TEAMS_CHOICES = ImmutableList.of("add", "remove", "join", "leave", "empty", "list", "option");
-    private static final List<String> TEAMS_OPTION_CHOICES = ImmutableList.of("color", "friendlyfire", "seeFriendlyInvisibles");
-    private static final Map<String, DisplaySlot> OBJECTIVES_DISPLAYSLOT = ImmutableMap.of("belowName", DisplaySlot.BELOW_NAME, "list", DisplaySlot.PLAYER_LIST, "sidebar", DisplaySlot.SIDEBAR);
-    private static final Map<String, ChatColor> TEAMS_OPTION_COLOR = ImmutableMap.<String, ChatColor>builder()
+    private static readonly List<String> MAIN_CHOICES = ImmutableList.of("objectives", "players", "teams");
+    private static readonly List<String> OBJECTIVES_CHOICES = ImmutableList.of("list", "add", "remove", "setdisplay");
+    private static readonly List<String> OBJECTIVES_CRITERIA = ImmutableList.of("health", "playerKillCount", "totalKillCount", "deathCount", "dummy");
+    private static readonly List<String> PLAYERS_CHOICES = ImmutableList.of("set", "add", "remove", "reset", "list");
+    private static readonly List<String> TEAMS_CHOICES = ImmutableList.of("add", "remove", "join", "leave", "empty", "list", "option");
+    private static readonly List<String> TEAMS_OPTION_CHOICES = ImmutableList.of("color", "friendlyfire", "seeFriendlyInvisibles");
+    private static readonly Map<String, DisplaySlot> OBJECTIVES_DISPLAYSLOT = ImmutableMap.of("belowName", DisplaySlot.BELOW_NAME, "list", DisplaySlot.PLAYER_LIST, "sidebar", DisplaySlot.SIDEBAR);
+    private static readonly Map<String, ChatColor> TEAMS_OPTION_COLOR = ImmutableMap.<String, ChatColor>builder()
             .put("aqua", ChatColor.AQUA)
             .put("black", ChatColor.BLACK)
             .put("blue", ChatColor.BLUE)
@@ -60,7 +60,7 @@ public class ScoreboardCommand extends VanillaCommand {
             .put("white", ChatColor.WHITE)
             .put("yellow", ChatColor.YELLOW)
             .build();
-    private static final List<String> bool = ImmutableList.of("true", "false");
+    private static readonly List<String> bool = ImmutableList.of("true", "false");
 
     public ScoreboardCommand() {
         super("scoreboard");
@@ -78,7 +78,7 @@ public class ScoreboardCommand extends VanillaCommand {
             return false;
         }
 
-        final Scoreboard mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
+        readonly Scoreboard mainScoreboard = Bukkit.getScoreboardManager().getMainScoreboard();
 
         if (args[0].equalsIgnoreCase("objectives")) {
             if (args.length == 1) {

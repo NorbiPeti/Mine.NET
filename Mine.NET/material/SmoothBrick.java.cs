@@ -10,7 +10,7 @@ import org.bukkit.Material;
  */
 public class SmoothBrick extends TexturedMaterial {
 
-    private static final List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new ArrayList<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.MOSSY_COBBLESTONE);
@@ -44,7 +44,7 @@ public class SmoothBrick extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(int type, final byte data) {
+    public SmoothBrick(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -54,7 +54,7 @@ public class SmoothBrick extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(Material type, final byte data) {
+    public SmoothBrick(Material type, readonly byte data) {
         super(type, data);
     }
 

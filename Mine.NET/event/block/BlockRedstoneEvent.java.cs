@@ -7,11 +7,11 @@ import org.bukkit.event.HandlerList;
  * Called when a redstone current changes
  */
 public class BlockRedstoneEvent extends BlockEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final int oldCurrent;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly int oldCurrent;
     private int newCurrent;
 
-    public BlockRedstoneEvent(Block block, final int oldCurrent, final int newCurrent) {
+    public BlockRedstoneEvent(Block block, readonly int oldCurrent, readonly int newCurrent) {
         super(block);
         this.oldCurrent = oldCurrent;
         this.newCurrent = newCurrent;

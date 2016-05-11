@@ -13,7 +13,7 @@ import org.bukkit.inventory.MerchantRecipe;
  */
 public class VillagerReplenishTradeEvent extends EntityEvent implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     //
     private MerchantRecipe recipe;

@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
  * not be removed from the player's inventory.
  */
 public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool isCancelled = false;
     private ItemStack item;
 
@@ -25,7 +25,7 @@ public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
      * @param player the player consuming
      * @param item the ItemStack being consumed
      */
-    public PlayerItemConsumeEvent(Player player, final ItemStack item) {
+    public PlayerItemConsumeEvent(Player player, readonly ItemStack item) {
         super(player);
 
         this.item = item;

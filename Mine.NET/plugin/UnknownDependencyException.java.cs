@@ -5,7 +5,7 @@ package org.bukkit.plugin;
  */
 public class UnknownDependencyException extends RuntimeException {
 
-    private static final long serialVersionUID = 5721389371901775895L;
+    private static readonly long serialVersionUID = 5721389371901775895L;
 
     /**
      * Constructs a new UnknownDependencyException based on the given
@@ -33,7 +33,7 @@ public class UnknownDependencyException extends RuntimeException {
      * @param message Brief message explaining the cause of the exception
      * @param throwable Exception that triggered this Exception
      */
-    public UnknownDependencyException(Throwable throwable, final String message) {
+    public UnknownDependencyException(Throwable throwable, readonly String message) {
         super(message, throwable);
     }
 

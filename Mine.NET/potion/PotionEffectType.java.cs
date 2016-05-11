@@ -12,141 +12,141 @@ public abstract class PotionEffectType {
     /**
      * Increases movement speed.
      */
-    public static final PotionEffectType SPEED = new PotionEffectTypeWrapper(1);
+    public static readonly PotionEffectType SPEED = new PotionEffectTypeWrapper(1);
 
     /**
      * Decreases movement speed.
      */
-    public static final PotionEffectType SLOW = new PotionEffectTypeWrapper(2);
+    public static readonly PotionEffectType SLOW = new PotionEffectTypeWrapper(2);
 
     /**
      * Increases dig speed.
      */
-    public static final PotionEffectType FAST_DIGGING = new PotionEffectTypeWrapper(3);
+    public static readonly PotionEffectType FAST_DIGGING = new PotionEffectTypeWrapper(3);
 
     /**
      * Decreases dig speed.
      */
-    public static final PotionEffectType SLOW_DIGGING = new PotionEffectTypeWrapper(4);
+    public static readonly PotionEffectType SLOW_DIGGING = new PotionEffectTypeWrapper(4);
 
     /**
      * Increases damage dealt.
      */
-    public static final PotionEffectType INCREASE_DAMAGE = new PotionEffectTypeWrapper(5);
+    public static readonly PotionEffectType INCREASE_DAMAGE = new PotionEffectTypeWrapper(5);
 
     /**
      * Heals an entity.
      */
-    public static final PotionEffectType HEAL = new PotionEffectTypeWrapper(6);
+    public static readonly PotionEffectType HEAL = new PotionEffectTypeWrapper(6);
 
     /**
      * Hurts an entity.
      */
-    public static final PotionEffectType HARM = new PotionEffectTypeWrapper(7);
+    public static readonly PotionEffectType HARM = new PotionEffectTypeWrapper(7);
 
     /**
      * Increases jump height.
      */
-    public static final PotionEffectType JUMP = new PotionEffectTypeWrapper(8);
+    public static readonly PotionEffectType JUMP = new PotionEffectTypeWrapper(8);
 
     /**
      * Warps vision on the client.
      */
-    public static final PotionEffectType CONFUSION = new PotionEffectTypeWrapper(9);
+    public static readonly PotionEffectType CONFUSION = new PotionEffectTypeWrapper(9);
 
     /**
      * Regenerates health.
      */
-    public static final PotionEffectType REGENERATION = new PotionEffectTypeWrapper(10);
+    public static readonly PotionEffectType REGENERATION = new PotionEffectTypeWrapper(10);
 
     /**
      * Decreases damage dealt to an entity.
      */
-    public static final PotionEffectType DAMAGE_RESISTANCE = new PotionEffectTypeWrapper(11);
+    public static readonly PotionEffectType DAMAGE_RESISTANCE = new PotionEffectTypeWrapper(11);
 
     /**
      * Stops fire damage.
      */
-    public static final PotionEffectType FIRE_RESISTANCE = new PotionEffectTypeWrapper(12);
+    public static readonly PotionEffectType FIRE_RESISTANCE = new PotionEffectTypeWrapper(12);
 
     /**
      * Allows breathing underwater.
      */
-    public static final PotionEffectType WATER_BREATHING = new PotionEffectTypeWrapper(13);
+    public static readonly PotionEffectType WATER_BREATHING = new PotionEffectTypeWrapper(13);
 
     /**
      * Grants invisibility.
      */
-    public static final PotionEffectType INVISIBILITY = new PotionEffectTypeWrapper(14);
+    public static readonly PotionEffectType INVISIBILITY = new PotionEffectTypeWrapper(14);
 
     /**
      * Blinds an entity.
      */
-    public static final PotionEffectType BLINDNESS = new PotionEffectTypeWrapper(15);
+    public static readonly PotionEffectType BLINDNESS = new PotionEffectTypeWrapper(15);
 
     /**
      * Allows an entity to see in the dark.
      */
-    public static final PotionEffectType NIGHT_VISION = new PotionEffectTypeWrapper(16);
+    public static readonly PotionEffectType NIGHT_VISION = new PotionEffectTypeWrapper(16);
 
     /**
      * Increases hunger.
      */
-    public static final PotionEffectType HUNGER = new PotionEffectTypeWrapper(17);
+    public static readonly PotionEffectType HUNGER = new PotionEffectTypeWrapper(17);
 
     /**
      * Decreases damage dealt by an entity.
      */
-    public static final PotionEffectType WEAKNESS = new PotionEffectTypeWrapper(18);
+    public static readonly PotionEffectType WEAKNESS = new PotionEffectTypeWrapper(18);
 
     /**
      * Deals damage to an entity over time.
      */
-    public static final PotionEffectType POISON = new PotionEffectTypeWrapper(19);
+    public static readonly PotionEffectType POISON = new PotionEffectTypeWrapper(19);
 
     /**
      * Deals damage to an entity over time and gives the health to the
      * shooter.
      */
-    public static final PotionEffectType WITHER = new PotionEffectTypeWrapper(20);
+    public static readonly PotionEffectType WITHER = new PotionEffectTypeWrapper(20);
 
     /**
      * Increases the maximum health of an entity.
      */
-    public static final PotionEffectType HEALTH_BOOST = new PotionEffectTypeWrapper(21);
+    public static readonly PotionEffectType HEALTH_BOOST = new PotionEffectTypeWrapper(21);
 
     /**
      * Increases the maximum health of an entity with health that cannot be
      * regenerated, but is refilled every 30 seconds.
      */
-    public static final PotionEffectType ABSORPTION = new PotionEffectTypeWrapper(22);
+    public static readonly PotionEffectType ABSORPTION = new PotionEffectTypeWrapper(22);
 
     /**
      * Increases the food level of an entity each tick.
      */
-    public static final PotionEffectType SATURATION = new PotionEffectTypeWrapper(23);
+    public static readonly PotionEffectType SATURATION = new PotionEffectTypeWrapper(23);
 
     /**
      * Outlines the entity so that it can be seen from afar.
      */
-    public static final PotionEffectType GLOWING = new PotionEffectTypeWrapper(24);
+    public static readonly PotionEffectType GLOWING = new PotionEffectTypeWrapper(24);
 
     /**
      * Causes the entity to float into the air.
      */
-    public static final PotionEffectType LEVITATION = new PotionEffectTypeWrapper(25);
+    public static readonly PotionEffectType LEVITATION = new PotionEffectTypeWrapper(25);
 
     /**
      * Loot table luck.
      */
-    public static final PotionEffectType LUCK = new PotionEffectTypeWrapper(26);
+    public static readonly PotionEffectType LUCK = new PotionEffectTypeWrapper(26);
 
     /**
      * Loot table unluck.
      */
-    public static final PotionEffectType UNLUCK = new PotionEffectTypeWrapper(27);
+    public static readonly PotionEffectType UNLUCK = new PotionEffectTypeWrapper(27);
 
-    private final int id;
+    private readonly int id;
 
     protected PotionEffectType(int id) {
         this.id = id;
@@ -205,7 +205,7 @@ public abstract class PotionEffectType {
         if (!(obj instanceof PotionEffectType)) {
             return false;
         }
-        final PotionEffectType other = (PotionEffectType) obj;
+        readonly PotionEffectType other = (PotionEffectType) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -222,8 +222,8 @@ public abstract class PotionEffectType {
         return "PotionEffectType[" + id + ", " + getName() + "]";
     }
 
-    private static final PotionEffectType[] byId = new PotionEffectType[28];
-    private static final Map<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
+    private static readonly PotionEffectType[] byId = new PotionEffectType[28];
+    private static readonly Map<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
     // will break on updates.
     private static bool acceptingNew = true;
 

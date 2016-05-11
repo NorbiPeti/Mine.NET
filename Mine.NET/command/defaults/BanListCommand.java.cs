@@ -17,7 +17,7 @@ import com.google.common.collect.ImmutableList;
 
 [Obsolete]
 public class BanListCommand extends VanillaCommand {
-    private static final List<String> BANLIST_TYPES = ImmutableList.of("ips", "players");
+    private static readonly List<String> BANLIST_TYPES = ImmutableList.of("ips", "players");
 
     public BanListCommand() {
         super("banlist");

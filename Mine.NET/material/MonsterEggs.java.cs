@@ -10,7 +10,7 @@ import org.bukkit.Material;
  */
 public class MonsterEggs extends TexturedMaterial {
 
-    private static final List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new ArrayList<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.COBBLESTONE);
@@ -43,7 +43,7 @@ public class MonsterEggs extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(int type, final byte data) {
+    public MonsterEggs(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -53,7 +53,7 @@ public class MonsterEggs extends TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(Material type, final byte data) {
+    public MonsterEggs(Material type, readonly byte data) {
         super(type, data);
     }
 

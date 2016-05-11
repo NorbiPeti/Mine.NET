@@ -35,7 +35,7 @@ public class Coal extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Coal(int type, final byte data) {
+    public Coal(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class Coal extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Coal(Material type, final byte data) {
+    public Coal(Material type, readonly byte data) {
         super(type, data);
     }
 

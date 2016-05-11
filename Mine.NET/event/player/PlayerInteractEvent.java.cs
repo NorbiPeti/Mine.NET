@@ -17,7 +17,7 @@ import org.bukkit.inventory.EquipmentSlot;
  * is to do nothing (e.g interacting with air)
  */
 public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected ItemStack item;
     protected Action action;
     protected Block blockClicked;
@@ -26,11 +26,11 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
     private Result useItemInHand;
     private EquipmentSlot hand;
 
-    public PlayerInteractEvent(Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace) {
+    public PlayerInteractEvent(Player who, readonly Action action, readonly ItemStack item, readonly Block clickedBlock, readonly BlockFace clickedFace) {
         this(who, action, item, clickedBlock, clickedFace, EquipmentSlot.HAND);
     }
 
-    public PlayerInteractEvent(Player who, final Action action, final ItemStack item, final Block clickedBlock, final BlockFace clickedFace, final EquipmentSlot hand) {
+    public PlayerInteractEvent(Player who, readonly Action action, readonly ItemStack item, readonly Block clickedBlock, readonly BlockFace clickedFace, readonly EquipmentSlot hand) {
         super(who);
         this.action = action;
         this.item = item;

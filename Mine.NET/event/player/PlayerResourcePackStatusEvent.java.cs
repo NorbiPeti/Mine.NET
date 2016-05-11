@@ -9,8 +9,8 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerResourcePackStatusEvent extends PlayerEvent {
 
-    private static final HandlerList handlers = new HandlerList();
-    private final Status status;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Status status;
 
     public PlayerResourcePackStatusEvent(Player who, Status resourcePackStatus) {
         super(who);

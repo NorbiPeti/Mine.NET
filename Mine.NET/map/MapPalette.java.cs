@@ -30,7 +30,7 @@ public sealed class MapPalette {
         return weightR * r * r + weightG * g * g + weightB * b * b;
     }
 
-    static final Color[] colors = {
+    static readonly Color[] colors = {
         c(0, 0, 0), c(0, 0, 0), c(0, 0, 0), c(0, 0, 0),
         c(89, 125, 39), c(109, 153, 48), c(127, 178, 56), c(67, 94, 29),
         c(174, 164, 115), c(213, 201, 140), c(247, 233, 163), c(130, 123, 86),
@@ -74,72 +74,72 @@ public sealed class MapPalette {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte TRANSPARENT = 0;
+    public static readonly byte TRANSPARENT = 0;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte LIGHT_GREEN = 4;
+    public static readonly byte LIGHT_GREEN = 4;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte LIGHT_BROWN = 8;
+    public static readonly byte LIGHT_BROWN = 8;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte GRAY_1 = 12;
+    public static readonly byte GRAY_1 = 12;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte RED = 16;
+    public static readonly byte RED = 16;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte PALE_BLUE = 20;
+    public static readonly byte PALE_BLUE = 20;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte GRAY_2 = 24;
+    public static readonly byte GRAY_2 = 24;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte DARK_GREEN = 28;
+    public static readonly byte DARK_GREEN = 28;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte WHITE = 32;
+    public static readonly byte WHITE = 32;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte LIGHT_GRAY = 36;
+    public static readonly byte LIGHT_GRAY = 36;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte BROWN = 40;
+    public static readonly byte BROWN = 40;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte DARK_GRAY = 44;
+    public static readonly byte DARK_GRAY = 44;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte BLUE = 48;
+    public static readonly byte BLUE = 48;
     /**
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public static final byte DARK_BROWN = 52;
+    public static readonly byte DARK_BROWN = 52;
 
     /**
      * Resize an image to 128x128.

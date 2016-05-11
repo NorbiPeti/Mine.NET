@@ -9,15 +9,15 @@ import org.bukkit.inventory.ItemStack;
  * Thrown whenever a LivingEntity dies
  */
 public class EntityDeathEvent extends EntityEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final List<ItemStack> drops;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly List<ItemStack> drops;
     private int dropExp = 0;
 
-    public EntityDeathEvent(LivingEntity entity, final List<ItemStack> drops) {
+    public EntityDeathEvent(LivingEntity entity, readonly List<ItemStack> drops) {
         this(entity, drops, 0);
     }
 
-    public EntityDeathEvent(LivingEntity what, final List<ItemStack> drops, final int droppedExp) {
+    public EntityDeathEvent(LivingEntity what, readonly List<ItemStack> drops, readonly int droppedExp) {
         super(what);
         this.drops = drops;
         this.dropExp = droppedExp;

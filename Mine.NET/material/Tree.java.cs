@@ -11,8 +11,8 @@ import org.bukkit.block.BlockFace;
  * @see Material#LOG_2
  */
 public class Tree extends Wood {
-    protected static final Material DEFAULT_TYPE = Material.LOG;
-    protected static final BlockFace DEFAULT_DIRECTION = BlockFace.UP;
+    protected static readonly Material DEFAULT_TYPE = Material.LOG;
+    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.UP;
 
     /**
      * Constructs a tree block.
@@ -88,7 +88,7 @@ public class Tree extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(int type, final byte data) {
+    public Tree(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -98,7 +98,7 @@ public class Tree extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(Material type, final byte data) {
+    public Tree(Material type, readonly byte data) {
         super(type, data);
     }
 

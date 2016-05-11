@@ -72,8 +72,8 @@ public enum InventoryType {
     HOPPER(5, "Item Hopper"),
     ;
 
-    private final int size;
-    private final String title;
+    private readonly int size;
+    private readonly String title;
 
     private InventoryType(int defaultSize, String defaultTitle) {
         size = defaultSize;

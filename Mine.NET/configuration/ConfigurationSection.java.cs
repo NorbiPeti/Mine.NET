@@ -82,7 +82,7 @@ public interface ConfigurationSection {
      * If the section is no longer contained within its root for any reason,
      * such as being replaced with a different value, this may return null.
      * <p>
-     * To retrieve the single name of this section, that is, the final part of
+     * To retrieve the single name of this section, that is, the readonly part of
      * the path returned by this method, you may use {@link #getName()}.
      *
      * @return Path of this section relative to its root
@@ -93,7 +93,7 @@ public interface ConfigurationSection {
      * Gets the name of this individual {@link ConfigurationSection}, in the
      * path.
      * <p>
-     * This will always be the final part of {@link #getCurrentPath()}, unless
+     * This will always be the readonly part of {@link #getCurrentPath()}, unless
      * the section is orphaned.
      *
      * @return Name of this section

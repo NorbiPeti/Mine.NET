@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
  * Called when a sheep regrows its wool
  */
 public class SheepRegrowWoolEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
 
     public SheepRegrowWoolEvent(Sheep sheep) {

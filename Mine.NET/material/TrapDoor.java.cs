@@ -30,7 +30,7 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(int type, final byte data) {
+    public TrapDoor(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(Material type, final byte data) {
+    public TrapDoor(Material type, readonly byte data) {
         super(type, data);
     }
 

@@ -26,9 +26,9 @@ public enum PotionType {
     LUCK(PotionEffectType.LUCK, false, false);
     ;
 
-    private final PotionEffectType effect;
-    private final bool upgradeable;
-    private final bool extendable;
+    private readonly PotionEffectType effect;
+    private readonly bool upgradeable;
+    private readonly bool extendable;
 
     PotionType(PotionEffectType effect, bool upgradeable, bool extendable) {
         this.effect = effect;

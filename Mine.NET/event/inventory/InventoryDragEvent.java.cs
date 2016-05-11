@@ -55,11 +55,11 @@ import com.google.common.collect.ImmutableSet;
  * execute the task on the next tick, would work as well.
  */
 public class InventoryDragEvent extends InventoryInteractEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final DragType type;
-    private final Map<Integer, ItemStack> addedItems;
-    private final Set<Integer> containerSlots;
-    private final ItemStack oldCursor;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly DragType type;
+    private readonly Map<Integer, ItemStack> addedItems;
+    private readonly Set<Integer> containerSlots;
+    private readonly ItemStack oldCursor;
     private ItemStack newCursor;
 
     public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Map<Integer, ItemStack> slots) {

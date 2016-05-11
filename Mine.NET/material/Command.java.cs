@@ -29,7 +29,7 @@ public class Command extends MaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Command(int type, final byte data) {
+    public Command(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -39,7 +39,7 @@ public class Command extends MaterialData implements Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Command(Material type, final byte data) {
+    public Command(Material type, readonly byte data) {
         super(type, data);
     }
 

@@ -119,8 +119,8 @@ public interface Villager extends Ageable, NPC, InventoryHolder {
         BLACKSMITH(3),
         BUTCHER(4);
 
-        private static final Profession[] professions = new Profession[Profession.values().length];
-        private final int id;
+        private static readonly Profession[] professions = new Profession[Profession.values().length];
+        private readonly int id;
 
         static {
             for (Profession type : values()) {

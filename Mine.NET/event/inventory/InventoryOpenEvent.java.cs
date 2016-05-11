@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  * Represents a player related inventory event
  */
 public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
 
     public InventoryOpenEvent(InventoryView transaction) {
@@ -22,7 +22,7 @@ public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
      *
      * @return Player who is involved in this event
      */
-    public final HumanEntity getPlayer() {
+    public readonly HumanEntity getPlayer() {
         return transaction.getPlayer();
     }
 

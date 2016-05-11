@@ -27,7 +27,7 @@ public class Stairs extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(int type, final byte data) {
+    public Stairs(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -37,7 +37,7 @@ public class Stairs extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(Material type, final byte data) {
+    public Stairs(Material type, readonly byte data) {
         super(type, data);
     }
 

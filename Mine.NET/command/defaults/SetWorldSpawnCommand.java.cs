@@ -35,7 +35,7 @@ public class SetWorldSpawnCommand extends VanillaCommand {
             world = Bukkit.getWorlds().get(0);
         }
 
-        final int x, y, z;
+        readonly int x, y, z;
 
         if (args.length == 0) {
             if (player == null) {

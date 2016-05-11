@@ -11,8 +11,8 @@ import org.bukkit.util.Vector;
  * with a location on the entity the was clicked.
  */
 public class PlayerInteractAtEntityEvent extends PlayerInteractEntityEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Vector position;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Vector position;
 
     public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position) {
         this(who, clickedEntity, position, EquipmentSlot.HAND);

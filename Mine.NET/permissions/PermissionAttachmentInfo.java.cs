@@ -5,10 +5,10 @@ package org.bukkit.permissions;
  * provides it
  */
 public class PermissionAttachmentInfo {
-    private final Permissible permissible;
-    private final String permission;
-    private final PermissionAttachment attachment;
-    private final bool value;
+    private readonly Permissible permissible;
+    private readonly String permission;
+    private readonly PermissionAttachment attachment;
+    private readonly bool value;
 
     public PermissionAttachmentInfo(Permissible permissible, String permission, PermissionAttachment attachment, bool value) {
         if (permissible == null) {

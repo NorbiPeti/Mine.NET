@@ -35,7 +35,7 @@ public class LongGrass extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(int type, final byte data) {
+    public LongGrass(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class LongGrass extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(Material type, final byte data) {
+    public LongGrass(Material type, readonly byte data) {
         super(type, data);
     }
 

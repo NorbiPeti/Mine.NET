@@ -254,7 +254,7 @@ public abstract class ChunkGenerator {
      * @param world the world the ChunkData is for
      * @return a new ChunkData for world
      */
-    protected final ChunkData createChunkData(World world) {
+    protected readonly ChunkData createChunkData(World world) {
         return Bukkit.getServer().createChunkData(world);
     }
 

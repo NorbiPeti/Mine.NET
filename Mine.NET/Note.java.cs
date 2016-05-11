@@ -1,11 +1,3 @@
-package org.bukkit;
-
-import java.util.Map;
-
-import org.apache.commons.lang.Validate;
-
-import com.google.common.collect.Maps;
-
 /**
  * A note class to store a specific note.
  */
@@ -14,21 +6,21 @@ public class Note {
     /**
      * An enum holding tones.
      */
-    public enum Tone {
-        G(0x1, true),
-        A(0x3, true),
-        B(0x5, false),
-        C(0x6, true),
-        D(0x8, true),
-        E(0xA, false),
-        F(0xB, true);
+    public class Tone {
+        public static readonly Tone G = new Tone(0x1, true);
+        public static readonly Tone A = new Tone(0x3, true);
+        public static readonly Tone B = new Tone(0x5, false);
+        public static readonly Tone C = new Tone(0x6, true);
+        public static readonly Tone D = new Tone(0x8, true);
+        public static readonly Tone E = new Tone(0xA, false);
+        public static readonly Tone F = new Tone(0xB, true);
 
-        private final bool sharpable;
-        private final byte id;
+        private readonly bool sharpable;
+        private readonly byte id;
 
-        private static final Map<Byte, Note.Tone> BY_DATA = Maps.newHashMap();
+        private static readonly Map<Byte, Note.Tone> BY_DATA = Maps.newHashMap();
         /** The number of tones including sharped tones. */
-        public static final byte TONES_COUNT = 12;
+        public static readonly byte TONES_COUNT = 12;
 
         private Tone(int id, bool sharpable) {
             this.id = (byte) (id % TONES_COUNT);
@@ -117,7 +109,7 @@ public class Note {
         }
     }
 
-    private final byte note;
+    private readonly byte note;
 
     /**
      * Creates a new note.
@@ -249,7 +241,7 @@ public class Note {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
+        readonly int prime = 31;
         int result = 1;
         result = prime * result + note;
         return result;

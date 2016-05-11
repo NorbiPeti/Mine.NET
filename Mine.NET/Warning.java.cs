@@ -37,7 +37,7 @@ public @interface Warning {
          */
         DEFAULT;
 
-        private static final Map<String, WarningState> values = ImmutableMap.<String,WarningState>builder()
+        private static readonly Map<String, WarningState> values = ImmutableMap.<String,WarningState>builder()
                 .put("off", OFF)
                 .put("false", OFF)
                 .put("f", OFF)

@@ -11,13 +11,13 @@ import org.bukkit.event.HandlerList;
  * Triggered when a hanging entity is created in the world
  */
 public class HangingPlaceEvent extends HangingEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final Player player;
-    private final Block block;
-    private final BlockFace blockFace;
+    private readonly Player player;
+    private readonly Block block;
+    private readonly BlockFace blockFace;
 
-    public HangingPlaceEvent(Hanging hanging, final Player player, final Block block, final BlockFace blockFace) {
+    public HangingPlaceEvent(Hanging hanging, readonly Player player, readonly Block block, readonly BlockFace blockFace) {
         super(hanging);
         this.player = player;
         this.block = block;

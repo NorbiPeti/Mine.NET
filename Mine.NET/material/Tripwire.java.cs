@@ -26,7 +26,7 @@ public class Tripwire extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tripwire(int type, final byte data) {
+    public Tripwire(int type, readonly byte data) {
         super(type, data);
     }
 

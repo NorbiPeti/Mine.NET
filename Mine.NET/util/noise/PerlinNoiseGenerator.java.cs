@@ -10,10 +10,10 @@ import org.bukkit.World;
  *     different results
  */
 public class PerlinNoiseGenerator extends NoiseGenerator {
-    protected static final int grad3[][] = {{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0},
+    protected static readonly int grad3[][] = {{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0},
         {1, 0, 1}, {-1, 0, 1}, {1, 0, -1}, {-1, 0, -1},
         {0, 1, 1}, {0, -1, 1}, {0, 1, -1}, {0, -1, -1}};
-    private static final PerlinNoiseGenerator instance = new PerlinNoiseGenerator();
+    private static readonly PerlinNoiseGenerator instance = new PerlinNoiseGenerator();
 
     protected PerlinNoiseGenerator() {
         int p[] = {151, 160, 137, 91, 90, 15, 131, 13, 201,

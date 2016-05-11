@@ -8,9 +8,9 @@ import org.bukkit.event.HandlerList;
  * of {@link ServerCommandEvent} for more information.
  */
 public class RemoteServerCommandEvent extends ServerCommandEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
-    public RemoteServerCommandEvent(CommandSender sender, final String command) {
+    public RemoteServerCommandEvent(CommandSender sender, readonly String command) {
         super(sender, command);
     }
 

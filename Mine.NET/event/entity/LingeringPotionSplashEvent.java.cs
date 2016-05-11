@@ -16,11 +16,11 @@ import org.bukkit.event.HandlerList;
  * Called when a splash potion hits an area
  */
 public class LingeringPotionSplashEvent extends ProjectileHitEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final AreaEffectCloud entity;
+    private readonly AreaEffectCloud entity;
 
-    public LingeringPotionSplashEvent(ThrownPotion potion, final AreaEffectCloud entity) {
+    public LingeringPotionSplashEvent(ThrownPotion potion, readonly AreaEffectCloud entity) {
         super(potion);
         this.entity = entity;
     }

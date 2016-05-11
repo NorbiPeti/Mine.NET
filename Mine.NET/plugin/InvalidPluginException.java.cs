@@ -4,7 +4,7 @@ package org.bukkit.plugin;
  * Thrown when attempting to load an invalid Plugin file
  */
 public class InvalidPluginException extends Exception {
-    private static final long serialVersionUID = -8242141640709409544L;
+    private static readonly long serialVersionUID = -8242141640709409544L;
 
     /**
      * Constructs a new InvalidPluginException based on the given Exception
@@ -32,7 +32,7 @@ public class InvalidPluginException extends Exception {
      *     getCause() method). (A null value is permitted, and indicates that
      *     the cause is nonexistent or unknown.)
      */
-    public InvalidPluginException(String message, final Throwable cause) {
+    public InvalidPluginException(String message, readonly Throwable cause) {
         super(message, cause);
     }
 

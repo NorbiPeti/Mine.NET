@@ -11,13 +11,13 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PlayerArmorStandManipulateEvent extends PlayerInteractEntityEvent {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
-    private final ItemStack playerItem;
-    private final ItemStack armorStandItem;
-    private final EquipmentSlot slot;
+    private readonly ItemStack playerItem;
+    private readonly ItemStack armorStandItem;
+    private readonly EquipmentSlot slot;
 
-    public PlayerArmorStandManipulateEvent(Player who, final ArmorStand clickedEntity, final ItemStack playerItem, final ItemStack armorStandItem, final EquipmentSlot slot) {
+    public PlayerArmorStandManipulateEvent(Player who, readonly ArmorStand clickedEntity, readonly ItemStack playerItem, readonly ItemStack armorStandItem, readonly EquipmentSlot slot) {
         super(who, clickedEntity);
         this.playerItem = playerItem;
         this.armorStandItem = armorStandItem;

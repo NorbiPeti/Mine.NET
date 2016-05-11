@@ -7,12 +7,12 @@ public sealed class NumberConversions {
     private NumberConversions() {}
 
     public static int floor(double num) {
-        final int floor = (int) num;
+        readonly int floor = (int) num;
         return floor == num ? floor : floor - (int) (Double.doubleToRawLongBits(num) >>> 63);
     }
 
     public static int ceil(double num) {
-        final int floor = (int) num;
+        readonly int floor = (int) num;
         return floor == num ? floor : floor + (int) (~Double.doubleToRawLongBits(num) >>> 63);
     }
 

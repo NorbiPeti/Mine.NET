@@ -11,8 +11,8 @@ import org.bukkit.block.BlockFace;
  */
 public class Hopper extends MaterialData implements Directional, Redstone {
 
-    protected static final BlockFace DEFAULT_DIRECTION = BlockFace.DOWN;
-    protected static final bool DEFAULT_ACTIVE = true;
+    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.DOWN;
+    protected static readonly bool DEFAULT_ACTIVE = true;
 
     /**
      * Constructs a hopper facing the default direction (down) and initially

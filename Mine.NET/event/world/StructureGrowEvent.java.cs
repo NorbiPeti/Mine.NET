@@ -13,15 +13,15 @@ import org.bukkit.event.HandlerList;
  * Tree), (Mushroom {@literal ->} Huge Mushroom), naturally or using bonemeal.
  */
 public class StructureGrowEvent extends WorldEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled = false;
-    private final Location location;
-    private final TreeType species;
-    private final bool bonemeal;
-    private final Player player;
-    private final List<BlockState> blocks;
+    private readonly Location location;
+    private readonly TreeType species;
+    private readonly bool bonemeal;
+    private readonly Player player;
+    private readonly List<BlockState> blocks;
 
-    public StructureGrowEvent(Location location, final TreeType species, final bool bonemeal, final Player player, final List<BlockState> blocks) {
+    public StructureGrowEvent(Location location, readonly TreeType species, readonly bool bonemeal, readonly Player player, readonly List<BlockState> blocks) {
         super(location.getWorld());
         this.location = location;
         this.species = species;

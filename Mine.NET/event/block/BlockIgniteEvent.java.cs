@@ -13,26 +13,26 @@ import org.bukkit.event.HandlerList;
  * If a Block Ignite event is cancelled, the block will not be ignited.
  */
 public class BlockIgniteEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final IgniteCause cause;
-    private final Entity ignitingEntity;
-    private final Block ignitingBlock;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly IgniteCause cause;
+    private readonly Entity ignitingEntity;
+    private readonly Block ignitingBlock;
     private bool cancel;
 
     [Obsolete]
-    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Player thePlayer) {
+    public BlockIgniteEvent(Block theBlock, readonly IgniteCause cause, readonly Player thePlayer) {
         this(theBlock, cause, (Entity) thePlayer);
     }
 
-    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Entity ignitingEntity) {
+    public BlockIgniteEvent(Block theBlock, readonly IgniteCause cause, readonly Entity ignitingEntity) {
         this(theBlock, cause, ignitingEntity, null);
     }
 
-    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Block ignitingBlock) {
+    public BlockIgniteEvent(Block theBlock, readonly IgniteCause cause, readonly Block ignitingBlock) {
         this(theBlock, cause, null, ignitingBlock);
     }
 
-    public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Entity ignitingEntity, final Block ignitingBlock) {
+    public BlockIgniteEvent(Block theBlock, readonly IgniteCause cause, readonly Entity ignitingEntity, readonly Block ignitingBlock) {
         super(theBlock);
         this.cause = cause;
         this.ignitingEntity = ignitingEntity;

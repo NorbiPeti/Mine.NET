@@ -7,7 +7,7 @@ import org.bukkit.Material;
  * Handles specific metadata for certain items or blocks
  */
 public class MaterialData implements Cloneable {
-    private final int type;
+    private readonly int type;
     private byte data = 0;
 
     /**
@@ -29,7 +29,7 @@ public class MaterialData implements Cloneable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData(int type, final byte data) {
+    public MaterialData(int type, readonly byte data) {
         this.type = type;
         this.data = data;
     }
@@ -40,7 +40,7 @@ public class MaterialData implements Cloneable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MaterialData(Material type, final byte data) {
+    public MaterialData(Material type, readonly byte data) {
         this(type.getId(), data);
     }
 

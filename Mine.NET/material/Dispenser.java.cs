@@ -36,7 +36,7 @@ public class Dispenser extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(int type, final byte data) {
+    public Dispenser(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -46,7 +46,7 @@ public class Dispenser extends FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(Material type, final byte data) {
+    public Dispenser(Material type, readonly byte data) {
         super(type, data);
     }
 

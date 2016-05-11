@@ -18,26 +18,26 @@ import com.google.common.collect.ImmutableMap;
  * Stores data for damage events
  */
 public class EntityDamageEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private static final DamageModifier[] MODIFIERS = DamageModifier.values();
-    private static final Function<? super Double, Double> ZERO = Functions.constant(-0.0);
-    private final Map<DamageModifier, Double> modifiers;
-    private final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
-    private final Map<DamageModifier, Double> originals;
+    private static readonly HandlerList handlers = new HandlerList();
+    private static readonly DamageModifier[] MODIFIERS = DamageModifier.values();
+    private static readonly Function<? super Double, Double> ZERO = Functions.constant(-0.0);
+    private readonly Map<DamageModifier, Double> modifiers;
+    private readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
+    private readonly Map<DamageModifier, Double> originals;
     private bool cancelled;
-    private final DamageCause cause;
+    private readonly DamageCause cause;
 
     [Obsolete]
-    public EntityDamageEvent(Entity damagee, final DamageCause cause, final int damage) {
+    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly int damage) {
         this(damagee, cause, (double) damage);
     }
 
     [Obsolete]
-    public EntityDamageEvent(Entity damagee, final DamageCause cause, final double damage) {
+    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly double damage) {
         this(damagee, cause, new EnumMap<DamageModifier, Double>(ImmutableMap.of(DamageModifier.BASE, damage)), new EnumMap<DamageModifier, Function<? super Double, Double>>(ImmutableMap.of(DamageModifier.BASE, ZERO)));
     }
 
-    public EntityDamageEvent(Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Map<DamageModifier, Double> modifiers, readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee);
         Validate.isTrue(modifiers.containsKey(DamageModifier.BASE), "BASE DamageModifier missing");
         Validate.isTrue(!modifiers.containsKey(null), "Cannot have null DamageModifier");
@@ -67,7 +67,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      * @throws IllegalArgumentException if type is null
      */
     public double getOriginalDamage(DamageModifier type) throws IllegalArgumentException {
-        final Double damage = originals.get(type);
+        readonly Double damage = originals.get(type);
         if (damage != null) {
             return damage;
         }
@@ -105,7 +105,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      */
     public double getDamage(DamageModifier type) throws IllegalArgumentException {
         Validate.notNull(type, "Cannot have null DamageModifier");
-        final Double damage = modifiers.get(type);
+        readonly Double damage = modifiers.get(type);
         return damage == null ? 0 : damage;
     }
 
@@ -141,7 +141,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      *
      * @return the amount of damage caused by the event
      */
-    public final double getFinalDamage() {
+    public readonly double getFinalDamage() {
         double damage = 0;
         for (DamageModifier modifier : MODIFIERS) {
             damage += getDamage(modifier);

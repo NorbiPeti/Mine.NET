@@ -26,8 +26,8 @@ public interface Skeleton extends Monster {
         NORMAL(0),
         WITHER(1);
 
-        private static final SkeletonType[] types = new SkeletonType[SkeletonType.values().length];
-        private final int id;
+        private static readonly SkeletonType[] types = new SkeletonType[SkeletonType.values().length];
+        private readonly int id;
 
         static {
             for (SkeletonType type : values()) {

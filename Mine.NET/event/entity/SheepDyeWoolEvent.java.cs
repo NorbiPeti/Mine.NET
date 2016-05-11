@@ -9,11 +9,11 @@ import org.bukkit.event.HandlerList;
  * Called when a sheep's wool is dyed
  */
 public class SheepDyeWoolEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private DyeColor color;
 
-    public SheepDyeWoolEvent(Sheep sheep, final DyeColor color) {
+    public SheepDyeWoolEvent(Sheep sheep, readonly DyeColor color) {
         super(sheep);
         this.cancel = false;
         this.color = color;

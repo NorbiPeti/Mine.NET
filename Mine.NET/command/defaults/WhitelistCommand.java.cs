@@ -15,7 +15,7 @@ import com.google.common.collect.ImmutableList;
 
 [Obsolete]
 public class WhitelistCommand extends VanillaCommand {
-    private static final List<String> WHITELIST_SUBCOMMANDS = ImmutableList.of("add", "remove", "on", "off", "list", "reload");
+    private static readonly List<String> WHITELIST_SUBCOMMANDS = ImmutableList.of("add", "remove", "on", "off", "list", "reload");
 
     public WhitelistCommand() {
         super("whitelist");

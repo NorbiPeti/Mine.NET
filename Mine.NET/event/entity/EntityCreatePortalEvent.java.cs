@@ -11,12 +11,12 @@ import org.bukkit.event.HandlerList;
  * Thrown when a Living Entity creates a portal in a world.
  */
 public class EntityCreatePortalEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final List<BlockState> blocks;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly List<BlockState> blocks;
     private bool cancelled = false;
     private PortalType type = PortalType.CUSTOM;
 
-    public EntityCreatePortalEvent(LivingEntity what, final List<BlockState> blocks, final PortalType type) {
+    public EntityCreatePortalEvent(LivingEntity what, readonly List<BlockState> blocks, readonly PortalType type) {
         super(what);
 
         this.blocks = blocks;

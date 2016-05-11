@@ -9,17 +9,17 @@ import org.bukkit.util.NumberConversions;
  * Stores data for health-regain events
  */
 public class EntityRegainHealthEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private double amount;
-    private final RegainReason regainReason;
+    private readonly RegainReason regainReason;
 
     [Obsolete]
-    public EntityRegainHealthEvent(Entity entity, final int amount, final RegainReason regainReason) {
+    public EntityRegainHealthEvent(Entity entity, readonly int amount, readonly RegainReason regainReason) {
         this(entity, (double) amount, regainReason);
     }
 
-    public EntityRegainHealthEvent(Entity entity, final double amount, final RegainReason regainReason) {
+    public EntityRegainHealthEvent(Entity entity, readonly double amount, readonly RegainReason regainReason) {
         super(entity);
         this.amount = amount;
         this.regainReason = regainReason;

@@ -4,8 +4,8 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
 
 public sealed class CommandPermissions {
-    private static final String ROOT = "bukkit.command";
-    private static final String PREFIX = ROOT + ".";
+    private static readonly String ROOT = "bukkit.command";
+    private static readonly String PREFIX = ROOT + ".";
 
     private CommandPermissions() {}
 

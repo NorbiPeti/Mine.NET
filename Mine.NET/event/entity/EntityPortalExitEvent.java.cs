@@ -12,11 +12,11 @@ import org.bukkit.util.Vector;
  * successfully exited the portal.
  */
 public class EntityPortalExitEvent extends EntityTeleportEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private Vector before;
     private Vector after;
 
-    public EntityPortalExitEvent(Entity entity, final Location from, final Location to, final Vector before, final Vector after) {
+    public EntityPortalExitEvent(Entity entity, readonly Location from, readonly Location to, readonly Vector before, readonly Vector after) {
         super(entity, from, to);
         this.before = before;
         this.after = after;

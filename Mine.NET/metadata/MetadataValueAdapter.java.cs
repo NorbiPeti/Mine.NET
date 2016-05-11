@@ -14,7 +14,7 @@ import org.bukkit.util.NumberConversions;
  * value() and invalidate().
  */
 public abstract class MetadataValueAdapter implements MetadataValue {
-    protected final WeakReference<Plugin> owningPlugin;
+    protected readonly WeakReference<Plugin> owningPlugin;
 
     protected MetadataValueAdapter(Plugin owningPlugin) {
         Validate.notNull(owningPlugin, "owningPlugin cannot be null");

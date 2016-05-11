@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Stores data for weather changing in a world
  */
 public class WeatherChangeEvent extends WeatherEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
-    private final bool to;
+    private readonly bool to;
 
-    public WeatherChangeEvent(World world, final bool to) {
+    public WeatherChangeEvent(World world, readonly bool to) {
         super(world);
         this.to = to;
     }

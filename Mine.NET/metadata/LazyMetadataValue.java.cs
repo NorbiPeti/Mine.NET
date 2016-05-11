@@ -21,7 +21,7 @@ public class LazyMetadataValue extends MetadataValueAdapter implements MetadataV
     private Callable<Object> lazyValue;
     private CacheStrategy cacheStrategy;
     private SoftReference<Object> internalValue;
-    private static final Object ACTUALLY_NULL = new Object();
+    private static readonly Object ACTUALLY_NULL = new Object();
 
     /**
      * Initialized a LazyMetadataValue object with the default

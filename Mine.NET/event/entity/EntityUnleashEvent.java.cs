@@ -7,8 +7,8 @@ import org.bukkit.event.HandlerList;
  * Called immediately prior to an entity being unleashed.
  */
 public class EntityUnleashEvent extends EntityEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final UnleashReason reason;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly UnleashReason reason;
 
     public EntityUnleashEvent(Entity entity, UnleashReason reason) {
         super(entity);

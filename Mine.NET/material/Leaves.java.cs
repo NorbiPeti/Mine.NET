@@ -11,8 +11,8 @@ import org.bukkit.TreeSpecies;
  * @see Material#LEAVES_2
  */
 public class Leaves extends Wood {
-    protected static final Material DEFAULT_TYPE = Material.LEAVES;
-    protected static final bool DEFAULT_DECAYABLE = true;
+    protected static readonly Material DEFAULT_TYPE = Material.LEAVES;
+    protected static readonly bool DEFAULT_DECAYABLE = true;
 
     /**
      * Constructs a leaf block.
@@ -88,7 +88,7 @@ public class Leaves extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(int type, final byte data) {
+    public Leaves(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -98,7 +98,7 @@ public class Leaves extends Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(Material type, final byte data) {
+    public Leaves(Material type, readonly byte data) {
         super(type, data);
     }
 

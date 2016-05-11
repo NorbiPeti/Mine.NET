@@ -26,7 +26,7 @@ public class FurnaceAndDispenser extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(int type, final byte data) {
+    public FurnaceAndDispenser(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -36,7 +36,7 @@ public class FurnaceAndDispenser extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(Material type, final byte data) {
+    public FurnaceAndDispenser(Material type, readonly byte data) {
         super(type, data);
     }
 

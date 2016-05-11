@@ -9,11 +9,11 @@ import org.bukkit.event.HandlerList;
  * Called when a player respawns.
  */
 public class PlayerRespawnEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private Location respawnLocation;
-    private final bool isBedSpawn;
+    private readonly bool isBedSpawn;
 
-    public PlayerRespawnEvent(Player respawnPlayer, final Location respawnLocation, final bool isBedSpawn) {
+    public PlayerRespawnEvent(Player respawnPlayer, readonly Location respawnLocation, readonly bool isBedSpawn) {
         super(respawnPlayer);
         this.respawnLocation = respawnLocation;
         this.isBedSpawn = isBedSpawn;

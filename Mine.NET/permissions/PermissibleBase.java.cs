@@ -16,8 +16,8 @@ import org.bukkit.plugin.Plugin;
 public class PermissibleBase implements Permissible {
     private ServerOperator opable = null;
     private Permissible parent = this;
-    private final List<PermissionAttachment> attachments = new LinkedList<PermissionAttachment>();
-    private final Map<String, PermissionAttachmentInfo> permissions = new HashMap<String, PermissionAttachmentInfo>();
+    private readonly List<PermissionAttachment> attachments = new LinkedList<PermissionAttachment>();
+    private readonly Map<String, PermissionAttachmentInfo> permissions = new HashMap<String, PermissionAttachmentInfo>();
 
     public PermissibleBase(ServerOperator opable) {
         this.opable = opable;

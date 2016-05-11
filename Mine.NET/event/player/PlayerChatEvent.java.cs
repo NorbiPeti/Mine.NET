@@ -22,20 +22,20 @@ import org.bukkit.event.HandlerList;
 [Obsolete]
 @Warning(reason="Listening to this event forces chat to wait for the main thread, delaying chat messages.")
 public class PlayerChatEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private String message;
     private String format;
-    private final Set<Player> recipients;
+    private readonly Set<Player> recipients;
 
-    public PlayerChatEvent(Player player, final String message) {
+    public PlayerChatEvent(Player player, readonly String message) {
         super(player);
         this.message = message;
         this.format = "<%1$s> %2$s";
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
     }
 
-    public PlayerChatEvent(Player player, final String message, final String format, final Set<Player> recipients) {
+    public PlayerChatEvent(Player player, readonly String message, readonly String format, readonly Set<Player> recipients) {
         super(player);
         this.message = message;
         this.format = format;

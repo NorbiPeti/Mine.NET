@@ -11,12 +11,12 @@ import java.util.List;
  * console.
  */
 public class ChatPaginator {
-    public static final int GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH = 55; // Will never wrap, even with the largest characters
-    public static final int AVERAGE_CHAT_PAGE_WIDTH = 65; // Will typically not wrap using an average character distribution
-    public static final int UNBOUNDED_PAGE_WIDTH = Integer.MAX_VALUE;
-    public static final int OPEN_CHAT_PAGE_HEIGHT = 20; // The height of an expanded chat window
-    public static final int CLOSED_CHAT_PAGE_HEIGHT = 10; // The height of the default chat window
-    public static final int UNBOUNDED_PAGE_HEIGHT = Integer.MAX_VALUE;
+    public static readonly int GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH = 55; // Will never wrap, even with the largest characters
+    public static readonly int AVERAGE_CHAT_PAGE_WIDTH = 65; // Will typically not wrap using an average character distribution
+    public static readonly int UNBOUNDED_PAGE_WIDTH = Integer.MAX_VALUE;
+    public static readonly int OPEN_CHAT_PAGE_HEIGHT = 20; // The height of an expanded chat window
+    public static readonly int CLOSED_CHAT_PAGE_HEIGHT = 10; // The height of the default chat window
+    public static readonly int UNBOUNDED_PAGE_HEIGHT = Integer.MAX_VALUE;
 
     /**
      * Breaks a raw string up into pages using the default width and height.
@@ -129,8 +129,8 @@ public class ChatPaginator {
             lines.set(0, ChatColor.WHITE + lines.get(0));
         }
         for (int i = 1; i < lines.size(); i++) {
-            final String pLine = lines.get(i-1);
-            final String subLine = lines.get(i);
+            readonly String pLine = lines.get(i-1);
+            readonly String subLine = lines.get(i);
 
             char color = pLine.charAt(pLine.lastIndexOf(ChatColor.COLOR_CHAR) + 1);
             if (subLine.length() == 0 || subLine.charAt(0) != ChatColor.COLOR_CHAR) {

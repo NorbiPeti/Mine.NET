@@ -7,7 +7,7 @@ import java.util.HashMap;
  */
 public class MapFont {
 
-    private final HashMap<Character, CharacterSprite> chars = new HashMap<Character, CharacterSprite>();
+    private readonly HashMap<Character, CharacterSprite> chars = new HashMap<Character, CharacterSprite>();
     private int height = 0;
     protected bool malleable = true;
 
@@ -95,9 +95,9 @@ public class MapFont {
      */
     public static class CharacterSprite {
 
-        private final int width;
-        private final int height;
-        private final bool[] data;
+        private readonly int width;
+        private readonly int height;
+        private readonly bool[] data;
 
         public CharacterSprite(int width, int height, bool[] data) {
             this.width = width;

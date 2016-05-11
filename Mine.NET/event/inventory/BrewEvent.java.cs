@@ -11,7 +11,7 @@ import org.bukkit.inventory.BrewerInventory;
  * complete.
  */
 public class BrewEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private BrewerInventory contents;
     private bool cancelled;
 

@@ -7,11 +7,11 @@ import org.bukkit.event.HandlerList;
  * Called when a players level changes
  */
 public class PlayerLevelChangeEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final int oldLevel;
-    private final int newLevel;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly int oldLevel;
+    private readonly int newLevel;
 
-    public PlayerLevelChangeEvent(Player player, final int oldLevel, final int newLevel) {
+    public PlayerLevelChangeEvent(Player player, readonly int oldLevel, readonly int newLevel) {
          super(player);
          this.oldLevel = oldLevel;
          this.newLevel = newLevel;

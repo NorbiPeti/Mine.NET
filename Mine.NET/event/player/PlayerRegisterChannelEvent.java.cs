@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
  */
 public class PlayerRegisterChannelEvent extends PlayerChannelEvent {
 
-    public PlayerRegisterChannelEvent(Player player, final String channel) {
+    public PlayerRegisterChannelEvent(Player player, readonly String channel) {
         super(player, channel);
     }
 }

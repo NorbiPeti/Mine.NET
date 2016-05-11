@@ -27,10 +27,10 @@ import org.bukkit.event.HandlerList;
  * experience will not drop.
  */
 public class BlockBreakEvent extends BlockExpEvent implements Cancellable {
-    private final Player player;
+    private readonly Player player;
     private bool cancel;
 
-    public BlockBreakEvent(Block theBlock, final Player player) {
+    public BlockBreakEvent(Block theBlock, readonly Player player) {
         super(theBlock, 0);
 
         this.player = player;

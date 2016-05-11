@@ -4,12 +4,12 @@ import org.apache.commons.lang.Validate;
 
 public sealed class PotionData {
 
-    private final PotionType type;
-    private final bool extended;
-    private final bool upgraded;
+    private readonly PotionType type;
+    private readonly bool extended;
+    private readonly bool upgraded;
 
     /**
-     * Instantiates a final PotionData object to contain information about a
+     * Instantiates a readonly PotionData object to contain information about a
      * Potion
      *
      * @param type the type of the Potion

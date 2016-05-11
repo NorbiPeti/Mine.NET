@@ -13,8 +13,8 @@ import org.bukkit.Material;
  * @see Material#NETHER_WARTS
  */
 public class Crops extends MaterialData {
-    protected static final Material DEFAULT_TYPE = Material.CROPS;
-    protected static final CropState DEFAULT_STATE = CropState.SEEDED;
+    protected static readonly Material DEFAULT_TYPE = Material.CROPS;
+    protected static readonly CropState DEFAULT_STATE = CropState.SEEDED;
 
     /**
      * Constructs a wheat crop block in the seeded state.
@@ -39,7 +39,7 @@ public class Crops extends MaterialData {
      * @param type The type of crops
      * @param state The growth state of the crops
      */
-    public Crops(Material type, final CropState state) {
+    public Crops(Material type, readonly CropState state) {
         super(type);
         setState(state);
     }
@@ -68,7 +68,7 @@ public class Crops extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Crops(int type, final byte data) {
+    public Crops(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -78,7 +78,7 @@ public class Crops extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Crops(Material type, final byte data) {
+    public Crops(Material type, readonly byte data) {
         super(type, data);
     }
 

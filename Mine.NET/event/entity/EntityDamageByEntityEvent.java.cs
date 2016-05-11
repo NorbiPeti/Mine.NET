@@ -9,20 +9,20 @@ import org.bukkit.entity.Entity;
  * Called when an entity is damaged by an entity
  */
 public class EntityDamageByEntityEvent extends EntityDamageEvent {
-    private final Entity damager;
+    private readonly Entity damager;
 
     [Obsolete]
-    public EntityDamageByEntityEvent(Entity damager, final Entity damagee, final DamageCause cause, final int damage) {
+    public EntityDamageByEntityEvent(Entity damager, readonly Entity damagee, readonly DamageCause cause, readonly int damage) {
         this(damager, damagee, cause, (double) damage);
     }
 
     [Obsolete]
-    public EntityDamageByEntityEvent(Entity damager, final Entity damagee, final DamageCause cause, final double damage) {
+    public EntityDamageByEntityEvent(Entity damager, readonly Entity damagee, readonly DamageCause cause, readonly double damage) {
         super(damagee, cause, damage);
         this.damager = damager;
     }
 
-    public EntityDamageByEntityEvent(Entity damager, final Entity damagee, final DamageCause cause, final Map<DamageModifier, Double> modifiers, final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageByEntityEvent(Entity damager, readonly Entity damagee, readonly DamageCause cause, readonly Map<DamageModifier, Double> modifiers, readonly Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
         super(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }

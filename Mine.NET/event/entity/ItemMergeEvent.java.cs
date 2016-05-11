@@ -6,9 +6,9 @@ import org.bukkit.event.HandlerList;
 
 public class ItemMergeEvent extends EntityEvent implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final Item target;
+    private readonly Item target;
 
     public ItemMergeEvent(Item item, Item target) {
         super(item);

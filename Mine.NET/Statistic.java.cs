@@ -63,7 +63,7 @@ public enum Statistic {
     CHEST_OPENED,
     SLEEP_IN_BED;
 
-    private final Type type;
+    private readonly Type type;
 
     private Statistic() {
         this(Type.UNTYPED);

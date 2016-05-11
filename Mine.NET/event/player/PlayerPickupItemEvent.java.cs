@@ -9,12 +9,12 @@ import org.bukkit.event.HandlerList;
  * Thrown when a player picks an item up from the ground
  */
 public class PlayerPickupItemEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Item item;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Item item;
     private bool cancel = false;
-    private final int remaining;
+    private readonly int remaining;
 
-    public PlayerPickupItemEvent(Player player, final Item item, final int remaining) {
+    public PlayerPickupItemEvent(Player player, readonly Item item, readonly int remaining) {
         super(player);
         this.item = item;
         this.remaining = remaining;

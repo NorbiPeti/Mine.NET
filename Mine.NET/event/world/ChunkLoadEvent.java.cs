@@ -7,10 +7,10 @@ import org.bukkit.event.HandlerList;
  * Called when a chunk is loaded
  */
 public class ChunkLoadEvent extends ChunkEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final bool newChunk;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly bool newChunk;
 
-    public ChunkLoadEvent(Chunk chunk, final bool newChunk) {
+    public ChunkLoadEvent(Chunk chunk, readonly bool newChunk) {
         super(chunk);
         this.newChunk = newChunk;
     }

@@ -35,7 +35,7 @@ public class FlowerPot extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(int type, final byte data) {
+    public FlowerPot(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -45,7 +45,7 @@ public class FlowerPot extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(Material type, final byte data) {
+    public FlowerPot(Material type, readonly byte data) {
         super(type, data);
     }
 

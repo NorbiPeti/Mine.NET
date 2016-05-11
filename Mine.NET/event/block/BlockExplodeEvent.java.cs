@@ -10,12 +10,12 @@ import java.util.List;
  * Called when a block explodes
  */
 public class BlockExplodeEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
-    private final List<Block> blocks;
+    private readonly List<Block> blocks;
     private float yield;
 
-    public BlockExplodeEvent(Block what, final List<Block> blocks, final float yield) {
+    public BlockExplodeEvent(Block what, readonly List<Block> blocks, readonly float yield) {
         super(what);
         this.blocks = blocks;
         this.yield = yield;

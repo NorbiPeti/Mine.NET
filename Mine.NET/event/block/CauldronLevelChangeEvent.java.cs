@@ -8,12 +8,12 @@ import org.bukkit.event.HandlerList;
 
 public class CauldronLevelChangeEvent extends BlockEvent implements Cancellable {
 
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     //
-    private final Entity entity;
-    private final ChangeReason reason;
-    private final int oldLevel;
+    private readonly Entity entity;
+    private readonly ChangeReason reason;
+    private readonly int oldLevel;
     private int newLevel;
 
     public CauldronLevelChangeEvent(Block block, Entity entity, ChangeReason reason, int oldLevel, int newLevel) {

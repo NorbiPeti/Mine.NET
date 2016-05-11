@@ -12,19 +12,19 @@ import org.bukkit.World;
  * http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf</a>
  */
 public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
-    protected static final double SQRT_3 = Math.sqrt(3);
-    protected static final double SQRT_5 = Math.sqrt(5);
-    protected static final double F2 = 0.5 * (SQRT_3 - 1);
-    protected static final double G2 = (3 - SQRT_3) / 6;
-    protected static final double G22 = G2 * 2.0 - 1;
-    protected static final double F3 = 1.0 / 3.0;
-    protected static final double G3 = 1.0 / 6.0;
-    protected static final double F4 = (SQRT_5 - 1.0) / 4.0;
-    protected static final double G4 = (5.0 - SQRT_5) / 20.0;
-    protected static final double G42 = G4 * 2.0;
-    protected static final double G43 = G4 * 3.0;
-    protected static final double G44 = G4 * 4.0 - 1.0;
-    protected static final int grad4[][] = {{0, 1, 1, 1}, {0, 1, 1, -1}, {0, 1, -1, 1}, {0, 1, -1, -1},
+    protected static readonly double SQRT_3 = Math.sqrt(3);
+    protected static readonly double SQRT_5 = Math.sqrt(5);
+    protected static readonly double F2 = 0.5 * (SQRT_3 - 1);
+    protected static readonly double G2 = (3 - SQRT_3) / 6;
+    protected static readonly double G22 = G2 * 2.0 - 1;
+    protected static readonly double F3 = 1.0 / 3.0;
+    protected static readonly double G3 = 1.0 / 6.0;
+    protected static readonly double F4 = (SQRT_5 - 1.0) / 4.0;
+    protected static readonly double G4 = (5.0 - SQRT_5) / 20.0;
+    protected static readonly double G42 = G4 * 2.0;
+    protected static readonly double G43 = G4 * 3.0;
+    protected static readonly double G44 = G4 * 4.0 - 1.0;
+    protected static readonly int grad4[][] = {{0, 1, 1, 1}, {0, 1, 1, -1}, {0, 1, -1, 1}, {0, 1, -1, -1},
         {0, -1, 1, 1}, {0, -1, 1, -1}, {0, -1, -1, 1}, {0, -1, -1, -1},
         {1, 0, 1, 1}, {1, 0, 1, -1}, {1, 0, -1, 1}, {1, 0, -1, -1},
         {-1, 0, 1, 1}, {-1, 0, 1, -1}, {-1, 0, -1, 1}, {-1, 0, -1, -1},
@@ -32,7 +32,7 @@ public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
         {-1, 1, 0, 1}, {-1, 1, 0, -1}, {-1, -1, 0, 1}, {-1, -1, 0, -1},
         {1, 1, 1, 0}, {1, 1, -1, 0}, {1, -1, 1, 0}, {1, -1, -1, 0},
         {-1, 1, 1, 0}, {-1, 1, -1, 0}, {-1, -1, 1, 0}, {-1, -1, -1, 0}};
-    protected static final int simplex[][] = {
+    protected static readonly int simplex[][] = {
         {0, 1, 2, 3}, {0, 1, 3, 2}, {0, 0, 0, 0}, {0, 2, 3, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 2, 3, 0},
         {0, 2, 1, 3}, {0, 0, 0, 0}, {0, 3, 1, 2}, {0, 3, 2, 1}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {1, 3, 2, 0},
         {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0},
@@ -42,7 +42,7 @@ public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
         {2, 0, 1, 3}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 0, 1, 2}, {3, 0, 2, 1}, {0, 0, 0, 0}, {3, 1, 2, 0},
         {2, 1, 0, 3}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {3, 1, 0, 2}, {0, 0, 0, 0}, {3, 2, 0, 1}, {3, 2, 1, 0}};
     protected static double offsetW;
-    private static final SimplexNoiseGenerator instance = new SimplexNoiseGenerator();
+    private static readonly SimplexNoiseGenerator instance = new SimplexNoiseGenerator();
 
     protected SimplexNoiseGenerator() {
         super();
@@ -272,7 +272,7 @@ public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
             n3 = t3 * t3 * dot(grad3[gi3], x3, y3, z3);
         }
 
-        // Add contributions from each corner to get the final noise value.
+        // Add contributions from each corner to get the readonly noise value.
         // The result is scaled to stay just inside [-1,1]
         return 32.0 * (n0 + n1 + n2 + n3);
     }
@@ -348,7 +348,7 @@ public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
             n2 = t2 * t2 * dot(grad3[gi2], x2, y2);
         }
 
-        // Add contributions from each corner to get the final noise value.
+        // Add contributions from each corner to get the readonly noise value.
         // The result is scaled to return values in the interval [-1,1].
         return 70.0 * (n0 + n1 + n2);
     }

@@ -30,7 +30,7 @@ public class Sign extends MaterialData implements Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(int type, final byte data) {
+    public Sign(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -40,7 +40,7 @@ public class Sign extends MaterialData implements Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(Material type, final byte data) {
+    public Sign(Material type, readonly byte data) {
         super(type, data);
     }
 

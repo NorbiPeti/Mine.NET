@@ -12,10 +12,10 @@ import org.bukkit.util.NumberConversions;
  */
 public class AttributeModifier implements ConfigurationSerializable {
 
-    private final UUID uuid;
-    private final String name;
-    private final double amount;
-    private final Operation operation;
+    private readonly UUID uuid;
+    private readonly String name;
+    private readonly double amount;
+    private readonly Operation operation;
 
     public AttributeModifier(String name, double amount, Operation operation) {
         this(UUID.randomUUID(), name, amount, operation);

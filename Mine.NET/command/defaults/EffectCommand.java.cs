@@ -12,7 +12,7 @@ import org.bukkit.util.StringUtil;
 
 [Obsolete]
 public class EffectCommand extends VanillaCommand {
-    private static final List<String> effects;
+    private static readonly List<String> effects;
 
     public EffectCommand() {
         super("effect");
@@ -44,7 +44,7 @@ public class EffectCommand extends VanillaCommand {
             return true;
         }
 
-        final Player player = sender.getServer().getPlayer(args[0]);
+        readonly Player player = sender.getServer().getPlayer(args[0]);
 
         if (player == null) {
             sender.sendMessage(ChatColor.RED + String.format("Player, %s, not found", args[0]));
@@ -98,7 +98,7 @@ public class EffectCommand extends VanillaCommand {
             player.removePotionEffect(effect);
             broadcastCommandMessage(sender, String.format("Took %s from %s", effect.getName(), args[0]));
         } else {
-            final PotionEffect applyEffect = new PotionEffect(effect, duration, amplification);
+            readonly PotionEffect applyEffect = new PotionEffect(effect, duration, amplification);
 
             player.addPotionEffect(applyEffect, true);
             broadcastCommandMessage(sender, String.format("Given %s (ID %d) * %d to %s for %d seconds", effect.getName(), effect.getId(), amplification, args[0], duration_temp));

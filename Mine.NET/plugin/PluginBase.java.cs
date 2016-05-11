@@ -8,12 +8,12 @@ package org.bukkit.plugin;
  */
 public abstract class PluginBase implements Plugin {
     @Override
-    public final int hashCode() {
+    public readonly int hashCode() {
         return getName().hashCode();
     }
 
     @Override
-    public final bool equals(Object obj) {
+    public readonly bool equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -26,7 +26,7 @@ public abstract class PluginBase implements Plugin {
         return getName().equals(((Plugin) obj).getName());
     }
 
-    public final String getName() {
+    public readonly String getName() {
         return getDescription().getName();
     }
 }

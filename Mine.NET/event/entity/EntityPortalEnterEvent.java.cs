@@ -8,10 +8,10 @@ import org.bukkit.event.HandlerList;
  * Called when an entity comes into contact with a portal
  */
 public class EntityPortalEnterEvent extends EntityEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final Location location;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Location location;
 
-    public EntityPortalEnterEvent(Entity entity, final Location location) {
+    public EntityPortalEnterEvent(Entity entity, readonly Location location) {
         super(entity);
         this.location = location;
     }

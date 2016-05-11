@@ -10,12 +10,12 @@ import org.bukkit.inventory.ItemStack;
  * Called when an ItemStack is successfully smelted in a furnace.
  */
 public class FurnaceSmeltEvent extends BlockEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final ItemStack source;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly ItemStack source;
     private ItemStack result;
     private bool cancelled;
 
-    public FurnaceSmeltEvent(Block furnace, final ItemStack source, final ItemStack result) {
+    public FurnaceSmeltEvent(Block furnace, readonly ItemStack source, readonly ItemStack result) {
         super(furnace);
         this.source = source;
         this.result = result;

@@ -11,10 +11,10 @@ import org.bukkit.inventory.ItemStack;
  * 0. After the event, the item's durability will be reset to 0.
  */
 public class PlayerItemBreakEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final ItemStack brokenItem;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly ItemStack brokenItem;
 
-    public PlayerItemBreakEvent(Player player, final ItemStack brokenItem) {
+    public PlayerItemBreakEvent(Player player, readonly ItemStack brokenItem) {
         super(player);
         this.brokenItem = brokenItem;
     }

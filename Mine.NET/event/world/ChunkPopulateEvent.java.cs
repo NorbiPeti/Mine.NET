@@ -11,7 +11,7 @@ import org.bukkit.generator.BlockPopulator;
  * BlockPopulator}
  */
 public class ChunkPopulateEvent extends ChunkEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     public ChunkPopulateEvent(Chunk chunk) {
         super(chunk);

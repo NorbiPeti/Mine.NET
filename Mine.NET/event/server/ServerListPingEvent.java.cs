@@ -13,14 +13,14 @@ import org.bukkit.util.CachedServerIcon;
  * checked and removed by {@link #iterator() iterating} over this event.
  */
 public class ServerListPingEvent extends ServerEvent implements Iterable<Player> {
-    private static final int MAGIC_PLAYER_COUNT = Integer.MIN_VALUE;
-    private static final HandlerList handlers = new HandlerList();
-    private final InetAddress address;
+    private static readonly int MAGIC_PLAYER_COUNT = Integer.MIN_VALUE;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly InetAddress address;
     private String motd;
-    private final int numPlayers;
+    private readonly int numPlayers;
     private int maxPlayers;
 
-    public ServerListPingEvent(InetAddress address, final String motd, final int numPlayers, final int maxPlayers) {
+    public ServerListPingEvent(InetAddress address, readonly String motd, readonly int numPlayers, readonly int maxPlayers) {
         Validate.isTrue(numPlayers >= 0, "Cannot have negative number of players online", numPlayers);
         this.address = address;
         this.motd = motd;
@@ -37,7 +37,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
      * @param motd the message of the day
      * @param maxPlayers the max number of players
      */
-    protected ServerListPingEvent(InetAddress address, final String motd, final int maxPlayers) {
+    protected ServerListPingEvent(InetAddress address, readonly String motd, readonly int maxPlayers) {
         this.numPlayers = MAGIC_PLAYER_COUNT;
         this.address = address;
         this.motd = motd;
@@ -80,7 +80,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
         int numPlayers = this.numPlayers;
         if (numPlayers == MAGIC_PLAYER_COUNT) {
             numPlayers = 0;
-            for (@SuppressWarnings("unused") final Player player : this) {
+            for (@SuppressWarnings("unused") readonly Player player : this) {
                 numPlayers++;
             }
         }

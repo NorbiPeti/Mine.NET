@@ -12,9 +12,9 @@ import org.bukkit.block.BlockFace;
  */
 public class Diode extends MaterialData implements Directional, Redstone {
 
-    protected static final BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
-    protected static final int DEFAULT_DELAY = 1;
-    protected static final bool DEFAULT_STATE = false;
+    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
+    protected static readonly int DEFAULT_DELAY = 1;
+    protected static readonly bool DEFAULT_STATE = false;
 
     /**
      * Constructs a diode switched on, with a delay of 1 and facing the default

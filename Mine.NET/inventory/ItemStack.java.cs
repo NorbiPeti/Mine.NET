@@ -54,7 +54,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ItemStack(int type, final int amount) {
+    public ItemStack(int type, readonly int amount) {
         this(type, amount, (short) 0);
     }
 
@@ -64,7 +64,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param type item material
      * @param amount stack size
      */
-    public ItemStack(Material type, final int amount) {
+    public ItemStack(Material type, readonly int amount) {
         this(type.getId(), amount);
     }
 
@@ -77,7 +77,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ItemStack(int type, final int amount, final short damage) {
+    public ItemStack(int type, readonly int amount, readonly short damage) {
         this.type = type;
         this.amount = amount;
         this.durability = damage;
@@ -90,7 +90,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param amount stack size
      * @param damage durability / damage
      */
-    public ItemStack(Material type, final int amount, final short damage) {
+    public ItemStack(Material type, readonly int amount, readonly short damage) {
         this(type.getId(), amount, damage);
     }
 
@@ -102,7 +102,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] this method uses an ambiguous data byte object
      */
     [Obsolete]
-    public ItemStack(int type, final int amount, final short damage, final Byte data) {
+    public ItemStack(int type, readonly int amount, readonly short damage, readonly Byte data) {
         this.type = type;
         this.amount = amount;
         this.durability = damage;
@@ -120,7 +120,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * [Obsolete] this method uses an ambiguous data byte object
      */
     [Obsolete]
-    public ItemStack(Material type, final int amount, final short damage, final Byte data) {
+    public ItemStack(Material type, readonly int amount, readonly short damage, readonly Byte data) {
         this(type.getId(), amount, damage, data);
     }
 
@@ -359,7 +359,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
 
     @Override
     @Utility
-    public final int hashCode() {
+    public readonly int hashCode() {
         int hash = 1;
 
         hash = hash * 31 + getTypeId();

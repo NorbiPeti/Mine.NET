@@ -60,7 +60,7 @@ public abstract class JavaPlugin extends PluginBase {
     private PluginLogger logger = null;
 
     public JavaPlugin() {
-        final ClassLoader classLoader = this.getClass().getClassLoader();
+        readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (!(classLoader instanceof PluginClassLoader)) {
             throw new IllegalStateException("JavaPlugin requires " + PluginClassLoader.class.getName());
         }
@@ -80,16 +80,16 @@ public abstract class JavaPlugin extends PluginBase {
      * @param file the location of the plugin
      */
     [Obsolete]
-    protected JavaPlugin(PluginLoader loader, final Server server, final PluginDescriptionFile description, final File dataFolder, final File file) {
-        final ClassLoader classLoader = this.getClass().getClassLoader();
+    protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
+        readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader instanceof PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
         }
         init(loader, server, description, dataFolder, file, classLoader);
     }
 
-    protected JavaPlugin(JavaPluginLoader loader, final PluginDescriptionFile description, final File dataFolder, final File file) {
-        final ClassLoader classLoader = this.getClass().getClassLoader();
+    protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
+        readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader instanceof PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
         }
@@ -103,7 +103,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return The folder.
      */
     @Override
-    public final File getDataFolder() {
+    public readonly File getDataFolder() {
         return dataFolder;
     }
 
@@ -113,7 +113,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return PluginLoader that controls this plugin
      */
     @Override
-    public final PluginLoader getPluginLoader() {
+    public readonly PluginLoader getPluginLoader() {
         return loader;
     }
 
@@ -123,7 +123,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return Server running this plugin
      */
     @Override
-    public final Server getServer() {
+    public readonly Server getServer() {
         return server;
     }
 
@@ -134,7 +134,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return true if this plugin is enabled, otherwise false
      */
     @Override
-    public final bool isEnabled() {
+    public readonly bool isEnabled() {
         return isEnabled;
     }
 
@@ -153,7 +153,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return Contents of the plugin.yaml file
      */
     @Override
-    public final PluginDescriptionFile getDescription() {
+    public readonly PluginDescriptionFile getDescription() {
         return description;
     }
 
@@ -176,8 +176,8 @@ public abstract class JavaPlugin extends PluginBase {
      * @see ClassLoader#getResourceAsStream(String)
      */
     @SuppressWarnings("deprecation")
-    protected final Reader getTextResource(String file) {
-        final InputStream in = getResource(file);
+    protected readonly Reader getTextResource(String file) {
+        readonly InputStream in = getResource(file);
 
         return in == null ? null : new InputStreamReader(in, Charsets.UTF_8);
     }
@@ -187,7 +187,7 @@ public abstract class JavaPlugin extends PluginBase {
     public void reloadConfig() {
         newConfig = YamlConfiguration.loadConfiguration(configFile);
 
-        final InputStream defConfigStream = getResource("config.yml");
+        readonly InputStream defConfigStream = getResource("config.yml");
         if (defConfigStream == null) {
             return;
         }
@@ -275,7 +275,7 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @return ClassLoader holding this plugin
      */
-    protected final ClassLoader getClassLoader() {
+    protected readonly ClassLoader getClassLoader() {
         return classLoader;
     }
 
@@ -284,7 +284,7 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @param enabled true if enabled, otherwise false
      */
-    protected final void setEnabled(bool enabled) {
+    protected readonly void setEnabled(bool enabled) {
         if (isEnabled != enabled) {
             isEnabled = enabled;
 
@@ -307,14 +307,14 @@ public abstract class JavaPlugin extends PluginBase {
      *     replaced by the specially provided constructor(s).
      */
     [Obsolete]
-    protected final void initialize(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
+    protected readonly void initialize(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
         if (server.getWarningState() == WarningState.OFF) {
             return;
         }
         getLogger().log(Level.WARNING, getClass().getName() + " is already initialized", server.getWarningState() == WarningState.DEFAULT ? null : new AuthorNagException("Explicit initialization"));
     }
 
-    final void init(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
+    readonly void init(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
         this.loader = loader;
         this.server = server;
         this.file = file;
@@ -369,7 +369,7 @@ public abstract class JavaPlugin extends PluginBase {
      *     JavaPlugin} is now initialized in the constructor.
      */
     [Obsolete]
-    public final bool isInitialized() {
+    public readonly bool isInitialized() {
         return true;
     }
 
@@ -427,12 +427,12 @@ public abstract class JavaPlugin extends PluginBase {
     }
 
     @Override
-    public final bool isNaggable() {
+    public readonly bool isNaggable() {
         return naggable;
     }
 
     @Override
-    public final void setNaggable(bool canNag) {
+    public readonly void setNaggable(bool canNag) {
         this.naggable = canNag;
     }
 
@@ -458,7 +458,7 @@ public abstract class JavaPlugin extends PluginBase {
     }
 
     @Override
-    public final Logger getLogger() {
+    public readonly Logger getLogger() {
         return logger;
     }
 
@@ -495,7 +495,7 @@ public abstract class JavaPlugin extends PluginBase {
         if (!JavaPlugin.class.isAssignableFrom(clazz)) {
             throw new IllegalArgumentException(clazz + " does not extend " + JavaPlugin.class);
         }
-        final ClassLoader cl = clazz.getClassLoader();
+        readonly ClassLoader cl = clazz.getClassLoader();
         if (!(cl instanceof PluginClassLoader)) {
             throw new IllegalArgumentException(clazz + " is not initialized by " + PluginClassLoader.class);
         }
@@ -520,7 +520,7 @@ public abstract class JavaPlugin extends PluginBase {
      */
     public static JavaPlugin getProvidingPlugin(Class<?> clazz) {
         Validate.notNull(clazz, "Null class cannot have a plugin");
-        final ClassLoader cl = clazz.getClassLoader();
+        readonly ClassLoader cl = clazz.getClassLoader();
         if (!(cl instanceof PluginClassLoader)) {
             throw new IllegalArgumentException(clazz + " is not provided by " + PluginClassLoader.class);
         }

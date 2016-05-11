@@ -14,7 +14,7 @@ import java.util.List;
 
 [Obsolete]
 public class DifficultyCommand extends VanillaCommand {
-    private static final List<String> DIFFICULTY_NAMES = ImmutableList.of("peaceful", "easy", "normal", "hard");
+    private static readonly List<String> DIFFICULTY_NAMES = ImmutableList.of("peaceful", "easy", "normal", "hard");
 
     public DifficultyCommand() {
         super("difficulty");

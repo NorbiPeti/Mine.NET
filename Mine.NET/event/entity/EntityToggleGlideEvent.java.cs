@@ -14,12 +14,12 @@ import org.bukkit.event.HandlerList;
  * This can be visually estimated by the animation in which a player turns horizontal.
  */
 public class EntityToggleGlideEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
 
     private bool cancel = false;
-    private final bool isGliding;
+    private readonly bool isGliding;
 
-    public EntityToggleGlideEvent(LivingEntity who, final bool isGliding) {
+    public EntityToggleGlideEvent(LivingEntity who, readonly bool isGliding) {
         super(who);
         this.isGliding = isGliding;
     }

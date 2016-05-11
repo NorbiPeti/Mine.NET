@@ -10,11 +10,11 @@ import org.bukkit.configuration.serialization.SerializableAs;
 @SerializableAs("Pattern")
 public class Pattern implements ConfigurationSerializable {
 
-    private static final String COLOR = "color";
-    private static final String PATTERN = "pattern";
+    private static readonly String COLOR = "color";
+    private static readonly String PATTERN = "pattern";
     
-    private final DyeColor color;
-    private final PatternType pattern;
+    private readonly DyeColor color;
+    private readonly PatternType pattern;
 
     /**
      * Creates a new pattern from the specified color and
@@ -88,7 +88,7 @@ public class Pattern implements ConfigurationSerializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pattern other = (Pattern) obj;
+        readonly Pattern other = (Pattern) obj;
         return this.color == other.color && this.pattern == other.pattern;
     }
 }

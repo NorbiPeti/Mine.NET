@@ -11,11 +11,11 @@ import org.bukkit.event.HandlerList;
  * 'removed' due to other means.
  */
 public class VehicleDestroyEvent extends VehicleEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Entity attacker;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Entity attacker;
     private bool cancelled;
 
-    public VehicleDestroyEvent(Vehicle vehicle, final Entity attacker) {
+    public VehicleDestroyEvent(Vehicle vehicle, readonly Entity attacker) {
         super(vehicle);
         this.attacker = attacker;
     }

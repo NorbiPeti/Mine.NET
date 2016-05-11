@@ -48,7 +48,7 @@ public class SpawnpointCommand extends VanillaCommand {
         if (args.length == 4) {
             if (world != null) {
                 int pos = 1;
-                final int x, y, z;
+                readonly int x, y, z;
                 try {
                     x = getInteger(sender, args[pos++], MIN_COORD, MAX_COORD, true);
                     y = getInteger(sender, args[pos++], 0, world.getMaxHeight());

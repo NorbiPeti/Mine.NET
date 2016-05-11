@@ -9,9 +9,9 @@ import org.bukkit.event.HandlerList;
  * Stores details for players attempting to log in
  */
 public class PlayerLoginEvent extends PlayerEvent {
-    private static final HandlerList handlers = new HandlerList();
-    private final InetAddress address;
-    private final String hostname;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly InetAddress address;
+    private readonly String hostname;
     private Result result = Result.ALLOWED;
     private String message = "";
 
@@ -30,7 +30,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param hostname The hostname that was used to connect to the server
      */
     [Obsolete]
-    public PlayerLoginEvent(Player player, final String hostname) {
+    public PlayerLoginEvent(Player player, readonly String hostname) {
         this(player, hostname, null);
     }
 
@@ -43,7 +43,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param address The address the player used to connect, provided for
      *     timing issues
      */
-    public PlayerLoginEvent(Player player, final String hostname, final InetAddress address) {
+    public PlayerLoginEvent(Player player, readonly String hostname, readonly InetAddress address) {
         super(player);
         this.hostname = hostname;
         this.address = address;
@@ -57,7 +57,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param message The message to be displayed if result denies login
      */
     [Obsolete]
-    public PlayerLoginEvent(Player player, final Result result, final String message) {
+    public PlayerLoginEvent(Player player, readonly Result result, readonly String message) {
         this(player, "", null, result, message);
     }
 
@@ -71,7 +71,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param result The result status for this event
      * @param message The message to be displayed if result denies login
      */
-    public PlayerLoginEvent(Player player, String hostname, final InetAddress address, final Result result, final String message) {
+    public PlayerLoginEvent(Player player, String hostname, readonly InetAddress address, readonly Result result, readonly String message) {
         this(player, hostname, address);
         this.result = result;
         this.message = message;
@@ -138,7 +138,7 @@ public class PlayerLoginEvent extends PlayerEvent {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(Result result, final String message) {
+    public void disallow(Result result, readonly String message) {
         this.result = result;
         this.message = message;
     }

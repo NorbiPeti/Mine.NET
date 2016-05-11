@@ -9,11 +9,11 @@ import org.bukkit.event.HandlerList;
  * Called when an entity interacts with an object
  */
 public class EntityInteractEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected Block block;
     private bool cancelled;
 
-    public EntityInteractEvent(Entity entity, final Block block) {
+    public EntityInteractEvent(Entity entity, readonly Block block) {
         super(entity);
         this.block = block;
     }

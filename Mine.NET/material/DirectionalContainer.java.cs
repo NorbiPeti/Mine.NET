@@ -26,7 +26,7 @@ public class DirectionalContainer extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(int type, final byte data) {
+    public DirectionalContainer(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -36,7 +36,7 @@ public class DirectionalContainer extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(Material type, final byte data) {
+    public DirectionalContainer(Material type, readonly byte data) {
         super(type, data);
     }
 

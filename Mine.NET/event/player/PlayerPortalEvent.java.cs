@@ -12,11 +12,11 @@ import org.bukkit.event.HandlerList;
  * For other entities see {@link org.bukkit.event.entity.EntityPortalEvent}
  */
 public class PlayerPortalEvent extends PlayerTeleportEvent {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     protected bool useTravelAgent = true;
     protected TravelAgent travelAgent;
 
-    public PlayerPortalEvent(Player player, final Location from, final Location to, final TravelAgent pta) {
+    public PlayerPortalEvent(Player player, readonly Location from, readonly Location to, readonly TravelAgent pta) {
         super(player, from, to);
         this.travelAgent = pta;
     }

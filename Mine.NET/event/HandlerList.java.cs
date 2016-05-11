@@ -22,7 +22,7 @@ public class HandlerList {
      * unregister() and are automatically baked to the handlers array any time
      * they have changed.
      */
-    private final EnumMap<EventPriority, ArrayList<RegisteredListener>> handlerslots;
+    private readonly EnumMap<EventPriority, ArrayList<RegisteredListener>> handlerslots;
 
     /**
      * List of all HandlerLists which have been created, for use in bakeAll()

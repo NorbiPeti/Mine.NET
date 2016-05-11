@@ -29,7 +29,7 @@ public class DetectorRail extends ExtendedRails implements PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(int type, final byte data) {
+    public DetectorRail(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -39,7 +39,7 @@ public class DetectorRail extends ExtendedRails implements PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(Material type, final byte data) {
+    public DetectorRail(Material type, readonly byte data) {
         super(type, data);
     }
 

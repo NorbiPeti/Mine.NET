@@ -8,12 +8,12 @@ import org.bukkit.event.HandlerList;
  * Fired when a player changes their currently held item
  */
 public class PlayerItemHeldEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
-    private final int previous;
-    private final int current;
+    private readonly int previous;
+    private readonly int current;
 
-    public PlayerItemHeldEvent(Player player, final int previous, final int current) {
+    public PlayerItemHeldEvent(Player player, readonly int previous, readonly int current) {
         super(player);
         this.previous = previous;
         this.current = current;

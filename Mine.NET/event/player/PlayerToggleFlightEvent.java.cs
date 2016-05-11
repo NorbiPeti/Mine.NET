@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Called when a player toggles their flying state
  */
 public class PlayerToggleFlightEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final bool isFlying;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly bool isFlying;
     private bool cancel = false;
 
-    public PlayerToggleFlightEvent(Player player, final bool isFlying) {
+    public PlayerToggleFlightEvent(Player player, readonly bool isFlying) {
         super(player);
         this.isFlying = isFlying;
     }

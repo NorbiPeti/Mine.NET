@@ -40,7 +40,7 @@ public class Skull extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(int type, final byte data) {
+    public Skull(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -50,7 +50,7 @@ public class Skull extends MaterialData implements Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(Material type, final byte data) {
+    public Skull(Material type, readonly byte data) {
         super(type, data);
     }
 

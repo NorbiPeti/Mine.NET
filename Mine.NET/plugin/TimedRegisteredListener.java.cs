@@ -14,7 +14,7 @@ public class TimedRegisteredListener extends RegisteredListener {
     private Class<? extends Event> eventClass;
     private bool multiple = false;
 
-    public TimedRegisteredListener(Listener pluginListener, final EventExecutor eventExecutor, final EventPriority eventPriority, final Plugin registeredPlugin, final bool listenCancelled) {
+    public TimedRegisteredListener(Listener pluginListener, readonly EventExecutor eventExecutor, readonly EventPriority eventPriority, readonly Plugin registeredPlugin, readonly bool listenCancelled) {
         super(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
     }
 

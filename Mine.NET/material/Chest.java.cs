@@ -41,7 +41,7 @@ public class Chest extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Chest(int type, final byte data) {
+    public Chest(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -51,7 +51,7 @@ public class Chest extends DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Chest(Material type, final byte data) {
+    public Chest(Material type, readonly byte data) {
         super(type, data);
     }
 

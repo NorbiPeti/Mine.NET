@@ -10,7 +10,7 @@ import org.bukkit.event.server.RemoteServerCommandEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 
 public class FormattedCommandAlias extends Command {
-    private final String[] formatStrings;
+    private readonly String[] formatStrings;
 
     public FormattedCommandAlias(String alias, String[] formatStrings) {
         super(alias);

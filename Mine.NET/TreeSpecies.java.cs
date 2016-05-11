@@ -35,8 +35,8 @@ public enum TreeSpecies {
     DARK_OAK(0x5),
     ;
 
-    private final byte data;
-    private final static Map<Byte, TreeSpecies> BY_DATA = Maps.newHashMap();
+    private readonly byte data;
+    private readonly static Map<Byte, TreeSpecies> BY_DATA = Maps.newHashMap();
 
     private TreeSpecies(int data) {
         this.data = (byte) data;

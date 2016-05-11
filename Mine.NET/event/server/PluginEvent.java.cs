@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
  * Used for plugin enable and disable events
  */
 public abstract class PluginEvent extends ServerEvent {
-    private final Plugin plugin;
+    private readonly Plugin plugin;
 
     public PluginEvent(Plugin plugin) {
         this.plugin = plugin;

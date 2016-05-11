@@ -11,13 +11,13 @@ import org.bukkit.inventory.ItemStack;
  * Called when a LivingEntity shoots a bow firing an arrow
  */
 public class EntityShootBowEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final ItemStack bow;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly ItemStack bow;
     private Entity projectile;
-    private final float force;
+    private readonly float force;
     private bool cancelled;
 
-    public EntityShootBowEvent(LivingEntity shooter, final ItemStack bow, final Projectile projectile, final float force) {
+    public EntityShootBowEvent(LivingEntity shooter, readonly ItemStack bow, readonly Projectile projectile, readonly float force) {
         super(shooter);
         this.bow = bow;
         this.projectile = projectile;

@@ -16,13 +16,13 @@ import org.bukkit.material.types.MushroomBlockTexture;
  * @see Material#HUGE_MUSHROOM_2
  */
 public class Mushroom extends MaterialData {
-    private static final byte NORTH_LIMIT = 4;
-    private static final byte SOUTH_LIMIT = 6;
-    private static final byte EAST_WEST_LIMIT = 3;
-    private static final byte EAST_REMAINDER = 0;
-    private static final byte WEST_REMAINDER = 1;
-    private static final byte NORTH_SOUTH_MOD = 3;
-    private static final byte EAST_WEST_MOD = 1;
+    private static readonly byte NORTH_LIMIT = 4;
+    private static readonly byte SOUTH_LIMIT = 6;
+    private static readonly byte EAST_WEST_LIMIT = 3;
+    private static readonly byte EAST_REMAINDER = 0;
+    private static readonly byte WEST_REMAINDER = 1;
+    private static readonly byte NORTH_SOUTH_MOD = 3;
+    private static readonly byte EAST_WEST_MOD = 1;
 
     /**
      * Constructs a brown/red mushroom block with all sides set to pores.

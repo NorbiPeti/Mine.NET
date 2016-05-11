@@ -10,12 +10,12 @@ import org.bukkit.event.HandlerList;
  * Thrown when a player is fishing
  */
 public class PlayerFishEvent extends PlayerEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
-    private final Entity entity;
+    private static readonly HandlerList handlers = new HandlerList();
+    private readonly Entity entity;
     private bool cancel = false;
     private int exp;
-    private final State state;
-    private final Fish hookEntity;
+    private readonly State state;
+    private readonly Fish hookEntity;
 
     /**
      * [Obsolete] replaced by {@link #PlayerFishEvent(Player, Entity, Fish,
@@ -25,11 +25,11 @@ public class PlayerFishEvent extends PlayerEvent implements Cancellable {
      * @param state the state of fishing
      */
     [Obsolete]
-    public PlayerFishEvent(Player player, final Entity entity, final State state) {
+    public PlayerFishEvent(Player player, readonly Entity entity, readonly State state) {
         this(player, entity, null, state);
     }
 
-    public PlayerFishEvent(Player player, final Entity entity, final Fish hookEntity, final State state) {
+    public PlayerFishEvent(Player player, readonly Entity entity, readonly Fish hookEntity, readonly State state) {
         super(player);
         this.entity = entity;
         this.hookEntity = hookEntity;

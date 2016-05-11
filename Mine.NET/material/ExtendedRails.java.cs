@@ -27,7 +27,7 @@ public class ExtendedRails extends Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(int type, final byte data) {
+    public ExtendedRails(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -37,7 +37,7 @@ public class ExtendedRails extends Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(Material type, final byte data) {
+    public ExtendedRails(Material type, readonly byte data) {
         super(type, data);
     }
 

@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableList;
 
 [Obsolete]
 public class DefaultGameModeCommand extends VanillaCommand {
-    private static final List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival");
+    private static readonly List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival");
 
     public DefaultGameModeCommand() {
         super("defaultgamemode");

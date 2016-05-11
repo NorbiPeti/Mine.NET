@@ -7,10 +7,10 @@ import org.bukkit.plugin.Plugin;
  * channel.
  */
 public sealed class PluginMessageListenerRegistration {
-    private final Messenger messenger;
-    private final Plugin plugin;
-    private final String channel;
-    private final PluginMessageListener listener;
+    private readonly Messenger messenger;
+    private readonly Plugin plugin;
+    private readonly String channel;
+    private readonly PluginMessageListener listener;
 
     public PluginMessageListenerRegistration(Messenger messenger, Plugin plugin, String channel, PluginMessageListener listener) {
         if (messenger == null) {
@@ -76,7 +76,7 @@ public sealed class PluginMessageListenerRegistration {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final PluginMessageListenerRegistration other = (PluginMessageListenerRegistration) obj;
+        readonly PluginMessageListenerRegistration other = (PluginMessageListenerRegistration) obj;
         if (this.messenger != other.messenger && (this.messenger == null || !this.messenger.equals(other.messenger))) {
             return false;
         }

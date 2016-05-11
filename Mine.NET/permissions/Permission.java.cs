@@ -16,10 +16,10 @@ import org.bukkit.plugin.PluginManager;
  * Permissible}
  */
 public class Permission {
-    public static final PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
+    public static readonly PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
 
-    private final String name;
-    private final Map<String, bool> children = new LinkedHashMap<String, bool>();
+    private readonly String name;
+    private readonly Map<String, bool> children = new LinkedHashMap<String, bool>();
     private PermissionDefault defaultValue = DEFAULT_PERMISSION;
     private String description;
 

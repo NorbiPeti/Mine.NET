@@ -175,7 +175,7 @@ import com.google.common.collect.ImmutableSet;
  *</pre></blockquote>
  */
 public sealed class PluginDescriptionFile {
-    private static final ThreadLocal<Yaml> YAML = new ThreadLocal<Yaml>() {
+    private static readonly ThreadLocal<Yaml> YAML = new ThreadLocal<Yaml>() {
         @Override
         protected Yaml initialValue() {
             return new Yaml(new SafeConstructor() {
@@ -250,7 +250,7 @@ public sealed class PluginDescriptionFile {
      * @param pluginVersion Version of this plugin
      * @param mainClass Full location of the main class of this plugin
      */
-    public PluginDescriptionFile(String pluginName, final String pluginVersion, final String mainClass) {
+    public PluginDescriptionFile(String pluginName, readonly String pluginVersion, readonly String mainClass) {
         name = pluginName.replace(' ', '_');
         version = pluginVersion;
         main = mainClass;
@@ -1036,13 +1036,13 @@ public sealed class PluginDescriptionFile {
         }
     }
 
-    private static List<String> makePluginNameList(Map<?, ?> map, final String key) throws InvalidDescriptionException {
-        final Object value = map.get(key);
+    private static List<String> makePluginNameList(Map<?, ?> map, readonly String key) throws InvalidDescriptionException {
+        readonly Object value = map.get(key);
         if (value == null) {
             return ImmutableList.of();
         }
 
-        final ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
+        readonly ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
         try {
             for (Object entry : (Iterable<?>) value) {
                 builder.add(entry.toString().replace(' ', '_'));

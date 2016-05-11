@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Triggered when a hanging entity is removed
  */
 public class HangingBreakEvent extends HangingEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
-    private final HangingBreakEvent.RemoveCause cause;
+    private readonly HangingBreakEvent.RemoveCause cause;
 
-    public HangingBreakEvent(Hanging hanging, final HangingBreakEvent.RemoveCause cause) {
+    public HangingBreakEvent(Hanging hanging, readonly HangingBreakEvent.RemoveCause cause) {
         super(hanging);
         this.cause = cause;
     }

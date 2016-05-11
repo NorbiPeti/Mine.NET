@@ -8,11 +8,11 @@ import org.bukkit.event.HandlerList;
  * Called when a horse jumps.
  */
 public class HorseJumpEvent extends EntityEvent implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private float power;
 
-    public HorseJumpEvent(Horse horse, final float power) {
+    public HorseJumpEvent(Horse horse, readonly float power) {
         super(horse);
         this.power = power;
     }

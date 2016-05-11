@@ -12,19 +12,19 @@ import org.bukkit.event.HandlerList;
  * This event is asynchronous, and not run using main thread.
  */
 public class AsyncPlayerPreLoginEvent extends Event {
-    private static final HandlerList handlers = new HandlerList();
+    private static readonly HandlerList handlers = new HandlerList();
     private Result result;
     private String message;
-    private final String name;
-    private final InetAddress ipAddress;
-    private final UUID uniqueId;
+    private readonly String name;
+    private readonly InetAddress ipAddress;
+    private readonly UUID uniqueId;
 
     [Obsolete]
-    public AsyncPlayerPreLoginEvent(String name, final InetAddress ipAddress) {
+    public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress) {
         this(name, ipAddress, null);
     }
 
-    public AsyncPlayerPreLoginEvent(String name, final InetAddress ipAddress, final UUID uniqueId) {
+    public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress, readonly UUID uniqueId) {
         super(true);
         this.result = Result.ALLOWED;
         this.message = "";
@@ -110,7 +110,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      * @param result New result for disallowing the player
      * @param message Kick message to display to the user
      */
-    public void disallow(Result result, final String message) {
+    public void disallow(Result result, readonly String message) {
         this.result = result;
         this.message = message;
     }
@@ -125,7 +125,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      * @see #disallow(Result, String)
      */
     [Obsolete]
-    public void disallow(PlayerPreLoginEvent.Result result, final String message) {
+    public void disallow(PlayerPreLoginEvent.Result result, readonly String message) {
         this.result = result == null ? null : Result.valueOf(result.name());
         this.message = message;
     }

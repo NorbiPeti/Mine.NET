@@ -10,9 +10,9 @@ import org.bukkit.plugin.Plugin;
  */
 public class PermissionAttachment {
     private PermissionRemovedExecutor removed;
-    private final Map<String, bool> permissions = new LinkedHashMap<String, bool>();
-    private final Permissible permissible;
-    private final Plugin plugin;
+    private readonly Map<String, bool> permissions = new LinkedHashMap<String, bool>();
+    private readonly Permissible permissible;
+    private readonly Plugin plugin;
 
     public PermissionAttachment(Plugin plugin, Permissible Permissible) {
         if (plugin == null) {

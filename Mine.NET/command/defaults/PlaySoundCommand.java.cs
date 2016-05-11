@@ -25,16 +25,16 @@ public class PlaySoundCommand extends VanillaCommand {
             sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
             return false;
         }
-        final String soundArg = args[0];
-        final String playerArg = args[1];
+        readonly String soundArg = args[0];
+        readonly String playerArg = args[1];
 
-        final Player player = Bukkit.getPlayerExact(playerArg);
+        readonly Player player = Bukkit.getPlayerExact(playerArg);
         if (player == null) {
             sender.sendMessage(ChatColor.RED + "Can't find player " + playerArg);
             return false;
         }
 
-        final Location location = player.getLocation();
+        readonly Location location = player.getLocation();
 
         double x = Math.floor(location.getX());
         double y = Math.floor(location.getY() + 0.5D);
@@ -61,18 +61,18 @@ public class PlaySoundCommand extends VanillaCommand {
             // Noop
         }
 
-        final double fixedVolume = volume > 1.0D ? volume * 16.0D : 16.0D;
-        final Location soundLocation = new Location(player.getWorld(), x, y, z);
+        readonly double fixedVolume = volume > 1.0D ? volume * 16.0D : 16.0D;
+        readonly Location soundLocation = new Location(player.getWorld(), x, y, z);
         if (location.distanceSquared(soundLocation) > fixedVolume * fixedVolume) {
             if (minimumVolume <= 0.0D) {
                 sender.sendMessage(ChatColor.RED + playerArg + " is too far away to hear the sound");
                 return false;
             }
 
-            final double deltaX = x - location.getX();
-            final double deltaY = y - location.getY();
-            final double deltaZ = z - location.getZ();
-            final double delta = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ) / 2.0D;
+            readonly double deltaX = x - location.getX();
+            readonly double deltaY = y - location.getY();
+            readonly double deltaZ = z - location.getZ();
+            readonly double delta = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ) / 2.0D;
 
             if (delta > 0.0D) {
                 location.add(deltaX / delta, deltaY / delta, deltaZ / delta);

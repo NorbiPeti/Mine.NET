@@ -28,7 +28,7 @@ public abstract class TexturedMaterial extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(int type, final byte data) {
+    public TexturedMaterial(int type, readonly byte data) {
         super(type, data);
     }
 
@@ -38,7 +38,7 @@ public abstract class TexturedMaterial extends MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(Material type, final byte data) {
+    public TexturedMaterial(Material type, readonly byte data) {
         super(type, data);
     }
 
