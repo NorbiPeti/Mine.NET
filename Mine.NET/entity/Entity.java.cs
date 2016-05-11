@@ -9,7 +9,7 @@ import org.bukkit.metadata.Metadatable;
 import org.bukkit.util.Vector;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Guid;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 
@@ -237,7 +237,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return unique id
      */
-    public UUID getUniqueId();
+    public Guid getUniqueId();
 
     /**
      * Gets the amount of ticks this entity has lived for.

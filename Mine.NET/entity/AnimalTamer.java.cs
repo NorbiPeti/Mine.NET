@@ -1,6 +1,6 @@
 package org.bukkit.entity;
 
-import java.util.UUID;
+import java.util.Guid;
 
 public interface AnimalTamer {
 
@@ -12,9 +12,9 @@ public interface AnimalTamer {
     public String getName();
 
     /**
-     * This is the UUID of the specified AnimalTamer.
+     * This is the Guid of the specified AnimalTamer.
      *
-     * @return The UUID to reference on tamed animals
+     * @return The Guid to reference on tamed animals
      */
-    public UUID getUniqueId();
+    public Guid getUniqueId();
 }

@@ -9,7 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
+import java.util.Guid;
 import java.util.logging.Logger;
 
 import org.bukkit.Warning.WarningState;
@@ -313,7 +313,7 @@ public interface Server extends PluginMessageRecipient {
      * <p>
      * This method may not return objects for offline players.
      *
-     * [Obsolete] Use {@link #getPlayer(UUID)} as player names are no longer
+     * [Obsolete] Use {@link #getPlayer(Guid)} as player names are no longer
      *     guaranteed to be unique
      * @param name the name to look up
      * @return a player if one was found, null otherwise
@@ -324,7 +324,7 @@ public interface Server extends PluginMessageRecipient {
     /**
      * Gets the player with the exact given name, case insensitive.
      *
-     * [Obsolete] Use {@link #getPlayer(UUID)} as player names are no longer
+     * [Obsolete] Use {@link #getPlayer(Guid)} as player names are no longer
      *     guaranteed to be unique
      * @param name Exact name of the player to retrieve
      * @return a player object if one was found, null otherwise
@@ -339,7 +339,7 @@ public interface Server extends PluginMessageRecipient {
      * This list is not sorted in any particular order. If an exact match is
      * found, the returned list will only contain a single result.
      *
-     * [Obsolete] Use {@link #getPlayer(UUID)} as player names are no longer
+     * [Obsolete] Use {@link #getPlayer(Guid)} as player names are no longer
      *     guaranteed to be unique
      * @param name the (partial) name to match
      * @return list of all possible players
@@ -348,12 +348,12 @@ public interface Server extends PluginMessageRecipient {
     public List<Player> matchPlayer(String name);
 
     /**
-     * Gets the player with the given UUID.
+     * Gets the player with the given Guid.
      *
-     * @param id UUID of the player to retrieve
+     * @param id Guid of the player to retrieve
      * @return a player object if one was found, null otherwise
      */
-    public Player getPlayer(UUID id);
+    public Player getPlayer(Guid id);
 
     /**
      * Gets the plugin manager for interfacing with plugins.
@@ -427,7 +427,7 @@ public interface Server extends PluginMessageRecipient {
      * @param uid a unique-id of the world to retrieve
      * @return a world with the given Unique ID, or null if none exists
      */
-    public World getWorld(UUID uid);
+    public World getWorld(Guid uid);
 
     /**
      * Gets the map from the given item ID.
@@ -606,32 +606,32 @@ public interface Server extends PluginMessageRecipient {
      * Gets the player by the given name, regardless if they are offline or
      * online.
      * <p>
-     * This method may involve a blocking web request to get the UUID for the
+     * This method may involve a blocking web request to get the Guid for the
      * given name.
      * <p>
      * This will return an object even if the player does not exist. To this
      * method, all players will exist.
      *
-     * [Obsolete] Persistent storage of users should be by UUID as names are no longer
+     * [Obsolete] Persistent storage of users should be by Guid as names are no longer
      *             unique past a single session.
      * @param name the name the player to retrieve
      * @return an offline player
-     * @see #getOfflinePlayer(java.util.UUID)
+     * @see #getOfflinePlayer(java.util.Guid)
      */
     [Obsolete]
     public OfflinePlayer getOfflinePlayer(String name);
 
     /**
-     * Gets the player by the given UUID, regardless if they are offline or
+     * Gets the player by the given Guid, regardless if they are offline or
      * online.
      * <p>
      * This will return an object even if the player does not exist. To this
      * method, all players will exist.
      *
-     * @param id the UUID of the player to retrieve
+     * @param id the Guid of the player to retrieve
      * @return an offline player
      */
-    public OfflinePlayer getOfflinePlayer(UUID id);
+    public OfflinePlayer getOfflinePlayer(Guid id);
 
     /**
      * Gets a set containing all current IPs that are banned.
@@ -665,7 +665,7 @@ public interface Server extends PluginMessageRecipient {
      * Gets a ban list for the supplied type.
      * <p>
      * Bans by name are no longer supported and this method will return
-     * null when trying to request them. The replacement is bans by UUID.
+     * null when trying to request them. The replacement is bans by Guid.
      *
      * @param type the type of list to fetch, cannot be null
      * @return a ban list of the specified type

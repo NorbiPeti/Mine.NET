@@ -2,7 +2,7 @@ package org.bukkit.attribute;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Guid;
 import org.apache.commons.lang.Validate;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.util.NumberConversions;
@@ -12,16 +12,16 @@ import org.bukkit.util.NumberConversions;
  */
 public class AttributeModifier implements ConfigurationSerializable {
 
-    private readonly UUID uuid;
+    private readonly Guid uuid;
     private readonly String name;
     private readonly double amount;
     private readonly Operation operation;
 
     public AttributeModifier(String name, double amount, Operation operation) {
-        this(UUID.randomUUID(), name, amount, operation);
+        this(Guid.randomUUID(), name, amount, operation);
     }
 
-    public AttributeModifier(UUID uuid, String name, double amount, Operation operation) {
+    public AttributeModifier(Guid uuid, String name, double amount, Operation operation) {
         Validate.notNull(uuid, "uuid");
         Validate.notEmpty(name, "Name cannot be empty");
         Validate.notNull(operation, "operation");
@@ -37,7 +37,7 @@ public class AttributeModifier implements ConfigurationSerializable {
      *
      * @return unique id
      */
-    public UUID getUniqueId() {
+    public Guid getUniqueId() {
         return uuid;
     }
 
@@ -79,7 +79,7 @@ public class AttributeModifier implements ConfigurationSerializable {
     }
 
     public static AttributeModifier deserialize(Map<String, Object> args) {
-        return new AttributeModifier((UUID) args.get("uuid"), (String) args.get("name"), NumberConversions.toDouble(args.get("amount")), Operation.values()[NumberConversions.toInt(args.get("operation"))]);
+        return new AttributeModifier((Guid) args.get("uuid"), (String) args.get("name"), NumberConversions.toDouble(args.get("amount")), Operation.values()[NumberConversions.toInt(args.get("operation"))]);
     }
 
     /**

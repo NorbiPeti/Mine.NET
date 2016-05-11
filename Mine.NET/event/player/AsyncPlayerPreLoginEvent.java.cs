@@ -1,7 +1,7 @@
 package org.bukkit.event.player;
 
 import java.net.InetAddress;
-import java.util.UUID;
+import java.util.Guid;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
@@ -17,14 +17,14 @@ public class AsyncPlayerPreLoginEvent extends Event {
     private String message;
     private readonly String name;
     private readonly InetAddress ipAddress;
-    private readonly UUID uniqueId;
+    private readonly Guid uniqueId;
 
     [Obsolete]
     public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress) {
         this(name, ipAddress, null);
     }
 
-    public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress, readonly UUID uniqueId) {
+    public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress, readonly Guid uniqueId) {
         super(true);
         this.result = Result.ALLOWED;
         this.message = "";
@@ -153,7 +153,7 @@ public class AsyncPlayerPreLoginEvent extends Event {
      *
      * @return The unique ID
      */
-    public UUID getUniqueId() {
+    public Guid getUniqueId() {
         return uniqueId;
     }
 

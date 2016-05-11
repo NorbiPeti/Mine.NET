@@ -2,7 +2,7 @@ package org.bukkit.command.defaults;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
+import java.util.Guid;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.BanEntry;

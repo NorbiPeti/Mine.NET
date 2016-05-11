@@ -1,5 +1,3 @@
-package org.bukkit;
-
 /**
  * An enum of all current weather types
  */
@@ -12,6 +10,5 @@ public enum WeatherType {
     /**
      * Clear weather, clouds but no rain.
      */
-    CLEAR,
-    ;
+    CLEAR
 }
