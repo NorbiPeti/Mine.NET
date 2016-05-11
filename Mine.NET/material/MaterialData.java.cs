@@ -126,7 +126,7 @@ public class MaterialData : Cloneable {
     @Override
     public MaterialData clone() {
         try {
-            return (MaterialData) super.clone();
+            return (MaterialData) base.clone();
         } catch (CloneNotSupportedException e) {
             throw new Error(e);
         }

@@ -32,7 +32,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * Creates an empty {@link FileConfiguration} with no default values.
      */
     public FileConfiguration() {
-        super();
+        base();
     }
 
     /**
@@ -42,7 +42,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @param defaults Default value provider
      */
     public FileConfiguration(Configuration defaults) {
-        super(defaults);
+        base(defaults);
     }
 
     /**

@@ -14,7 +14,7 @@ public class InvalidDescriptionException : Exception {
      * @param cause Exception that triggered this Exception
      */
     public InvalidDescriptionException(Throwable cause, readonly String message) {
-        super(message, cause);
+        base(message, cause);
     }
 
     /**
@@ -24,7 +24,7 @@ public class InvalidDescriptionException : Exception {
      * @param cause Exception that triggered this Exception
      */
     public InvalidDescriptionException(Throwable cause) {
-        super("Invalid plugin.yml", cause);
+        base("Invalid plugin.yml", cause);
     }
 
     /**
@@ -33,13 +33,13 @@ public class InvalidDescriptionException : Exception {
      * @param message Brief message explaining the cause of the exception
      */
     public InvalidDescriptionException(String message) {
-        super(message);
+        base(message);
     }
 
     /**
      * Constructs a new InvalidDescriptionException
      */
     public InvalidDescriptionException() {
-        super("Invalid plugin.yml");
+        base("Invalid plugin.yml");
     }
 }

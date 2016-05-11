@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Lever : SimpleAttachableMaterialData : Redstone {
     public Lever() {
-        super(Material.LEVER);
+        base(Material.LEVER);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Lever(int type) {
-        super(type);
+        base(type);
     }
 
     public Lever(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Lever(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Lever(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -151,11 +151,11 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.toString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
     @Override
     public Lever clone() {
-        return (Lever) super.clone();
+        return (Lever) base.clone();
     }
 }

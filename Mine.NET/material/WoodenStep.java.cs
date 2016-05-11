@@ -36,7 +36,7 @@ public class WoodenStep : Wood {
      * @param inv true the step is at the top of the block
      */
     public WoodenStep(TreeSpecies species, bool inv) {
-        super(DEFAULT_TYPE, species);
+        base(DEFAULT_TYPE, species);
         setInverted(inv);
     }
 
@@ -46,7 +46,7 @@ public class WoodenStep : Wood {
      */
     [Obsolete]
     public WoodenStep(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -56,7 +56,7 @@ public class WoodenStep : Wood {
      */
     [Obsolete]
     public WoodenStep(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -66,7 +66,7 @@ public class WoodenStep : Wood {
      */
     [Obsolete]
     public WoodenStep(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -96,10 +96,10 @@ public class WoodenStep : Wood {
 
     @Override
     public WoodenStep clone() {
-        return (WoodenStep) super.clone();
+        return (WoodenStep) base.clone();
     }
 
     public override string ToString() {
-        return super.toString() + " " + getSpecies() + (isInverted() ? " inverted" : "");
+        return base.toString() + " " + getSpecies() + (isInverted() ? " inverted" : "");
     }
 }

@@ -15,7 +15,7 @@ public class BlockBurnEvent : BlockEvent : Cancellable {
     private bool cancelled;
 
     public BlockBurnEvent(Block block) {
-        super(block);
+        base(block);
         this.cancelled = false;
     }
 

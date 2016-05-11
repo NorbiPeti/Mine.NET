@@ -12,7 +12,7 @@ public class InvalidPluginException : Exception {
      * @param cause Exception that triggered this Exception
      */
     public InvalidPluginException(Throwable cause) {
-        super(cause);
+        base(cause);
     }
 
     /**
@@ -33,7 +33,7 @@ public class InvalidPluginException : Exception {
      *     the cause is nonexistent or unknown.)
      */
     public InvalidPluginException(String message, readonly Throwable cause) {
-        super(message, cause);
+        base(message, cause);
     }
 
     /**
@@ -44,6 +44,6 @@ public class InvalidPluginException : Exception {
      *     getMessage() method.
      */
     public InvalidPluginException(String message) {
-        super(message);
+        base(message);
     }
 }

@@ -44,7 +44,7 @@ public class PlayerLoginEvent : PlayerEvent {
      *     timing issues
      */
     public PlayerLoginEvent(Player player, readonly String hostname, readonly InetAddress address) {
-        super(player);
+        base(player);
         this.hostname = hostname;
         this.address = address;
     }

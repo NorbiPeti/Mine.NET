@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class SaveOffCommand : VanillaCommand {
     public SaveOffCommand() {
-        super("save-off");
+        base("save-off");
         this.description = "Disables server autosaving";
         this.usageMessage = "/save-off";
         this.setPermission("bukkit.command.save.disable");

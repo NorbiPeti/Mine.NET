@@ -12,7 +12,7 @@ public class InventoryCloseEvent : InventoryEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public InventoryCloseEvent(InventoryView transaction) {
-        super(transaction);
+        base(transaction);
     }
 
     /**

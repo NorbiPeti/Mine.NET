@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class EnchantmentWrapper : Enchantment {
     public EnchantmentWrapper(int id) {
-        super(id);
+        base(id);
     }
 
     /**

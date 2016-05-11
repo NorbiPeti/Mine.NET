@@ -27,7 +27,7 @@ public class EventException : Exception {
      * @param message The message
      */
     public EventException(Throwable cause, String message) {
-        super(message);
+        base(message);
         this.cause = cause;
     }
 
@@ -37,7 +37,7 @@ public class EventException : Exception {
      * @param message The message
      */
     public EventException(String message) {
-        super(message);
+        base(message);
         cause = null;
     }
 

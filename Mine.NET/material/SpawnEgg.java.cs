@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class SpawnEgg : MaterialData {
 
     public SpawnEgg() {
-        super(Material.MONSTER_EGG);
+        base(Material.MONSTER_EGG);
     }
 
     /**
@@ -20,7 +20,7 @@ public class SpawnEgg : MaterialData {
      */
     [Obsolete]
     public SpawnEgg(int type, byte data){
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -29,7 +29,7 @@ public class SpawnEgg : MaterialData {
      */
     [Obsolete]
     public SpawnEgg(byte data) {
-        super(Material.MONSTER_EGG, data);
+        base(Material.MONSTER_EGG, data);
     }
 
     public SpawnEgg(EntityType type) {
@@ -65,6 +65,6 @@ public class SpawnEgg : MaterialData {
 
     @Override
     public SpawnEgg clone() {
-        return (SpawnEgg) super.clone();
+        return (SpawnEgg) base.clone();
     }
 }

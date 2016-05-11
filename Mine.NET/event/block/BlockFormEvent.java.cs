@@ -25,7 +25,7 @@ public class BlockFormEvent : BlockGrowEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
 
     public BlockFormEvent(Block block, readonly BlockState newState) {
-        super(block, newState);
+        base(block, newState);
     }
 
     @Override

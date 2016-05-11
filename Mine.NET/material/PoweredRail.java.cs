@@ -7,7 +7,7 @@ import org.bukkit.Material;
  */
 public class PoweredRail : ExtendedRails : Redstone {
     public PoweredRail() {
-        super(Material.POWERED_RAIL);
+        base(Material.POWERED_RAIL);
     }
 
     /**
@@ -16,11 +16,11 @@ public class PoweredRail : ExtendedRails : Redstone {
      */
     [Obsolete]
     public PoweredRail(int type) {
-        super(type);
+        base(type);
     }
 
     public PoweredRail(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class PoweredRail : ExtendedRails : Redstone {
      */
     [Obsolete]
     public PoweredRail(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -40,7 +40,7 @@ public class PoweredRail : ExtendedRails : Redstone {
      */
     [Obsolete]
     public PoweredRail(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public bool isPowered() {
@@ -58,6 +58,6 @@ public class PoweredRail : ExtendedRails : Redstone {
 
     @Override
     public PoweredRail clone() {
-        return (PoweredRail) super.clone();
+        return (PoweredRail) base.clone();
     }
 }

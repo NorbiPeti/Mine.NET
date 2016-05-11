@@ -14,7 +14,7 @@ public class ItemSpawnEvent : EntityEvent : Cancellable {
     private bool canceled;
 
     public ItemSpawnEvent(Item spawnee, readonly Location loc) {
-        super(spawnee);
+        base(spawnee);
         this.location = loc;
     }
 

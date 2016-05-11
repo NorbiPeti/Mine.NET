@@ -341,7 +341,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
     @Override
     public ItemStack clone() {
         try {
-            ItemStack itemStack = (ItemStack) super.clone();
+            ItemStack itemStack = (ItemStack) base.clone();
 
             if (this.meta != null) {
                 itemStack.meta = this.meta.clone();

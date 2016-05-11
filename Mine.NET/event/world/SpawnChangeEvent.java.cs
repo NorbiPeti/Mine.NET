@@ -13,7 +13,7 @@ public class SpawnChangeEvent : WorldEvent {
     private readonly Location previousLocation;
 
     public SpawnChangeEvent(World world, readonly Location previousLocation) {
-        super(world);
+        base(world);
         this.previousLocation = previousLocation;
     }
 

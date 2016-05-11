@@ -13,7 +13,7 @@ public class HorseJumpEvent : EntityEvent : Cancellable {
     private float power;
 
     public HorseJumpEvent(Horse horse, readonly float power) {
-        super(horse);
+        base(horse);
         this.power = power;
     }
 

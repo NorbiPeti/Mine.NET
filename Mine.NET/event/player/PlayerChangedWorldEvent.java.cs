@@ -12,7 +12,7 @@ public class PlayerChangedWorldEvent : PlayerEvent {
     private readonly World from;
 
     public PlayerChangedWorldEvent(Player player, readonly World from) {
-        super(player);
+        base(player);
         this.from = from;
     }
 

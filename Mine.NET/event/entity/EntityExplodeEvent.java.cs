@@ -19,7 +19,7 @@ public class EntityExplodeEvent : EntityEvent : Cancellable {
     private float yield;
 
     public EntityExplodeEvent(Entity what, readonly Location location, readonly List<Block> blocks, readonly float yield) {
-        super(what);
+        base(what);
         this.location = location;
         this.blocks = blocks;
         this.yield = yield;

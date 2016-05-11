@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Coal : MaterialData {
     public Coal() {
-        super(Material.COAL);
+        base(Material.COAL);
     }
 
     public Coal(CoalType type) {
@@ -22,11 +22,11 @@ public class Coal : MaterialData {
      */
     [Obsolete]
     public Coal(int type) {
-        super(type);
+        base(type);
     }
 
     public Coal(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Coal : MaterialData {
      */
     [Obsolete]
     public Coal(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Coal : MaterialData {
      */
     [Obsolete]
     public Coal(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -68,11 +68,11 @@ public class Coal : MaterialData {
     }
 
     public override string ToString() {
-        return getType() + " " + super.toString();
+        return getType() + " " + base.toString();
     }
 
     @Override
     public Coal clone() {
-        return (Coal) super.clone();
+        return (Coal) base.clone();
     }
 }

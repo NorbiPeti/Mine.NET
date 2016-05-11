@@ -13,7 +13,7 @@ public class FoodLevelChangeEvent : EntityEvent : Cancellable {
     private int level;
 
     public FoodLevelChangeEvent(HumanEntity what, readonly int level) {
-        super(what);
+        base(what);
         this.level = level;
     }
 

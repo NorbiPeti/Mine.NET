@@ -16,7 +16,7 @@ public class EnderDragonChangePhaseEvent : EntityEvent : Cancellable {
     private EnderDragon.Phase newPhase;
 
     public EnderDragonChangePhaseEvent(EnderDragon enderDragon, EnderDragon.Phase currentPhase, EnderDragon.Phase newPhase) {
-        super(enderDragon);
+        base(enderDragon);
         this.currentPhase = currentPhase;
         this.setNewPhase(newPhase);
     }

@@ -19,13 +19,13 @@ public class BlockFromToEvent : BlockEvent : Cancellable {
     protected bool cancel;
 
     public BlockFromToEvent(Block block, readonly BlockFace face) {
-        super(block);
+        base(block);
         this.face = face;
         this.cancel = false;
     }
 
     public BlockFromToEvent(Block block, readonly Block toBlock) {
-        super(block);
+        base(block);
         this.to = toBlock;
         this.face = BlockFace.SELF;
         this.cancel = false;

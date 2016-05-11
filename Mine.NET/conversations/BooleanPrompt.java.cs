@@ -10,7 +10,7 @@ import org.apache.commons.lang.BooleanUtils;
 public abstract class BooleanPrompt : ValidatingPrompt{
 
     public BooleanPrompt() {
-        super();
+        base();
     }
 
     @Override

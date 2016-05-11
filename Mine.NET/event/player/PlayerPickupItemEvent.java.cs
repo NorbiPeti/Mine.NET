@@ -15,7 +15,7 @@ public class PlayerPickupItemEvent : PlayerEvent : Cancellable {
     private readonly int remaining;
 
     public PlayerPickupItemEvent(Player player, readonly Item item, readonly int remaining) {
-        super(player);
+        base(player);
         this.item = item;
         this.remaining = remaining;
     }

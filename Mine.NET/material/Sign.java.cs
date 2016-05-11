@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Sign : MaterialData : Attachable {
     public Sign() {
-        super(Material.SIGN_POST);
+        base(Material.SIGN_POST);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Sign : MaterialData : Attachable {
      */
     [Obsolete]
     public Sign(int type) {
-        super(type);
+        base(type);
     }
 
     public Sign(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Sign : MaterialData : Attachable {
      */
     [Obsolete]
     public Sign(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Sign : MaterialData : Attachable {
      */
     [Obsolete]
     public Sign(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -241,11 +241,11 @@ public class Sign : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public Sign clone() {
-        return (Sign) super.clone();
+        return (Sign) base.clone();
     }
 }

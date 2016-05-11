@@ -8,7 +8,7 @@ import org.bukkit.SandstoneType;
  */
 public class Sandstone : MaterialData {
     public Sandstone() {
-        super(Material.SANDSTONE);
+        base(Material.SANDSTONE);
     }
 
     public Sandstone(SandstoneType type) {
@@ -22,11 +22,11 @@ public class Sandstone : MaterialData {
      */
     [Obsolete]
     public Sandstone(int type) {
-        super(type);
+        base(type);
     }
 
     public Sandstone(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Sandstone : MaterialData {
      */
     [Obsolete]
     public Sandstone(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Sandstone : MaterialData {
      */
     [Obsolete]
     public Sandstone(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -68,11 +68,11 @@ public class Sandstone : MaterialData {
     }
 
     public override string ToString() {
-        return getType() + " " + super.toString();
+        return getType() + " " + base.toString();
     }
 
     @Override
     public Sandstone clone() {
-        return (Sandstone) super.clone();
+        return (Sandstone) base.clone();
     }
 }

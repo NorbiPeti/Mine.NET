@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -19,7 +19,7 @@ public class GameModeCommand : VanillaCommand {
     private static readonly List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival", "spectator");
 
     public GameModeCommand() {
-        super("gamemode");
+        base("gamemode");
         this.description = "Changes the player to a specific game mode";
         this.usageMessage = "/gamemode <mode> [player]";
         this.setPermission("bukkit.command.gamemode");
@@ -92,9 +92,9 @@ public class GameModeCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], GAMEMODE_NAMES, new ArrayList<String>(GAMEMODE_NAMES.size()));
+            return StringUtil.copyPartialMatches(args[0], GAMEMODE_NAMES, new List<String>(GAMEMODE_NAMES.size()));
         } else if (args.length == 2) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

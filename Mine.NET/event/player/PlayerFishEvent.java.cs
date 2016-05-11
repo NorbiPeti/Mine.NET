@@ -30,7 +30,7 @@ public class PlayerFishEvent : PlayerEvent : Cancellable {
     }
 
     public PlayerFishEvent(Player player, readonly Entity entity, readonly Fish hookEntity, readonly State state) {
-        super(player);
+        base(player);
         this.entity = entity;
         this.hookEntity = hookEntity;
         this.state = state;

@@ -54,7 +54,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      * @see BlockFace
      */
     public Comparator(BlockFace facingDirection, bool isSubtraction, bool state) {
-        super(state ? Material.REDSTONE_COMPARATOR_ON : Material.REDSTONE_COMPARATOR_OFF);
+        base(state ? Material.REDSTONE_COMPARATOR_ON : Material.REDSTONE_COMPARATOR_OFF);
         setFacingDirection(facingDirection);
         setSubtractionMode(isSubtraction);
     }
@@ -65,11 +65,11 @@ public class Comparator : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Comparator(int type) {
-        super(type);
+        base(type);
     }
 
     public Comparator(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -79,7 +79,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Comparator(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -89,7 +89,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Comparator(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -170,12 +170,12 @@ public class Comparator : MaterialData : Directional, Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
+        return base.toString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
     }
 
     @Override
     public Comparator clone() {
-        return (Comparator) super.clone();
+        return (Comparator) base.clone();
     }
 
     /**

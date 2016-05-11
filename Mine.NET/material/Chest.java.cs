@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
 public class Chest : DirectionalContainer {
 
     public Chest() {
-        super(Material.CHEST);
+        base(Material.CHEST);
     }
 
     /**
@@ -28,11 +28,11 @@ public class Chest : DirectionalContainer {
      */
     [Obsolete]
     public Chest(int type) {
-        super(type);
+        base(type);
     }
 
     public Chest(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Chest : DirectionalContainer {
      */
     [Obsolete]
     public Chest(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -52,11 +52,11 @@ public class Chest : DirectionalContainer {
      */
     [Obsolete]
     public Chest(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
     public Chest clone() {
-        return (Chest) super.clone();
+        return (Chest) base.clone();
     }
 }

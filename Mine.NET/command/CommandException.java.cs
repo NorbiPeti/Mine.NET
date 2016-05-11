@@ -1,28 +1,31 @@
-package org.bukkit.command;
+using System;
 
-/**
- * Thrown when an unhandled exception occurs during the execution of a Command
- */
-@SuppressWarnings("serial")
-public class CommandException : RuntimeException {
-
+namespace Mine.NET
+{
     /**
-     * Creates a new instance of <code>CommandException</code> without detail
-     * message.
+     * Thrown when an unhandled exception occurs during the execution of a Command
      */
-    public CommandException() {}
+    public class CommandException : Exception
+    {
 
-    /**
-     * Constructs an instance of <code>CommandException</code> with the
-     * specified detail message.
-     *
-     * @param msg the detail message.
-     */
-    public CommandException(String msg) {
-        super(msg);
-    }
+        /**
+         * Creates a new instance of <code>CommandException</code> without detail
+         * message.
+         */
+        public CommandException() { }
 
-    public CommandException(String msg, Throwable cause) {
-        super(msg, cause);
+        /**
+         * Constructs an instance of <code>CommandException</code> with the
+         * specified detail message.
+         *
+         * @param msg the detail message.
+         */
+        public CommandException(String msg) : base(msg)
+        {
+        }
+
+        public CommandException(String msg, Exception cause) : base(msg, cause)
+        {
+        }
     }
 }

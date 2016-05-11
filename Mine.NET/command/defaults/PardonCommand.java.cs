@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -17,7 +17,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class PardonCommand : VanillaCommand {
     public PardonCommand() {
-        super("pardon");
+        base("pardon");
         this.description = "Allows the specified player to use this server";
         this.usageMessage = "/pardon <player>";
         this.setPermission("bukkit.command.unban.player");
@@ -43,7 +43,7 @@ public class PardonCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            List<String> completions = new ArrayList<String>();
+            List<String> completions = new List<String>();
             for (OfflinePlayer player : Bukkit.getBannedPlayers()) {
                 String name = player.getName();
                 if (StringUtil.startsWithIgnoreCase(name, args[0])) {

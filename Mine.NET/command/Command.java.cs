@@ -67,7 +67,7 @@ namespace Mine.NET
      *     will never be null. List may be immutable.
      * @throws ArgumentException if sender, alias, or args is null
      */
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+    public virtual List<String> tabComplete(CommandSender sender, String alias, String[] args) {
         if(sender==null) throw new ArgumentNullException("Sender cannot be null"); //Find: "Validate.notNull\((.+), "
             if (args==null) throw new ArgumentNullException("Arguments cannot be null"); //Replace: "if($1==null) throw new ArgumentNullException("
             if (alias==null) throw new ArgumentNullException("Alias cannot be null");
@@ -368,7 +368,7 @@ namespace Mine.NET
         if (source is BlockCommandSender) {
             BlockCommandSender blockCommandSender = (BlockCommandSender) source;
 
-            if (blockCommandSender.getBlock().getWorld().getGameRuleValue("commandBlockOutput").equalsIgnoreCase("false")) {
+            if (blockCommandSender.getBlock().getWorld().getGameRuleValue("commandBlockOutput").Equals("false", StringComparison.InvariantCultureIgnoreCase)) {
                 Bukkit.getConsoleSender().sendMessage(result);
                 return;
             }
@@ -382,13 +382,13 @@ namespace Mine.NET
         }
 
         HashSet<Permissible> users = Bukkit.getPluginManager().getPermissionSubscriptions(Server.BROADCAST_CHANNEL_ADMINISTRATIVE);
-        String colored = ChatColor.GRAY + "" + ChatColor.ITALIC + "[" + result + ChatColor.GRAY + ChatColor.ITALIC + "]";
+        String colored = ChatColor.Colors.GRAY + "" + ChatColor.Colors.ITALIC + "[" + result + ChatColor.Colors.GRAY + ChatColor.Colors.ITALIC + "]";
 
         if (sendToSource && !(source is ConsoleCommandSender)) {
             source.sendMessage(message);
         }
 
-        for (Permissible user : users) {
+        foreach (Permissible user in users) {
             if (user is CommandSender) {
                 CommandSender target = (CommandSender) user;
 
@@ -402,7 +402,7 @@ namespace Mine.NET
     }
 
     public override string ToString() {
-        return getClass().getName() + '(' + name + ')';
+        return GetType().Name + '(' + name + ')';
     }
 }
 }

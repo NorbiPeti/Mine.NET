@@ -13,7 +13,7 @@ public class ThunderChangeEvent : WeatherEvent : Cancellable {
     private readonly bool to;
 
     public ThunderChangeEvent(World world, readonly bool to) {
-        super(world);
+        base(world);
         this.to = to;
     }
 

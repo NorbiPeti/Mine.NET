@@ -25,7 +25,7 @@ public class AsyncPlayerPreLoginEvent : Event {
     }
 
     public AsyncPlayerPreLoginEvent(String name, readonly InetAddress ipAddress, readonly Guid uniqueId) {
-        super(true);
+        base(true);
         this.result = Result.ALLOWED;
         this.message = "";
         this.name = name;

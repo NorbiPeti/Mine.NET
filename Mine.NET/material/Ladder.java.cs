@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Ladder : SimpleAttachableMaterialData {
     public Ladder() {
-        super(Material.LADDER);
+        base(Material.LADDER);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Ladder : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Ladder(int type) {
-        super(type);
+        base(type);
     }
 
     public Ladder(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Ladder : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Ladder(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Ladder : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Ladder(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -99,6 +99,6 @@ public class Ladder : SimpleAttachableMaterialData {
 
     @Override
     public Ladder clone() {
-        return (Ladder) super.clone();
+        return (Ladder) base.clone();
     }
 }

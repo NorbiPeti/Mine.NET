@@ -8,6 +8,6 @@ import org.bukkit.entity.Player;
 public class PlayerUnregisterChannelEvent : PlayerChannelEvent {
 
     public PlayerUnregisterChannelEvent(Player player, readonly String channel) {
-        super(player, channel);
+        base(player, channel);
     }
 }

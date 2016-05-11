@@ -13,7 +13,7 @@ public class ProjectileLaunchEvent : EntityEvent : Cancellable {
     private bool cancelled;
 
     public ProjectileLaunchEvent(Entity what) {
-        super(what);
+        base(what);
     }
 
     public bool isCancelled() {

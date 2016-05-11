@@ -10,7 +10,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -352,7 +352,7 @@ public abstract class JavaPlugin : PluginBase {
      * @return List of Classes that are Ebeans
      */
     public List<Class<?>> getDatabaseClasses() {
-        return new ArrayList<Class<?>>();
+        return new List<Class<?>>();
     }
 
     private String replaceDatabaseString(String input) {

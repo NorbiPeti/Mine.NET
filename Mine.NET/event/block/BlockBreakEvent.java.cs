@@ -31,7 +31,7 @@ public class BlockBreakEvent : BlockExpEvent : Cancellable {
     private bool cancel;
 
     public BlockBreakEvent(Block theBlock, readonly Player player) {
-        super(theBlock, 0);
+        base(theBlock, 0);
 
         this.player = player;
     }

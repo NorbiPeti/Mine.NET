@@ -33,7 +33,7 @@ public class BlockIgniteEvent : BlockEvent : Cancellable {
     }
 
     public BlockIgniteEvent(Block theBlock, readonly IgniteCause cause, readonly Entity ignitingEntity, readonly Block ignitingBlock) {
-        super(theBlock);
+        base(theBlock);
         this.cause = cause;
         this.ignitingEntity = ignitingEntity;
         this.ignitingBlock = ignitingBlock;

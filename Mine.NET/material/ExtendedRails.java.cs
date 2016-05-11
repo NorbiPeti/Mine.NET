@@ -14,11 +14,11 @@ public class ExtendedRails : Rails {
      */
     [Obsolete]
     public ExtendedRails(int type) {
-        super(type);
+        base(type);
     }
 
     public ExtendedRails(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -28,7 +28,7 @@ public class ExtendedRails : Rails {
      */
     [Obsolete]
     public ExtendedRails(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ExtendedRails : Rails {
      */
     [Obsolete]
     public ExtendedRails(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
@@ -64,12 +64,12 @@ public class ExtendedRails : Rails {
             throw new ArgumentException("Detector rails and powered rails cannot be set on a curve!");
         }
 
-        super.setDirection(face, isOnSlope);
+        base.setDirection(face, isOnSlope);
         setData((byte) (extraBitSet ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
     @Override
     public ExtendedRails clone() {
-        return (ExtendedRails) super.clone();
+        return (ExtendedRails) base.clone();
     }
 }

@@ -16,7 +16,7 @@ public class FurnaceSmeltEvent : BlockEvent : Cancellable {
     private bool cancelled;
 
     public FurnaceSmeltEvent(Block furnace, readonly ItemStack source, readonly ItemStack result) {
-        super(furnace);
+        base(furnace);
         this.source = source;
         this.result = result;
         this.cancelled = false;

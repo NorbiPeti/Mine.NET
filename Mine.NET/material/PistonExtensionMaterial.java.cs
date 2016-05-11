@@ -13,11 +13,11 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      */
     [Obsolete]
     public PistonExtensionMaterial(int type) {
-        super(type);
+        base(type);
     }
 
     public PistonExtensionMaterial(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -27,7 +27,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      */
     [Obsolete]
     public PistonExtensionMaterial(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -37,7 +37,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      */
     [Obsolete]
     public PistonExtensionMaterial(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public void setFacingDirection(BlockFace face) {
@@ -108,6 +108,6 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
 
     @Override
     public PistonExtensionMaterial clone() {
-        return (PistonExtensionMaterial) super.clone();
+        return (PistonExtensionMaterial) base.clone();
     }
 }

@@ -13,7 +13,7 @@ public class InventoryOpenEvent : InventoryEvent : Cancellable {
     private bool cancelled;
 
     public InventoryOpenEvent(InventoryView transaction) {
-        super(transaction);
+        base(transaction);
         this.cancelled = false;
     }
 

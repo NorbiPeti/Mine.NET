@@ -11,23 +11,23 @@ public class FileConfigurationOptions : MemoryConfigurationOptions {
     private bool copyHeader = true;
 
     protected FileConfigurationOptions(MemoryConfiguration configuration) {
-        super(configuration);
+        base(configuration);
     }
 
     @Override
     public FileConfiguration configuration() {
-        return (FileConfiguration) super.configuration();
+        return (FileConfiguration) base.configuration();
     }
 
     @Override
     public FileConfigurationOptions copyDefaults(bool value) {
-        super.copyDefaults(value);
+        base.copyDefaults(value);
         return this;
     }
 
     @Override
     public FileConfigurationOptions pathSeparator(char value) {
-        super.pathSeparator(value);
+        base.pathSeparator(value);
         return this;
     }
 

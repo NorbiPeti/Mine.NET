@@ -11,6 +11,6 @@ public class ReservedChannelException : RuntimeException {
     }
 
     public ReservedChannelException(String name) {
-        super("Attempted to register for a reserved channel name ('" + name + "')");
+        base("Attempted to register for a reserved channel name ('" + name + "')");
     }
 }

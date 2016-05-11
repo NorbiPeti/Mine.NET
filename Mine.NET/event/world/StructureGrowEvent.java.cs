@@ -22,7 +22,7 @@ public class StructureGrowEvent : WorldEvent : Cancellable {
     private readonly List<BlockState> blocks;
 
     public StructureGrowEvent(Location location, readonly TreeType species, readonly bool bonemeal, readonly Player player, readonly List<BlockState> blocks) {
-        super(location.getWorld());
+        base(location.getWorld());
         this.location = location;
         this.species = species;
         this.bonemeal = bonemeal;
@@ -69,9 +69,9 @@ public class StructureGrowEvent : WorldEvent : Cancellable {
     }
 
     /**
-     * Gets an ArrayList of all blocks associated with the structure.
+     * Gets an List of all blocks associated with the structure.
      *
-     * @return ArrayList of all blocks associated with the structure.
+     * @return List of all blocks associated with the structure.
      */
     public List<BlockState> getBlocks() {
         return blocks;

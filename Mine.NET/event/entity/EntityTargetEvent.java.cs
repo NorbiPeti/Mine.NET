@@ -14,7 +14,7 @@ public class EntityTargetEvent : EntityEvent : Cancellable {
     private readonly TargetReason reason;
 
     public EntityTargetEvent(Entity entity, readonly Entity target, readonly TargetReason reason) {
-        super(entity);
+        base(entity);
         this.target = target;
         this.reason = reason;
     }

@@ -35,7 +35,7 @@ public class BlockCanBuildEvent : BlockEvent {
      */
     [Obsolete]
     public BlockCanBuildEvent(Block block, readonly int id, readonly bool canBuild) {
-        super(block);
+        base(block);
         buildable = canBuild;
         material = id;
     }

@@ -14,7 +14,7 @@ public class SheepDyeWoolEvent : EntityEvent : Cancellable {
     private DyeColor color;
 
     public SheepDyeWoolEvent(Sheep sheep, readonly DyeColor color) {
-        super(sheep);
+        base(sheep);
         this.cancel = false;
         this.color = color;
     }

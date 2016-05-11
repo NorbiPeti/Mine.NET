@@ -22,7 +22,7 @@ public class PrepareItemEnchantEvent : InventoryEvent : Cancellable {
     private readonly Player enchanter;
 
     public PrepareItemEnchantEvent(Player enchanter, InventoryView view, readonly Block table, readonly ItemStack item, readonly int[] levelsOffered, readonly int bonus) {
-        super(view);
+        base(view);
         this.enchanter = enchanter;
         this.table = table;
         this.item = item;

@@ -12,7 +12,7 @@ public class BlockRedstoneEvent : BlockEvent {
     private int newCurrent;
 
     public BlockRedstoneEvent(Block block, readonly int oldCurrent, readonly int newCurrent) {
-        super(block);
+        base(block);
         this.oldCurrent = oldCurrent;
         this.newCurrent = newCurrent;
     }

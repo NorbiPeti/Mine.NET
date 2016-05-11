@@ -1,6 +1,6 @@
 package org.bukkit.event.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ public class AreaEffectCloudApplyEvent : EntityEvent {
     private readonly List<LivingEntity> affectedEntities;
 
     public AreaEffectCloudApplyEvent(AreaEffectCloud entity, readonly List<LivingEntity> affectedEntities) {
-        super(entity);
+        base(entity);
         this.affectedEntities = affectedEntities;
     }
 

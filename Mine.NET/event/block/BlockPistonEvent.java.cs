@@ -13,7 +13,7 @@ public abstract class BlockPistonEvent : BlockEvent : Cancellable {
     private readonly BlockFace direction;
 
     public BlockPistonEvent(Block block, readonly BlockFace direction) {
-        super(block);
+        base(block);
         this.direction = direction;
     }
 

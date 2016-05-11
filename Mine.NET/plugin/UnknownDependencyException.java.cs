@@ -14,7 +14,7 @@ public class UnknownDependencyException : RuntimeException {
      * @param throwable Exception that triggered this Exception
      */
     public UnknownDependencyException(Throwable throwable) {
-        super(throwable);
+        base(throwable);
     }
 
     /**
@@ -23,7 +23,7 @@ public class UnknownDependencyException : RuntimeException {
      * @param message Brief message explaining the cause of the exception
      */
     public UnknownDependencyException(String message) {
-        super(message);
+        base(message);
     }
 
     /**
@@ -34,7 +34,7 @@ public class UnknownDependencyException : RuntimeException {
      * @param throwable Exception that triggered this Exception
      */
     public UnknownDependencyException(Throwable throwable, readonly String message) {
-        super(message, throwable);
+        base(message, throwable);
     }
 
     /**

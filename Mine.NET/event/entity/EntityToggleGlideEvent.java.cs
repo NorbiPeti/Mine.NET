@@ -20,7 +20,7 @@ public class EntityToggleGlideEvent : EntityEvent : Cancellable {
     private readonly bool isGliding;
 
     public EntityToggleGlideEvent(LivingEntity who, readonly bool isGliding) {
-        super(who);
+        base(who);
         this.isGliding = isGliding;
     }
 

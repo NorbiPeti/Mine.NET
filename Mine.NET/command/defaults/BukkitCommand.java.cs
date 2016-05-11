@@ -6,10 +6,10 @@ import org.bukkit.command.Command;
 
 public abstract class BukkitCommand : Command {
     protected BukkitCommand(String name) {
-        super(name);
+        base(name);
     }
 
     protected BukkitCommand(String name, String description, String usageMessage, List<String> aliases) {
-        super(name, description, usageMessage, aliases);
+        base(name, description, usageMessage, aliases);
     }
 }

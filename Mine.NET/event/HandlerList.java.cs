@@ -22,12 +22,12 @@ public class HandlerList {
      * unregister() and are automatically baked to the handlers array any time
      * they have changed.
      */
-    private readonly EnumMap<EventPriority, ArrayList<RegisteredListener>> handlerslots;
+    private readonly EnumMap<EventPriority, List<RegisteredListener>> handlerslots;
 
     /**
      * List of all HandlerLists which have been created, for use in bakeAll()
      */
-    private static ArrayList<HandlerList> allLists = new ArrayList<HandlerList>();
+    private static List<HandlerList> allLists = new List<HandlerList>();
 
     /**
      * Bake all handler lists. Best used just after all normal event
@@ -90,9 +90,9 @@ public class HandlerList {
      * The HandlerList is then added to meta-list for use in bakeAll()
      */
     public HandlerList() {
-        handlerslots = new EnumMap<EventPriority, ArrayList<RegisteredListener>>(EventPriority.class);
+        handlerslots = new EnumMap<EventPriority, List<RegisteredListener>>(EventPriority.class);
         for (EventPriority o : EventPriority.values()) {
-            handlerslots.put(o, new ArrayList<RegisteredListener>());
+            handlerslots.put(o, new List<RegisteredListener>());
         }
         synchronized (allLists) {
             allLists.add(this);
@@ -170,12 +170,12 @@ public class HandlerList {
     }
 
     /**
-     * Bake HashMap and ArrayLists to 2d array - does nothing if not necessary
+     * Bake HashMap and Lists to 2d array - does nothing if not necessary
      */
     public synchronized void bake() {
         if (handlers != null) return; // don't re-bake when still valid
-        List<RegisteredListener> entries = new ArrayList<RegisteredListener>();
-        for (Entry<EventPriority, ArrayList<RegisteredListener>> entry : handlerslots.entrySet()) {
+        List<RegisteredListener> entries = new List<RegisteredListener>();
+        for (Entry<EventPriority, List<RegisteredListener>> entry : handlerslots.entrySet()) {
             entries.addAll(entry.getValue());
         }
         handlers = entries.toArray(new RegisteredListener[entries.size()]);
@@ -199,8 +199,8 @@ public class HandlerList {
      * @param plugin the plugin to get the listeners of
      * @return the list of registered listeners
      */
-    public static ArrayList<RegisteredListener> getRegisteredListeners(Plugin plugin) {
-        ArrayList<RegisteredListener> listeners = new ArrayList<RegisteredListener>();
+    public static List<RegisteredListener> getRegisteredListeners(Plugin plugin) {
+        List<RegisteredListener> listeners = new List<RegisteredListener>();
         synchronized (allLists) {
             for (HandlerList h : allLists) {
                 synchronized (h) {
@@ -223,9 +223,9 @@ public class HandlerList {
      * @return the list of all handler lists
      */
     @SuppressWarnings("unchecked")
-    public static ArrayList<HandlerList> getHandlerLists() {
+    public static List<HandlerList> getHandlerLists() {
         synchronized (allLists) {
-            return (ArrayList<HandlerList>) allLists.clone();
+            return (List<HandlerList>) allLists.clone();
         }
     }
 }

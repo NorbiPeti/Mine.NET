@@ -14,7 +14,7 @@ public class PlayerKickEvent : PlayerEvent : Cancellable {
     private bool cancel;
 
     public PlayerKickEvent(Player playerKicked, readonly String kickReason, readonly String leaveMessage) {
-        super(playerKicked);
+        base(playerKicked);
         this.kickReason = kickReason;
         this.leaveMessage = leaveMessage;
         this.cancel = false;

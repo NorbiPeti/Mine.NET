@@ -19,7 +19,7 @@ public class BlockDispenseEvent : BlockEvent : Cancellable {
     private Vector velocity;
 
     public BlockDispenseEvent(Block block, readonly ItemStack dispensed, readonly Vector velocity) {
-        super(block);
+        base(block);
         this.item = dispensed;
         this.velocity = velocity;
     }

@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class SaveCommand : VanillaCommand {
     public SaveCommand() {
-        super("save-all");
+        base("save-all");
         this.description = "Saves the server to disk";
         this.usageMessage = "/save-all";
         this.setPermission("bukkit.command.save.perform");

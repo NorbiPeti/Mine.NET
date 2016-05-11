@@ -1,7 +1,7 @@
 package org.bukkit.inventory;
 
 import com.google.common.base.Preconditions;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 /**
@@ -21,7 +21,7 @@ import java.util.List;
 public class MerchantRecipe : Recipe {
 
     private ItemStack result;
-    private List<ItemStack> ingredients = new ArrayList<ItemStack>();
+    private List<ItemStack> ingredients = new List<ItemStack>();
     private int uses;
     private int maxUses;
     private bool experienceReward;
@@ -52,14 +52,14 @@ public class MerchantRecipe : Recipe {
     }
 
     public void setIngredients(List<ItemStack> ingredients) {
-        this.ingredients = new ArrayList<ItemStack>();
+        this.ingredients = new List<ItemStack>();
         for (ItemStack item : ingredients) {
             this.ingredients.add(item.clone());
         }
     }
 
     public List<ItemStack> getIngredients() {
-        List<ItemStack> copy = new ArrayList<ItemStack>();
+        List<ItemStack> copy = new List<ItemStack>();
         for (ItemStack item : ingredients) {
             copy.add(item.clone());
         }

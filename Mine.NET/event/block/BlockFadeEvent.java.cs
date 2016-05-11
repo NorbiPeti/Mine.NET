@@ -24,7 +24,7 @@ public class BlockFadeEvent : BlockEvent : Cancellable {
     private readonly BlockState newState;
 
     public BlockFadeEvent(Block block, readonly BlockState newState) {
-        super(block);
+        base(block);
         this.newState = newState;
         this.cancelled = false;
     }

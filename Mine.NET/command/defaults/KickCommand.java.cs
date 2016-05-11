@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class KickCommand : VanillaCommand {
     public KickCommand() {
-        super("kick");
+        base("kick");
         this.description = "Removes the specified player from the server";
         this.usageMessage = "/kick <player> [reason ...]";
         this.setPermission("bukkit.command.kick");
@@ -53,7 +53,7 @@ public class KickCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length >= 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

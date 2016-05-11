@@ -26,7 +26,7 @@ public class PlayerItemConsumeEvent : PlayerEvent : Cancellable {
      * @param item the ItemStack being consumed
      */
     public PlayerItemConsumeEvent(Player player, readonly ItemStack item) {
-        super(player);
+        base(player);
 
         this.item = item;
     }

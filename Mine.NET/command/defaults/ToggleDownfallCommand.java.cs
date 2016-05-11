@@ -15,7 +15,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class ToggleDownfallCommand : VanillaCommand {
     public ToggleDownfallCommand() {
-        super("toggledownfall");
+        base("toggledownfall");
         this.description = "Toggles rain on/off on a given world";
         this.usageMessage = "/toggledownfall";
         this.setPermission("bukkit.command.toggledownfall");

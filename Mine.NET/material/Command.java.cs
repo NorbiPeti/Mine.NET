@@ -7,7 +7,7 @@ import org.bukkit.Material;
  */
 public class Command : MaterialData : Redstone {
     public Command() {
-        super(Material.COMMAND);
+        base(Material.COMMAND);
     }
 
     /**
@@ -16,11 +16,11 @@ public class Command : MaterialData : Redstone {
      */
     [Obsolete]
     public Command(int type) {
-        super(type);
+        base(type);
     }
 
     public Command(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Command : MaterialData : Redstone {
      */
     [Obsolete]
     public Command(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -40,7 +40,7 @@ public class Command : MaterialData : Redstone {
      */
     [Obsolete]
     public Command(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -64,11 +64,11 @@ public class Command : MaterialData : Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
     @Override
     public Command clone() {
-        return (Command) super.clone();
+        return (Command) base.clone();
     }
 }

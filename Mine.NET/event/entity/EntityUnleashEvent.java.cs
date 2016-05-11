@@ -11,7 +11,7 @@ public class EntityUnleashEvent : EntityEvent {
     private readonly UnleashReason reason;
 
     public EntityUnleashEvent(Entity entity, UnleashReason reason) {
-        super(entity);
+        base(entity);
         this.reason = reason;
     }
 

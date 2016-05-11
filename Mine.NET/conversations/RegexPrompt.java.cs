@@ -15,7 +15,7 @@ public abstract class RegexPrompt : ValidatingPrompt {
     }
 
     public RegexPrompt(Pattern pattern) {
-        super();
+        base();
         this.pattern = pattern;
     }
 

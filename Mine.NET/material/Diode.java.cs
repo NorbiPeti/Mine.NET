@@ -65,7 +65,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * @see BlockFace
      */
     public Diode(BlockFace facingDirection, int delay, bool state) {
-        super(state ? Material.DIODE_BLOCK_ON : Material.DIODE_BLOCK_OFF);
+        base(state ? Material.DIODE_BLOCK_ON : Material.DIODE_BLOCK_OFF);
         setFacingDirection(facingDirection);
         setDelay(delay);
     }
@@ -76,11 +76,11 @@ public class Diode : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Diode(int type) {
-        super(type);
+        base(type);
     }
 
     public Diode(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Diode : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Diode(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -100,7 +100,7 @@ public class Diode : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Diode(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -188,12 +188,12 @@ public class Diode : MaterialData : Directional, Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + " with " + getDelay() + " ticks delay";
+        return base.toString() + " facing " + getFacing() + " with " + getDelay() + " ticks delay";
     }
 
     @Override
     public Diode clone() {
-        return (Diode) super.clone();
+        return (Diode) base.clone();
     }
 
     /**

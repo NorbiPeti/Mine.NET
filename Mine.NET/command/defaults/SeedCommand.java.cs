@@ -12,7 +12,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class SeedCommand : VanillaCommand {
     public SeedCommand() {
-        super("seed");
+        base("seed");
         this.description = "Shows the world seed";
         this.usageMessage = "/seed";
         this.setPermission("bukkit.command.seed");

@@ -2,7 +2,7 @@ package org.bukkit.command;
 
 import static org.bukkit.util.Java15Compat.Arrays_copyOfRange;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -168,7 +168,7 @@ public class SimpleCommandMap : CommandMap {
         int spaceIndex = cmdLine.indexOf(' ');
 
         if (spaceIndex == -1) {
-            ArrayList<String> completions = new ArrayList<String>();
+            List<String> completions = new List<String>();
             Dictionary<String, Command> knownCommands = this.knownCommands;
 
             readonly String prefix = (sender is Player ? "/" : "");
@@ -228,7 +228,7 @@ public class SimpleCommandMap : CommandMap {
             }
 
             String[] commandStrings = values.get(alias);
-            List<String> targets = new ArrayList<String>();
+            List<String> targets = new List<String>();
             StringBuilder bad = new StringBuilder();
 
             for (String commandString : commandStrings) {

@@ -12,7 +12,7 @@ public class ExpBottleEvent : ProjectileHitEvent {
     private bool showEffect = true;
 
     public ExpBottleEvent(ThrownExpBottle bottle, readonly int exp) {
-        super(bottle);
+        base(bottle);
         this.exp = exp;
     }
 

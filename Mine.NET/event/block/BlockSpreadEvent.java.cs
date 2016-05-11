@@ -25,7 +25,7 @@ public class BlockSpreadEvent : BlockFormEvent {
     private readonly Block source;
 
     public BlockSpreadEvent(Block block, readonly Block source, readonly BlockState newState) {
-        super(block, newState);
+        base(block, newState);
         this.source = source;
     }
 

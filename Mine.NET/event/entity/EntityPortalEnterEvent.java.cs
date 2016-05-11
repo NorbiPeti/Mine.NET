@@ -12,7 +12,7 @@ public class EntityPortalEnterEvent : EntityEvent {
     private readonly Location location;
 
     public EntityPortalEnterEvent(Entity entity, readonly Location location) {
-        super(entity);
+        base(entity);
         this.location = location;
     }
 

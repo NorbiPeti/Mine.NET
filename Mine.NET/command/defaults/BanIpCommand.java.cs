@@ -19,7 +19,7 @@ public class BanIpCommand : VanillaCommand {
     public static readonly Pattern ipValidity = Pattern.compile("^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
 
     public BanIpCommand() {
-        super("ban-ip");
+        base("ban-ip");
         this.description = "Prevents the specified IP address from using this server";
         this.usageMessage = "/ban-ip <address|player> [reason ...]";
         this.setPermission("bukkit.command.ban.ip");
@@ -71,7 +71,7 @@ public class BanIpCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

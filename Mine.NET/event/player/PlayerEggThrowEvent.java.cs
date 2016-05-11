@@ -16,7 +16,7 @@ public class PlayerEggThrowEvent : PlayerEvent {
     private byte numHatches;
 
     public PlayerEggThrowEvent(Player player, readonly Egg egg, readonly bool hatching, readonly byte numHatches, readonly EntityType hatchingType) {
-        super(player);
+        base(player);
         this.egg = egg;
         this.hatching = hatching;
         this.numHatches = numHatches;

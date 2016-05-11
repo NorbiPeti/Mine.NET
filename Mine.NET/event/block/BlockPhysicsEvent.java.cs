@@ -21,7 +21,7 @@ public class BlockPhysicsEvent : BlockEvent : Cancellable {
      */
     [Obsolete]
     public BlockPhysicsEvent(Block block, readonly int changed) {
-        super(block);
+        base(block);
         this.changed = changed;
     }
 

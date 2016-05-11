@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -19,7 +19,7 @@ public class TimeCommand : VanillaCommand {
     private static readonly List<String> TABCOMPLETE_DAY_NIGHT = ImmutableList.of("day", "night");
 
     public TimeCommand() {
-        super("time");
+        base("time");
         this.description = "Changes the time on each world";
         this.usageMessage = "/time set <value>\n/time add <value>";
         this.setPermission("bukkit.command.time.add;bukkit.command.time.set");
@@ -80,9 +80,9 @@ public class TimeCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], TABCOMPLETE_ADD_SET, new ArrayList<String>(TABCOMPLETE_ADD_SET.size()));
+            return StringUtil.copyPartialMatches(args[0], TABCOMPLETE_ADD_SET, new List<String>(TABCOMPLETE_ADD_SET.size()));
         } else if (args.length == 2 && args[0].equalsIgnoreCase("set")) {
-            return StringUtil.copyPartialMatches(args[1], TABCOMPLETE_DAY_NIGHT, new ArrayList<String>(TABCOMPLETE_DAY_NIGHT.size()));
+            return StringUtil.copyPartialMatches(args[1], TABCOMPLETE_DAY_NIGHT, new List<String>(TABCOMPLETE_DAY_NIGHT.size()));
         }
         return ImmutableList.of();
     }

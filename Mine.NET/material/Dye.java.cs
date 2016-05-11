@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Dye : MaterialData : Colorable {
     public Dye() {
-        super(Material.INK_SACK);
+        base(Material.INK_SACK);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Dye : MaterialData : Colorable {
      */
     [Obsolete]
     public Dye(int type) {
-        super(type);
+        base(type);
     }
 
     public Dye(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Dye : MaterialData : Colorable {
      */
     [Obsolete]
     public Dye(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,14 +41,14 @@ public class Dye : MaterialData : Colorable {
      */
     [Obsolete]
     public Dye(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
      * @param color color of the dye
      */
     public Dye(DyeColor color) {
-        super(Material.INK_SACK, color.getDyeData());
+        base(Material.INK_SACK, color.getDyeData());
     }
 
     /**
@@ -75,6 +75,6 @@ public class Dye : MaterialData : Colorable {
 
     @Override
     public Dye clone() {
-        return (Dye) super.clone();
+        return (Dye) base.clone();
     }
 }

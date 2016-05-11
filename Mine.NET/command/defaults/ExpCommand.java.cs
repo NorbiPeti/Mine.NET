@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class ExpCommand : VanillaCommand {
     public ExpCommand() {
-        super("xp");
+        base("xp");
         this.description = "Gives the specified player a certain amount of experience. Specify <amount>L to give levels instead, with a negative amount resulting in taking levels.";
         this.usageMessage = "/xp <amount> [player] OR /xp <amount>L [player]";
         this.setPermission("bukkit.command.xp");
@@ -83,7 +83,7 @@ public class ExpCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 2) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

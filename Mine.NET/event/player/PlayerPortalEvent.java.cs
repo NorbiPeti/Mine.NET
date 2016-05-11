@@ -17,12 +17,12 @@ public class PlayerPortalEvent : PlayerTeleportEvent {
     protected TravelAgent travelAgent;
 
     public PlayerPortalEvent(Player player, readonly Location from, readonly Location to, readonly TravelAgent pta) {
-        super(player, from, to);
+        base(player, from, to);
         this.travelAgent = pta;
     }
 
     public PlayerPortalEvent(Player player, Location from, Location to, TravelAgent pta, TeleportCause cause) {
-        super(player, from, to, cause);
+        base(player, from, to, cause);
         this.travelAgent = pta;
     }
 

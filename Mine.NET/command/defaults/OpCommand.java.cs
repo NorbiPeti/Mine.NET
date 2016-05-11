@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class OpCommand : VanillaCommand {
     public OpCommand() {
-        super("op");
+        base("op");
         this.description = "Gives the specified player operator status";
         this.usageMessage = "/op <player>";
         this.setPermission("bukkit.command.op.give");
@@ -57,7 +57,7 @@ public class OpCommand : VanillaCommand {
 
             Player senderPlayer = (Player) sender;
 
-            ArrayList<String> matchedPlayers = new ArrayList<String>();
+            List<String> matchedPlayers = new List<String>();
             for (Player player : sender.getServer().getOnlinePlayers()) {
                 String name = player.getName();
                 if (!senderPlayer.canSee(player) || player.isOp()) {

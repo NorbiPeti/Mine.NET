@@ -16,7 +16,7 @@ public class EntityTeleportEvent : EntityEvent : Cancellable {
     private Location to;
 
     public EntityTeleportEvent(Entity what, Location from, Location to) {
-        super(what);
+        base(what);
         this.from = from;
         this.to = to;
         this.cancel = false;

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 [Obsolete]
 public class TestForCommand : VanillaCommand {
     public TestForCommand() {
-        super("testfor");
+        base("testfor");
         this.description = "Tests whether a specifed player is online";
         this.usageMessage = "/testfor <player>";
         this.setPermission("bukkit.command.testfor");

@@ -17,7 +17,7 @@ public class EntityPortalExitEvent : EntityTeleportEvent {
     private Vector after;
 
     public EntityPortalExitEvent(Entity entity, readonly Location from, readonly Location to, readonly Vector before, readonly Vector after) {
-        super(entity, from, to);
+        base(entity, from, to);
         this.before = before;
         this.after = after;
     }

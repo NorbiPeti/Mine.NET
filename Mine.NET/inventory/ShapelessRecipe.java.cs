@@ -1,6 +1,6 @@
 package org.bukkit.inventory;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.IEnumerator;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import org.bukkit.material.MaterialData;
  */
 public class ShapelessRecipe : Recipe {
     private ItemStack output;
-    private List<ItemStack> ingredients = new ArrayList<ItemStack>();
+    private List<ItemStack> ingredients = new List<ItemStack>();
 
     /**
      * Create a shapeless recipe to craft the specified ItemStack. The
@@ -217,7 +217,7 @@ public class ShapelessRecipe : Recipe {
      * @return The input list
      */
     public List<ItemStack> getIngredientList() {
-        ArrayList<ItemStack> result = new ArrayList<ItemStack>(ingredients.size());
+        List<ItemStack> result = new List<ItemStack>(ingredients.size());
         for (ItemStack ingredient : ingredients) {
             result.add(ingredient.clone());
         }

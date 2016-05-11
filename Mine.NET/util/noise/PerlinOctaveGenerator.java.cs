@@ -35,7 +35,7 @@ public class PerlinOctaveGenerator : OctaveGenerator {
      * @param octaves Amount of octaves to create
      */
     public PerlinOctaveGenerator(Random rand, int octaves) {
-        super(createOctaves(rand, octaves));
+        base(createOctaves(rand, octaves));
     }
 
     private static NoiseGenerator[] createOctaves(Random rand, int octaves) {

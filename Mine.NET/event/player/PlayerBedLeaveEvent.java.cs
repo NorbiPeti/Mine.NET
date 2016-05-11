@@ -12,7 +12,7 @@ public class PlayerBedLeaveEvent : PlayerEvent {
     private readonly Block bed;
 
     public PlayerBedLeaveEvent(Player who, readonly Block bed) {
-        super(who);
+        base(who);
         this.bed = bed;
     }
 

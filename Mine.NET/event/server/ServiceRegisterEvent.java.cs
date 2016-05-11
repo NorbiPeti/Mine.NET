@@ -13,7 +13,7 @@ public class ServiceRegisterEvent : ServiceEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public ServiceRegisterEvent(RegisteredServiceProvider<?> registeredProvider) {
-        super(registeredProvider);
+        base(registeredProvider);
     }
 
     @Override

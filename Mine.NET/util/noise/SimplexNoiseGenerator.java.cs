@@ -45,7 +45,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
     private static readonly SimplexNoiseGenerator instance = new SimplexNoiseGenerator();
 
     protected SimplexNoiseGenerator() {
-        super();
+        base();
     }
 
     /**
@@ -72,7 +72,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
      * @param rand Random to construct with
      */
     public SimplexNoiseGenerator(Random rand) {
-        super(rand);
+        base(rand);
         offsetW = rand.nextDouble() * 256;
     }
 

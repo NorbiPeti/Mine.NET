@@ -6,23 +6,23 @@ package org.bukkit.configuration;
  */
 public class MemoryConfigurationOptions : ConfigurationOptions {
     protected MemoryConfigurationOptions(MemoryConfiguration configuration) {
-        super(configuration);
+        base(configuration);
     }
 
     @Override
     public MemoryConfiguration configuration() {
-        return (MemoryConfiguration) super.configuration();
+        return (MemoryConfiguration) base.configuration();
     }
 
     @Override
     public MemoryConfigurationOptions copyDefaults(bool value) {
-        super.copyDefaults(value);
+        base.copyDefaults(value);
         return this;
     }
 
     @Override
     public MemoryConfigurationOptions pathSeparator(char value) {
-        super.pathSeparator(value);
+        base.pathSeparator(value);
         return this;
     }
 }

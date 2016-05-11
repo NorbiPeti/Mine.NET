@@ -2,7 +2,7 @@ package org.bukkit.configuration;
 
 import static org.bukkit.util.NumberConversions.*;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -371,10 +371,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<String>(0);
+            return new List<String>(0);
         }
 
-        List<String> result = new ArrayList<String>();
+        List<String> result = new List<String>();
 
         for (Object object : list) {
             if ((object is String) || (isPrimitiveWrapper(object))) {
@@ -389,10 +389,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Integer>(0);
+            return new List<Integer>(0);
         }
 
-        List<Integer> result = new ArrayList<Integer>();
+        List<Integer> result = new List<Integer>();
 
         for (Object object : list) {
             if (object is Integer) {
@@ -416,10 +416,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<bool>(0);
+            return new List<bool>(0);
         }
 
-        List<bool> result = new ArrayList<bool>();
+        List<bool> result = new List<bool>();
 
         for (Object object : list) {
             if (object is bool) {
@@ -440,10 +440,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Double>(0);
+            return new List<Double>(0);
         }
 
-        List<Double> result = new ArrayList<Double>();
+        List<Double> result = new List<Double>();
 
         for (Object object : list) {
             if (object is Double) {
@@ -467,10 +467,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Float>(0);
+            return new List<Float>(0);
         }
 
-        List<Float> result = new ArrayList<Float>();
+        List<Float> result = new List<Float>();
 
         for (Object object : list) {
             if (object is Float) {
@@ -494,10 +494,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Long>(0);
+            return new List<Long>(0);
         }
 
-        List<Long> result = new ArrayList<Long>();
+        List<Long> result = new List<Long>();
 
         for (Object object : list) {
             if (object is Long) {
@@ -521,10 +521,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Byte>(0);
+            return new List<Byte>(0);
         }
 
-        List<Byte> result = new ArrayList<Byte>();
+        List<Byte> result = new List<Byte>();
 
         for (Object object : list) {
             if (object is Byte) {
@@ -548,10 +548,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Character>(0);
+            return new List<Character>(0);
         }
 
-        List<Character> result = new ArrayList<Character>();
+        List<Character> result = new List<Character>();
 
         for (Object object : list) {
             if (object is Character) {
@@ -574,10 +574,10 @@ public class MemorySection : ConfigurationSection {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Short>(0);
+            return new List<Short>(0);
         }
 
-        List<Short> result = new ArrayList<Short>();
+        List<Short> result = new List<Short>();
 
         for (Object object : list) {
             if (object is Short) {
@@ -599,7 +599,7 @@ public class MemorySection : ConfigurationSection {
 
     public List<Map<?, ?>> getMapList(String path) {
         List<?> list = getList(path);
-        List<Map<?, ?>> result = new ArrayList<Map<?, ?>>();
+        List<Map<?, ?>> result = new List<Map<?, ?>>();
 
         if (list == null) {
             return result;

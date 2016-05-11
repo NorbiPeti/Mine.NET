@@ -17,7 +17,7 @@ public class EntityCreatePortalEvent : EntityEvent : Cancellable {
     private PortalType type = PortalType.CUSTOM;
 
     public EntityCreatePortalEvent(LivingEntity what, readonly List<BlockState> blocks, readonly PortalType type) {
-        super(what);
+        base(what);
 
         this.blocks = blocks;
         this.type = type;

@@ -16,11 +16,11 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public PistonBaseMaterial(int type) {
-        super(type);
+        base(type);
     }
 
     public PistonBaseMaterial(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -32,7 +32,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public PistonBaseMaterial(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -44,7 +44,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public PistonBaseMaterial(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
@@ -118,6 +118,6 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
 
     @Override
     public PistonBaseMaterial clone() {
-        return (PistonBaseMaterial) super.clone();
+        return (PistonBaseMaterial) base.clone();
     }
 }

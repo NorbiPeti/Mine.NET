@@ -20,7 +20,7 @@ public class PluginLogger : Logger {
      * @param context A reference to the plugin
      */
     public PluginLogger(Plugin context) {
-        super(context.getClass().getCanonicalName(), null);
+        base(context.getClass().getCanonicalName(), null);
         String prefix = context.getDescription().getPrefix();
         pluginName = prefix != null ? new StringBuilder().append("[").append(prefix).append("] ").toString() : "[" + context.getDescription().getName() + "] ";
         setParent(context.getServer().getLogger());
@@ -30,7 +30,7 @@ public class PluginLogger : Logger {
     @Override
     public void log(LogRecord logRecord) {
         logRecord.setMessage(pluginName + logRecord.getMessage());
-        super.log(logRecord);
+        base.log(logRecord);
     }
 
 }

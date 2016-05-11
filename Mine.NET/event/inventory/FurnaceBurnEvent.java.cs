@@ -17,7 +17,7 @@ public class FurnaceBurnEvent : BlockEvent : Cancellable {
     private bool burning;
 
     public FurnaceBurnEvent(Block furnace, readonly ItemStack fuel, readonly int burnTime) {
-        super(furnace);
+        base(furnace);
         this.fuel = fuel;
         this.burnTime = burnTime;
         this.cancelled = false;

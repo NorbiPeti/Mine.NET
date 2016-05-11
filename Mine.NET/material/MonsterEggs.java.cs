@@ -1,6 +1,6 @@
 package org.bukkit.material;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -10,7 +10,7 @@ import org.bukkit.Material;
  */
 public class MonsterEggs : TexturedMaterial {
 
-    private static readonly List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new List<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.COBBLESTONE);
@@ -18,7 +18,7 @@ public class MonsterEggs : TexturedMaterial {
     }
 
     public MonsterEggs() {
-        super(Material.MONSTER_EGGS);
+        base(Material.MONSTER_EGGS);
     }
 
     /**
@@ -27,11 +27,11 @@ public class MonsterEggs : TexturedMaterial {
      */
     [Obsolete]
     public MonsterEggs(int type) {
-        super(type);
+        base(type);
     }
 
     public MonsterEggs(Material type) {
-        super((textures.contains(type)) ? Material.MONSTER_EGGS : type);
+        base((textures.contains(type)) ? Material.MONSTER_EGGS : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -44,7 +44,7 @@ public class MonsterEggs : TexturedMaterial {
      */
     [Obsolete]
     public MonsterEggs(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -54,7 +54,7 @@ public class MonsterEggs : TexturedMaterial {
      */
     [Obsolete]
     public MonsterEggs(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
@@ -64,6 +64,6 @@ public class MonsterEggs : TexturedMaterial {
 
     @Override
     public MonsterEggs clone() {
-        return (MonsterEggs) super.clone();
+        return (MonsterEggs) base.clone();
     }
 }

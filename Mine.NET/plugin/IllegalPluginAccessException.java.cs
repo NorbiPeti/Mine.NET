@@ -20,6 +20,6 @@ public class IllegalPluginAccessException : RuntimeException {
      * @param msg the detail message.
      */
     public IllegalPluginAccessException(String msg) {
-        super(msg);
+        base(msg);
     }
 }

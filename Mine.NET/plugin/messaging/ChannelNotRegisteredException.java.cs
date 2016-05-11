@@ -10,6 +10,6 @@ public class ChannelNotRegisteredException : RuntimeException {
     }
 
     public ChannelNotRegisteredException(String channel) {
-        super("Attempted to send a plugin message through the unregistered channel `" + channel + "'.");
+        base("Attempted to send a plugin message through the unregistered channel `" + channel + "'.");
     }
 }

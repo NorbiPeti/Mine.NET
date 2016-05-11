@@ -10,7 +10,7 @@ import org.bukkit.Material;
 public abstract class TexturedMaterial : MaterialData {
 
     public TexturedMaterial(Material m) {
-        super(m);
+        base(m);
     }
 
     /**
@@ -19,7 +19,7 @@ public abstract class TexturedMaterial : MaterialData {
      */
     [Obsolete]
     public TexturedMaterial(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -29,7 +29,7 @@ public abstract class TexturedMaterial : MaterialData {
      */
     [Obsolete]
     public TexturedMaterial(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -39,7 +39,7 @@ public abstract class TexturedMaterial : MaterialData {
      */
     [Obsolete]
     public TexturedMaterial(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -101,11 +101,11 @@ public abstract class TexturedMaterial : MaterialData {
     }
 
     public override string ToString() {
-        return getMaterial() + " " + super.toString();
+        return getMaterial() + " " + base.toString();
     }
 
     @Override
     public TexturedMaterial clone() {
-        return (TexturedMaterial) super.clone();
+        return (TexturedMaterial) base.clone();
     }
 }

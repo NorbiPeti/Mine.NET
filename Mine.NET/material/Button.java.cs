@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Button : SimpleAttachableMaterialData : Redstone {
     public Button() {
-        super(Material.STONE_BUTTON);
+        base(Material.STONE_BUTTON);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Button : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Button(int type) {
-        super(type);
+        base(type);
     }
 
     public Button(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Button : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Button(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Button : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public Button(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -131,11 +131,11 @@ public class Button : SimpleAttachableMaterialData : Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
     @Override
     public Button clone() {
-        return (Button) super.clone();
+        return (Button) base.clone();
     }
 }

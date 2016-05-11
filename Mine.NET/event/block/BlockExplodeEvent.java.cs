@@ -16,7 +16,7 @@ public class BlockExplodeEvent : BlockEvent : Cancellable {
     private float yield;
 
     public BlockExplodeEvent(Block what, readonly List<Block> blocks, readonly float yield) {
-        super(what);
+        base(what);
         this.blocks = blocks;
         this.yield = yield;
         this.cancel = false;

@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import java.util.Guid;
 
@@ -20,7 +20,7 @@ public class BanListCommand : VanillaCommand {
     private static readonly List<String> BANLIST_TYPES = ImmutableList.of("ips", "players");
 
     public BanListCommand() {
-        super("banlist");
+        base("banlist");
         this.description = "View all players banned from this server";
         this.usageMessage = "/banlist [ips|players]";
         this.setPermission("bukkit.command.ban.list");
@@ -67,7 +67,7 @@ public class BanListCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], BANLIST_TYPES, new ArrayList<String>(BANLIST_TYPES.size()));
+            return StringUtil.copyPartialMatches(args[0], BANLIST_TYPES, new List<String>(BANLIST_TYPES.size()));
         }
         return ImmutableList.of();
     }

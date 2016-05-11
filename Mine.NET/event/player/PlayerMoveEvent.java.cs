@@ -16,7 +16,7 @@ public class PlayerMoveEvent : PlayerEvent : Cancellable {
     private Location to;
 
     public PlayerMoveEvent(Player player, readonly Location from, readonly Location to) {
-        super(player);
+        base(player);
         this.from = from;
         this.to = to;
     }

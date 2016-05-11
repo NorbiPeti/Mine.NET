@@ -19,7 +19,7 @@ public class BlockDamageEvent : BlockEvent : Cancellable {
     private readonly ItemStack itemstack;
 
     public BlockDamageEvent(Player player, readonly Block block, readonly ItemStack itemInHand, readonly bool instaBreak) {
-        super(block);
+        base(block);
         this.instaBreak = instaBreak;
         this.player = player;
         this.itemstack = itemInHand;

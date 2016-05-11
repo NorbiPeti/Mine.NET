@@ -14,7 +14,7 @@ public class PlayerAchievementAwardedEvent : PlayerEvent : Cancellable {
     private bool isCancelled = false;
 
     public PlayerAchievementAwardedEvent(Player player, Achievement achievement) {
-        super(player);
+        base(player);
         this.achievement = achievement;
     }
 

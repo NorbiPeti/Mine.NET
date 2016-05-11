@@ -18,7 +18,7 @@ public abstract class PlayerBucketEvent : PlayerEvent : Cancellable {
     private readonly Material bucket;
 
     public PlayerBucketEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {
-        super(who);
+        base(who);
         this.blockClicked = blockClicked;
         this.blockFace = blockFace;
         this.itemStack = itemInHand;

@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -22,7 +22,7 @@ import com.google.common.collect.ImmutableList;
 public class GiveCommand : VanillaCommand {
     private static List<String> materials;
     static {
-        ArrayList<String> materialList = new ArrayList<String>();
+        List<String> materialList = new List<String>();
         for (Material material : Material.values()) {
             materialList.add(material.name());
         }
@@ -31,7 +31,7 @@ public class GiveCommand : VanillaCommand {
     }
 
     public GiveCommand() {
-        super("give");
+        base("give");
         this.description = "Gives the specified player a certain amount of items";
         this.usageMessage = "/give <player> <item> [amount [data]]";
         this.setPermission("bukkit.command.give");
@@ -99,12 +99,12 @@ public class GiveCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         if (args.length == 2) {
             readonly String arg = args[1];
             readonly List<String> materials = GiveCommand.materials;
-            List<String> completion = new ArrayList<String>();
+            List<String> completion = new List<String>();
 
             readonly int size = materials.size();
             int i = Collections.binarySearch(materials, arg, String.CASE_INSENSITIVE_ORDER);

@@ -19,14 +19,14 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 public class BukkitObjectInputStream : ObjectInputStream {
 
     /**
-     * Constructor provided to mirror super functionality.
+     * Constructor provided to mirror base functionality.
      *
      * @throws IOException if an I/O error occurs while reading stream heade
      * @see ObjectInputStream#ObjectInputStream()
      */
     protected BukkitObjectInputStream() throws IOException, SecurityException {
-        super();
-        super.enableResolveObject(true);
+        base();
+        base.enableResolveObject(true);
     }
 
     /**
@@ -37,8 +37,8 @@ public class BukkitObjectInputStream : ObjectInputStream {
      * @see ObjectInputStream#ObjectInputStream(InputStream)
      */
     public BukkitObjectInputStream(InputStream in) throws IOException {
-        super(in);
-        super.enableResolveObject(true);
+        base(in);
+        base.enableResolveObject(true);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class BukkitObjectInputStream : ObjectInputStream {
             }
         }
 
-        return super.resolveObject(obj);
+        return base.resolveObject(obj);
     }
 
     private static IOException newIOException(String string, Throwable cause) {

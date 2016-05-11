@@ -1,7 +1,7 @@
 package org.bukkit.command.defaults;
 
 import com.google.common.base.Charsets;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +30,7 @@ import org.json.simple.parser.ParseException;
 
 public class VersionCommand : BukkitCommand {
     public VersionCommand(String name) {
-        super(name);
+        base(name);
 
         this.description = "Gets the version of this server including any plugins in use";
         this.usageMessage = "/version [plugin name]";
@@ -130,7 +130,7 @@ public class VersionCommand : BukkitCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            List<String> completions = new ArrayList<String>();
+            List<String> completions = new List<String>();
             String toComplete = args[0].toLowerCase();
             for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
                 if (StringUtil.startsWithIgnoreCase(plugin.getName(), toComplete)) {

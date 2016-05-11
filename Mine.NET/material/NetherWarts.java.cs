@@ -8,7 +8,7 @@ import org.bukkit.NetherWartsState;
  */
 public class NetherWarts : MaterialData {
     public NetherWarts() {
-        super(Material.NETHER_WARTS);
+        base(Material.NETHER_WARTS);
     }
 
     public NetherWarts(NetherWartsState state) {
@@ -22,11 +22,11 @@ public class NetherWarts : MaterialData {
      */
     [Obsolete]
     public NetherWarts(int type) {
-        super(type);
+        base(type);
     }
 
     public NetherWarts(Material type) {
-        super (type);
+        base (type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class NetherWarts : MaterialData {
      */
     [Obsolete]
     public NetherWarts(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class NetherWarts : MaterialData {
      */
     [Obsolete]
     public NetherWarts(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -90,11 +90,11 @@ public class NetherWarts : MaterialData {
     }
 
     public override string ToString() {
-        return getState() + " " + super.toString();
+        return getState() + " " + base.toString();
     }
 
     @Override
     public NetherWarts clone() {
-        return (NetherWarts) super.clone();
+        return (NetherWarts) base.clone();
     }
 }

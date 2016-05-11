@@ -13,7 +13,7 @@ public class PlayerToggleSprintEvent : PlayerEvent : Cancellable {
     private bool cancel = false;
 
     public PlayerToggleSprintEvent(Player player, readonly bool isSprinting) {
-        super(player);
+        base(player);
         this.isSprinting = isSprinting;
     }
 

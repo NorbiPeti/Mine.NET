@@ -18,7 +18,7 @@ public class EntityDeathEvent : EntityEvent {
     }
 
     public EntityDeathEvent(LivingEntity what, readonly List<ItemStack> drops, readonly int droppedExp) {
-        super(what);
+        base(what);
         this.drops = drops;
         this.dropExp = droppedExp;
     }

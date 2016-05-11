@@ -16,7 +16,7 @@ import java.util.List;
 public class SpawnpointCommand : VanillaCommand {
 
     public SpawnpointCommand() {
-        super("spawnpoint");
+        base("spawnpoint");
         this.description = "Sets a player's spawn point";
         this.usageMessage = "/spawnpoint OR /spawnpoint <player> OR /spawnpoint <player> <x> <y> <z>";
         this.setPermission("bukkit.command.spawnpoint");
@@ -80,7 +80,7 @@ public class SpawnpointCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
 
         return ImmutableList.of();

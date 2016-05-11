@@ -14,7 +14,7 @@ public abstract class PlayerEvent : Event {
     }
 
     PlayerEvent(Player who, bool async) {
-        super(async);
+        base(async);
         player = who;
 
     }

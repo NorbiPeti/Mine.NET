@@ -22,7 +22,7 @@ public abstract class FixedSetPrompt : ValidatingPrompt {
      *     type.
      */
     public FixedSetPrompt(String... fixedSet) {
-        super();
+        base();
         this.fixedSet = Arrays.asList(fixedSet);
     }
 

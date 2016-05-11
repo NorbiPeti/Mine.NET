@@ -14,11 +14,11 @@ public class Stairs : MaterialData : Directional {
      */
     [Obsolete]
     public Stairs(int type) {
-        super(type);
+        base(type);
     }
 
     public Stairs(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -28,7 +28,7 @@ public class Stairs : MaterialData : Directional {
      */
     [Obsolete]
     public Stairs(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -38,7 +38,7 @@ public class Stairs : MaterialData : Directional {
      */
     [Obsolete]
     public Stairs(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -129,11 +129,11 @@ public class Stairs : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + (isInverted()?" inverted":"");
+        return base.toString() + " facing " + getFacing() + (isInverted()?" inverted":"");
     }
 
     @Override
     public Stairs clone() {
-        return (Stairs) super.clone();
+        return (Stairs) base.clone();
     }
 }

@@ -21,7 +21,7 @@ public class SpreadPlayersCommand : VanillaCommand {
     private static readonly Random random = new Random();
 
     public SpreadPlayersCommand() {
-        super("spreadplayers");
+        base("spreadplayers");
         this.description = "Spreads players around a point";
         this.usageMessage = "/spreadplayers <x> <z> <spreadDistance> <maxRange> <respectTeams true|false> <player ...>";
         this.setPermission("bukkit.command.spreadplayers");
@@ -63,7 +63,7 @@ public class SpreadPlayersCommand : VanillaCommand {
             return false;
         }
 
-        List<Player> players = Lists.newArrayList();
+        List<Player> players = Lists.newList();
         World world = null;
 
         for (int i = 5; i < args.length; i++) {

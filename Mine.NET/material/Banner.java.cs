@@ -6,11 +6,11 @@ import org.bukkit.block.BlockFace;
 public class Banner : MaterialData : Attachable {
 
     public Banner() {
-        super(Material.BANNER);
+        base(Material.BANNER);
     }
 
     public Banner(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -19,7 +19,7 @@ public class Banner : MaterialData : Attachable {
      */
     [Obsolete]
     public Banner(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Banner : MaterialData : Attachable {
      */
     [Obsolete]
     public Banner(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**     *
@@ -40,7 +40,7 @@ public class Banner : MaterialData : Attachable {
      */
     [Obsolete]
     public Banner(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public bool isWallBanner() {
@@ -224,11 +224,11 @@ public class Banner : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public Banner clone() {
-        return (Banner) super.clone();
+        return (Banner) base.clone();
     }
 }

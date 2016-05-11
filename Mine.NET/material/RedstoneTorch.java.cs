@@ -7,7 +7,7 @@ import org.bukkit.Material;
  */
 public class RedstoneTorch : Torch : Redstone {
     public RedstoneTorch() {
-        super(Material.REDSTONE_TORCH_ON);
+        base(Material.REDSTONE_TORCH_ON);
     }
 
     /**
@@ -16,11 +16,11 @@ public class RedstoneTorch : Torch : Redstone {
      */
     [Obsolete]
     public RedstoneTorch(int type) {
-        super(type);
+        base(type);
     }
 
     public RedstoneTorch(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class RedstoneTorch : Torch : Redstone {
      */
     [Obsolete]
     public RedstoneTorch(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -40,7 +40,7 @@ public class RedstoneTorch : Torch : Redstone {
      */
     [Obsolete]
     public RedstoneTorch(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -54,11 +54,11 @@ public class RedstoneTorch : Torch : Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
     @Override
     public RedstoneTorch clone() {
-        return (RedstoneTorch) super.clone();
+        return (RedstoneTorch) base.clone();
     }
 }

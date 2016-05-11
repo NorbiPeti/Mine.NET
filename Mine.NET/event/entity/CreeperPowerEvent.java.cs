@@ -22,7 +22,7 @@ public class CreeperPowerEvent : EntityEvent : Cancellable {
     }
 
     public CreeperPowerEvent(Creeper creeper, readonly PowerCause cause) {
-        super(creeper);
+        base(creeper);
         this.cause = cause;
     }
 

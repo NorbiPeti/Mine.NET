@@ -27,7 +27,7 @@ public class FixedMetadataValue : LazyMetadataValue {
      * @param value the value assigned to this metadata value
      */
     public FixedMetadataValue(Plugin owningPlugin, readonly Object value) {
-        super(owningPlugin);
+        base(owningPlugin);
         this.internalValue = value;
     }
 

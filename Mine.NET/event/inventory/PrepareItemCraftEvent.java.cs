@@ -11,7 +11,7 @@ public class PrepareItemCraftEvent : InventoryEvent {
     private CraftingInventory matrix;
 
     public PrepareItemCraftEvent(CraftingInventory what, InventoryView view, bool isRepair) {
-        super(view);
+        base(view);
         this.matrix = what;
         this.repair = isRepair;
     }

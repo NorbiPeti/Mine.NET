@@ -18,7 +18,7 @@ public class PlayerAnimationEvent : PlayerEvent : Cancellable {
      * @param player The player instance
      */
     public PlayerAnimationEvent(Player player) {
-        super(player);
+        base(player);
 
         // Only supported animation type for now:
         animationType = PlayerAnimationType.ARM_SWING;

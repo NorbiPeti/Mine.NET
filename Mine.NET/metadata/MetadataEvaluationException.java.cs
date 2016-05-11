@@ -8,6 +8,6 @@ package org.bukkit.metadata;
 @SuppressWarnings("serial")
 public class MetadataEvaluationException : RuntimeException {
     MetadataEvaluationException(Throwable cause) {
-        super(cause);
+        base(cause);
     }
 }

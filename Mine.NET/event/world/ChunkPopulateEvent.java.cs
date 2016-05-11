@@ -14,7 +14,7 @@ public class ChunkPopulateEvent : ChunkEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public ChunkPopulateEvent(Chunk chunk) {
-        super(chunk);
+        base(chunk);
     }
 
     @Override

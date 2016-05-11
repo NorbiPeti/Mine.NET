@@ -45,7 +45,7 @@ public class LazyMetadataValue : MetadataValueAdapter : MetadataValue {
      * @param lazyValue the lazy value assigned to this metadata value.
      */
     public LazyMetadataValue(Plugin owningPlugin, CacheStrategy cacheStrategy, Callable<Object> lazyValue) {
-        super(owningPlugin);
+        base(owningPlugin);
         if(cacheStrategy==null) throw new ArgumentNullException("cacheStrategy cannot be null");
         if(lazyValue==null) throw new ArgumentNullException("lazyValue cannot be null");
         this.internalValue = new SoftReference<Object>(null);
@@ -60,7 +60,7 @@ public class LazyMetadataValue : MetadataValueAdapter : MetadataValue {
      * @param owningPlugin the owning plugin
      */
     protected LazyMetadataValue(Plugin owningPlugin) {
-        super(owningPlugin);
+        base(owningPlugin);
     }
 
     public Object value() {

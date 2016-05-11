@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -21,10 +21,10 @@ import org.bukkit.util.StringUtil;
 
 [Obsolete]
 public class EnchantCommand : VanillaCommand {
-    private static readonly List<String> ENCHANTMENT_NAMES = new ArrayList<String>();
+    private static readonly List<String> ENCHANTMENT_NAMES = new List<String>();
 
     public EnchantCommand() {
-        super("enchant");
+        base("enchant");
         this.description = "Adds enchantments to the item the player is currently holding. Specify 0 for the level to remove an enchantment. Specify force to ignore normal enchantment restrictions";
         this.usageMessage = "/enchant <player> <enchantment> [level|max|0] [force]";
         this.setPermission("bukkit.command.enchant");
@@ -127,11 +127,11 @@ public class EnchantCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
 
         if (args.length == 2) {
-            return StringUtil.copyPartialMatches(args[1], ENCHANTMENT_NAMES, new ArrayList<String>(ENCHANTMENT_NAMES.size()));
+            return StringUtil.copyPartialMatches(args[1], ENCHANTMENT_NAMES, new List<String>(ENCHANTMENT_NAMES.size()));
         }
 
         if (args.length == 3 || args.length == 4) {

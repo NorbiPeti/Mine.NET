@@ -53,13 +53,13 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
     private readonly HashSet<Player> recipients;
 
     public PlayerCommandPreprocessEvent(Player player, readonly String message) {
-        super(player);
+        base(player);
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
         this.message = message;
     }
 
     public PlayerCommandPreprocessEvent(Player player, readonly String message, readonly HashSet<Player> recipients) {
-        super(player);
+        base(player);
         this.recipients = recipients;
         this.message = message;
     }

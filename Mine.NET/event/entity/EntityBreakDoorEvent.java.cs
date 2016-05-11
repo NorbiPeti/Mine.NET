@@ -12,7 +12,7 @@ import org.bukkit.entity.LivingEntity;
  */
 public class EntityBreakDoorEvent : EntityChangeBlockEvent {
     public EntityBreakDoorEvent(LivingEntity entity, readonly Block targetBlock) {
-        super(entity, targetBlock, Material.AIR, (byte) 0);
+        base(entity, targetBlock, Material.AIR, (byte) 0);
     }
 
     @Override

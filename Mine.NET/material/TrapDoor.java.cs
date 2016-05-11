@@ -8,7 +8,7 @@ import org.bukkit.block.BlockFace;
  */
 public class TrapDoor : SimpleAttachableMaterialData : Openable {
     public TrapDoor() {
-        super(Material.TRAP_DOOR);
+        base(Material.TRAP_DOOR);
     }
 
     /**
@@ -17,11 +17,11 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      */
     [Obsolete]
     public TrapDoor(int type) {
-        super(type);
+        base(type);
     }
 
     public TrapDoor(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      */
     [Obsolete]
     public TrapDoor(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      */
     [Obsolete]
     public TrapDoor(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public bool isOpen() {
@@ -122,11 +122,11 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
     }
 
     public override string ToString() {
-        return (isOpen() ? "OPEN " : "CLOSED ") + super.toString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
+        return (isOpen() ? "OPEN " : "CLOSED ") + base.toString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
     }
 
     @Override
     public TrapDoor clone() {
-        return (TrapDoor) super.clone();
+        return (TrapDoor) base.clone();
     }
 }

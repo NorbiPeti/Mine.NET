@@ -9,7 +9,7 @@ public class EntityCombustByEntityEvent : EntityCombustEvent {
     private readonly Entity combuster;
 
     public EntityCombustByEntityEvent(Entity combuster, readonly Entity combustee, readonly int duration) {
-        super(combustee, duration);
+        base(combustee, duration);
         this.combuster = combuster;
     }
 

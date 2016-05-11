@@ -2,7 +2,7 @@ package org.bukkit.conversations;
 
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -70,8 +70,8 @@ public class Conversation {
         this.modal = true;
         this.localEchoEnabled = true;
         this.prefix = new NullConversationPrefix();
-        this.cancellers = new ArrayList<ConversationCanceller>();
-        this.abandonedListeners = new ArrayList<ConversationAbandonedListener>();
+        this.cancellers = new List<ConversationCanceller>();
+        this.abandonedListeners = new List<ConversationAbandonedListener>();
     }
 
     /**

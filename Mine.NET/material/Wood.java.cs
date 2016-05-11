@@ -36,7 +36,7 @@ public class Wood : MaterialData {
      */
     [Obsolete]
     public Wood(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Wood : MaterialData {
      */
     public Wood(Material type, readonly TreeSpecies species) {
         // Ensure only valid species-type combinations
-        super(getSpeciesType(type, species));
+        base(getSpeciesType(type, species));
         setSpecies(species);
     }
 
@@ -67,7 +67,7 @@ public class Wood : MaterialData {
      */
     [Obsolete]
     public Wood(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -77,7 +77,7 @@ public class Wood : MaterialData {
      */
     [Obsolete]
     public Wood(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -185,11 +185,11 @@ public class Wood : MaterialData {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + super.toString();
+        return getSpecies() + " " + base.toString();
     }
 
     @Override
     public Wood clone() {
-        return (Wood) super.clone();
+        return (Wood) base.clone();
     }
 }

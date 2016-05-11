@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +26,7 @@ import com.google.common.collect.ImmutableList;
 
 public class HelpCommand : VanillaCommand {
     public HelpCommand() {
-        super("help");
+        base("help");
         this.description = "Shows the help menu";
         this.usageMessage = "/help <pageNumber>\n/help <topic>\n/help <topic> <pageNumber>";
         this.setAliases(Arrays.asList(new String[] { "?" }));
@@ -118,7 +118,7 @@ public class HelpCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            List<String> matchedTopics = new ArrayList<String>();
+            List<String> matchedTopics = new List<String>();
             String searchString = args[0];
             for (HelpTopic topic : Bukkit.getServer().getHelpMap().getHelpTopics()) {
                 String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();

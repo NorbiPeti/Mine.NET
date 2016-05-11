@@ -39,7 +39,7 @@ public class AsyncPlayerChatEvent : PlayerEvent : Cancellable {
      *     or unmodifiable collection.
      */
     public AsyncPlayerChatEvent(bool async, readonly Player who, readonly String message, readonly HashSet<Player> players) {
-        super(who, async);
+        base(who, async);
         this.message = message;
         recipients = players;
     }

@@ -20,7 +20,7 @@ public class PlayerInteractEntityEvent : PlayerEvent : Cancellable {
     }
 
     public PlayerInteractEntityEvent(Player who, readonly Entity clickedEntity, readonly EquipmentSlot hand) {
-        super(who);
+        base(who);
         this.clickedEntity = clickedEntity;
         this.hand = hand;
     }

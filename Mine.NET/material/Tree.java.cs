@@ -47,7 +47,7 @@ public class Tree : Wood {
      */
     [Obsolete]
     public Tree(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Tree : Wood {
      * @param dir the direction the tree block is facing
      */
     public Tree(Material type, TreeSpecies species, BlockFace dir) {
-        super(type, species);
+        base(type, species);
         setDirection(dir);
     }
 
@@ -89,7 +89,7 @@ public class Tree : Wood {
      */
     [Obsolete]
     public Tree(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -99,7 +99,7 @@ public class Tree : Wood {
      */
     [Obsolete]
     public Tree(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -158,11 +158,11 @@ public class Tree : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + getDirection() + " " + super.toString();
+        return getSpecies() + " " + getDirection() + " " + base.toString();
     }
 
     @Override
     public Tree clone() {
-        return (Tree) super.clone();
+        return (Tree) base.clone();
     }
 }

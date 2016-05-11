@@ -14,7 +14,7 @@ public class PlayerVelocityEvent : PlayerEvent : Cancellable {
     private Vector velocity;
 
     public PlayerVelocityEvent(Player player, readonly Vector velocity) {
-        super(player);
+        base(player);
         this.velocity = velocity;
     }
 

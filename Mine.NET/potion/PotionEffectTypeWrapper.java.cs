@@ -2,7 +2,7 @@ package org.bukkit.potion;
 
 public class PotionEffectTypeWrapper : PotionEffectType {
     protected PotionEffectTypeWrapper(int id) {
-        super(id);
+        base(id);
     }
 
     @Override

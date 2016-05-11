@@ -17,12 +17,12 @@ public class CraftItemEvent : InventoryClickEvent {
     }
 
     public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, ClickType click, InventoryAction action) {
-        super(what, type, slot, click, action);
+        base(what, type, slot, click, action);
         this.recipe = recipe;
     }
 
     public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, ClickType click, InventoryAction action, int key) {
-        super(what, type, slot, click, action, key);
+        base(what, type, slot, click, action, key);
         this.recipe = recipe;
     }
 
@@ -35,6 +35,6 @@ public class CraftItemEvent : InventoryClickEvent {
 
     @Override
     public CraftingInventory getInventory() {
-        return (CraftingInventory) super.getInventory();
+        return (CraftingInventory) base.getInventory();
     }
 }

@@ -12,7 +12,7 @@ public class PlayerPickupArrowEvent : PlayerPickupItemEvent {
     private readonly Arrow arrow;
 
     public PlayerPickupArrowEvent(Player player, readonly Item item, readonly Arrow arrow) {
-        super(player, item, 0);
+        base(player, item, 0);
         this.arrow = arrow;
     }
 

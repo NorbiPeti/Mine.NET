@@ -17,7 +17,7 @@ import com.google.common.collect.ImmutableList;
 public class TeleportCommand : VanillaCommand {
 
     public TeleportCommand() {
-        super("tp");
+        base("tp");
         this.description = "Teleports the given player (or yourself) to another player or coordinates";
         this.usageMessage = "/tp [player] <target> and/or <x> <y> <z>";
         this.setPermission("bukkit.command.teleport");
@@ -118,7 +118,7 @@ public class TeleportCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1 || args.length == 2) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

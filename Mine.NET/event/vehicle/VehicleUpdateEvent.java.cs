@@ -10,7 +10,7 @@ public class VehicleUpdateEvent : VehicleEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public VehicleUpdateEvent(Vehicle vehicle) {
-        super(vehicle);
+        base(vehicle);
     }
 
     @Override

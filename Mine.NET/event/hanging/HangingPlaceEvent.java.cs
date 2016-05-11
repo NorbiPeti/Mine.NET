@@ -18,7 +18,7 @@ public class HangingPlaceEvent : HangingEvent : Cancellable {
     private readonly BlockFace blockFace;
 
     public HangingPlaceEvent(Hanging hanging, readonly Player player, readonly Block block, readonly BlockFace blockFace) {
-        super(hanging);
+        base(hanging);
         this.player = player;
         this.block = block;
         this.blockFace = blockFace;

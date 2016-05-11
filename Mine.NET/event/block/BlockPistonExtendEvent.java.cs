@@ -1,6 +1,6 @@
 package org.bukkit.event.block;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,13 +18,13 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
 
     [Obsolete]
     public BlockPistonExtendEvent(Block block, readonly int length, readonly BlockFace direction) {
-        super(block, direction);
+        base(block, direction);
 
         this.length = length;
     }
 
     public BlockPistonExtendEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
-        super(block, direction);
+        base(block, direction);
 
         this.length = blocks.size();
         this.blocks = blocks;
@@ -50,7 +50,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
      */
     public List<Block> getBlocks() {
         if (blocks == null) {
-            ArrayList<Block> tmp = new ArrayList<Block>();
+            List<Block> tmp = new List<Block>();
             for (int i = 0; i < this.getLength(); i++) {
                 tmp.add(block.getRelative(getDirection(), i + 1));
             }

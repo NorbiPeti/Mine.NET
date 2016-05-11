@@ -16,7 +16,7 @@ public class ConversationAbandonedEvent : EventObject {
     }
 
     public ConversationAbandonedEvent(Conversation conversation, ConversationCanceller canceller) {
-        super(conversation);
+        base(conversation);
         this.context = conversation.getContext();
         this.canceller = canceller;
     }

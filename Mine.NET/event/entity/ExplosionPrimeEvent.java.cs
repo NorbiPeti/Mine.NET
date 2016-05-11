@@ -15,7 +15,7 @@ public class ExplosionPrimeEvent : EntityEvent : Cancellable {
     private bool fire;
 
     public ExplosionPrimeEvent(Entity what, readonly float radius, readonly bool fire) {
-        super(what);
+        base(what);
         this.cancel = false;
         this.radius = radius;
         this.fire = fire;

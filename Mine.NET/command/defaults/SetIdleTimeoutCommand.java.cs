@@ -14,7 +14,7 @@ import java.util.List;
 public class SetIdleTimeoutCommand : VanillaCommand {
 
     public SetIdleTimeoutCommand() {
-        super("setidletimeout");
+        base("setidletimeout");
         this.description = "Sets the server's idle timeout";
         this.usageMessage = "/setidletimeout <Minutes until kick>";
         this.setPermission("bukkit.command.setidletimeout");

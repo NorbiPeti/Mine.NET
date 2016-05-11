@@ -19,7 +19,7 @@ public class PlayerInteractAtEntityEvent : PlayerInteractEntityEvent {
     }
 
     public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position, EquipmentSlot hand) {
-        super(who, clickedEntity, hand);
+        base(who, clickedEntity, hand);
         this.position = position;
     }
 

@@ -18,7 +18,7 @@ public class NotePlayEvent : BlockEvent : Cancellable {
     private bool cancelled = false;
 
     public NotePlayEvent(Block block, Instrument instrument, Note note) {
-        super(block);
+        base(block);
         this.instrument = instrument;
         this.note = note;
     }

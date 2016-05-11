@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class LongGrass : MaterialData {
     public LongGrass() {
-        super(Material.LONG_GRASS);
+        base(Material.LONG_GRASS);
     }
 
     public LongGrass(GrassSpecies species) {
@@ -22,11 +22,11 @@ public class LongGrass : MaterialData {
      */
     [Obsolete]
     public LongGrass(int type) {
-        super(type);
+        base(type);
     }
 
     public LongGrass(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class LongGrass : MaterialData {
      */
     [Obsolete]
     public LongGrass(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class LongGrass : MaterialData {
      */
     [Obsolete]
     public LongGrass(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -68,11 +68,11 @@ public class LongGrass : MaterialData {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + super.toString();
+        return getSpecies() + " " + base.toString();
     }
 
     @Override
     public LongGrass clone() {
-        return (LongGrass) super.clone();
+        return (LongGrass) base.clone();
     }
 }

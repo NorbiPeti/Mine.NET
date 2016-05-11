@@ -13,7 +13,7 @@ public class HangingBreakEvent : HangingEvent : Cancellable {
     private readonly HangingBreakEvent.RemoveCause cause;
 
     public HangingBreakEvent(Hanging hanging, readonly HangingBreakEvent.RemoveCause cause) {
-        super(hanging);
+        base(hanging);
         this.cause = cause;
     }
 

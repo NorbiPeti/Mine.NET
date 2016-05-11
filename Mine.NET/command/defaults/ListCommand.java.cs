@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class ListCommand : VanillaCommand {
     public ListCommand() {
-        super("list");
+        base("list");
         this.description = "Lists all online players";
         this.usageMessage = "/list";
         this.setPermission("bukkit.command.list");

@@ -103,7 +103,7 @@ public class BlockVector : Vector {
      */
     @Override
     public BlockVector clone() {
-        return (BlockVector) super.clone();
+        return (BlockVector) base.clone();
     }
 
     public static BlockVector deserialize(Dictionary<String, Object> args) {

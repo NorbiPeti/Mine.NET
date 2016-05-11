@@ -13,7 +13,7 @@ public class FireworkExplodeEvent : EntityEvent : Cancellable {
     private bool cancel;
 
     public FireworkExplodeEvent(Firework what) {
-        super(what);
+        base(what);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class FireworkExplodeEvent : EntityEvent : Cancellable {
 
     @Override
     public Firework getEntity() {
-        return (Firework) super.getEntity();
+        return (Firework) base.getEntity();
     }
 
     @Override

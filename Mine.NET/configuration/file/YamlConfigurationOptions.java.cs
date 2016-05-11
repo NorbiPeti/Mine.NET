@@ -10,35 +10,35 @@ public class YamlConfigurationOptions : FileConfigurationOptions {
     private int indent = 2;
 
     protected YamlConfigurationOptions(YamlConfiguration configuration) {
-        super(configuration);
+        base(configuration);
     }
 
     @Override
     public YamlConfiguration configuration() {
-        return (YamlConfiguration) super.configuration();
+        return (YamlConfiguration) base.configuration();
     }
 
     @Override
     public YamlConfigurationOptions copyDefaults(bool value) {
-        super.copyDefaults(value);
+        base.copyDefaults(value);
         return this;
     }
 
     @Override
     public YamlConfigurationOptions pathSeparator(char value) {
-        super.pathSeparator(value);
+        base.pathSeparator(value);
         return this;
     }
 
     @Override
     public YamlConfigurationOptions header(String value) {
-        super.header(value);
+        base.header(value);
         return this;
     }
 
     @Override
     public YamlConfigurationOptions copyHeader(bool value) {
-        super.copyHeader(value);
+        base.copyHeader(value);
         return this;
     }
 

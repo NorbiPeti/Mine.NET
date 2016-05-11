@@ -12,7 +12,7 @@ public class Bed : MaterialData : Directional {
      * Default constructor for a bed.
      */
     public Bed() {
-        super(Material.BED_BLOCK);
+        base(Material.BED_BLOCK);
     }
 
     /**
@@ -32,11 +32,11 @@ public class Bed : MaterialData : Directional {
      */
     [Obsolete]
     public Bed(int type) {
-        super(type);
+        base(type);
     }
 
     public Bed(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Bed : MaterialData : Directional {
      */
     [Obsolete]
     public Bed(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Bed : MaterialData : Directional {
      */
     [Obsolete]
     public Bed(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -134,11 +134,11 @@ public class Bed : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + super.toString() + " facing " + getFacing();
+        return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + base.toString() + " facing " + getFacing();
     }
 
     @Override
     public Bed clone() {
-        return (Bed) super.clone();
+        return (Bed) base.clone();
     }
 }

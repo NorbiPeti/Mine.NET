@@ -14,7 +14,7 @@ public class EntityInteractEvent : EntityEvent : Cancellable {
     private bool cancelled;
 
     public EntityInteractEvent(Entity entity, readonly Block block) {
-        super(entity);
+        base(entity);
         this.block = block;
     }
 

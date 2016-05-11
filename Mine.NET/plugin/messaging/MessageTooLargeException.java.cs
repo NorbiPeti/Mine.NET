@@ -18,6 +18,6 @@ public class MessageTooLargeException : RuntimeException {
     }
 
     public MessageTooLargeException(String msg) {
-        super(msg);
+        base(msg);
     }
 }

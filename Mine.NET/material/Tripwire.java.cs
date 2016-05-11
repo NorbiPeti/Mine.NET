@@ -8,7 +8,7 @@ import org.bukkit.Material;
 public class Tripwire : MaterialData {
     
     public Tripwire() {
-        super(Material.TRIPWIRE);
+        base(Material.TRIPWIRE);
     }
 
     /**
@@ -17,7 +17,7 @@ public class Tripwire : MaterialData {
      */
     [Obsolete]
     public Tripwire(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Tripwire : MaterialData {
      */
     [Obsolete]
     public Tripwire(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -76,10 +76,10 @@ public class Tripwire : MaterialData {
 
     @Override
     public Tripwire clone() {
-        return (Tripwire) super.clone();
+        return (Tripwire) base.clone();
     }
 
     public override string ToString() {
-        return super.toString() + (isActivated()?" Activated":"") + (isObjectTriggering()?" Triggered":"");
+        return base.toString() + (isActivated()?" Activated":"") + (isObjectTriggering()?" Triggered":"");
     }
 }

@@ -14,7 +14,7 @@ public class PlayerGameModeChangeEvent : PlayerEvent : Cancellable {
     private readonly GameMode newGameMode;
 
     public PlayerGameModeChangeEvent(Player player, readonly GameMode newGameMode) {
-        super(player);
+        base(player);
         this.newGameMode = newGameMode;
     }
 

@@ -8,7 +8,7 @@ import org.apache.commons.lang.math.NumberUtils;
  */
 public abstract class NumericPrompt : ValidatingPrompt{
     public NumericPrompt() {
-        super();
+        base();
     }
 
     @Override

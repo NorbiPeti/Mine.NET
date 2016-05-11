@@ -17,7 +17,7 @@ public class CreatureSpawnEvent : EntityEvent : Cancellable {
     private readonly SpawnReason spawnReason;
 
     public CreatureSpawnEvent(LivingEntity spawnee, readonly SpawnReason spawnReason) {
-        super(spawnee);
+        base(spawnee);
         this.spawnReason = spawnReason;
     }
 

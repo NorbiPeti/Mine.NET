@@ -16,7 +16,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class BanCommand : VanillaCommand {
     public BanCommand() {
-        super("ban");
+        base("ban");
         this.description = "Prevents the specified player from using this server";
         this.usageMessage = "/ban <player> [reason ...]";
         this.setPermission("bukkit.command.ban.player");
@@ -49,7 +49,7 @@ public class BanCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length >= 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

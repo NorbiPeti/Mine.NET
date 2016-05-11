@@ -14,7 +14,7 @@ public class PlayerBedEnterEvent : PlayerEvent : Cancellable {
     private readonly Block bed;
 
     public PlayerBedEnterEvent(Player who, readonly Block bed) {
-        super(who);
+        base(who);
         this.bed = bed;
     }
 

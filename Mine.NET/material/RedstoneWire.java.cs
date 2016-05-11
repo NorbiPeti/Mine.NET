@@ -7,7 +7,7 @@ import org.bukkit.Material;
  */
 public class RedstoneWire : MaterialData : Redstone {
     public RedstoneWire() {
-        super(Material.REDSTONE_WIRE);
+        base(Material.REDSTONE_WIRE);
     }
 
     /**
@@ -16,11 +16,11 @@ public class RedstoneWire : MaterialData : Redstone {
      */
     [Obsolete]
     public RedstoneWire(int type) {
-        super(type);
+        base(type);
     }
 
     public RedstoneWire(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class RedstoneWire : MaterialData : Redstone {
      */
     [Obsolete]
     public RedstoneWire(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -40,7 +40,7 @@ public class RedstoneWire : MaterialData : Redstone {
      */
     [Obsolete]
     public RedstoneWire(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -54,11 +54,11 @@ public class RedstoneWire : MaterialData : Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
     @Override
     public RedstoneWire clone() {
-        return (RedstoneWire) super.clone();
+        return (RedstoneWire) base.clone();
     }
 }

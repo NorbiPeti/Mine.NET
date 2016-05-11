@@ -13,7 +13,7 @@ public class InventoryCreativeEvent : InventoryClickEvent {
     private ItemStack item;
 
     public InventoryCreativeEvent(InventoryView what, SlotType type, int slot, ItemStack newItem) {
-        super(what, type, slot, ClickType.CREATIVE, InventoryAction.PLACE_ALL);
+        base(what, type, slot, ClickType.CREATIVE, InventoryAction.PLACE_ALL);
         this.item = newItem;
     }
 

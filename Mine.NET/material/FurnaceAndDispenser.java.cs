@@ -13,11 +13,11 @@ public class FurnaceAndDispenser : DirectionalContainer {
      */
     [Obsolete]
     public FurnaceAndDispenser(int type) {
-        super(type);
+        base(type);
     }
 
     public FurnaceAndDispenser(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -27,7 +27,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
      */
     [Obsolete]
     public FurnaceAndDispenser(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -37,11 +37,11 @@ public class FurnaceAndDispenser : DirectionalContainer {
      */
     [Obsolete]
     public FurnaceAndDispenser(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
     public FurnaceAndDispenser clone() {
-        return (FurnaceAndDispenser) super.clone();
+        return (FurnaceAndDispenser) base.clone();
     }
 }

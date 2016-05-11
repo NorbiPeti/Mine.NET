@@ -15,15 +15,15 @@ public class Gate : MaterialData : Directional, Openable {
     private static readonly byte GATE_EAST = 0x3;
 
     public Gate() {
-        super(Material.FENCE_GATE);
+        base(Material.FENCE_GATE);
     }
 
     public Gate(int type, byte data){
-        super(type, data);
+        base(type, data);
     }
 
     public Gate(byte data) {
-        super(Material.FENCE_GATE, data);
+        base(Material.FENCE_GATE, data);
     }
 
     public void setFacingDirection(BlockFace face) {
@@ -85,6 +85,6 @@ public class Gate : MaterialData : Directional, Openable {
 
     @Override
     public Gate clone() {
-        return (Gate) super.clone();
+        return (Gate) base.clone();
     }
 }

@@ -29,7 +29,7 @@ public class Door : MaterialData : Directional, Openable {
      */
     [Obsolete]
     public Door() {
-        super(Material.WOODEN_DOOR);
+        base(Material.WOODEN_DOOR);
     }
 
     /**
@@ -38,11 +38,11 @@ public class Door : MaterialData : Directional, Openable {
      */
     [Obsolete]
     public Door(int type) {
-        super(type);
+        base(type);
     }
 
     public Door(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -90,7 +90,7 @@ public class Door : MaterialData : Directional, Openable {
      * @see BlockFace#SOUTH
      */
     public Door(Material type, BlockFace face, bool isOpen) {
-        super(type);
+        base(type);
         setTopHalf(false);
         setFacingDirection(face);
         setOpen(isOpen);
@@ -111,7 +111,7 @@ public class Door : MaterialData : Directional, Openable {
      * @see Material#DARK_OAK_DOOR
      */
     public Door(Material type, bool isHingeRight) {
-        super(type);
+        base(type);
         setTopHalf(true);
         setHinge(isHingeRight);
     }
@@ -172,7 +172,7 @@ public class Door : MaterialData : Directional, Openable {
      */
     [Obsolete]
     public Door(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -182,7 +182,7 @@ public class Door : MaterialData : Directional, Openable {
      */
     [Obsolete]
     public Door(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -256,7 +256,7 @@ public class Door : MaterialData : Directional, Openable {
     }
 
     public override string ToString() {
-        return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + super.toString();
+        return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + base.toString();
     }
 
     /**
@@ -332,6 +332,6 @@ public class Door : MaterialData : Directional, Openable {
 
     @Override
     public Door clone() {
-        return (Door) super.clone();
+        return (Door) base.clone();
     }
 }

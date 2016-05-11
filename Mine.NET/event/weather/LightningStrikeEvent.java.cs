@@ -14,7 +14,7 @@ public class LightningStrikeEvent : WeatherEvent : Cancellable {
     private readonly LightningStrike bolt;
 
     public LightningStrikeEvent(World world, readonly LightningStrike bolt) {
-        super(world);
+        base(world);
         this.bolt = bolt;
     }
 

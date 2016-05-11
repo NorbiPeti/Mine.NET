@@ -16,7 +16,7 @@ public class VehicleEntityCollisionEvent : VehicleCollisionEvent : Cancellable {
     private bool cancelledCollision = false;
 
     public VehicleEntityCollisionEvent(Vehicle vehicle, readonly Entity entity) {
-        super(vehicle);
+        base(vehicle);
         this.entity = entity;
     }
 

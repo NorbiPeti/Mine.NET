@@ -25,7 +25,7 @@ public class PlayerDeathEvent : EntityDeathEvent {
     }
 
     public PlayerDeathEvent(Player player, readonly List<ItemStack> drops, readonly int droppedExp, readonly int newExp, readonly int newTotalExp, readonly int newLevel, readonly String deathMessage) {
-        super(player, drops, droppedExp);
+        base(player, drops, droppedExp);
         this.newExp = newExp;
         this.newTotalExp = newTotalExp;
         this.newLevel = newLevel;

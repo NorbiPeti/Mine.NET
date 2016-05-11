@@ -8,6 +8,6 @@ package org.bukkit.metadata;
 @SuppressWarnings("serial")
 public class MetadataConversionException : RuntimeException {
     MetadataConversionException(String message) {
-        super(message);
+        base(message);
     }
 }

@@ -7,6 +7,6 @@ import org.bukkit.entity.Vehicle;
  */
 public abstract class VehicleCollisionEvent : VehicleEvent {
     public VehicleCollisionEvent(Vehicle vehicle) {
-        super(vehicle);
+        base(vehicle);
     }
 }

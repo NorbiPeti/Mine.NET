@@ -14,7 +14,7 @@ public class PlayerRespawnEvent : PlayerEvent {
     private readonly bool isBedSpawn;
 
     public PlayerRespawnEvent(Player respawnPlayer, readonly Location respawnLocation, readonly bool isBedSpawn) {
-        super(respawnPlayer);
+        base(respawnPlayer);
         this.respawnLocation = respawnLocation;
         this.isBedSpawn = isBedSpawn;
     }

@@ -18,7 +18,7 @@ public class ItemDespawnEvent : EntityEvent : Cancellable {
     private readonly Location location;
 
     public ItemDespawnEvent(Item despawnee, readonly Location loc) {
-        super(despawnee);
+        base(despawnee);
         location = loc;
     }
 

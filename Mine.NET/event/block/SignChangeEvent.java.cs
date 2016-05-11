@@ -17,7 +17,7 @@ public class SignChangeEvent : BlockEvent : Cancellable {
     private readonly String[] lines;
 
     public SignChangeEvent(Block theBlock, readonly Player thePlayer, readonly String[] theLines) {
-        super(theBlock);
+        base(theBlock);
         this.player = thePlayer;
         this.lines = theLines;
     }

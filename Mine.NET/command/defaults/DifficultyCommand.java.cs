@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 import org.bukkit.Difficulty;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 [Obsolete]
@@ -17,7 +17,7 @@ public class DifficultyCommand : VanillaCommand {
     private static readonly List<String> DIFFICULTY_NAMES = ImmutableList.of("peaceful", "easy", "normal", "hard");
 
     public DifficultyCommand() {
-        super("difficulty");
+        base("difficulty");
         this.description = "Sets the game difficulty";
         this.usageMessage = "/difficulty <new difficulty> ";
         this.setPermission("bukkit.command.difficulty");
@@ -74,7 +74,7 @@ public class DifficultyCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], DIFFICULTY_NAMES, new ArrayList<String>(DIFFICULTY_NAMES.size()));
+            return StringUtil.copyPartialMatches(args[0], DIFFICULTY_NAMES, new List<String>(DIFFICULTY_NAMES.size()));
         }
 
         return ImmutableList.of();

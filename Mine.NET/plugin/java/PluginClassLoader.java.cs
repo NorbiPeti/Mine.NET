@@ -26,7 +26,7 @@ sealed class PluginClassLoader : URLClassLoader {
     private IllegalStateException pluginState;
 
     PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) throws InvalidPluginException, MalformedURLException {
-        super(new URL[] {file.toURI().toURL()}, parent);
+        base(new URL[] {file.toURI().toURL()}, parent);
         if(loader==null) throw new ArgumentNullException("Loader cannot be null");
 
         this.loader = loader;
@@ -74,7 +74,7 @@ sealed class PluginClassLoader : URLClassLoader {
             }
 
             if (result == null) {
-                result = super.findClass(name);
+                result = base.findClass(name);
 
                 if (result != null) {
                     loader.setClass(name, result);

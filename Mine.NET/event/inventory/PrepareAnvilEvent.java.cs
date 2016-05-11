@@ -14,13 +14,13 @@ public class PrepareAnvilEvent : InventoryEvent {
     private ItemStack result;
 
     public PrepareAnvilEvent(InventoryView inventory, ItemStack result) {
-        super(inventory);
+        base(inventory);
         this.result = result;
     }
 
     @Override
     public AnvilInventory getInventory() {
-        return (AnvilInventory) super.getInventory();
+        return (AnvilInventory) base.getInventory();
     }
 
     /**

@@ -29,14 +29,14 @@ public class PlayerChatEvent : PlayerEvent : Cancellable {
     private readonly HashSet<Player> recipients;
 
     public PlayerChatEvent(Player player, readonly String message) {
-        super(player);
+        base(player);
         this.message = message;
         this.format = "<%1$s> %2$s";
         this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
     }
 
     public PlayerChatEvent(Player player, readonly String message, readonly String format, readonly HashSet<Player> recipients) {
-        super(player);
+        base(player);
         this.message = message;
         this.format = format;
         this.recipients = recipients;

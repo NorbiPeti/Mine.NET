@@ -1,6 +1,6 @@
 package org.bukkit.event.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Map;
 
@@ -21,13 +21,13 @@ public class LingeringPotionSplashEvent : ProjectileHitEvent : Cancellable {
     private readonly AreaEffectCloud entity;
 
     public LingeringPotionSplashEvent(ThrownPotion potion, readonly AreaEffectCloud entity) {
-        super(potion);
+        base(potion);
         this.entity = entity;
     }
 
     @Override
     public LingeringPotion getEntity() {
-        return (LingeringPotion) super.getEntity();
+        return (LingeringPotion) base.getEntity();
     }
 
     /**

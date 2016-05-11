@@ -12,7 +12,7 @@ public class ChunkUnloadEvent : ChunkEvent : Cancellable {
     private bool cancel = false;
 
     public ChunkUnloadEvent(Chunk chunk) {
-        super(chunk);
+        base(chunk);
     }
 
     public bool isCancelled() {

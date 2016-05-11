@@ -11,7 +11,7 @@ public class ChunkLoadEvent : ChunkEvent {
     private readonly bool newChunk;
 
     public ChunkLoadEvent(Chunk chunk, readonly bool newChunk) {
-        super(chunk);
+        base(chunk);
         this.newChunk = newChunk;
     }
 

@@ -14,7 +14,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class SayCommand : VanillaCommand {
     public SayCommand() {
-        super("say");
+        base("say");
         this.description = "Broadcasts the given message as the sender";
         this.usageMessage = "/say <message ...>";
         this.setPermission("bukkit.command.say");
@@ -56,7 +56,7 @@ public class SayCommand : VanillaCommand {
         if(args==null) throw new ArgumentNullException("Arguments cannot be null");
 
         if (args.length >= 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }

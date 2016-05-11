@@ -16,7 +16,7 @@ public class VehicleDestroyEvent : VehicleEvent : Cancellable {
     private bool cancelled;
 
     public VehicleDestroyEvent(Vehicle vehicle, readonly Entity attacker) {
-        super(vehicle);
+        base(vehicle);
         this.attacker = attacker;
     }
 

@@ -33,7 +33,7 @@ public class Mushroom : MaterialData {
      * @see Material#HUGE_MUSHROOM_2
      */
     public Mushroom(Material shroom) {
-        super(shroom);
+        base(shroom);
         if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
@@ -78,7 +78,7 @@ public class Mushroom : MaterialData {
      */
     [Obsolete]
     public Mushroom(Material shroom, byte data) {
-        super(shroom, data);
+        base(shroom, data);
         if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
@@ -89,7 +89,7 @@ public class Mushroom : MaterialData {
      */
     [Obsolete]
     public Mushroom(int type, byte data){
-        super(type, data);
+        base(type, data);
         if(type == Material.HUGE_MUSHROOM_1.getId() || type == Material.HUGE_MUSHROOM_2.getId()) throw new ArgumentException("Not a mushroom!");
     }
 
@@ -289,6 +289,6 @@ public class Mushroom : MaterialData {
 
     @Override
     public Mushroom clone() {
-        return (Mushroom) super.clone();
+        return (Mushroom) base.clone();
     }
 }

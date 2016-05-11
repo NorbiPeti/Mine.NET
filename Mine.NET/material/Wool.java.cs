@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Wool : MaterialData : Colorable {
     public Wool() {
-        super(Material.WOOL);
+        base(Material.WOOL);
     }
 
     public Wool(DyeColor color) {
@@ -22,11 +22,11 @@ public class Wool : MaterialData : Colorable {
      */
     [Obsolete]
     public Wool(int type) {
-        super(type);
+        base(type);
     }
 
     public Wool(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Wool : MaterialData : Colorable {
      */
     [Obsolete]
     public Wool(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Wool : MaterialData : Colorable {
      */
     [Obsolete]
     public Wool(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -68,11 +68,11 @@ public class Wool : MaterialData : Colorable {
     }
 
     public override string ToString() {
-        return getColor() + " " + super.toString();
+        return getColor() + " " + base.toString();
     }
 
     @Override
     public Wool clone() {
-        return (Wool) super.clone();
+        return (Wool) base.clone();
     }
 }

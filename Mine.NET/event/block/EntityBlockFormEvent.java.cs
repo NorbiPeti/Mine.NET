@@ -17,7 +17,7 @@ public class EntityBlockFormEvent : BlockFormEvent {
     private readonly Entity entity;
 
     public EntityBlockFormEvent(Entity entity, readonly Block block, readonly BlockState blockstate) {
-        super(block, blockstate);
+        base(block, blockstate);
 
         this.entity = entity;
     }

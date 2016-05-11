@@ -14,7 +14,7 @@ public class PlayerItemHeldEvent : PlayerEvent : Cancellable {
     private readonly int current;
 
     public PlayerItemHeldEvent(Player player, readonly int previous, readonly int current) {
-        super(player);
+        base(player);
         this.previous = previous;
         this.current = current;
     }

@@ -1,6 +1,6 @@
 package org.bukkit.event.entity;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Map;
 
@@ -19,7 +19,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
     private readonly Dictionary<LivingEntity, Double> affectedEntities;
 
     public PotionSplashEvent(ThrownPotion potion, readonly Dictionary<LivingEntity, Double> affectedEntities) {
-        super(potion);
+        base(potion);
 
         this.affectedEntities = affectedEntities;
     }
@@ -44,7 +44,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
      * @return A fresh copy of the affected entity list
      */
     public Collection<LivingEntity> getAffectedEntities() {
-        return new ArrayList<LivingEntity>(affectedEntities.keySet());
+        return new List<LivingEntity>(affectedEntities.keySet());
     }
 
     /**

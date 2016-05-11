@@ -13,11 +13,11 @@ public class DirectionalContainer : MaterialData : Directional {
      */
     [Obsolete]
     public DirectionalContainer(int type) {
-        super(type);
+        base(type);
     }
 
     public DirectionalContainer(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -27,7 +27,7 @@ public class DirectionalContainer : MaterialData : Directional {
      */
     [Obsolete]
     public DirectionalContainer(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -37,7 +37,7 @@ public class DirectionalContainer : MaterialData : Directional {
      */
     [Obsolete]
     public DirectionalContainer(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public void setFacingDirection(BlockFace face) {
@@ -84,11 +84,11 @@ public class DirectionalContainer : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public DirectionalContainer clone() {
-        return (DirectionalContainer) super.clone();
+        return (DirectionalContainer) base.clone();
     }
 }

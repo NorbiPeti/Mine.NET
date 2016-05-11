@@ -13,7 +13,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class KillCommand : VanillaCommand {
     public KillCommand() {
-        super("kill");
+        base("kill");
         this.description = "Commits suicide, only usable as a player";
         this.usageMessage = "/kill";
         this.setPermission("bukkit.command.kill");

@@ -20,7 +20,7 @@ public class PlayerInventoryEvent : PlayerEvent {
     protected Inventory inventory;
 
     public PlayerInventoryEvent(Player player, readonly Inventory inventory) {
-        super(player);
+        base(player);
         this.inventory = inventory;
     }
 

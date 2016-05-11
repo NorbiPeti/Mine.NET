@@ -12,7 +12,7 @@ public class PlayerLevelChangeEvent : PlayerEvent {
     private readonly int newLevel;
 
     public PlayerLevelChangeEvent(Player player, readonly int oldLevel, readonly int newLevel) {
-         super(player);
+         base(player);
          this.oldLevel = oldLevel;
          this.newLevel = newLevel;
     }

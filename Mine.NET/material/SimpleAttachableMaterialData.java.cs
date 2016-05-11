@@ -14,7 +14,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      */
     [Obsolete]
     public SimpleAttachableMaterialData(int type) {
-        super(type);
+        base(type);
     }
 
     public SimpleAttachableMaterialData(int type, BlockFace direction) {
@@ -28,7 +28,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
     }
 
     public SimpleAttachableMaterialData(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -38,7 +38,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      */
     [Obsolete]
     public SimpleAttachableMaterialData(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -48,7 +48,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      */
     [Obsolete]
     public SimpleAttachableMaterialData(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public BlockFace getFacing() {
@@ -57,11 +57,11 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public SimpleAttachableMaterialData clone() {
-        return (SimpleAttachableMaterialData) super.clone();
+        return (SimpleAttachableMaterialData) base.clone();
     }
 }

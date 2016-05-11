@@ -15,7 +15,7 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
     }
 
     public CocoaPlant() {
-        super(Material.COCOA);
+        base(Material.COCOA);
     }
 
     /**
@@ -24,7 +24,7 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
      */
     [Obsolete]
     public CocoaPlant(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -34,7 +34,7 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
      */
     [Obsolete]
     public CocoaPlant(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public CocoaPlant(CocoaPlantSize sz) {
@@ -123,10 +123,10 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
 
     @Override
     public CocoaPlant clone() {
-        return (CocoaPlant) super.clone();
+        return (CocoaPlant) base.clone();
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + " " + getSize();
+        return base.toString() + " facing " + getFacing() + " " + getSize();
     }
 }

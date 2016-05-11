@@ -17,7 +17,7 @@ public class EntityPortalEvent : EntityTeleportEvent {
     protected TravelAgent travelAgent;
 
     public EntityPortalEvent(Entity entity, readonly Location from, readonly Location to, readonly TravelAgent pta) {
-        super(entity, from, to);
+        base(entity, from, to);
         this.travelAgent = pta;
     }
 

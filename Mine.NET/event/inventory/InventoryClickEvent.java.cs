@@ -59,7 +59,7 @@ public class InventoryClickEvent : InventoryInteractEvent {
     }
 
     public InventoryClickEvent(InventoryView view, SlotType type, int slot, ClickType click, InventoryAction action) {
-        super(view);
+        base(view);
         this.slot_type = type;
         this.rawSlot = slot;
         this.whichSlot = view.convertSlot(slot);

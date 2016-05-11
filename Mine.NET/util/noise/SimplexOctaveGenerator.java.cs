@@ -36,12 +36,12 @@ public class SimplexOctaveGenerator : OctaveGenerator {
      * @param octaves Amount of octaves to create
      */
     public SimplexOctaveGenerator(Random rand, int octaves) {
-        super(createOctaves(rand, octaves));
+        base(createOctaves(rand, octaves));
     }
 
     @Override
     public void setScale(double scale) {
-        super.setScale(scale);
+        base.setScale(scale);
         setWScale(scale);
     }
 

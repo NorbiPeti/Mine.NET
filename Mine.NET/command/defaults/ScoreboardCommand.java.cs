@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -63,7 +63,7 @@ public class ScoreboardCommand : VanillaCommand {
     private static readonly List<String> bool = ImmutableList.of("true", "false");
 
     public ScoreboardCommand() {
-        super("scoreboard");
+        base("scoreboard");
         this.description = "Scoreboard control";
         this.usageMessage = "/scoreboard";
         this.setPermission("bukkit.command.scoreboard");
@@ -485,75 +485,75 @@ public class ScoreboardCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], MAIN_CHOICES, new ArrayList<String>());
+            return StringUtil.copyPartialMatches(args[0], MAIN_CHOICES, new List<String>());
         }
         if (args.length > 1) {
             if (args[0].equalsIgnoreCase("objectives")) {
                 if (args.length == 2) {
-                    return StringUtil.copyPartialMatches(args[1], OBJECTIVES_CHOICES, new ArrayList<String>());
+                    return StringUtil.copyPartialMatches(args[1], OBJECTIVES_CHOICES, new List<String>());
                 }
                 if (args[1].equalsIgnoreCase("add")) {
                     if (args.length == 4) {
-                        return StringUtil.copyPartialMatches(args[3], OBJECTIVES_CRITERIA, new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[3], OBJECTIVES_CRITERIA, new List<String>());
                     }
                 } else if (args[1].equalsIgnoreCase("remove")) {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], this.getCurrentObjectives(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], this.getCurrentObjectives(), new List<String>());
                     }
                 } else if (args[1].equalsIgnoreCase("setdisplay")) {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], OBJECTIVES_DISPLAYSLOT.keySet(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], OBJECTIVES_DISPLAYSLOT.keySet(), new List<String>());
                     }
                     if (args.length == 4) {
-                        return StringUtil.copyPartialMatches(args[3], this.getCurrentObjectives(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[3], this.getCurrentObjectives(), new List<String>());
                     }
                 }
             } else if (args[0].equalsIgnoreCase("players")) {
                 if (args.length == 2) {
-                    return StringUtil.copyPartialMatches(args[1], PLAYERS_CHOICES, new ArrayList<String>());
+                    return StringUtil.copyPartialMatches(args[1], PLAYERS_CHOICES, new List<String>());
                 }
                 if (args[1].equalsIgnoreCase("set") || args[1].equalsIgnoreCase("add") || args[1].equalsIgnoreCase("remove")) {
                     if (args.length == 3) {
-                        return super.tabComplete(sender, alias, args);
+                        return base.tabComplete(sender, alias, args);
                     }
                     if (args.length == 4) {
-                        return StringUtil.copyPartialMatches(args[3], this.getCurrentObjectives(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[3], this.getCurrentObjectives(), new List<String>());
                     }
                 } else {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], this.getCurrentEntries(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], this.getCurrentEntries(), new List<String>());
                     }
                 }
             } else if (args[0].equalsIgnoreCase("teams")) {
                 if (args.length == 2) {
-                    return StringUtil.copyPartialMatches(args[1], TEAMS_CHOICES, new ArrayList<String>());
+                    return StringUtil.copyPartialMatches(args[1], TEAMS_CHOICES, new List<String>());
                 }
                 if (args[1].equalsIgnoreCase("join")) {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new List<String>());
                     }
                     if (args.length >= 4) {
-                        return super.tabComplete(sender, alias, args);
+                        return base.tabComplete(sender, alias, args);
                     }
                 } else if (args[1].equalsIgnoreCase("leave")) {
-                    return super.tabComplete(sender, alias, args);
+                    return base.tabComplete(sender, alias, args);
                 } else if (args[1].equalsIgnoreCase("option")) {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new List<String>());
                     }
                     if (args.length == 4) {
-                        return StringUtil.copyPartialMatches(args[3], TEAMS_OPTION_CHOICES, new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[3], TEAMS_OPTION_CHOICES, new List<String>());
                     }
                     if (args.length == 5) {
                         if (args[3].equalsIgnoreCase("color")) {
-                            return StringUtil.copyPartialMatches(args[4], TEAMS_OPTION_COLOR.keySet(), new ArrayList<String>());
+                            return StringUtil.copyPartialMatches(args[4], TEAMS_OPTION_COLOR.keySet(), new List<String>());
                         } else {
-                            return StringUtil.copyPartialMatches(args[4], bool, new ArrayList<String>());
+                            return StringUtil.copyPartialMatches(args[4], bool, new List<String>());
                         }
                     }
                 } else {
                     if (args.length == 3) {
-                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new ArrayList<String>());
+                        return StringUtil.copyPartialMatches(args[2], this.getCurrentTeams(), new List<String>());
                     }
                 }
             }
@@ -590,7 +590,7 @@ public class ScoreboardCommand : VanillaCommand {
     }
 
     private List<String> getCurrentObjectives() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new List<String>();
         for (Objective objective : Bukkit.getScoreboardManager().getMainScoreboard().getObjectives()) {
             list.add(objective.getName());
         }
@@ -599,7 +599,7 @@ public class ScoreboardCommand : VanillaCommand {
     }
 
     private List<String> getCurrentEntries() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new List<String>();
         for (String entry : Bukkit.getScoreboardManager().getMainScoreboard().getEntries()) {
             list.add(entry);
         }
@@ -608,7 +608,7 @@ public class ScoreboardCommand : VanillaCommand {
     }
 
     private List<String> getCurrentTeams() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new List<String>();
         for (Team team : Bukkit.getScoreboardManager().getMainScoreboard().getTeams()) {
             list.add(team.getName());
         }

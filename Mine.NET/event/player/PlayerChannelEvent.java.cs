@@ -12,7 +12,7 @@ public abstract class PlayerChannelEvent : PlayerEvent {
     private readonly String channel;
 
     public PlayerChannelEvent(Player player, readonly String channel) {
-        super(player);
+        base(player);
         this.channel = channel;
     }
 

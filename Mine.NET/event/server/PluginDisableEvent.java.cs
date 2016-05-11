@@ -10,7 +10,7 @@ public class PluginDisableEvent : PluginEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public PluginDisableEvent(Plugin plugin) {
-        super(plugin);
+        base(plugin);
     }
 
     @Override

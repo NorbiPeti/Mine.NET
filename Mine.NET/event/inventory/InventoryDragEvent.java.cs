@@ -63,7 +63,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
     private ItemStack newCursor;
 
     public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<Integer, ItemStack> slots) {
-        super(what);
+        base(what);
 
         Validate.notNull(oldCursor);
         Validate.notNull(slots);

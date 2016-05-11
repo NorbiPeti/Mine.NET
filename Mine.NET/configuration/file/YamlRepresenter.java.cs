@@ -20,7 +20,7 @@ public class YamlRepresenter : Representer {
     private class RepresentConfigurationSection : RepresentMap {
         @Override
         public Node representData(Object data) {
-            return super.representData(((ConfigurationSection) data).getValues(false));
+            return base.representData(((ConfigurationSection) data).getValues(false));
         }
     }
 
@@ -32,7 +32,7 @@ public class YamlRepresenter : Representer {
             values.put(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(serializable.getClass()));
             values.putAll(serializable.serialize());
 
-            return super.representData(values);
+            return base.representData(values);
         }
     }
 }

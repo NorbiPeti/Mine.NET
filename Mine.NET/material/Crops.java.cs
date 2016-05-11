@@ -40,7 +40,7 @@ public class Crops : MaterialData {
      * @param state The growth state of the crops
      */
     public Crops(Material type, readonly CropState state) {
-        super(type);
+        base(type);
         setState(state);
     }
 
@@ -50,7 +50,7 @@ public class Crops : MaterialData {
      */
     [Obsolete]
     public Crops(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -69,7 +69,7 @@ public class Crops : MaterialData {
      */
     [Obsolete]
     public Crops(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -79,7 +79,7 @@ public class Crops : MaterialData {
      */
     [Obsolete]
     public Crops(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -140,11 +140,11 @@ public class Crops : MaterialData {
     }
 
     public override string ToString() {
-        return getState() + " " + super.toString();
+        return getState() + " " + base.toString();
     }
 
     @Override
     public Crops clone() {
-        return (Crops) super.clone();
+        return (Crops) base.clone();
     }
 }

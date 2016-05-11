@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -17,7 +17,7 @@ public class DefaultGameModeCommand : VanillaCommand {
     private static readonly List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival");
 
     public DefaultGameModeCommand() {
-        super("defaultgamemode");
+        base("defaultgamemode");
         this.description = "Set the default gamemode";
         this.usageMessage = "/defaultgamemode <mode>";
         this.setPermission("bukkit.command.defaultgamemode");
@@ -63,7 +63,7 @@ public class DefaultGameModeCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], GAMEMODE_NAMES, new ArrayList<String>(GAMEMODE_NAMES.size()));
+            return StringUtil.copyPartialMatches(args[0], GAMEMODE_NAMES, new List<String>(GAMEMODE_NAMES.size()));
         }
 
         return ImmutableList.of();

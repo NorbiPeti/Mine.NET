@@ -47,7 +47,7 @@ public class Leaves : Wood {
      */
     [Obsolete]
     public Leaves(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -78,7 +78,7 @@ public class Leaves : Wood {
      * @param isDecayable whether the block is permanent or can disappear
      */
     public Leaves(Material type, TreeSpecies species, bool isDecayable) {
-        super(type, species);
+        base(type, species);
         setDecayable(isDecayable);
     }
 
@@ -89,7 +89,7 @@ public class Leaves : Wood {
      */
     [Obsolete]
     public Leaves(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -99,7 +99,7 @@ public class Leaves : Wood {
      */
     [Obsolete]
     public Leaves(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -145,11 +145,11 @@ public class Leaves : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + super.toString();
+        return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + base.toString();
     }
 
     @Override
     public Leaves clone() {
-        return (Leaves) super.clone();
+        return (Leaves) base.clone();
     }
 }

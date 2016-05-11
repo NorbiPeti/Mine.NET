@@ -18,7 +18,7 @@ public class PlayerSwapHandItemsEvent : PlayerEvent : Cancellable {
     private bool cancelled;
 
     public PlayerSwapHandItemsEvent(Player player, ItemStack mainHandItem, ItemStack offHandItem) {
-        super(player);
+        base(player);
 
         this.mainHandItem = mainHandItem;
         this.offHandItem = offHandItem;

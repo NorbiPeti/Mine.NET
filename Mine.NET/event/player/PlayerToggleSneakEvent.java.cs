@@ -13,7 +13,7 @@ public class PlayerToggleSneakEvent : PlayerEvent : Cancellable {
     private bool cancel = false;
 
     public PlayerToggleSneakEvent(Player player, readonly bool isSneaking) {
-        super(player);
+        base(player);
         this.isSneaking = isSneaking;
     }
 

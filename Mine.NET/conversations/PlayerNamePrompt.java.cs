@@ -11,7 +11,7 @@ public abstract class PlayerNamePrompt : ValidatingPrompt{
     private Plugin plugin;
 
     public PlayerNamePrompt(Plugin plugin) {
-        super();
+        base();
         this.plugin = plugin;
     }
 

@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -17,7 +17,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class DeopCommand : VanillaCommand {
     public DeopCommand() {
-        super("deop");
+        base("deop");
         this.description = "Takes the specified player's operator status";
         this.usageMessage = "/deop <player>";
         this.setPermission("bukkit.command.op.take");
@@ -49,7 +49,7 @@ public class DeopCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            List<String> completions = new ArrayList<String>();
+            List<String> completions = new List<String>();
             for (OfflinePlayer player : Bukkit.getOperators()) {
                 String playerName = player.getName();
                 if (StringUtil.startsWithIgnoreCase(playerName, args[0])) {

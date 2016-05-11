@@ -27,7 +27,7 @@ public class EnchantItemEvent : InventoryEvent : Cancellable {
     private int button;
 
     public EnchantItemEvent(Player enchanter, readonly InventoryView view, readonly Block table, readonly ItemStack item, readonly int level, readonly Dictionary<Enchantment, Integer> enchants, readonly int i) {
-        super(view);
+        base(view);
         this.enchanter = enchanter;
         this.table = table;
         this.item = item;

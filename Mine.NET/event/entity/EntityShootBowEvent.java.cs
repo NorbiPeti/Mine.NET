@@ -18,7 +18,7 @@ public class EntityShootBowEvent : EntityEvent : Cancellable {
     private bool cancelled;
 
     public EntityShootBowEvent(LivingEntity shooter, readonly ItemStack bow, readonly Projectile projectile, readonly float force) {
-        super(shooter);
+        base(shooter);
         this.bow = bow;
         this.projectile = projectile;
         this.force = force;

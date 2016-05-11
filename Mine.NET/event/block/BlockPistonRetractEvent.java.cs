@@ -14,7 +14,7 @@ public class BlockPistonRetractEvent : BlockPistonEvent {
     private List<Block> blocks;
     
     public BlockPistonRetractEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
-        super(block, direction);
+        base(block, direction);
         
         this.blocks = blocks;
     }

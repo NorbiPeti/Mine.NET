@@ -14,7 +14,7 @@ public class EntityTameEvent : EntityEvent : Cancellable {
     private readonly AnimalTamer owner;
 
     public EntityTameEvent(LivingEntity entity, readonly AnimalTamer owner) {
-        super(entity);
+        base(entity);
         this.owner = owner;
     }
 

@@ -20,7 +20,7 @@ public class VillagerReplenishTradeEvent : EntityEvent : Cancellable {
     private int bonus;
 
     public VillagerReplenishTradeEvent(Villager what, MerchantRecipe recipe, int bonus) {
-        super(what);
+        base(what);
         this.recipe = recipe;
         this.bonus = bonus;
     }
@@ -75,7 +75,7 @@ public class VillagerReplenishTradeEvent : EntityEvent : Cancellable {
 
     @Override
     public Villager getEntity() {
-        return (Villager) super.getEntity();
+        return (Villager) base.getEntity();
     }
 
     @Override

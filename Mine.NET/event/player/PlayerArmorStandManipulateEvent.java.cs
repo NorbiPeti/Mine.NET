@@ -18,7 +18,7 @@ public class PlayerArmorStandManipulateEvent : PlayerInteractEntityEvent {
     private readonly EquipmentSlot slot;
 
     public PlayerArmorStandManipulateEvent(Player who, readonly ArmorStand clickedEntity, readonly ItemStack playerItem, readonly ItemStack armorStandItem, readonly EquipmentSlot slot) {
-        super(who, clickedEntity);
+        base(who, clickedEntity);
         this.playerItem = playerItem;
         this.armorStandItem = armorStandItem;
         this.slot = slot;

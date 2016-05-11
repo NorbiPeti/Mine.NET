@@ -7,7 +7,7 @@ import org.bukkit.Material;
  */
 public class PressurePlate : MaterialData : PressureSensor {
     public PressurePlate() {
-        super(Material.WOOD_PLATE);
+        base(Material.WOOD_PLATE);
     }
 
     /**
@@ -16,11 +16,11 @@ public class PressurePlate : MaterialData : PressureSensor {
      */
     [Obsolete]
     public PressurePlate(int type) {
-        super(type);
+        base(type);
     }
 
     public PressurePlate(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -30,7 +30,7 @@ public class PressurePlate : MaterialData : PressureSensor {
      */
     [Obsolete]
     public PressurePlate(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -40,7 +40,7 @@ public class PressurePlate : MaterialData : PressureSensor {
      */
     [Obsolete]
     public PressurePlate(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public bool isPressed() {
@@ -48,11 +48,11 @@ public class PressurePlate : MaterialData : PressureSensor {
     }
 
     public override string ToString() {
-        return super.toString() + (isPressed() ? " PRESSED" : "");
+        return base.toString() + (isPressed() ? " PRESSED" : "");
     }
 
     @Override
     public PressurePlate clone() {
-        return (PressurePlate) super.clone();
+        return (PressurePlate) base.clone();
     }
 }

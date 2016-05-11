@@ -1,6 +1,6 @@
 package org.bukkit.material;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -10,7 +10,7 @@ import org.bukkit.Material;
  */
 public class SmoothBrick : TexturedMaterial {
 
-    private static readonly List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new List<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.MOSSY_COBBLESTONE);
@@ -19,7 +19,7 @@ public class SmoothBrick : TexturedMaterial {
     }
 
     public SmoothBrick() {
-        super(Material.SMOOTH_BRICK);
+        base(Material.SMOOTH_BRICK);
     }
 
     /**
@@ -28,11 +28,11 @@ public class SmoothBrick : TexturedMaterial {
      */
     [Obsolete]
     public SmoothBrick(int type) {
-        super(type);
+        base(type);
     }
 
     public SmoothBrick(Material type) {
-        super((textures.contains(type)) ? Material.SMOOTH_BRICK : type);
+        base((textures.contains(type)) ? Material.SMOOTH_BRICK : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -45,7 +45,7 @@ public class SmoothBrick : TexturedMaterial {
      */
     [Obsolete]
     public SmoothBrick(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -55,7 +55,7 @@ public class SmoothBrick : TexturedMaterial {
      */
     [Obsolete]
     public SmoothBrick(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
@@ -65,6 +65,6 @@ public class SmoothBrick : TexturedMaterial {
 
     @Override
     public SmoothBrick clone() {
-        return (SmoothBrick) super.clone();
+        return (SmoothBrick) base.clone();
     }
 }

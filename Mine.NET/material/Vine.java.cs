@@ -17,7 +17,7 @@ public class Vine : MaterialData {
     EnumSet<BlockFace> possibleFaces = EnumSet.of(BlockFace.WEST, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST);
 
     public Vine() {
-        super(Material.VINE);
+        base(Material.VINE);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Vine : MaterialData {
      */
     [Obsolete]
     public Vine(int type, byte data){
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Vine : MaterialData {
      */
     [Obsolete]
     public Vine(byte data) {
-        super(Material.VINE, data);
+        base(Material.VINE, data);
     }
 
     public Vine(BlockFace... faces) {
@@ -191,6 +191,6 @@ public class Vine : MaterialData {
 
     @Override
     public Vine clone() {
-        return (Vine) super.clone();
+        return (Vine) base.clone();
     }
 }

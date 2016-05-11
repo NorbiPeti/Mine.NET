@@ -13,7 +13,7 @@ public class VehicleMoveEvent : VehicleEvent {
     private readonly Location to;
 
     public VehicleMoveEvent(Vehicle vehicle, readonly Location from, readonly Location to) {
-        super(vehicle);
+        base(vehicle);
 
         this.from = from;
         this.to = to;

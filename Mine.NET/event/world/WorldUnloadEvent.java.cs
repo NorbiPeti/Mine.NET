@@ -12,7 +12,7 @@ public class WorldUnloadEvent : WorldEvent : Cancellable {
     private bool isCancelled;
 
     public WorldUnloadEvent(World world) {
-        super(world);
+        base(world);
     }
 
     public bool isCancelled() {

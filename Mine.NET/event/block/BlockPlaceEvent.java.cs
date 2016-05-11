@@ -29,7 +29,7 @@ public class BlockPlaceEvent : BlockEvent : Cancellable {
     }
 
     public BlockPlaceEvent(Block placedBlock, readonly BlockState replacedBlockState, readonly Block placedAgainst, readonly ItemStack itemInHand, readonly Player thePlayer, readonly bool canBuild, readonly EquipmentSlot hand) {
-        super(placedBlock);
+        base(placedBlock);
         this.placedAgainst = placedAgainst;
         this.itemInHand = itemInHand;
         this.player = thePlayer;

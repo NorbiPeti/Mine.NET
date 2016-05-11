@@ -1,6 +1,6 @@
 package org.bukkit.permissions;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -226,7 +226,7 @@ public class Permission {
      * @return Permission object
      */
     public static List<Permission> loadPermissions(Dictionary<?, ?> data, String error, PermissionDefault def) {
-        List<Permission> result = new ArrayList<Permission>();
+        List<Permission> result = new List<Permission>();
 
         for (Map.Entry<?, ?> entry : data.entrySet()) {
             try {

@@ -16,7 +16,7 @@ import java.util.List;
 public class SetWorldSpawnCommand : VanillaCommand {
 
     public SetWorldSpawnCommand() {
-        super("setworldspawn");
+        base("setworldspawn");
         this.description = "Sets a worlds's spawn point. If no coordinates are specified, the player's coordinates will be used.";
         this.usageMessage = "/setworldspawn OR /setworldspawn <x> <y> <z>";
         this.setPermission("bukkit.command.setworldspawn");

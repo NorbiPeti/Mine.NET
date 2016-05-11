@@ -15,7 +15,7 @@ public class EntityCombustEvent : EntityEvent : Cancellable {
     private bool cancel;
 
     public EntityCombustEvent(Entity combustee, readonly int duration) {
-        super(combustee);
+        base(combustee);
         this.duration = duration;
         this.cancel = false;
     }

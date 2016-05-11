@@ -11,7 +11,7 @@ public class PlayerQuitEvent : PlayerEvent {
     private String quitMessage;
 
     public PlayerQuitEvent(Player who, readonly String quitMessage) {
-        super(who);
+        base(who);
         this.quitMessage = quitMessage;
     }
 

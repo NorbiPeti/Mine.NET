@@ -7,7 +7,7 @@ import org.bukkit.event.server.ServiceUnregisterEvent;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.IEnumerator;
@@ -40,7 +40,7 @@ public class SimpleServicesManager : ServicesManager {
         synchronized (providers) {
             List<RegisteredServiceProvider<?>> registered = providers.get(service);
             if (registered == null) {
-                registered = new ArrayList<RegisteredServiceProvider<?>>();
+                registered = new List<RegisteredServiceProvider<?>>();
                 providers.put(service, registered);
             }
 
@@ -64,7 +64,7 @@ public class SimpleServicesManager : ServicesManager {
      * @param plugin The plugin
      */
     public void unregisterAll(Plugin plugin) {
-        ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
+        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
             IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
@@ -106,7 +106,7 @@ public class SimpleServicesManager : ServicesManager {
      * @param provider The service provider implementation
      */
     public void unregister(Class<?> service, Object provider) {
-        ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
+        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
             IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
@@ -153,7 +153,7 @@ public class SimpleServicesManager : ServicesManager {
      * @param provider The service provider implementation
      */
     public void unregister(Object provider) {
-        ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
+        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
             IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 

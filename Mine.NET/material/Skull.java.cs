@@ -8,7 +8,7 @@ import org.bukkit.block.BlockFace;
  */
 public class Skull : MaterialData : Directional {
     public Skull() {
-        super(Material.SKULL);
+        base(Material.SKULL);
     }
 
     /**
@@ -27,11 +27,11 @@ public class Skull : MaterialData : Directional {
      */
     [Obsolete]
     public Skull(int type) {
-        super(type);
+        base(type);
     }
 
     public Skull(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Skull : MaterialData : Directional {
      */
     [Obsolete]
     public Skull(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Skull : MaterialData : Directional {
      */
     [Obsolete]
     public Skull(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public void setFacingDirection(BlockFace face) {
@@ -105,11 +105,11 @@ public class Skull : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public Skull clone() {
-        return (Skull) super.clone();
+        return (Skull) base.clone();
     }
 }

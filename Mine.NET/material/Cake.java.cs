@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 public class Cake : MaterialData {
     public Cake() {
-        super(Material.CAKE_BLOCK);
+        base(Material.CAKE_BLOCK);
     }
 
     /**
@@ -13,11 +13,11 @@ public class Cake : MaterialData {
      */
     [Obsolete]
     public Cake(int type) {
-        super(type);
+        base(type);
     }
 
     public Cake(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -27,7 +27,7 @@ public class Cake : MaterialData {
      */
     [Obsolete]
     public Cake(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Cake : MaterialData {
      */
     [Obsolete]
     public Cake(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -82,11 +82,11 @@ public class Cake : MaterialData {
     }
 
     public override string ToString() {
-        return super.toString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
+        return base.toString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
     }
 
     @Override
     public Cake clone() {
-        return (Cake) super.clone();
+        return (Cake) base.clone();
     }
 }

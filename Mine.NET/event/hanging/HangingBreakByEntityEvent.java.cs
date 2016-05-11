@@ -10,7 +10,7 @@ public class HangingBreakByEntityEvent : HangingBreakEvent {
     private readonly Entity remover;
 
     public HangingBreakByEntityEvent(Hanging hanging, readonly Entity remover) {
-        super(hanging, HangingBreakEvent.RemoveCause.ENTITY);
+        base(hanging, HangingBreakEvent.RemoveCause.ENTITY);
         this.remover = remover;
     }
 

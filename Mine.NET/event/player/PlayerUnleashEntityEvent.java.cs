@@ -13,7 +13,7 @@ public class PlayerUnleashEntityEvent : EntityUnleashEvent : Cancellable {
     private bool cancelled = false;
 
     public PlayerUnleashEntityEvent(Entity entity, Player player) {
-        super(entity, UnleashReason.PLAYER_UNLEASH);
+        base(entity, UnleashReason.PLAYER_UNLEASH);
         this.player = player;
     }
 

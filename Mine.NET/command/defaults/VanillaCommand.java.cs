@@ -12,11 +12,11 @@ public abstract class VanillaCommand : Command {
     static readonly int MIN_COORD = -30000000;
 
     protected VanillaCommand(String name) {
-        super(name);
+        base(name);
     }
 
     protected VanillaCommand(String name, String description, String usageMessage, List<String> aliases) {
-        super(name, description, usageMessage, aliases);
+        base(name, description, usageMessage, aliases);
     }
 
     public bool matches(String input) {

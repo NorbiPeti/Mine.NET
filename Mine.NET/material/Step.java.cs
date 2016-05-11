@@ -1,6 +1,6 @@
 package org.bukkit.material;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.bukkit.Material;
@@ -9,7 +9,7 @@ import org.bukkit.Material;
  * Represents the different types of steps.
  */
 public class Step : TexturedMaterial {
-    private static readonly List<Material> textures = new ArrayList<Material>();
+    private static readonly List<Material> textures = new List<Material>();
     static {
         textures.add(Material.STONE);
         textures.add(Material.SANDSTONE);
@@ -22,7 +22,7 @@ public class Step : TexturedMaterial {
     }
 
     public Step() {
-        super(Material.STEP);
+        base(Material.STEP);
     }
 
     /**
@@ -31,11 +31,11 @@ public class Step : TexturedMaterial {
      */
     [Obsolete]
     public Step(int type) {
-        super(type);
+        base(type);
     }
 
     public Step(Material type) {
-        super((textures.contains(type)) ? Material.STEP : type);
+        base((textures.contains(type)) ? Material.STEP : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -48,7 +48,7 @@ public class Step : TexturedMaterial {
      */
     [Obsolete]
     public Step(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -58,7 +58,7 @@ public class Step : TexturedMaterial {
      */
     [Obsolete]
     public Step(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
@@ -111,10 +111,10 @@ public class Step : TexturedMaterial {
 
     @Override
     public Step clone() {
-        return (Step) super.clone();
+        return (Step) base.clone();
     }
 
     public override string ToString() {
-        return super.toString() + (isInverted()?"inverted":"");
+        return base.toString() + (isInverted()?"inverted":"");
     }
 }

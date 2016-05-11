@@ -3,7 +3,7 @@ package org.bukkit.command.defaults;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -23,7 +23,7 @@ public class TimingsCommand : BukkitCommand {
     private static readonly List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("merged", "reset", "separate");
 
     public TimingsCommand(String name) {
-        super(name);
+        base(name);
         this.description = "Records timings for all plugin events";
         this.usageMessage = "/timings <reset|merged|separate>";
         this.setPermission("bukkit.command.timings");
@@ -117,7 +117,7 @@ public class TimingsCommand : BukkitCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], TIMINGS_SUBCOMMANDS, new ArrayList<String>(TIMINGS_SUBCOMMANDS.size()));
+            return StringUtil.copyPartialMatches(args[0], TIMINGS_SUBCOMMANDS, new List<String>(TIMINGS_SUBCOMMANDS.size()));
         }
         return ImmutableList.of();
     }

@@ -21,7 +21,7 @@ public class VehicleDamageEvent : VehicleEvent : Cancellable {
     }
 
     public VehicleDamageEvent(Vehicle vehicle, readonly Entity attacker, readonly double damage) {
-        super(vehicle);
+        base(vehicle);
         this.attacker = attacker;
         this.damage = damage;
     }

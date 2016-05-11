@@ -19,12 +19,12 @@ public class EntityDamageByBlockEvent : EntityDamageEvent {
 
     [Obsolete]
     public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly double damage) {
-        super(damagee, cause, damage);
+        base(damagee, cause, damage);
         this.damager = damager;
     }
 
-    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? super Double, Double>> modifierFunctions) {
-        super(damagee, cause, modifiers, modifierFunctions);
+    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? base Double, Double>> modifierFunctions) {
+        base(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }
 

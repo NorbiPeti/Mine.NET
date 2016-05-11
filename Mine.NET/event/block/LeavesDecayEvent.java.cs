@@ -14,7 +14,7 @@ public class LeavesDecayEvent : BlockEvent : Cancellable {
     private bool cancel = false;
 
     public LeavesDecayEvent(Block block) {
-        super(block);
+        base(block);
     }
 
     public bool isCancelled() {

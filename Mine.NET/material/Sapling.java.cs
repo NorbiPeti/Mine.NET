@@ -66,7 +66,7 @@ public class Sapling : Wood {
      * with bonemeal
      */
     public Sapling(Material type, TreeSpecies species, bool isInstantGrowable) {
-        super(type, species);
+        base(type, species);
         setIsInstantGrowable(isInstantGrowable);
     }
 
@@ -77,7 +77,7 @@ public class Sapling : Wood {
      */
     [Obsolete]
     public Sapling(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -87,7 +87,7 @@ public class Sapling : Wood {
      */
     [Obsolete]
     public Sapling(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -110,11 +110,11 @@ public class Sapling : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + super.toString();
+        return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + base.toString();
     }
 
     @Override
     public Sapling clone() {
-        return (Sapling) super.clone();
+        return (Sapling) base.clone();
     }
 }

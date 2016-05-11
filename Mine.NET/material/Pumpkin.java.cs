@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
 public class Pumpkin : MaterialData : Directional {
 
     public Pumpkin() {
-        super(Material.PUMPKIN);
+        base(Material.PUMPKIN);
     }
 
     /**
@@ -28,11 +28,11 @@ public class Pumpkin : MaterialData : Directional {
      */
     [Obsolete]
     public Pumpkin(int type) {
-        super(type);
+        base(type);
     }
 
     public Pumpkin(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Pumpkin : MaterialData : Directional {
      */
     [Obsolete]
     public Pumpkin(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -52,7 +52,7 @@ public class Pumpkin : MaterialData : Directional {
      */
     [Obsolete]
     public Pumpkin(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public bool isLit() {
@@ -103,11 +103,11 @@ public class Pumpkin : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + " " + (isLit() ? "" : "NOT ") + "LIT";
+        return base.toString() + " facing " + getFacing() + " " + (isLit() ? "" : "NOT ") + "LIT";
     }
 
     @Override
     public Pumpkin clone() {
-        return (Pumpkin) super.clone();
+        return (Pumpkin) base.clone();
     }
 }

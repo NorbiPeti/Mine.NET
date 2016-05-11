@@ -19,7 +19,7 @@ public class InvalidConfigurationException : Exception {
      * @param msg The details of the exception.
      */
     public InvalidConfigurationException(String msg) {
-        super(msg);
+        base(msg);
     }
 
     /**
@@ -29,7 +29,7 @@ public class InvalidConfigurationException : Exception {
      * @param cause The cause of the exception.
      */
     public InvalidConfigurationException(Throwable cause) {
-        super(cause);
+        base(cause);
     }
 
     /**
@@ -40,6 +40,6 @@ public class InvalidConfigurationException : Exception {
      * @param msg The details of the exception.
      */
     public InvalidConfigurationException(String msg, Throwable cause) {
-        super(msg, cause);
+        base(msg, cause);
     }
 }

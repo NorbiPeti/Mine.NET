@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 public class ClearCommand : VanillaCommand {
     private static List<String> materials;
     static {
-        ArrayList<String> materialList = new ArrayList<String>();
+        List<String> materialList = new List<String>();
         for (Material material : Material.values()) {
             materialList.add(material.name());
         }
@@ -27,7 +27,7 @@ public class ClearCommand : VanillaCommand {
     }
 
     public ClearCommand() {
-        super("clear");
+        base("clear");
         this.description = "Clears the player's inventory. Can specify item and data filters too.";
         this.usageMessage = "/clear <player> [item] [data]";
         this.setPermission("bukkit.command.clear");
@@ -79,7 +79,7 @@ public class ClearCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         if (args.length == 2) {
             readonly String arg = args[1];
@@ -98,7 +98,7 @@ public class ClearCommand : VanillaCommand {
                 String material = materials.get(i);
                 if (StringUtil.startsWithIgnoreCase(material, arg)) {
                     if (completion == null) {
-                        completion = new ArrayList<String>();
+                        completion = new List<String>();
                     }
                     completion.add(material);
                 } else {

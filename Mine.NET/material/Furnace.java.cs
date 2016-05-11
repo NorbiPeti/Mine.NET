@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
 public class Furnace : FurnaceAndDispenser {
 
     public Furnace() {
-        super(Material.FURNACE);
+        base(Material.FURNACE);
     }
 
     /**
@@ -28,11 +28,11 @@ public class Furnace : FurnaceAndDispenser {
      */
     [Obsolete]
     public Furnace(int type) {
-        super(type);
+        base(type);
     }
 
     public Furnace(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Furnace : FurnaceAndDispenser {
      */
     [Obsolete]
     public Furnace(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -52,11 +52,11 @@ public class Furnace : FurnaceAndDispenser {
      */
     [Obsolete]
     public Furnace(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     @Override
     public Furnace clone() {
-        return (Furnace) super.clone();
+        return (Furnace) base.clone();
     }
 }

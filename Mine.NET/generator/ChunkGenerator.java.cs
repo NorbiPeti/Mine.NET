@@ -1,6 +1,6 @@
 package org.bukkit.generator;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import java.util.Random;
 import org.bukkit.Bukkit;
@@ -288,7 +288,7 @@ public abstract class ChunkGenerator {
      * @return List containing any amount of BlockPopulators
      */
     public List<BlockPopulator> getDefaultPopulators(World world) {
-        return new ArrayList<BlockPopulator>();
+        return new List<BlockPopulator>();
     }
 
     /**

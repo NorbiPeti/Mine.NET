@@ -9,11 +9,11 @@ import org.bukkit.entity.LivingEntity;
  */
 public class EntityTargetLivingEntityEvent : EntityTargetEvent{
     public EntityTargetLivingEntityEvent(Entity entity, readonly LivingEntity target, readonly TargetReason reason) {
-        super(entity, target, reason);
+        base(entity, target, reason);
     }
 
     public LivingEntity getTarget() {
-        return (LivingEntity) super.getTarget();
+        return (LivingEntity) base.getTarget();
     }
 
     /**
@@ -28,7 +28,7 @@ public class EntityTargetLivingEntityEvent : EntityTargetEvent{
      */
     public void setTarget(Entity target) {
         if (target == null || target is LivingEntity) {
-            super.setTarget(target);
+            base.setTarget(target);
         }
     }
 }

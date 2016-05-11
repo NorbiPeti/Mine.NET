@@ -9,7 +9,7 @@ import org.bukkit.plugin.Plugin;
 
 public class PluginsCommand : BukkitCommand {
     public PluginsCommand(String name) {
-        super(name);
+        base(name);
         this.description = "Gets a list of plugins running on the server";
         this.usageMessage = "/plugins";
         this.setPermission("bukkit.command.plugins");

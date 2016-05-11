@@ -22,7 +22,7 @@ public class StringUtil {
      * @throws ArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static <T : Collection<? super String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) throws UnsupportedOperationException, ArgumentException {
+    public static <T : Collection<? base String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) throws UnsupportedOperationException, ArgumentException {
         if(token==null) throw new ArgumentNullException("Search token cannot be null");
         if(collection==null) throw new ArgumentNullException("Collection cannot be null");
         if(originals==null) throw new ArgumentNullException("Originals cannot be null");

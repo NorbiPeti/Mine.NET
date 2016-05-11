@@ -11,7 +11,7 @@ public class PlayerJoinEvent : PlayerEvent {
     private String joinMessage;
 
     public PlayerJoinEvent(Player playerJoined, readonly String joinMessage) {
-        super(playerJoined);
+        base(playerJoined);
         this.joinMessage = joinMessage;
     }
 

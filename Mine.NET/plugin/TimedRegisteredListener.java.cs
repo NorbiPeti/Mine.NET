@@ -15,13 +15,13 @@ public class TimedRegisteredListener : RegisteredListener {
     private bool multiple = false;
 
     public TimedRegisteredListener(Listener pluginListener, readonly EventExecutor eventExecutor, readonly EventPriority eventPriority, readonly Plugin registeredPlugin, readonly bool listenCancelled) {
-        super(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
+        base(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
     }
 
     @Override
     public void callEvent(Event event) throws EventException {
         if (event.isAsynchronous()) {
-            super.callEvent(event);
+            base.callEvent(event);
             return;
         }
         count++;
@@ -33,7 +33,7 @@ public class TimedRegisteredListener : RegisteredListener {
             this.eventClass = getCommonSuperclass(newEventClass, this.eventClass).asSubclass(Event.class);
         }
         long start = System.nanoTime();
-        super.callEvent(event);
+        base.callEvent(event);
         totalTime += System.nanoTime() - start;
     }
 

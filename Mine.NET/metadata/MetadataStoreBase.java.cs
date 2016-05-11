@@ -57,7 +57,7 @@ public abstract class MetadataStoreBase<T> {
         String key = disambiguate(subject, metadataKey);
         if (metadataMap.containsKey(key)) {
             Collection<MetadataValue> values = metadataMap.get(key).values();
-            return Collections.unmodifiableList(new ArrayList<MetadataValue>(values));
+            return Collections.unmodifiableList(new List<MetadataValue>(values));
         } else {
             return Collections.emptyList();
         }

@@ -14,7 +14,7 @@ public class FurnaceExtractEvent : BlockExpEvent {
     private readonly int itemAmount;
 
     public FurnaceExtractEvent(Player player, Block block, Material itemType, int itemAmount, int exp) {
-        super(block, exp);
+        base(block, exp);
         this.player = player;
         this.itemType = itemType;
         this.itemAmount = itemAmount;

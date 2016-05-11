@@ -9,7 +9,7 @@ import org.bukkit.ChatColor;
  */
 public abstract class ValidatingPrompt : Prompt {
     public ValidatingPrompt() {
-        super();
+        base();
     }
 
     /**

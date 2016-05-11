@@ -12,7 +12,7 @@ public class SheepRegrowWoolEvent : EntityEvent : Cancellable {
     private bool cancel;
 
     public SheepRegrowWoolEvent(Sheep sheep) {
-        super(sheep);
+        base(sheep);
         this.cancel = false;
     }
 

@@ -10,7 +10,7 @@ public class WorldSaveEvent : WorldEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public WorldSaveEvent(World world) {
-        super(world);
+        base(world);
     }
 
     @Override

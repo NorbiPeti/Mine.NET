@@ -12,7 +12,7 @@ public class VehicleBlockCollisionEvent : VehicleCollisionEvent {
     private readonly Block block;
 
     public VehicleBlockCollisionEvent(Vehicle vehicle, readonly Block block) {
-        super(vehicle);
+        base(vehicle);
         this.block = block;
     }
 

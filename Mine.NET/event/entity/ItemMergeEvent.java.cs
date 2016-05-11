@@ -11,7 +11,7 @@ public class ItemMergeEvent : EntityEvent : Cancellable {
     private readonly Item target;
 
     public ItemMergeEvent(Item item, Item target) {
-        super(item);
+        base(item);
         this.target = target;
     }
 

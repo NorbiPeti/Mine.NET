@@ -1,6 +1,6 @@
 package org.bukkit.map;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 /**
@@ -8,7 +8,7 @@ import java.util.List;
  * MapCursorCollection is linked to a specific {@link MapRenderer}.
  */
 public sealed class MapCursorCollection {
-    private List<MapCursor> cursors = new ArrayList<MapCursor>();
+    private List<MapCursor> cursors = new List<MapCursor>();
 
     /**
      * Get the amount of cursors in this collection.

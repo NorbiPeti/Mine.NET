@@ -11,7 +11,7 @@ public class RemoteServerCommandEvent : ServerCommandEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public RemoteServerCommandEvent(CommandSender sender, readonly String command) {
-        super(sender, command);
+        base(sender, command);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class ProjectileHitEvent : EntityEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public ProjectileHitEvent(Projectile projectile) {
-        super(projectile);
+        base(projectile);
     }
 
     @Override

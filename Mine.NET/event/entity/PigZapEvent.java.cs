@@ -16,7 +16,7 @@ public class PigZapEvent : EntityEvent : Cancellable {
     private readonly LightningStrike bolt;
 
     public PigZapEvent(Pig pig, readonly LightningStrike bolt, readonly PigZombie pigzombie) {
-        super(pig);
+        base(pig);
         this.bolt = bolt;
         this.pigzombie = pigzombie;
     }

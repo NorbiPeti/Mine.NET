@@ -14,7 +14,7 @@ public abstract class InventoryInteractEvent : InventoryEvent : Cancellable {
     private Result result = Result.DEFAULT;
 
     public InventoryInteractEvent(InventoryView transaction) {
-        super(transaction);
+        base(transaction);
     }
 
     /**

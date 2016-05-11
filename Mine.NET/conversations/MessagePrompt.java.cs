@@ -7,7 +7,7 @@ package org.bukkit.conversations;
 public abstract class MessagePrompt : Prompt{
 
     public MessagePrompt() {
-        super();
+        base();
     }
 
     /**

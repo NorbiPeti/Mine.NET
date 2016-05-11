@@ -16,7 +16,7 @@ public class InventoryPickupItemEvent : Event : Cancellable {
     private readonly Item item;
 
     public InventoryPickupItemEvent(Inventory inventory, readonly Item item) {
-        super();
+        base();
         this.inventory = inventory;
         this.item = item;
     }

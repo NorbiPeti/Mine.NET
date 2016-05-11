@@ -11,7 +11,7 @@ public class BlockExpEvent : BlockEvent {
     private int exp;
 
     public BlockExpEvent(Block block, int exp) {
-        super(block);
+        base(block);
 
         this.exp = exp;
     }

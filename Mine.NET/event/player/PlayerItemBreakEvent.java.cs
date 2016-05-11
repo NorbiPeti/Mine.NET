@@ -15,7 +15,7 @@ public class PlayerItemBreakEvent : PlayerEvent {
     private readonly ItemStack brokenItem;
 
     public PlayerItemBreakEvent(Player player, readonly ItemStack brokenItem) {
-        super(player);
+        base(player);
         this.brokenItem = brokenItem;
     }
 

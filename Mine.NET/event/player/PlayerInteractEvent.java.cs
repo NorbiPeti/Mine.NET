@@ -31,7 +31,7 @@ public class PlayerInteractEvent : PlayerEvent : Cancellable {
     }
 
     public PlayerInteractEvent(Player who, readonly Action action, readonly ItemStack item, readonly Block clickedBlock, readonly BlockFace clickedFace, readonly EquipmentSlot hand) {
-        super(who);
+        base(who);
         this.action = action;
         this.item = item;
         this.blockClicked = clickedBlock;

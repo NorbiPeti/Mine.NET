@@ -17,7 +17,7 @@ public class CauldronLevelChangeEvent : BlockEvent : Cancellable {
     private int newLevel;
 
     public CauldronLevelChangeEvent(Block block, Entity entity, ChangeReason reason, int oldLevel, int newLevel) {
-        super(block);
+        base(block);
         this.entity = entity;
         this.reason = reason;
         this.oldLevel = oldLevel;

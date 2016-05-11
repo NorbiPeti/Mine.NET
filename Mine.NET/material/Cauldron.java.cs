@@ -10,7 +10,7 @@ public class Cauldron : MaterialData {
     private static readonly int CAULDRON_EMPTY = 0;
 
     public Cauldron() {
-        super(Material.CAULDRON);
+        base(Material.CAULDRON);
     }
 
     /**
@@ -21,7 +21,7 @@ public class Cauldron : MaterialData {
      */
     [Obsolete]
     public Cauldron(int type, byte data){
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Cauldron : MaterialData {
      */
     [Obsolete]
     public Cauldron(byte data) {
-        super(Material.CAULDRON, data);
+        base(Material.CAULDRON, data);
     }
 
     /**
@@ -58,6 +58,6 @@ public class Cauldron : MaterialData {
 
     @Override
     public Cauldron clone() {
-        return (Cauldron) super.clone();
+        return (Cauldron) base.clone();
     }
 }

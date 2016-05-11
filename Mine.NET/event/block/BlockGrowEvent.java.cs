@@ -25,7 +25,7 @@ public class BlockGrowEvent : BlockEvent : Cancellable {
     private bool cancelled = false;
 
     public BlockGrowEvent(Block block, readonly BlockState newState) {
-        super(block);
+        base(block);
         this.newState = newState;
     }
 

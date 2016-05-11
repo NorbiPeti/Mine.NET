@@ -1,7 +1,7 @@
 package org.bukkit.command.defaults;
 
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -15,7 +15,7 @@ public class EffectCommand : VanillaCommand {
     private static readonly List<String> effects;
 
     public EffectCommand() {
-        super("effect");
+        base("effect");
         this.description = "Adds/Removes effects on players";
         this.usageMessage = "/effect <player> <effect|clear> [seconds] [amplifier]";
         this.setPermission("bukkit.command.effect");
@@ -110,9 +110,9 @@ public class EffectCommand : VanillaCommand {
     @Override
     public List<String> tabComplete(CommandSender sender, String commandLabel, String[] args) {
         if (args.length == 1) {
-            return super.tabComplete(sender, commandLabel, args);
+            return base.tabComplete(sender, commandLabel, args);
         } else if (args.length == 2) {
-            return StringUtil.copyPartialMatches(args[1], effects, new ArrayList<String>(effects.size()));
+            return StringUtil.copyPartialMatches(args[1], effects, new List<String>(effects.size()));
         }
 
         return ImmutableList.of();

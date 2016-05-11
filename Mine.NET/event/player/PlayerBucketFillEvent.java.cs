@@ -14,7 +14,7 @@ public class PlayerBucketFillEvent : PlayerBucketEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public PlayerBucketFillEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {
-        super(who, blockClicked, blockFace, bucket, itemInHand);
+        base(who, blockClicked, blockFace, bucket, itemInHand);
     }
 
     @Override

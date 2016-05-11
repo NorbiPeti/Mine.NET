@@ -21,7 +21,7 @@ public class PlayerEditBookEvent : PlayerEvent : Cancellable {
     private bool cancel;
 
     public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, bool isSigning) {
-        super(who);
+        base(who);
 
         if(slot >= 0 && slot <=8) throw new ArgumentException("Slot must be in range 0-8 inclusive");
         if(previousBookMeta==null) throw new ArgumentNullException("Previous book meta must not be null");

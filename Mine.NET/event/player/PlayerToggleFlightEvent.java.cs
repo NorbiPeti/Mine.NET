@@ -13,7 +13,7 @@ public class PlayerToggleFlightEvent : PlayerEvent : Cancellable {
     private bool cancel = false;
 
     public PlayerToggleFlightEvent(Player player, readonly bool isFlying) {
-        super(player);
+        base(player);
         this.isFlying = isFlying;
     }
 

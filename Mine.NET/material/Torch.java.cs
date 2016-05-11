@@ -8,7 +8,7 @@ import org.bukkit.Material;
  */
 public class Torch : SimpleAttachableMaterialData {
     public Torch() {
-        super(Material.TORCH);
+        base(Material.TORCH);
     }
 
     /**
@@ -17,11 +17,11 @@ public class Torch : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Torch(int type) {
-        super(type);
+        base(type);
     }
 
     public Torch(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Torch : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Torch(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -41,7 +41,7 @@ public class Torch : SimpleAttachableMaterialData {
      */
     [Obsolete]
     public Torch(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -101,6 +101,6 @@ public class Torch : SimpleAttachableMaterialData {
 
     @Override
     public Torch clone() {
-        return (Torch) super.clone();
+        return (Torch) base.clone();
     }
 }

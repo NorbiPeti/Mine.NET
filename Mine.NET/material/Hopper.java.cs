@@ -44,7 +44,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * @see BlockFace
      */
     public Hopper(BlockFace facingDirection, bool isActive) {
-        super(Material.HOPPER);
+        base(Material.HOPPER);
         setFacingDirection(facingDirection);
         setActive(isActive);
     }
@@ -55,11 +55,11 @@ public class Hopper : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Hopper(int type) {
-        super(type);
+        base(type);
     }
 
     public Hopper(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -69,7 +69,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Hopper(int type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -79,7 +79,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      */
     [Obsolete]
     public Hopper(Material type, byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -160,12 +160,12 @@ public class Hopper : MaterialData : Directional, Redstone {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing();
+        return base.toString() + " facing " + getFacing();
     }
 
     @Override
     public Hopper clone() {
-        return (Hopper) super.clone();
+        return (Hopper) base.clone();
     }
 
     /**

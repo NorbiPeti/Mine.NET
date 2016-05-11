@@ -14,7 +14,7 @@ public class PlayerShearEntityEvent : PlayerEvent : Cancellable {
     private readonly Entity what;
 
     public PlayerShearEntityEvent(Player who, readonly Entity what) {
-        super(who);
+        base(who);
         this.cancel = false;
         this.what = what;
     }

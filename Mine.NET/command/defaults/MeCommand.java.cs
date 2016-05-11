@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 [Obsolete]
 public class MeCommand : VanillaCommand {
     public MeCommand() {
-        super("me");
+        base("me");
         this.description = "Performs the specified action in chat";
         this.usageMessage = "/me <action>";
         this.setPermission("bukkit.command.me");

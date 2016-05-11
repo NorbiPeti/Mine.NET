@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
 public class TripwireHook : SimpleAttachableMaterialData : Redstone {
 
     public TripwireHook() {
-        super(Material.TRIPWIRE_HOOK);
+        base(Material.TRIPWIRE_HOOK);
     }
 
     /**
@@ -18,7 +18,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public TripwireHook(int type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -28,7 +28,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
      */
     [Obsolete]
     public TripwireHook(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     public TripwireHook(BlockFace dir) {
@@ -119,10 +119,10 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
 
     @Override
     public TripwireHook clone() {
-        return (TripwireHook) super.clone();
+        return (TripwireHook) base.clone();
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getFacing() + (isActivated()?" Activated":"") + (isConnected()?" Connected":"");
+        return base.toString() + " facing " + getFacing() + (isActivated()?" Activated":"") + (isConnected()?" Connected":"");
     }
 }

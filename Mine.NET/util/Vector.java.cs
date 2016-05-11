@@ -569,7 +569,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
     @Override
     public Vector clone() {
         try {
-            return (Vector) super.clone();
+            return (Vector) base.clone();
         } catch (CloneNotSupportedException e) {
             throw new Error(e);
         }

@@ -16,7 +16,7 @@ public class BrewEvent : BlockEvent : Cancellable {
     private bool cancelled;
 
     public BrewEvent(Block brewer, BrewerInventory contents) {
-        super(brewer);
+        base(brewer);
         this.contents = contents;
     }
 

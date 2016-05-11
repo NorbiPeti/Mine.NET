@@ -1,6 +1,6 @@
 package org.bukkit.command;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class PluginCommandYamlParser {
 
     public static List<Command> parse(Plugin plugin) {
-        List<Command> pluginCmds = new ArrayList<Command>();
+        List<Command> pluginCmds = new List<Command>();
 
         Dictionary<String, Dictionary<String, Object>> map = plugin.getDescription().getCommands();
 
@@ -40,7 +40,7 @@ public class PluginCommandYamlParser {
             }
 
             if (aliases != null) {
-                List<String> aliasList = new ArrayList<String>();
+                List<String> aliasList = new List<String>();
 
                 if (aliases is List) {
                     for (Object o : (List<?>) aliases) {

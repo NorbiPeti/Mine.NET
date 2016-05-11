@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 [Obsolete]
 public class TellCommand : VanillaCommand {
     public TellCommand() {
-        super("tell");
+        base("tell");
         this.description = "Sends a private message to the given player";
         this.usageMessage = "/tell <player> <message>";
         this.setAliases(Arrays.asList(new String[] { "w", "msg" }));

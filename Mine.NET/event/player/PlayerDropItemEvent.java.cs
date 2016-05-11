@@ -14,7 +14,7 @@ public class PlayerDropItemEvent : PlayerEvent : Cancellable {
     private bool cancel = false;
 
     public PlayerDropItemEvent(Player player, readonly Item drop) {
-        super(player);
+        base(player);
         this.drop = drop;
     }
 

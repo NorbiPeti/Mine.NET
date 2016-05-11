@@ -13,7 +13,7 @@ public class SlimeSplitEvent : EntityEvent : Cancellable {
     private int count;
 
     public SlimeSplitEvent(Slime slime, readonly int count) {
-        super(slime);
+        base(slime);
         this.count = count;
     }
 

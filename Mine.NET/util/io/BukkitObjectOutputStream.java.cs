@@ -19,14 +19,14 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 public class BukkitObjectOutputStream : ObjectOutputStream {
 
     /**
-     * Constructor provided to mirror super functionality.
+     * Constructor provided to mirror base functionality.
      *
      * @throws IOException if an I/O error occurs while writing stream header
      * @see ObjectOutputStream#ObjectOutputStream()
      */
     protected BukkitObjectOutputStream() throws IOException, SecurityException {
-        super();
-        super.enableReplaceObject(true);
+        base();
+        base.enableReplaceObject(true);
     }
 
     /**
@@ -37,8 +37,8 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
      * @see ObjectOutputStream#ObjectOutputStream(OutputStream)
      */
     public BukkitObjectOutputStream(OutputStream out) throws IOException {
-        super(out);
-        super.enableReplaceObject(true);
+        base(out);
+        base.enableReplaceObject(true);
     }
 
     @Override
@@ -47,6 +47,6 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
             obj = Wrapper.newWrapper((ConfigurationSerializable) obj);
         }
 
-        return super.replaceObject(obj);
+        return base.replaceObject(obj);
     }
 }

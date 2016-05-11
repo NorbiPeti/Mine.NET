@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
 public class Rails : MaterialData {
 
     public Rails() {
-        super(Material.RAILS);
+        base(Material.RAILS);
     }
 
     /**
@@ -18,11 +18,11 @@ public class Rails : MaterialData {
      */
     [Obsolete]
     public Rails(int type) {
-        super(type);
+        base(type);
     }
 
     public Rails(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Rails : MaterialData {
      */
     [Obsolete]
     public Rails(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Rails : MaterialData {
      */
     [Obsolete]
     public Rails(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -108,7 +108,7 @@ public class Rails : MaterialData {
     }
 
     public override string ToString() {
-        return super.toString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
+        return base.toString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
     }
 
     /**
@@ -172,6 +172,6 @@ public class Rails : MaterialData {
 
     @Override
     public Rails clone() {
-        return (Rails) super.clone();
+        return (Rails) base.clone();
     }
 }

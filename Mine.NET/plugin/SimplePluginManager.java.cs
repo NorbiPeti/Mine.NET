@@ -3,7 +3,7 @@ package org.bukkit.plugin;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,7 +40,7 @@ import com.google.common.collect.ImmutableSet;
 public sealed class SimplePluginManager : PluginManager {
     private readonly Server server;
     private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
-    private readonly List<Plugin> plugins = new ArrayList<Plugin>();
+    private readonly List<Plugin> plugins = new List<Plugin>();
     private readonly Dictionary<String, Plugin> lookupNames = new HashMap<String, Plugin>();
     private static File updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
@@ -104,7 +104,7 @@ public sealed class SimplePluginManager : PluginManager {
         if(directory==null) throw new ArgumentNullException("Directory cannot be null");
         if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
 
-        List<Plugin> result = new ArrayList<Plugin>();
+        List<Plugin> result = new List<Plugin>();
         HashSet<Pattern> filters = fileAssociations.keySet();
 
         if (!(server.getUpdateFolder().equals(""))) {

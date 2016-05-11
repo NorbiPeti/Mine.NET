@@ -40,7 +40,7 @@ public class EntityChangeBlockEvent : EntityEvent : Cancellable {
      */
     [Obsolete]
     public EntityChangeBlockEvent(Entity what, readonly Block block, readonly Material to, readonly byte data) {
-        super(what);
+        base(what);
         this.block = block;
         this.cancel = false;
         this.to = to;

@@ -13,7 +13,7 @@ public class FlowerPot : MaterialData {
      * Default constructor for a flower pot.
      */
     public FlowerPot() {
-        super(Material.FLOWER_POT);
+        base(Material.FLOWER_POT);
     }
 
     /**
@@ -22,11 +22,11 @@ public class FlowerPot : MaterialData {
      */
     [Obsolete]
     public FlowerPot(int type) {
-        super(type);
+        base(type);
     }
 
     public FlowerPot(Material type) {
-        super(type);
+        base(type);
     }
 
     /**
@@ -36,7 +36,7 @@ public class FlowerPot : MaterialData {
      */
     [Obsolete]
     public FlowerPot(int type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -46,7 +46,7 @@ public class FlowerPot : MaterialData {
      */
     [Obsolete]
     public FlowerPot(Material type, readonly byte data) {
-        super(type, data);
+        base(type, data);
     }
 
     /**
@@ -126,11 +126,11 @@ public class FlowerPot : MaterialData {
     }
 
     public override string ToString() {
-        return super.toString() + " containing " + getContents();
+        return base.toString() + " containing " + getContents();
     }
 
     @Override
     public FlowerPot clone() {
-        return (FlowerPot) super.clone();
+        return (FlowerPot) base.clone();
     }
 }

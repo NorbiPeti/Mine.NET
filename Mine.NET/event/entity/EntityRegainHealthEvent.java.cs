@@ -20,7 +20,7 @@ public class EntityRegainHealthEvent : EntityEvent : Cancellable {
     }
 
     public EntityRegainHealthEvent(Entity entity, readonly double amount, readonly RegainReason regainReason) {
-        super(entity);
+        base(entity);
         this.amount = amount;
         this.regainReason = regainReason;
     }

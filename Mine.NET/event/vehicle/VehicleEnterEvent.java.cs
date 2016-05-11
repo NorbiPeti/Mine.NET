@@ -14,7 +14,7 @@ public class VehicleEnterEvent : VehicleEvent : Cancellable {
     private readonly Entity entered;
 
     public VehicleEnterEvent(Vehicle vehicle, readonly Entity entered) {
-        super(vehicle);
+        base(vehicle);
         this.entered = entered;
     }
 

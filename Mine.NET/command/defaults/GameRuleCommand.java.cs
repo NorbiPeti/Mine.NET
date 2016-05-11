@@ -8,7 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Arrays;
 import java.util.List;
 import org.bukkit.Bukkit;
@@ -20,7 +20,7 @@ public class GameRuleCommand : VanillaCommand {
     private static readonly List<String> GAMERULE_STATES = ImmutableList.of("true", "false");
 
     public GameRuleCommand() {
-        super("gamerule");
+        base("gamerule");
         this.description = "Sets a server's game rules";
         this.usageMessage = "/gamerule <rule name> <value> OR /gamerule <rule name>";
         this.setPermission("bukkit.command.gamerule");
@@ -77,11 +77,11 @@ public class GameRuleCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Arrays.asList(getGameWorld(sender).getGameRules()), new ArrayList<String>());
+            return StringUtil.copyPartialMatches(args[0], Arrays.asList(getGameWorld(sender).getGameRules()), new List<String>());
         }
 
         if (args.length == 2) {
-            return StringUtil.copyPartialMatches(args[1], GAMERULE_STATES, new ArrayList<String>(GAMERULE_STATES.size()));
+            return StringUtil.copyPartialMatches(args[1], GAMERULE_STATES, new List<String>(GAMERULE_STATES.size()));
         }
 
         return ImmutableList.of();

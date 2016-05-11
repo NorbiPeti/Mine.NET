@@ -1,6 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -15,7 +15,7 @@ import com.google.common.collect.ImmutableList;
 [Obsolete]
 public class PardonIpCommand : VanillaCommand {
     public PardonIpCommand() {
-        super("pardon-ip");
+        base("pardon-ip");
         this.description = "Allows the specified IP address to use this server";
         this.usageMessage = "/pardon-ip <address>";
         this.setPermission("bukkit.command.unban.ip");
@@ -46,7 +46,7 @@ public class PardonIpCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], Bukkit.getIPBans(), new ArrayList<String>());
+            return StringUtil.copyPartialMatches(args[0], Bukkit.getIPBans(), new List<String>());
         }
         return ImmutableList.of();
     }

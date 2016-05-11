@@ -14,7 +14,7 @@ public class VehicleExitEvent : VehicleEvent : Cancellable {
     private readonly LivingEntity exited;
 
     public VehicleExitEvent(Vehicle vehicle, readonly LivingEntity exited) {
-        super(vehicle);
+        base(vehicle);
         this.exited = exited;
     }
 

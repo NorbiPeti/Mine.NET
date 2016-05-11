@@ -12,7 +12,7 @@ public class PlayerTeleportEvent : PlayerMoveEvent {
     private TeleportCause cause = TeleportCause.UNKNOWN;
 
     public PlayerTeleportEvent(Player player, readonly Location from, readonly Location to) {
-        super(player, from, to);
+        base(player, from, to);
     }
 
     public PlayerTeleportEvent(Player player, readonly Location from, readonly Location to, readonly TeleportCause cause) {

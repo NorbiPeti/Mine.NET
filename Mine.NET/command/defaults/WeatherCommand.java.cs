@@ -9,7 +9,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.util.StringUtil;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 import java.util.Random;
 
@@ -18,7 +18,7 @@ public class WeatherCommand : VanillaCommand {
     private static readonly List<String> WEATHER_TYPES = ImmutableList.of("clear", "rain", "thunder");
 
     public WeatherCommand() {
-        super("weather");
+        base("weather");
         this.description = "Changes the weather";
         this.usageMessage = "/weather <clear/rain/thunder> [duration in seconds]";
         this.setPermission("bukkit.command.weather");
@@ -66,7 +66,7 @@ public class WeatherCommand : VanillaCommand {
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
-            return StringUtil.copyPartialMatches(args[0], WEATHER_TYPES, new ArrayList<String>(WEATHER_TYPES.size()));
+            return StringUtil.copyPartialMatches(args[0], WEATHER_TYPES, new List<String>(WEATHER_TYPES.size()));
         }
 
         return ImmutableList.of();

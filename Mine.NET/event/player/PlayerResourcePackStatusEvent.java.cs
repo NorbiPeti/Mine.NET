@@ -13,7 +13,7 @@ public class PlayerResourcePackStatusEvent : PlayerEvent {
     private readonly Status status;
 
     public PlayerResourcePackStatusEvent(Player who, Status resourcePackStatus) {
-        super(who);
+        base(who);
         this.status = resourcePackStatus;
     }
 

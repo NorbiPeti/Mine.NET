@@ -3,7 +3,7 @@ package org.bukkit.conversations;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,8 +44,8 @@ public class ConversationFactory {
         firstPrompt = Prompt.END_OF_CONVERSATION;
         initialSessionData = new HashMap<Object, Object>();
         playerOnlyMessage = null;
-        cancellers = new ArrayList<ConversationCanceller>();
-        abandonedListeners = new ArrayList<ConversationAbandonedListener>();
+        cancellers = new List<ConversationCanceller>();
+        abandonedListeners = new List<ConversationAbandonedListener>();
     }
 
     /**

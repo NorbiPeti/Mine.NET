@@ -3,7 +3,7 @@ namespace Mine.NET
     [Obsolete]
 public class AchievementCommand : VanillaCommand {
     public AchievementCommand() {
-        super("achievement");
+        base("achievement");
         this.description = "Gives the specified player an achievement or changes a statistic value. Use '*' to give all achievements.";
         this.usageMessage = "/achievement give <stat_name> [player]";
         this.setPermission("bukkit.command.achievement");
@@ -157,11 +157,11 @@ public class AchievementCommand : VanillaCommand {
         }
 
         if (args.length == 2) {
-            return Bukkit.getUnsafe().tabCompleteInternalStatisticOrAchievementName(args[1], new ArrayList<String>());
+            return Bukkit.getUnsafe().tabCompleteInternalStatisticOrAchievementName(args[1], new List<String>());
         }
 
         if (args.length == 3) {
-            return super.tabComplete(sender, alias, args);
+            return base.tabComplete(sender, alias, args);
         }
         return ImmutableList.of();
     }
