@@ -43,7 +43,7 @@ public class BukkitObjectInputStream : ObjectInputStream {
 
     @Override
     protected Object resolveObject(Object obj) throws IOException {
-        if (obj instanceof Wrapper) {
+        if (obj is Wrapper) {
             try {
                 (obj = ConfigurationSerialization.deserializeObject(((Wrapper<?>) obj).map)).getClass(); // NPE
             } catch (Throwable ex) {

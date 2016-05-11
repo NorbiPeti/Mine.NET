@@ -45,7 +45,7 @@ public class TimingsCommand : BukkitCommand {
         if ("reset".equalsIgnoreCase(args[0])) {
             for (HandlerList handlerList : HandlerList.getHandlerLists()) {
                 for (RegisteredListener listener : handlerList.getRegisteredListeners()) {
-                    if (listener instanceof TimedRegisteredListener) {
+                    if (listener is TimedRegisteredListener) {
                         ((TimedRegisteredListener)listener).reset();
                     }
                 }
@@ -77,7 +77,7 @@ public class TimingsCommand : BukkitCommand {
                     }
                     else fileTimings.println(plugin.getDescription().getFullName());
                     for (RegisteredListener listener : HandlerList.getRegisteredListeners(plugin)) {
-                        if (listener instanceof TimedRegisteredListener) {
+                        if (listener is TimedRegisteredListener) {
                             TimedRegisteredListener trl = (TimedRegisteredListener) listener;
                             long time = trl.getTotalTime();
                             int count = trl.getCount();
@@ -112,9 +112,9 @@ public class TimingsCommand : BukkitCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             return StringUtil.copyPartialMatches(args[0], TIMINGS_SUBCOMMANDS, new ArrayList<String>(TIMINGS_SUBCOMMANDS.size()));

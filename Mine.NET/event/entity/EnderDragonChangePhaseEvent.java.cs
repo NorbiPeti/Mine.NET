@@ -51,7 +51,7 @@ public class EnderDragonChangePhaseEvent : EntityEvent : Cancellable {
      * @param newPhase the new dragon phase
      */
     public void setNewPhase(EnderDragon.Phase newPhase) {
-        Validate.notNull(newPhase, "New dragon phase cannot be null");
+        if(newPhase==null) throw new ArgumentNullException("New dragon phase cannot be null");
         this.newPhase = newPhase;
     }
 

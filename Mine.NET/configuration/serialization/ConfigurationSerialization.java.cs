@@ -85,7 +85,7 @@ public class ConfigurationSerialization {
             Logger.getLogger(ConfigurationSerialization.class.getName()).log(
                     Level.SEVERE,
                     "Could not call method '" + method.toString() + "' of " + clazz + " for deserialization",
-                    ex instanceof InvocationTargetException ? ex.getCause() : ex);
+                    ex is InvocationTargetException ? ex.getCause() : ex);
         }
 
         return null;
@@ -98,14 +98,14 @@ public class ConfigurationSerialization {
             Logger.getLogger(ConfigurationSerialization.class.getName()).log(
                     Level.SEVERE,
                     "Could not call constructor '" + ctor.toString() + "' of " + clazz + " for deserialization",
-                    ex instanceof InvocationTargetException ? ex.getCause() : ex);
+                    ex is InvocationTargetException ? ex.getCause() : ex);
         }
 
         return null;
     }
 
     public ConfigurationSerializable deserialize(Dictionary<String, ?> args) {
-        Validate.notNull(args, "Args must not be null");
+        if(args==null) throw new ArgumentNullException("Args must not be null");
 
         ConfigurationSerializable result = null;
         Method method = null;

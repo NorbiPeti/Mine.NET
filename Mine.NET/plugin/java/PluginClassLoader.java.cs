@@ -27,7 +27,7 @@ sealed class PluginClassLoader : URLClassLoader {
 
     PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) throws InvalidPluginException, MalformedURLException {
         super(new URL[] {file.toURI().toURL()}, parent);
-        Validate.notNull(loader, "Loader cannot be null");
+        if(loader==null) throw new ArgumentNullException("Loader cannot be null");
 
         this.loader = loader;
         this.description = description;
@@ -92,7 +92,7 @@ sealed class PluginClassLoader : URLClassLoader {
     }
 
     synchronized void initialize(JavaPlugin javaPlugin) {
-        Validate.notNull(javaPlugin, "Initializing plugin cannot be null");
+        if(javaPlugin==null) throw new ArgumentNullException("Initializing plugin cannot be null");
         if(javaPlugin.getClass().getClassLoader() == this) throw new ArgumentException("Cannot initialize plugin outside of this class loader");
         if (this.plugin != null || this.pluginInit != null) {
             throw new ArgumentException("Plugin already initialized!", pluginState);

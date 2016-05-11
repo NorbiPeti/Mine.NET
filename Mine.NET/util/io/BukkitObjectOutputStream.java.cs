@@ -43,7 +43,7 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
 
     @Override
     protected Object replaceObject(Object obj) throws IOException {
-        if (!(obj instanceof Serializable) && (obj instanceof ConfigurationSerializable)) {
+        if (!(obj is Serializable) && (obj is ConfigurationSerializable)) {
             obj = Wrapper.newWrapper((ConfigurationSerializable) obj);
         }
 

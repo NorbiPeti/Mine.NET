@@ -60,7 +60,7 @@ public class HelpCommand : VanillaCommand {
             pageNumber = 1;
         }
 
-        if (sender instanceof ConsoleCommandSender) {
+        if (sender is ConsoleCommandSender) {
             pageHeight = ChatPaginator.UNBOUNDED_PAGE_HEIGHT;
             pageWidth = ChatPaginator.UNBOUNDED_PAGE_WIDTH;
         } else {
@@ -113,9 +113,9 @@ public class HelpCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             List<String> matchedTopics = new ArrayList<String>();

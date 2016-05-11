@@ -135,7 +135,7 @@ namespace Mine.NET
          */
         public static Art getByName(String name)
         {
-            //Validate.notNull(name, "Name cannot be null"); - TODO
+            //if(name==null) throw new ArgumentNullException("Name cannot be null"); - TODO
 
             return ArtDictionary.Values.First(a => a.name == name);
         }

@@ -1,26 +1,6 @@
-package org.bukkit.command.defaults;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Achievement;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Statistic;
-import org.bukkit.Material;
-import org.bukkit.Statistic.Type;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerAchievementAwardedEvent;
-import org.bukkit.event.player.PlayerStatisticIncrementEvent;
-
-import com.google.common.collect.ImmutableList;
-
-[Obsolete]
+namespace Mine.NET
+{
+    [Obsolete]
 public class AchievementCommand : VanillaCommand {
     public AchievementCommand() {
         super("achievement");
@@ -48,7 +28,7 @@ public class AchievementCommand : VanillaCommand {
 
         if (args.length > 2) {
             player = Bukkit.getPlayer(args[1]);
-        } else if (sender instanceof Player) {
+        } else if (sender is Player) {
             player = (Player) sender;
         }
 
@@ -168,9 +148,9 @@ public class AchievementCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             return Arrays.asList("give");
@@ -185,4 +165,5 @@ public class AchievementCommand : VanillaCommand {
         }
         return ImmutableList.of();
     }
+}
 }

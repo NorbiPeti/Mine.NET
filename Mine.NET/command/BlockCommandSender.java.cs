@@ -1,13 +1,13 @@
-package org.bukkit.command;
+namespace Mine.NET
+{
+    public interface BlockCommandSender : CommandSender
+    {
 
-import org.bukkit.block.Block;
-
-public interface BlockCommandSender : CommandSender {
-
-    /**
-     * Returns the block this command sender belongs to
-     *
-     * @return Block for the command sender
-     */
-    public Block getBlock();
+        /**
+         * Returns the block this command sender belongs to
+         *
+         * @return Block for the command sender
+         */
+        Block getBlock();
+    }
 }

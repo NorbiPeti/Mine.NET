@@ -95,7 +95,7 @@ public class SimpleCommandMap : CommandMap {
      */
     private synchronized bool register(String label, Command command, bool isAlias, String fallbackPrefix) {
         knownCommands.put(fallbackPrefix + ":" + label, command);
-        if ((command instanceof VanillaCommand || isAlias) && knownCommands.containsKey(label)) {
+        if ((command is VanillaCommand || isAlias) && knownCommands.containsKey(label)) {
             // Request is for an alias/fallback command and it conflicts with
             // a existing command or previous alias ignore it
             // Note: This will mean it gets removed from the commands list of active aliases
@@ -162,8 +162,8 @@ public class SimpleCommandMap : CommandMap {
     }
 
     public List<String> tabComplete(CommandSender sender, String cmdLine) {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(cmdLine, "Command line cannot null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(cmdLine==null) throw new ArgumentNullException("Command line cannot null");
 
         int spaceIndex = cmdLine.indexOf(' ');
 
@@ -171,7 +171,7 @@ public class SimpleCommandMap : CommandMap {
             ArrayList<String> completions = new ArrayList<String>();
             Dictionary<String, Command> knownCommands = this.knownCommands;
 
-            readonly String prefix = (sender instanceof Player ? "/" : "");
+            readonly String prefix = (sender is Player ? "/" : "");
 
             for (Map.Entry<String, Command> commandEntry : knownCommands.entrySet()) {
                 Command command = commandEntry.getValue();

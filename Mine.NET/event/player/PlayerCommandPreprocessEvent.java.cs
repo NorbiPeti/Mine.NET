@@ -94,7 +94,7 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
      * @throws ArgumentException if command is null or empty
      */
     public void setMessage(String command) throws ArgumentException {
-        Validate.notNull(command, "Command cannot be null");
+        if(command==null) throw new ArgumentNullException("Command cannot be null");
         Validate.notEmpty(command, "Command cannot be empty");
         this.message = command;
     }
@@ -106,7 +106,7 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
      * @throws ArgumentException if the player provided is null
      */
     public void setPlayer(Player player) throws ArgumentException {
-        Validate.notNull(player, "Player cannot be null");
+        if(player==null) throw new ArgumentNullException("Player cannot be null");
         this.player = player;
     }
 

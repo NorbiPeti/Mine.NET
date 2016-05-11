@@ -32,7 +32,7 @@ public class InventoryMoveItemEvent : Event : Cancellable {
     private readonly bool didSourceInitiate;
 
     public InventoryMoveItemEvent(Inventory sourceInventory, readonly ItemStack itemStack, readonly Inventory destinationInventory, readonly bool didSourceInitiate) {
-        Validate.notNull(itemStack, "ItemStack cannot be null");
+        if(itemStack==null) throw new ArgumentNullException("ItemStack cannot be null");
         this.sourceInventory = sourceInventory;
         this.itemStack = itemStack;
         this.destinationInventory = destinationInventory;
@@ -66,7 +66,7 @@ public class InventoryMoveItemEvent : Event : Cancellable {
      * @param itemStack The ItemStack
      */
     public void setItem(ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack cannot be null.  Cancel the event if you want nothing to be transferred.");
+        if(itemStack==null) throw new ArgumentNullException("ItemStack cannot be null.  Cancel the event if you want nothing to be transferred.");
         this.itemStack = itemStack.clone();
     }
 

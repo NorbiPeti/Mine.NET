@@ -20,7 +20,7 @@ public abstract class PluginBase : Plugin {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Plugin)) {
+        if (!(obj is Plugin)) {
             return false;
         }
         return getName().equals(((Plugin) obj).getName());

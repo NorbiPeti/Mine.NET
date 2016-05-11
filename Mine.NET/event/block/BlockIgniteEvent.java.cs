@@ -63,7 +63,7 @@ public class BlockIgniteEvent : BlockEvent : Cancellable {
      * @return The Player that placed/ignited the fire block, or null if not ignited by a Player.
      */
     public Player getPlayer() {
-        if (ignitingEntity instanceof Player) {
+        if (ignitingEntity is Player) {
             return (Player) ignitingEntity;
         }
 

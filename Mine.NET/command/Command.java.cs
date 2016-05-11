@@ -1,26 +1,12 @@
-package org.bukkit.command;
+using System;
+using System.Collections.Generic;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Server;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.minecart.CommandMinecart;
-import org.bukkit.permissions.Permissible;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.util.StringUtil;
-
-import com.google.common.collect.ImmutableList;
-
-/**
- * Represents a Command, which executes various tasks upon user input
- */
-public abstract class Command {
+namespace Mine.NET
+{
+    /**
+     * Represents a Command, which executes various tasks upon user input
+     */
+    public abstract class Command {
     private String name;
     private String nextLabel;
     private String label;
@@ -32,9 +18,8 @@ public abstract class Command {
     private String permission;
     private String permissionMessage;
 
-    protected Command(String name) {
-        this(name, "", "/" + name, new ArrayList<String>());
-    }
+        protected Command(String name) : this(name, "", "/" + name, new List<String>()) {
+        }
 
     protected Command(String name, String description, String usageMessage, List<String> aliases) {
         this.name = name;
@@ -43,7 +28,7 @@ public abstract class Command {
         this.description = description;
         this.usageMessage = usageMessage;
         this.aliases = aliases;
-        this.activeAliases = new ArrayList<String>(aliases);
+        this.activeAliases = new List<String>(aliases);
     }
 
     /**
@@ -82,28 +67,28 @@ public abstract class Command {
      *     will never be null. List may be immutable.
      * @throws ArgumentException if sender, alias, or args is null
      */
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+    public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null"); //Find: "Validate.notNull\((.+), "
+            if (args==null) throw new ArgumentNullException("Arguments cannot be null"); //Replace: "if($1==null) throw new ArgumentNullException("
+            if (alias==null) throw new ArgumentNullException("Alias cannot be null");
 
-        if (args.length == 0) {
-            return ImmutableList.of();
+        if (args.Length == 0) {
+                return new List<string>();
         }
 
-        String lastWord = args[args.length - 1];
+        String lastWord = args[args.Length - 1];
 
-        Player senderPlayer = sender instanceof Player ? (Player) sender : null;
+        Player senderPlayer = sender is Player ? (Player) sender : null;
 
-        ArrayList<String> matchedPlayers = new ArrayList<String>();
-        for (Player player : sender.getServer().getOnlinePlayers()) {
+        List<String> matchedPlayers = new List<String>();
+        foreach (Player player in sender.getServer().getOnlinePlayers()) {
             String name = player.getName();
             if ((senderPlayer == null || senderPlayer.canSee(player)) && StringUtil.startsWithIgnoreCase(name, lastWord)) {
-                matchedPlayers.add(name);
+                matchedPlayers.Add(name);
             }
         }
 
-        Collections.sort(matchedPlayers, String.CASE_INSENSITIVE_ORDER);
+            matchedPlayers.Sort();
         return matchedPlayers;
     }
 
@@ -171,9 +156,9 @@ public abstract class Command {
         }
 
         if (permissionMessage == null) {
-            target.sendMessage(ChatColor.RED + "I'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.");
-        } else if (permissionMessage.length() != 0) {
-            for (String line : permissionMessage.replace("<permission>", permission).Split("\n")) {
+            target.sendMessage(ChatColor.Colors.RED + "I'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.");
+        } else if (permissionMessage.Length != 0) {
+            foreach (String line in permissionMessage.Replace("<permission>", permission).Split('\n')) {
                 target.sendMessage(line);
             }
         }
@@ -191,11 +176,11 @@ public abstract class Command {
      * @return true if they can use it, otherwise false
      */
     public bool testPermissionSilent(CommandSender target) {
-        if ((permission == null) || (permission.length() == 0)) {
+        if ((permission == null) || (permission.Length == 0)) {
             return true;
         }
 
-        for (String p : permission.Split(";")) {
+        foreach (String p in permission.Split(';')) {
             if (target.hasPermission(p)) {
                 return true;
             }
@@ -262,7 +247,7 @@ public abstract class Command {
     public bool unregister(CommandMap commandMap) {
         if (allowChangesFrom(commandMap)) {
             this.commandMap = null;
-            this.activeAliases = new ArrayList<String>(this.aliases);
+            this.activeAliases = new List<String>(this.aliases);
             this.label = this.nextLabel;
             return true;
         }
@@ -332,7 +317,7 @@ public abstract class Command {
     public Command setAliases(List<String> aliases) {
         this.aliases = aliases;
         if (!isRegistered()) {
-            this.activeAliases = new ArrayList<String>(aliases);
+            this.activeAliases = new List<String>(aliases);
         }
         return this;
     }
@@ -380,14 +365,14 @@ public abstract class Command {
     public static void broadcastCommandMessage(CommandSender source, String message, bool sendToSource) {
         String result = source.getName() + ": " + message;
 
-        if (source instanceof BlockCommandSender) {
+        if (source is BlockCommandSender) {
             BlockCommandSender blockCommandSender = (BlockCommandSender) source;
 
             if (blockCommandSender.getBlock().getWorld().getGameRuleValue("commandBlockOutput").equalsIgnoreCase("false")) {
                 Bukkit.getConsoleSender().sendMessage(result);
                 return;
             }
-        } else if (source instanceof CommandMinecart) {
+        } else if (source is CommandMinecart) {
             CommandMinecart commandMinecart = (CommandMinecart) source;
 
             if (commandMinecart.getWorld().getGameRuleValue("commandBlockOutput").equalsIgnoreCase("false")) {
@@ -399,15 +384,15 @@ public abstract class Command {
         HashSet<Permissible> users = Bukkit.getPluginManager().getPermissionSubscriptions(Server.BROADCAST_CHANNEL_ADMINISTRATIVE);
         String colored = ChatColor.GRAY + "" + ChatColor.ITALIC + "[" + result + ChatColor.GRAY + ChatColor.ITALIC + "]";
 
-        if (sendToSource && !(source instanceof ConsoleCommandSender)) {
+        if (sendToSource && !(source is ConsoleCommandSender)) {
             source.sendMessage(message);
         }
 
         for (Permissible user : users) {
-            if (user instanceof CommandSender) {
+            if (user is CommandSender) {
                 CommandSender target = (CommandSender) user;
 
-                if (target instanceof ConsoleCommandSender) {
+                if (target is ConsoleCommandSender) {
                     target.sendMessage(result);
                 } else if (target != source) {
                     target.sendMessage(colored);
@@ -419,4 +404,5 @@ public abstract class Command {
     public override string ToString() {
         return getClass().getName() + '(' + name + ')';
     }
+}
 }

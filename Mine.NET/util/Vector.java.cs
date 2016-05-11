@@ -538,7 +538,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
      * with epsilon.
      */
     public override bool Equals(Object obj) {
-        if (!(obj instanceof Vector)) {
+        if (!(obj is Vector)) {
             return false;
         }
 

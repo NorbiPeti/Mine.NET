@@ -1,28 +1,27 @@
-package org.bukkit.block;
-
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.projectiles.BlockProjectileSource;
-
-/**
- * Represents a dispenser.
- */
-public interface Dispenser : BlockState, InventoryHolder {
-
+namespace Mine.NET
+{
     /**
-     * Gets the BlockProjectileSource object for this dispenser.
-     * <p>
-     * If the block is no longer a dispenser, this will return null.
-     *
-     * @return a BlockProjectileSource if valid, otherwise null
+     * Represents a dispenser.
      */
-    public BlockProjectileSource getBlockProjectileSource();
+    public interface Dispenser : BlockState, InventoryHolder
+    {
 
-    /**
-     * Attempts to dispense the contents of this block.
-     * <p>
-     * If the block is no longer a dispenser, this will return false.
-     *
-     * @return true if successful, otherwise false
-     */
-    public bool dispense();
+        /**
+         * Gets the BlockProjectileSource object for this dispenser.
+         * <p>
+         * If the block is no longer a dispenser, this will return null.
+         *
+         * @return a BlockProjectileSource if valid, otherwise null
+         */
+        BlockProjectileSource getBlockProjectileSource();
+
+        /**
+         * Attempts to dispense the contents of this block.
+         * <p>
+         * If the block is no longer a dispenser, this will return false.
+         *
+         * @return true if successful, otherwise false
+         */
+        bool dispense();
+    }
 }

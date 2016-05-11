@@ -218,7 +218,7 @@ public abstract class Enchantment {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Enchantment)) {
+        if (!(obj is Enchantment)) {
             return false;
         }
         readonly Enchantment other = (Enchantment) obj;

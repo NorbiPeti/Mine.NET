@@ -31,9 +31,9 @@ public abstract class MetadataStoreBase<T> {
      *     is null
      */
     public synchronized void setMetadata(T subject, String metadataKey, MetadataValue newMetadataValue) {
-        Validate.notNull(newMetadataValue, "Value cannot be null");
+        if(newMetadataValue==null) throw new ArgumentNullException("Value cannot be null");
         Plugin owningPlugin = newMetadataValue.getOwningPlugin();
-        Validate.notNull(owningPlugin, "Plugin cannot be null");
+        if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
         Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
         if (entry == null) {
@@ -88,7 +88,7 @@ public abstract class MetadataStoreBase<T> {
      * @throws ArgumentException If plugin is null
      */
     public synchronized void removeMetadata(T subject, String metadataKey, Plugin owningPlugin) {
-        Validate.notNull(owningPlugin, "Plugin cannot be null");
+        if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
         Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
         if (entry == null) {
@@ -111,7 +111,7 @@ public abstract class MetadataStoreBase<T> {
      * @throws ArgumentException If plugin is null
      */
     public synchronized void invalidateAll(Plugin owningPlugin) {
-        Validate.notNull(owningPlugin, "Plugin cannot be null");
+        if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         for (Dictionary<Plugin, MetadataValue> values : metadataMap.values()) {
             if (values.containsKey(owningPlugin)) {
                 values.get(owningPlugin).invalidate();

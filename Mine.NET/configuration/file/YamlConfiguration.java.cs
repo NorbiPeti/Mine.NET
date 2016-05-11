@@ -47,7 +47,7 @@ public class YamlConfiguration : FileConfiguration {
 
     @Override
     public void loadFromString(String contents) throws InvalidConfigurationException {
-        Validate.notNull(contents, "Contents cannot be null");
+        if(contents==null) throw new ArgumentNullException("Contents cannot be null");
 
         Dictionary<?, ?> input;
         try {
@@ -73,7 +73,7 @@ public class YamlConfiguration : FileConfiguration {
             String key = entry.getKey().toString();
             Object value = entry.getValue();
 
-            if (value instanceof Map) {
+            if (value is Map) {
                 convertMapsToSections((Dictionary<?, ?>) value, section.createSection(key));
             } else {
                 section.set(key, value);
@@ -117,7 +117,7 @@ public class YamlConfiguration : FileConfiguration {
         if (options().copyHeader()) {
             Configuration def = getDefaults();
 
-            if ((def != null) && (def instanceof FileConfiguration)) {
+            if ((def != null) && (def is FileConfiguration)) {
                 FileConfiguration filedefaults = (FileConfiguration) def;
                 String defaultsHeader = filedefaults.buildHeader();
 
@@ -171,7 +171,7 @@ public class YamlConfiguration : FileConfiguration {
      * @throws ArgumentException Thrown if file is null
      */
     public static YamlConfiguration loadConfiguration(File file) {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         YamlConfiguration config = new YamlConfiguration();
 
@@ -203,7 +203,7 @@ public class YamlConfiguration : FileConfiguration {
      */
     [Obsolete]
     public static YamlConfiguration loadConfiguration(InputStream stream) {
-        Validate.notNull(stream, "Stream cannot be null");
+        if(stream==null) throw new ArgumentNullException("Stream cannot be null");
 
         YamlConfiguration config = new YamlConfiguration();
 
@@ -231,7 +231,7 @@ public class YamlConfiguration : FileConfiguration {
      * @throws ArgumentException Thrown if stream is null
      */
     public static YamlConfiguration loadConfiguration(Reader reader) {
-        Validate.notNull(reader, "Stream cannot be null");
+        if(reader==null) throw new ArgumentNullException("Stream cannot be null");
 
         YamlConfiguration config = new YamlConfiguration();
 

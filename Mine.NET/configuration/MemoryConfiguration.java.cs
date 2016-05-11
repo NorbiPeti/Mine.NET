@@ -31,7 +31,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
 
     @Override
     public void addDefault(String path, Object value) {
-        Validate.notNull(path, "Path may not be null");
+        if(path==null) throw new ArgumentNullException("Path may not be null");
 
         if (defaults == null) {
             defaults = new MemoryConfiguration();
@@ -41,7 +41,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
     }
 
     public void addDefaults(Dictionary<String, Object> defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
+        if(defaults==null) throw new ArgumentNullException("Defaults may not be null");
 
         for (Map.Entry<String, Object> entry : defaults.entrySet()) {
             addDefault(entry.getKey(), entry.getValue());
@@ -49,13 +49,13 @@ public class MemoryConfiguration : MemorySection : Configuration {
     }
 
     public void addDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
+        if(defaults==null) throw new ArgumentNullException("Defaults may not be null");
 
         addDefaults(defaults.getValues(true));
     }
 
     public void setDefaults(Configuration defaults) {
-        Validate.notNull(defaults, "Defaults may not be null");
+        if(defaults==null) throw new ArgumentNullException("Defaults may not be null");
 
         this.defaults = defaults;
     }

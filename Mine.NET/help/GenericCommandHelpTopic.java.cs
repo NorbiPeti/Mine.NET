@@ -62,12 +62,12 @@ public class GenericCommandHelpTopic : HelpTopic {
     }
 
     public bool canSee(CommandSender sender) {
-        if (!command.isRegistered() && !(command instanceof VanillaCommand)) {
+        if (!command.isRegistered() && !(command is VanillaCommand)) {
             // Unregistered commands should not show up in the help (ignore VanillaCommands)
             return false;
         }
 
-        if (sender instanceof ConsoleCommandSender) {
+        if (sender is ConsoleCommandSender) {
             return true;
         }
 

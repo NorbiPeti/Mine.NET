@@ -122,16 +122,16 @@ public sealed class PluginCommand : Command : PluginIdentifiableCommand {
      */
     @Override
     public java.util.List<String> tabComplete(CommandSender sender, String alias, String[] args) throws CommandException, ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         List<String> completions = null;
         try {
             if (completer != null) {
                 completions = completer.onTabComplete(sender, this, alias, args);
             }
-            if (completions == null && executor instanceof TabCompleter) {
+            if (completions == null && executor is TabCompleter) {
                 completions = ((TabCompleter) executor).onTabComplete(sender, this, alias, args);
             }
         } catch (Throwable ex) {

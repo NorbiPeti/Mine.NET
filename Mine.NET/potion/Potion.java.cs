@@ -29,7 +29,7 @@ public class Potion {
      * @see #Potion(int)
      */
     public Potion(PotionType type) {
-        Validate.notNull(type, "Null PotionType");
+        if(type==null) throw new ArgumentNullException("Null PotionType");
         this.type = type;
     }
 
@@ -39,7 +39,7 @@ public class Potion {
     [Obsolete]
     public Potion(PotionType type, Tier tier) {
         this(type, tier == Tier.TWO ? 2 : 1);
-        Validate.notNull(type, "Type cannot be null");
+        if(type==null) throw new ArgumentNullException("Type cannot be null");
     }
 
     /**
@@ -68,7 +68,7 @@ public class Potion {
      */
     public Potion(PotionType type, int level) {
         this(type);
-        Validate.notNull(type, "Type cannot be null");
+        if(type==null) throw new ArgumentNullException("Type cannot be null");
         if(level > 0 && level < 3) throw new ArgumentException("Level must be 1 or 2");
         this.level = level;
     }
@@ -139,9 +139,9 @@ public class Potion {
      * @param to The itemstack to apply to
      */
     public void apply(ItemStack to) {
-        Validate.notNull(to, "itemstack cannot be null");
+        if(to==null) throw new ArgumentNullException("itemstack cannot be null");
         if(to.hasItemMeta()) throw new ArgumentException("given itemstack is not a potion");
-        if(to.getItemMeta() instanceof PotionMeta) throw new ArgumentException("given itemstack is not a potion");
+        if(to.getItemMeta() is PotionMeta) throw new ArgumentException("given itemstack is not a potion");
         PotionMeta meta = (PotionMeta) to.getItemMeta();
         meta.setBasePotionData(new PotionData(type, extended, level == 2));
         to.setItemMeta(meta);
@@ -155,7 +155,7 @@ public class Potion {
      * @param to The entity to apply the effects to
      */
     public void apply(LivingEntity to) {
-        Validate.notNull(to, "entity cannot be null");
+        if(to==null) throw new ArgumentNullException("entity cannot be null");
         to.addPotionEffects(getEffects());
     }
 
@@ -267,7 +267,7 @@ public class Potion {
      */
     [Obsolete]
     public void setTier(Tier tier) {
-        Validate.notNull(tier, "tier cannot be null");
+        if(tier==null) throw new ArgumentNullException("tier cannot be null");
         this.level = (tier == Tier.TWO ? 2 : 1);
     }
 
@@ -286,7 +286,7 @@ public class Potion {
      * @param level The new level of this potion
      */
     public void setLevel(int level) {
-        Validate.notNull(this.type, "No-effect potions don't have a level.");
+        if(this.type==null) throw new ArgumentNullException("No-effect potions don't have a level.");
         if(level > 0 && level <= 2) throw new ArgumentException("Level must be between 1 and 2 for this potion");
         this.level = level;
     }
@@ -427,7 +427,7 @@ public class Potion {
     }
 
     public static Potion fromItemStack(ItemStack item) {
-        Validate.notNull(item, "item cannot be null");
+        if(item==null) throw new ArgumentNullException("item cannot be null");
         if (item.getType() != Material.POTION)
             throw new ArgumentException("item is not a potion");
         return fromDamage(item.getDurability());

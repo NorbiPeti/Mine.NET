@@ -52,7 +52,7 @@ public class Permission {
     }
 
     public Permission(String name, String description, PermissionDefault defaultValue, Dictionary<String, bool> children) {
-        Validate.notNull(name, "Name cannot be null");
+        if(name==null) throw new ArgumentNullException("Name cannot be null");
         this.name = name;
         this.description = (description == null) ? "" : description;
 
@@ -280,8 +280,8 @@ public class Permission {
      * @return Permission object
      */
     public static Permission loadPermission(String name, Dictionary<?, ?> data, PermissionDefault def, List<Permission> output) {
-        Validate.notNull(name, "Name cannot be null");
-        Validate.notNull(data, "Data cannot be null");
+        if(name==null) throw new ArgumentNullException("Name cannot be null");
+        if(data==null) throw new ArgumentNullException("Data cannot be null");
 
         String desc = null;
         Dictionary<String, bool> children = null;
@@ -297,14 +297,14 @@ public class Permission {
 
         if (data.get("children") != null) {
             Object childrenNode = data.get("children");
-            if (childrenNode instanceof Iterable) {
+            if (childrenNode is Iterable) {
                 children = new LinkedHashMap<String, bool>();
                 for (Object child : (Iterable<?>) childrenNode) {
                     if (child != null) {
                         children.put(child.toString(), bool.TRUE);
                     }
                 }
-            } else if (childrenNode instanceof Map) {
+            } else if (childrenNode is Map) {
                 children = extractChildren((Dictionary<?,?>) childrenNode, name, def, output);
             } else {
                 throw new ArgumentException("'children' key is of wrong type");
@@ -322,9 +322,9 @@ public class Permission {
         Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
-            if ((entry.getValue() instanceof bool)) {
+            if ((entry.getValue() is bool)) {
                 children.put(entry.getKey().toString(), (bool) entry.getValue());
-            } else if ((entry.getValue() instanceof Map)) {
+            } else if ((entry.getValue() is Map)) {
                 try {
                     Permission perm = loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, output);
                     children.put(perm.getName(), bool.TRUE);

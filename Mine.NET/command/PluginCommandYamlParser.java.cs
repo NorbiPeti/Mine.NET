@@ -42,7 +42,7 @@ public class PluginCommandYamlParser {
             if (aliases != null) {
                 List<String> aliasList = new ArrayList<String>();
 
-                if (aliases instanceof List) {
+                if (aliases is List) {
                     for (Object o : (List<?>) aliases) {
                         if (o.toString().contains(":")) {
                             Bukkit.getServer().getLogger().severe("Could not load alias " + o.toString() + " for plugin " + plugin.getName() + ": Illegal Characters");

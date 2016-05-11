@@ -1,72 +1,73 @@
-package org.bukkit.block;
+using System;
 
-import org.bukkit.Instrument;
-import org.bukkit.Note;
-
-/**
- * Represents a note.
- */
-public interface NoteBlock : BlockState {
-
+namespace Mine.NET
+{
     /**
-     * Gets the note.
-     *
-     * @return The note.
+     * Represents a note.
      */
-    public Note getNote();
+    public interface NoteBlock : BlockState
+    {
 
-    /**
-     * Gets the note.
-     *
-     * @return The note ID.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public byte getRawNote();
+        /**
+         * Gets the note.
+         *
+         * @return The note.
+         */
+        Note getNote();
 
-    /**
-     * Set the note.
-     *
-     * @param note The note.
-     */
-    public void setNote(Note note);
+        /**
+         * Gets the note.
+         *
+         * @return The note ID.
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        byte getRawNote();
 
-    /**
-     * Set the note.
-     *
-     * @param note The note ID.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public void setRawNote(byte note);
+        /**
+         * Set the note.
+         *
+         * @param note The note.
+         */
+        void setNote(Note note);
 
-    /**
-     * Attempts to play the note at block
-     * <p>
-     * If the block is no longer a note block, this will return false
-     *
-     * @return true if successful, otherwise false
-     */
-    public bool play();
+        /**
+         * Set the note.
+         *
+         * @param note The note ID.
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        void setRawNote(byte note);
 
-    /**
-     * Plays an arbitrary note with an arbitrary instrument
-     *
-     * @param instrument Instrument ID
-     * @param note Note ID
-     * @return true if successful, otherwise false
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public bool play(byte instrument, byte note);
+        /**
+         * Attempts to play the note at block
+         * <p>
+         * If the block is no longer a note block, this will return false
+         *
+         * @return true if successful, otherwise false
+         */
+        bool play();
 
-    /**
-     * Plays an arbitrary note with an arbitrary instrument
-     *
-     * @param instrument The instrument
-     * @param note The note
-     * @return true if successful, otherwise false
-     * @see Instrument Note
-     */
-    public bool play(Instrument instrument, Note note);
+        /**
+         * Plays an arbitrary note with an arbitrary instrument
+         *
+         * @param instrument Instrument ID
+         * @param note Note ID
+         * @return true if successful, otherwise false
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        bool play(byte instrument, byte note);
+
+        /**
+         * Plays an arbitrary note with an arbitrary instrument
+         *
+         * @param instrument The instrument
+         * @param note The note
+         * @return true if successful, otherwise false
+         * @see Instrument Note
+         */
+        bool play(Instrument instrument, Note note);
+    }
 }

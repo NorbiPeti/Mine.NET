@@ -104,7 +104,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      * @see DamageModifier#BASE
      */
     public double getDamage(DamageModifier type) throws ArgumentException {
-        Validate.notNull(type, "Cannot have null DamageModifier");
+        if(type==null) throw new ArgumentNullException("Cannot have null DamageModifier");
         readonly Double damage = modifiers.get(type);
         return damage == null ? 0 : damage;
     }
@@ -121,7 +121,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      * @throws ArgumentException if type is null
      */
     public bool isApplicable(DamageModifier type) throws ArgumentException {
-        Validate.notNull(type, "Cannot have null DamageModifier");
+        if(type==null) throw new ArgumentNullException("Cannot have null DamageModifier");
         return modifiers.containsKey(type);
     }
 

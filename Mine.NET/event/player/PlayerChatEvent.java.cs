@@ -75,7 +75,7 @@ public class PlayerChatEvent : PlayerEvent : Cancellable {
      * @param player New player which this event will execute as
      */
     public void setPlayer(Player player) {
-        Validate.notNull(player, "Player cannot be null");
+        if(player==null) throw new ArgumentNullException("Player cannot be null");
         this.player = player;
     }
 

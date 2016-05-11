@@ -67,7 +67,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
      * @param intensity relative to maximum effect
      */
     public void setIntensity(LivingEntity entity, double intensity) {
-        Validate.notNull(entity, "You must specify a valid entity.");
+        if(entity==null) throw new ArgumentNullException("You must specify a valid entity.");
         if (intensity <= 0.0) {
             affectedEntities.remove(entity);
         } else {

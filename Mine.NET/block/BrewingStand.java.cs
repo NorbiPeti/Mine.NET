@@ -1,40 +1,39 @@
-package org.bukkit.block;
-
-import org.bukkit.inventory.BrewerInventory;
-import org.bukkit.inventory.InventoryHolder;
-
-/**
- * Represents a brewing stand.
- */
-public interface BrewingStand : BlockState, InventoryHolder {
-
+namespace Mine.NET
+{
     /**
-     * How much time is left in the brewing cycle
-     *
-     * @return Brew Time
+     * Represents a brewing stand.
      */
-    int getBrewingTime();
+    public interface BrewingStand : BlockState, InventoryHolder
+    {
 
-    /**
-     * Set the time left before brewing completes.
-     *
-     * @param brewTime Brewing time
-     */
-    void setBrewingTime(int brewTime);
+        /**
+         * How much time is left in the brewing cycle
+         *
+         * @return Brew Time
+         */
+        int getBrewingTime();
 
-    /**
-     * Get the level of current fuel for brewing.
-     *
-     * @return The fuel level
-     */
-    int getFuelLevel();
+        /**
+         * Set the time left before brewing completes.
+         *
+         * @param brewTime Brewing time
+         */
+        void setBrewingTime(int brewTime);
 
-    /**
-     * Set the level of current fuel for brewing.
-     *
-     * @param level fuel level
-     */
-    void setFuelLevel(int level);
+        /**
+         * Get the level of current fuel for brewing.
+         *
+         * @return The fuel level
+         */
+        int getFuelLevel();
 
-    public BrewerInventory getInventory();
+        /**
+         * Set the level of current fuel for brewing.
+         *
+         * @param level fuel level
+         */
+        void setFuelLevel(int level);
+
+        BrewerInventory getInventory();
+    }
 }

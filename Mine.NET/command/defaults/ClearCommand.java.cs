@@ -40,7 +40,7 @@ public class ClearCommand : VanillaCommand {
         Player player = null;
         if (args.length > 0) {
             player = Bukkit.getPlayer(args[0]);
-        } else if (sender instanceof Player) {
+        } else if (sender is Player) {
             player = (Player) sender;
         }
 
@@ -74,9 +74,9 @@ public class ClearCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             return super.tabComplete(sender, alias, args);

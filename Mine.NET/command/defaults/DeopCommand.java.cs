@@ -34,7 +34,7 @@ public class DeopCommand : VanillaCommand {
         OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
         player.setOp(false);
 
-        if (player instanceof Player) {
+        if (player is Player) {
             ((Player) player).sendMessage(ChatColor.YELLOW + "You are no longer op!");
         }
 
@@ -44,9 +44,9 @@ public class DeopCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             List<String> completions = new ArrayList<String>();

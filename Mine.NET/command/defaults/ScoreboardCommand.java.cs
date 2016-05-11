@@ -356,7 +356,7 @@ public class ScoreboardCommand : VanillaCommand {
                     }
                 }
             } else if (args[1].equalsIgnoreCase("join")) {
-                if ((sender instanceof Player) ? args.length < 3 : args.length < 4) {
+                if ((sender is Player) ? args.length < 3 : args.length < 4) {
                     sender.sendMessage(ChatColor.RED + "/scoreboard teams join <team> [player...]");
                     return false;
                 }
@@ -366,7 +366,7 @@ public class ScoreboardCommand : VanillaCommand {
                     sender.sendMessage(ChatColor.RED + "No team was found by the name '" + teamName + "'");
                 } else {
                     HashSet<String> addedPlayers = new HashSet<String>();
-                    if ((sender instanceof Player) && args.length == 3) {
+                    if ((sender is Player) && args.length == 3) {
                         team.addPlayer((Player) sender);
                         addedPlayers.add(sender.getName());
                     } else {
@@ -386,13 +386,13 @@ public class ScoreboardCommand : VanillaCommand {
                     sender.sendMessage("Added " + addedPlayers.size() + " player(s) to team " + team.getName() + ": " + stringCollectionToString(addedPlayers));
                 }
             } else if (args[1].equalsIgnoreCase("leave")) {
-                if (!(sender instanceof Player) && args.length < 3) {
+                if (!(sender is Player) && args.length < 3) {
                     sender.sendMessage(ChatColor.RED + "/scoreboard teams leave [player...]");
                     return false;
                 }
                 HashSet<String> left = new HashSet<String>();
                 HashSet<String> noTeam = new HashSet<String>();
-                if ((sender instanceof Player) && args.length == 2) {
+                if ((sender is Player) && args.length == 2) {
                     Team team = mainScoreboard.getPlayerTeam((Player) sender);
                     if (team != null) {
                         team.removePlayer((Player) sender);
@@ -480,9 +480,9 @@ public class ScoreboardCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 1) {
             return StringUtil.copyPartialMatches(args[0], MAIN_CHOICES, new ArrayList<String>());

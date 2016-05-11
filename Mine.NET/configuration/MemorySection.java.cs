@@ -36,7 +36,7 @@ public class MemorySection : ConfigurationSection {
      *     Configuration} root.
      */
     protected MemorySection() {
-        if (!(this instanceof Configuration)) {
+        if (!(this is Configuration)) {
             throw new IllegalStateException("Cannot construct a root MemorySection when not a Configuration");
         }
 
@@ -56,14 +56,14 @@ public class MemorySection : ConfigurationSection {
      *     if parent contains no root Configuration.
      */
     protected MemorySection(ConfigurationSection parent, String path) {
-        Validate.notNull(parent, "Parent cannot be null");
-        Validate.notNull(path, "Path cannot be null");
+        if(parent==null) throw new ArgumentNullException("Parent cannot be null");
+        if(path==null) throw new ArgumentNullException("Path cannot be null");
 
         this.path = path;
         this.parent = parent;
         this.root = parent.getRoot();
 
-        Validate.notNull(root, "Path cannot be orphaned");
+        if(root==null) throw new ArgumentNullException("Path cannot be orphaned");
 
         this.fullPath = createPath(parent, path);
     }
@@ -134,7 +134,7 @@ public class MemorySection : ConfigurationSection {
     }
 
     public void addDefault(String path, Object value) {
-        Validate.notNull(path, "Path cannot be null");
+        if(path==null) throw new ArgumentNullException("Path cannot be null");
 
         Configuration root = getRoot();
         if (root == null) {
@@ -199,7 +199,7 @@ public class MemorySection : ConfigurationSection {
     }
 
     public Object get(String path, Object def) {
-        Validate.notNull(path, "Path cannot be null");
+        if(path==null) throw new ArgumentNullException("Path cannot be null");
 
         if (path.length() == 0) {
             return this;
@@ -265,7 +265,7 @@ public class MemorySection : ConfigurationSection {
         ConfigurationSection section = createSection(path);
 
         for (Map.Entry<?, ?> entry : map.entrySet()) {
-            if (entry.getValue() instanceof Map) {
+            if (entry.getValue() is Map) {
                 section.createSection(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue());
             } else {
                 section.set(entry.getKey().toString(), entry.getValue());
@@ -288,83 +288,83 @@ public class MemorySection : ConfigurationSection {
 
     public bool isString(String path) {
         Object val = get(path);
-        return val instanceof String;
+        return val is String;
     }
 
     public int getInt(String path) {
         Object def = getDefault(path);
-        return getInt(path, (def instanceof Number) ? toInt(def) : 0);
+        return getInt(path, (def is Number) ? toInt(def) : 0);
     }
 
     public int getInt(String path, int def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? toInt(val) : def;
+        return (val is Number) ? toInt(val) : def;
     }
 
     public bool isInt(String path) {
         Object val = get(path);
-        return val instanceof Integer;
+        return val is Integer;
     }
 
     public bool getBoolean(String path) {
         Object def = getDefault(path);
-        return getBoolean(path, (def instanceof bool) ? (bool) def : false);
+        return getBoolean(path, (def is bool) ? (bool) def : false);
     }
 
     public bool getBoolean(String path, bool def) {
         Object val = get(path, def);
-        return (val instanceof bool) ? (bool) val : def;
+        return (val is bool) ? (bool) val : def;
     }
 
     public bool isBoolean(String path) {
         Object val = get(path);
-        return val instanceof bool;
+        return val is bool;
     }
 
     public double getDouble(String path) {
         Object def = getDefault(path);
-        return getDouble(path, (def instanceof Number) ? toDouble(def) : 0);
+        return getDouble(path, (def is Number) ? toDouble(def) : 0);
     }
 
     public double getDouble(String path, double def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? toDouble(val) : def;
+        return (val is Number) ? toDouble(val) : def;
     }
 
     public bool isDouble(String path) {
         Object val = get(path);
-        return val instanceof Double;
+        return val is Double;
     }
 
     public long getLong(String path) {
         Object def = getDefault(path);
-        return getLong(path, (def instanceof Number) ? toLong(def) : 0);
+        return getLong(path, (def is Number) ? toLong(def) : 0);
     }
 
     public long getLong(String path, long def) {
         Object val = get(path, def);
-        return (val instanceof Number) ? toLong(val) : def;
+        return (val is Number) ? toLong(val) : def;
     }
 
     public bool isLong(String path) {
         Object val = get(path);
-        return val instanceof Long;
+        return val is Long;
     }
 
     // Java
     public List<?> getList(String path) {
         Object def = getDefault(path);
-        return getList(path, (def instanceof List) ? (List<?>) def : null);
+        return getList(path, (def is List) ? (List<?>) def : null);
     }
 
     public List<?> getList(String path, List<?> def) {
         Object val = get(path, def);
-        return (List<?>) ((val instanceof List) ? val : def);
+        return (List<?>) ((val is List) ? val : def);
     }
 
     public bool isList(String path) {
         Object val = get(path);
-        return val instanceof List;
+        return val is List;
     }
 
     public List<String> getStringList(String path) {
@@ -377,7 +377,7 @@ public class MemorySection : ConfigurationSection {
         List<String> result = new ArrayList<String>();
 
         for (Object object : list) {
-            if ((object instanceof String) || (isPrimitiveWrapper(object))) {
+            if ((object is String) || (isPrimitiveWrapper(object))) {
                 result.add(String.valueOf(object));
             }
         }
@@ -395,16 +395,16 @@ public class MemorySection : ConfigurationSection {
         List<Integer> result = new ArrayList<Integer>();
 
         for (Object object : list) {
-            if (object instanceof Integer) {
+            if (object is Integer) {
                 result.add((Integer) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Integer.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((int) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).intValue());
             }
         }
@@ -422,9 +422,9 @@ public class MemorySection : ConfigurationSection {
         List<bool> result = new ArrayList<bool>();
 
         for (Object object : list) {
-            if (object instanceof bool) {
+            if (object is bool) {
                 result.add((bool) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 if (bool.TRUE.toString().equals(object)) {
                     result.add(true);
                 } else if (bool.FALSE.toString().equals(object)) {
@@ -446,16 +446,16 @@ public class MemorySection : ConfigurationSection {
         List<Double> result = new ArrayList<Double>();
 
         for (Object object : list) {
-            if (object instanceof Double) {
+            if (object is Double) {
                 result.add((Double) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Double.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((double) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).doubleValue());
             }
         }
@@ -473,16 +473,16 @@ public class MemorySection : ConfigurationSection {
         List<Float> result = new ArrayList<Float>();
 
         for (Object object : list) {
-            if (object instanceof Float) {
+            if (object is Float) {
                 result.add((Float) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Float.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((float) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).floatValue());
             }
         }
@@ -500,16 +500,16 @@ public class MemorySection : ConfigurationSection {
         List<Long> result = new ArrayList<Long>();
 
         for (Object object : list) {
-            if (object instanceof Long) {
+            if (object is Long) {
                 result.add((Long) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Long.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((long) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).longValue());
             }
         }
@@ -527,16 +527,16 @@ public class MemorySection : ConfigurationSection {
         List<Byte> result = new ArrayList<Byte>();
 
         for (Object object : list) {
-            if (object instanceof Byte) {
+            if (object is Byte) {
                 result.add((Byte) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Byte.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((byte) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).byteValue());
             }
         }
@@ -554,15 +554,15 @@ public class MemorySection : ConfigurationSection {
         List<Character> result = new ArrayList<Character>();
 
         for (Object object : list) {
-            if (object instanceof Character) {
+            if (object is Character) {
                 result.add((Character) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 String str = (String) object;
 
                 if (str.length() == 1) {
                     result.add(str.charAt(0));
                 }
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add((char) ((Number) object).intValue());
             }
         }
@@ -580,16 +580,16 @@ public class MemorySection : ConfigurationSection {
         List<Short> result = new ArrayList<Short>();
 
         for (Object object : list) {
-            if (object instanceof Short) {
+            if (object is Short) {
                 result.add((Short) object);
-            } else if (object instanceof String) {
+            } else if (object is String) {
                 try {
                     result.add(Short.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object instanceof Character) {
+            } else if (object is Character) {
                 result.add((short) ((Character) object).charValue());
-            } else if (object instanceof Number) {
+            } else if (object is Number) {
                 result.add(((Number) object).shortValue());
             }
         }
@@ -606,7 +606,7 @@ public class MemorySection : ConfigurationSection {
         }
 
         for (Object object : list) {
-            if (object instanceof Map) {
+            if (object is Map) {
                 result.add((Dictionary<?, ?>) object);
             }
         }
@@ -617,88 +617,88 @@ public class MemorySection : ConfigurationSection {
     // Bukkit
     public Vector getVector(String path) {
         Object def = getDefault(path);
-        return getVector(path, (def instanceof Vector) ? (Vector) def : null);
+        return getVector(path, (def is Vector) ? (Vector) def : null);
     }
 
     public Vector getVector(String path, Vector def) {
         Object val = get(path, def);
-        return (val instanceof Vector) ? (Vector) val : def;
+        return (val is Vector) ? (Vector) val : def;
     }
 
     public bool isVector(String path) {
         Object val = get(path);
-        return val instanceof Vector;
+        return val is Vector;
     }
 
     public OfflinePlayer getOfflinePlayer(String path) {
         Object def = getDefault(path);
-        return getOfflinePlayer(path, (def instanceof OfflinePlayer) ? (OfflinePlayer) def : null);
+        return getOfflinePlayer(path, (def is OfflinePlayer) ? (OfflinePlayer) def : null);
     }
 
     public OfflinePlayer getOfflinePlayer(String path, OfflinePlayer def) {
         Object val = get(path, def);
-        return (val instanceof OfflinePlayer) ? (OfflinePlayer) val : def;
+        return (val is OfflinePlayer) ? (OfflinePlayer) val : def;
     }
 
     public bool isOfflinePlayer(String path) {
         Object val = get(path);
-        return val instanceof OfflinePlayer;
+        return val is OfflinePlayer;
     }
 
     public ItemStack getItemStack(String path) {
         Object def = getDefault(path);
-        return getItemStack(path, (def instanceof ItemStack) ? (ItemStack) def : null);
+        return getItemStack(path, (def is ItemStack) ? (ItemStack) def : null);
     }
 
     public ItemStack getItemStack(String path, ItemStack def) {
         Object val = get(path, def);
-        return (val instanceof ItemStack) ? (ItemStack) val : def;
+        return (val is ItemStack) ? (ItemStack) val : def;
     }
 
     public bool isItemStack(String path) {
         Object val = get(path);
-        return val instanceof ItemStack;
+        return val is ItemStack;
     }
 
     public Color getColor(String path) {
         Object def = getDefault(path);
-        return getColor(path, (def instanceof Color) ? (Color) def : null);
+        return getColor(path, (def is Color) ? (Color) def : null);
     }
 
     public Color getColor(String path, Color def) {
         Object val = get(path, def);
-        return (val instanceof Color) ? (Color) val : def;
+        return (val is Color) ? (Color) val : def;
     }
 
     public bool isColor(String path) {
         Object val = get(path);
-        return val instanceof Color;
+        return val is Color;
     }
 
     public ConfigurationSection getConfigurationSection(String path) {
         Object val = get(path, null);
         if (val != null) {
-            return (val instanceof ConfigurationSection) ? (ConfigurationSection) val : null;
+            return (val is ConfigurationSection) ? (ConfigurationSection) val : null;
         }
 
         val = get(path, getDefault(path));
-        return (val instanceof ConfigurationSection) ? createSection(path) : null;
+        return (val is ConfigurationSection) ? createSection(path) : null;
     }
 
     public bool isConfigurationSection(String path) {
         Object val = get(path);
-        return val instanceof ConfigurationSection;
+        return val is ConfigurationSection;
     }
 
     protected bool isPrimitiveWrapper(Object input) {
-        return input instanceof Integer || input instanceof bool ||
-                input instanceof Character || input instanceof Byte ||
-                input instanceof Short || input instanceof Double ||
-                input instanceof Long || input instanceof Float;
+        return input is Integer || input is bool ||
+                input is Character || input is Byte ||
+                input is Short || input is Double ||
+                input is Long || input is Float;
     }
 
     protected Object getDefault(String path) {
-        Validate.notNull(path, "Path cannot be null");
+        if(path==null) throw new ArgumentNullException("Path cannot be null");
 
         Configuration root = getRoot();
         Configuration defaults = root == null ? null : root.getDefaults();
@@ -706,13 +706,13 @@ public class MemorySection : ConfigurationSection {
     }
 
     protected void mapChildrenKeys(HashSet<String> output, ConfigurationSection section, bool deep) {
-        if (section instanceof MemorySection) {
+        if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
             for (Map.Entry<String, Object> entry : sec.map.entrySet()) {
                 output.add(createPath(section, entry.getKey(), this));
 
-                if ((deep) && (entry.getValue() instanceof ConfigurationSection)) {
+                if ((deep) && (entry.getValue() is ConfigurationSection)) {
                     ConfigurationSection subsection = (ConfigurationSection) entry.getValue();
                     mapChildrenKeys(output, subsection, deep);
                 }
@@ -727,13 +727,13 @@ public class MemorySection : ConfigurationSection {
     }
 
     protected void mapChildrenValues(Dictionary<String, Object> output, ConfigurationSection section, bool deep) {
-        if (section instanceof MemorySection) {
+        if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
             for (Map.Entry<String, Object> entry : sec.map.entrySet()) {
                 output.put(createPath(section, entry.getKey(), this), entry.getValue());
 
-                if (entry.getValue() instanceof ConfigurationSection) {
+                if (entry.getValue() is ConfigurationSection) {
                     if (deep) {
                         mapChildrenValues(output, (ConfigurationSection) entry.getValue(), deep);
                     }
@@ -776,7 +776,7 @@ public class MemorySection : ConfigurationSection {
      * @return Full path of the section from its root.
      */
     public static String createPath(ConfigurationSection section, String key, ConfigurationSection relativeTo) {
-        Validate.notNull(section, "Cannot create path without a section");
+        if(section==null) throw new ArgumentNullException("Cannot create path without a section");
         Configuration root = section.getRoot();
         if (root == null) {
             throw new IllegalStateException("Cannot create path without a root");

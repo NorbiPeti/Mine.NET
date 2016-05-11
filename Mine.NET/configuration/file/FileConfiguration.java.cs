@@ -61,7 +61,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException Thrown when file is null.
      */
     public void save(File file) throws IOException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         Files.createParentDirs(file);
 
@@ -92,7 +92,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException Thrown when file is null.
      */
     public void save(String file) throws IOException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         save(new File(file));
     }
@@ -123,7 +123,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException Thrown when file is null.
      */
     public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         readonly FileInputStream stream = new FileInputStream(file);
 
@@ -147,7 +147,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      */
     [Obsolete]
     public void load(InputStream stream) throws IOException, InvalidConfigurationException {
-        Validate.notNull(stream, "Stream cannot be null");
+        if(stream==null) throw new ArgumentNullException("Stream cannot be null");
 
         load(new InputStreamReader(stream, Charsets.UTF_8));
     }
@@ -166,7 +166,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException thrown when reader is null
      */
     public void load(Reader reader) throws IOException, InvalidConfigurationException {
-        BufferedReader input = reader instanceof BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);
+        BufferedReader input = reader is BufferedReader ? (BufferedReader) reader : new BufferedReader(reader);
 
         StringBuilder builder = new StringBuilder();
 
@@ -203,7 +203,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException Thrown when file is null.
      */
     public void load(String file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         load(new File(file));
     }

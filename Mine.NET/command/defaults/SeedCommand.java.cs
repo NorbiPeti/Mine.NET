@@ -22,7 +22,7 @@ public class SeedCommand : VanillaCommand {
     public bool execute(CommandSender sender, String commandLabel, String[] args) {
         if (!testPermission(sender)) return true;
         long seed;
-        if (sender instanceof Player) {
+        if (sender is Player) {
             seed = ((Player) sender).getWorld().getSeed();
         } else {
             seed = Bukkit.getWorlds().get(0).getSeed();
@@ -33,9 +33,9 @@ public class SeedCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         return ImmutableList.of();
     }

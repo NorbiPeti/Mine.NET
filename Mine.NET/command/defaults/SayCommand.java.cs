@@ -30,9 +30,9 @@ public class SayCommand : VanillaCommand {
 
         StringBuilder message = new StringBuilder();
         message.append(ChatColor.LIGHT_PURPLE).append("[");
-        if (sender instanceof ConsoleCommandSender) {
+        if (sender is ConsoleCommandSender) {
             message.append("Server");
-        } else if (sender instanceof Player) {
+        } else if (sender is Player) {
             message.append(((Player) sender).getDisplayName());
         } else {
             message.append(sender.getName());
@@ -52,8 +52,8 @@ public class SayCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
 
         if (args.length >= 1) {
             return super.tabComplete(sender, alias, args);

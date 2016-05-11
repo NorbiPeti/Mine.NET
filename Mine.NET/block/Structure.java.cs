@@ -1,3 +1,4 @@
-package org.bukkit.block;
-
-public interface Structure : BlockState {}
+namespace Mine.NET
+{
+    public interface Structure : BlockState { }
+}

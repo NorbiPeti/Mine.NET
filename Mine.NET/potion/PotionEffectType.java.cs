@@ -201,7 +201,7 @@ public abstract class PotionEffectType {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof PotionEffectType)) {
+        if (!(obj is PotionEffectType)) {
             return false;
         }
         readonly PotionEffectType other = (PotionEffectType) obj;
@@ -245,7 +245,7 @@ public abstract class PotionEffectType {
      * @return Resulting PotionEffectType, or null if not found.
      */
     public static PotionEffectType getByName(String name) {
-        Validate.notNull(name, "name cannot be null");
+        if(name==null) throw new ArgumentNullException("name cannot be null");
         return byName.get(name.toLowerCase());
     }
 

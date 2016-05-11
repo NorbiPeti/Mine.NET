@@ -114,7 +114,7 @@ public class MaterialData : Cloneable {
     }
 
     public override bool Equals(Object obj) {
-        if (obj != null && obj instanceof MaterialData) {
+        if (obj != null && obj is MaterialData) {
             MaterialData md = (MaterialData) obj;
 
             return (md.getItemTypeId() == getItemTypeId() && md.getData() == getData());

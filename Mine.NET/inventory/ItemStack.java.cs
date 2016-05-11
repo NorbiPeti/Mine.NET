@@ -132,7 +132,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *     returns an item meta not created by the item factory
      */
     public ItemStack(ItemStack stack) throws ArgumentException {
-        Validate.notNull(stack, "Cannot copy null stack");
+        if(stack==null) throw new ArgumentNullException("Cannot copy null stack");
         this.type = stack.getTypeId();
         this.amount = stack.getAmount();
         this.durability = stack.getDurability();
@@ -170,7 +170,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      */
     @Utility
     public void setType(Material type) {
-        Validate.notNull(type, "Material cannot be null");
+        if(type==null) throw new ArgumentNullException("Material cannot be null");
         setTypeId(type.getId());
     }
 
@@ -312,7 +312,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof ItemStack)) {
+        if (!(obj is ItemStack)) {
             return false;
         }
 
@@ -414,7 +414,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      */
     @Utility
     public void addEnchantments(Dictionary<Enchantment, Integer> enchantments) {
-        Validate.notNull(enchantments, "Enchantments cannot be null");
+        if(enchantments==null) throw new ArgumentNullException("Enchantments cannot be null");
         for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
             addEnchantment(entry.getKey(), entry.getValue());
         }
@@ -433,7 +433,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      */
     @Utility
     public void addEnchantment(Enchantment ench, int level) {
-        Validate.notNull(ench, "Enchantment cannot be null");
+        if(ench==null) throw new ArgumentNullException("Enchantment cannot be null");
         if ((level < ench.getStartLevel()) || (level > ench.getMaxLevel())) {
             throw new ArgumentException("Enchantment level is either too low or too high (given " + level + ", bounds are " + ench.getStartLevel() + " to " + ench.getMaxLevel() + ")");
         } else if (!ench.canEnchantItem(this)) {
@@ -538,20 +538,20 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         if (args.containsKey("enchantments")) { // Backward compatiblity, [Obsolete]
             Object raw = args.get("enchantments");
 
-            if (raw instanceof Map) {
+            if (raw is Map) {
                 Dictionary<?, ?> map = (Dictionary<?, ?>) raw;
 
                 for (Map.Entry<?, ?> entry : map.entrySet()) {
                     Enchantment enchantment = Enchantment.getByName(entry.getKey().toString());
 
-                    if ((enchantment != null) && (entry.getValue() instanceof Integer)) {
+                    if ((enchantment != null) && (entry.getValue() is Integer)) {
                         result.addUnsafeEnchantment(enchantment, (Integer) entry.getValue());
                     }
                 }
             }
         } else if (args.containsKey("meta")) { // We cannot and will not have meta when enchantments (pre-ItemMeta) exist
             Object raw = args.get("meta");
-            if (raw instanceof ItemMeta) {
+            if (raw is ItemMeta) {
                 result.setItemMeta((ItemMeta) raw);
             }
         }

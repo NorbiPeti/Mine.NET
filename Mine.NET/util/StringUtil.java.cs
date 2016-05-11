@@ -23,9 +23,9 @@ public class StringUtil {
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
     public static <T : Collection<? super String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) throws UnsupportedOperationException, ArgumentException {
-        Validate.notNull(token, "Search token cannot be null");
-        Validate.notNull(collection, "Collection cannot be null");
-        Validate.notNull(originals, "Originals cannot be null");
+        if(token==null) throw new ArgumentNullException("Search token cannot be null");
+        if(collection==null) throw new ArgumentNullException("Collection cannot be null");
+        if(originals==null) throw new ArgumentNullException("Originals cannot be null");
 
         for (String string : originals) {
             if (startsWithIgnoreCase(string, token)) {
@@ -49,7 +49,7 @@ public class StringUtil {
      * @throws ArgumentException if string is null
      */
     public static bool startsWithIgnoreCase(String string, readonly String prefix) throws ArgumentException, NullPointerException {
-        Validate.notNull(string, "Cannot check a null string for a match");
+        if(string==null) throw new ArgumentNullException("Cannot check a null string for a match");
         if (string.length() < prefix.length()) {
             return false;
         }

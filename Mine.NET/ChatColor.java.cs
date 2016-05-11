@@ -10,7 +10,7 @@ namespace Mine.NET
 */
     public class ChatColor
     {
-        private enum Colors
+        public enum Colors
         {
             /**
              * Represents black

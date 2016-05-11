@@ -1,51 +1,53 @@
-package org.bukkit.block;
+using System;
 
-import org.bukkit.entity.EntityType;
-
-/**
- * Represents a creature spawner.
- */
-public interface CreatureSpawner : BlockState {
-
+namespace Mine.NET
+{
     /**
-     * Get the spawner's creature type.
-     *
-     * @return The creature type.
+     * Represents a creature spawner.
      */
-    public EntityType getSpawnedType();
+    public interface CreatureSpawner : BlockState
+    {
 
-    /**
-     * Set the spawner's creature type.
-     *
-     * @param creatureType The creature type.
-     */
-    public void setSpawnedType(EntityType creatureType);
+        /**
+         * Get the spawner's creature type.
+         *
+         * @return The creature type.
+         */
+        EntityType getSpawnedType();
 
-    /**
-     * Set the spawner mob type.
-     *
-     * @param creatureType The creature type's name.
-     */
-    public void setCreatureTypeByName(String creatureType);
+        /**
+         * Set the spawner's creature type.
+         *
+         * @param creatureType The creature type.
+         */
+        void setSpawnedType(EntityType creatureType);
 
-    /**
-     * Get the spawner's creature type.
-     *
-     * @return The creature type's name.
-     */
-    public String getCreatureTypeName();
+        /**
+         * Set the spawner mob type.
+         *
+         * @param creatureType The creature type's name.
+         */
+        void setCreatureTypeByName(String creatureType);
 
-    /**
-     * Get the spawner's delay.
-     *
-     * @return The delay.
-     */
-    public int getDelay();
+        /**
+         * Get the spawner's creature type.
+         *
+         * @return The creature type's name.
+         */
+        String getCreatureTypeName();
 
-    /**
-     * Set the spawner's delay.
-     *
-     * @param delay The delay.
-     */
-    public void setDelay(int delay);
+        /**
+         * Get the spawner's delay.
+         *
+         * @return The delay.
+         */
+        int getDelay();
+
+        /**
+         * Set the spawner's delay.
+         *
+         * @param delay The delay.
+         */
+        void setDelay(int delay);
+    }
 }

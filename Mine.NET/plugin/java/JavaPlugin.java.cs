@@ -61,7 +61,7 @@ public abstract class JavaPlugin : PluginBase {
 
     public JavaPlugin() {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
-        if (!(classLoader instanceof PluginClassLoader)) {
+        if (!(classLoader is PluginClassLoader)) {
             throw new IllegalStateException("JavaPlugin requires " + PluginClassLoader.class.getName());
         }
         ((PluginClassLoader) classLoader).initialize(this);
@@ -82,7 +82,7 @@ public abstract class JavaPlugin : PluginBase {
     [Obsolete]
     protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
-        if (classLoader instanceof PluginClassLoader) {
+        if (classLoader is PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
         }
         init(loader, server, description, dataFolder, file, classLoader);
@@ -90,7 +90,7 @@ public abstract class JavaPlugin : PluginBase {
 
     protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
-        if (classLoader instanceof PluginClassLoader) {
+        if (classLoader is PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
         }
         init(loader, loader.server, description, dataFolder, file, classLoader);
@@ -490,12 +490,12 @@ public abstract class JavaPlugin : PluginBase {
      *     extend the class
      */
     public static <T : JavaPlugin> T getPlugin(Class<T> clazz) {
-        Validate.notNull(clazz, "Null class cannot have a plugin");
+        if(clazz==null) throw new ArgumentNullException("Null class cannot have a plugin");
         if (!JavaPlugin.class.isAssignableFrom(clazz)) {
             throw new ArgumentException(clazz + " does not extend " + JavaPlugin.class);
         }
         readonly ClassLoader cl = clazz.getClassLoader();
-        if (!(cl instanceof PluginClassLoader)) {
+        if (!(cl is PluginClassLoader)) {
             throw new ArgumentException(clazz + " is not initialized by " + PluginClassLoader.class);
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;
@@ -518,9 +518,9 @@ public abstract class JavaPlugin : PluginBase {
      *     given JavaPlugin
      */
     public static JavaPlugin getProvidingPlugin(Class<?> clazz) {
-        Validate.notNull(clazz, "Null class cannot have a plugin");
+        if(clazz==null) throw new ArgumentNullException("Null class cannot have a plugin");
         readonly ClassLoader cl = clazz.getClassLoader();
-        if (!(cl instanceof PluginClassLoader)) {
+        if (!(cl is PluginClassLoader)) {
             throw new ArgumentException(clazz + " is not provided by " + PluginClassLoader.class);
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;

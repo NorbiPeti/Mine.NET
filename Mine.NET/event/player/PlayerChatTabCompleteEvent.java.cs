@@ -17,8 +17,8 @@ public class PlayerChatTabCompleteEvent : PlayerEvent {
 
     public PlayerChatTabCompleteEvent(Player who, readonly String message, readonly Collection<String> completions) {
         super(who);
-        Validate.notNull(message, "Message cannot be null");
-        Validate.notNull(completions, "Completions cannot be null");
+        if(message==null) throw new ArgumentNullException("Message cannot be null");
+        if(completions==null) throw new ArgumentNullException("Completions cannot be null");
         this.message = message;
         int i = message.lastIndexOf(' ');
         if (i < 0) {

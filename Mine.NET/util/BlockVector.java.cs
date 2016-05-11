@@ -78,7 +78,7 @@ public class BlockVector : Vector {
      * @return whether the other object is equivalent
      */
     public override bool Equals(Object obj) {
-        if (!(obj instanceof BlockVector)) {
+        if (!(obj is BlockVector)) {
             return false;
         }
         BlockVector other = (BlockVector) obj;

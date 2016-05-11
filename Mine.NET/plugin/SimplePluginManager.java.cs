@@ -101,7 +101,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @return A list of all plugins loaded
      */
     public Plugin[] loadPlugins(File directory) {
-        Validate.notNull(directory, "Directory cannot be null");
+        if(directory==null) throw new ArgumentNullException("Directory cannot be null");
         if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
 
         List<Plugin> result = new ArrayList<Plugin>();
@@ -311,7 +311,7 @@ public sealed class SimplePluginManager : PluginManager {
      *     be found
      */
     public synchronized Plugin loadPlugin(File file) throws InvalidPluginException, UnknownDependencyException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         checkUpdate(file);
 
@@ -546,10 +546,10 @@ public sealed class SimplePluginManager : PluginManager {
      *     cancelled
      */
     public void registerEvent(Class<? : Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled) {
-        Validate.notNull(listener, "Listener cannot be null");
-        Validate.notNull(priority, "Priority cannot be null");
-        Validate.notNull(executor, "Executor cannot be null");
-        Validate.notNull(plugin, "Plugin cannot be null");
+        if(listener==null) throw new ArgumentNullException("Listener cannot be null");
+        if(priority==null) throw new ArgumentNullException("Priority cannot be null");
+        if(executor==null) throw new ArgumentNullException("Executor cannot be null");
+        if(plugin==null) throw new ArgumentNullException("Plugin cannot be null");
 
         if (!plugin.isEnabled()) {
             throw new IllegalPluginAccessException("Plugin attempted to register " + event + " while not enabled");

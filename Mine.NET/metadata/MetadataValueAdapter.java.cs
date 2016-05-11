@@ -17,7 +17,7 @@ public abstract class MetadataValueAdapter : MetadataValue {
     protected readonly WeakReference<Plugin> owningPlugin;
 
     protected MetadataValueAdapter(Plugin owningPlugin) {
-        Validate.notNull(owningPlugin, "owningPlugin cannot be null");
+        if(owningPlugin==null) throw new ArgumentNullException("owningPlugin cannot be null");
         this.owningPlugin = new WeakReference<Plugin>(owningPlugin);
     }
 
@@ -51,15 +51,15 @@ public abstract class MetadataValueAdapter : MetadataValue {
 
     public bool asBoolean() {
         Object value = value();
-        if (value instanceof bool) {
+        if (value is bool) {
             return (bool) value;
         }
 
-        if (value instanceof Number) {
+        if (value is Number) {
             return ((Number) value).intValue() != 0;
         }
 
-        if (value instanceof String) {
+        if (value is String) {
             return bool.parseBoolean((String) value);
         }
 

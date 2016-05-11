@@ -25,7 +25,7 @@ public sealed class NumberConversions {
     }
 
     public static int toInt(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).intValue();
         }
 
@@ -38,7 +38,7 @@ public sealed class NumberConversions {
     }
 
     public static float toFloat(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).floatValue();
         }
 
@@ -51,7 +51,7 @@ public sealed class NumberConversions {
     }
 
     public static double toDouble(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).doubleValue();
         }
 
@@ -64,7 +64,7 @@ public sealed class NumberConversions {
     }
 
     public static long toLong(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).longValue();
         }
 
@@ -77,7 +77,7 @@ public sealed class NumberConversions {
     }
 
     public static short toShort(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).shortValue();
         }
 
@@ -90,7 +90,7 @@ public sealed class NumberConversions {
     }
 
     public static byte toByte(Object object) {
-        if (object instanceof Number) {
+        if (object is Number) {
             return ((Number) object).byteValue();
         }
 

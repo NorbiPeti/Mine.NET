@@ -187,7 +187,7 @@ public class ConversationFactory {
      */
     public Conversation buildConversation(Conversable forWhom) {
         //Abort conversation construction if we aren't supposed to talk to non-players
-        if (playerOnlyMessage != null && !(forWhom instanceof Player)) {
+        if (playerOnlyMessage != null && !(forWhom is Player)) {
             return new Conversation(plugin, forWhom, new NotPlayerMessagePrompt());
         }
 

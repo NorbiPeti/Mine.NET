@@ -42,7 +42,7 @@ public class PotionEffect : ConfigurationSerializable {
      * @param color the particle color, see {@link PotionEffect#getColor()}
      */
     public PotionEffect(PotionEffectType type, int duration, int amplifier, bool ambient, bool particles, Color color){
-        Validate.notNull(type, "effect type cannot be null");
+        if(type==null) throw new ArgumentNullException("effect type cannot be null");
         this.type = type;
         this.duration = duration;
         this.amplifier = amplifier;
@@ -110,7 +110,7 @@ public class PotionEffect : ConfigurationSerializable {
 
     private static int getInt(Dictionary<?,?> map, Object key) {
         Object num = map.get(key);
-        if (num instanceof Integer) {
+        if (num is Integer) {
             return (Integer) num;
         }
         throw new NoSuchElementException(map + " does not contain " + key);
@@ -118,7 +118,7 @@ public class PotionEffect : ConfigurationSerializable {
 
     private static bool getBool(Dictionary<?,?> map, Object key, bool def) {
         Object bool = map.get(key);
-        if (bool instanceof bool) {
+        if (bool is bool) {
             return (bool) bool;
         }
         return def;
@@ -150,7 +150,7 @@ public class PotionEffect : ConfigurationSerializable {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof PotionEffect)) {
+        if (!(obj is PotionEffect)) {
             return false;
         }
         PotionEffect that = (PotionEffect) obj;

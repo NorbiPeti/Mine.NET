@@ -25,7 +25,7 @@ public class FormattedCommandAlias : Command {
             try {
                 commands.add(buildCommand(formatString, args));
             } catch (Throwable throwable) {
-                if (throwable instanceof ArgumentException) {
+                if (throwable is ArgumentException) {
                     sender.sendMessage(throwable.getMessage());
                 } else {
                     sender.sendMessage(org.bukkit.ChatColor.RED + "An internal error occurred while attempting to perform this command");

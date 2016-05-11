@@ -44,7 +44,7 @@ public class IndexHelpTopic : HelpTopic {
     }
 
     public bool canSee(CommandSender sender) {
-        if (sender instanceof ConsoleCommandSender) {
+        if (sender is ConsoleCommandSender) {
             return true;
         }
         if (permission == null) {
@@ -69,7 +69,7 @@ public class IndexHelpTopic : HelpTopic {
         for (HelpTopic topic : allTopics) {
             if (topic.canSee(sender)) {
                 String lineStr = buildIndexLine(sender, topic).replace("\n", ". ");
-                if (sender instanceof Player && lineStr.length() > ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH) {
+                if (sender is Player && lineStr.length() > ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH) {
                     sb.append(lineStr.substring(0, ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH - 3));
                     sb.append("...");
                 } else {

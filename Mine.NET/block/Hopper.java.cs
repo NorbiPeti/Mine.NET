@@ -1,10 +1,10 @@
-package org.bukkit.block;
+namespace Mine.NET
+{
+    /**
+     * Represents a hopper.
+     */
+    public interface Hopper : BlockState, InventoryHolder
+    {
 
-import org.bukkit.inventory.InventoryHolder;
-
-/**
- * Represents a hopper.
- */
-public interface Hopper : BlockState, InventoryHolder {
-
+    }
 }

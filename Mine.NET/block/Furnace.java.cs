@@ -1,40 +1,39 @@
-package org.bukkit.block;
-
-import org.bukkit.inventory.FurnaceInventory;
-import org.bukkit.inventory.InventoryHolder;
-
-/**
- * Represents a furnace.
- */
-public interface Furnace : BlockState, InventoryHolder {
-
+namespace Mine.NET
+{
     /**
-     * Get burn time.
-     *
-     * @return Burn time
+     * Represents a furnace.
      */
-    public short getBurnTime();
+    public interface Furnace : BlockState, InventoryHolder
+    {
 
-    /**
-     * Set burn time.
-     *
-     * @param burnTime Burn time
-     */
-    public void setBurnTime(short burnTime);
+        /**
+         * Get burn time.
+         *
+         * @return Burn time
+         */
+        short getBurnTime();
 
-    /**
-     * Get cook time.
-     *
-     * @return Cook time
-     */
-    public short getCookTime();
+        /**
+         * Set burn time.
+         *
+         * @param burnTime Burn time
+         */
+        void setBurnTime(short burnTime);
 
-    /**
-     * Set cook time.
-     *
-     * @param cookTime Cook time
-     */
-    public void setCookTime(short cookTime);
+        /**
+         * Get cook time.
+         *
+         * @return Cook time
+         */
+        short getCookTime();
 
-    public FurnaceInventory getInventory();
+        /**
+         * Set cook time.
+         *
+         * @param cookTime Cook time
+         */
+        void setCookTime(short cookTime);
+
+        FurnaceInventory getInventory();
+    }
 }

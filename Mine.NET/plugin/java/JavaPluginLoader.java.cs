@@ -57,12 +57,12 @@ public sealed class JavaPluginLoader : PluginLoader {
      */
     [Obsolete]
     public JavaPluginLoader(Server instance) {
-        Validate.notNull(instance, "Server cannot be null");
+        if(instance==null) throw new ArgumentNullException("Server cannot be null");
         server = instance;
     }
 
     public Plugin loadPlugin(File file) throws InvalidPluginException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         if (!file.exists()) {
             throw new InvalidPluginException(new FileNotFoundException(file.getPath() + " does not exist"));
@@ -139,7 +139,7 @@ public sealed class JavaPluginLoader : PluginLoader {
     }
 
     public PluginDescriptionFile getPluginDescription(File file) throws InvalidDescriptionException {
-        Validate.notNull(file, "File cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
         JarFile jar = null;
         InputStream stream = null;
@@ -226,8 +226,8 @@ public sealed class JavaPluginLoader : PluginLoader {
     }
 
     public Dictionary<Class<? : Event>, HashSet<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
-        Validate.notNull(plugin, "Plugin can not be null");
-        Validate.notNull(listener, "Listener can not be null");
+        if(plugin==null) throw new ArgumentNullException("Plugin can not be null");
+        if(listener==null) throw new ArgumentNullException("Listener can not be null");
 
         bool useTimings = server.getPluginManager().useTimings();
         Dictionary<Class<? : Event>, HashSet<RegisteredListener>> ret = new HashMap<Class<? : Event>, HashSet<RegisteredListener>>();
@@ -315,7 +315,7 @@ public sealed class JavaPluginLoader : PluginLoader {
     }
 
     public void enablePlugin(Plugin plugin) {
-        if(plugin instanceof JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
+        if(plugin is JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
         if (!plugin.isEnabled()) {
             plugin.getLogger().info("Enabling " + plugin.getDescription().getFullName());
@@ -341,7 +341,7 @@ public sealed class JavaPluginLoader : PluginLoader {
     }
 
     public void disablePlugin(Plugin plugin) {
-        if(plugin instanceof JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
+        if(plugin is JavaPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
         if (plugin.isEnabled()) {
             String message = String.format("Disabling %s", plugin.getDescription().getFullName());
@@ -360,7 +360,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
             loaders.remove(jPlugin.getDescription().getName());
 
-            if (cloader instanceof PluginClassLoader) {
+            if (cloader is PluginClassLoader) {
                 PluginClassLoader loader = (PluginClassLoader) cloader;
                 HashSet<String> names = loader.getClasses();
 

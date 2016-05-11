@@ -42,7 +42,7 @@ public class ExpCommand : VanillaCommand {
 
             if (args.length > 1) {
                 player = Bukkit.getPlayer(args[1]);
-            } else if (sender instanceof Player) {
+            } else if (sender is Player) {
                 player = (Player) sender;
             }
 
@@ -78,9 +78,9 @@ public class ExpCommand : VanillaCommand {
 
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws ArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
+        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
+        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
+        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
         if (args.length == 2) {
             return super.tabComplete(sender, alias, args);

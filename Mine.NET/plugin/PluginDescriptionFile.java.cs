@@ -925,7 +925,7 @@ public sealed class PluginDescriptionFile {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
                     if (command.getValue() != null) {
                         for (Map.Entry<?, ?> commandEntry : ((Dictionary<?, ?>) command.getValue()).entrySet()) {
-                            if (commandEntry.getValue() instanceof Iterable) {
+                            if (commandEntry.getValue() is Iterable) {
                                 // This prevents internal alias list changes
                                 ImmutableList.Builder<Object> commandSubList = ImmutableList.<Object>builder();
                                 for (Object commandSubListItem : (Iterable<?>) commandEntry.getValue()) {
@@ -1012,7 +1012,7 @@ public sealed class PluginDescriptionFile {
             }
         }
 
-        if (map.get("awareness") instanceof Iterable) {
+        if (map.get("awareness") is Iterable) {
             HashSet<PluginAwareness> awareness = new HashSet<PluginAwareness>();
             try {
                 for (Object o : (Iterable<?>) map.get("awareness")) {
@@ -1098,7 +1098,7 @@ public sealed class PluginDescriptionFile {
     }
 
     private Dictionary<?,?> asMap(Object object) throws InvalidDescriptionException {
-        if (object instanceof Map) {
+        if (object is Map) {
             return (Dictionary<?,?>) object;
         }
         throw new InvalidDescriptionException(object + " is not properly structured.");

@@ -22,7 +22,7 @@ public class PermissibleBase : Permissible {
     public PermissibleBase(ServerOperator opable) {
         this.opable = opable;
 
-        if (opable instanceof Permissible) {
+        if (opable is Permissible) {
             this.parent = (Permissible) opable;
         }
 

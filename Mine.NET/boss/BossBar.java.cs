@@ -1,144 +1,145 @@
-package org.bukkit.boss;
+using System;
+using System.Collections.Generic;
 
-import org.bukkit.entity.Player;
+namespace Mine.NET
+{
+    public interface BossBar
+    {
 
-import java.util.List;
+        /**
+         * Returns the title of this boss bar
+         *
+         * @return the title of the bar
+         */
+        String getTitle();
 
-public interface BossBar {
+        /**
+         * Sets the title of this boss bar
+         *
+         * @param title the title of the bar
+         */
+        void setTitle(String title);
 
-    /**
-     * Returns the title of this boss bar
-     *
-     * @return the title of the bar
-     */
-    String getTitle();
+        /**
+         * Returns the color of this boss bar
+         *
+         * @return the color of the bar
+         */
+        BarColor getColor();
 
-    /**
-     * Sets the title of this boss bar
-     *
-     * @param title the title of the bar
-     */
-    void setTitle(String title);
+        /**
+         * Sets the color of this boss bar.
+         *
+         * @param color the color of the bar
+         */
+        void setColor(BarColor color);
 
-    /**
-     * Returns the color of this boss bar
-     *
-     * @return the color of the bar
-     */
-    BarColor getColor();
+        /**
+         * Returns the style of this boss bar
+         *
+         * @return the style of the bar
+         */
+        BarStyle getStyle();
 
-    /**
-     * Sets the color of this boss bar.
-     *
-     * @param color the color of the bar
-     */
-    void setColor(BarColor color);
+        /**
+         * Sets the bar style of this boss bar
+         *
+         * @param style the style of the bar
+         */
+        void setStyle(BarStyle style);
 
-    /**
-     * Returns the style of this boss bar
-     *
-     * @return the style of the bar
-     */
-    BarStyle getStyle();
+        /**
+         * Remove an existing flag on this boss bar
+         *
+         * @param flag the existing flag to remove
+         */
+        void removeFlag(BarFlag flag);
 
-    /**
-     * Sets the bar style of this boss bar
-     *
-     * @param style the style of the bar
-     */
-    void setStyle(BarStyle style);
+        /**
+         * Add an optional flag to this boss bar
+         *
+         * @param flag an optional flag to set on the boss bar
+         */
+        void addFlag(BarFlag flag);
 
-    /**
-     * Remove an existing flag on this boss bar
-     *
-     * @param flag the existing flag to remove
-     */
-    void removeFlag(BarFlag flag);
+        /**
+         * Returns whether this boss bar as the passed flag set
+         *
+         * @param flag the flag to check
+         * @return whether it has the flag
+         */
+        bool hasFlag(BarFlag flag);
 
-    /**
-     * Add an optional flag to this boss bar
-     *
-     * @param flag an optional flag to set on the boss bar
-     */
-    void addFlag(BarFlag flag);
+        /**
+         * Sets the progress of the bar. Values should be between 0.0 (empty) and
+         * 1.0 (full)
+         *
+         * @param progress the progress of the bar
+         */
+        void setProgress(double progress);
 
-    /**
-     * Returns whether this boss bar as the passed flag set
-     *
-     * @param flag the flag to check
-     * @return whether it has the flag
-     */
-    bool hasFlag(BarFlag flag);
+        /**
+         * Returns the progress of the bar between 0.0 and 1.0
+         *
+         * @return the progress of the bar
+         */
+        double getProgress();
 
-    /**
-     * Sets the progress of the bar. Values should be between 0.0 (empty) and
-     * 1.0 (full)
-     *
-     * @param progress the progress of the bar
-     */
-    void setProgress(double progress);
+        /**
+         * Adds the player to this boss bar causing it to display on their screen.
+         *
+         * @param player the player to add
+         */
+        void addPlayer(Player player);
 
-    /**
-     * Returns the progress of the bar between 0.0 and 1.0
-     *
-     * @return the progress of the bar
-     */
-    double getProgress();
+        /**
+         * Removes the player from this boss bar causing it to be removed from their
+         * screen.
+         *
+         * @param player the player to remove
+         */
+        void removePlayer(Player player);
 
-    /**
-     * Adds the player to this boss bar causing it to display on their screen.
-     *
-     * @param player the player to add
-     */
-    void addPlayer(Player player);
+        /**
+         * Removes all players from this boss bar
+         *
+         * @see #removePlayer(Player)
+         */
+        void removeAll();
 
-    /**
-     * Removes the player from this boss bar causing it to be removed from their
-     * screen.
-     *
-     * @param player the player to remove
-     */
-    void removePlayer(Player player);
+        /**
+         * Returns all players viewing this boss bar
+         *
+         * @return a immutable list of players
+         */
+        List<Player> getPlayers();
 
-    /**
-     * Removes all players from this boss bar
-     *
-     * @see #removePlayer(Player)
-     */
-    void removeAll();
+        /**
+         * Set if the boss bar is displayed to attached players.
+         *
+         * @param visible visible status
+         */
+        void setVisible(bool visible);
 
-    /**
-     * Returns all players viewing this boss bar
-     *
-     * @return a immutable list of players
-     */
-    List<Player> getPlayers();
+        /**
+         * Return if the boss bar is displayed to attached players.
+         *
+         * @return visible status
+         */
+        bool isVisible();
 
-    /**
-     * Set if the boss bar is displayed to attached players.
-     *
-     * @param visible visible status
-     */
-    void setVisible(bool visible);
+        /**
+         * Shows the previously hidden boss bar to all attached players
+         * [Obsolete] {@link #setVisible(bool)}
+         */
+        [Obsolete]
+        void show();
 
-    /**
-     * Return if the boss bar is displayed to attached players.
-     *
-     * @return visible status
-     */
-    bool isVisible();
-
-    /**
-     * Shows the previously hidden boss bar to all attached players
-     * [Obsolete] {@link #setVisible(bool)}
-     */
-    [Obsolete]
-    void show();
-
-    /**
-     * Hides this boss bar from all attached players
-     * [Obsolete] {@link #setVisible(bool)}
-     */
-    [Obsolete]
-    void hide();
+        /**
+         * Hides this boss bar from all attached players
+         * [Obsolete] {@link #setVisible(bool)}
+         */
+        [Obsolete]
+        void hide();
+    }
 }

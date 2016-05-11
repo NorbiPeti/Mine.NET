@@ -54,7 +54,7 @@ public class RegisteredListener {
      * @throws EventException If an event handler throws an exception.
      */
     public void callEvent(Event event) throws EventException {
-        if (event instanceof Cancellable){
+        if (event is Cancellable){
             if (((Cancellable) event).isCancelled() && isIgnoringCancelled()){
                 return;
             }

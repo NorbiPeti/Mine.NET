@@ -34,8 +34,8 @@ public class PlayerRespawnEvent : PlayerEvent {
      * @param respawnLocation new location for the respawn
      */
     public void setRespawnLocation(Location respawnLocation) {
-        Validate.notNull(respawnLocation, "Respawn location can not be null");
-        Validate.notNull(respawnLocation.getWorld(), "Respawn world can not be null");
+        if(respawnLocation==null) throw new ArgumentNullException("Respawn location can not be null");
+        if(respawnLocation.getWorld()==null) throw new ArgumentNullException("Respawn world can not be null");
 
         this.respawnLocation = respawnLocation;
     }
