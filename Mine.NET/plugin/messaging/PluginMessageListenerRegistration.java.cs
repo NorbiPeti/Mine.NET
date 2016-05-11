@@ -68,8 +68,7 @@ public sealed class PluginMessageListenerRegistration {
         return messenger.isRegistrationValid(this);
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -92,8 +91,7 @@ public sealed class PluginMessageListenerRegistration {
         return true;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 7;
         hash = 53 * hash + (this.messenger != null ? this.messenger.hashCode() : 0);
         hash = 53 * hash + (this.plugin != null ? this.plugin.hashCode() : 0);

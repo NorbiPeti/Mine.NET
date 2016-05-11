@@ -133,8 +133,7 @@ public class Bed extends MaterialData implements Directional {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + super.toString() + " facing " + getFacing();
     }
 

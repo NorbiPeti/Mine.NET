@@ -240,8 +240,7 @@ public class Sign extends MaterialData implements Attachable {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing();
     }
 

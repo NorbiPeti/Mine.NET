@@ -128,8 +128,7 @@ public class Stairs extends MaterialData implements Directional {
         setData((byte) dat);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing() + (isInverted()?" inverted":"");
     }
 

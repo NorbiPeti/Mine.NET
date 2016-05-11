@@ -130,8 +130,7 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 

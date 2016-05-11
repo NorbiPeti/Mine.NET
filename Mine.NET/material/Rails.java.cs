@@ -107,8 +107,7 @@ public class Rails extends MaterialData {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
     }
 

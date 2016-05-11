@@ -805,8 +805,7 @@ public class MemorySection implements ConfigurationSection {
         return builder.toString();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         Configuration root = getRoot();
         return new StringBuilder()
             .append(getClass().getSimpleName())

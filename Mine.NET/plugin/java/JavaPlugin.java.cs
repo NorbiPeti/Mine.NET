@@ -462,8 +462,7 @@ public abstract class JavaPlugin extends PluginBase {
         return logger;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return description.getFullName();
     }
 

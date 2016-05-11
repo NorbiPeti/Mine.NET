@@ -150,8 +150,7 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
         return completions;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         StringBuilder stringBuilder = new StringBuilder(super.toString());
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         stringBuilder.append(", ").append(owningPlugin.getDescription().getFullName()).append(')');

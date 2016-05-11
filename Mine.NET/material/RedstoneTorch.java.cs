@@ -53,8 +53,7 @@ public class RedstoneTorch extends Torch implements Redstone {
         return getItemType() == Material.REDSTONE_TORCH_ON;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 

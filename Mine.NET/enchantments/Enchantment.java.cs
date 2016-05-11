@@ -214,8 +214,7 @@ public abstract class Enchantment {
      */
     public abstract bool canEnchantItem(ItemStack item);
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -229,13 +228,11 @@ public abstract class Enchantment {
         return true;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         return id;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return "Enchantment[" + id + ", " + getName() + "]";
     }
 

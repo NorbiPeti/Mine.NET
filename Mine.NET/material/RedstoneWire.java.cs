@@ -53,8 +53,7 @@ public class RedstoneWire extends MaterialData implements Redstone {
         return getData() > 0;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 

@@ -100,8 +100,7 @@ public abstract class TexturedMaterial extends MaterialData {
         setData((byte) idx); // Defult to using all bits - override for other mappings
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getMaterial() + " " + super.toString();
     }
 

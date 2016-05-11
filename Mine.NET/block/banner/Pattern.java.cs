@@ -72,16 +72,14 @@ public class Pattern implements ConfigurationSerializable {
         return pattern;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 3;
         hash = 97 * hash + (this.color != null ? this.color.hashCode() : 0);
         hash = 97 * hash + (this.pattern != null ? this.pattern.hashCode() : 0);
         return hash;
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj == null) {
             return false;
         }

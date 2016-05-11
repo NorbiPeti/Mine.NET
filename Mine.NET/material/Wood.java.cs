@@ -184,8 +184,7 @@ public class Wood extends MaterialData {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getSpecies() + " " + super.toString();
     }
 

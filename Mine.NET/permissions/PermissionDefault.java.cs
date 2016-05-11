@@ -51,8 +51,7 @@ public enum PermissionDefault {
         return lookup.get(name.toLowerCase().replaceAll("[^a-z!]", ""));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return names[0];
     }
 

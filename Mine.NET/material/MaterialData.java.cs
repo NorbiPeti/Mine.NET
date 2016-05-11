@@ -105,18 +105,15 @@ public class MaterialData implements Cloneable {
         return new ItemStack(type, amount, data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getItemType() + "(" + getData() + ")";
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         return ((getItemTypeId() << 8) ^ getData());
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj != null && obj instanceof MaterialData) {
             MaterialData md = (MaterialData) obj;
 

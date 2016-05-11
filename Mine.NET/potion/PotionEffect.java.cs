@@ -146,8 +146,7 @@ public class PotionEffect implements ConfigurationSerializable {
         return entity.addPotionEffect(this);
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -211,8 +210,7 @@ public class PotionEffect implements ConfigurationSerializable {
         return color;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 1;
         hash = hash * 31 + type.hashCode();
         hash = hash * 31 + amplifier;
@@ -222,8 +220,7 @@ public class PotionEffect implements ConfigurationSerializable {
         return hash;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return type.getName() + (ambient ? ":(" : ":") + duration + "t-x" + amplifier + (ambient ? ")" : "");
     }
 }

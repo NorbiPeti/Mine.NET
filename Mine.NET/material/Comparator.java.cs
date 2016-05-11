@@ -169,8 +169,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
     }
 

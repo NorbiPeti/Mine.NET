@@ -77,8 +77,7 @@ public class BlockVector extends Vector {
      * @param obj The other object
      * @return whether the other object is equivalent
      */
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (!(obj instanceof BlockVector)) {
             return false;
         }
@@ -93,8 +92,7 @@ public class BlockVector extends Vector {
      *
      * @return hash code
      */
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         return (Integer.valueOf((int) x).hashCode() >> 13) ^ (Integer.valueOf((int) y).hashCode() >> 7) ^ Integer.valueOf((int) z).hashCode();
     }
 

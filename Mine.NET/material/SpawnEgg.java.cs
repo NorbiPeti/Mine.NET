@@ -59,8 +59,7 @@ public class SpawnEgg extends MaterialData {
         setData((byte) type.getTypeId());
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return "SPAWN EGG{" + getSpawnedType() + "}";
     }
 

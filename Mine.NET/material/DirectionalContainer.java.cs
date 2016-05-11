@@ -83,8 +83,7 @@ public class DirectionalContainer extends MaterialData implements Directional {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing();
     }
 

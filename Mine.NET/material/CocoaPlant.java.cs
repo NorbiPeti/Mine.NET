@@ -126,8 +126,7 @@ public class CocoaPlant extends MaterialData implements Directional, Attachable 
         return (CocoaPlant) super.clone();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing() + " " + getSize();
     }
 }

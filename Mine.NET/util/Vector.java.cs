@@ -537,8 +537,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
      * to account for floating point errors. The epsilon can be retrieved
      * with epsilon.
      */
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (!(obj instanceof Vector)) {
             return false;
         }
@@ -553,8 +552,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
      *
      * @return hash code
      */
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 7;
 
         hash = 79 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
@@ -580,8 +578,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
     /**
      * Returns this vector's components as x,y,z.
      */
-    @Override
-    public String toString() {
+    public override string ToString() {
         return x + "," + y + "," + z;
     }
 

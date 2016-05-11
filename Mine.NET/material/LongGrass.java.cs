@@ -67,8 +67,7 @@ public class LongGrass extends MaterialData {
         setData(species.getData());
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getSpecies() + " " + super.toString();
     }
 

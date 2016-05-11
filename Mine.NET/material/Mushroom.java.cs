@@ -283,8 +283,7 @@ public class Mushroom extends MaterialData {
         return faces;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return Material.getMaterial(getItemTypeId()).toString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
     }
 

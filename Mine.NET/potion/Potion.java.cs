@@ -159,8 +159,7 @@ public class Potion {
         to.addPotionEffects(getEffects());
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -221,8 +220,7 @@ public class Potion {
         return extended;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         readonly int prime = 31;
         int result = prime + level;
         result = prime * result + (extended ? 1231 : 1237);

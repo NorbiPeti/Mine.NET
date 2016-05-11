@@ -157,8 +157,7 @@ public class Tree extends Wood {
         setData((byte) ((getData() & 0x3) | dat));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getSpecies() + " " + getDirection() + " " + super.toString();
     }
 

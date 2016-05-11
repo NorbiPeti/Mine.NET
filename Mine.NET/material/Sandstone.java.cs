@@ -67,8 +67,7 @@ public class Sandstone extends MaterialData {
         setData(type.getData());
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getType() + " " + super.toString();
     }
 

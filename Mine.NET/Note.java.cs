@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 /**
 * A note class to store a specific note.
 */
@@ -87,6 +88,32 @@ public class Note {
                 throw new ArgumentException("The id isn't matching to the tone.");
             }
         }
+
+        [Obsolete]
+        public static Tone getById(byte id)
+        {
+            return Tones.First(t => t.id == id);
+        }
+
+        public override string ToString()
+        {
+            if (id == G.id)
+                return nameof(G);
+            else if (id == A.id)
+                return nameof(A);
+            else if (id == B.id)
+                return nameof(B);
+            else if (id == C.id)
+                return nameof(C);
+            else if (id == D.id)
+                return nameof(D);
+            else if (id == E.id)
+                return nameof(E);
+            else if (id == F.id)
+                return nameof(F);
+            else
+                return "Unknown";
+        }
     }
 
     private readonly byte note;
@@ -133,7 +160,7 @@ public class Note {
      */
     public static Note flat(int octave, Tone tone) {
         if(octave != 2) throw new ArgumentException("Octave cannot be 2 for flats");
-        tone = tone == Tone.G ? Tone.F : Tone.Tones[Array.IndexOf(Tone.Tones, tone) - 1]
+        tone = tone == Tone.G ? Tone.F : Tone.Tones[Array.IndexOf(Tone.Tones, tone) - 1];
         return new Note(octave, tone, tone.isSharpable());
     }
 
@@ -221,21 +248,21 @@ public class Note {
         return Tone.getById(note).isSharped(note);
     }
 
-    @Override
-    public int hashCode() {
-        readonly int prime = 31;
+    //Find: "@Override\r\n\s+public int hashCode"
+    //Replace: "public override int GetHashCode"
+    public override int GetHashCode() {
+        int prime = 31;
         int result = 1;
         result = prime * result + note;
         return result;
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (GetType() != obj.GetType())
             return false;
         Note other = (Note) obj;
         if (note != other.note)
@@ -243,8 +270,7 @@ public class Note {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Note{" + getTone().toString() + (isSharped() ? "#" : "") + "}";
+    public override string ToString() {
+        return "Note{" + getTone().ToString() + (isSharped() ? "#" : "") + "}";
     }
 }

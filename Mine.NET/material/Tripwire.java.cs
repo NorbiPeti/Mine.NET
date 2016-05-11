@@ -79,8 +79,7 @@ public class Tripwire extends MaterialData {
         return (Tripwire) super.clone();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + (isActivated()?" Activated":"") + (isObjectTriggering()?" Triggered":"");
     }
 }

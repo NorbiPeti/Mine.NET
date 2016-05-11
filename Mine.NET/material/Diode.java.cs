@@ -187,8 +187,7 @@ public class Diode extends MaterialData implements Directional, Redstone {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing() + " with " + getDelay() + " ticks delay";
     }
 

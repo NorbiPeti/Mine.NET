@@ -63,8 +63,7 @@ public class Command extends MaterialData implements Redstone {
         setData((byte) (bool ? (getData() | 1) : (getData() & -2)));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 

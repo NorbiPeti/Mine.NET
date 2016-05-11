@@ -69,8 +69,7 @@ public class Dye extends MaterialData implements Colorable {
         setData(color.getDyeData());
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getColor() + " DYE(" + getData() + ")";
     }
 

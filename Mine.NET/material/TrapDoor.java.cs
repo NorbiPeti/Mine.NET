@@ -121,8 +121,7 @@ public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return (isOpen() ? "OPEN " : "CLOSED ") + super.toString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
     }
 

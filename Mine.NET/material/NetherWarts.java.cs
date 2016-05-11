@@ -89,8 +89,7 @@ public class NetherWarts extends MaterialData {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getState() + " " + super.toString();
     }
 

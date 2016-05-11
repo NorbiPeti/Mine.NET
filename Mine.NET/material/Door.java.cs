@@ -255,8 +255,7 @@ public class Door extends MaterialData implements Directional, Openable {
         return BlockFace.SELF;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + super.toString();
     }
 

@@ -114,8 +114,7 @@ public class Step extends TexturedMaterial {
         return (Step) super.clone();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + (isInverted()?"inverted":"");
     }
 }

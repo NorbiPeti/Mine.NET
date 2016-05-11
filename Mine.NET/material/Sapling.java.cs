@@ -109,8 +109,7 @@ public class Sapling extends Wood {
         setData(isInstantGrowable ? (byte) ((getData() & 0x7) | 0x8) : (byte) (getData() & 0x7));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + super.toString();
     }
 

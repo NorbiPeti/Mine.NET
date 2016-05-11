@@ -189,8 +189,7 @@ public sealed class PluginDescriptionFile {
                             }
                             // Unknown awareness - provide a graceful substitution
                             return new PluginAwareness() {
-                                @Override
-                                public String toString() {
+                                public override string ToString() {
                                     return node.toString();
                                 }
                             };

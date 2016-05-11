@@ -144,8 +144,7 @@ public class Leaves extends Wood {
                 : 0x4)));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + super.toString();
     }
 

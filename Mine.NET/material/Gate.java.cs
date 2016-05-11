@@ -79,8 +79,7 @@ public class Gate extends MaterialData implements Directional, Openable {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return (isOpen() ? "OPEN " : "CLOSED ") + " facing and opening " + getFacing();
     }
 

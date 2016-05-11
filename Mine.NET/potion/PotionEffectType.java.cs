@@ -197,8 +197,7 @@ public abstract class PotionEffectType {
      */
     public abstract bool isInstant();
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -212,13 +211,11 @@ public abstract class PotionEffectType {
         return true;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         return id;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return "PotionEffectType[" + id + ", " + getName() + "]";
     }
 

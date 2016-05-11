@@ -56,8 +56,7 @@ public abstract class SimpleAttachableMaterialData extends MaterialData implemen
         return attachedFace == null ? null : attachedFace.getOppositeFace();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing();
     }
 

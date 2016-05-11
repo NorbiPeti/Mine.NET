@@ -119,8 +119,7 @@ public class EulerAngle {
         return add(-x, -y, -z);
     }
 
-    @Override
-    public bool equals(Object o) {
+    public override bool Equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -132,8 +131,7 @@ public class EulerAngle {
 
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int result;
         long temp;
         temp = Double.doubleToLongBits(x);

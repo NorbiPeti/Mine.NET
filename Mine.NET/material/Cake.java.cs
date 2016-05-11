@@ -81,8 +81,7 @@ public class Cake extends MaterialData {
         setData((byte) (6 - n));
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
     }
 

@@ -150,8 +150,7 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 

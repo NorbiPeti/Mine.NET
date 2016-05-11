@@ -99,8 +99,7 @@ public class WoodenStep extends Wood {
         return (WoodenStep) super.clone();
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " " + getSpecies() + (isInverted() ? " inverted" : "");
     }
 }

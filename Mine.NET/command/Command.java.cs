@@ -416,8 +416,7 @@ public abstract class Command {
         }
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return getClass().getName() + '(' + name + ')';
     }
 }

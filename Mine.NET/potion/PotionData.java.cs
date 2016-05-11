@@ -62,8 +62,7 @@ public sealed class PotionData {
         return extended;
     }
 
-    @Override
-    public int hashCode() {
+    public override int GetHashCode() {
         int hash = 7;
         hash = 23 * hash + (this.type != null ? this.type.hashCode() : 0);
         hash = 23 * hash + (this.extended ? 1 : 0);
@@ -71,8 +70,7 @@ public sealed class PotionData {
         return hash;
     }
 
-    @Override
-    public bool equals(Object obj) {
+    public override bool Equals(Object obj) {
         if (this == obj) {
             return true;
         }

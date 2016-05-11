@@ -52,8 +52,7 @@ public class Cauldron extends MaterialData {
         return getData() <= CAULDRON_EMPTY;
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return (isEmpty() ? "EMPTY" : (isFull() ? "FULL" : getData() + "/3 FULL")) + " CAULDRON";
     }
 

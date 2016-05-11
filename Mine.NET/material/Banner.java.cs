@@ -223,8 +223,7 @@ public class Banner extends MaterialData implements Attachable {
         setData(data);
     }
 
-    @Override
-    public String toString() {
+    public override string ToString() {
         return super.toString() + " facing " + getFacing();
     }
 
