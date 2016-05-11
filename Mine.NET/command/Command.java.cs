@@ -173,7 +173,7 @@ public abstract class Command {
         if (permissionMessage == null) {
             target.sendMessage(ChatColor.RED + "I'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.");
         } else if (permissionMessage.length() != 0) {
-            for (String line : permissionMessage.replace("<permission>", permission).split("\n")) {
+            for (String line : permissionMessage.replace("<permission>", permission).Split("\n")) {
                 target.sendMessage(line);
             }
         }
@@ -195,7 +195,7 @@ public abstract class Command {
             return true;
         }
 
-        for (String p : permission.split(";")) {
+        for (String p : permission.Split(";")) {
             if (target.hasPermission(p)) {
                 return true;
             }

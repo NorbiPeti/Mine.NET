@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 /**
 * Represents a world, which may contain entities, chunks and blocks
 */
-public interface World : PluginMessageRecipient, Metadatable {
+public interface World : PluginMessageRecipient, Metadatable
+{
 
     /**
      * Gets the {@link Block} at the given coordinates
@@ -610,11 +612,11 @@ public interface World : PluginMessageRecipient, Metadatable {
     bool createExplosion(Location loc, float power, bool setFire);
 
     /**
-     * Gets the {@link Environment} type of this world
+     * Gets the {@link WorldEnvironment} type of this world
      *
-     * @return This worlds Environment type
+     * @return This worlds WorldEnvironment type
      */
-    Environment getEnvironment();
+    WorldEnvironment getEnvironment();
 
     /**
      * Gets the Seed for this world.
@@ -666,7 +668,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @throws ArgumentException if either parameter is null or the
      *     {@link Entity} requested cannot be spawned
      */
-    <T extends Entity> T spawn(Location location, Class<T> clazz) throws ArgumentException;
+    T spawn<T>(Location location) where T : Entity;
 
     /**
      * Spawn a {@link FallingBlock} entity at the given {@link Location} of
@@ -685,7 +687,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    FallingBlock spawnFallingBlock(Location location, Material material, byte data) throws ArgumentException;
+    FallingBlock spawnFallingBlock(Location location, Material material, byte data);
 
     /**
      * Spawn a {@link FallingBlock} entity at the given {@link Location} of
@@ -701,7 +703,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    FallingBlock spawnFallingBlock(Location location, int blockId, byte blockData) throws ArgumentException;
+    FallingBlock spawnFallingBlock(Location location, int blockId, byte blockData);
 
     /**
      * Plays an effect to all players within a default radius around a given
@@ -735,7 +737,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param effect the {@link Effect}
      * @param data a data bit needed for some effects
      */
-    <T> void playEffect(Location location, Effect effect, T data);
+    void playEffect<T>(Location location, Effect effect, T data);
 
     /**
      * Plays an effect to all players within a given radius around a location.
@@ -747,7 +749,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data a data bit needed for some effects
      * @param radius the radius around the location
      */
-    <T> void playEffect(Location location, Effect effect, T data, int radius);
+    void playEffect<T>(Location location, Effect effect, T data, int radius);
 
     /**
      * Get empty chunk snapshot (equivalent to all air blocks), optionally
@@ -899,7 +901,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      *
      * @return The folder of this world.
      */
-    File getWorldFolder();
+    Directory getWorldFolder();
 
     /**
      * Gets the type of this world.
@@ -1201,7 +1203,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, Location location, int count, T data);
+    void spawnParticle<T>(Particle particle, Location location, int count, T data);
 
 
     /**
@@ -1216,7 +1218,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, double x, double y, double z, int count, T data);
+    void spawnParticle<T>(Particle particle, double x, double y, double z, int count, T data);
 
     /**
      * Spawns the particle (the number of times specified by count)
@@ -1265,7 +1267,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, T data);
+    void spawnParticle<T>(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, T data);
 
     /**
      * Spawns the particle (the number of times specified by count)
@@ -1284,7 +1286,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, T data);
+    void spawnParticle<T>(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, T data);
 
     /**
      * Spawns the particle (the number of times specified by count)
@@ -1339,7 +1341,7 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
+    void spawnParticle<T>(Particle particle, Location location, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
 
     /**
      * Spawns the particle (the number of times specified by count)
@@ -1360,61 +1362,25 @@ public interface World : PluginMessageRecipient, Metadatable {
      * @param data the data to use for the particle or null,
      *             the type of this depends on {@link Particle#getDataType()}
      */
-    <T> void spawnParticle(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
+    void spawnParticle<T>(Particle particle, double x, double y, double z, int count, double offsetX, double offsetY, double offsetZ, double extra, T data);
+}
 
+/**
+ * Represents various map environment types that a world may be
+ */
+public enum WorldEnvironment
+{
 
     /**
-     * Represents various map environment types that a world may be
+     * Represents the "normal"/"surface world" map
      */
-    enum Environment {
-
-        /**
-         * Represents the "normal"/"surface world" map
-         */
-        NORMAL(0),
-        /**
-         * Represents a nether based map ("hell")
-         */
-        NETHER(-1),
-        /**
-         * Represents the "end" map
-         */
-        THE_END(1);
-
-        private readonly int id;
-        private static readonly Dictionary<Integer, Environment> lookup = new HashMap<Integer, Environment>();
-
-        private Environment(int id) {
-            this.id = id;
-        }
-
-        /**
-         * Gets the dimension ID of this environment
-         *
-         * @return dimension ID
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        int getId() {
-            return id;
-        }
-
-        /**
-         * Get an environment by ID
-         *
-         * @param id The ID of the environment
-         * @return The environment
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        static Environment getEnvironment(int id) {
-            return lookup.get(id);
-        }
-
-        static {
-            for (Environment env : values()) {
-                lookup.put(env.getId(), env);
-            }
-        }
-    }
+    NORMAL = 0,
+    /**
+     * Represents a nether based map ("hell")
+     */
+    NETHER = -1,
+    /**
+     * Represents the "end" map
+     */
+    THE_END = 1
 }

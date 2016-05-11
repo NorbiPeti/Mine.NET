@@ -122,7 +122,7 @@ public class SimpleCommandMap implements CommandMap {
      * {@inheritDoc}
      */
     public bool dispatch(CommandSender sender, String commandLine) throws CommandException {
-        String[] args = PATTERN_ON_SPACE.split(commandLine);
+        String[] args = PATTERN_ON_SPACE.Split(commandLine);
 
         if (args.length == 0) {
             return false;
@@ -203,7 +203,7 @@ public class SimpleCommandMap implements CommandMap {
         }
 
         String argLine = cmdLine.substring(spaceIndex + 1, cmdLine.length());
-        String[] args = PATTERN_ON_SPACE.split(argLine, -1);
+        String[] args = PATTERN_ON_SPACE.Split(argLine, -1);
 
         try {
             return target.tabComplete(sender, commandName, args);
@@ -232,7 +232,7 @@ public class SimpleCommandMap implements CommandMap {
             StringBuilder bad = new StringBuilder();
 
             for (String commandString : commandStrings) {
-                String[] commandArgs = commandString.split(" ");
+                String[] commandArgs = commandString.Split(" ");
                 Command command = getCommand(commandArgs[0]);
 
                 if (command == null) {

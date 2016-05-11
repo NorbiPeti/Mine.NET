@@ -47,7 +47,7 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
         }
 
         if (!success && usageMessage.length() > 0) {
-            for (String line : usageMessage.replace("<command>", commandLabel).split("\n")) {
+            for (String line : usageMessage.replace("<command>", commandLabel).Split("\n")) {
                 sender.sendMessage(line);
             }
         }

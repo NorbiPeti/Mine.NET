@@ -1,17 +1,13 @@
-package org.bukkit;
-
-import java.util.Random;
-import org.bukkit.command.CommandSender;
-import org.bukkit.generator.ChunkGenerator;
-import org.bukkit.plugin.Plugin;
+using Mine.NET;
+using System;
 
 /**
- * Represents various types of options that may be used to create a world.
- */
+* Represents various types of options that may be used to create a world.
+*/
 public class WorldCreator {
     private readonly String name;
     private long seed;
-    private World.Environment environment = World.Environment.NORMAL;
+    private WorldEnvironment environment = WorldEnvironment.NORMAL;
     private ChunkGenerator generator = null;
     private WorldType type = WorldType.NORMAL;
     private bool generateStructures = true;
@@ -28,7 +24,7 @@ public class WorldCreator {
         }
 
         this.name = name;
-        this.seed = (new Random()).nextLong();
+        this.seed = new Random().NextLong(long.MinValue, long.MaxValue);
     }
 
     /**
@@ -60,9 +56,9 @@ public class WorldCreator {
             throw new ArgumentException("Creator cannot be null");
         }
 
-        seed = creator.seed();
-        environment = creator.environment();
-        generator = creator.generator();
+        seed = creator.Seed;
+        environment = creator.Environment
+        generator = creator.Generator;
 
         return this;
     }
@@ -72,72 +68,28 @@ public class WorldCreator {
      *
      * @return World name
      */
-    public String name() {
-        return name;
-    }
+    public String Name { get; private set; }
 
     /**
      * Gets the seed that will be used to create this world
      *
      * @return World seed
      */
-    public long seed() {
-        return seed;
-    }
-
-    /**
-     * Sets the seed that will be used to create this world
-     *
-     * @param seed World seed
-     * @return This object, for chaining
-     */
-    public WorldCreator seed(long seed) {
-        this.seed = seed;
-
-        return this;
-    }
+    public long Seed { get; set; }
 
     /**
      * Gets the environment that will be used to create or load the world
      *
      * @return World environment
      */
-    public World.Environment environment() {
-        return environment;
-    }
-
-    /**
-     * Sets the environment that will be used to create or load the world
-     *
-     * @param env World environment
-     * @return This object, for chaining
-     */
-    public WorldCreator environment(World.Environment env) {
-        this.environment = env;
-
-        return this;
-    }
+    public WorldEnvironment Environment { get; set; }
 
     /**
      * Gets the type of the world that will be created or loaded
      *
      * @return World type
      */
-    public WorldType type() {
-        return type;
-    }
-
-    /**
-     * Sets the type of the world that will be created or loaded
-     *
-     * @param type World type
-     * @return This object, for chaining
-     */
-    public WorldCreator type(WorldType type) {
-        this.type = type;
-
-        return this;
-    }
+    public WorldType Type { get; set; }
 
     /**
      * Gets the generator that will be used to create or load the world.
@@ -147,24 +99,7 @@ public class WorldCreator {
      *
      * @return Chunk generator
      */
-    public ChunkGenerator generator() {
-        return generator;
-    }
-
-    /**
-     * Sets the generator that will be used to create or load the world.
-     * <p>
-     * This may be null, in which case the "natural" generator for this
-     * environment will be used.
-     *
-     * @param generator Chunk generator
-     * @return This object, for chaining
-     */
-    public WorldCreator generator(ChunkGenerator generator) {
-        this.generator = generator;
-
-        return this;
-    }
+    public ChunkGenerator Generator { get; set; }
 
     /**
      * Sets the generator that will be used to create or load the world.
@@ -179,8 +114,8 @@ public class WorldCreator {
      * @param generator Name of the generator to use, in "plugin:id" notation
      * @return This object, for chaining
      */
-    public WorldCreator generator(String generator) {
-        this.generator = getGeneratorForName(name, generator, Bukkit.getConsoleSender());
+    public WorldCreator SetGenerator(String generator) {
+        this.Generator = getGeneratorForName(name, generator, Bukkit.getConsoleSender());
 
         return this;
     }
@@ -200,7 +135,7 @@ public class WorldCreator {
      *     messages
      * @return This object, for chaining
      */
-    public WorldCreator generator(String generator, CommandSender output) {
+    public WorldCreator SetGenerator(String generator, CommandSender output) {
         this.generator = getGeneratorForName(name, generator, output);
 
         return this;
@@ -212,20 +147,7 @@ public class WorldCreator {
      * @param generatorSettings The settings that should be used by the generator
      * @return This object, for chaining
      */
-    public WorldCreator generatorSettings(String generatorSettings) {
-        this.generatorSettings = generatorSettings;
-
-        return this;
-    }
-
-    /**
-     * Gets the generator settings of the world that will be created or loaded
-     *
-     * @return The settings that should be used by the generator
-     */
-    public String generatorSettings() {
-        return generatorSettings;
-    }
+    public string GeneratorSettings { get; set; }
 
     /**
      * Sets whether or not worlds created or loaded with this creator will
@@ -234,20 +156,7 @@ public class WorldCreator {
      * @param generate Whether to generate structures
      * @return This object, for chaining
      */
-    public WorldCreator generateStructures(bool generate) {
-        this.generateStructures = generate;
-
-        return this;
-    }
-
-    /**
-     * Gets whether or not structures will be generated in the world.
-     *
-     * @return True if structures will be generated
-     */
-    public bool generateStructures() {
-        return generateStructures;
-    }
+    public bool GenerateStructures { get; set; }
 
     /**
      * Creates a world with the specified options.
@@ -267,7 +176,7 @@ public class WorldCreator {
      * @param name Name of the world to load or create
      * @return Resulting WorldCreator
      */
-    public static WorldCreator name(String name) {
+    public static WorldCreator FromName(String name) {
         return new WorldCreator(name);
     }
 
@@ -299,8 +208,8 @@ public class WorldCreator {
         }
 
         if (name != null) {
-            String[] split = name.split(":", 2);
-            String id = (split.length > 1) ? split[1] : null;
+            String[] split = name.Split(new char[] { ':' }, 2);
+            String id = (split.Length > 1) ? split[1] : null;
             Plugin plugin = Bukkit.getPluginManager().getPlugin(split[0]);
 
             if (plugin == null) {

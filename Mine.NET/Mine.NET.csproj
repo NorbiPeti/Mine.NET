@@ -711,6 +711,7 @@
     <Compile Include="TreeSpecies.java.cs" />
     <Compile Include="TreeType.java.cs" />
     <Compile Include="UnsafeValues.java.cs" />
+    <Compile Include="Utilities.cs" />
     <Compile Include="util\BlockIterator.java.cs" />
     <Compile Include="util\BlockVector.java.cs" />
     <Compile Include="util\CachedServerIcon.java.cs" />
