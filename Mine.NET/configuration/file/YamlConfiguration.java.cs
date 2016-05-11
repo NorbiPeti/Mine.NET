@@ -51,7 +51,7 @@ public class YamlConfiguration : FileConfiguration {
 
         Dictionary<?, ?> input;
         try {
-            input = (Map<?, ?>) yaml.load(contents);
+            input = (Dictionary<?, ?>) yaml.load(contents);
         } catch (YAMLException e) {
             throw new InvalidConfigurationException(e);
         } catch (ClassCastException e) {
@@ -68,13 +68,13 @@ public class YamlConfiguration : FileConfiguration {
         }
     }
 
-    protected void convertMapsToSections(Map<?, ?> input, ConfigurationSection section) {
+    protected void convertMapsToSections(Dictionary<?, ?> input, ConfigurationSection section) {
         for (Map.Entry<?, ?> entry : input.entrySet()) {
             String key = entry.getKey().toString();
             Object value = entry.getValue();
 
             if (value instanceof Map) {
-                convertMapsToSections((Map<?, ?>) value, section.createSection(key));
+                convertMapsToSections((Dictionary<?, ?>) value, section.createSection(key));
             } else {
                 section.set(key, value);
             }

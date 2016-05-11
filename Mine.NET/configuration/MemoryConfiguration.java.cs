@@ -40,7 +40,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
         defaults.set(path, value);
     }
 
-    public void addDefaults(Map<String, Object> defaults) {
+    public void addDefaults(Dictionary<String, Object> defaults) {
         Validate.notNull(defaults, "Defaults may not be null");
 
         for (Map.Entry<String, Object> entry : defaults.entrySet()) {

@@ -664,7 +664,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
         return result;
     }
 
-    public static Vector deserialize(Map<String, Object> args) {
+    public static Vector deserialize(Dictionary<String, Object> args) {
         double x = 0;
         double y = 0;
         double z = 0;

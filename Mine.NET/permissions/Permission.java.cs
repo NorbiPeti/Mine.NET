@@ -225,12 +225,12 @@ public class Permission {
      * @param def Default permission value to use if missing
      * @return Permission object
      */
-    public static List<Permission> loadPermissions(Map<?, ?> data, String error, PermissionDefault def) {
+    public static List<Permission> loadPermissions(Dictionary<?, ?> data, String error, PermissionDefault def) {
         List<Permission> result = new ArrayList<Permission>();
 
         for (Map.Entry<?, ?> entry : data.entrySet()) {
             try {
-                result.add(Permission.loadPermission(entry.getKey().toString(), (Map<?, ?>) entry.getValue(), def, result));
+                result.add(Permission.loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, result));
             } catch (Throwable ex) {
                 Bukkit.getServer().getLogger().log(Level.SEVERE, String.format(error, entry.getKey()), ex);
             }
@@ -305,7 +305,7 @@ public class Permission {
                     }
                 }
             } else if (childrenNode instanceof Map) {
-                children = extractChildren((Map<?,?>) childrenNode, name, def, output);
+                children = extractChildren((Dictionary<?,?>) childrenNode, name, def, output);
             } else {
                 throw new ArgumentException("'children' key is of wrong type");
             }
@@ -318,7 +318,7 @@ public class Permission {
         return new Permission(name, desc, def, children);
     }
 
-    private static Dictionary<String, bool> extractChildren(Map<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
+    private static Dictionary<String, bool> extractChildren(Dictionary<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
         Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
@@ -326,7 +326,7 @@ public class Permission {
                 children.put(entry.getKey().toString(), (bool) entry.getValue());
             } else if ((entry.getValue() instanceof Map)) {
                 try {
-                    Permission perm = loadPermission(entry.getKey().toString(), (Map<?, ?>) entry.getValue(), def, output);
+                    Permission perm = loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, output);
                     children.put(perm.getName(), bool.TRUE);
 
                     if (output != null) {

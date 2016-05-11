@@ -1,80 +1,94 @@
-package org.bukkit.block.banner;
+using System;
+using System.Collections.Generic;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public enum PatternType {
-    BASE("b"),
-    SQUARE_BOTTOM_LEFT("bl"),
-    SQUARE_BOTTOM_RIGHT("br"),
-    SQUARE_TOP_LEFT("tl"),
-    SQUARE_TOP_RIGHT("tr"),
-    STRIPE_BOTTOM("bs"),
-    STRIPE_TOP("ts"),
-    STRIPE_LEFT("ls"),
-    STRIPE_RIGHT("rs"),
-    STRIPE_CENTER("cs"),
-    STRIPE_MIDDLE("ms"),
-    STRIPE_DOWNRIGHT("drs"),
-    STRIPE_DOWNLEFT("dls"),
-    STRIPE_SMALL("ss"),
-    CROSS("cr"),
-    STRAIGHT_CROSS("sc"),
-    TRIANGLE_BOTTOM("bt"),
-    TRIANGLE_TOP("tt"),
-    TRIANGLES_BOTTOM("bts"),
-    TRIANGLES_TOP("tts"),
-    DIAGONAL_LEFT("ld"),
-    DIAGONAL_RIGHT("rd"),
-    DIAGONAL_LEFT_MIRROR("lud"),
-    DIAGONAL_RIGHT_MIRROR("rud"),
-    CIRCLE_MIDDLE("mc"),
-    RHOMBUS_MIDDLE("mr"),
-    HALF_VERTICAL("vh"),
-    HALF_HORIZONTAL("hh"),
-    HALF_VERTICAL_MIRROR("vhr"),
-    HALF_HORIZONTAL_MIRROR("hhb"),
-    BORDER("bo"),
-    CURLY_BORDER("cbo"),
-    CREEPER("cre"),
-    GRADIENT("gra"),
-    GRADIENT_UP("gru"),
-    BRICKS("bri"),
-    SKULL("sku"),
-    FLOWER("flo"),
-    MOJANG("moj");
-
-    private readonly String identifier;
-    private static readonly Dictionary<String, PatternType> byString = new HashMap<String, PatternType>();
-
-    static {
-        for (PatternType p : values()) {
-            byString.put(p.identifier, p);
-        }
+namespace Mine.NET
+{
+    public enum PatternType
+    {
+        BASE,
+        SQUARE_BOTTOM_LEFT,
+        SQUARE_BOTTOM_RIGHT,
+        SQUARE_TOP_LEFT,
+        SQUARE_TOP_RIGHT,
+        STRIPE_BOTTOM,
+        STRIPE_TOP,
+        STRIPE_LEFT,
+        STRIPE_RIGHT,
+        STRIPE_CENTER,
+        STRIPE_MIDDLE,
+        STRIPE_DOWNRIGHT,
+        STRIPE_DOWNLEFT,
+        STRIPE_SMALL,
+        CROSS,
+        STRAIGHT_CROSS,
+        TRIANGLE_BOTTOM,
+        TRIANGLE_TOP,
+        TRIANGLES_BOTTOM,
+        TRIANGLES_TOP,
+        DIAGONAL_LEFT,
+        DIAGONAL_RIGHT,
+        DIAGONAL_LEFT_MIRROR,
+        DIAGONAL_RIGHT_MIRROR,
+        CIRCLE_MIDDLE,
+        RHOMBUS_MIDDLE,
+        HALF_VERTICAL,
+        HALF_HORIZONTAL,
+        HALF_VERTICAL_MIRROR,
+        HALF_HORIZONTAL_MIRROR,
+        BORDER,
+        CURLY_BORDER,
+        CREEPER,
+        GRADIENT,
+        GRADIENT_UP,
+        BRICKS,
+        SKULL,
+        FLOWER,
+        MOJANG
     }
 
-    private PatternType(String key) {
-        this.identifier = key;
-    }
-
-    /**
-     * Returns the identifier used to represent
-     * this pattern type
-     *
-     * @return the pattern's identifier
-     */
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    /**
-     * Returns the pattern type which matches the passed
-     * identifier or null if no matches are found
-     *
-     * @param identifier the identifier
-     * @return the matched pattern type or null
-     */
-    public static PatternType getByIdentifier(String identifier) {
-        return byString.get(identifier);
+    public class PatternTypeC
+    {
+        public static readonly Dictionary<String, PatternType> byString = new Dictionary<string, PatternType>
+    {
+        { "b", PatternType.BASE },
+        { "bl", PatternType.SQUARE_BOTTOM_LEFT },
+        { "br", PatternType.SQUARE_BOTTOM_RIGHT },
+        { "tl", PatternType.SQUARE_TOP_LEFT },
+        { "tr", PatternType.SQUARE_TOP_RIGHT },
+        { "bs", PatternType.STRIPE_BOTTOM },
+        { "ts", PatternType.STRIPE_TOP },
+        { "ls", PatternType.STRIPE_LEFT },
+        { "rs", PatternType.STRIPE_RIGHT },
+        { "cs", PatternType.STRIPE_CENTER },
+        { "ms", PatternType.STRIPE_MIDDLE },
+        { "drs", PatternType.STRIPE_DOWNRIGHT },
+        { "dls", PatternType.STRIPE_DOWNLEFT },
+        { "ss", PatternType.STRIPE_SMALL },
+        { "cr", PatternType.CROSS },
+        { "sc", PatternType.STRAIGHT_CROSS },
+        { "bt", PatternType.TRIANGLE_BOTTOM },
+        { "tt", PatternType.TRIANGLE_TOP },
+        { "bts", PatternType.TRIANGLES_BOTTOM },
+        { "tts", PatternType.TRIANGLES_TOP },
+        { "ld", PatternType.DIAGONAL_LEFT },
+        { "rd", PatternType.DIAGONAL_RIGHT },
+        { "lud", PatternType.DIAGONAL_LEFT_MIRROR },
+        { "rud", PatternType.DIAGONAL_RIGHT_MIRROR },
+        { "mc", PatternType.CIRCLE_MIDDLE },
+        { "mr", PatternType.RHOMBUS_MIDDLE },
+        { "vh", PatternType.HALF_VERTICAL },
+        { "hh", PatternType.HALF_HORIZONTAL },
+        { "vhr", PatternType.HALF_VERTICAL_MIRROR },
+        { "hhb", PatternType.HALF_HORIZONTAL_MIRROR },
+        { "bo", PatternType.BORDER },
+        { "cbo", PatternType.CURLY_BORDER },
+        { "cre", PatternType.CREEPER },
+        { "gra", PatternType.GRADIENT },
+        { "gru", PatternType.GRADIENT_UP },
+        { "bri", PatternType.BRICKS },
+        { "sku", PatternType.SKULL },
+        { "flo", PatternType.FLOWER },
+        { "moj", PatternType.MOJANG }
+    };
     }
 }

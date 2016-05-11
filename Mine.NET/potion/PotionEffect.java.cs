@@ -95,11 +95,11 @@ public class PotionEffect : ConfigurationSerializable {
      *
      * @param map the map to deserialize from
      */
-    public PotionEffect(Map<String, Object> map) {
+    public PotionEffect(Dictionary<String, Object> map) {
         this(getEffectType(map), getInt(map, DURATION), getInt(map, AMPLIFIER), getBool(map, AMBIENT, false), getBool(map, PARTICLES, true));
     }
 
-    private static PotionEffectType getEffectType(Map<?,?> map) {
+    private static PotionEffectType getEffectType(Dictionary<?,?> map) {
         int type = getInt(map, TYPE);
         PotionEffectType effect = PotionEffectType.getById(type);
         if (effect != null) {
@@ -108,7 +108,7 @@ public class PotionEffect : ConfigurationSerializable {
         throw new NoSuchElementException(map + " does not contain " + TYPE);
     }
 
-    private static int getInt(Map<?,?> map, Object key) {
+    private static int getInt(Dictionary<?,?> map, Object key) {
         Object num = map.get(key);
         if (num instanceof Integer) {
             return (Integer) num;
@@ -116,7 +116,7 @@ public class PotionEffect : ConfigurationSerializable {
         throw new NoSuchElementException(map + " does not contain " + key);
     }
 
-    private static bool getBool(Map<?,?> map, Object key, bool def) {
+    private static bool getBool(Dictionary<?,?> map, Object key, bool def) {
         Object bool = map.get(key);
         if (bool instanceof bool) {
             return (bool) bool;

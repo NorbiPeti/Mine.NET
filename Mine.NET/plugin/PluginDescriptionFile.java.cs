@@ -885,7 +885,7 @@ public sealed class PluginDescriptionFile {
         YAML.get().dump(saveMap(), writer);
     }
 
-    private void loadMap(Map<?, ?> map) throws InvalidDescriptionException {
+    private void loadMap(Dictionary<?, ?> map) throws InvalidDescriptionException {
         try {
             name = rawName = map.get("name").toString();
 
@@ -921,10 +921,10 @@ public sealed class PluginDescriptionFile {
         if (map.get("commands") != null) {
             ImmutableMap.Builder<String, Dictionary<String, Object>> commandsBuilder = ImmutableMap.<String, Dictionary<String, Object>>builder();
             try {
-                for (Map.Entry<?, ?> command : ((Map<?, ?>) map.get("commands")).entrySet()) {
+                for (Map.Entry<?, ?> command : ((Dictionary<?, ?>) map.get("commands")).entrySet()) {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
                     if (command.getValue() != null) {
-                        for (Map.Entry<?, ?> commandEntry : ((Map<?, ?>) command.getValue()).entrySet()) {
+                        for (Map.Entry<?, ?> commandEntry : ((Dictionary<?, ?>) command.getValue()).entrySet()) {
                             if (commandEntry.getValue() instanceof Iterable) {
                                 // This prevents internal alias list changes
                                 ImmutableList.Builder<Object> commandSubList = ImmutableList.<Object>builder();
@@ -1025,7 +1025,7 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            lazyPermissions = (Map<?, ?>) map.get("permissions");
+            lazyPermissions = (Dictionary<?, ?>) map.get("permissions");
         } catch (ClassCastException ex) {
             throw new InvalidDescriptionException(ex, "permissions are of the wrong type");
         }
@@ -1035,7 +1035,7 @@ public sealed class PluginDescriptionFile {
         }
     }
 
-    private static List<String> makePluginNameList(Map<?, ?> map, readonly String key) throws InvalidDescriptionException {
+    private static List<String> makePluginNameList(Dictionary<?, ?> map, readonly String key) throws InvalidDescriptionException {
         readonly Object value = map.get(key);
         if (value == null) {
             return ImmutableList.of();
@@ -1099,7 +1099,7 @@ public sealed class PluginDescriptionFile {
 
     private Dictionary<?,?> asMap(Object object) throws InvalidDescriptionException {
         if (object instanceof Map) {
-            return (Map<?,?>) object;
+            return (Dictionary<?,?>) object;
         }
         throw new InvalidDescriptionException(object + " is not properly structured.");
     }

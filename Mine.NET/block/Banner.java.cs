@@ -1,77 +1,76 @@
-package org.bukkit.block;
+using System.Collections.Generic;
 
-import org.bukkit.DyeColor;
-import org.bukkit.block.banner.Pattern;
+namespace Mine.NET
+{
+    public interface Banner : BlockState
+    {
 
-import java.util.List;
+        /**
+         * Returns the base color for this banner
+         *
+         * @return the base color
+         */
+        DyeColor getBaseColor();
 
-public interface Banner : BlockState {
+        /**
+         * Sets the base color for this banner
+         *
+         * @param color the base color
+         */
+        void setBaseColor(DyeColor color);
 
-    /**
-     * Returns the base color for this banner
-     *
-     * @return the base color
-     */
-    DyeColor getBaseColor();
+        /**
+         * Returns a list of patterns on this banner
+         *
+         * @return the patterns
+         */
+        List<Pattern> getPatterns();
 
-    /**
-     * Sets the base color for this banner
-     *
-     * @param color the base color
-     */
-    void setBaseColor(DyeColor color);
+        /**
+         * Sets the patterns used on this banner
+         *
+         * @param patterns the new list of patterns
+         */
+        void setPatterns(List<Pattern> patterns);
 
-    /**
-     * Returns a list of patterns on this banner
-     *
-     * @return the patterns
-     */
-    List<Pattern> getPatterns();
+        /**
+         * Adds a new pattern on top of the existing
+         * patterns
+         *
+         * @param pattern the new pattern to add
+         */
+        void addPattern(Pattern pattern);
 
-    /**
-     * Sets the patterns used on this banner
-     *
-     * @param patterns the new list of patterns
-     */
-    void setPatterns(List<Pattern> patterns);
+        /**
+         * Returns the pattern at the specified index
+         *
+         * @param i the index
+         * @return the pattern
+         */
+        Pattern getPattern(int i);
 
-    /**
-     * Adds a new pattern on top of the existing
-     * patterns
-     *
-     * @param pattern the new pattern to add
-     */
-    void addPattern(Pattern pattern);
+        /**
+         * Removes the pattern at the specified index
+         *
+         * @param i the index
+         * @return the removed pattern
+         */
+        Pattern removePattern(int i);
 
-    /**
-     * Returns the pattern at the specified index
-     *
-     * @param i the index
-     * @return the pattern
-     */
-    Pattern getPattern(int i);
+        /**
+         * Sets the pattern at the specified index
+         *
+         * @param i       the index
+         * @param pattern the new pattern
+         */
+        void setPattern(int i, Pattern pattern);
 
-    /**
-     * Removes the pattern at the specified index
-     *
-     * @param i the index
-     * @return the removed pattern
-     */
-    Pattern removePattern(int i);
-
-    /**
-     * Sets the pattern at the specified index
-     *
-     * @param i       the index
-     * @param pattern the new pattern
-     */
-    void setPattern(int i, Pattern pattern);
-
-    /**
-     * Returns the number of patterns on this
-     * banner
-     *
-     * @return the number of patterns
-     */
-    int numberOfPatterns();
+        /**
+         * Returns the number of patterns on this
+         * banner
+         *
+         * @return the number of patterns
+         */
+        int numberOfPatterns();
+    }
 }

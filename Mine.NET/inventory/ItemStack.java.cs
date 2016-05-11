@@ -413,7 +413,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *     exception is thrown.
      */
     @Utility
-    public void addEnchantments(Map<Enchantment, Integer> enchantments) {
+    public void addEnchantments(Dictionary<Enchantment, Integer> enchantments) {
         Validate.notNull(enchantments, "Enchantments cannot be null");
         for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
             addEnchantment(entry.getKey(), entry.getValue());
@@ -453,7 +453,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @param enchantments Enchantments to add
      */
     @Utility
-    public void addUnsafeEnchantments(Map<Enchantment, Integer> enchantments) {
+    public void addUnsafeEnchantments(Dictionary<Enchantment, Integer> enchantments) {
         for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
             addUnsafeEnchantment(entry.getKey(), entry.getValue());
         }
@@ -520,7 +520,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @return deserialized item stack
      * @see ConfigurationSerializable
      */
-    public static ItemStack deserialize(Map<String, Object> args) {
+    public static ItemStack deserialize(Dictionary<String, Object> args) {
         Material type = Material.getMaterial((String) args.get("type"));
         short damage = 0;
         int amount = 1;
@@ -539,7 +539,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
             Object raw = args.get("enchantments");
 
             if (raw instanceof Map) {
-                Dictionary<?, ?> map = (Map<?, ?>) raw;
+                Dictionary<?, ?> map = (Dictionary<?, ?>) raw;
 
                 for (Map.Entry<?, ?> entry : map.entrySet()) {
                     Enchantment enchantment = Enchantment.getByName(entry.getKey().toString());

@@ -76,7 +76,7 @@ namespace Mine.NET
             BLACK
         }
 
-        private static Dictionary<Colors, DyeColor> AllColors = new Dictionary<Colors, DyeColor>
+        public static Dictionary<Colors, DyeColor> AllColors = new Dictionary<Colors, DyeColor>
     {
         /**
          * Represents white dye.

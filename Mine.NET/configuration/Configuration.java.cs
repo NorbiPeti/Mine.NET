@@ -32,7 +32,7 @@ public interface Configuration : ConfigurationSection {
      * @param defaults A map of Path{@literal ->}Values to add to defaults.
      * @throws ArgumentException Thrown if defaults is null.
      */
-    public void addDefaults(Map<String, Object> defaults);
+    public void addDefaults(Dictionary<String, Object> defaults);
 
     /**
      * Sets the default values of the given paths as provided.

@@ -23,7 +23,7 @@ public class YamlConstructor : SafeConstructor {
                 throw new YAMLException("Unexpected referential mapping structure. Node: " + node);
             }
 
-            Dictionary<?, ?> raw = (Map<?, ?>) super.construct(node);
+            Dictionary<?, ?> raw = (Dictionary<?, ?>) super.construct(node);
 
             if (raw.containsKey(ConfigurationSerialization.SERIALIZED_TYPE_KEY)) {
                 Dictionary<String, Object> typed = new LinkedHashMap<String, Object>(raw.size());

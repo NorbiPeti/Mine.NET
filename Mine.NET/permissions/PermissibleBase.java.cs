@@ -175,7 +175,7 @@ public class PermissibleBase : Permissible {
         permissions.clear();
     }
 
-    private void calculateChildPermissions(Map<String, bool> children, bool invert, PermissionAttachment attachment) {
+    private void calculateChildPermissions(Dictionary<String, bool> children, bool invert, PermissionAttachment attachment) {
         HashSet<String> keys = children.keySet();
 
         for (String name : keys) {

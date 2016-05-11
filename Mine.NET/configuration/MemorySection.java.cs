@@ -266,7 +266,7 @@ public class MemorySection : ConfigurationSection {
 
         for (Map.Entry<?, ?> entry : map.entrySet()) {
             if (entry.getValue() instanceof Map) {
-                section.createSection(entry.getKey().toString(), (Map<?, ?>) entry.getValue());
+                section.createSection(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue());
             } else {
                 section.set(entry.getKey().toString(), entry.getValue());
             }
@@ -607,7 +607,7 @@ public class MemorySection : ConfigurationSection {
 
         for (Object object : list) {
             if (object instanceof Map) {
-                result.add((Map<?, ?>) object);
+                result.add((Dictionary<?, ?>) object);
             }
         }
 
@@ -726,7 +726,7 @@ public class MemorySection : ConfigurationSection {
         }
     }
 
-    protected void mapChildrenValues(Map<String, Object> output, ConfigurationSection section, bool deep) {
+    protected void mapChildrenValues(Dictionary<String, Object> output, ConfigurationSection section, bool deep) {
         if (section instanceof MemorySection) {
             MemorySection sec = (MemorySection) section;
 

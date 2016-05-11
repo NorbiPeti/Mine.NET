@@ -125,7 +125,7 @@ public class ConversationFactory {
      *     sessionData.
      * @return This object.
      */
-    public ConversationFactory withInitialSessionData(Map<Object, Object> initialSessionData) {
+    public ConversationFactory withInitialSessionData(Dictionary<Object, Object> initialSessionData) {
         this.initialSessionData = initialSessionData;
         return this;
     }

@@ -104,7 +104,7 @@ public class ConfigurationSerialization {
         return null;
     }
 
-    public ConfigurationSerializable deserialize(Map<String, ?> args) {
+    public ConfigurationSerializable deserialize(Dictionary<String, ?> args) {
         Validate.notNull(args, "Args must not be null");
 
         ConfigurationSerializable result = null;
@@ -152,7 +152,7 @@ public class ConfigurationSerialization {
      * @param clazz Class to deserialize into
      * @return New instance of the specified class
      */
-    public static ConfigurationSerializable deserializeObject(Map<String, ?> args, Class<? : ConfigurationSerializable> clazz) {
+    public static ConfigurationSerializable deserializeObject(Dictionary<String, ?> args, Class<? : ConfigurationSerializable> clazz) {
         return new ConfigurationSerialization(clazz).deserialize(args);
     }
 
@@ -170,7 +170,7 @@ public class ConfigurationSerialization {
      * @param args Arguments for deserialization
      * @return New instance of the specified class
      */
-    public static ConfigurationSerializable deserializeObject(Map<String, ?> args) {
+    public static ConfigurationSerializable deserializeObject(Dictionary<String, ?> args) {
         Class<? : ConfigurationSerializable> clazz = null;
 
         if (args.containsKey(SERIALIZED_TYPE_KEY)) {

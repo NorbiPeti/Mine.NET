@@ -106,7 +106,7 @@ public class BlockVector : Vector {
         return (BlockVector) super.clone();
     }
 
-    public static BlockVector deserialize(Map<String, Object> args) {
+    public static BlockVector deserialize(Dictionary<String, Object> args) {
         double x = 0;
         double y = 0;
         double z = 0;
