@@ -1,5 +1,3 @@
-package org.bukkit.attribute;
-
 /**
  * Represents an object which may contain attributes.
  */

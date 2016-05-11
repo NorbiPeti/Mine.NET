@@ -1,42 +1,45 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-/**
-* Represents the art on a painting
-*/
-public class Art {
-    public enum Arts
-    {
-        KEBAB,
-        AZTEC,
-        ALBAN,
-        AZTEC2,
-        BOMB,
-        PLANT,
-        WASTELAND,
-        POOL,
-        COURBET,
-        SEA,
-        SUNSET,
-        CREEBET,
-        WANDERER,
-        GRAHAM,
-        MATCH,
-        BUST,
-        STAGE,
-        VOID,
-        SKULL_AND_ROSES,
-        WITHER,
-        FIGHTERS,
-        POINTER,
-        PIGSCENE,
-        BURNINGSKULL,
-        SKELETON,
-        DONKEYKONG
-    }
 
-    private static Dictionary<Arts, Art> ArtDictionary = new Dictionary<Arts, Art>()
+namespace Mine.NET
+{
+    /**
+    * Represents the art on a painting
+    */
+    public class Art
+    {
+        public enum Arts
+        {
+            KEBAB,
+            AZTEC,
+            ALBAN,
+            AZTEC2,
+            BOMB,
+            PLANT,
+            WASTELAND,
+            POOL,
+            COURBET,
+            SEA,
+            SUNSET,
+            CREEBET,
+            WANDERER,
+            GRAHAM,
+            MATCH,
+            BUST,
+            STAGE,
+            VOID,
+            SKULL_AND_ROSES,
+            WITHER,
+            FIGHTERS,
+            POINTER,
+            PIGSCENE,
+            BURNINGSKULL,
+            SKELETON,
+            DONKEYKONG
+        }
+
+        private static Dictionary<Arts, Art> ArtDictionary = new Dictionary<Arts, Art>()
     {
         { Arts.KEBAB, new Art(0, 1, 1, "kebab") },
         { Arts.AZTEC, new Art(1, 1, 1, "aztec") },
@@ -66,69 +69,75 @@ public class Art {
         { Arts.DONKEYKONG, new Art(25, 4, 3, "donkeykong") }
     };
 
-    private int id, width, height;
-    private string name;
+        private int id, width, height;
+        private string name;
 
-    private Art(int id, int width, int height, string name) {
-        this.id = id;
-        this.width = width;
-        this.height = height;
-        this.name = name;
-    }
+        private Art(int id, int width, int height, string name)
+        {
+            this.id = id;
+            this.width = width;
+            this.height = height;
+            this.name = name;
+        }
 
-    /**
-     * Gets the width of the painting, in blocks
-     *
-     * @return The width of the painting, in blocks
-     */
-    public int getBlockWidth() {
-        return width;
-    }
+        /**
+         * Gets the width of the painting, in blocks
+         *
+         * @return The width of the painting, in blocks
+         */
+        public int getBlockWidth()
+        {
+            return width;
+        }
 
-    /**
-     * Gets the height of the painting, in blocks
-     *
-     * @return The height of the painting, in blocks
-     */
-    public int getBlockHeight() {
-        return height;
-    }
+        /**
+         * Gets the height of the painting, in blocks
+         *
+         * @return The height of the painting, in blocks
+         */
+        public int getBlockHeight()
+        {
+            return height;
+        }
 
-    /**
-     * Get the ID of this painting.
-     *
-     * @return The ID of this painting
-     * [Obsolete] Magic value
-     */
-    [Obsolete("", true)]
-    public int getId() {
-        return id;
-    }
+        /**
+         * Get the ID of this painting.
+         *
+         * @return The ID of this painting
+         * [Obsolete] Magic value
+         */
+        [Obsolete("", true)]
+        public int getId()
+        {
+            return id;
+        }
 
-    /**
-     * Get a painting by its numeric ID
-     *
-     * @param id The ID
-     * @return The painting
-     * [Obsolete] Magic value
-     */
-    [Obsolete("", true)]
-    public static Art getById(int id) {
-        throw new NotImplementedException();
-    }
+        /**
+         * Get a painting by its numeric ID
+         *
+         * @param id The ID
+         * @return The painting
+         * [Obsolete] Magic value
+         */
+        [Obsolete("", true)]
+        public static Art getById(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-    /**
-     * Get a painting by its unique name
-     * <p>
-     * This ignores underscores and capitalization
-     *
-     * @param name The name
-     * @return The painting
-     */
-    public static Art getByName(String name) {
-        //Validate.notNull(name, "Name cannot be null"); - TODO
+        /**
+         * Get a painting by its unique name
+         * <p>
+         * This ignores underscores and capitalization
+         *
+         * @param name The name
+         * @return The painting
+         */
+        public static Art getByName(String name)
+        {
+            //Validate.notNull(name, "Name cannot be null"); - TODO
 
-        return ArtDictionary.Values.First(a => a.name == name);
-    }
+            return ArtDictionary.Values.First(a => a.name == name);
+        }
     }
 }
