@@ -1,20 +1,21 @@
+namespace Mine.NET
+{
+    public interface ProxiedCommandSender : CommandSender
+    {
 
-package org.bukkit.command;
+        /**
+         * Returns the CommandSender which triggered this proxied command
+         *
+         * @return the caller which triggered the command
+         */
+        CommandSender getCaller();
 
-public interface ProxiedCommandSender : CommandSender {
+        /**
+         * Returns the CommandSender which is being used to call the command
+         *
+         * @return the caller which the command is being run as
+         */
+        CommandSender getCallee();
 
-    /**
-     * Returns the CommandSender which triggered this proxied command
-     *
-     * @return the caller which triggered the command
-     */
-    CommandSender getCaller();
-
-    /**
-     * Returns the CommandSender which is being used to call the command
-     *
-     * @return the caller which the command is being run as
-     */
-    CommandSender getCallee();
-
+    }
 }

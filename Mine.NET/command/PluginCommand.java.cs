@@ -12,7 +12,7 @@ public sealed class PluginCommand : Command, PluginIdentifiableCommand {
     private CommandExecutor executor;
     private TabCompleter completer;
 
-    protected PluginCommand(String name, Plugin owner) : base(name) {
+    internal PluginCommand(String name, Plugin owner) : base(name) {
         this.executor = owner;
         this.owningPlugin = owner;
         this.usageMessage = "";

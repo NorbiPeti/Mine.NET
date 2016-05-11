@@ -99,7 +99,7 @@ namespace Mine.NET
             /**
              * Resets all previous chat colors or formats.
              */
-            RESET
+            RESET //TODO: Move out of the class
         }
 
         private static Dictionary<Colors, ChatColor> AllColors = new Dictionary<Colors, ChatColor>

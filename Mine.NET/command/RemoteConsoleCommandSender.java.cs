@@ -1,4 +1,6 @@
-package org.bukkit.command;
-
-public interface RemoteConsoleCommandSender : CommandSender {
+namespace Mine.NET
+{
+    public interface RemoteConsoleCommandSender : CommandSender
+    {
+    }
 }

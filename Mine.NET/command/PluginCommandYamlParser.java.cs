@@ -1,76 +1,75 @@
-package org.bukkit.command;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
-import java.util.List;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+namespace Mine.NET
+{
+    public class PluginCommandYamlParser {
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+        public static List<Command> parse(Plugin plugin) {
+            List<Command> pluginCmds = new List<Command>();
 
-public class PluginCommandYamlParser {
+            Dictionary<String, Dictionary<String, Object>> map = plugin.getDescription().getCommands();
 
-    public static List<Command> parse(Plugin plugin) {
-        List<Command> pluginCmds = new List<Command>();
-
-        Dictionary<String, Dictionary<String, Object>> map = plugin.getDescription().getCommands();
-
-        if (map == null) {
-            return pluginCmds;
-        }
-
-        for (Entry<String, Dictionary<String, Object>> entry : map.entrySet()) {
-            if (entry.getKey().contains(":")) {
-                Bukkit.getServer().getLogger().severe("Could not load command " + entry.getKey() + " for plugin " + plugin.getName() + ": Illegal Characters");
-                continue;
-            }
-            Command newCmd = new PluginCommand(entry.getKey(), plugin);
-            Object description = entry.getValue().get("description");
-            Object usage = entry.getValue().get("usage");
-            Object aliases = entry.getValue().get("aliases");
-            Object permission = entry.getValue().get("permission");
-            Object permissionMessage = entry.getValue().get("permission-message");
-
-            if (description != null) {
-                newCmd.setDescription(description.toString());
+            if (map == null) {
+                return pluginCmds;
             }
 
-            if (usage != null) {
-                newCmd.setUsage(usage.toString());
-            }
+            foreach (KeyValuePair<String, Dictionary<String, Object>> entry in map) {
+                if (entry.Key.Contains(":")) {
+                    Bukkit.getServer().getLogger().Severe("Could not load command " + entry.Key + " for plugin " + plugin.getName() + ": Illegal Characters");
+                    continue;
+                }
+                Command newCmd = new PluginCommand(entry.Key, plugin);
+                Object description = entry.Value["description"];
+                Object usage = entry.Value["usage"];
+                Object aliases = entry.Value["aliases"];
+                Object permission = entry.Value["permission"];
+                Object permissionMessage = entry.Value["permission-message"];
 
-            if (aliases != null) {
-                List<String> aliasList = new List<String>();
-
-                if (aliases is List) {
-                    for (Object o : (List<?>) aliases) {
-                        if (o.toString().contains(":")) {
-                            Bukkit.getServer().getLogger().severe("Could not load alias " + o.toString() + " for plugin " + plugin.getName() + ": Illegal Characters");
-                            continue;
-                        }
-                        aliasList.add(o.toString());
-                    }
-                } else {
-                    if (aliases.toString().contains(":")) {
-                        Bukkit.getServer().getLogger().severe("Could not load alias " + aliases.toString() + " for plugin " + plugin.getName() + ": Illegal Characters");
-                    } else {
-                        aliasList.add(aliases.toString());
-                    }
+                if (description != null) {
+                    newCmd.setDescription(description.ToString());
                 }
 
-                newCmd.setAliases(aliasList);
-            }
+                if (usage != null) {
+                    newCmd.setUsage(usage.ToString());
+                }
 
-            if (permission != null) {
-                newCmd.setPermission(permission.toString());
-            }
+                if (aliases != null) {
+                    List<String> aliasList = new List<String>();
 
-            if (permissionMessage != null) {
-                newCmd.setPermissionMessage(permissionMessage.toString());
-            }
+                    if (aliases is IList && aliases.GetType().IsGenericType)
+                    {
+                        foreach (Object o in (IList) aliases) {
+                            if (o.ToString().Contains(":")) {
+                                Bukkit.getServer().getLogger().Severe("Could not load alias " + o.ToString() + " for plugin " + plugin.getName() + ": Illegal Characters");
+                                continue;
+                            }
+                            aliasList.Add(o.ToString());
+                        }
+                    } else {
+                        if (aliases.ToString().Contains(":")) {
+                            Bukkit.getServer().getLogger().Severe("Could not load alias " + aliases.ToString() + " for plugin " + plugin.getName() + ": Illegal Characters");
+                        } else {
+                            aliasList.Add(aliases.ToString());
+                        }
+                    }
 
-            pluginCmds.add(newCmd);
+                    newCmd.setAliases(aliasList);
+                }
+
+                if (permission != null) {
+                    newCmd.setPermission(permission.ToString());
+                }
+
+                if (permissionMessage != null) {
+                    newCmd.setPermissionMessage(permissionMessage.ToString());
+                }
+
+                pluginCmds.Add(newCmd);
+            }
+            return pluginCmds;
         }
-        return pluginCmds;
     }
 }
+    
