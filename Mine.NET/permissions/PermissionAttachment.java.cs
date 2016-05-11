@@ -10,7 +10,7 @@ import org.bukkit.plugin.Plugin;
  */
 public class PermissionAttachment {
     private PermissionRemovedExecutor removed;
-    private final Map<String, Boolean> permissions = new LinkedHashMap<String, Boolean>();
+    private final Map<String, bool> permissions = new LinkedHashMap<String, bool>();
     private final Permissible permissible;
     private final Plugin plugin;
 
@@ -72,8 +72,8 @@ public class PermissionAttachment {
      *
      * @return Copy of all permissions and values expressed by this attachment
      */
-    public Map<String, Boolean> getPermissions() {
-        return new LinkedHashMap<String, Boolean>(permissions);
+    public Map<String, bool> getPermissions() {
+        return new LinkedHashMap<String, bool>(permissions);
     }
 
     /**
@@ -82,7 +82,7 @@ public class PermissionAttachment {
      * @param name Name of the permission
      * @param value New value of the permission
      */
-    public void setPermission(String name, boolean value) {
+    public void setPermission(String name, bool value) {
         permissions.put(name.toLowerCase(), value);
         permissible.recalculatePermissions();
     }
@@ -93,7 +93,7 @@ public class PermissionAttachment {
      * @param perm Permission to set
      * @param value New value of the permission
      */
-    public void setPermission(Permission perm, boolean value) {
+    public void setPermission(Permission perm, bool value) {
         setPermission(perm.getName(), value);
     }
 
@@ -128,7 +128,7 @@ public class PermissionAttachment {
      * @return true if the permissible was removed successfully, false if it
      *     did not exist
      */
-    public boolean remove() {
+    public bool remove() {
         try {
             permissible.removeAttachment(this);
             return true;

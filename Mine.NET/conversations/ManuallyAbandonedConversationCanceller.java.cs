@@ -10,7 +10,7 @@ public class ManuallyAbandonedConversationCanceller implements ConversationCance
         throw new UnsupportedOperationException();
     }
 
-    public boolean cancelBasedOnInput(ConversationContext context, String input) {
+    public bool cancelBasedOnInput(ConversationContext context, String input) {
         throw new UnsupportedOperationException();
     }
 

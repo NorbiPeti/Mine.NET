@@ -187,7 +187,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @return whether it has a base plate
      */
-    boolean hasBasePlate();
+    bool hasBasePlate();
 
     /**
      * Sets whether the armor stand has a
@@ -195,7 +195,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @param basePlate whether is has a base plate
      */
-    void setBasePlate(boolean basePlate);
+    void setBasePlate(bool basePlate);
 
     /**
      * Returns whether gravity applies to
@@ -203,7 +203,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @return whether gravity applies
      */
-    boolean hasGravity();
+    bool hasGravity();
 
     /**
      * Sets whether gravity applies to
@@ -211,7 +211,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @param gravity whether gravity should apply
      */
-    void setGravity(boolean gravity);
+    void setGravity(bool gravity);
 
     /**
      * Returns whether the armor stand should be
@@ -219,7 +219,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @return whether the stand is visible or not
      */
-    boolean isVisible();
+    bool isVisible();
 
     /**
      * Sets whether the armor stand should be
@@ -227,21 +227,21 @@ public interface ArmorStand extends LivingEntity {
      *
      * @param visible whether the stand is visible or not
      */
-    void setVisible(boolean visible);
+    void setVisible(bool visible);
 
     /**
      * Returns whether this armor stand has arms
      *
      * @return whether this has arms or not
      */
-    boolean hasArms();
+    bool hasArms();
 
     /**
      * Sets whether this armor stand has arms
      *
      * @param arms whether this has arms or not
      */
-    void setArms(boolean arms);
+    void setArms(bool arms);
 
     /**
      * Returns whether this armor stand is scaled
@@ -249,7 +249,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @return whether this is scaled down
      */
-    boolean isSmall();
+    bool isSmall();
 
     /**
      * Sets whether this armor stand is scaled
@@ -257,7 +257,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @param small whether this is scaled down
      */
-    void setSmall(boolean small);
+    void setSmall(bool small);
 
     /**
      * Returns whether this armor stand is a marker,
@@ -265,7 +265,7 @@ public interface ArmorStand extends LivingEntity {
      *
      * @return whether this is a marker
      */
-    boolean isMarker();
+    bool isMarker();
 
     /**
      * Sets whether this armor stand is a marker,
@@ -273,5 +273,5 @@ public interface ArmorStand extends LivingEntity {
      *
      * @param marker whether this is a marker
      */
-    void setMarker(boolean marker);
+    void setMarker(bool marker);
 }

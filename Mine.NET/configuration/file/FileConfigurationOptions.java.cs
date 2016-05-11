@@ -8,7 +8,7 @@ import org.bukkit.configuration.*;
  */
 public class FileConfigurationOptions extends MemoryConfigurationOptions {
     private String header = null;
-    private boolean copyHeader = true;
+    private bool copyHeader = true;
 
     protected FileConfigurationOptions(MemoryConfiguration configuration) {
         super(configuration);
@@ -20,7 +20,7 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
     }
 
     @Override
-    public FileConfigurationOptions copyDefaults(boolean value) {
+    public FileConfigurationOptions copyDefaults(bool value) {
         super.copyDefaults(value);
         return this;
     }
@@ -87,7 +87,7 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
      *
      * @return Whether or not to copy the header
      */
-    public boolean copyHeader() {
+    public bool copyHeader() {
         return copyHeader;
     }
 
@@ -110,7 +110,7 @@ public class FileConfigurationOptions extends MemoryConfigurationOptions {
      * @param value Whether or not to copy the header
      * @return This object, for chaining
      */
-    public FileConfigurationOptions copyHeader(boolean value) {
+    public FileConfigurationOptions copyHeader(bool value) {
         copyHeader = value;
 
         return this;

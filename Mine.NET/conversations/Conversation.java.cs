@@ -35,11 +35,11 @@ import java.util.Map;
 public class Conversation {
 
     private Prompt firstPrompt;
-    private boolean abandoned;
+    private bool abandoned;
     protected Prompt currentPrompt;
     protected ConversationContext context;
-    protected boolean modal;
-    protected boolean localEchoEnabled;
+    protected bool modal;
+    protected bool localEchoEnabled;
     protected ConversationPrefix prefix;
     protected List<ConversationCanceller> cancellers;
     protected List<ConversationAbandonedListener> abandonedListeners;
@@ -90,7 +90,7 @@ public class Conversation {
      *
      * @return The conversation modality.
      */
-    public boolean isModal() {
+    public bool isModal() {
         return modal;
     }
 
@@ -101,7 +101,7 @@ public class Conversation {
      *
      * @param modal The new conversation modality.
      */
-    void setModal(boolean modal) {
+    void setModal(bool modal) {
         this.modal = modal;
     }
 
@@ -112,7 +112,7 @@ public class Conversation {
      *
      * @return The status of local echo.
      */
-    public boolean isLocalEchoEnabled() {
+    public bool isLocalEchoEnabled() {
         return localEchoEnabled;
     }
 
@@ -123,7 +123,7 @@ public class Conversation {
      *
      * @param localEchoEnabled The status of local echo.
      */
-    public void setLocalEchoEnabled(boolean localEchoEnabled) {
+    public void setLocalEchoEnabled(bool localEchoEnabled) {
         this.localEchoEnabled = localEchoEnabled;
     }
 

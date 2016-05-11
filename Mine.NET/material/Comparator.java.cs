@@ -11,8 +11,8 @@ import org.bukkit.block.BlockFace;
  */
 public class Comparator extends MaterialData implements Directional, Redstone {
     protected static final BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
-    protected static final boolean DEFAULT_SUBTRACTION_MODE = false;
-    protected static final boolean DEFAULT_STATE = false;
+    protected static final bool DEFAULT_SUBTRACTION_MODE = false;
+    protected static final bool DEFAULT_STATE = false;
 
     /**
      * Constructs a comparator switched off, with the default mode (normal) and facing the default direction (north).
@@ -40,7 +40,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      *
      * @see BlockFace
      */
-    public Comparator(BlockFace facingDirection, boolean isSubtraction) {
+    public Comparator(BlockFace facingDirection, bool isSubtraction) {
     	this(facingDirection, isSubtraction, DEFAULT_STATE);
     }
 
@@ -53,7 +53,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      *
      * @see BlockFace
      */
-    public Comparator(BlockFace facingDirection, boolean isSubtraction, boolean state) {
+    public Comparator(BlockFace facingDirection, bool isSubtraction, bool state) {
         super(state ? Material.REDSTONE_COMPARATOR_ON : Material.REDSTONE_COMPARATOR_OFF);
         setFacingDirection(facingDirection);
         setSubtractionMode(isSubtraction);
@@ -97,7 +97,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      *
      * @param isSubtraction True if the comparator is in subtraction mode, false for normal comparator operation
      */
-    public void setSubtractionMode(boolean isSubtraction) {
+    public void setSubtractionMode(bool isSubtraction) {
         setData((byte)(getData() & 0xB | (isSubtraction ? 0x4 : 0x0)));
     }
 
@@ -106,7 +106,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      *
      * @return True if the comparator is in subtraction mode, false if normal comparator operation
      */
-    public boolean isSubtractionMode() {
+    public bool isSubtractionMode() {
         return (getData() & 0x4) != 0;
     }
 
@@ -185,7 +185,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      * @return true if the comparator is powered
      */
     @Override
-    public boolean isPowered() {
+    public bool isPowered() {
         return getItemType() == Material.REDSTONE_COMPARATOR_ON;
     }
 
@@ -194,7 +194,7 @@ public class Comparator extends MaterialData implements Directional, Redstone {
      *
      * @return true if the comparator is being powered
      */
-    public boolean isBeingPowered() {
+    public bool isBeingPowered() {
         return (getData() & 0x8) != 0;
     }
 }

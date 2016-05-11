@@ -39,7 +39,7 @@ public class VersionCommand extends BukkitCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
         if (args.length == 0) {
@@ -63,7 +63,7 @@ public class VersionCommand extends BukkitCommand {
                 return true;
             }
 
-            boolean found = false;
+            bool found = false;
             pluginName = pluginName.toLowerCase();
             for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
                 if (plugin.getName().toLowerCase().contains(pluginName)) {
@@ -143,10 +143,10 @@ public class VersionCommand extends BukkitCommand {
     }
 
     private final ReentrantLock versionLock = new ReentrantLock();
-    private boolean hasVersion = false;
+    private bool hasVersion = false;
     private String versionMessage = null;
     private final Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
-    private boolean versionTaskStarted = false;
+    private bool versionTaskStarted = false;
     private long lastCheck = 0;
 
     private void sendVersion(CommandSender sender) {

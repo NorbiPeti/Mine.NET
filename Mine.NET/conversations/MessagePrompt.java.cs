@@ -16,7 +16,7 @@ public abstract class MessagePrompt implements Prompt{
      * @param context Context information about the conversation.
      * @return Always false.
      */
-    public boolean blocksForInput(ConversationContext context) {
+    public bool blocksForInput(ConversationContext context) {
         return false;
     }
 

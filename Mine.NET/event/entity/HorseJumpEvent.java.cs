@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  */
 public class HorseJumpEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private float power;
 
     public HorseJumpEvent(Horse horse, final float power) {
@@ -17,7 +17,7 @@ public class HorseJumpEvent extends EntityEvent implements Cancellable {
         this.power = power;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
@@ -25,7 +25,7 @@ public class HorseJumpEvent extends EntityEvent implements Cancellable {
      * [Obsolete] horse jumping was moved client side.
      */
     [Obsolete]
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

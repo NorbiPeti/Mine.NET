@@ -55,9 +55,9 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
      * Gets the cancellation state of this event. Set to true if you want to
      * prevent buckets from placing water and so forth
      *
-     * @return boolean cancellation state
+     * @return bool cancellation state
      */
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return useInteractedBlock() == Result.DENY;
     }
 
@@ -71,7 +71,7 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
      *
      * @param cancel true if you wish to cancel this event
      */
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         setUseInteractedBlock(cancel ? Result.DENY : useInteractedBlock() == Result.DENY ? Result.DEFAULT : useInteractedBlock());
         setUseItemInHand(cancel ? Result.DENY : useItemInHand() == Result.DENY ? Result.DEFAULT : useItemInHand());
     }
@@ -102,18 +102,18 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
     /**
      * Check if this event involved a block
      *
-     * @return boolean true if it did
+     * @return bool true if it did
      */
-    public boolean hasBlock() {
+    public bool hasBlock() {
         return this.blockClicked != null;
     }
 
     /**
      * Check if this event involved an item
      *
-     * @return boolean true if it did
+     * @return bool true if it did
      */
-    public boolean hasItem() {
+    public bool hasItem() {
         return this.item != null;
     }
 
@@ -121,9 +121,9 @@ public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
      * Convenience method to inform the user whether this was a block
      * placement event.
      *
-     * @return boolean true if the item in hand was a block
+     * @return bool true if the item in hand was a block
      */
-    public boolean isBlockInHand() {
+    public bool isBlockInHand() {
         if (!hasItem()) {
             return false;
         }

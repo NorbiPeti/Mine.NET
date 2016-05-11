@@ -35,7 +35,7 @@ public interface MetadataStore<T> {
      * @param metadataKey the unique metadata key being queried.
      * @return the existence of the metadataKey within subject.
      */
-    public boolean hasMetadata(T subject, String metadataKey);
+    public bool hasMetadata(T subject, String metadataKey);
 
     /**
      * Removes a metadata item owned by a plugin from a subject.

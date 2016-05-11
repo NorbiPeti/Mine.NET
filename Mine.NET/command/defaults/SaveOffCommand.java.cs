@@ -20,7 +20,7 @@ public class SaveOffCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
         for (World world : Bukkit.getWorlds()) {

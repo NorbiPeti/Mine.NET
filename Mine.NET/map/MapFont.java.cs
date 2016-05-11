@@ -9,7 +9,7 @@ public class MapFont {
 
     private final HashMap<Character, CharacterSprite> chars = new HashMap<Character, CharacterSprite>();
     private int height = 0;
-    protected boolean malleable = true;
+    protected bool malleable = true;
 
     /**
      * Set the sprite for a given character.
@@ -81,7 +81,7 @@ public class MapFont {
      * @return True if the string contains only defined characters, false
      *     otherwise.
      */
-    public boolean isValid(String text) {
+    public bool isValid(String text) {
         for (int i = 0; i < text.length(); ++i) {
             char ch = text.charAt(i);
             if (ch == '\u00A7' || ch == '\n') continue;
@@ -97,9 +97,9 @@ public class MapFont {
 
         private final int width;
         private final int height;
-        private final boolean[] data;
+        private final bool[] data;
 
-        public CharacterSprite(int width, int height, boolean[] data) {
+        public CharacterSprite(int width, int height, bool[] data) {
             this.width = width;
             this.height = height;
             this.data = data;
@@ -116,7 +116,7 @@ public class MapFont {
          * @param col The column, in the range [0,8).
          * @return True if the pixel is solid, false if transparent.
          */
-        public boolean get(int row, int col) {
+        public bool get(int row, int col) {
             if (row < 0 || col < 0 || row >= height || col >= width) return false;
             return data[row * width + col];
         }

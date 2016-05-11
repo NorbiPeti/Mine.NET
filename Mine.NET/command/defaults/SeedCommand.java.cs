@@ -19,7 +19,7 @@ public class SeedCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
         if (!testPermission(sender)) return true;
         long seed;
         if (sender instanceof Player) {

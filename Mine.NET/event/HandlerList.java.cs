@@ -139,7 +139,7 @@ public class HandlerList {
      * @param plugin plugin to remove
      */
     public synchronized void unregister(Plugin plugin) {
-        boolean changed = false;
+        bool changed = false;
         for (List<RegisteredListener> list : handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
                 if (i.next().getPlugin().equals(plugin)) {
@@ -157,7 +157,7 @@ public class HandlerList {
      * @param listener listener to remove
      */
     public synchronized void unregister(Listener listener) {
-        boolean changed = false;
+        bool changed = false;
         for (List<RegisteredListener> list : handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
                 if (i.next().getListener().equals(listener)) {

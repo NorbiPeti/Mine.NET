@@ -13,7 +13,7 @@ import org.bukkit.event.HandlerList;
 public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Block block;
-    private boolean cancel;
+    private bool cancel;
     private final Material to;
     private final byte data;
 
@@ -56,11 +56,11 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
         return block;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

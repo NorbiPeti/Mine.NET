@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
 public class EnderDragonChangePhaseEvent extends EntityEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
     private final EnderDragon.Phase currentPhase;
     private EnderDragon.Phase newPhase;
 
@@ -56,12 +56,12 @@ public class EnderDragonChangePhaseEvent extends EntityEvent implements Cancella
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

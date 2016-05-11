@@ -145,7 +145,7 @@ public class Wood extends MaterialData {
      * @param species New species of this wood block
      */
     public void setSpecies(TreeSpecies species) {
-        boolean firstType = false;
+        bool firstType = false;
         switch (getItemType()) {
             case WOOD:
             case WOOD_DOUBLE_STEP:

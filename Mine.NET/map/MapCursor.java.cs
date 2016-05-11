@@ -6,7 +6,7 @@ package org.bukkit.map;
 public sealed class MapCursor {
     private byte x, y;
     private byte direction, type;
-    private boolean visible;
+    private bool visible;
 
     /**
      * Initialize the map cursor.
@@ -19,7 +19,7 @@ public sealed class MapCursor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MapCursor(byte x, byte y, byte direction, byte type, boolean visible) {
+    public MapCursor(byte x, byte y, byte direction, byte type, bool visible) {
         this.x = x;
         this.y = y;
         setDirection(direction);
@@ -79,7 +79,7 @@ public sealed class MapCursor {
      *
      * @return True if visible, false otherwise.
      */
-    public boolean isVisible() {
+    public bool isVisible() {
         return visible;
     }
 
@@ -141,7 +141,7 @@ public sealed class MapCursor {
      *
      * @param visible True if visible.
      */
-    public void setVisible(boolean visible) {
+    public void setVisible(bool visible) {
         this.visible = visible;
     }
 

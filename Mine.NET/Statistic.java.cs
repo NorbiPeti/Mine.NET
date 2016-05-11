@@ -93,7 +93,7 @@ public enum Statistic {
      *
      * @return true if this is a substatistic
      */
-    public boolean isSubstatistic() {
+    public bool isSubstatistic() {
         return type != Type.UNTYPED;
     }
 
@@ -105,7 +105,7 @@ public enum Statistic {
      *
      * @return true if this deals with blocks
      */
-    public boolean isBlock() {
+    public bool isBlock() {
         return type == Type.BLOCK;
     }
 

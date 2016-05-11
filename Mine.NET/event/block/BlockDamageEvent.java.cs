@@ -14,11 +14,11 @@ import org.bukkit.inventory.ItemStack;
 public class BlockDamageEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
-    private boolean instaBreak;
-    private boolean cancel;
+    private bool instaBreak;
+    private bool cancel;
     private final ItemStack itemstack;
 
-    public BlockDamageEvent(Player player, final Block block, final ItemStack itemInHand, final boolean instaBreak) {
+    public BlockDamageEvent(Player player, final Block block, final ItemStack itemInHand, final bool instaBreak) {
         super(block);
         this.instaBreak = instaBreak;
         this.player = player;
@@ -41,7 +41,7 @@ public class BlockDamageEvent extends BlockEvent implements Cancellable {
      * @return true if the block should instantly break when damaged by the
      *     player
      */
-    public boolean getInstaBreak() {
+    public bool getInstaBreak() {
         return instaBreak;
     }
 
@@ -51,7 +51,7 @@ public class BlockDamageEvent extends BlockEvent implements Cancellable {
      * @param bool true if you want the block to instantly break when damaged
      *     by the player
      */
-    public void setInstaBreak(boolean bool) {
+    public void setInstaBreak(bool bool) {
         this.instaBreak = bool;
     }
 
@@ -64,11 +64,11 @@ public class BlockDamageEvent extends BlockEvent implements Cancellable {
         return itemstack;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

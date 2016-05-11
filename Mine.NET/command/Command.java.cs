@@ -54,7 +54,7 @@ public abstract class Command {
      * @param args All arguments passed to the command, split via ' '
      * @return true if the command was successful, otherwise false
      */
-    public abstract boolean execute(CommandSender sender, String commandLabel, String[] args);
+    public abstract bool execute(CommandSender sender, String commandLabel, String[] args);
 
     /**
      * Executed on tab completion for this command, returning a list of
@@ -127,7 +127,7 @@ public abstract class Command {
      * @return returns true if the name change happened instantly or false if
      *     the command was already registered
      */
-    public boolean setName(String name) {
+    public bool setName(String name) {
         if (!isRegistered()) {
             this.name = name;
             return true;
@@ -165,7 +165,7 @@ public abstract class Command {
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    public boolean testPermission(CommandSender target) {
+    public bool testPermission(CommandSender target) {
         if (testPermissionSilent(target)) {
             return true;
         }
@@ -190,7 +190,7 @@ public abstract class Command {
      * @param target User to test
      * @return true if they can use it, otherwise false
      */
-    public boolean testPermissionSilent(CommandSender target) {
+    public bool testPermissionSilent(CommandSender target) {
         if ((permission == null) || (permission.length() == 0)) {
             return true;
         }
@@ -224,7 +224,7 @@ public abstract class Command {
      * @return returns true if the name change happened instantly or false if
      *     the command was already registered
      */
-    public boolean setLabel(String name) {
+    public bool setLabel(String name) {
         this.nextLabel = name;
         if (!isRegistered()) {
             this.label = name;
@@ -241,7 +241,7 @@ public abstract class Command {
      * @return true if the registration was successful (the current registered
      *     CommandMap was the passed CommandMap or null) false otherwise
      */
-    public boolean register(CommandMap commandMap) {
+    public bool register(CommandMap commandMap) {
         if (allowChangesFrom(commandMap)) {
             this.commandMap = commandMap;
             return true;
@@ -259,7 +259,7 @@ public abstract class Command {
      *     registered CommandMap was the passed CommandMap or null) false
      *     otherwise
      */
-    public boolean unregister(CommandMap commandMap) {
+    public bool unregister(CommandMap commandMap) {
         if (allowChangesFrom(commandMap)) {
             this.commandMap = null;
             this.activeAliases = new ArrayList<String>(this.aliases);
@@ -270,7 +270,7 @@ public abstract class Command {
         return false;
     }
 
-    private boolean allowChangesFrom(CommandMap commandMap) {
+    private bool allowChangesFrom(CommandMap commandMap) {
         return (null == this.commandMap || this.commandMap == commandMap);
     }
 
@@ -279,7 +279,7 @@ public abstract class Command {
      *
      * @return true if this command is currently registered false otherwise
      */
-    public boolean isRegistered() {
+    public bool isRegistered() {
         return (null != this.commandMap);
     }
 
@@ -377,7 +377,7 @@ public abstract class Command {
         broadcastCommandMessage(source, message, true);
     }
 
-    public static void broadcastCommandMessage(CommandSender source, String message, boolean sendToSource) {
+    public static void broadcastCommandMessage(CommandSender source, String message, bool sendToSource) {
         String result = source.getName() + ": " + message;
 
         if (source instanceof BlockCommandSender) {

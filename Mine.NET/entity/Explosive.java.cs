@@ -24,12 +24,12 @@ public interface Explosive extends Entity {
      *
      * @param isIncendiary Whether it should cause fire
      */
-    public void setIsIncendiary(boolean isIncendiary);
+    public void setIsIncendiary(bool isIncendiary);
 
     /**
      * Return whether or not this explosive creates a fire when exploding
      *
      * @return true if the explosive creates fire, false otherwise
      */
-    public boolean isIncendiary();
+    public bool isIncendiary();
 }

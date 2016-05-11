@@ -8,9 +8,9 @@ public class PermissionAttachmentInfo {
     private final Permissible permissible;
     private final String permission;
     private final PermissionAttachment attachment;
-    private final boolean value;
+    private final bool value;
 
-    public PermissionAttachmentInfo(Permissible permissible, String permission, PermissionAttachment attachment, boolean value) {
+    public PermissionAttachmentInfo(Permissible permissible, String permission, PermissionAttachment attachment, bool value) {
         if (permissible == null) {
             throw new IllegalArgumentException("Permissible may not be null");
         } else if (permission == null) {
@@ -56,7 +56,7 @@ public class PermissionAttachmentInfo {
      *
      * @return Value of the permission
      */
-    public boolean getValue() {
+    public bool getValue() {
         return value;
     }
 }

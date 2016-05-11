@@ -10,7 +10,7 @@ import org.bukkit.event.entity.EntityUnleashEvent;
  */
 public class PlayerUnleashEntityEvent extends EntityUnleashEvent implements Cancellable {
     private final Player player;
-    private boolean cancelled = false;
+    private bool cancelled = false;
 
     public PlayerUnleashEntityEvent(Entity entity, Player player) {
         super(entity, UnleashReason.PLAYER_UNLEASH);
@@ -26,11 +26,11 @@ public class PlayerUnleashEntityEvent extends EntityUnleashEvent implements Canc
         return player;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 }

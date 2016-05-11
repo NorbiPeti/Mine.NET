@@ -94,7 +94,7 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
     }
 
     @Override
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -103,7 +103,7 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
      *
      * @param powered true if the piston is extended {@literal &} powered, or false
      */
-    public void setPowered(boolean powered) {
+    public void setPowered(bool powered) {
         setData((byte) (powered ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
@@ -112,7 +112,7 @@ public class PistonBaseMaterial extends MaterialData implements Directional, Red
      *
      * @return true if this piston is "sticky", or false
      */
-    public boolean isSticky() {
+    public bool isSticky() {
         return this.getItemType() == Material.PISTON_STICKY_BASE;
     }
 

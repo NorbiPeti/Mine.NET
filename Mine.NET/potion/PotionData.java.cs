@@ -5,8 +5,8 @@ import org.apache.commons.lang.Validate;
 public sealed class PotionData {
 
     private final PotionType type;
-    private final boolean extended;
-    private final boolean upgraded;
+    private final bool extended;
+    private final bool upgraded;
 
     /**
      * Instantiates a final PotionData object to contain information about a
@@ -18,7 +18,7 @@ public sealed class PotionData {
      * @param upgraded whether the potion is upgraded PotionType#isUpgradable()
      * must be true
      */
-    public PotionData(PotionType type, boolean extended, boolean upgraded) {
+    public PotionData(PotionType type, bool extended, bool upgraded) {
         Validate.notNull(type, "Potion Type must not be null");
         Validate.isTrue(!upgraded || type.isUpgradeable(), "Potion Type is not upgradable");
         Validate.isTrue(!extended || type.isExtendable(), "Potion Type is not extendable");
@@ -48,7 +48,7 @@ public sealed class PotionData {
      *
      * @return true if the potion is upgraded;
      */
-    public boolean isUpgraded() {
+    public bool isUpgraded() {
         return upgraded;
     }
 
@@ -58,7 +58,7 @@ public sealed class PotionData {
      *
      * @return true if the potion is extended
      */
-    public boolean isExtended() {
+    public bool isExtended() {
         return extended;
     }
 
@@ -72,7 +72,7 @@ public sealed class PotionData {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (this == obj) {
             return true;
         }

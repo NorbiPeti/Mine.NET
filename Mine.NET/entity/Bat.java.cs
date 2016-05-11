@@ -13,7 +13,7 @@ public interface Bat extends Ambient {
      * @return true if the bat is awake or false if it is currently hanging
      *     from a block
      */
-    boolean isAwake();
+    bool isAwake();
 
     /**
      * This method modifies the current waking state of this bat.
@@ -23,5 +23,5 @@ public interface Bat extends Ambient {
      *
      * @param state the new state
      */
-    void setAwake(boolean state);
+    void setAwake(bool state);
 }

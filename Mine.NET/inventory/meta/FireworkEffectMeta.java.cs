@@ -21,7 +21,7 @@ public interface FireworkEffectMeta extends ItemMeta {
      *
      * @return true if this meta has an effect, false otherwise
      */
-    boolean hasEffect();
+    bool hasEffect();
 
     /**
      * Gets the firework effect for this meta.

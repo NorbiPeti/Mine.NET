@@ -71,7 +71,7 @@ public interface MapView {
      *
      * @return Whether the map is virtual.
      */
-    public boolean isVirtual();
+    public bool isVirtual();
 
     /**
      * Get the scale of this map.
@@ -152,6 +152,6 @@ public interface MapView {
      * @param renderer The MapRenderer to remove.
      * @return True if the renderer was successfully removed.
      */
-    public boolean removeRenderer(MapRenderer renderer);
+    public bool removeRenderer(MapRenderer renderer);
 
 }

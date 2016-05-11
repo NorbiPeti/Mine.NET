@@ -113,7 +113,7 @@ public abstract class OctaveGenerator {
      * @param normalized If true, normalize the value to [-1, 1]
      * @return Resulting noise
      */
-    public double noise(double x, double frequency, double amplitude, boolean normalized) {
+    public double noise(double x, double frequency, double amplitude, bool normalized) {
         return noise(x, 0, 0, frequency, amplitude, normalized);
     }
 
@@ -142,7 +142,7 @@ public abstract class OctaveGenerator {
      * @param normalized If true, normalize the value to [-1, 1]
      * @return Resulting noise
      */
-    public double noise(double x, double y, double frequency, double amplitude, boolean normalized) {
+    public double noise(double x, double y, double frequency, double amplitude, bool normalized) {
         return noise(x, y, 0, frequency, amplitude, normalized);
     }
 
@@ -173,7 +173,7 @@ public abstract class OctaveGenerator {
      * @param normalized If true, normalize the value to [-1, 1]
      * @return Resulting noise
      */
-    public double noise(double x, double y, double z, double frequency, double amplitude, boolean normalized) {
+    public double noise(double x, double y, double z, double frequency, double amplitude, bool normalized) {
         double result = 0;
         double amp = 1;
         double freq = 1;

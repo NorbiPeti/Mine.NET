@@ -40,7 +40,7 @@ public abstract class ValidatingPrompt implements Prompt {
      * @param context Context information about the conversation.
      * @return True.
      */
-    public boolean blocksForInput(ConversationContext context) {
+    public bool blocksForInput(ConversationContext context) {
         return true;
     }
 
@@ -51,7 +51,7 @@ public abstract class ValidatingPrompt implements Prompt {
      * @param input The player's raw console input.
      * @return True or false depending on the validity of the input.
      */
-    protected abstract boolean isInputValid(ConversationContext context, String input);
+    protected abstract bool isInputValid(ConversationContext context, String input);
 
     /**
      * Override this method to accept and processes the validated input from

@@ -10,10 +10,10 @@ public interface Sheep extends Animals, Colorable {
     /**
      * @return Whether the sheep is sheared.
      */
-    public boolean isSheared();
+    public bool isSheared();
 
     /**
      * @param flag Whether to shear the sheep
      */
-    public void setSheared(boolean flag);
+    public void setSheared(bool flag);
 }

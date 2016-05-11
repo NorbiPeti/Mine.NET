@@ -14,8 +14,8 @@ import org.bukkit.inventory.meta.PotionMeta;
  */
 [Obsolete]
 public class Potion {
-    private boolean extended = false;
-    private boolean splash = false;
+    private bool extended = false;
+    private bool splash = false;
     private int level = 1;
     private PotionType type;
 
@@ -43,19 +43,19 @@ public class Potion {
     }
 
     /**
-     * [Obsolete] In favour of {@link #Potion(PotionType, int, boolean)}
+     * [Obsolete] In favour of {@link #Potion(PotionType, int, bool)}
      */
     [Obsolete]
-    public Potion(PotionType type, Tier tier, boolean splash) {
+    public Potion(PotionType type, Tier tier, bool splash) {
         this(type, tier == Tier.TWO ? 2 : 1, splash);
     }
 
     /**
-     * [Obsolete] In favour of {@link #Potion(PotionType, int, boolean,
-     *     boolean)}
+     * [Obsolete] In favour of {@link #Potion(PotionType, int, bool,
+     *     bool)}
      */
     [Obsolete]
-    public Potion(PotionType type, Tier tier, boolean splash, boolean extended) {
+    public Potion(PotionType type, Tier tier, bool splash, bool extended) {
         this(type, tier, splash);
         this.extended = extended;
     }
@@ -83,7 +83,7 @@ public class Potion {
      *     #splash()}.
      */
     [Obsolete]
-    public Potion(PotionType type, int level, boolean splash) {
+    public Potion(PotionType type, int level, bool splash) {
         this(type, level);
         this.splash = splash;
     }
@@ -99,7 +99,7 @@ public class Potion {
      *     #extend()} and possibly {@link #splash()}.
      */
     [Obsolete]
-    public Potion(PotionType type, int level, boolean splash, boolean extended) {
+    public Potion(PotionType type, int level, bool splash, bool extended) {
         this(type, level, splash);
         this.extended = extended;
     }
@@ -160,7 +160,7 @@ public class Potion {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -217,7 +217,7 @@ public class Potion {
      *
      * @return Whether this potion has extended duration
      */
-    public boolean hasExtendedDuration() {
+    public bool hasExtendedDuration() {
         return extended;
     }
 
@@ -236,7 +236,7 @@ public class Potion {
      *
      * @return Whether this is a splash potion
      */
-    public boolean isSplash() {
+    public bool isSplash() {
         return splash;
     }
 
@@ -246,7 +246,7 @@ public class Potion {
      *
      * @param isExtended Whether the potion should have extended duration
      */
-    public void setHasExtendedDuration(boolean isExtended) {
+    public void setHasExtendedDuration(bool isExtended) {
         Validate.isTrue(type == null || !type.isInstant(), "Instant potions cannot be extended");
         extended = isExtended;
     }
@@ -257,7 +257,7 @@ public class Potion {
      *
      * @param isSplash Whether this is a splash potion
      */
-    public void setSplash(boolean isSplash) {
+    public void setSplash(bool isSplash) {
         splash = isSplash;
     }
 

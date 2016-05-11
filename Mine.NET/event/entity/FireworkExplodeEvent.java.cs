@@ -10,14 +10,14 @@ import org.bukkit.event.HandlerList;
 public class FireworkExplodeEvent extends EntityEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
 
     public FireworkExplodeEvent(Firework what) {
         super(what);
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
@@ -29,7 +29,7 @@ public class FireworkExplodeEvent extends EntityEvent implements Cancellable {
      * @param cancel whether to cancel or not.
      */
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

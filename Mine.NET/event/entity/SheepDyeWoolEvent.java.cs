@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class SheepDyeWoolEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
     private DyeColor color;
 
     public SheepDyeWoolEvent(Sheep sheep, final DyeColor color) {
@@ -19,11 +19,11 @@ public class SheepDyeWoolEvent extends EntityEvent implements Cancellable {
         this.color = color;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

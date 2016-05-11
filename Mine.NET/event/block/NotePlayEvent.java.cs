@@ -15,7 +15,7 @@ public class NotePlayEvent extends BlockEvent implements Cancellable {
     private static HandlerList handlers = new HandlerList();
     private Instrument instrument;
     private Note note;
-    private boolean cancelled = false;
+    private bool cancelled = false;
 
     public NotePlayEvent(Block block, Instrument instrument, Note note) {
         super(block);
@@ -23,11 +23,11 @@ public class NotePlayEvent extends BlockEvent implements Cancellable {
         this.note = note;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

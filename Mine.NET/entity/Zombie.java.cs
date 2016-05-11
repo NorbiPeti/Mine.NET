@@ -10,21 +10,21 @@ public interface Zombie extends Monster {
      *
      * @return Whether the zombie is a baby
      */
-    public boolean isBaby();
+    public bool isBaby();
 
     /**
      * Sets whether the zombie is a baby
      *
      * @param flag Whether the zombie is a baby
      */
-    public void setBaby(boolean flag);
+    public void setBaby(bool flag);
 
     /**
      * Gets whether the zombie is a villager
      *
      * @return Whether the zombie is a villager
      */
-    public boolean isVillager();
+    public bool isVillager();
 
     /**
      * Sets whether the zombie is a villager
@@ -33,7 +33,7 @@ public interface Zombie extends Monster {
      * [Obsolete] Defaults to a basic villager
      */
     [Obsolete]
-    public void setVillager(boolean flag);
+    public void setVillager(bool flag);
 
     /**
      * Sets whether the zombie is a villager

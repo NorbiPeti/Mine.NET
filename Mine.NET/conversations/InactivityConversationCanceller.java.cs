@@ -29,7 +29,7 @@ public class InactivityConversationCanceller implements ConversationCanceller {
         startTimer();
     }
 
-    public boolean cancelBasedOnInput(ConversationContext context, String input) {
+    public bool cancelBasedOnInput(ConversationContext context, String input) {
         // Reset the inactivity timer
         stopTimer();
         startTimer();

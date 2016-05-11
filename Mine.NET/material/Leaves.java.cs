@@ -12,7 +12,7 @@ import org.bukkit.TreeSpecies;
  */
 public class Leaves extends Wood {
     protected static final Material DEFAULT_TYPE = Material.LEAVES;
-    protected static final boolean DEFAULT_DECAYABLE = true;
+    protected static final bool DEFAULT_DECAYABLE = true;
 
     /**
      * Constructs a leaf block.
@@ -37,7 +37,7 @@ public class Leaves extends Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(TreeSpecies species, boolean isDecayable) {
+    public Leaves(TreeSpecies species, bool isDecayable) {
         this(DEFAULT_TYPE, species, isDecayable);
     }
 
@@ -77,7 +77,7 @@ public class Leaves extends Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(Material type, TreeSpecies species, boolean isDecayable) {
+    public Leaves(Material type, TreeSpecies species, bool isDecayable) {
         super(type, species);
         setDecayable(isDecayable);
     }
@@ -107,7 +107,7 @@ public class Leaves extends Wood {
      *
      * @return true if the leaf block is in the process of decaying
      */
-    public boolean isDecaying() {
+    public bool isDecaying() {
         return (getData() & 0x8) != 0;
     }
 
@@ -116,7 +116,7 @@ public class Leaves extends Wood {
      *
      * @param isDecaying whether the block is decaying or not
      */
-    public void setDecaying(boolean isDecaying) {
+    public void setDecaying(bool isDecaying) {
         setData((byte) ((getData() & 0x3) | (isDecaying
                 ? 0x8 // Clear the permanent flag to make this a decayable flag and set the decaying flag
                 : (getData() & 0x4)))); // Only persist the decayable flag if this is not a decaying block
@@ -129,7 +129,7 @@ public class Leaves extends Wood {
      * @return true if the leaf block is permanent or can decay when too far
      * from a log
      */
-    public boolean isDecayable() {
+    public bool isDecayable() {
         return (getData() & 0x4) == 0;
     }
 
@@ -138,7 +138,7 @@ public class Leaves extends Wood {
      *
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public void setDecayable(boolean isDecayable) {
+    public void setDecayable(bool isDecayable) {
         setData((byte) ((getData() & 0x3) | (isDecayable
                 ? (getData() & 0x8) // Only persist the decaying flag if this is a decayable block
                 : 0x4)));

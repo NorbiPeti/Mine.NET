@@ -48,7 +48,7 @@ public class Rails extends MaterialData {
     /**
      * @return the whether this track is set on a slope
      */
-    public boolean isOnSlope() {
+    public bool isOnSlope() {
         byte d = getConvertedData();
 
         return (d == 0x2 || d == 0x3 || d == 0x4 || d == 0x5);
@@ -57,7 +57,7 @@ public class Rails extends MaterialData {
     /**
      * @return the whether this track is set as a curve
      */
-    public boolean isCurve() {
+    public bool isCurve() {
         byte d = getConvertedData();
 
         return (d == 0x6 || d == 0x7 || d == 0x8 || d == 0x9);
@@ -135,7 +135,7 @@ public class Rails extends MaterialData {
      * @param face the direction the track should be facing
      * @param isOnSlope whether or not the track should be on a slope
      */
-    public void setDirection(BlockFace face, boolean isOnSlope) {
+    public void setDirection(BlockFace face, bool isOnSlope) {
         switch (face) {
         case EAST:
             setData((byte) (isOnSlope ? 0x2 : 0x1));

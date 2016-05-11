@@ -11,18 +11,18 @@ import org.bukkit.event.HandlerList;
 public class ItemSpawnEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Location location;
-    private boolean canceled;
+    private bool canceled;
 
     public ItemSpawnEvent(Item spawnee, final Location loc) {
         super(spawnee);
         this.location = loc;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return canceled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         canceled = cancel;
     }
 

@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private Location from;
     private Location to;
 
@@ -31,7 +31,7 @@ public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
      *
      * @return true if this event is cancelled
      */
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
@@ -45,7 +45,7 @@ public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
      *
      * @param cancel true if you wish to cancel this event
      */
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

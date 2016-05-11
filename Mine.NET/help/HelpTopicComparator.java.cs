@@ -33,8 +33,8 @@ public class HelpTopicComparator implements Comparator<HelpTopic> {
         private TopicNameComparator(){}
         
         public int compare(String lhs, String rhs) {
-            boolean lhsStartSlash = lhs.startsWith("/");
-            boolean rhsStartSlash = rhs.startsWith("/");
+            bool lhsStartSlash = lhs.startsWith("/");
+            bool rhsStartSlash = rhs.startsWith("/");
             
             if (lhsStartSlash && !rhsStartSlash) {
                 return 1;

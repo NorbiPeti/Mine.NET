@@ -15,7 +15,7 @@ public class MemoryConfigurationOptions extends ConfigurationOptions {
     }
 
     @Override
-    public MemoryConfigurationOptions copyDefaults(boolean value) {
+    public MemoryConfigurationOptions copyDefaults(bool value) {
         super.copyDefaults(value);
         return this;
     }

@@ -9,7 +9,7 @@ import org.bukkit.event.Cancellable;
  * Called when a piston block is triggered
  */
 public abstract class BlockPistonEvent extends BlockEvent implements Cancellable {
-    private boolean cancelled;
+    private bool cancelled;
     private final BlockFace direction;
 
     public BlockPistonEvent(Block block, final BlockFace direction) {
@@ -17,11 +17,11 @@ public abstract class BlockPistonEvent extends BlockEvent implements Cancellable
         this.direction = direction;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return this.cancelled;
     }
 
-    public void setCancelled(boolean cancelled) {
+    public void setCancelled(bool cancelled) {
         this.cancelled = cancelled;
     }
 
@@ -30,7 +30,7 @@ public abstract class BlockPistonEvent extends BlockEvent implements Cancellable
      *
      * @return stickiness of the piston
      */
-    public boolean isSticky() {
+    public bool isSticky() {
         return block.getType() == Material.PISTON_STICKY_BASE || block.getType() == Material.PISTON_MOVING_PIECE;
     }
 

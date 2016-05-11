@@ -43,7 +43,7 @@ public class ConfigurationSerialization {
         this.clazz = clazz;
     }
 
-    protected Method getMethod(String name, boolean isStatic) {
+    protected Method getMethod(String name, bool isStatic) {
         try {
             Method method = clazz.getDeclaredMethod(name, Map.class);
 

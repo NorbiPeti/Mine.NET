@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
 public class PlayerAnimationEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final PlayerAnimationType animationType;
-    private boolean isCancelled = false;
+    private bool isCancelled = false;
 
     /**
      * Construct a new PlayerAnimation event
@@ -33,11 +33,11 @@ public class PlayerAnimationEvent extends PlayerEvent implements Cancellable {
         return animationType;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return this.isCancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.isCancelled = cancel;
     }
 

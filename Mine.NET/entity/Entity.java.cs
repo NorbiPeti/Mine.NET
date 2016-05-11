@@ -57,7 +57,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return True if entity is on ground.
      */
-    public boolean isOnGround();
+    public bool isOnGround();
 
     /**
      * Gets the current world this entity resides in
@@ -73,7 +73,7 @@ public interface Entity extends Metadatable, CommandSender {
      * @param location New location to teleport this entity to
      * @return <code>true</code> if the teleport was successful
      */
-    public boolean teleport(Location location);
+    public bool teleport(Location location);
 
     /**
      * Teleports this entity to the given location. If this entity is riding a
@@ -83,7 +83,7 @@ public interface Entity extends Metadatable, CommandSender {
      * @param cause The cause of this teleportation
      * @return <code>true</code> if the teleport was successful
      */
-    public boolean teleport(Location location, TeleportCause cause);
+    public bool teleport(Location location, TeleportCause cause);
 
     /**
      * Teleports this entity to the target Entity. If this entity is riding a
@@ -92,7 +92,7 @@ public interface Entity extends Metadatable, CommandSender {
      * @param destination Entity to teleport this entity to
      * @return <code>true</code> if the teleport was successful
      */
-    public boolean teleport(Entity destination);
+    public bool teleport(Entity destination);
 
     /**
      * Teleports this entity to the target Entity. If this entity is riding a
@@ -102,7 +102,7 @@ public interface Entity extends Metadatable, CommandSender {
      * @param cause The cause of this teleportation
      * @return <code>true</code> if the teleport was successful
      */
-    public boolean teleport(Entity destination, TeleportCause cause);
+    public bool teleport(Entity destination, TeleportCause cause);
 
     /**
      * Returns a list of entities within a bounding box centered around this
@@ -155,7 +155,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return True if it is dead.
      */
-    public boolean isDead();
+    public bool isDead();
 
     /**
      * Returns false if the entity has died or been despawned for some other
@@ -163,7 +163,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return True if valid.
      */
-    public boolean isValid();
+    public bool isValid();
 
     /**
      * Gets the {@link Server} that contains this Entity
@@ -186,21 +186,21 @@ public interface Entity extends Metadatable, CommandSender {
      * @param passenger The new passenger.
      * @return false if it could not be done for whatever reason
      */
-    public abstract boolean setPassenger(Entity passenger);
+    public abstract bool setPassenger(Entity passenger);
 
     /**
      * Check if a vehicle has passengers.
      *
      * @return True if the vehicle has no passengers.
      */
-    public abstract boolean isEmpty();
+    public abstract bool isEmpty();
 
     /**
      * Eject any passenger.
      *
      * @return True if there was a passenger.
      */
-    public abstract boolean eject();
+    public abstract bool eject();
 
     /**
      * Returns the distance this entity has fallen
@@ -279,7 +279,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return True if the entity is in a vehicle.
      */
-    public boolean isInsideVehicle();
+    public bool isInsideVehicle();
 
     /**
      * Leave the current vehicle. If the entity is currently in a vehicle (and
@@ -288,7 +288,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return True if the entity was in a vehicle.
      */
-    public boolean leaveVehicle();
+    public bool leaveVehicle();
 
     /**
      * Get the vehicle that this player is inside. If there is no vehicle,
@@ -331,7 +331,7 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @param flag custom name or not
      */
-    public void setCustomNameVisible(boolean flag);
+    public void setCustomNameVisible(bool flag);
 
     /**
      * Gets whether or not the mob's custom name is displayed client side.
@@ -341,21 +341,21 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @return if the custom name is displayed
      */
-    public boolean isCustomNameVisible();
+    public bool isCustomNameVisible();
 
     /**
      * Sets whether the entity has a team colored (default: white) glow.
      *
      * @param flag if the entity is glowing
      */
-    void setGlowing(boolean flag);
+    void setGlowing(bool flag);
 
     /**
      * Gets whether the entity is glowing or not.
      *
      * @return whether the entity is glowing
      */
-    boolean isGlowing();
+    bool isGlowing();
 
     /**
      * Sets whether the entity is invulnerable or not.
@@ -365,12 +365,12 @@ public interface Entity extends Metadatable, CommandSender {
      *
      * @param flag if the entity is invulnerable
      */
-    public void setInvulnerable(boolean flag);
+    public void setInvulnerable(bool flag);
 
     /**
      * Gets whether the entity is invulnerable or not.
      *
      * @return whether the entity is
      */
-    public boolean isInvulnerable();
+    public bool isInvulnerable();
 }

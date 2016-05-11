@@ -13,7 +13,7 @@ public interface EnderCrystal extends Entity {
      *
      * @return true if the bottom is being shown
      */
-    boolean isShowingBottom();
+    bool isShowingBottom();
 
     /**
      * Sets whether or not this end crystal is showing the
@@ -21,7 +21,7 @@ public interface EnderCrystal extends Entity {
      *
      * @param showing whether the bedrock slate should be shown
      */
-    void setShowingBottom(boolean showing);
+    void setShowingBottom(bool showing);
 
     /**
      * Gets the location that this end crystal is pointing its beam to.

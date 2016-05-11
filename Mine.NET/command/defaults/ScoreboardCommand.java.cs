@@ -60,7 +60,7 @@ public class ScoreboardCommand extends VanillaCommand {
             .put("white", ChatColor.WHITE)
             .put("yellow", ChatColor.YELLOW)
             .build();
-    private static final List<String> BOOLEAN = ImmutableList.of("true", "false");
+    private static final List<String> bool = ImmutableList.of("true", "false");
 
     public ScoreboardCommand() {
         super("scoreboard");
@@ -70,7 +70,7 @@ public class ScoreboardCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender))
             return true;
         if (args.length < 1 || args[0].length() == 0) {
@@ -548,7 +548,7 @@ public class ScoreboardCommand extends VanillaCommand {
                         if (args[3].equalsIgnoreCase("color")) {
                             return StringUtil.copyPartialMatches(args[4], TEAMS_OPTION_COLOR.keySet(), new ArrayList<String>());
                         } else {
-                            return StringUtil.copyPartialMatches(args[4], BOOLEAN, new ArrayList<String>());
+                            return StringUtil.copyPartialMatches(args[4], bool, new ArrayList<String>());
                         }
                     }
                 } else {

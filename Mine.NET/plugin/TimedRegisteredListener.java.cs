@@ -12,9 +12,9 @@ public class TimedRegisteredListener extends RegisteredListener {
     private int count;
     private long totalTime;
     private Class<? extends Event> eventClass;
-    private boolean multiple = false;
+    private bool multiple = false;
 
-    public TimedRegisteredListener(Listener pluginListener, final EventExecutor eventExecutor, final EventPriority eventPriority, final Plugin registeredPlugin, final boolean listenCancelled) {
+    public TimedRegisteredListener(Listener pluginListener, final EventExecutor eventExecutor, final EventPriority eventPriority, final Plugin registeredPlugin, final bool listenCancelled) {
         super(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
     }
 
@@ -91,7 +91,7 @@ public class TimedRegisteredListener extends RegisteredListener {
      *
      * @return true if this listener has handled multiple events
      */
-    public boolean hasMultiple() {
+    public bool hasMultiple() {
         return multiple;
     }
 }

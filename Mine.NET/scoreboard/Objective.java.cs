@@ -51,7 +51,7 @@ public interface Objective {
      * @throws IllegalStateException if this objective has been unregistered
      * @see Criterias#HEALTH
      */
-    boolean isModifiable() throws IllegalStateException;
+    bool isModifiable() throws IllegalStateException;
 
     /**
      * Gets the scoreboard to which this objective is attached.

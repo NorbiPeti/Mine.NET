@@ -37,26 +37,26 @@ public interface FallingBlock extends Entity {
      *
      * @return true if the block will break into an item when obstructed
      */
-    boolean getDropItem();
+    bool getDropItem();
 
     /**
      * Set if the falling block will break into an item if it cannot be placed
      *
      * @param drop true to break into an item when obstructed
      */
-    void setDropItem(boolean drop);
+    void setDropItem(bool drop);
 
     /**
      * Get the HurtEntities state of this block.
      *
      * @return whether entities will be damaged by this block.
      */
-    boolean canHurtEntities();
+    bool canHurtEntities();
 
     /**
      * Set the HurtEntities state of this block.
      *
      * @param hurtEntities whether entities will be damaged by this block.
      */
-    void setHurtEntities(boolean hurtEntities);
+    void setHurtEntities(bool hurtEntities);
 }

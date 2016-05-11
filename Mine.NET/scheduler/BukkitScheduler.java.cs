@@ -174,7 +174,7 @@ public interface BukkitScheduler {
      * <p>
      * @return If the task is currently running.
      */
-    public boolean isCurrentlyRunning(int taskId);
+    public bool isCurrentlyRunning(int taskId);
 
     /**
      * Check if the task queued to be run later.
@@ -187,7 +187,7 @@ public interface BukkitScheduler {
      * <p>
      * @return If the task is queued to be run.
      */
-    public boolean isQueued(int taskId);
+    public bool isQueued(int taskId);
 
     /**
      * Returns a list of all active workers.

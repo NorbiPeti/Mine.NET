@@ -195,10 +195,10 @@ public abstract class PotionEffectType {
      *
      * @return whether this type is normally instant
      */
-    public abstract boolean isInstant();
+    public abstract bool isInstant();
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -225,7 +225,7 @@ public abstract class PotionEffectType {
     private static final PotionEffectType[] byId = new PotionEffectType[28];
     private static final Map<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
     // will break on updates.
-    private static boolean acceptingNew = true;
+    private static bool acceptingNew = true;
 
     /**
      * Gets the effect type specified by the unique id.

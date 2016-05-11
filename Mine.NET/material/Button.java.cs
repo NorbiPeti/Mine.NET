@@ -50,7 +50,7 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
      *
      * @return true if powered, otherwise false
      */
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -60,7 +60,7 @@ public class Button extends SimpleAttachableMaterialData implements Redstone {
      * @param bool
      *            whether or not the button is powered
      */
-    public void setPowered(boolean bool) {
+    public void setPowered(bool bool) {
         setData((byte) (bool ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 

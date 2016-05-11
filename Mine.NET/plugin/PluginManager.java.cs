@@ -48,7 +48,7 @@ public interface PluginManager {
      * @param name Name of the plugin to check
      * @return true if the plugin is enabled, otherwise false
      */
-    public boolean isPluginEnabled(String name);
+    public bool isPluginEnabled(String name);
 
     /**
      * Checks if the given plugin is enabled or not
@@ -56,7 +56,7 @@ public interface PluginManager {
      * @param plugin Plugin to check
      * @return true if the plugin is enabled, otherwise false
      */
-    public boolean isPluginEnabled(Plugin plugin);
+    public bool isPluginEnabled(Plugin plugin);
 
     /**
      * Loads the plugin in the specified file
@@ -133,7 +133,7 @@ public interface PluginManager {
      * @param plugin Plugin to register
      * @param ignoreCancelled Whether to pass cancelled events or not
      */
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, boolean ignoreCancelled);
+    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled);
 
     /**
      * Enables the specified plugin
@@ -206,7 +206,7 @@ public interface PluginManager {
      * @param op Which set of default permissions to get
      * @return The default permissions
      */
-    public Set<Permission> getDefaultPermissions(boolean op);
+    public Set<Permission> getDefaultPermissions(bool op);
 
     /**
      * Recalculates the defaults for the given {@link Permission}.
@@ -257,7 +257,7 @@ public interface PluginManager {
      * @param op Default list to subscribe to
      * @param permissible Permissible subscribing
      */
-    public void subscribeToDefaultPerms(boolean op, Permissible permissible);
+    public void subscribeToDefaultPerms(bool op, Permissible permissible);
 
     /**
      * Unsubscribes from the given Default permissions by operator status
@@ -265,7 +265,7 @@ public interface PluginManager {
      * @param op Default list to unsubscribe from
      * @param permissible Permissible subscribing
      */
-    public void unsubscribeFromDefaultPerms(boolean op, Permissible permissible);
+    public void unsubscribeFromDefaultPerms(bool op, Permissible permissible);
 
     /**
      * Gets a set containing all subscribed {@link Permissible}s to the given
@@ -274,7 +274,7 @@ public interface PluginManager {
      * @param op Default list to query for
      * @return Set containing all subscribed permissions
      */
-    public Set<Permissible> getDefaultPermSubscriptions(boolean op);
+    public Set<Permissible> getDefaultPermSubscriptions(bool op);
 
     /**
      * Gets a set of all registered permissions.
@@ -290,5 +290,5 @@ public interface PluginManager {
      *
      * @return True if event timings are to be used
      */
-    public boolean useTimings();
+    public bool useTimings();
 }

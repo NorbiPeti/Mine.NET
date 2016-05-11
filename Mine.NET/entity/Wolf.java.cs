@@ -12,7 +12,7 @@ public interface Wolf extends Animals, Tameable {
      *
      * @return Anger true if angry
      */
-    public boolean isAngry();
+    public bool isAngry();
 
     /**
      * Sets the anger of this wolf.
@@ -22,14 +22,14 @@ public interface Wolf extends Animals, Tameable {
      *
      * @param angry true if angry
      */
-    public void setAngry(boolean angry);
+    public void setAngry(bool angry);
 
     /**
      * Checks if this wolf is sitting
      *
      * @return true if sitting
      */
-    public boolean isSitting();
+    public bool isSitting();
 
     /**
      * Sets if this wolf is sitting.
@@ -38,7 +38,7 @@ public interface Wolf extends Animals, Tameable {
      *
      * @param sitting true if sitting
      */
-    public void setSitting(boolean sitting);
+    public void setSitting(bool sitting);
 
     /**
      * Get the collar color of this wolf

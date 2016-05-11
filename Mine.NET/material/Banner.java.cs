@@ -43,7 +43,7 @@ public class Banner extends MaterialData implements Attachable {
         super(type, data);
     }
 
-    public boolean isWallBanner() {
+    public bool isWallBanner() {
         return getItemType() == Material.WALL_BANNER;
     }
 

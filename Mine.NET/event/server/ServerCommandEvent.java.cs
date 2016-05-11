@@ -42,7 +42,7 @@ public class ServerCommandEvent extends ServerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private String command;
     private final CommandSender sender;
-    private boolean cancel = false;
+    private bool cancel = false;
 
     public ServerCommandEvent(CommandSender sender, final String command) {
         this.command = command;
@@ -87,12 +87,12 @@ public class ServerCommandEvent extends ServerEvent implements Cancellable {
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 }

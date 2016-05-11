@@ -17,7 +17,7 @@ import org.bukkit.event.HandlerList;
  */
 public class BlockCanBuildEvent extends BlockEvent {
     private static final HandlerList handlers = new HandlerList();
-    protected boolean buildable;
+    protected bool buildable;
 
     /**
      *
@@ -34,7 +34,7 @@ public class BlockCanBuildEvent extends BlockEvent {
      * @param canBuild whether we can build 
      */
     [Obsolete]
-    public BlockCanBuildEvent(Block block, final int id, final boolean canBuild) {
+    public BlockCanBuildEvent(Block block, final int id, final bool canBuild) {
         super(block);
         buildable = canBuild;
         material = id;
@@ -46,9 +46,9 @@ public class BlockCanBuildEvent extends BlockEvent {
      * By default, returns Minecraft's answer on whether the block can be
      * built here or not.
      *
-     * @return boolean whether or not the block can be built
+     * @return bool whether or not the block can be built
      */
-    public boolean isBuildable() {
+    public bool isBuildable() {
         return buildable;
     }
 
@@ -58,7 +58,7 @@ public class BlockCanBuildEvent extends BlockEvent {
      * @param cancel true if you want to allow the block to be built here
      *     despite Minecraft's default behaviour
      */
-    public void setBuildable(boolean cancel) {
+    public void setBuildable(bool cancel) {
         this.buildable = cancel;
     }
 

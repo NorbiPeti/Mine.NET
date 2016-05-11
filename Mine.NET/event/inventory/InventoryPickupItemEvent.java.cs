@@ -11,7 +11,7 @@ import org.bukkit.inventory.Inventory;
  */
 public class InventoryPickupItemEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final Inventory inventory;
     private final Item item;
 
@@ -39,11 +39,11 @@ public class InventoryPickupItemEvent extends Event implements Cancellable {
         return item;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

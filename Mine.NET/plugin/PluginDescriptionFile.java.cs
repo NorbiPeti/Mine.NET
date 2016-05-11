@@ -221,7 +221,7 @@ public sealed class PluginDescriptionFile {
     private List<String> authors = null;
     private String website = null;
     private String prefix = null;
-    private boolean database = false;
+    private bool database = false;
     private PluginLoadOrder order = PluginLoadOrder.POSTWORLD;
     private List<Permission> permissions = null;
     private Map<?, ?> lazyPermissions = null;
@@ -442,7 +442,7 @@ public sealed class PluginDescriptionFile {
      * @return if this plugin requires a database
      * @see Plugin#getDatabase()
      */
-    public boolean isDatabaseEnabled() {
+    public bool isDatabaseEnabled() {
         return database;
     }
 
@@ -731,7 +731,7 @@ public sealed class PluginDescriptionFile {
      *             names. Using a list will treat all children associated
      *             positively to their parent.
      *         <li>Children may be defined as a map. Each permission name maps
-     *             to either a boolean (representing the association), or a
+     *             to either a bool (representing the association), or a
      *             nested permission definition (just as another permission).
      *             Using a nested definition treats the child as a positive
      *             association.
@@ -873,7 +873,7 @@ public sealed class PluginDescriptionFile {
         return classLoaderOf;
     }
 
-    public void setDatabaseEnabled(boolean database) {
+    public void setDatabaseEnabled(bool database) {
         this.database = database;
     }
 
@@ -958,7 +958,7 @@ public sealed class PluginDescriptionFile {
 
         if (map.get("database") != null) {
             try {
-                database = (Boolean) map.get("database");
+                database = (bool) map.get("database");
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "database is of wrong type");
             }

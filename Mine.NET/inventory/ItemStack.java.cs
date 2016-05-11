@@ -308,7 +308,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
 
     @Override
     @Utility
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -328,7 +328,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @return true if the two stacks are equal, ignoring the amount
      */
     @Utility
-    public boolean isSimilar(ItemStack stack) {
+    public bool isSimilar(ItemStack stack) {
         if (stack == null) {
             return false;
         }
@@ -376,7 +376,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @param ench Enchantment to test
      * @return True if this has the given enchantment
      */
-    public boolean containsEnchantment(Enchantment ench) {
+    public bool containsEnchantment(Enchantment ench) {
         return meta == null ? false : meta.hasEnchant(ench);
     }
 
@@ -573,7 +573,7 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      *
      * @return Returns true if some meta data has been set for this item
      */
-    public boolean hasItemMeta() {
+    public bool hasItemMeta() {
         return !Bukkit.getItemFactory().equals(meta, null);
     }
 
@@ -586,14 +586,14 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
      * @throws IllegalArgumentException if the item meta was not created by
      *     the {@link ItemFactory}
      */
-    public boolean setItemMeta(ItemMeta itemMeta) {
+    public bool setItemMeta(ItemMeta itemMeta) {
         return setItemMeta0(itemMeta, getType0());
     }
 
     /*
      * Cannot be overridden, so it's safe for constructor call
      */
-    private boolean setItemMeta0(ItemMeta itemMeta, Material material) {
+    private bool setItemMeta0(ItemMeta itemMeta, Material material) {
         if (itemMeta == null) {
             this.meta = null;
             return true;

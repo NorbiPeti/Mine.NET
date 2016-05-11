@@ -9,17 +9,17 @@ import org.bukkit.event.HandlerList;
  */
 public class WorldUnloadEvent extends WorldEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean isCancelled;
+    private bool isCancelled;
 
     public WorldUnloadEvent(World world) {
         super(world);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return this.isCancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.isCancelled = cancel;
     }
 

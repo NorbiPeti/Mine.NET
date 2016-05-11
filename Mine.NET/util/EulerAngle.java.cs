@@ -120,7 +120,7 @@ public class EulerAngle {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public bool equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 

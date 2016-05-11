@@ -31,7 +31,7 @@ public interface PotionMeta extends ItemMeta {
      *
      * @return true if custom potion effects are applied
      */
-    boolean hasCustomEffects();
+    bool hasCustomEffects();
 
     /**
      * Gets an immutable list containing all custom potion effects applied to
@@ -52,7 +52,7 @@ public interface PotionMeta extends ItemMeta {
      * overwritten
      * @return true if the potion meta changed as a result of this call
      */
-    boolean addCustomEffect(PotionEffect effect, boolean overwrite);
+    bool addCustomEffect(PotionEffect effect, bool overwrite);
 
     /**
      * Removes a custom potion effect from this potion.
@@ -60,7 +60,7 @@ public interface PotionMeta extends ItemMeta {
      * @param type the potion effect type to remove
      * @return true if the potion meta changed as a result of this call
      */
-    boolean removeCustomEffect(PotionEffectType type);
+    bool removeCustomEffect(PotionEffectType type);
 
     /**
      * Checks for a specific custom potion effect type on this potion.
@@ -68,7 +68,7 @@ public interface PotionMeta extends ItemMeta {
      * @param type the potion effect type to check for
      * @return true if the potion has this effect
      */
-    boolean hasCustomEffect(PotionEffectType type);
+    bool hasCustomEffect(PotionEffectType type);
 
     /**
      * Moves a potion effect to the top of the potion effect list.
@@ -80,14 +80,14 @@ public interface PotionMeta extends ItemMeta {
      * [Obsolete] use {@link org.bukkit.potion.PotionType#PotionType}
      */
     [Obsolete]
-    boolean setMainEffect(PotionEffectType type);
+    bool setMainEffect(PotionEffectType type);
 
     /**
      * Removes all custom potion effects from this potion.
      *
      * @return true if the potion meta changed as a result of this call
      */
-    boolean clearCustomEffects();
+    bool clearCustomEffects();
 
     @Override
     PotionMeta clone();

@@ -15,7 +15,7 @@ public interface BookMeta extends ItemMeta {
      *
      * @return true if the book has a title
      */
-    boolean hasTitle();
+    bool hasTitle();
 
     /**
      * Gets the title of the book.
@@ -35,14 +35,14 @@ public interface BookMeta extends ItemMeta {
      * @param title the title to set
      * @return true if the title was successfully set
      */
-    boolean setTitle(String title);
+    bool setTitle(String title);
 
     /**
      * Checks for the existence of an author in the book.
      *
      * @return the author of the book
      */
-    boolean hasAuthor();
+    bool hasAuthor();
 
     /**
      * Gets the author of the book.
@@ -66,7 +66,7 @@ public interface BookMeta extends ItemMeta {
      *
      * @return true if the book has pages
      */
-    boolean hasPages();
+    bool hasPages();
 
     /**
      * Gets the specified page in the book. The given page must exist.

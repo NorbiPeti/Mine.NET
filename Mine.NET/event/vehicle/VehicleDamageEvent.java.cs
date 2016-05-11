@@ -13,7 +13,7 @@ public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Entity attacker;
     private double damage;
-    private boolean cancelled;
+    private bool cancelled;
 
     [Obsolete]
     public VehicleDamageEvent(Vehicle vehicle, final Entity attacker, final int damage) {
@@ -77,11 +77,11 @@ public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
         setDamage(damage);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

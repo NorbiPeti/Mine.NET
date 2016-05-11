@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 public class ExpBottleEvent extends ProjectileHitEvent {
     private static final HandlerList handlers = new HandlerList();
     private int exp;
-    private boolean showEffect = true;
+    private bool showEffect = true;
 
     public ExpBottleEvent(ThrownExpBottle bottle, final int exp) {
         super(bottle);
@@ -26,7 +26,7 @@ public class ExpBottleEvent extends ProjectileHitEvent {
      *
      * @return true if the effect will be shown, false otherwise
      */
-    public boolean getShowEffect() {
+    public bool getShowEffect() {
         return this.showEffect;
     }
 
@@ -38,7 +38,7 @@ public class ExpBottleEvent extends ProjectileHitEvent {
      * @param showEffect true indicates the effect will be shown, false
      *     indicates no effect will be shown
      */
-    public void setShowEffect(boolean showEffect) {
+    public void setShowEffect(bool showEffect) {
         this.showEffect = showEffect;
     }
 

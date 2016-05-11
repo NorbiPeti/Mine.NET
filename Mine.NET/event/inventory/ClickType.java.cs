@@ -70,7 +70,7 @@ public enum ClickType {
      *
      * @return true if this ClickType represents the pressing of a key
      */
-    public boolean isKeyboardClick() {
+    public bool isKeyboardClick() {
         return (this == ClickType.NUMBER_KEY) || (this == ClickType.DROP) || (this == ClickType.CONTROL_DROP);
     }
 
@@ -80,7 +80,7 @@ public enum ClickType {
      *
      * @return true if this action requires Creative mode
      */
-    public boolean isCreativeAction() {
+    public bool isCreativeAction() {
         // Why use middle click?
         return (this == ClickType.MIDDLE) || (this == ClickType.CREATIVE);
     }
@@ -90,7 +90,7 @@ public enum ClickType {
      *
      * @return true if this ClickType represents a right click
      */
-    public boolean isRightClick() {
+    public bool isRightClick() {
         return (this == ClickType.RIGHT) || (this == ClickType.SHIFT_RIGHT);
     }
 
@@ -99,7 +99,7 @@ public enum ClickType {
      *
      * @return true if this ClickType represents a left click
      */
-    public boolean isLeftClick() {
+    public bool isLeftClick() {
         return (this == ClickType.LEFT) || (this == ClickType.SHIFT_LEFT) || (this == ClickType.DOUBLE_CLICK) || (this == ClickType.CREATIVE);
     }
 
@@ -109,7 +109,7 @@ public enum ClickType {
      *
      * @return true if the action uses Shift.
      */
-    public boolean isShiftClick() {
+    public bool isShiftClick() {
         return (this == ClickType.SHIFT_LEFT) || (this == ClickType.SHIFT_RIGHT) || (this == ClickType.CONTROL_DROP);
     }
 }

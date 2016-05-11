@@ -35,7 +35,7 @@ public class EnchantmentWrapper extends Enchantment {
     }
 
     @Override
-    public boolean canEnchantItem(ItemStack item) {
+    public bool canEnchantItem(ItemStack item) {
         return getEnchantment().canEnchantItem(item);
     }
 
@@ -45,7 +45,7 @@ public class EnchantmentWrapper extends Enchantment {
     }
 
     @Override
-    public boolean conflictsWith(Enchantment other) {
+    public bool conflictsWith(Enchantment other) {
         return getEnchantment().conflictsWith(other);
     }
 }

@@ -116,7 +116,7 @@ public class MaterialData implements Cloneable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (obj != null && obj instanceof MaterialData) {
             MaterialData md = (MaterialData) obj;
 

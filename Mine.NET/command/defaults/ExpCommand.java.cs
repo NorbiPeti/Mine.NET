@@ -21,20 +21,20 @@ public class ExpCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
         if (args.length > 0) {
             String inputAmount = args[0];
             Player player = null;
 
-            boolean isLevel = inputAmount.endsWith("l") || inputAmount.endsWith("L");
+            bool isLevel = inputAmount.endsWith("l") || inputAmount.endsWith("L");
             if (isLevel && inputAmount.length() > 1) {
                 inputAmount = inputAmount.substring(0, inputAmount.length() - 1);
             }
 
             int amount = getInteger(sender, inputAmount, Integer.MIN_VALUE, Integer.MAX_VALUE);
-            boolean isTaking = amount < 0;
+            bool isTaking = amount < 0;
 
             if (isTaking) {
                 amount *= -1;

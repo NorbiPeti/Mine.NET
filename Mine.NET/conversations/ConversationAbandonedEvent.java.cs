@@ -47,7 +47,7 @@ public class ConversationAbandonedEvent extends EventObject {
      *     Prompt} returning null or the next prompt. False of the
      *     conversations is abandoned prematurely by a ConversationCanceller.
      */
-    public boolean gracefulExit() {
+    public bool gracefulExit() {
         return canceller == null;
     }
 }

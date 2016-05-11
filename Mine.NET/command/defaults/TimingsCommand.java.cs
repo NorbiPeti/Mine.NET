@@ -30,7 +30,7 @@ public class TimingsCommand extends BukkitCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
         if (args.length != 1)  {
             sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
@@ -41,7 +41,7 @@ public class TimingsCommand extends BukkitCommand {
             return true;
         }
 
-        boolean separate = "separate".equalsIgnoreCase(args[0]);
+        bool separate = "separate".equalsIgnoreCase(args[0]);
         if ("reset".equalsIgnoreCase(args[0])) {
             for (HandlerList handlerList : HandlerList.getHandlerLists()) {
                 for (RegisteredListener listener : handlerList.getRegisteredListeners()) {

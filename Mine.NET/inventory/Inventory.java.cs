@@ -166,7 +166,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public boolean contains(int materialId);
+    public bool contains(int materialId);
 
     /**
      * Checks if the inventory contains any ItemStacks with the given
@@ -176,7 +176,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * @return true if an ItemStack is found with the given Material
      * @throws IllegalArgumentException if material is null
      */
-    public boolean contains(Material material) throws IllegalArgumentException;
+    public bool contains(Material material) throws IllegalArgumentException;
 
     /**
      * Checks if the inventory contains any ItemStacks matching the given
@@ -189,7 +189,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * @return false if item is null, true if any exactly matching ItemStacks
      *     were found
      */
-    public boolean contains(ItemStack item);
+    public bool contains(ItemStack item);
 
     /**
      * Checks if the inventory contains any ItemStacks with the given
@@ -202,7 +202,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public boolean contains(int materialId, int amount);
+    public bool contains(int materialId, int amount);
 
     /**
      * Checks if the inventory contains any ItemStacks with the given
@@ -214,7 +214,7 @@ public interface Inventory extends Iterable<ItemStack> {
      *     found to add to the given amount
      * @throws IllegalArgumentException if material is null
      */
-    public boolean contains(Material material, int amount) throws IllegalArgumentException;
+    public bool contains(Material material, int amount) throws IllegalArgumentException;
 
     /**
      * Checks if the inventory contains at least the minimum amount specified
@@ -229,7 +229,7 @@ public interface Inventory extends Iterable<ItemStack> {
      *     amount of exactly matching ItemStacks were found
      * @see #containsAtLeast(ItemStack, int)
      */
-    public boolean contains(ItemStack item, int amount);
+    public bool contains(ItemStack item, int amount);
 
     /**
      * Checks if the inventory contains ItemStacks matching the given
@@ -240,7 +240,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * @return false if item is null, true if amount less than 1, true if
      *     enough ItemStacks were found to add to the given amount
      */
-    public boolean containsAtLeast(ItemStack item, int amount);
+    public bool containsAtLeast(ItemStack item, int amount);
 
     /**
      * Returns a HashMap with all slots and ItemStacks in the inventory with

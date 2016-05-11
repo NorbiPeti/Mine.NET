@@ -217,7 +217,7 @@ public abstract class InventoryView {
      * @return true if the property was updated successfully, false if the
      *     property is not supported by that inventory
      */
-    public final boolean setProperty(Property prop, int value) {
+    public final bool setProperty(Property prop, int value) {
         return getPlayer().setWindowProperty(prop, value);
     }
 

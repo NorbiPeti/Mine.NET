@@ -13,7 +13,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerPortalEvent extends PlayerTeleportEvent {
     private static final HandlerList handlers = new HandlerList();
-    protected boolean useTravelAgent = true;
+    protected bool useTravelAgent = true;
     protected TravelAgent travelAgent;
 
     public PlayerPortalEvent(Player player, final Location from, final Location to, final TravelAgent pta) {
@@ -38,7 +38,7 @@ public class PlayerPortalEvent extends PlayerTeleportEvent {
      *
      * @param useTravelAgent whether to use the Travel Agent
      */
-    public void useTravelAgent(boolean useTravelAgent) {
+    public void useTravelAgent(bool useTravelAgent) {
         this.useTravelAgent = useTravelAgent;
     }
 
@@ -54,7 +54,7 @@ public class PlayerPortalEvent extends PlayerTeleportEvent {
      *
      * @return whether to use the Travel Agent
      */
-    public boolean useTravelAgent() {
+    public bool useTravelAgent() {
         return useTravelAgent && travelAgent != null;
     }
 

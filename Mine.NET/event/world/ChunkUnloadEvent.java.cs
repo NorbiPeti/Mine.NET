@@ -9,17 +9,17 @@ import org.bukkit.event.HandlerList;
  */
 public class ChunkUnloadEvent extends ChunkEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
 
     public ChunkUnloadEvent(Chunk chunk) {
         super(chunk);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

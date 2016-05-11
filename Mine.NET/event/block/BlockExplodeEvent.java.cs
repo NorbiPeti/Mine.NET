@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class BlockExplodeEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
     private final List<Block> blocks;
     private float yield;
 
@@ -22,11 +22,11 @@ public class BlockExplodeEvent extends BlockEvent implements Cancellable {
         this.cancel = false;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

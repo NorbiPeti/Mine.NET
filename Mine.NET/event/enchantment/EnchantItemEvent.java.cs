@@ -21,7 +21,7 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
     private final Block table;
     private final ItemStack item;
     private int level;
-    private boolean cancelled;
+    private bool cancelled;
     private final Map<Enchantment,Integer> enchants;
     private final Player enchanter;
     private int button;
@@ -102,11 +102,11 @@ public class EnchantItemEvent extends InventoryEvent implements Cancellable {
         return button;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

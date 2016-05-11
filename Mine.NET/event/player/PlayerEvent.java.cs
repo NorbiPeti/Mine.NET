@@ -13,7 +13,7 @@ public abstract class PlayerEvent extends Event {
         player = who;
     }
 
-    PlayerEvent(Player who, boolean async) {
+    PlayerEvent(Player who, bool async) {
         super(async);
         player = who;
 

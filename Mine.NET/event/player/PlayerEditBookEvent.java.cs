@@ -17,10 +17,10 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
     private final BookMeta previousBookMeta;
     private final int slot;
     private BookMeta newBookMeta;
-    private boolean isSigning;
-    private boolean cancel;
+    private bool isSigning;
+    private bool cancel;
 
-    public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, boolean isSigning) {
+    public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, bool isSigning) {
         super(who);
 
         Validate.isTrue(slot >= 0 && slot <=8, "Slot must be in range 0-8 inclusive");
@@ -91,7 +91,7 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
      *
      * @return true if the book is being signed
      */
-    public boolean isSigning() {
+    public bool isSigning() {
         return isSigning;
     }
 
@@ -101,7 +101,7 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
      *
      * @param signing whether or not the book is being signed.
      */
-    public void setSigning(boolean signing) {
+    public void setSigning(bool signing) {
         isSigning = signing;
     }
 
@@ -114,11 +114,11 @@ public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
         return handlers;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 }

@@ -126,35 +126,35 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param command Command to perform
      * @return true if the command was successful, otherwise false
      */
-    public boolean performCommand(String command);
+    public bool performCommand(String command);
 
     /**
      * Returns if the player is in sneak mode
      *
      * @return true if player is in sneak mode
      */
-    public boolean isSneaking();
+    public bool isSneaking();
 
     /**
      * Sets the sneak mode the player
      *
      * @param sneak true if player should appear sneaking
      */
-    public void setSneaking(boolean sneak);
+    public void setSneaking(bool sneak);
 
     /**
      * Gets whether the player is sprinting or not.
      *
      * @return true if player is sprinting.
      */
-    public boolean isSprinting();
+    public bool isSprinting();
 
     /**
      * Sets whether the player is sprinting or not.
      *
      * @param sprinting true if the player should be sprinting
      */
-    public void setSprinting(boolean sprinting);
+    public void setSprinting(bool sprinting);
 
     /**
      * Saves the players current location, health, inventory, motion, and
@@ -181,14 +181,14 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param isSleeping Whether to ignore.
      */
-    public void setSleepingIgnored(boolean isSleeping);
+    public void setSleepingIgnored(bool isSleeping);
 
     /**
      * Returns whether the player is sleeping ignored.
      *
      * @return Whether player is ignoring sleep.
      */
-    public boolean isSleepingIgnored();
+    public bool isSleepingIgnored();
 
     /**
      * Play a note for a player at a location. This requires a note block
@@ -292,7 +292,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public boolean sendChunkChange(Location loc, int sx, int sy, int sz, byte[] data);
+    public bool sendChunkChange(Location loc, int sx, int sy, int sz, byte[] data);
 
     /**
      * Send a block change. This fakes a block change packet for a user at a
@@ -365,7 +365,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return whether the player has the achievement
      * @throws IllegalArgumentException if achievement is null
      */
-    public boolean hasAchievement(Achievement achievement);
+    public bool hasAchievement(Achievement achievement);
 
     /**
      * Increments the given statistic for this player.
@@ -625,7 +625,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param relative When true the player time is kept relative to its world
      *     time.
      */
-    public void setPlayerTime(long time, boolean relative);
+    public void setPlayerTime(long time, bool relative);
 
     /**
      * Returns the player's current timestamp.
@@ -649,7 +649,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @return true if the player's time is relative to the server time.
      */
-    public boolean isPlayerTimeRelative();
+    public bool isPlayerTimeRelative();
 
     /**
      * Restores the normal condition where the player's time is synchronized
@@ -814,7 +814,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @param force whether to forcefully set the respawn location even if a
      *     valid bed is not present
      */
-    public void setBedSpawnLocation(Location location, boolean force);
+    public void setBedSpawnLocation(Location location, bool force);
 
     /**
      * Determines if the Player is allowed to fly via jump key double-tap like
@@ -822,7 +822,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @return True if the player is allowed to fly.
      */
-    public boolean getAllowFlight();
+    public bool getAllowFlight();
 
     /**
      * Sets if the Player is allowed to fly via jump key double-tap like in
@@ -830,7 +830,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param flight If flight should be allowed.
      */
-    public void setAllowFlight(boolean flight);
+    public void setAllowFlight(bool flight);
 
     /**
      * Hides a player from this player
@@ -853,7 +853,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return True if the provided player is not being hidden from this
      *     player
      */
-    public boolean canSee(Player player);
+    public bool canSee(Player player);
 
     /**
      * Checks to see if this player is currently standing on a block. This
@@ -865,21 +865,21 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *     org.bukkit.entity.Entity#isOnGround()}
      */
     [Obsolete]
-    public boolean isOnGround();
+    public bool isOnGround();
 
     /**
      * Checks to see if this player is currently flying or not.
      *
      * @return True if the player is flying, else false.
      */
-    public boolean isFlying();
+    public bool isFlying();
 
     /**
      * Makes this player start or stop flying.
      *
      * @param value True to fly.
      */
-    public void setFlying(boolean value);
+    public void setFlying(bool value);
 
     /**
      * Sets the speed at which a client will fly. Negative values indicate
@@ -999,9 +999,9 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * scale from 0-{@link #getHealthScale()}.
      *
      * @return if client health display is scaled
-     * @see Player#setHealthScaled(boolean)
+     * @see Player#setHealthScaled(bool)
      */
-    public boolean isHealthScaled();
+    public bool isHealthScaled();
 
     /**
      * Sets if the client is displayed a 'scaled' health, that is, health on a
@@ -1012,11 +1012,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      *
      * @param scale if the client health display is scaled
      */
-    public void setHealthScaled(boolean scale);
+    public void setHealthScaled(bool scale);
 
     /**
      * Sets the number to scale health to for the client; this will also
-     * {@link #setHealthScaled(boolean) setHealthScaled(true)}.
+     * {@link #setHealthScaled(bool) setHealthScaled(true)}.
      * <p>
      * Displayed health follows a simple formula <code>displayedHealth =
      * getHealth() / getMaxHealth() * getHealthScale()</code>.
@@ -1034,7 +1034,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return the number that health would be scaled to for the client if
      *     HealthScaling is set to true
      * @see Player#setHealthScale(double)
-     * @see Player#setHealthScaled(boolean)
+     * @see Player#setHealthScaled(bool)
      */
     public double getHealthScale();
 

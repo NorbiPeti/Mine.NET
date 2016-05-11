@@ -10,14 +10,14 @@ public interface MapMeta extends ItemMeta {
      *
      * @return true if this map is scaling
      */
-    boolean isScaling();
+    bool isScaling();
 
     /**
      * Sets if this map is scaling or not.
      *
      * @param value true to scale
      */
-    void setScaling(boolean value);
+    void setScaling(bool value);
 
     MapMeta clone();
 }

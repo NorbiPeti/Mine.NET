@@ -41,7 +41,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      *
      * @return true if connected, false if not
      */
-    public boolean isConnected() {
+    public bool isConnected() {
         return (getData() & 0x4) != 0;
     }
 
@@ -50,7 +50,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      *
      * @param connected - true if connected, false if not
      */
-    public void setConnected(boolean connected) {
+    public void setConnected(bool connected) {
         int dat = getData() & (0x8 | 0x3);
         if (connected) {
             dat |= 0x4;
@@ -63,7 +63,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      *
      * @return true if activated, false if not
      */
-    public boolean isActivated() {
+    public bool isActivated() {
         return (getData() & 0x8) != 0;
     }
 
@@ -72,7 +72,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
      *
      * @param act - true if activated, false if not
      */
-    public void setActivated(boolean act) {
+    public void setActivated(bool act) {
         int dat = getData() & (0x4 | 0x3);
         if (act) {
             dat |= 0x8;
@@ -113,7 +113,7 @@ public class TripwireHook extends SimpleAttachableMaterialData implements Redsto
         return null;
     }
 
-    public boolean isPowered() {
+    public bool isPowered() {
         return isActivated();
     }
 

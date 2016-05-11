@@ -266,7 +266,7 @@ public abstract class ChunkGenerator {
      * @param z Z-coordinate of the block to test
      * @return true if the location is valid, otherwise false
      */
-    public boolean canSpawn(World world, int x, int z) {
+    public bool canSpawn(World world, int x, int z) {
         Block highest = world.getBlockAt(x, world.getHighestBlockYAt(x, z), z);
 
         switch (world.getEnvironment()) {

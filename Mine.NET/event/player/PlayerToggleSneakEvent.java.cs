@@ -9,10 +9,10 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerToggleSneakEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private final boolean isSneaking;
-    private boolean cancel = false;
+    private final bool isSneaking;
+    private bool cancel = false;
 
-    public PlayerToggleSneakEvent(Player player, final boolean isSneaking) {
+    public PlayerToggleSneakEvent(Player player, final bool isSneaking) {
         super(player);
         this.isSneaking = isSneaking;
     }
@@ -22,15 +22,15 @@ public class PlayerToggleSneakEvent extends PlayerEvent implements Cancellable {
      *
      * @return sneaking state
      */
-    public boolean isSneaking() {
+    public bool isSneaking() {
         return isSneaking;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

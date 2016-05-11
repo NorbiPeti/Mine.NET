@@ -54,11 +54,11 @@ public interface MetadataValue {
     public byte asByte();
 
     /**
-     * Attempts to convert the value of this metadata item into a boolean.
+     * Attempts to convert the value of this metadata item into a bool.
      *
-     * @return the value as a boolean.
+     * @return the value as a bool.
      */
-    public boolean asBoolean();
+    public bool asBoolean();
 
     /**
      * Attempts to convert the value of this metadata item into a string.

@@ -82,7 +82,7 @@ public interface Villager extends Ageable, NPC, InventoryHolder {
      *
      * @return whether the villager is trading
      */
-    boolean isTrading();
+    bool isTrading();
 
     /**
      * Gets the player this villager is trading with, or null if it is not

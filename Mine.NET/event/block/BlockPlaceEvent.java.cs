@@ -15,8 +15,8 @@ import org.bukkit.inventory.ItemStack;
  */
 public class BlockPlaceEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    protected boolean cancel;
-    protected boolean canBuild;
+    protected bool cancel;
+    protected bool canBuild;
     protected Block placedAgainst;
     protected BlockState replacedBlockState;
     protected ItemStack itemInHand;
@@ -24,11 +24,11 @@ public class BlockPlaceEvent extends BlockEvent implements Cancellable {
     protected EquipmentSlot hand;
 
     [Obsolete]
-    public BlockPlaceEvent(Block placedBlock, final BlockState replacedBlockState, final Block placedAgainst, final ItemStack itemInHand, final Player thePlayer, final boolean canBuild) {
+    public BlockPlaceEvent(Block placedBlock, final BlockState replacedBlockState, final Block placedAgainst, final ItemStack itemInHand, final Player thePlayer, final bool canBuild) {
         this(placedBlock, replacedBlockState, placedAgainst, itemInHand, thePlayer, canBuild, EquipmentSlot.HAND);
     }
 
-    public BlockPlaceEvent(Block placedBlock, final BlockState replacedBlockState, final Block placedAgainst, final ItemStack itemInHand, final Player thePlayer, final boolean canBuild, final EquipmentSlot hand) {
+    public BlockPlaceEvent(Block placedBlock, final BlockState replacedBlockState, final Block placedAgainst, final ItemStack itemInHand, final Player thePlayer, final bool canBuild, final EquipmentSlot hand) {
         super(placedBlock);
         this.placedAgainst = placedAgainst;
         this.itemInHand = itemInHand;
@@ -39,11 +39,11 @@ public class BlockPlaceEvent extends BlockEvent implements Cancellable {
         cancel = false;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
@@ -110,9 +110,9 @@ public class BlockPlaceEvent extends BlockEvent implements Cancellable {
      * than BLOCK_CANBUILD, as this refers to a player, not universe-physics
      * rule like cactus on dirt.
      *
-     * @return boolean whether the server would allow a player to build here
+     * @return bool whether the server would allow a player to build here
      */
-    public boolean canBuild() {
+    public bool canBuild() {
         return this.canBuild;
     }
 
@@ -122,7 +122,7 @@ public class BlockPlaceEvent extends BlockEvent implements Cancellable {
      *
      * @param canBuild true if you want the player to be able to build
      */
-    public void setBuild(boolean canBuild) {
+    public void setBuild(bool canBuild) {
         this.canBuild = canBuild;
     }
 

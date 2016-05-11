@@ -65,7 +65,7 @@ public interface Minecart extends Vehicle {
      *
      * @return Whether it decelerates faster
      */
-    public boolean isSlowWhenEmpty();
+    public bool isSlowWhenEmpty();
 
     /**
      * Sets whether this minecart will slow down faster without a passenger
@@ -73,7 +73,7 @@ public interface Minecart extends Vehicle {
      *
      * @param slow Whether it will decelerate faster
      */
-    public void setSlowWhenEmpty(boolean slow);
+    public void setSlowWhenEmpty(bool slow);
 
     /**
      * Gets the flying velocity modifier. Used for minecarts that are in

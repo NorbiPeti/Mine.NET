@@ -10,17 +10,17 @@ import org.bukkit.event.HandlerList;
  */
 public class ProjectileLaunchEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
 
     public ProjectileLaunchEvent(Entity what) {
         super(what);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

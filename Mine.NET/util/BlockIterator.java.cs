@@ -21,7 +21,7 @@ public class BlockIterator implements Iterator<Block> {
 
     private static final int gridSize = 1 << 24;
 
-    private boolean end = false;
+    private bool end = false;
 
     private Block[] blockQueue = new Block[3];
     private int currentBlock = 0;
@@ -156,7 +156,7 @@ public class BlockIterator implements Iterator<Block> {
 
         scan();
 
-        boolean startBlockFound = false;
+        bool startBlockFound = false;
 
         for (int cnt = currentBlock; cnt >= 0; cnt--) {
             if (blockEquals(blockQueue[cnt], startBlock)) {
@@ -175,7 +175,7 @@ public class BlockIterator implements Iterator<Block> {
 
     }
 
-    private boolean blockEquals(Block a, Block b) {
+    private bool blockEquals(Block a, Block b) {
         return a.getX() == b.getX() && a.getY() == b.getY() && a.getZ() == b.getZ();
     }
 
@@ -282,7 +282,7 @@ public class BlockIterator implements Iterator<Block> {
      * Returns true if the iteration has more elements
      */
 
-    public boolean hasNext() {
+    public bool hasNext() {
         scan();
         return currentBlock != -1;
     }

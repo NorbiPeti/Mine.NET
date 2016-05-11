@@ -14,7 +14,7 @@ import org.bukkit.util.Vector;
  */
 public class BlockDispenseEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled = false;
+    private bool cancelled = false;
     private ItemStack item;
     private Vector velocity;
 
@@ -65,11 +65,11 @@ public class BlockDispenseEvent extends BlockEvent implements Cancellable {
         velocity = vel;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

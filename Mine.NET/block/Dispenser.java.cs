@@ -24,5 +24,5 @@ public interface Dispenser extends BlockState, InventoryHolder {
      *
      * @return true if successful, otherwise false
      */
-    public boolean dispense();
+    public bool dispense();
 }

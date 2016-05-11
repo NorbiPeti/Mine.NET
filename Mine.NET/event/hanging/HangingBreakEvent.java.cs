@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  */
 public class HangingBreakEvent extends HangingEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final HangingBreakEvent.RemoveCause cause;
 
     public HangingBreakEvent(Hanging hanging, final HangingBreakEvent.RemoveCause cause) {
@@ -26,11 +26,11 @@ public class HangingBreakEvent extends HangingEvent implements Cancellable {
         return cause;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

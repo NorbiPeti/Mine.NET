@@ -29,8 +29,8 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
      * @return true if the command was successful, otherwise false
      */
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        boolean success = false;
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
+        bool success = false;
 
         if (!owningPlugin.isEnabled()) {
             return false;

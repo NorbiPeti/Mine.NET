@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
 public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final int changed;
-    private boolean cancel = false;
+    private bool cancel = false;
 
     /**
      *
@@ -45,11 +45,11 @@ public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
         return Material.getMaterial(changed);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

@@ -14,12 +14,12 @@ public interface HopperMinecart extends Minecart, InventoryHolder {
      * 
      * @return true if the Minecart will pick up items
      */
-    boolean isEnabled();
+    bool isEnabled();
 
     /**
      * Sets whether this Minecart will pick up items.
      * 
      * @param enabled new enabled state
      */
-    void setEnabled(boolean enabled);
+    void setEnabled(bool enabled);
 }

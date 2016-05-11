@@ -11,7 +11,7 @@ public class PlayerKickEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private String leaveMessage;
     private String kickReason;
-    private Boolean cancel;
+    private bool cancel;
 
     public PlayerKickEvent(Player playerKicked, final String kickReason, final String leaveMessage) {
         super(playerKicked);
@@ -38,11 +38,11 @@ public class PlayerKickEvent extends PlayerEvent implements Cancellable {
         return leaveMessage;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

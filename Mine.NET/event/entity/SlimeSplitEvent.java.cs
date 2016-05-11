@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  */
 public class SlimeSplitEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private int count;
 
     public SlimeSplitEvent(Slime slime, final int count) {
@@ -17,11 +17,11 @@ public class SlimeSplitEvent extends EntityEvent implements Cancellable {
         this.count = count;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

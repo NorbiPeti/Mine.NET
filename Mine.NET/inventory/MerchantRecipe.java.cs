@@ -24,13 +24,13 @@ public class MerchantRecipe implements Recipe {
     private List<ItemStack> ingredients = new ArrayList<ItemStack>();
     private int uses;
     private int maxUses;
-    private boolean experienceReward;
+    private bool experienceReward;
 
     public MerchantRecipe(ItemStack result, int maxUses) {
         this(result, 0, maxUses, false);
     }
 
-    public MerchantRecipe(ItemStack result, int uses, int maxUses, boolean experienceReward) {
+    public MerchantRecipe(ItemStack result, int uses, int maxUses, bool experienceReward) {
         this.result = result;
         this.uses = uses;
         this.maxUses = maxUses;
@@ -110,7 +110,7 @@ public class MerchantRecipe implements Recipe {
      *
      * @return whether to reward experience for completing this trade
      */
-    public boolean hasExperienceReward() {
+    public bool hasExperienceReward() {
         return experienceReward;
     }
 
@@ -119,7 +119,7 @@ public class MerchantRecipe implements Recipe {
      *
      * @param flag whether to reward experience for completing this trade
      */
-    public void setExperienceReward(boolean flag) {
+    public void setExperienceReward(bool flag) {
         this.experienceReward = flag;
     }
 }

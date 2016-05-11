@@ -48,7 +48,7 @@ public interface Projectile extends Entity {
      *
      * @return true if it should bounce.
      */
-    public boolean doesBounce();
+    public bool doesBounce();
 
     /**
      * Set whether or not this projectile should bounce or not when it hits
@@ -56,5 +56,5 @@ public interface Projectile extends Entity {
      *
      * @param doesBounce whether or not it should bounce.
      */
-    public void setBounce(boolean doesBounce);
+    public void setBounce(bool doesBounce);
 }

@@ -11,7 +11,7 @@ import org.bukkit.inventory.MerchantRecipe;
 public class VillagerAcquireTradeEvent extends EntityEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     //
     private MerchantRecipe recipe;
 
@@ -39,12 +39,12 @@ public class VillagerAcquireTradeEvent extends EntityEvent implements Cancellabl
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

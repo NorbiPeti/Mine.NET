@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerShearEntityEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
     private final Entity what;
 
     public PlayerShearEntityEvent(Player who, final Entity what) {
@@ -19,11 +19,11 @@ public class PlayerShearEntityEvent extends PlayerEvent implements Cancellable {
         this.what = what;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

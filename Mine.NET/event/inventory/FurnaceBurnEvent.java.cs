@@ -13,8 +13,8 @@ public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final ItemStack fuel;
     private int burnTime;
-    private boolean cancelled;
-    private boolean burning;
+    private bool cancelled;
+    private bool burning;
 
     public FurnaceBurnEvent(Block furnace, final ItemStack fuel, final int burnTime) {
         super(furnace);
@@ -56,7 +56,7 @@ public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
      *
      * @return whether the furnace's fuel is burning or not.
      */
-    public boolean isBurning() {
+    public bool isBurning() {
         return this.burning;
     }
 
@@ -65,15 +65,15 @@ public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
      *
      * @param burning true if the furnace's fuel is burning
      */
-    public void setBurning(boolean burning) {
+    public void setBurning(bool burning) {
         this.burning = burning;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

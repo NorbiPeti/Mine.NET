@@ -49,10 +49,10 @@ public abstract class MetadataValueAdapter implements MetadataValue {
         return NumberConversions.toByte(value());
     }
 
-    public boolean asBoolean() {
+    public bool asBoolean() {
         Object value = value();
-        if (value instanceof Boolean) {
-            return (Boolean) value;
+        if (value instanceof bool) {
+            return (bool) value;
         }
 
         if (value instanceof Number) {
@@ -60,7 +60,7 @@ public abstract class MetadataValueAdapter implements MetadataValue {
         }
 
         if (value instanceof String) {
-            return Boolean.parseBoolean((String) value);
+            return bool.parseBoolean((String) value);
         }
 
         return value != null;

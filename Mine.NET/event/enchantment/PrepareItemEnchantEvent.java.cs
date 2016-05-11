@@ -18,7 +18,7 @@ public class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
     private final ItemStack item;
     private final int[] levelsOffered;
     private final int bonus;
-    private boolean cancelled;
+    private bool cancelled;
     private final Player enchanter;
 
     public PrepareItemEnchantEvent(Player enchanter, InventoryView view, final Block table, final ItemStack item, final int[] levelsOffered, final int bonus) {
@@ -77,11 +77,11 @@ public class PrepareItemEnchantEvent extends InventoryEvent implements Cancellab
         return bonus;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

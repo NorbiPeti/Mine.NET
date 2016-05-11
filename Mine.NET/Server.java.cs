@@ -188,35 +188,35 @@ public interface Server extends PluginMessageRecipient {
      *
      * @return true if structure generation is enabled, false otherwise
      */
-    public boolean getGenerateStructures();
+    public bool getGenerateStructures();
 
     /**
      * Gets whether this server allows the End or not.
      *
      * @return whether this server allows the End or not
      */
-    public boolean getAllowEnd();
+    public bool getAllowEnd();
 
     /**
      * Gets whether this server allows the Nether or not.
      *
      * @return whether this server allows the Nether or not
      */
-    public boolean getAllowNether();
+    public bool getAllowNether();
 
     /**
      * Gets whether this server has a whitelist or not.
      *
      * @return whether this server has a whitelist or not
      */
-    public boolean hasWhitelist();
+    public bool hasWhitelist();
 
     /**
      * Sets if the server is whitelisted.
      *
      * @param value true for whitelist on, false for off
      */
-    public void setWhitelist(boolean value);
+    public void setWhitelist(bool value);
 
     /**
      * Gets a list of whitelisted players.
@@ -402,7 +402,7 @@ public interface Server extends PluginMessageRecipient {
      * @param save whether to save the chunks before unloading
      * @return true if successful, false otherwise
      */
-    public boolean unloadWorld(String name, boolean save);
+    public bool unloadWorld(String name, bool save);
 
     /**
      * Unloads the given world.
@@ -411,7 +411,7 @@ public interface Server extends PluginMessageRecipient {
      * @param save whether to save the chunks before unloading
      * @return true if successful, false otherwise
      */
-    public boolean unloadWorld(World world, boolean save);
+    public bool unloadWorld(World world, bool save);
 
     /**
      * Gets the world with the given name.
@@ -482,7 +482,7 @@ public interface Server extends PluginMessageRecipient {
      * @throws CommandException thrown when the executor for the given command
      *     fails with an unhandled exception
      */
-    public boolean dispatchCommand(CommandSender sender, String commandLine) throws CommandException;
+    public bool dispatchCommand(CommandSender sender, String commandLine) throws CommandException;
 
     /**
      * Populates a given {@link ServerConfig} with values attributes to this
@@ -499,7 +499,7 @@ public interface Server extends PluginMessageRecipient {
      * @return true if the recipe was added, false if it wasn't for some
      *     reason
      */
-    public boolean addRecipe(Recipe recipe);
+    public bool addRecipe(Recipe recipe);
 
     /**
      * Get a list of all recipes for a given item. The stack size is ignored
@@ -553,21 +553,21 @@ public interface Server extends PluginMessageRecipient {
      *
      * @return true if the server authenticates clients, false otherwise
      */
-    public boolean getOnlineMode();
+    public bool getOnlineMode();
 
     /**
      * Gets whether this server allows flying or not.
      *
      * @return true if the server allows flight, false otherwise
      */
-    public boolean getAllowFlight();
+    public bool getAllowFlight();
 
     /**
      * Gets whether the server is in hardcore mode or not.
      *
      * @return true if the server mode is hardcore, false otherwise
      */
-    public boolean isHardcore();
+    public bool isHardcore();
 
     /**
      * Gets whether to use vanilla (false) or exact behaviour (true).
@@ -584,7 +584,7 @@ public interface Server extends PluginMessageRecipient {
      * [Obsolete] non standard and unused feature.
      */
     [Obsolete]
-    public boolean useExactLoginLocation();
+    public bool useExactLoginLocation();
 
     /**
      * Shutdowns the server, stopping everything.
@@ -822,7 +822,7 @@ public interface Server extends PluginMessageRecipient {
      * @return true if the current thread matches the expected primary thread,
      *     false otherwise
      */
-    boolean isPrimaryThread();
+    bool isPrimaryThread();
 
     /**
      * Gets the message that is displayed on the server list.

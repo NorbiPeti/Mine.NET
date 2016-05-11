@@ -31,7 +31,7 @@ public interface Prompt extends Cloneable {
      * @return If true, the {@link Conversation} will wait for input before
      *     continuing.
      */
-    boolean blocksForInput(ConversationContext context);
+    bool blocksForInput(ConversationContext context);
 
     /**
      * Accepts and processes input from the user. Using the input, the next

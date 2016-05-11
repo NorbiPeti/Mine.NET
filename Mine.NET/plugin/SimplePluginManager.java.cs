@@ -45,10 +45,10 @@ public sealed class SimplePluginManager implements PluginManager {
     private static File updateDirectory = null;
     private final SimpleCommandMap commandMap;
     private final Map<String, Permission> permissions = new HashMap<String, Permission>();
-    private final Map<Boolean, Set<Permission>> defaultPerms = new LinkedHashMap<Boolean, Set<Permission>>();
-    private final Map<String, Map<Permissible, Boolean>> permSubs = new HashMap<String, Map<Permissible, Boolean>>();
-    private final Map<Boolean, Map<Permissible, Boolean>> defSubs = new HashMap<Boolean, Map<Permissible, Boolean>>();
-    private boolean useTimings = false;
+    private final Map<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
+    private final Map<String, Map<Permissible, bool>> permSubs = new HashMap<String, Map<Permissible, bool>>();
+    private final Map<bool, Map<Permissible, bool>> defSubs = new HashMap<bool, Map<Permissible, bool>>();
+    private bool useTimings = false;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {
         server = instance;
@@ -189,7 +189,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
 
         while (!plugins.isEmpty()) {
-            boolean missingDependency = true;
+            bool missingDependency = true;
             Iterator<String> pluginIterator = plugins.keySet().iterator();
 
             while (pluginIterator.hasNext()) {
@@ -372,7 +372,7 @@ public sealed class SimplePluginManager implements PluginManager {
      * @param name Name of the plugin to check
      * @return true if the plugin is enabled, otherwise false
      */
-    public boolean isPluginEnabled(String name) {
+    public bool isPluginEnabled(String name) {
         Plugin plugin = getPlugin(name);
 
         return isPluginEnabled(plugin);
@@ -384,7 +384,7 @@ public sealed class SimplePluginManager implements PluginManager {
      * @param plugin Plugin to check
      * @return true if the plugin is enabled, otherwise false
      */
-    public boolean isPluginEnabled(Plugin plugin) {
+    public bool isPluginEnabled(Plugin plugin) {
         if ((plugin != null) && (plugins.contains(plugin))) {
             return plugin.isEnabled();
         } else {
@@ -545,7 +545,7 @@ public sealed class SimplePluginManager implements PluginManager {
      * @param ignoreCancelled Do not call executor if event was already
      *     cancelled
      */
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, boolean ignoreCancelled) {
+    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled) {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");
@@ -602,7 +602,7 @@ public sealed class SimplePluginManager implements PluginManager {
         calculatePermissionDefault(perm);
     }
 
-    public Set<Permission> getDefaultPermissions(boolean op) {
+    public Set<Permission> getDefaultPermissions(bool op) {
         return ImmutableSet.copyOf(defaultPerms.get(op));
     }
 
@@ -634,7 +634,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    private void dirtyPermissibles(boolean op) {
+    private void dirtyPermissibles(bool op) {
         Set<Permissible> permissibles = getDefaultPermSubscriptions(op);
 
         for (Permissible p : permissibles) {
@@ -644,10 +644,10 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public void subscribeToPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Map<Permissible, Boolean> map = permSubs.get(name);
+        Map<Permissible, bool> map = permSubs.get(name);
 
         if (map == null) {
-            map = new WeakHashMap<Permissible, Boolean>();
+            map = new WeakHashMap<Permissible, bool>();
             permSubs.put(name, map);
         }
 
@@ -656,7 +656,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public void unsubscribeFromPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Map<Permissible, Boolean> map = permSubs.get(name);
+        Map<Permissible, bool> map = permSubs.get(name);
 
         if (map != null) {
             map.remove(permissible);
@@ -669,7 +669,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
     public Set<Permissible> getPermissionSubscriptions(String permission) {
         String name = permission.toLowerCase();
-        Map<Permissible, Boolean> map = permSubs.get(name);
+        Map<Permissible, bool> map = permSubs.get(name);
 
         if (map == null) {
             return ImmutableSet.of();
@@ -678,19 +678,19 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    public void subscribeToDefaultPerms(boolean op, Permissible permissible) {
-        Map<Permissible, Boolean> map = defSubs.get(op);
+    public void subscribeToDefaultPerms(bool op, Permissible permissible) {
+        Map<Permissible, bool> map = defSubs.get(op);
 
         if (map == null) {
-            map = new WeakHashMap<Permissible, Boolean>();
+            map = new WeakHashMap<Permissible, bool>();
             defSubs.put(op, map);
         }
 
         map.put(permissible, true);
     }
 
-    public void unsubscribeFromDefaultPerms(boolean op, Permissible permissible) {
-        Map<Permissible, Boolean> map = defSubs.get(op);
+    public void unsubscribeFromDefaultPerms(bool op, Permissible permissible) {
+        Map<Permissible, bool> map = defSubs.get(op);
 
         if (map != null) {
             map.remove(permissible);
@@ -701,8 +701,8 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    public Set<Permissible> getDefaultPermSubscriptions(boolean op) {
-        Map<Permissible, Boolean> map = defSubs.get(op);
+    public Set<Permissible> getDefaultPermSubscriptions(bool op) {
+        Map<Permissible, bool> map = defSubs.get(op);
 
         if (map == null) {
             return ImmutableSet.of();
@@ -715,7 +715,7 @@ public sealed class SimplePluginManager implements PluginManager {
         return new HashSet<Permission>(permissions.values());
     }
 
-    public boolean useTimings() {
+    public bool useTimings() {
         return useTimings;
     }
 
@@ -724,7 +724,7 @@ public sealed class SimplePluginManager implements PluginManager {
      *
      * @param use True if per event timing code should be used
      */
-    public void useTimings(boolean use) {
+    public void useTimings(bool use) {
         useTimings = use;
     }
 }

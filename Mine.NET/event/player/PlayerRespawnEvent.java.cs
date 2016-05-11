@@ -11,9 +11,9 @@ import org.bukkit.event.HandlerList;
 public class PlayerRespawnEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private Location respawnLocation;
-    private final boolean isBedSpawn;
+    private final bool isBedSpawn;
 
-    public PlayerRespawnEvent(Player respawnPlayer, final Location respawnLocation, final boolean isBedSpawn) {
+    public PlayerRespawnEvent(Player respawnPlayer, final Location respawnLocation, final bool isBedSpawn) {
         super(respawnPlayer);
         this.respawnLocation = respawnLocation;
         this.isBedSpawn = isBedSpawn;
@@ -45,7 +45,7 @@ public class PlayerRespawnEvent extends PlayerEvent {
      *
      * @return true if the respawn location is the player's bed.
      */
-    public boolean isBedSpawn() {
+    public bool isBedSpawn() {
         return this.isBedSpawn;
     }
 

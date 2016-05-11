@@ -13,7 +13,7 @@ public class FurnaceSmeltEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final ItemStack source;
     private ItemStack result;
-    private boolean cancelled;
+    private bool cancelled;
 
     public FurnaceSmeltEvent(Block furnace, final ItemStack source, final ItemStack result) {
         super(furnace);
@@ -49,11 +49,11 @@ public class FurnaceSmeltEvent extends BlockEvent implements Cancellable {
         this.result = result;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

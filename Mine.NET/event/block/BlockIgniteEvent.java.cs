@@ -17,7 +17,7 @@ public class BlockIgniteEvent extends BlockEvent implements Cancellable {
     private final IgniteCause cause;
     private final Entity ignitingEntity;
     private final Block ignitingBlock;
-    private boolean cancel;
+    private bool cancel;
 
     [Obsolete]
     public BlockIgniteEvent(Block theBlock, final IgniteCause cause, final Player thePlayer) {
@@ -40,11 +40,11 @@ public class BlockIgniteEvent extends BlockEvent implements Cancellable {
         this.cancel = false;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

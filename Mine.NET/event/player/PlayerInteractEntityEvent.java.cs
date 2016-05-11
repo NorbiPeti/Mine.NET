@@ -12,7 +12,7 @@ import org.bukkit.inventory.EquipmentSlot;
 public class PlayerInteractEntityEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     protected Entity clickedEntity;
-    boolean cancelled = false;
+    bool cancelled = false;
     private EquipmentSlot hand;
 
     public PlayerInteractEntityEvent(Player who, final Entity clickedEntity) {
@@ -25,11 +25,11 @@ public class PlayerInteractEntityEvent extends PlayerEvent implements Cancellabl
         this.hand = hand;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

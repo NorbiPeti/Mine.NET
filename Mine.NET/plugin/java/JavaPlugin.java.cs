@@ -46,14 +46,14 @@ import com.google.common.io.ByteStreams;
  * Represents a Java plugin
  */
 public abstract class JavaPlugin extends PluginBase {
-    private boolean isEnabled = false;
+    private bool isEnabled = false;
     private PluginLoader loader = null;
     private Server server = null;
     private File file = null;
     private PluginDescriptionFile description = null;
     private File dataFolder = null;
     private ClassLoader classLoader = null;
-    private boolean naggable = true;
+    private bool naggable = true;
     private EbeanServer ebean = null;
     private FileConfiguration newConfig = null;
     private File configFile = null;
@@ -134,7 +134,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @return true if this plugin is enabled, otherwise false
      */
     @Override
-    public final boolean isEnabled() {
+    public final bool isEnabled() {
         return isEnabled;
     }
 
@@ -212,7 +212,7 @@ public abstract class JavaPlugin extends PluginBase {
     }
 
     @Override
-    public void saveResource(String resourcePath, boolean replace) {
+    public void saveResource(String resourcePath, bool replace) {
         if (resourcePath == null || resourcePath.equals("")) {
             throw new IllegalArgumentException("ResourcePath cannot be null or empty");
         }
@@ -284,7 +284,7 @@ public abstract class JavaPlugin extends PluginBase {
      *
      * @param enabled true if enabled, otherwise false
      */
-    protected final void setEnabled(boolean enabled) {
+    protected final void setEnabled(bool enabled) {
         if (isEnabled != enabled) {
             isEnabled = enabled;
 
@@ -369,7 +369,7 @@ public abstract class JavaPlugin extends PluginBase {
      *     JavaPlugin} is now initialized in the constructor.
      */
     [Obsolete]
-    public final boolean isInitialized() {
+    public final bool isInitialized() {
         return true;
     }
 
@@ -377,7 +377,7 @@ public abstract class JavaPlugin extends PluginBase {
      * {@inheritDoc}
      */
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public bool onCommand(CommandSender sender, Command command, String label, String[] args) {
         return false;
     }
 
@@ -427,12 +427,12 @@ public abstract class JavaPlugin extends PluginBase {
     }
 
     @Override
-    public final boolean isNaggable() {
+    public final bool isNaggable() {
         return naggable;
     }
 
     @Override
-    public final void setNaggable(boolean canNag) {
+    public final void setNaggable(bool canNag) {
         this.naggable = canNag;
     }
 

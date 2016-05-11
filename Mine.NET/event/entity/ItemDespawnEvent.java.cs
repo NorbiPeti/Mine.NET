@@ -14,7 +14,7 @@ import org.bukkit.event.HandlerList;
  */
 public class ItemDespawnEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean canceled;
+    private bool canceled;
     private final Location location;
 
     public ItemDespawnEvent(Item despawnee, final Location loc) {
@@ -22,11 +22,11 @@ public class ItemDespawnEvent extends EntityEvent implements Cancellable {
         location = loc;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return canceled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         canceled = cancel;
     }
 

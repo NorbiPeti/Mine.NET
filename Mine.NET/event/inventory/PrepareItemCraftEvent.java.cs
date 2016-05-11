@@ -7,10 +7,10 @@ import org.bukkit.inventory.Recipe;
 
 public class PrepareItemCraftEvent extends InventoryEvent {
     private static final HandlerList handlers = new HandlerList();
-    private boolean repair;
+    private bool repair;
     private CraftingInventory matrix;
 
-    public PrepareItemCraftEvent(CraftingInventory what, InventoryView view, boolean isRepair) {
+    public PrepareItemCraftEvent(CraftingInventory what, InventoryView view, bool isRepair) {
         super(view);
         this.matrix = what;
         this.repair = isRepair;
@@ -41,7 +41,7 @@ public class PrepareItemCraftEvent extends InventoryEvent {
      *
      * @return True if this is a repair.
      */
-    public boolean isRepair() {
+    public bool isRepair() {
         return repair;
     }
 

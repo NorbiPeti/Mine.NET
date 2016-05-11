@@ -78,7 +78,7 @@ public interface Plugin extends TabExecutor {
      * @throws IllegalArgumentException if the resource path is null, empty,
      *     or points to a nonexistent resource.
      */
-    public void saveResource(String resourcePath, boolean replace);
+    public void saveResource(String resourcePath, bool replace);
 
     /**
      * Discards any data in {@link #getConfig()} and reloads from disk.
@@ -105,7 +105,7 @@ public interface Plugin extends TabExecutor {
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    public boolean isEnabled();
+    public bool isEnabled();
 
     /**
      * Called when this plugin is disabled
@@ -126,18 +126,18 @@ public interface Plugin extends TabExecutor {
     public void onEnable();
 
     /**
-     * Simple boolean if we can still nag to the logs about things
+     * Simple bool if we can still nag to the logs about things
      *
-     * @return boolean whether we can nag
+     * @return bool whether we can nag
      */
-    public boolean isNaggable();
+    public bool isNaggable();
 
     /**
      * Set naggable state
      *
      * @param canNag is this plugin still naggable?
      */
-    public void setNaggable(boolean canNag);
+    public void setNaggable(bool canNag);
 
     /**
      * Gets the {@link EbeanServer} tied to this plugin. This will only be

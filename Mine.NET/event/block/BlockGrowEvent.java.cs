@@ -22,7 +22,7 @@ import org.bukkit.event.HandlerList;
 public class BlockGrowEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final BlockState newState;
-    private boolean cancelled = false;
+    private bool cancelled = false;
 
     public BlockGrowEvent(Block block, final BlockState newState) {
         super(block);
@@ -38,11 +38,11 @@ public class BlockGrowEvent extends BlockEvent implements Cancellable {
         return newState;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

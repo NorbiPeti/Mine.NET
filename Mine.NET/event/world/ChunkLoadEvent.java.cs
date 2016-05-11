@@ -8,9 +8,9 @@ import org.bukkit.event.HandlerList;
  */
 public class ChunkLoadEvent extends ChunkEvent {
     private static final HandlerList handlers = new HandlerList();
-    private final boolean newChunk;
+    private final bool newChunk;
 
-    public ChunkLoadEvent(Chunk chunk, final boolean newChunk) {
+    public ChunkLoadEvent(Chunk chunk, final bool newChunk) {
         super(chunk);
         this.newChunk = newChunk;
     }
@@ -22,7 +22,7 @@ public class ChunkLoadEvent extends ChunkEvent {
      *
      * @return true if the chunk is new, otherwise false
      */
-    public boolean isNewChunk() {
+    public bool isNewChunk() {
         return newChunk;
     }
 

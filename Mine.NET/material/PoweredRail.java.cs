@@ -43,7 +43,7 @@ public class PoweredRail extends ExtendedRails implements Redstone {
         super(type, data);
     }
 
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -52,7 +52,7 @@ public class PoweredRail extends ExtendedRails implements Redstone {
      *
      * @param isPowered whether or not the rail is powered
      */
-    public void setPowered(boolean isPowered) {
+    public void setPowered(bool isPowered) {
         setData((byte) (isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 

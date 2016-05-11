@@ -29,7 +29,7 @@ public class PermissibleBase implements Permissible {
         recalculatePermissions();
     }
 
-    public boolean isOp() {
+    public bool isOp() {
         if (opable == null) {
             return false;
         } else {
@@ -37,7 +37,7 @@ public class PermissibleBase implements Permissible {
         }
     }
 
-    public void setOp(boolean value) {
+    public void setOp(bool value) {
         if (opable == null) {
             throw new UnsupportedOperationException("Cannot change op value as no ServerOperator is set");
         } else {
@@ -45,7 +45,7 @@ public class PermissibleBase implements Permissible {
         }
     }
 
-    public boolean isPermissionSet(String name) {
+    public bool isPermissionSet(String name) {
         if (name == null) {
             throw new IllegalArgumentException("Permission name cannot be null");
         }
@@ -53,7 +53,7 @@ public class PermissibleBase implements Permissible {
         return permissions.containsKey(name.toLowerCase());
     }
 
-    public boolean isPermissionSet(Permission perm) {
+    public bool isPermissionSet(Permission perm) {
         if (perm == null) {
             throw new IllegalArgumentException("Permission cannot be null");
         }
@@ -61,7 +61,7 @@ public class PermissibleBase implements Permissible {
         return isPermissionSet(perm.getName());
     }
 
-    public boolean hasPermission(String inName) {
+    public bool hasPermission(String inName) {
         if (inName == null) {
             throw new IllegalArgumentException("Permission name cannot be null");
         }
@@ -81,7 +81,7 @@ public class PermissibleBase implements Permissible {
         }
     }
 
-    public boolean hasPermission(Permission perm) {
+    public bool hasPermission(Permission perm) {
         if (perm == null) {
             throw new IllegalArgumentException("Permission cannot be null");
         }
@@ -94,7 +94,7 @@ public class PermissibleBase implements Permissible {
         return perm.getDefault().getValue(isOp());
     }
 
-    public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value) {
+    public PermissionAttachment addAttachment(Plugin plugin, String name, bool value) {
         if (name == null) {
             throw new IllegalArgumentException("Permission name cannot be null");
         } else if (plugin == null) {
@@ -175,12 +175,12 @@ public class PermissibleBase implements Permissible {
         permissions.clear();
     }
 
-    private void calculateChildPermissions(Map<String, Boolean> children, boolean invert, PermissionAttachment attachment) {
+    private void calculateChildPermissions(Map<String, bool> children, bool invert, PermissionAttachment attachment) {
         Set<String> keys = children.keySet();
 
         for (String name : keys) {
             Permission perm = Bukkit.getServer().getPluginManager().getPermission(name);
-            boolean value = children.get(name) ^ invert;
+            bool value = children.get(name) ^ invert;
             String lname = name.toLowerCase();
 
             permissions.put(lname, new PermissionAttachmentInfo(parent, lname, attachment, value));
@@ -192,7 +192,7 @@ public class PermissibleBase implements Permissible {
         }
     }
 
-    public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value, int ticks) {
+    public PermissionAttachment addAttachment(Plugin plugin, String name, bool value, int ticks) {
         if (name == null) {
             throw new IllegalArgumentException("Permission name cannot be null");
         } else if (plugin == null) {

@@ -26,7 +26,7 @@ public enum PermissionDefault {
      * @param op If the target is op
      * @return True if the default should be true, or false
      */
-    public boolean getValue(boolean op) {
+    public bool getValue(bool op) {
         switch (this) {
         case TRUE:
             return true;

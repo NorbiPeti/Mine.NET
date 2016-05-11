@@ -37,5 +37,5 @@ public @interface EventHandler {
      * 
      * @return whether cancelled events should be ignored
      */
-    boolean ignoreCancelled() default false;
+    bool ignoreCancelled() default false;
 }

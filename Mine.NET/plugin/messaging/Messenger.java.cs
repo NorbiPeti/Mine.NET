@@ -27,7 +27,7 @@ public interface Messenger {
      * @return True if the channel is reserved, otherwise false.
      * @throws IllegalArgumentException Thrown if channel is null.
      */
-    public boolean isReservedChannel(String channel);
+    public bool isReservedChannel(String channel);
 
     /**
      * Registers the specific plugin to the requested outgoing plugin channel,
@@ -183,7 +183,7 @@ public interface Messenger {
      * @param registration Registration to check.
      * @return True if the registration is valid, otherwise false.
      */
-    public boolean isRegistrationValid(PluginMessageListenerRegistration registration);
+    public bool isRegistrationValid(PluginMessageListenerRegistration registration);
 
     /**
      * Checks if the specified plugin has registered to receive incoming
@@ -193,7 +193,7 @@ public interface Messenger {
      * @param channel Channel to test for.
      * @return True if the channel is registered, else false.
      */
-    public boolean isIncomingChannelRegistered(Plugin plugin, String channel);
+    public bool isIncomingChannelRegistered(Plugin plugin, String channel);
 
     /**
      * Checks if the specified plugin has registered to send outgoing messages
@@ -203,7 +203,7 @@ public interface Messenger {
      * @param channel Channel to test for.
      * @return True if the channel is registered, else false.
      */
-    public boolean isOutgoingChannelRegistered(Plugin plugin, String channel);
+    public bool isOutgoingChannelRegistered(Plugin plugin, String channel);
 
     /**
      * Dispatches the specified incoming message to any registered listeners.

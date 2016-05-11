@@ -39,7 +39,7 @@ public class Cauldron extends MaterialData {
      *
      * @return True if it is full.
      */
-    public boolean isFull() {
+    public bool isFull() {
         return getData() >= CAULDRON_FULL;
     }
 
@@ -48,7 +48,7 @@ public class Cauldron extends MaterialData {
      *
      * @return True if it is empty.
      */
-    public boolean isEmpty() {
+    public bool isEmpty() {
         return getData() <= CAULDRON_EMPTY;
     }
 

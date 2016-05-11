@@ -130,7 +130,7 @@ public interface BlockState extends Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    boolean setTypeId(int type);
+    bool setTypeId(int type);
 
     /**
      * Attempts to update the block represented by this state, setting it to
@@ -142,9 +142,9 @@ public interface BlockState extends Metadatable {
      * eventuality.
      *
      * @return true if the update was successful, otherwise false
-     * @see #update(boolean)
+     * @see #update(bool)
      */
-    boolean update();
+    bool update();
 
     /**
      * Attempts to update the block represented by this state, setting it to
@@ -156,7 +156,7 @@ public interface BlockState extends Metadatable {
      * @param force true to forcefully set the state
      * @return true if the update was successful, otherwise false
      */
-    boolean update(boolean force);
+    bool update(bool force);
 
     /**
      * Attempts to update the block represented by this state, setting it to
@@ -177,7 +177,7 @@ public interface BlockState extends Metadatable {
      *     blocks
      * @return true if the update was successful, otherwise false
      */
-    boolean update(boolean force, boolean applyPhysics);
+    bool update(bool force, bool applyPhysics);
 
     /**
      * @return The data as a raw byte.
@@ -202,5 +202,5 @@ public interface BlockState extends Metadatable {
      * @return whether the state is placed in the world
      *         or 'virtual' (e.g. on an itemstack)
      */
-    boolean isPlaced();
+    bool isPlaced();
 }

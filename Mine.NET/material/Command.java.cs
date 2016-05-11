@@ -49,7 +49,7 @@ public class Command extends MaterialData implements Redstone {
      *
      * @return true if powered, otherwise false
      */
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 1) != 0;
     }
 
@@ -59,7 +59,7 @@ public class Command extends MaterialData implements Redstone {
      * @param bool
      *            whether or not the command block is powered
      */
-    public void setPowered(boolean bool) {
+    public void setPowered(bool bool) {
         setData((byte) (bool ? (getData() | 1) : (getData() & -2)));
     }
 

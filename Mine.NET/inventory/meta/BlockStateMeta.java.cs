@@ -11,7 +11,7 @@ public interface BlockStateMeta extends ItemMeta {
      * 
      * @return whether a block state is already attached
      */
-    boolean hasBlockState();
+    bool hasBlockState();
 
     /**
      * Returns the currently attached block state for this

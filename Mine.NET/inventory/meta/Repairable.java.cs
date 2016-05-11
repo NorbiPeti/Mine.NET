@@ -10,7 +10,7 @@ public interface Repairable {
      *
      * @return true if this has a repair penalty
      */
-    boolean hasRepairCost();
+    bool hasRepairCost();
 
     /**
      * Gets the repair penalty

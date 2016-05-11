@@ -27,7 +27,7 @@ public interface ConfigurationSection {
      *     list.
      * @return Set of keys contained within this ConfigurationSection.
      */
-    public Set<String> getKeys(boolean deep);
+    public Set<String> getKeys(bool deep);
 
     /**
      * Gets a Map containing all keys and their values for this section.
@@ -43,7 +43,7 @@ public interface ConfigurationSection {
      *     list.
      * @return Map of keys and values of this section.
      */
-    public Map<String, Object> getValues(boolean deep);
+    public Map<String, Object> getValues(bool deep);
 
     /**
      * Checks if this {@link ConfigurationSection} contains the given path.
@@ -56,7 +56,7 @@ public interface ConfigurationSection {
      *     default or being set.
      * @throws IllegalArgumentException Thrown when path is null.
      */
-    public boolean contains(String path);
+    public bool contains(String path);
 
     /**
      * Checks if this {@link ConfigurationSection} has a value set for the
@@ -70,7 +70,7 @@ public interface ConfigurationSection {
      *     having a default.
      * @throws IllegalArgumentException Thrown when path is null.
      */
-    public boolean isSet(String path);
+    public bool isSet(String path);
 
     /**
      * Gets the path of this {@link ConfigurationSection} from its root {@link
@@ -234,7 +234,7 @@ public interface ConfigurationSection {
      * @param path Path of the String to check.
      * @return Whether or not the specified path is a String.
      */
-    public boolean isString(String path);
+    public bool isString(String path);
 
     /**
      * Gets the requested int by path.
@@ -273,47 +273,47 @@ public interface ConfigurationSection {
      * @param path Path of the int to check.
      * @return Whether or not the specified path is an int.
      */
-    public boolean isInt(String path);
+    public bool isInt(String path);
 
     /**
-     * Gets the requested boolean by path.
+     * Gets the requested bool by path.
      * <p>
-     * If the boolean does not exist but a default value has been specified,
-     * this will return the default value. If the boolean does not exist and
+     * If the bool does not exist but a default value has been specified,
+     * this will return the default value. If the bool does not exist and
      * no default value was specified, this will return false.
      *
-     * @param path Path of the boolean to get.
-     * @return Requested boolean.
+     * @param path Path of the bool to get.
+     * @return Requested bool.
      */
-    public boolean getBoolean(String path);
+    public bool getBoolean(String path);
 
     /**
-     * Gets the requested boolean by path, returning a default value if not
+     * Gets the requested bool by path, returning a default value if not
      * found.
      * <p>
-     * If the boolean does not exist then the specified default value will
+     * If the bool does not exist then the specified default value will
      * returned regardless of if a default has been identified in the root
      * {@link Configuration}.
      *
-     * @param path Path of the boolean to get.
+     * @param path Path of the bool to get.
      * @param def The default value to return if the path is not found or is
-     *     not a boolean.
-     * @return Requested boolean.
+     *     not a bool.
+     * @return Requested bool.
      */
-    public boolean getBoolean(String path, boolean def);
+    public bool getBoolean(String path, bool def);
 
     /**
-     * Checks if the specified path is a boolean.
+     * Checks if the specified path is a bool.
      * <p>
-     * If the path exists but is not a boolean, this will return false. If the
+     * If the path exists but is not a bool, this will return false. If the
      * path does not exist, this will return false. If the path does not exist
      * but a default value has been specified, this will check if that default
-     * value is a boolean and return appropriately.
+     * value is a bool and return appropriately.
      *
-     * @param path Path of the boolean to check.
-     * @return Whether or not the specified path is a boolean.
+     * @param path Path of the bool to check.
+     * @return Whether or not the specified path is a bool.
      */
-    public boolean isBoolean(String path);
+    public bool isBoolean(String path);
 
     /**
      * Gets the requested double by path.
@@ -353,7 +353,7 @@ public interface ConfigurationSection {
      * @param path Path of the double to check.
      * @return Whether or not the specified path is a double.
      */
-    public boolean isDouble(String path);
+    public bool isDouble(String path);
 
     /**
      * Gets the requested long by path.
@@ -393,7 +393,7 @@ public interface ConfigurationSection {
      * @param path Path of the long to check.
      * @return Whether or not the specified path is a long.
      */
-    public boolean isLong(String path);
+    public bool isLong(String path);
 
     // Java
     /**
@@ -434,7 +434,7 @@ public interface ConfigurationSection {
      * @param path Path of the List to check.
      * @return Whether or not the specified path is a List.
      */
-    public boolean isList(String path);
+    public bool isList(String path);
 
     /**
      * Gets the requested List of String by path.
@@ -467,19 +467,19 @@ public interface ConfigurationSection {
     public List<Integer> getIntegerList(String path);
 
     /**
-     * Gets the requested List of Boolean by path.
+     * Gets the requested List of bool by path.
      * <p>
      * If the List does not exist but a default value has been specified, this
      * will return the default value. If the List does not exist and no
      * default value was specified, this will return an empty List.
      * <p>
-     * This method will attempt to cast any values into a Boolean if possible,
+     * This method will attempt to cast any values into a bool if possible,
      * but may miss any values out if they are not compatible.
      *
      * @param path Path of the List to get.
-     * @return Requested List of Boolean.
+     * @return Requested List of bool.
      */
-    public List<Boolean> getBooleanList(String path);
+    public List<bool> getBooleanList(String path);
 
     /**
      * Gets the requested List of Double by path.
@@ -625,7 +625,7 @@ public interface ConfigurationSection {
      * @param path Path of the Vector to check.
      * @return Whether or not the specified path is a Vector.
      */
-    public boolean isVector(String path);
+    public bool isVector(String path);
 
     /**
      * Gets the requested OfflinePlayer by path.
@@ -666,7 +666,7 @@ public interface ConfigurationSection {
      * @param path Path of the OfflinePlayer to check.
      * @return Whether or not the specified path is an OfflinePlayer.
      */
-    public boolean isOfflinePlayer(String path);
+    public bool isOfflinePlayer(String path);
 
     /**
      * Gets the requested ItemStack by path.
@@ -706,7 +706,7 @@ public interface ConfigurationSection {
      * @param path Path of the ItemStack to check.
      * @return Whether or not the specified path is an ItemStack.
      */
-    public boolean isItemStack(String path);
+    public bool isItemStack(String path);
 
     /**
      * Gets the requested Color by path.
@@ -746,7 +746,7 @@ public interface ConfigurationSection {
      * @param path Path of the Color to check.
      * @return Whether or not the specified path is a Color.
      */
-    public boolean isColor(String path);
+    public bool isColor(String path);
 
     /**
      * Gets the requested ConfigurationSection by path.
@@ -773,7 +773,7 @@ public interface ConfigurationSection {
      * @param path Path of the ConfigurationSection to check.
      * @return Whether or not the specified path is a ConfigurationSection.
      */
-    public boolean isConfigurationSection(String path);
+    public bool isConfigurationSection(String path);
 
     /**
      * Gets the equivalent {@link ConfigurationSection} from the default

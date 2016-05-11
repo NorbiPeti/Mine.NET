@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 public class CauldronLevelChangeEvent extends BlockEvent implements Cancellable {
 
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     //
     private final Entity entity;
     private final ChangeReason reason;
@@ -51,12 +51,12 @@ public class CauldronLevelChangeEvent extends BlockEvent implements Cancellable 
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
     @Override
-    public void setCancelled(boolean cancelled) {
+    public void setCancelled(bool cancelled) {
         this.cancelled = cancelled;
     }
 

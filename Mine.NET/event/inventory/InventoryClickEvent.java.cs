@@ -23,8 +23,8 @@ import org.bukkit.plugin.Plugin;
  * <ul>
  * <li>{@link HumanEntity#closeInventory()}
  * <li>{@link HumanEntity#openInventory(Inventory)}
- * <li>{@link HumanEntity#openWorkbench(Location, boolean)}
- * <li>{@link HumanEntity#openEnchanting(Location, boolean)}
+ * <li>{@link HumanEntity#openWorkbench(Location, bool)}
+ * <li>{@link HumanEntity#openEnchanting(Location, bool)}
  * <li>{@link InventoryView#close()}
  * </ul>
  * To invoke one of these methods, schedule a task using 
@@ -54,7 +54,7 @@ public class InventoryClickEvent extends InventoryInteractEvent {
     private int hotbarKey = -1;
 
     [Obsolete]
-    public InventoryClickEvent(InventoryView view, SlotType type, int slot, boolean right, boolean shift) {
+    public InventoryClickEvent(InventoryView view, SlotType type, int slot, bool right, bool shift) {
         this(view, type, slot, right ? (shift ? ClickType.SHIFT_RIGHT : ClickType.RIGHT) : (shift ? ClickType.SHIFT_LEFT : ClickType.LEFT), InventoryAction.SWAP_WITH_CURSOR);
     }
 
@@ -109,7 +109,7 @@ public class InventoryClickEvent extends InventoryInteractEvent {
      * @return true if the ClickType uses the right mouse button.
      * @see ClickType#isRightClick()
      */
-    public boolean isRightClick() {
+    public bool isRightClick() {
         return click.isRightClick();
     }
 
@@ -120,7 +120,7 @@ public class InventoryClickEvent extends InventoryInteractEvent {
      * @return true if the ClickType uses the left mouse button.
      * @see ClickType#isLeftClick()
      */
-    public boolean isLeftClick() {
+    public bool isLeftClick() {
         return click.isLeftClick();
     }
 
@@ -131,7 +131,7 @@ public class InventoryClickEvent extends InventoryInteractEvent {
      * @return true if the ClickType uses Shift or Ctrl.
      * @see ClickType#isShiftClick()
      */
-    public boolean isShiftClick() {
+    public bool isShiftClick() {
         return click.isShiftClick();
     }
 

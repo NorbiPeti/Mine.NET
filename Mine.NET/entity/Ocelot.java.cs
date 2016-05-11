@@ -25,7 +25,7 @@ public interface Ocelot extends Animals, Tameable {
      *
      * @return true if sitting
      */
-    public boolean isSitting();
+    public bool isSitting();
 
     /**
      * Sets if this ocelot is sitting. Will remove any path that the ocelot
@@ -33,7 +33,7 @@ public interface Ocelot extends Animals, Tameable {
      *
      * @param sitting true if sitting
      */
-    public void setSitting(boolean sitting);
+    public void setSitting(bool sitting);
 
     /**
      * Represents the various different cat types there are.

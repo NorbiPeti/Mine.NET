@@ -23,14 +23,14 @@ public class Note {
         E(0xA, false),
         F(0xB, true);
 
-        private final boolean sharpable;
+        private final bool sharpable;
         private final byte id;
 
         private static final Map<Byte, Note.Tone> BY_DATA = Maps.newHashMap();
         /** The number of tones including sharped tones. */
         public static final byte TONES_COUNT = 12;
 
-        private Tone(int id, boolean sharpable) {
+        private Tone(int id, bool sharpable) {
             this.id = (byte) (id % TONES_COUNT);
             this.sharpable = sharpable;
         }
@@ -56,7 +56,7 @@ public class Note {
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public byte getId(boolean sharped) {
+        public byte getId(bool sharped) {
             byte id = (byte) (sharped && sharpable ? this.id + 1 : this.id);
 
             return (byte) (id % TONES_COUNT);
@@ -67,7 +67,7 @@ public class Note {
          *
          * @return if this tone could be sharped.
          */
-        public boolean isSharpable() {
+        public bool isSharpable() {
             return sharpable;
         }
 
@@ -81,7 +81,7 @@ public class Note {
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public boolean isSharped(byte id) {
+        public bool isSharped(byte id) {
             if (id == getId(false)) {
                 return false;
             } else if (id == getId(true)) {
@@ -139,7 +139,7 @@ public class Note {
      *     to be F#.
      * @param sharped Set if the tone is sharped (e.g. for F#).
      */
-    public Note(int octave, Tone tone, boolean sharped) {
+    public Note(int octave, Tone tone, bool sharped) {
         if (sharped && !tone.isSharpable()) {
             tone = Tone.values()[tone.ordinal() + 1];
             sharped = false;
@@ -242,7 +242,7 @@ public class Note {
      *
      * @return if this note is sharped.
      */
-    public boolean isSharped() {
+    public bool isSharped() {
         byte note = getToneByte();
         return Tone.getById(note).isSharped(note);
     }
@@ -256,7 +256,7 @@ public class Note {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (this == obj)
             return true;
         if (obj == null)

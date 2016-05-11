@@ -16,25 +16,25 @@ import org.bukkit.event.HandlerList;
 public class EntityToggleGlideEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
 
-    private boolean cancel = false;
-    private final boolean isGliding;
+    private bool cancel = false;
+    private final bool isGliding;
 
-    public EntityToggleGlideEvent(LivingEntity who, final boolean isGliding) {
+    public EntityToggleGlideEvent(LivingEntity who, final bool isGliding) {
         super(who);
         this.isGliding = isGliding;
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
-    public boolean isGliding() {
+    public bool isGliding() {
         return isGliding;
     }
 

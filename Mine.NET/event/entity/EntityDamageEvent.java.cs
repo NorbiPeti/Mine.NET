@@ -24,7 +24,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
     private final Map<DamageModifier, Double> modifiers;
     private final Map<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
     private final Map<DamageModifier, Double> originals;
-    private boolean cancelled;
+    private bool cancelled;
     private final DamageCause cause;
 
     [Obsolete]
@@ -50,11 +50,11 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
         this.modifierFunctions = modifierFunctions;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 
@@ -120,7 +120,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
      * @return true if the modifier is supported by the caller, false otherwise
      * @throws IllegalArgumentException if type is null
      */
-    public boolean isApplicable(DamageModifier type) throws IllegalArgumentException {
+    public bool isApplicable(DamageModifier type) throws IllegalArgumentException {
         Validate.notNull(type, "Cannot have null DamageModifier");
         return modifiers.containsKey(type);
     }

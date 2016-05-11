@@ -14,7 +14,7 @@ public interface Conversable {
      *
      * @return True if a conversation is in progress
      */
-    public boolean isConversing();
+    public bool isConversing();
 
     /**
      * Accepts input into the active conversation. If no conversation is in
@@ -31,7 +31,7 @@ public interface Conversable {
      * @return True if the conversation should proceed, false if it has been
      *     enqueued
      */
-    public boolean beginConversation(Conversation conversation);
+    public bool beginConversation(Conversation conversation);
 
     /**
      * Abandons an active conversation.

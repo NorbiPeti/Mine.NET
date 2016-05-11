@@ -19,7 +19,7 @@ public class Permission {
     public static final PermissionDefault DEFAULT_PERMISSION = PermissionDefault.OP;
 
     private final String name;
-    private final Map<String, Boolean> children = new LinkedHashMap<String, Boolean>();
+    private final Map<String, bool> children = new LinkedHashMap<String, bool>();
     private PermissionDefault defaultValue = DEFAULT_PERMISSION;
     private String description;
 
@@ -39,19 +39,19 @@ public class Permission {
         this(name, description, defaultValue, null);
     }
 
-    public Permission(String name, Map<String, Boolean> children) {
+    public Permission(String name, Map<String, bool> children) {
         this(name, null, null, children);
     }
 
-    public Permission(String name, String description, Map<String, Boolean> children) {
+    public Permission(String name, String description, Map<String, bool> children) {
         this(name, description, null, children);
     }
 
-    public Permission(String name, PermissionDefault defaultValue, Map<String, Boolean> children) {
+    public Permission(String name, PermissionDefault defaultValue, Map<String, bool> children) {
         this(name, null, defaultValue, children);
     }
 
-    public Permission(String name, String description, PermissionDefault defaultValue, Map<String, Boolean> children) {
+    public Permission(String name, String description, PermissionDefault defaultValue, Map<String, bool> children) {
         Validate.notNull(name, "Name cannot be null");
         this.name = name;
         this.description = (description == null) ? "" : description;
@@ -84,7 +84,7 @@ public class Permission {
      *
      * @return Permission children
      */
-    public Map<String, Boolean> getChildren() {
+    public Map<String, bool> getChildren() {
         return children;
     }
 
@@ -179,7 +179,7 @@ public class Permission {
      * @param value The value to set this permission to
      * @return Parent permission it created or loaded
      */
-    public Permission addParent(String name, boolean value) {
+    public Permission addParent(String name, bool value) {
         PluginManager pm = Bukkit.getServer().getPluginManager();
         String lname = name.toLowerCase();
 
@@ -201,7 +201,7 @@ public class Permission {
      * @param perm Parent permission to register with
      * @param value The value to set this permission to
      */
-    public void addParent(Permission perm, boolean value) {
+    public void addParent(Permission perm, bool value) {
         perm.getChildren().put(getName(), value);
         perm.recalculatePermissibles();
     }
@@ -213,8 +213,8 @@ public class Permission {
      * The data may contain a list of name:data, where the data contains the
      * following keys:
      * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: {@code Map<String, Boolean>} of child permissions. If not
+     * <li>default: bool true or false. If not specified, false.
+     * <li>children: {@code Map<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -245,8 +245,8 @@ public class Permission {
      * <p>
      * The data may contain the following keys:
      * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: {@code Map<String, Boolean>} of child permissions. If not
+     * <li>default: bool true or false. If not specified, false.
+     * <li>children: {@code Map<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -266,8 +266,8 @@ public class Permission {
      * <p>
      * The data may contain the following keys:
      * <ul>
-     * <li>default: Boolean true or false. If not specified, false.
-     * <li>children: {@code Map<String, Boolean>} of child permissions. If not
+     * <li>default: bool true or false. If not specified, false.
+     * <li>children: {@code Map<String, bool>} of child permissions. If not
      *     specified, empty list.
      * <li>description: Short string containing a very small description of
      *     this description. If not specified, empty string.
@@ -284,7 +284,7 @@ public class Permission {
         Validate.notNull(data, "Data cannot be null");
 
         String desc = null;
-        Map<String, Boolean> children = null;
+        Map<String, bool> children = null;
 
         if (data.get("default") != null) {
             PermissionDefault value = PermissionDefault.getByName(data.get("default").toString());
@@ -298,10 +298,10 @@ public class Permission {
         if (data.get("children") != null) {
             Object childrenNode = data.get("children");
             if (childrenNode instanceof Iterable) {
-                children = new LinkedHashMap<String, Boolean>();
+                children = new LinkedHashMap<String, bool>();
                 for (Object child : (Iterable<?>) childrenNode) {
                     if (child != null) {
-                        children.put(child.toString(), Boolean.TRUE);
+                        children.put(child.toString(), bool.TRUE);
                     }
                 }
             } else if (childrenNode instanceof Map) {
@@ -318,16 +318,16 @@ public class Permission {
         return new Permission(name, desc, def, children);
     }
 
-    private static Map<String, Boolean> extractChildren(Map<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
-        Map<String, Boolean> children = new LinkedHashMap<String, Boolean>();
+    private static Map<String, bool> extractChildren(Map<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
+        Map<String, bool> children = new LinkedHashMap<String, bool>();
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
-            if ((entry.getValue() instanceof Boolean)) {
-                children.put(entry.getKey().toString(), (Boolean) entry.getValue());
+            if ((entry.getValue() instanceof bool)) {
+                children.put(entry.getKey().toString(), (bool) entry.getValue());
             } else if ((entry.getValue() instanceof Map)) {
                 try {
                     Permission perm = loadPermission(entry.getKey().toString(), (Map<?, ?>) entry.getValue(), def, output);
-                    children.put(perm.getName(), Boolean.TRUE);
+                    children.put(perm.getName(), bool.TRUE);
 
                     if (output != null) {
                         output.add(perm);

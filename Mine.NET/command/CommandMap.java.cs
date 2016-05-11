@@ -41,7 +41,7 @@ public interface CommandMap {
      *     otherwise, which indicates the fallbackPrefix was used one or more
      *     times
      */
-    public boolean register(String label, String fallbackPrefix, Command command);
+    public bool register(String label, String fallbackPrefix, Command command);
 
     /**
      * Registers a command. Returns true on success; false if name is already
@@ -63,7 +63,7 @@ public interface CommandMap {
      *     otherwise, which indicates the fallbackPrefix was used one or more
      *     times
      */
-    public boolean register(String fallbackPrefix, Command command);
+    public bool register(String fallbackPrefix, Command command);
 
     /**
      * Looks for the requested command and executes it if found.
@@ -74,7 +74,7 @@ public interface CommandMap {
      * @throws CommandException Thrown when the executor for the given command
      *     fails with an unhandled exception
      */
-    public boolean dispatch(CommandSender sender, String cmdLine) throws CommandException;
+    public bool dispatch(CommandSender sender, String cmdLine) throws CommandException;
 
     /**
      * Clears all registered commands.

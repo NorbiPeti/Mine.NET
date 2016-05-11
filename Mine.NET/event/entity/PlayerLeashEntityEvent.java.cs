@@ -13,7 +13,7 @@ public class PlayerLeashEntityEvent extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Entity leashHolder;
     private final Entity entity;
-    private boolean cancelled = false;
+    private bool cancelled = false;
     private final Player player;
 
     public PlayerLeashEntityEvent(Entity what, Entity leashHolder, Player leasher) {
@@ -58,11 +58,11 @@ public class PlayerLeashEntityEvent extends Event implements Cancellable {
         return handlers;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return this.cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled  = cancel;
     }
 }

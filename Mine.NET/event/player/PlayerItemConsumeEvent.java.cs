@@ -18,7 +18,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean isCancelled = false;
+    private bool isCancelled = false;
     private ItemStack item;
 
     /**
@@ -55,11 +55,11 @@ public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
         }
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return this.isCancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.isCancelled = cancel;
     }
 

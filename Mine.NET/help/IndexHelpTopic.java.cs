@@ -43,7 +43,7 @@ public class IndexHelpTopic extends HelpTopic {
         this.allTopics = topics;
     }
 
-    public boolean canSee(CommandSender sender) {
+    public bool canSee(CommandSender sender) {
         if (sender instanceof ConsoleCommandSender) {
             return true;
         }

@@ -16,7 +16,7 @@ public class BlockFromToEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     protected Block to;
     protected BlockFace face;
-    protected boolean cancel;
+    protected bool cancel;
 
     public BlockFromToEvent(Block block, final BlockFace face) {
         super(block);
@@ -52,11 +52,11 @@ public class BlockFromToEvent extends BlockEvent implements Cancellable {
         return to;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

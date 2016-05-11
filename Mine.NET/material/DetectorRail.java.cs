@@ -43,11 +43,11 @@ public class DetectorRail extends ExtendedRails implements PressureSensor {
         super(type, data);
     }
 
-    public boolean isPressed() {
+    public bool isPressed() {
         return (getData() & 0x8) == 0x8;
     }
 
-    public void setPressed(boolean isPressed) {
+    public void setPressed(bool isPressed) {
         setData((byte) (isPressed ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 

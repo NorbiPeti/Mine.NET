@@ -35,8 +35,8 @@ import com.google.common.collect.ImmutableSet;
  * <ul>
  * <li>{@link HumanEntity#closeInventory()}
  * <li>{@link HumanEntity#openInventory(Inventory)}
- * <li>{@link HumanEntity#openWorkbench(Location, boolean)}
- * <li>{@link HumanEntity#openEnchanting(Location, boolean)}
+ * <li>{@link HumanEntity#openWorkbench(Location, bool)}
+ * <li>{@link HumanEntity#openEnchanting(Location, bool)}
  * <li>{@link InventoryView#close()}
  * </ul>
  * To invoke one of these methods, schedule a task using 
@@ -62,7 +62,7 @@ public class InventoryDragEvent extends InventoryInteractEvent {
     private final ItemStack oldCursor;
     private ItemStack newCursor;
 
-    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, boolean right, Map<Integer, ItemStack> slots) {
+    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Map<Integer, ItemStack> slots) {
         super(what);
 
         Validate.notNull(oldCursor);

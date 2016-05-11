@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  */
 public class SignChangeEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private final Player player;
     private final String[] lines;
 
@@ -65,11 +65,11 @@ public class SignChangeEvent extends BlockEvent implements Cancellable {
         lines[index] = line;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

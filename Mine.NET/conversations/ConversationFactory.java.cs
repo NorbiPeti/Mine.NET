@@ -21,8 +21,8 @@ import java.util.Map;
 public class ConversationFactory {
 
     protected Plugin plugin;
-    protected boolean isModal;
-    protected boolean localEchoEnabled;
+    protected bool isModal;
+    protected bool localEchoEnabled;
     protected ConversationPrefix prefix;
     protected Prompt firstPrompt;
     protected Map<Object, Object> initialSessionData;
@@ -58,7 +58,7 @@ public class ConversationFactory {
      * @param modal The modality of all conversations to be created.
      * @return This object.
      */
-    public ConversationFactory withModality(boolean modal)
+    public ConversationFactory withModality(bool modal)
     {
         isModal = modal;
         return this;
@@ -72,7 +72,7 @@ public class ConversationFactory {
      * @param localEchoEnabled The status of local echo.
      * @return This object.
      */
-    public ConversationFactory withLocalEcho(boolean localEchoEnabled) {
+    public ConversationFactory withLocalEcho(bool localEchoEnabled) {
         this.localEchoEnabled = localEchoEnabled;
         return this;
     }

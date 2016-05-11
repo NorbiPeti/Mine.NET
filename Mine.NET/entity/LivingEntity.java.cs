@@ -33,7 +33,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *     ignored
      * @return height of the living entity's eyes above its location
      */
-    public double getEyeHeight(boolean ignoreSneaking);
+    public double getEyeHeight(bool ignoreSneaking);
 
     /**
      * Get a Location detailing the current eye position of the living entity.
@@ -244,7 +244,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param effect PotionEffect to be added
      * @return whether the effect could be added
      */
-    public boolean addPotionEffect(PotionEffect effect);
+    public bool addPotionEffect(PotionEffect effect);
 
     /**
      * Adds the given {@link PotionEffect} to the living entity.
@@ -256,7 +256,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param force whether conflicting effects should be removed
      * @return whether the effect could be added
      */
-    public boolean addPotionEffect(PotionEffect effect, boolean force);
+    public bool addPotionEffect(PotionEffect effect, bool force);
 
     /**
      * Attempts to add all of the given {@link PotionEffect} to the living
@@ -265,7 +265,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param effects the effects to add
      * @return whether all of the effects could be added
      */
-    public boolean addPotionEffects(Collection<PotionEffect> effects);
+    public bool addPotionEffects(Collection<PotionEffect> effects);
 
     /**
      * Returns whether the living entity already has an existing effect of
@@ -274,7 +274,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param type the potion type to check
      * @return whether the living entity has this potion effect active on them
      */
-    public boolean hasPotionEffect(PotionEffectType type);
+    public bool hasPotionEffect(PotionEffectType type);
 
     /**
      * Removes any effects present of the given {@link PotionEffectType}.
@@ -300,7 +300,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param other the entity to determine line of sight to
      * @return true if there is a line of sight, false if not
      */
-    public boolean hasLineOfSight(Entity other);
+    public bool hasLineOfSight(Entity other);
 
     /**
      * Returns if the living entity despawns when away from players or not.
@@ -309,7 +309,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *
      * @return true if the living entity is removed when away from players
      */
-    public boolean getRemoveWhenFarAway();
+    public bool getRemoveWhenFarAway();
 
     /**
      * Sets whether or not the living entity despawns when away from players
@@ -317,7 +317,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *
      * @param remove the removal status
      */
-    public void setRemoveWhenFarAway(boolean remove);
+    public void setRemoveWhenFarAway(bool remove);
 
     /**
      * Gets the inventory with the equipment worn by the living entity.
@@ -331,21 +331,21 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *
      * @param pickup whether or not the living entity can pick up items
      */
-    public void setCanPickupItems(boolean pickup);
+    public void setCanPickupItems(bool pickup);
 
     /**
      * Gets if the living entity can pick up items.
      *
      * @return whether or not the living entity can pick up items
      */
-    public boolean getCanPickupItems();
+    public bool getCanPickupItems();
 
     /**
      * Returns whether the entity is currently leashed.
      *
      * @return whether the entity is leashed
      */
-    public boolean isLeashed();
+    public bool isLeashed();
 
     /**
      * Gets the entity that is currently leading this entity.
@@ -365,13 +365,13 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @param holder the entity to leash this entity to
      * @return whether the operation was successful
      */
-    public boolean setLeashHolder(Entity holder);
+    public bool setLeashHolder(Entity holder);
 
     /**
      * Checks to see if an entity is gliding, such as using an Elytra.
      * @return True if this entity is gliding.
      */
-    public boolean isGliding();
+    public bool isGliding();
 
     /**
      * Makes entity start or stop gliding. This will work even if an Elytra
@@ -379,21 +379,21 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * unless an event-cancelling mechanism is put in place.
      * @param gliding True if the entity is gliding.
      */
-    public void setGliding(boolean gliding);
+    public void setGliding(bool gliding);
 
     /**
      * Sets whether an entity will have AI.
      *
      * @param ai whether the mob will have AI or not.
      */
-    void setAI(boolean ai);
+    void setAI(bool ai);
 
     /**
      * Checks whether an entity has AI.
      *
      * @return true if the entity has AI, otherwise false.
      */
-    boolean hasAI();
+    bool hasAI();
 
     /**
      * Set if this entity will be subject to collisions other entities.
@@ -404,7 +404,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *
      * @param collidable collision status
      */
-    void setCollidable(boolean collidable);
+    void setCollidable(bool collidable);
 
     /**
      * Gets if this entity is subject to collisions with other entities.
@@ -415,5 +415,5 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *
      * @return collision status
      */
-    boolean isCollidable();
+    bool isCollidable();
 }

@@ -21,7 +21,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      *
      * @return true if this has a display name
      */
-    boolean hasDisplayName();
+    bool hasDisplayName();
 
     /**
      * Gets the display name that is set.
@@ -45,7 +45,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      *
      * @return true if this has lore
      */
-    boolean hasLore();
+    bool hasLore();
 
     /**
      * Gets the lore that is set.
@@ -70,7 +70,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      *
      * @return true if an enchantment exists on this meta
      */
-    boolean hasEnchants();
+    bool hasEnchants();
 
     /**
      * Checks for existence of the specified enchantment.
@@ -78,7 +78,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * @param ench enchantment to check
      * @return true if this enchantment exists for this meta
      */
-    boolean hasEnchant(Enchantment ench);
+    bool hasEnchant(Enchantment ench);
 
     /**
      * Checks for the level of the specified enchantment.
@@ -106,7 +106,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
      */
-    boolean addEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction);
+    bool addEnchant(Enchantment ench, int level, bool ignoreLevelRestriction);
 
     /**
      * Removes the specified enchantment from this item meta.
@@ -115,7 +115,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * @return true if the item meta changed as a result of this call, false
      *     otherwise
      */
-    boolean removeEnchant(Enchantment ench);
+    bool removeEnchant(Enchantment ench);
 
    /**
     * Checks if the specified enchantment conflicts with any enchantments in
@@ -124,7 +124,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
     * @param ench enchantment to test
     * @return true if the enchantment conflicts, false otherwise
     */
-    boolean hasConflictingEnchant(Enchantment ench);
+    bool hasConflictingEnchant(Enchantment ench);
 
     /**
      * Set itemflags which should be ignored when rendering a ItemStack in the Client. This Method does silently ignore double set itemFlags.
@@ -153,7 +153,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      * @param flag the flag to check
      * @return if it is present
      */
-    boolean hasItemFlag(ItemFlag flag);
+    bool hasItemFlag(ItemFlag flag);
 
     @SuppressWarnings("javadoc")
     ItemMeta clone();

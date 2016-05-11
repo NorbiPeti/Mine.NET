@@ -23,7 +23,7 @@ import org.bukkit.event.HandlerList;
 @Warning(reason="Listening to this event forces chat to wait for the main thread, delaying chat messages.")
 public class PlayerChatEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private String message;
     private String format;
     private final Set<Player> recipients;
@@ -42,11 +42,11 @@ public class PlayerChatEvent extends PlayerEvent implements Cancellable {
         this.recipients = recipients;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

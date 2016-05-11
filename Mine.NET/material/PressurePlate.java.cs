@@ -43,7 +43,7 @@ public class PressurePlate extends MaterialData implements PressureSensor {
         super(type, data);
     }
 
-    public boolean isPressed() {
+    public bool isPressed() {
         return getData() == 0x1;
     }
 

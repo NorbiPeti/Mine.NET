@@ -298,7 +298,7 @@ public class SimpleServicesManager implements ServicesManager {
      * @param service service to check
      * @return true if and only if there are registered providers
      */
-    public <T> boolean isProvidedFor(Class<T> service) {
+    public <T> bool isProvidedFor(Class<T> service) {
         synchronized (providers) {
             return providers.containsKey(service);
         }

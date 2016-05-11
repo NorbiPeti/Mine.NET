@@ -31,12 +31,12 @@ public interface Arrow extends Projectile {
      *
      * @return true if it is critical
      */
-    public boolean isCritical();
+    public bool isCritical();
 
     /**
      * Sets whether or not this arrow should be critical.
      *
      * @param critical whether or not it should be critical
      */
-    public void setCritical(boolean critical);
+    public void setCritical(bool critical);
 }

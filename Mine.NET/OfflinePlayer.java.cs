@@ -15,7 +15,7 @@ public interface OfflinePlayer extends ServerOperator, AnimalTamer, Configuratio
      *
      * @return true if they are online
      */
-    public boolean isOnline();
+    public bool isOnline();
 
     /**
      * Returns the name of this player
@@ -39,7 +39,7 @@ public interface OfflinePlayer extends ServerOperator, AnimalTamer, Configuratio
      *
      * @return true if banned, otherwise false
      */
-    public boolean isBanned();
+    public bool isBanned();
 
     /**
      * Bans or unbans this player
@@ -50,21 +50,21 @@ public interface OfflinePlayer extends ServerOperator, AnimalTamer, Configuratio
      *     functionality
      */
     [Obsolete]
-    public void setBanned(boolean banned);
+    public void setBanned(bool banned);
 
     /**
      * Checks if this player is whitelisted or not
      *
      * @return true if whitelisted
      */
-    public boolean isWhitelisted();
+    public bool isWhitelisted();
 
     /**
      * Sets if this player is whitelisted or not
      *
      * @param value true if whitelisted
      */
-    public void setWhitelisted(boolean value);
+    public void setWhitelisted(bool value);
 
     /**
      * Gets a {@link Player} object that this represents, if there is one
@@ -105,7 +105,7 @@ public interface OfflinePlayer extends ServerOperator, AnimalTamer, Configuratio
      *
      * @return True if the player has played before, otherwise false
      */
-    public boolean hasPlayedBefore();
+    public bool hasPlayedBefore();
 
     /**
      * Gets the Location where the player will spawn at their bed, null if

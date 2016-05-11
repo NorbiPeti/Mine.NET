@@ -13,7 +13,7 @@ import java.util.Collection;
  */
 public class PortalCreateEvent extends WorldEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private final ArrayList<Block> blocks = new ArrayList<Block>();
     private CreateReason reason = CreateReason.FIRE;
 
@@ -33,11 +33,11 @@ public class PortalCreateEvent extends WorldEvent implements Cancellable {
         return this.blocks;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

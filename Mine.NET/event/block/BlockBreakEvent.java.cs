@@ -28,7 +28,7 @@ import org.bukkit.event.HandlerList;
  */
 public class BlockBreakEvent extends BlockExpEvent implements Cancellable {
     private final Player player;
-    private boolean cancel;
+    private bool cancel;
 
     public BlockBreakEvent(Block theBlock, final Player player) {
         super(theBlock, 0);
@@ -45,11 +45,11 @@ public class BlockBreakEvent extends BlockExpEvent implements Cancellable {
         return player;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 }

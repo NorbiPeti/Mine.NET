@@ -76,7 +76,7 @@ public class Vine extends MaterialData {
      * @param face The face to check.
      * @return Whether it is attached to that face.
      */
-    public boolean isOnFace(BlockFace face) {
+    public bool isOnFace(BlockFace face) {
         switch (face) {
             case WEST:
                 return (getData() & VINE_WEST) == VINE_WEST;

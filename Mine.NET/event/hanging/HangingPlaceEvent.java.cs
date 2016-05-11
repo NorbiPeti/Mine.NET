@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  */
 public class HangingPlaceEvent extends HangingEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final Player player;
     private final Block block;
     private final BlockFace blockFace;
@@ -51,11 +51,11 @@ public class HangingPlaceEvent extends HangingEvent implements Cancellable {
         return blockFace;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

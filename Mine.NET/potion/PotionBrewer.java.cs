@@ -36,5 +36,5 @@ public interface PotionBrewer {
      * @param type The type of the potion
      * @return The list of effects
      */
-    public Collection<PotionEffect> getEffects(PotionType type, boolean upgraded, boolean extended);
+    public Collection<PotionEffect> getEffects(PotionType type, bool upgraded, bool extended);
 }

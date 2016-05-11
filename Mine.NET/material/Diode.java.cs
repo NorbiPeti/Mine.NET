@@ -14,7 +14,7 @@ public class Diode extends MaterialData implements Directional, Redstone {
 
     protected static final BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
     protected static final int DEFAULT_DELAY = 1;
-    protected static final boolean DEFAULT_STATE = false;
+    protected static final bool DEFAULT_STATE = false;
 
     /**
      * Constructs a diode switched on, with a delay of 1 and facing the default
@@ -64,7 +64,7 @@ public class Diode extends MaterialData implements Directional, Redstone {
      *
      * @see BlockFace
      */
-    public Diode(BlockFace facingDirection, int delay, boolean state) {
+    public Diode(BlockFace facingDirection, int delay, bool state) {
         super(state ? Material.DIODE_BLOCK_ON : Material.DIODE_BLOCK_OFF);
         setFacingDirection(facingDirection);
         setDelay(delay);
@@ -203,7 +203,7 @@ public class Diode extends MaterialData implements Directional, Redstone {
      * @return true if the diode is powered
      */
     @Override
-    public boolean isPowered() {
+    public bool isPowered() {
         return getItemType() == Material.DIODE_BLOCK_ON;
     }
 }

@@ -135,7 +135,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param chunk The chunk to check
      * @return true if the chunk is loaded, otherwise false
      */
-    public boolean isChunkLoaded(Chunk chunk);
+    public bool isChunkLoaded(Chunk chunk);
 
     /**
      * Gets an array of all loaded {@link Chunk}s
@@ -158,7 +158,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param z Z-coordinate of the chunk
      * @return true if the chunk is loaded, otherwise false
      */
-    public boolean isChunkLoaded(int x, int z);
+    public bool isChunkLoaded(int x, int z);
 
     /**
      * Checks if the {@link Chunk} at the specified coordinates is loaded and
@@ -169,14 +169,14 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @return true if the chunk is loaded and in use by one or more players,
      *     otherwise false
      */
-    public boolean isChunkInUse(int x, int z);
+    public bool isChunkInUse(int x, int z);
 
     /**
      * Loads the {@link Chunk} at the specified coordinates
      * <p>
      * If the chunk does not exist, it will be generated.
      * <p>
-     * This method is analogous to {@link #loadChunk(int, int, boolean)} where
+     * This method is analogous to {@link #loadChunk(int, int, bool)} where
      * generate is true.
      *
      * @param x X-coordinate of the chunk
@@ -193,44 +193,44 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *     already exist
      * @return true if the chunk has loaded successfully, otherwise false
      */
-    public boolean loadChunk(int x, int z, boolean generate);
+    public bool loadChunk(int x, int z, bool generate);
 
     /**
      * Safely unloads and saves the {@link Chunk} at the specified coordinates
      * <p>
-     * This method is analogous to {@link #unloadChunk(int, int, boolean,
-     * boolean)} where safe and saveis true
+     * This method is analogous to {@link #unloadChunk(int, int, bool,
+     * bool)} where safe and saveis true
      *
      * @param chunk the chunk to unload
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    public boolean unloadChunk(Chunk chunk);
+    public bool unloadChunk(Chunk chunk);
 
     /**
      * Safely unloads and saves the {@link Chunk} at the specified coordinates
      * <p>
-     * This method is analogous to {@link #unloadChunk(int, int, boolean,
-     * boolean)} where safe and saveis true
+     * This method is analogous to {@link #unloadChunk(int, int, bool,
+     * bool)} where safe and saveis true
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    public boolean unloadChunk(int x, int z);
+    public bool unloadChunk(int x, int z);
 
     /**
      * Safely unloads and optionally saves the {@link Chunk} at the specified
      * coordinates
      * <p>
-     * This method is analogous to {@link #unloadChunk(int, int, boolean,
-     * boolean)} where save is true
+     * This method is analogous to {@link #unloadChunk(int, int, bool,
+     * bool)} where save is true
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
      * @param save Whether or not to save the chunk
      * @return true if the chunk has unloaded successfully, otherwise false
      */
-    public boolean unloadChunk(int x, int z, boolean save);
+    public bool unloadChunk(int x, int z, bool save);
 
     /**
      * Unloads and optionally saves the {@link Chunk} at the specified
@@ -245,20 +245,20 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * [Obsolete] it is never safe to remove a chunk in use
      */
     [Obsolete]
-    public boolean unloadChunk(int x, int z, boolean save, boolean safe);
+    public bool unloadChunk(int x, int z, bool save, bool safe);
 
     /**
      * Safely queues the {@link Chunk} at the specified coordinates for
      * unloading
      * <p>
      * This method is analogous to {@link #unloadChunkRequest(int, int,
-     * boolean)} where safe is true
+     * bool)} where safe is true
      *
      * @param x X-coordinate of the chunk
      * @param z Z-coordinate of the chunk
      * @return true is the queue attempt was successful, otherwise false
      */
-    public boolean unloadChunkRequest(int x, int z);
+    public bool unloadChunkRequest(int x, int z);
 
     /**
      * Queues the {@link Chunk} at the specified coordinates for unloading
@@ -268,7 +268,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param safe Controls whether to queue the chunk when players are nearby
      * @return Whether the chunk was actually queued
      */
-    public boolean unloadChunkRequest(int x, int z, boolean safe);
+    public bool unloadChunkRequest(int x, int z, bool safe);
 
     /**
      * Regenerates the {@link Chunk} at the specified coordinates
@@ -277,7 +277,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param z Z-coordinate of the chunk
      * @return Whether the chunk was actually regenerated
      */
-    public boolean regenerateChunk(int x, int z);
+    public bool regenerateChunk(int x, int z);
 
     /**
      * Resends the {@link Chunk} to all clients
@@ -289,7 +289,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * [Obsolete] This method is not guaranteed to work suitably across all client implementations.
      */
     [Obsolete]
-    public boolean refreshChunk(int x, int z);
+    public bool refreshChunk(int x, int z);
 
     /**
      * Drops an item at the specified {@link Location}
@@ -341,7 +341,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param type Type of the tree to create
      * @return true if the tree was created successfully, otherwise false
      */
-    public boolean generateTree(Location location, TreeType type);
+    public bool generateTree(Location location, TreeType type);
 
     /**
      * Creates a tree at the given {@link Location}
@@ -352,7 +352,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *     this method
      * @return true if the tree was created successfully, otherwise false
      */
-    public boolean generateTree(Location loc, TreeType type, BlockChangeDelegate delegate);
+    public bool generateTree(Location loc, TreeType type, BlockChangeDelegate delegate);
 
     /**
      * Creates a entity at the given {@link Location}
@@ -475,7 +475,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param z Z coordinate
      * @return True if it was successfully set.
      */
-    public boolean setSpawnLocation(int x, int y, int z);
+    public bool setSpawnLocation(int x, int y, int z);
 
     /**
      * Gets the relative in-game time of this world.
@@ -526,7 +526,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @return Whether there is an ongoing storm
      */
-    public boolean hasStorm();
+    public bool hasStorm();
 
     /**
      * Set whether there is a storm. A duration will be set for the new
@@ -534,7 +534,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @param hasStorm Whether there is rain and snow
      */
-    public void setStorm(boolean hasStorm);
+    public void setStorm(bool hasStorm);
 
     /**
      * Get the remaining time in ticks of the current conditions.
@@ -555,14 +555,14 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @return Whether there is thunder
      */
-    public boolean isThundering();
+    public bool isThundering();
 
     /**
      * Set whether it is thundering.
      *
      * @param thundering Whether it is thundering
      */
-    public void setThundering(boolean thundering);
+    public void setThundering(bool thundering);
 
     /**
      * Get the thundering duration.
@@ -587,7 +587,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param power The power of explosion, where 4F is TNT
      * @return false if explosion was canceled, otherwise true
      */
-    public boolean createExplosion(double x, double y, double z, float power);
+    public bool createExplosion(double x, double y, double z, float power);
 
     /**
      * Creates explosion at given coordinates with given power and optionally
@@ -600,7 +600,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param setFire Whether or not to set blocks on fire
      * @return false if explosion was canceled, otherwise true
      */
-    public boolean createExplosion(double x, double y, double z, float power, boolean setFire);
+    public bool createExplosion(double x, double y, double z, float power, bool setFire);
 
     /**
      * Creates explosion at given coordinates with given power and optionally
@@ -614,7 +614,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param breakBlocks Whether or not to have blocks be destroyed
      * @return false if explosion was canceled, otherwise true
      */
-    public boolean createExplosion(double x, double y, double z, float power, boolean setFire, boolean breakBlocks);
+    public bool createExplosion(double x, double y, double z, float power, bool setFire, bool breakBlocks);
 
     /**
      * Creates explosion at given coordinates with given power
@@ -623,7 +623,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param power The power of explosion, where 4F is TNT
      * @return false if explosion was canceled, otherwise true
      */
-    public boolean createExplosion(Location loc, float power);
+    public bool createExplosion(Location loc, float power);
 
     /**
      * Creates explosion at given coordinates with given power and optionally
@@ -634,7 +634,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param setFire Whether or not to set blocks on fire
      * @return false if explosion was canceled, otherwise true
      */
-    public boolean createExplosion(Location loc, float power, boolean setFire);
+    public bool createExplosion(Location loc, float power, bool setFire);
 
     /**
      * Gets the {@link Environment} type of this world
@@ -655,14 +655,14 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @return True if PVP is enabled
      */
-    public boolean getPVP();
+    public bool getPVP();
 
     /**
      * Sets the PVP setting for this world.
      *
      * @param pvp True/False whether PVP should be Enabled.
      */
-    public void setPVP(boolean pvp);
+    public void setPVP(bool pvp);
 
     /**
      * Gets the chunk generator for this world
@@ -789,7 +789,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *     raw biome temperature and rainfall
      * @return The empty snapshot.
      */
-    public ChunkSnapshot getEmptyChunkSnapshot(int x, int z, boolean includeBiome, boolean includeBiomeTempRain);
+    public ChunkSnapshot getEmptyChunkSnapshot(int x, int z, bool includeBiome, bool includeBiomeTempRain);
 
     /**
      * Sets the spawn flags for this.
@@ -799,21 +799,21 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param allowAnimals - if true, animals are allowed to spawn in this
      *     world.
      */
-    public void setSpawnFlags(boolean allowMonsters, boolean allowAnimals);
+    public void setSpawnFlags(bool allowMonsters, bool allowAnimals);
 
     /**
      * Gets whether animals can spawn in this world.
      *
      * @return whether animals can spawn in this world.
      */
-    public boolean getAllowAnimals();
+    public bool getAllowAnimals();
 
     /**
      * Gets whether monsters can spawn in this world.
      *
      * @return whether monsters can spawn in this world.
      */
-    public boolean getAllowMonsters();
+    public bool getAllowMonsters();
 
     /**
      * Gets the biome for the given block coordinates.
@@ -881,7 +881,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @return true if the world's spawn area will be kept loaded into memory.
      */
-    public boolean getKeepSpawnInMemory();
+    public bool getKeepSpawnInMemory();
 
     /**
      * Sets whether the world's spawn area should be kept loaded into memory
@@ -890,14 +890,14 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param keepLoaded if true then the world's spawn area will be kept
      *     loaded into memory.
      */
-    public void setKeepSpawnInMemory(boolean keepLoaded);
+    public void setKeepSpawnInMemory(bool keepLoaded);
 
     /**
      * Gets whether or not the world will automatically save
      *
      * @return true if the world will automatically save, otherwise false
      */
-    public boolean isAutoSave();
+    public bool isAutoSave();
 
     /**
      * Sets whether or not the world will automatically save
@@ -905,7 +905,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param value true if the world should automatically save, otherwise
      *     false
      */
-    public void setAutoSave(boolean value);
+    public void setAutoSave(bool value);
 
     /**
      * Sets the Difficulty of the world.
@@ -940,7 +940,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      *
      * @return True if structures are being generated.
      */
-    public boolean canGenerateStructures();
+    public bool canGenerateStructures();
 
     /**
      * Gets the world's ticks per animal spawns value
@@ -959,7 +959,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * <p>
      * <b>Note:</b>
      * If set to 0, animal spawning will be disabled for this world. We
-     * recommend using {@link #setSpawnFlags(boolean, boolean)} to control
+     * recommend using {@link #setSpawnFlags(bool, bool)} to control
      * this instead.
      * <p>
      * Minecraft default: 400.
@@ -985,7 +985,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * <p>
      * <b>Note:</b>
      * If set to 0, animal spawning will be disabled for this world. We
-     * recommend using {@link #setSpawnFlags(boolean, boolean)} to control
+     * recommend using {@link #setSpawnFlags(bool, bool)} to control
      * this instead.
      * <p>
      * Minecraft default: 400.
@@ -1012,7 +1012,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * <p>
      * <b>Note:</b>
      * If set to 0, monsters spawning will be disabled for this world. We
-     * recommend using {@link #setSpawnFlags(boolean, boolean)} to control
+     * recommend using {@link #setSpawnFlags(bool, bool)} to control
      * this instead.
      * <p>
      * Minecraft default: 1.
@@ -1038,7 +1038,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * <p>
      * <b>Note:</b>
      * If set to 0, monsters spawning will be disabled for this world. We
-     * recommend using {@link #setSpawnFlags(boolean, boolean)} to control
+     * recommend using {@link #setSpawnFlags(bool, bool)} to control
      * this instead.
      * <p>
      * Minecraft default: 1.
@@ -1179,7 +1179,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param value Value to set rule to
      * @return True if rule was set
      */
-    public boolean setGameRuleValue(String rule, String value);
+    public bool setGameRuleValue(String rule, String value);
 
     /**
      * Checks if string is a valid game rule
@@ -1187,7 +1187,7 @@ public interface World extends PluginMessageRecipient, Metadatable {
      * @param rule Rule to check
      * @return True if rule exists
      */
-    public boolean isGameRule(String rule);
+    public bool isGameRule(String rule);
 
     /**
      * Gets the world border for this world.

@@ -13,7 +13,7 @@ import org.bukkit.event.HandlerList;
 public class EntityCreatePortalEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final List<BlockState> blocks;
-    private boolean cancelled = false;
+    private bool cancelled = false;
     private PortalType type = PortalType.CUSTOM;
 
     public EntityCreatePortalEvent(LivingEntity what, final List<BlockState> blocks, final PortalType type) {
@@ -37,11 +37,11 @@ public class EntityCreatePortalEvent extends EntityEvent implements Cancellable 
         return blocks;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

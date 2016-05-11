@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
 public class PlayerAchievementAwardedEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private final Achievement achievement;
-    private boolean isCancelled = false;
+    private bool isCancelled = false;
 
     public PlayerAchievementAwardedEvent(Player player, Achievement achievement) {
         super(player);
@@ -27,11 +27,11 @@ public class PlayerAchievementAwardedEvent extends PlayerEvent implements Cancel
         return achievement;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return isCancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.isCancelled = cancel;
     }
 

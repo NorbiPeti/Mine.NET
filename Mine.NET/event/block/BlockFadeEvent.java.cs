@@ -20,7 +20,7 @@ import org.bukkit.event.HandlerList;
  */
 public class BlockFadeEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final BlockState newState;
 
     public BlockFadeEvent(Block block, final BlockState newState) {
@@ -40,11 +40,11 @@ public class BlockFadeEvent extends BlockEvent implements Cancellable {
         return newState;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

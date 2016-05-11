@@ -13,7 +13,7 @@ import org.bukkit.inventory.BrewerInventory;
 public class BrewEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private BrewerInventory contents;
-    private boolean cancelled;
+    private bool cancelled;
 
     public BrewEvent(Block brewer, BrewerInventory contents) {
         super(brewer);
@@ -29,11 +29,11 @@ public class BrewEvent extends BlockEvent implements Cancellable {
         return contents;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

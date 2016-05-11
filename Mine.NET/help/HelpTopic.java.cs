@@ -30,7 +30,7 @@ public abstract class HelpTopic {
      * @param player The Player in question.
      * @return True of the Player can see this help topic, false otherwise.
      */
-    public abstract boolean canSee(CommandSender player);
+    public abstract bool canSee(CommandSender player);
 
     /**
      * Allows the server administrator to override the permission required to

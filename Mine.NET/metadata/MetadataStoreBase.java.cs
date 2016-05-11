@@ -71,7 +71,7 @@ public abstract class MetadataStoreBase<T> {
      * @param metadataKey the unique metadata key being queried.
      * @return the existence of the metadataKey within subject.
      */
-    public synchronized boolean hasMetadata(T subject, String metadataKey) {
+    public synchronized bool hasMetadata(T subject, String metadataKey) {
         String key = disambiguate(subject, metadataKey);
         return metadataMap.containsKey(key);
     }

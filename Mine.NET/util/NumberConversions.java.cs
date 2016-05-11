@@ -102,11 +102,11 @@ public sealed class NumberConversions {
         return 0;
     }
 
-    public static boolean isFinite(double d) {
+    public static bool isFinite(double d) {
         return Math.abs(d) <= Double.MAX_VALUE;
     }
 
-    public static boolean isFinite(float f) {
+    public static bool isFinite(float f) {
         return Math.abs(f) <= Float.MAX_VALUE;
     }
 

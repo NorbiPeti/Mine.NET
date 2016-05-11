@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerItemHeldEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private final int previous;
     private final int current;
 
@@ -37,11 +37,11 @@ public class PlayerItemHeldEvent extends PlayerEvent implements Cancellable {
         return current;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

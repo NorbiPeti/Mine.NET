@@ -177,7 +177,7 @@ public interface Block extends Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    void setData(byte data, boolean applyPhysics);
+    void setData(byte data, bool applyPhysics);
 
     /**
      * Sets the type of this block
@@ -192,7 +192,7 @@ public interface Block extends Metadatable {
      * @param type Material to change this block to
      * @param applyPhysics False to cancel physics on the changed block.
      */
-    void setType(Material type, boolean applyPhysics);
+    void setType(Material type, bool applyPhysics);
 
     /**
      * Sets the type-id of this block
@@ -202,7 +202,7 @@ public interface Block extends Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    boolean setTypeId(int type);
+    bool setTypeId(int type);
 
     /**
      * Sets the type-id of this block
@@ -213,7 +213,7 @@ public interface Block extends Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    boolean setTypeId(int type, boolean applyPhysics);
+    bool setTypeId(int type, bool applyPhysics);
 
     /**
      * Sets the type-id of this block
@@ -225,7 +225,7 @@ public interface Block extends Metadatable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    boolean setTypeIdAndData(int type, byte data, boolean applyPhysics);
+    bool setTypeIdAndData(int type, byte data, bool applyPhysics);
 
     /**
      * Gets the face relation of this block compared to the given block.
@@ -275,14 +275,14 @@ public interface Block extends Metadatable {
      *
      * @return True if the block is powered.
      */
-    boolean isBlockPowered();
+    bool isBlockPowered();
 
     /**
      * Returns true if the block is being indirectly powered by Redstone.
      *
      * @return True if the block is indirectly powered.
      */
-    boolean isBlockIndirectlyPowered();
+    bool isBlockIndirectlyPowered();
 
     /**
      * Returns true if the block face is being powered by Redstone.
@@ -290,7 +290,7 @@ public interface Block extends Metadatable {
      * @param face The block face
      * @return True if the block face is powered.
      */
-    boolean isBlockFacePowered(BlockFace face);
+    bool isBlockFacePowered(BlockFace face);
 
     /**
      * Returns true if the block face is being indirectly powered by Redstone.
@@ -298,7 +298,7 @@ public interface Block extends Metadatable {
      * @param face The block face
      * @return True if the block face is indirectly powered.
      */
-    boolean isBlockFaceIndirectlyPowered(BlockFace face);
+    bool isBlockFaceIndirectlyPowered(BlockFace face);
 
     /**
      * Returns the redstone power being provided to this block face
@@ -324,7 +324,7 @@ public interface Block extends Metadatable {
      *
      * @return true if this block is empty
      */
-    boolean isEmpty();
+    bool isEmpty();
 
     /**
      * Checks if this block is liquid.
@@ -335,7 +335,7 @@ public interface Block extends Metadatable {
      *
      * @return true if this block is liquid
      */
-    boolean isLiquid();
+    bool isLiquid();
 
     /**
      * Gets the temperature of the biome of this block
@@ -363,7 +363,7 @@ public interface Block extends Metadatable {
      *
      * @return true if the block was destroyed
      */
-    boolean breakNaturally();
+    bool breakNaturally();
 
     /**
      * Breaks the block and spawns items as if a player had digged it with a
@@ -372,7 +372,7 @@ public interface Block extends Metadatable {
      * @param tool The tool or item in hand used for digging
      * @return true if the block was destroyed
      */
-    boolean breakNaturally(ItemStack tool);
+    bool breakNaturally(ItemStack tool);
 
     /**
      * Returns a list of items which would drop by destroying this block

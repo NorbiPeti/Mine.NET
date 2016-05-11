@@ -10,11 +10,11 @@ import org.bukkit.event.HandlerList;
  */
 public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
     private float radius;
-    private boolean fire;
+    private bool fire;
 
-    public ExplosionPrimeEvent(Entity what, final float radius, final boolean fire) {
+    public ExplosionPrimeEvent(Entity what, final float radius, final bool fire) {
         super(what);
         this.cancel = false;
         this.radius = radius;
@@ -25,11 +25,11 @@ public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
         this(explosive, explosive.getYield(), explosive.isIncendiary());
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
@@ -56,7 +56,7 @@ public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
      *
      * @return true if this explosion will create fire
      */
-    public boolean getFire() {
+    public bool getFire() {
         return fire;
     }
 
@@ -65,7 +65,7 @@ public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
      *
      * @param fire true if you want this explosion to create fire
      */
-    public void setFire(boolean fire) {
+    public void setFire(bool fire) {
         this.fire = fire;
     }
 

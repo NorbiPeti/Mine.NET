@@ -9,19 +9,19 @@ import org.bukkit.event.HandlerList;
  */
 public class ThunderChangeEvent extends WeatherEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean canceled;
-    private final boolean to;
+    private bool canceled;
+    private final bool to;
 
-    public ThunderChangeEvent(World world, final boolean to) {
+    public ThunderChangeEvent(World world, final bool to) {
         super(world);
         this.to = to;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return canceled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         canceled = cancel;
     }
 
@@ -30,7 +30,7 @@ public class ThunderChangeEvent extends WeatherEvent implements Cancellable {
      *
      * @return true if the weather is being set to thundering, false otherwise
      */
-    public boolean toThunderState() {
+    public bool toThunderState() {
         return to;
     }
 

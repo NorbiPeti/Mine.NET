@@ -9,10 +9,10 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerToggleSprintEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private final boolean isSprinting;
-    private boolean cancel = false;
+    private final bool isSprinting;
+    private bool cancel = false;
 
-    public PlayerToggleSprintEvent(Player player, final boolean isSprinting) {
+    public PlayerToggleSprintEvent(Player player, final bool isSprinting) {
         super(player);
         this.isSprinting = isSprinting;
     }
@@ -22,15 +22,15 @@ public class PlayerToggleSprintEvent extends PlayerEvent implements Cancellable 
      *
      * @return sprinting state
      */
-    public boolean isSprinting() {
+    public bool isSprinting() {
         return isSprinting;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

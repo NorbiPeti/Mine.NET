@@ -52,7 +52,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      * @param value The value to set the property to.
      * @return True if the property was successfully set.
      */
-    public boolean setWindowProperty(InventoryView.Property prop, int value);
+    public bool setWindowProperty(InventoryView.Property prop, int value);
 
     /**
      * Gets the inventory view the player is currently viewing. If they do not
@@ -82,7 +82,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      * @return The newly opened inventory view, or null if it could not be
      *     opened.
      */
-    public InventoryView openWorkbench(Location location, boolean force);
+    public InventoryView openWorkbench(Location location, bool force);
 
     /**
      * Opens an empty enchanting inventory window with the player's inventory
@@ -95,7 +95,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      * @return The newly opened inventory view, or null if it could not be
      *     opened.
      */
-    public InventoryView openEnchanting(Location location, boolean force);
+    public InventoryView openEnchanting(Location location, bool force);
 
     /**
      * Opens an inventory window to the specified inventory view.
@@ -115,7 +115,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      * @return The newly opened inventory view, or null if it could not be
      * opened.
      */
-    public InventoryView openMerchant(Villager trader, boolean force);
+    public InventoryView openMerchant(Villager trader, bool force);
 
     /**
      * Force-closes the currently open inventory view for this player, if any.
@@ -165,7 +165,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      *
      * @return slumber state
      */
-    public boolean isSleeping();
+    public bool isSleeping();
 
     /**
      * Get the sleep ticks of the player. This value may be capped.
@@ -193,7 +193,7 @@ public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, Inv
      *
      * @return Whether they are blocking.
      */
-    public boolean isBlocking();
+    public bool isBlocking();
 
     /**
      * Get the total amount of experience required for the player to level

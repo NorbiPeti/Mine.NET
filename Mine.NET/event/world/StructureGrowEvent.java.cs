@@ -14,14 +14,14 @@ import org.bukkit.event.HandlerList;
  */
 public class StructureGrowEvent extends WorldEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled = false;
+    private bool cancelled = false;
     private final Location location;
     private final TreeType species;
-    private final boolean bonemeal;
+    private final bool bonemeal;
     private final Player player;
     private final List<BlockState> blocks;
 
-    public StructureGrowEvent(Location location, final TreeType species, final boolean bonemeal, final Player player, final List<BlockState> blocks) {
+    public StructureGrowEvent(Location location, final TreeType species, final bool bonemeal, final Player player, final List<BlockState> blocks) {
         super(location.getWorld());
         this.location = location;
         this.species = species;
@@ -54,7 +54,7 @@ public class StructureGrowEvent extends WorldEvent implements Cancellable {
      *
      * @return True if the structure was grown using bonemeal.
      */
-    public boolean isFromBonemeal() {
+    public bool isFromBonemeal() {
         return bonemeal;
     }
 
@@ -77,11 +77,11 @@ public class StructureGrowEvent extends WorldEvent implements Cancellable {
         return blocks;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

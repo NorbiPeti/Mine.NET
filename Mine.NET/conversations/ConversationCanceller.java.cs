@@ -20,7 +20,7 @@ public interface ConversationCanceller extends Cloneable {
      * @param input The input text from the user.
      * @return True to cancel the conversation, False otherwise.
      */
-    public boolean cancelBasedOnInput(ConversationContext context, String input);
+    public bool cancelBasedOnInput(ConversationContext context, String input);
 
     /**
      * Allows the {@link ConversationFactory} to duplicate this

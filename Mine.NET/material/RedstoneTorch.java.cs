@@ -49,7 +49,7 @@ public class RedstoneTorch extends Torch implements Redstone {
      *
      * @return true if powered, otherwise false
      */
-    public boolean isPowered() {
+    public bool isPowered() {
         return getItemType() == Material.REDSTONE_TORCH_ON;
     }
 

@@ -84,8 +84,8 @@ public class YamlConfiguration extends FileConfiguration {
     protected String parseHeader(String input) {
         String[] lines = input.split("\r?\n", -1);
         StringBuilder result = new StringBuilder();
-        boolean readingHeader = true;
-        boolean foundHeader = false;
+        bool readingHeader = true;
+        bool foundHeader = false;
 
         for (int i = 0; (i < lines.length) && (readingHeader); i++) {
             String line = lines[i];
@@ -133,7 +133,7 @@ public class YamlConfiguration extends FileConfiguration {
 
         StringBuilder builder = new StringBuilder();
         String[] lines = header.split("\r?\n", -1);
-        boolean startedHeader = false;
+        bool startedHeader = false;
 
         for (int i = lines.length - 1; i >= 0; i--) {
             builder.insert(0, "\n");

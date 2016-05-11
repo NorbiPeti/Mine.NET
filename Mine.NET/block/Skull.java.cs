@@ -12,7 +12,7 @@ public interface Skull extends BlockState {
      *
      * @return true if the skull has an owner
      */
-    public boolean hasOwner();
+    public bool hasOwner();
 
     /**
      * Gets the owner of the skull, if one exists
@@ -30,7 +30,7 @@ public interface Skull extends BlockState {
      * @param name the new owner of the skull
      * @return true if the owner was successfully set
      */
-    public boolean setOwner(String name);
+    public bool setOwner(String name);
 
     /**
      * Gets the rotation of the skull in the world

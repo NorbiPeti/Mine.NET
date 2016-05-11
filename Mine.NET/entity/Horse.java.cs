@@ -171,7 +171,7 @@ public interface Horse extends Animals, Vehicle, InventoryHolder, Tameable {
      *
      * @return true if the horse has chest storage
      */
-    public boolean isCarryingChest();
+    public bool isCarryingChest();
 
     /**
      * Sets whether the horse has a chest equipped.
@@ -179,7 +179,7 @@ public interface Horse extends Animals, Vehicle, InventoryHolder, Tameable {
      *
      * @param chest true if the horse should have a chest
      */
-    public void setCarryingChest(boolean chest);
+    public void setCarryingChest(bool chest);
 
     /**
      * Gets the domestication level of this horse.

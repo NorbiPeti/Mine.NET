@@ -50,7 +50,7 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
      *
      * @return true if powered, otherwise false
      */
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -59,7 +59,7 @@ public class Lever extends SimpleAttachableMaterialData implements Redstone {
      *
      * @param isPowered whether the lever should be powered or not
      */
-    public void setPowered(boolean isPowered) {
+    public void setPowered(bool isPowered) {
         setData((byte) (isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 

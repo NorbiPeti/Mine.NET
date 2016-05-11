@@ -148,7 +148,7 @@ public abstract class Enchantment {
 
     private static final Map<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
     private static final Map<String, Enchantment> byName = new HashMap<String, Enchantment>();
-    private static boolean acceptingNew = true;
+    private static bool acceptingNew = true;
     private final int id;
 
     public Enchantment(int id) {
@@ -200,7 +200,7 @@ public abstract class Enchantment {
      * @param other The enchantment to check against
      * @return True if there is a conflict.
      */
-    public abstract boolean conflictsWith(Enchantment other);
+    public abstract bool conflictsWith(Enchantment other);
 
     /**
      * Checks if this Enchantment may be applied to the given {@link
@@ -212,10 +212,10 @@ public abstract class Enchantment {
      * @param item Item to test
      * @return True if the enchantment may be applied, otherwise False
      */
-    public abstract boolean canEnchantItem(ItemStack item);
+    public abstract bool canEnchantItem(ItemStack item);
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -262,7 +262,7 @@ public abstract class Enchantment {
      *
      * @return True if the server Implementation may add enchantments
      */
-    public static boolean isAcceptingRegistrations() {
+    public static bool isAcceptingRegistrations() {
         return acceptingNew;
     }
 

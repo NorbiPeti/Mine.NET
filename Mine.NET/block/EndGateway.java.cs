@@ -30,7 +30,7 @@ public interface EndGateway extends BlockState {
      * 
      * @return true if the gateway is teleporting to the exact location
      */
-    boolean isExactTeleport();
+    bool isExactTeleport();
 
     /**
      * Sets whether this gateway will teleport entities directly to
@@ -38,5 +38,5 @@ public interface EndGateway extends BlockState {
      * 
      * @param exact whether to teleport to the exact location
      */
-    void setExactTeleport(boolean exact);
+    void setExactTeleport(bool exact);
 }

@@ -89,7 +89,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(Material type, BlockFace face, boolean isOpen) {
+    public Door(Material type, BlockFace face, bool isOpen) {
         super(type);
         setTopHalf(false);
         setFacingDirection(face);
@@ -110,7 +110,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see Material#ACACIA_DOOR
      * @see Material#DARK_OAK_DOOR
      */
-    public Door(Material type, boolean isHingeRight) {
+    public Door(Material type, bool isHingeRight) {
         super(type);
         setTopHalf(true);
         setHinge(isHingeRight);
@@ -149,7 +149,7 @@ public class Door extends MaterialData implements Directional, Openable {
      * @see BlockFace#EAST
      * @see BlockFace#SOUTH
      */
-    public Door(TreeSpecies species, BlockFace face, boolean isOpen) {
+    public Door(TreeSpecies species, BlockFace face, bool isOpen) {
         this(getWoodDoorOfSpecies(species), face, isOpen);
     }
 
@@ -161,7 +161,7 @@ public class Door extends MaterialData implements Directional, Openable {
      *
      * @see TreeSpecies
      */
-    public Door(TreeSpecies species, boolean isHingeRight) {
+    public Door(TreeSpecies species, bool isHingeRight) {
         this(getWoodDoorOfSpecies(species), isHingeRight);
     }
 
@@ -219,21 +219,21 @@ public class Door extends MaterialData implements Directional, Openable {
     /**
      * Result is undefined if <code>isTopHalf()</code> is true.
      */
-    public boolean isOpen() {
+    public bool isOpen() {
         return ((getData() & 0x4) == 0x4);
     }
 
     /**
      * Set whether the door is open. Undefined if <code>isTopHalf()</code> is true.
      */
-    public void setOpen(boolean isOpen) {
+    public void setOpen(bool isOpen) {
         setData((byte) (isOpen ? (getData() | 0x4) : (getData() & ~0x4)));
     }
 
     /**
      * @return whether this is the top half of the door
      */
-    public boolean isTopHalf() {
+    public bool isTopHalf() {
         return ((getData() & 0x8) == 0x8);
     }
 
@@ -242,7 +242,7 @@ public class Door extends MaterialData implements Directional, Openable {
      *
      * @param isTopHalf True to make it the top half.
      */
-    public void setTopHalf(boolean isTopHalf) {
+    public void setTopHalf(bool isTopHalf) {
         setData((byte) (isTopHalf ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
@@ -316,7 +316,7 @@ public class Door extends MaterialData implements Directional, Openable {
      *
      * @return false for left hinge, true for right hinge
      */
-    public boolean getHinge() {
+    public bool getHinge() {
         return (getData() & 0x1) == 1;
     }
 
@@ -327,7 +327,7 @@ public class Door extends MaterialData implements Directional, Openable {
      *
      * @param isHingeRight True if the hinge is on the right hand side, false if the hinge is on the left hand side.
      */
-    public void setHinge(boolean isHingeRight) {
+    public void setHinge(bool isHingeRight) {
         setData((byte) (isHingeRight ? (getData() | 0x1) : (getData() & ~0x1)));
     }
 

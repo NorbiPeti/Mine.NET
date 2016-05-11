@@ -22,7 +22,7 @@ public abstract class RegexPrompt extends ValidatingPrompt {
     private RegexPrompt() {}
 
     @Override
-    protected boolean isInputValid(ConversationContext context, String input) {
+    protected bool isInputValid(ConversationContext context, String input) {
         return pattern.matcher(input).matches();
     }
 }

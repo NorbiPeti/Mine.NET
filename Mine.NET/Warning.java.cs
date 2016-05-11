@@ -65,7 +65,7 @@ public @interface Warning {
          *     specifies false for {@link Warning#value()}, true otherwise.
          *     </ul>
          */
-        public boolean printFor(Warning warning) {
+        public bool printFor(Warning warning) {
             if (this == DEFAULT) {
                 return warning == null || warning.value();
             }
@@ -98,7 +98,7 @@ public @interface Warning {
      *
      * @return false normally, or true to encourage warning printout
      */
-    boolean value() default false;
+    bool value() default false;
 
     /**
      * This can provide detailed information on why the event is deprecated.

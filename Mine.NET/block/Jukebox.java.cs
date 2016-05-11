@@ -25,12 +25,12 @@ public interface Jukebox extends BlockState {
      *
      * @return True if there is a record playing
      */
-    public boolean isPlaying();
+    public bool isPlaying();
 
     /**
      * Stop the jukebox playing and eject the current record
      *
      * @return True if a record was ejected; false if there was none playing
      */
-    public boolean eject();
+    public bool eject();
 }

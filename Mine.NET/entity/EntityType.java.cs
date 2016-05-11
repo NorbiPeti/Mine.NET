@@ -206,7 +206,7 @@ public enum EntityType {
     private String name;
     private Class<? extends Entity> clazz;
     private short typeId;
-    private boolean independent, living;
+    private bool independent, living;
 
     private static final Map<String, EntityType> NAME_MAP = new HashMap<String, EntityType>();
     private static final Map<Short, EntityType> ID_MAP = new HashMap<Short, EntityType>();
@@ -226,7 +226,7 @@ public enum EntityType {
         this(name, clazz, typeId, true);
     }
 
-    private EntityType(String name, Class<? extends Entity> clazz, int typeId, boolean independent) {
+    private EntityType(String name, Class<? extends Entity> clazz, int typeId, bool independent) {
         this.name = name;
         this.clazz = clazz;
         this.typeId = (short) typeId;
@@ -296,11 +296,11 @@ public enum EntityType {
      *
      * @return False if the entity type cannot be spawned
      */
-    public boolean isSpawnable() {
+    public bool isSpawnable() {
         return independent;
     }
 
-    public boolean isAlive() {
+    public bool isAlive() {
         return living;
     }
 }

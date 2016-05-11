@@ -19,7 +19,7 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
     }
 
     @Override
-    public YamlConfigurationOptions copyDefaults(boolean value) {
+    public YamlConfigurationOptions copyDefaults(bool value) {
         super.copyDefaults(value);
         return this;
     }
@@ -37,7 +37,7 @@ public class YamlConfigurationOptions extends FileConfigurationOptions {
     }
 
     @Override
-    public YamlConfigurationOptions copyHeader(boolean value) {
+    public YamlConfigurationOptions copyHeader(bool value) {
         super.copyHeader(value);
         return this;
     }

@@ -82,7 +82,7 @@ public interface Team {
      * @return true if friendly fire is enabled
      * @throws IllegalStateException if this team has been unregistered
      */
-    boolean allowFriendlyFire() throws IllegalStateException;
+    bool allowFriendlyFire() throws IllegalStateException;
 
     /**
      * Sets the team friendly fire state
@@ -90,7 +90,7 @@ public interface Team {
      * @param enabled true if friendly fire is to be allowed
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setAllowFriendlyFire(boolean enabled) throws IllegalStateException;
+    void setAllowFriendlyFire(bool enabled) throws IllegalStateException;
 
     /**
      * Gets the team's ability to see {@link PotionEffectType#INVISIBILITY
@@ -99,7 +99,7 @@ public interface Team {
      * @return true if team members can see invisible members
      * @throws IllegalStateException if this team has been unregistered
      */
-    boolean canSeeFriendlyInvisibles() throws IllegalStateException;
+    bool canSeeFriendlyInvisibles() throws IllegalStateException;
 
     /**
      * Sets the team's ability to see {@link PotionEffectType#INVISIBILITY
@@ -108,7 +108,7 @@ public interface Team {
      * @param enabled true if invisible teammates are to be visible
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setCanSeeFriendlyInvisibles(boolean enabled) throws IllegalStateException;
+    void setCanSeeFriendlyInvisibles(bool enabled) throws IllegalStateException;
 
     /**
      * Gets the team's ability to see name tags
@@ -202,7 +202,7 @@ public interface Team {
      * @see #removeEntry(String)
      */
     [Obsolete]
-    boolean removePlayer(OfflinePlayer player) throws IllegalStateException, IllegalArgumentException;
+    bool removePlayer(OfflinePlayer player) throws IllegalStateException, IllegalArgumentException;
 
     /**
      * Removes the entry from this team.
@@ -212,7 +212,7 @@ public interface Team {
      * @throws IllegalStateException if this team has been unregistered
      * @return if the entry was a part of this team
      */
-    boolean removeEntry(String entry) throws IllegalStateException, IllegalArgumentException;
+    bool removeEntry(String entry) throws IllegalStateException, IllegalArgumentException;
 
     /**
      * Unregisters this team from the Scoreboard
@@ -232,7 +232,7 @@ public interface Team {
      * @see #hasEntry(String)
      */
     [Obsolete]
-    boolean hasPlayer(OfflinePlayer player) throws IllegalArgumentException, IllegalStateException;
+    bool hasPlayer(OfflinePlayer player) throws IllegalArgumentException, IllegalStateException;
     /**
      * Checks to see if the specified entry is a member of this team.
      *
@@ -241,7 +241,7 @@ public interface Team {
      * @throws IllegalArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    boolean hasEntry(String entry) throws IllegalArgumentException, IllegalStateException;
+    bool hasEntry(String entry) throws IllegalArgumentException, IllegalStateException;
 
     /**
      * Get an option for this team

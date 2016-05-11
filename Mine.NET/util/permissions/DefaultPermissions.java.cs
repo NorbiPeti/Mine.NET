@@ -15,7 +15,7 @@ public sealed class DefaultPermissions {
         return registerPermission(perm, true);
     }
 
-    public static Permission registerPermission(Permission perm, boolean withLegacy) {
+    public static Permission registerPermission(Permission perm, bool withLegacy) {
         Permission result = perm;
 
         try {
@@ -60,12 +60,12 @@ public sealed class DefaultPermissions {
         return perm;
     }
 
-    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, Boolean> children) {
+    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, bool> children) {
         Permission perm = registerPermission(new Permission(name, desc, def, children));
         return perm;
     }
 
-    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, Boolean> children, Permission parent) {
+    public static Permission registerPermission(String name, String desc, PermissionDefault def, Map<String, bool> children, Permission parent) {
         Permission perm = registerPermission(name, desc, def, children);
         parent.getChildren().put(perm.getName(), true);
         return perm;

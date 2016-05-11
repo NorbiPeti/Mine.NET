@@ -12,7 +12,7 @@ public class CraftItemEvent extends InventoryClickEvent {
     private Recipe recipe;
 
     [Obsolete]
-    public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, boolean right, boolean shift) {
+    public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, bool right, bool shift) {
         this(recipe, what, type, slot, right ? (shift ? ClickType.SHIFT_RIGHT : ClickType.RIGHT) : (shift ? ClickType.SHIFT_LEFT : ClickType.LEFT), InventoryAction.PICKUP_ALL);
     }
 

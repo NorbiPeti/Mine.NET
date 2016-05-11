@@ -31,14 +31,14 @@ public class EnchantCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
         if (!testPermission(sender)) return true;
         if (args.length < 2) {
             sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
             return false;
         }
 
-        boolean force = false;
+        bool force = false;
         if (args.length > 2) {
             force = args[args.length > 3 ? 3 : 2].equalsIgnoreCase("force");
         }
@@ -92,7 +92,7 @@ public class EnchantCommand extends VanillaCommand {
                         }
 
                         Map<Enchantment, Integer> enchantments = item.getEnchantments();
-                        boolean conflicts = false;
+                        bool conflicts = false;
 
                         if (!force && !enchantments.isEmpty()) { // TODO: Improve this to use a "hasEnchantments" call
                             for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {

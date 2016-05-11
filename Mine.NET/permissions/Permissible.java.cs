@@ -15,7 +15,7 @@ public interface Permissible extends ServerOperator {
      * @param name Name of the permission
      * @return true if the permission is set, otherwise false
      */
-    public boolean isPermissionSet(String name);
+    public bool isPermissionSet(String name);
 
     /**
      * Checks if this object contains an override for the specified {@link
@@ -24,7 +24,7 @@ public interface Permissible extends ServerOperator {
      * @param perm Permission to check
      * @return true if the permission is set, otherwise false
      */
-    public boolean isPermissionSet(Permission perm);
+    public bool isPermissionSet(Permission perm);
 
     /**
      * Gets the value of the specified permission, if set.
@@ -35,7 +35,7 @@ public interface Permissible extends ServerOperator {
      * @param name Name of the permission
      * @return Value of the permission
      */
-    public boolean hasPermission(String name);
+    public bool hasPermission(String name);
 
     /**
      * Gets the value of the specified permission, if set.
@@ -46,7 +46,7 @@ public interface Permissible extends ServerOperator {
      * @param perm Permission to get
      * @return Value of the permission
      */
-    public boolean hasPermission(Permission perm);
+    public bool hasPermission(Permission perm);
 
     /**
      * Adds a new {@link PermissionAttachment} with a single permission by
@@ -58,7 +58,7 @@ public interface Permissible extends ServerOperator {
      * @param value Value of the permission
      * @return The PermissionAttachment that was just created
      */
-    public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value);
+    public PermissionAttachment addAttachment(Plugin plugin, String name, bool value);
 
     /**
      * Adds a new empty {@link PermissionAttachment} to this object
@@ -81,7 +81,7 @@ public interface Permissible extends ServerOperator {
      *     after
      * @return The PermissionAttachment that was just created
      */
-    public PermissionAttachment addAttachment(Plugin plugin, String name, boolean value, int ticks);
+    public PermissionAttachment addAttachment(Plugin plugin, String name, bool value, int ticks);
 
     /**
      * Temporarily adds a new empty {@link PermissionAttachment} to this

@@ -72,7 +72,7 @@ public interface FireworkMeta extends ItemMeta {
      *
      * @return true if it has effects, false if there are no effects
      */
-    boolean hasEffects();
+    bool hasEffects();
 
     /**
      * Gets the approximate height the firework will fly.

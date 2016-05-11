@@ -10,9 +10,9 @@ public class RegisteredListener {
     private final EventPriority priority;
     private final Plugin plugin;
     private final EventExecutor executor;
-    private final boolean ignoreCancelled;
+    private final bool ignoreCancelled;
 
-    public RegisteredListener(Listener listener, final EventExecutor executor, final EventPriority priority, final Plugin plugin, final boolean ignoreCancelled) {
+    public RegisteredListener(Listener listener, final EventExecutor executor, final EventPriority priority, final Plugin plugin, final bool ignoreCancelled) {
         this.listener = listener;
         this.priority = priority;
         this.plugin = plugin;
@@ -67,7 +67,7 @@ public class RegisteredListener {
      *
      * @return True when ignoring cancelled events
      */
-    public boolean isIgnoringCancelled() {
+    public bool isIgnoringCancelled() {
         return ignoreCancelled;
     }
 }

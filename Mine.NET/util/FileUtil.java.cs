@@ -18,7 +18,7 @@ public class FileUtil {
      * @param outFile the target filename
      * @return true on success
      */
-    public static boolean copy(File inFile, File outFile) {
+    public static bool copy(File inFile, File outFile) {
         if (!inFile.exists()) {
             return false;
         }

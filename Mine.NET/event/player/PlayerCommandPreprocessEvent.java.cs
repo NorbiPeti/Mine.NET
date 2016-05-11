@@ -47,7 +47,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private String message;
     private String format = "<%1$s> %2$s";
     private final Set<Player> recipients;
@@ -64,11 +64,11 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
         this.message = message;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

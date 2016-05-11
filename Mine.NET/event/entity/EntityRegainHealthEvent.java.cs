@@ -10,7 +10,7 @@ import org.bukkit.util.NumberConversions;
  */
 public class EntityRegainHealthEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private double amount;
     private final RegainReason regainReason;
 
@@ -68,12 +68,12 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

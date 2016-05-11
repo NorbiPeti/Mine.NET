@@ -11,17 +11,17 @@ import org.bukkit.event.HandlerList;
  */
 public class LeavesDecayEvent extends BlockEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
 
     public LeavesDecayEvent(Block block) {
         super(block);
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

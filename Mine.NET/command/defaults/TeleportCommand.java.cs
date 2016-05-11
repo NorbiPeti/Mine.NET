@@ -24,7 +24,7 @@ public class TeleportCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
         if (args.length < 1 || args.length > 4) {
             sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
@@ -83,11 +83,11 @@ public class TeleportCommand extends VanillaCommand {
     }
 
     private double getCoordinate(CommandSender sender, double current, String input, int min, int max) {
-        boolean relative = input.startsWith("~");
+        bool relative = input.startsWith("~");
         double result = relative ? current : 0;
 
         if (!relative || input.length() > 1) {
-            boolean exact = input.contains(".");
+            bool exact = input.contains(".");
             if (relative) input = input.substring(1);
 
             double testResult = getDouble(sender, input);

@@ -47,7 +47,7 @@ public interface NoteBlock extends BlockState {
      *
      * @return true if successful, otherwise false
      */
-    public boolean play();
+    public bool play();
 
     /**
      * Plays an arbitrary note with an arbitrary instrument
@@ -58,7 +58,7 @@ public interface NoteBlock extends BlockState {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public boolean play(byte instrument, byte note);
+    public bool play(byte instrument, byte note);
 
     /**
      * Plays an arbitrary note with an arbitrary instrument
@@ -68,5 +68,5 @@ public interface NoteBlock extends BlockState {
      * @return true if successful, otherwise false
      * @see Instrument Note
      */
-    public boolean play(Instrument instrument, Note note);
+    public bool play(Instrument instrument, Note note);
 }

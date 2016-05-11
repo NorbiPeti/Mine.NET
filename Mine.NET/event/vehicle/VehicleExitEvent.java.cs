@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class VehicleExitEvent extends VehicleEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final LivingEntity exited;
 
     public VehicleExitEvent(Vehicle vehicle, final LivingEntity exited) {
@@ -27,11 +27,11 @@ public class VehicleExitEvent extends VehicleEvent implements Cancellable {
         return exited;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

@@ -35,7 +35,7 @@ public sealed class MapCursorCollection {
      * @param cursor The MapCursor to remove.
      * @return Whether the cursor was removed successfully.
      */
-    public boolean removeCursor(MapCursor cursor) {
+    public bool removeCursor(MapCursor cursor) {
         return cursors.remove(cursor);
     }
 
@@ -89,7 +89,7 @@ public sealed class MapCursorCollection {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MapCursor addCursor(int x, int y, byte direction, byte type, boolean visible) {
+    public MapCursor addCursor(int x, int y, byte direction, byte type, bool visible) {
         return addCursor(new MapCursor((byte) x, (byte) y, direction, type, visible));
     }
 

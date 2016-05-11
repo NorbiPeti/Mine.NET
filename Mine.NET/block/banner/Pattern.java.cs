@@ -81,7 +81,7 @@ public class Pattern implements ConfigurationSerializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (obj == null) {
             return false;
         }

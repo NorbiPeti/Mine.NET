@@ -21,8 +21,8 @@ public class MultipleCommandAlias extends Command {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        boolean result = false;
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
+        bool result = false;
 
         for (Command command : commands) {
             result |= command.execute(sender, commandLabel, args);

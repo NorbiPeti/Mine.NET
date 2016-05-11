@@ -55,7 +55,7 @@ public class Pumpkin extends MaterialData implements Directional {
         super(type, data);
     }
 
-    public boolean isLit() {
+    public bool isLit() {
         return getItemType() == Material.JACK_O_LANTERN;
     }
 

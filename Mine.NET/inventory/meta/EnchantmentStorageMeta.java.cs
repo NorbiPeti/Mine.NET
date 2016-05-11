@@ -17,7 +17,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      *
      * @return true if an enchantment exists on this meta
      */
-    boolean hasStoredEnchants();
+    bool hasStoredEnchants();
 
     /**
      * Checks for storage of the specified enchantment.
@@ -25,7 +25,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      * @param ench enchantment to check
      * @return true if this enchantment is stored in this meta
      */
-    boolean hasStoredEnchant(Enchantment ench);
+    bool hasStoredEnchant(Enchantment ench);
 
     /**
      * Checks for the level of the stored enchantment.
@@ -54,7 +54,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      *     otherwise
      * @throws IllegalArgumentException if enchantment is null
      */
-    boolean addStoredEnchant(Enchantment ench, int level, boolean ignoreLevelRestriction);
+    bool addStoredEnchant(Enchantment ench, int level, bool ignoreLevelRestriction);
 
     /**
      * Remove the specified stored enchantment from this item meta.
@@ -64,7 +64,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      *     otherwise
      * @throws IllegalArgumentException if enchantment is null
      */
-    boolean removeStoredEnchant(Enchantment ench) throws IllegalArgumentException;
+    bool removeStoredEnchant(Enchantment ench) throws IllegalArgumentException;
 
     /**
      * Checks if the specified enchantment conflicts with any enchantments in
@@ -73,7 +73,7 @@ public interface EnchantmentStorageMeta extends ItemMeta {
      * @param ench enchantment to test
      * @return true if the enchantment conflicts, false otherwise
      */
-    boolean hasConflictingStoredEnchant(Enchantment ench);
+    bool hasConflictingStoredEnchant(Enchantment ench);
 
     EnchantmentStorageMeta clone();
 }

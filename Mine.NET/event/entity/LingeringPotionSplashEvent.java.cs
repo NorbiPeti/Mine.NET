@@ -17,7 +17,7 @@ import org.bukkit.event.HandlerList;
  */
 public class LingeringPotionSplashEvent extends ProjectileHitEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final AreaEffectCloud entity;
 
     public LingeringPotionSplashEvent(ThrownPotion potion, final AreaEffectCloud entity) {
@@ -39,11 +39,11 @@ public class LingeringPotionSplashEvent extends ProjectileHitEvent implements Ca
         return entity;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

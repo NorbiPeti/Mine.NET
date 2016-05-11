@@ -39,7 +39,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the meta was not created by this
      *     factory
      */
-    boolean isApplicable(ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
+    bool isApplicable(ItemMeta meta, final ItemStack stack) throws IllegalArgumentException;
 
     /**
      * This method checks the item meta to confirm that it is applicable (no
@@ -55,7 +55,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if the meta was not created by this
      *     factory
      */
-    boolean isApplicable(ItemMeta meta, final Material material) throws IllegalArgumentException;
+    bool isApplicable(ItemMeta meta, final Material material) throws IllegalArgumentException;
 
     /**
      * This method is used to compare two item meta data objects.
@@ -68,7 +68,7 @@ public interface ItemFactory {
      * @throws IllegalArgumentException if either meta was not created by this
      *     factory
      */
-    boolean equals(ItemMeta meta1, final ItemMeta meta2) throws IllegalArgumentException;
+    bool equals(ItemMeta meta1, final ItemMeta meta2) throws IllegalArgumentException;
 
     /**
      * Returns an appropriate item meta for the specified stack.

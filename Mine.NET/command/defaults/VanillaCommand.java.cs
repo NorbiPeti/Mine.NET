@@ -19,7 +19,7 @@ public abstract class VanillaCommand extends Command {
         super(name, description, usageMessage, aliases);
     }
 
-    public boolean matches(String input) {
+    public bool matches(String input) {
         return input.equalsIgnoreCase(this.getName());
     }
 
@@ -31,7 +31,7 @@ public abstract class VanillaCommand extends Command {
         return getInteger(sender, value, min, max, false);
     }
 
-    int getInteger(CommandSender sender, String value, int min, int max, boolean Throws) {
+    int getInteger(CommandSender sender, String value, int min, int max, bool Throws) {
         int i = min;
 
         try {

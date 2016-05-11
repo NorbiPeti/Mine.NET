@@ -15,7 +15,7 @@ public class PlayerSwapHandItemsEvent extends PlayerEvent implements Cancellable
     //
     private ItemStack mainHandItem;
     private ItemStack offHandItem;
-    private boolean cancelled;
+    private bool cancelled;
 
     public PlayerSwapHandItemsEvent(Player player, ItemStack mainHandItem, ItemStack offHandItem) {
         super(player);
@@ -61,12 +61,12 @@ public class PlayerSwapHandItemsEvent extends PlayerEvent implements Cancellable
     }
 
     @Override
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
     @Override
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class EntityTameEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final AnimalTamer owner;
 
     public EntityTameEvent(LivingEntity entity, final AnimalTamer owner) {
@@ -23,11 +23,11 @@ public class EntityTameEvent extends EntityEvent implements Cancellable {
         return (LivingEntity) entity;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

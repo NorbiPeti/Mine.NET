@@ -52,17 +52,17 @@ public class SimpleCommandMap implements CommandMap {
     /**
      * {@inheritDoc}
      */
-    public boolean register(String fallbackPrefix, Command command) {
+    public bool register(String fallbackPrefix, Command command) {
         return register(command.getName(), fallbackPrefix, command);
     }
 
     /**
      * {@inheritDoc}
      */
-    public boolean register(String label, String fallbackPrefix, Command command) {
+    public bool register(String label, String fallbackPrefix, Command command) {
         label = label.toLowerCase().trim();
         fallbackPrefix = fallbackPrefix.toLowerCase().trim();
-        boolean registered = register(label, command, false, fallbackPrefix);
+        bool registered = register(label, command, false, fallbackPrefix);
 
         Iterator<String> iterator = command.getAliases().iterator();
         while (iterator.hasNext()) {
@@ -93,7 +93,7 @@ public class SimpleCommandMap implements CommandMap {
      *     unique address
      * @return true if command was registered, false otherwise.
      */
-    private synchronized boolean register(String label, Command command, boolean isAlias, String fallbackPrefix) {
+    private synchronized bool register(String label, Command command, bool isAlias, String fallbackPrefix) {
         knownCommands.put(fallbackPrefix + ":" + label, command);
         if ((command instanceof VanillaCommand || isAlias) && knownCommands.containsKey(label)) {
             // Request is for an alias/fallback command and it conflicts with
@@ -102,7 +102,7 @@ public class SimpleCommandMap implements CommandMap {
             return false;
         }
 
-        boolean registered = true;
+        bool registered = true;
 
         // If the command exists but is an alias we overwrite it, otherwise we return
         Command conflict = knownCommands.get(label);
@@ -121,7 +121,7 @@ public class SimpleCommandMap implements CommandMap {
     /**
      * {@inheritDoc}
      */
-    public boolean dispatch(CommandSender sender, String commandLine) throws CommandException {
+    public bool dispatch(CommandSender sender, String commandLine) throws CommandException {
         String[] args = PATTERN_ON_SPACE.split(commandLine);
 
         if (args.length == 0) {

@@ -19,7 +19,7 @@ public interface SkullMeta extends ItemMeta {
      *
      * @return true if the skull has an owner
      */
-    boolean hasOwner();
+    bool hasOwner();
 
     /**
      * Sets the owner of the skull.
@@ -30,7 +30,7 @@ public interface SkullMeta extends ItemMeta {
      * @param owner the new owner of the skull
      * @return true if the owner was successfully set
      */
-    boolean setOwner(String owner);
+    bool setOwner(String owner);
 
     SkullMeta clone();
 }

@@ -12,7 +12,7 @@ import org.bukkit.block.BlockFace;
 public class Hopper extends MaterialData implements Directional, Redstone {
 
     protected static final BlockFace DEFAULT_DIRECTION = BlockFace.DOWN;
-    protected static final boolean DEFAULT_ACTIVE = true;
+    protected static final bool DEFAULT_ACTIVE = true;
 
     /**
      * Constructs a hopper facing the default direction (down) and initially
@@ -43,7 +43,7 @@ public class Hopper extends MaterialData implements Directional, Redstone {
      *
      * @see BlockFace
      */
-    public Hopper(BlockFace facingDirection, boolean isActive) {
+    public Hopper(BlockFace facingDirection, bool isActive) {
         super(Material.HOPPER);
         setFacingDirection(facingDirection);
         setActive(isActive);
@@ -88,7 +88,7 @@ public class Hopper extends MaterialData implements Directional, Redstone {
      * @param isActive True if the hopper is active, false if deactivated as if
      * powered by redstone
      */
-    public void setActive(boolean isActive) {
+    public void setActive(bool isActive) {
         setData((byte) (getData() & 0x7 | (isActive ? 0x0 : 0x8)));
     }
 
@@ -97,7 +97,7 @@ public class Hopper extends MaterialData implements Directional, Redstone {
      *
      * @return True if the hopper is active, false if deactivated
      */
-    public boolean isActive() {
+    public bool isActive() {
         return (getData() & 0x8) == 0;
     }
 
@@ -175,7 +175,7 @@ public class Hopper extends MaterialData implements Directional, Redstone {
      * @return true if the hopper is powered
      */
     @Override
-    public boolean isPowered() {
+    public bool isPowered() {
         return (getData() & 0x8) != 0;
     }
 }

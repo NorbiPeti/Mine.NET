@@ -33,7 +33,7 @@ public class Sapling extends Wood {
      * @param species the species of the tree block
      * @param isInstantGrowable true if the Sapling should grow when next ticked with bonemeal
      */
-    public Sapling(TreeSpecies species, boolean isInstantGrowable) {
+    public Sapling(TreeSpecies species, bool isInstantGrowable) {
         this(Material.SAPLING, species, isInstantGrowable);
     }
 
@@ -65,7 +65,7 @@ public class Sapling extends Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked
      * with bonemeal
      */
-    public Sapling(Material type, TreeSpecies species, boolean isInstantGrowable) {
+    public Sapling(Material type, TreeSpecies species, bool isInstantGrowable) {
         super(type, species);
         setIsInstantGrowable(isInstantGrowable);
     }
@@ -95,7 +95,7 @@ public class Sapling extends Wood {
      *
      * @return true if the Sapling would grow when next ticked with bonemeal
      */
-    public boolean isInstantGrowable() {
+    public bool isInstantGrowable() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -105,7 +105,7 @@ public class Sapling extends Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked
      * with bonemeal
      */
-    public void setIsInstantGrowable(boolean isInstantGrowable) {
+    public void setIsInstantGrowable(bool isInstantGrowable) {
         setData(isInstantGrowable ? (byte) ((getData() & 0x7) | 0x8) : (byte) (getData() & 0x7));
     }
 

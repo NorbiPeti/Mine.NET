@@ -89,7 +89,7 @@ public class PistonExtensionMaterial extends MaterialData implements Attachable 
      *
      * @return true if this piston is "sticky", or false
      */
-    public boolean isSticky() {
+    public bool isSticky() {
         return (getData() & 8) == 8;
     }
 
@@ -98,7 +98,7 @@ public class PistonExtensionMaterial extends MaterialData implements Attachable 
      *
      * @param sticky true if sticky, otherwise false
      */
-    public void setSticky(boolean sticky) {
+    public void setSticky(bool sticky) {
         setData((byte) (sticky ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 

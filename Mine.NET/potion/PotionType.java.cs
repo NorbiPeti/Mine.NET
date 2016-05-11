@@ -27,10 +27,10 @@ public enum PotionType {
     ;
 
     private final PotionEffectType effect;
-    private final boolean upgradeable;
-    private final boolean extendable;
+    private final bool upgradeable;
+    private final bool extendable;
 
-    PotionType(PotionEffectType effect, boolean upgradeable, boolean extendable) {
+    PotionType(PotionEffectType effect, bool upgradeable, bool extendable) {
         this.effect = effect;
         this.upgradeable = upgradeable;
         this.extendable = extendable;
@@ -40,7 +40,7 @@ public enum PotionType {
         return effect;
     }
 
-    public boolean isInstant() {
+    public bool isInstant() {
         return effect != null && effect.isInstant();
     }
     
@@ -51,7 +51,7 @@ public enum PotionType {
      * 
      * @return true if the potion type can be upgraded;
      */
-    public boolean isUpgradeable() {
+    public bool isUpgradeable() {
         return upgradeable;
     }
 
@@ -61,7 +61,7 @@ public enum PotionType {
      * 
      * @return true if the potion type can be extended
      */
-    public boolean isExtendable() {
+    public bool isExtendable() {
         return extendable;
     }
     

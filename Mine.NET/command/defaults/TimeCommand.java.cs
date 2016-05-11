@@ -26,7 +26,7 @@ public class TimeCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (args.length < 2) {
             sender.sendMessage(ChatColor.RED + "Incorrect usage. Correct usage:\n" + usageMessage);
             return false;

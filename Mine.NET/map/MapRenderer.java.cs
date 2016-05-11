@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
  */
 public abstract class MapRenderer {
 
-    private boolean contextual;
+    private bool contextual;
 
     /**
      * Initialize the map renderer base to be non-contextual. See {@link
@@ -23,7 +23,7 @@ public abstract class MapRenderer {
      * @param contextual Whether the renderer is contextual. See {@link
      *     #isContextual()}.
      */
-    public MapRenderer(boolean contextual) {
+    public MapRenderer(bool contextual) {
         this.contextual = contextual;
     }
 
@@ -33,7 +33,7 @@ public abstract class MapRenderer {
      *
      * @return True if contextual, false otherwise.
      */
-    final public boolean isContextual() {
+    final public bool isContextual() {
         return contextual;
     }
 

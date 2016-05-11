@@ -91,7 +91,7 @@ public interface Boat extends Vehicle {
      * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
      */
     [Obsolete]
-    public boolean getWorkOnLand();
+    public bool getWorkOnLand();
 
     /**
      * Set whether boats can work on land.
@@ -100,5 +100,5 @@ public interface Boat extends Vehicle {
      * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
      */
     [Obsolete]
-    public void setWorkOnLand(boolean workOnLand);
+    public void setWorkOnLand(bool workOnLand);
 }

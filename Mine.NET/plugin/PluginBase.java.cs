@@ -13,7 +13,7 @@ public abstract class PluginBase implements Plugin {
     }
 
     @Override
-    public final boolean equals(Object obj) {
+    public final bool equals(Object obj) {
         if (this == obj) {
             return true;
         }

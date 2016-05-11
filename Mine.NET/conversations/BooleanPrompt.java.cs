@@ -4,7 +4,7 @@ import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.BooleanUtils;
 
 /**
- * BooleanPrompt is the base class for any prompt that requires a boolean
+ * BooleanPrompt is the base class for any prompt that requires a bool
  * response from the user.
  */
 public abstract class BooleanPrompt extends ValidatingPrompt{
@@ -14,7 +14,7 @@ public abstract class BooleanPrompt extends ValidatingPrompt{
     }
 
     @Override
-    protected boolean isInputValid(ConversationContext context, String input) {
+    protected bool isInputValid(ConversationContext context, String input) {
         String[] accepted = {"true", "false", "on", "off", "yes", "no"};
         return ArrayUtils.contains(accepted, input.toLowerCase());
     }
@@ -25,12 +25,12 @@ public abstract class BooleanPrompt extends ValidatingPrompt{
     }
 
     /**
-     * Override this method to perform some action with the user's boolean
+     * Override this method to perform some action with the user's bool
      * response.
      *
      * @param context Context information about the conversation.
-     * @param input The user's boolean response.
+     * @param input The user's bool response.
      * @return The next {@link Prompt} in the prompt graph.
      */
-    protected abstract Prompt acceptValidatedInput(ConversationContext context, boolean input);
+    protected abstract Prompt acceptValidatedInput(ConversationContext context, bool input);
 }

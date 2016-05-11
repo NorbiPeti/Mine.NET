@@ -28,7 +28,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
         if (!testPermission(sender)) {
             return true;
         }
@@ -54,7 +54,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
         }
 
         final String respectTeams = args[4];
-        boolean teams = false;
+        bool teams = false;
 
         if (respectTeams.equalsIgnoreCase("true")) {
             teams = true;
@@ -107,7 +107,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
     }
 
     private int range(World world, double distance, double xRangeMin, double zRangeMin, double xRangeMax, double zRangeMax, Location[] locations) {
-        boolean flag = true;
+        bool flag = true;
         double max;
 
         int i;
@@ -157,7 +157,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
                     flag = true;
                 }
 
-                boolean swap = false;
+                bool swap = false;
 
                 if (loc2.getX() < xRangeMin) {
                     loc2.setX(xRangeMin);
@@ -204,7 +204,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
         }
     }
 
-    private double spread(World world, List<Player> list, Location[] locations, boolean teams) {
+    private double spread(World world, List<Player> list, Location[] locations, bool teams) {
         double distance = 0.0D;
         int i = 0;
         Map<Team, Location> hashmap = Maps.newHashMap();

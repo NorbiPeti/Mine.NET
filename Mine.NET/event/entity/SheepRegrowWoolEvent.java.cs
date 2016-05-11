@@ -9,18 +9,18 @@ import org.bukkit.event.HandlerList;
  */
 public class SheepRegrowWoolEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel;
+    private bool cancel;
 
     public SheepRegrowWoolEvent(Sheep sheep) {
         super(sheep);
         this.cancel = false;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

@@ -19,7 +19,7 @@ public class ExactMatchConversationCanceller implements ConversationCanceller {
     
     public void setConversation(Conversation conversation) {}
 
-    public boolean cancelBasedOnInput(ConversationContext context, String input) {
+    public bool cancelBasedOnInput(ConversationContext context, String input) {
         return input.equals(escapeSequence);
     }
 

@@ -101,6 +101,6 @@ public interface ServicesManager {
      * @param service service to check
      * @return whether there has been a registered provider
      */
-    public <T> boolean isProvidedFor(Class<T> service);
+    public <T> bool isProvidedFor(Class<T> service);
 
 }

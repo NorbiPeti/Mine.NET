@@ -18,8 +18,8 @@ public class FormattedCommandAlias extends Command {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        boolean result = false;
+    public bool execute(CommandSender sender, String commandLabel, String[] args) {
+        bool result = false;
         ArrayList<String> commands = new ArrayList<String>();
         for (String formatString : formatStrings) {
             try {
@@ -52,7 +52,7 @@ public class FormattedCommandAlias extends Command {
                 continue;
             }
 
-            boolean required = false;
+            bool required = false;
             if (formatString.charAt(index + 1) == '$') {
                 required = true;
                 // Move index past the second $
@@ -82,7 +82,7 @@ public class FormattedCommandAlias extends Command {
             // Convert position to 0 index
             position--;
 
-            boolean rest = false;
+            bool rest = false;
             if (index < formatString.length() && formatString.charAt(index) == '-') {
                 rest = true;
                 // Move index past the -
@@ -118,7 +118,7 @@ public class FormattedCommandAlias extends Command {
         return formatString;
     }
 
-    private static boolean inRange(int i, int j, int k) {
+    private static bool inRange(int i, int j, int k) {
         return i >= j && i <= k;
     }
 }

@@ -12,7 +12,7 @@ public abstract class NumericPrompt extends ValidatingPrompt{
     }
 
     @Override
-    protected boolean isInputValid(ConversationContext context, String input) {
+    protected bool isInputValid(ConversationContext context, String input) {
         return NumberUtils.isNumber(input) && isNumberValid(context, NumberUtils.createNumber(input));
     }
 
@@ -24,7 +24,7 @@ public abstract class NumericPrompt extends ValidatingPrompt{
      * @param input The number the player provided.
      * @return The validity of the player's input.
      */
-    protected boolean isNumberValid(ConversationContext context, Number input) {
+    protected bool isNumberValid(ConversationContext context, Number input) {
         return true;
     }
 

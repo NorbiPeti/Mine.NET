@@ -6,7 +6,7 @@ package org.bukkit.configuration;
  */
 public class ConfigurationOptions {
     private char pathSeparator = '.';
-    private boolean copyDefaults = false;
+    private bool copyDefaults = false;
     private final Configuration configuration;
 
     protected ConfigurationOptions(Configuration configuration) {
@@ -64,7 +64,7 @@ public class ConfigurationOptions {
      *
      * @return Whether or not defaults are directly copied
      */
-    public boolean copyDefaults() {
+    public bool copyDefaults() {
         return copyDefaults;
     }
 
@@ -83,7 +83,7 @@ public class ConfigurationOptions {
      * @param value Whether or not defaults are directly copied
      * @return This object, for chaining
      */
-    public ConfigurationOptions copyDefaults(boolean value) {
+    public ConfigurationOptions copyDefaults(bool value) {
         this.copyDefaults = value;
         return this;
     }

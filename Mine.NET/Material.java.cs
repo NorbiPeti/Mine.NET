@@ -1224,7 +1224,7 @@ public class Material
      *
      * @return True if this material is a block and does not block any light
      */
-    public boolean isTransparent() {
+    public bool isTransparent() {
         if (!isBlock()) {
             return false;
         }
@@ -1289,7 +1289,7 @@ public class Material
      *
      * @return True if this material is a block and can catch fire
      */
-    public boolean isFlammable() {
+    public bool isFlammable() {
         if (!isBlock()) {
             return false;
         }
@@ -1360,7 +1360,7 @@ public class Material
      *
      * @return True if this material is a block and can burn away
      */
-    public boolean isBurnable() {
+    public bool isBurnable() {
         if (!isBlock()) {
             return false;
         }
@@ -1413,7 +1413,7 @@ public class Material
      *
      * @return True if this material is a block and completely blocks vision
      */
-    public boolean isOccluding() {
+    public bool isOccluding() {
         if (!isBlock()) {
             return false;
         }
@@ -1503,7 +1503,7 @@ public class Material
     /**
      * @return True if this material is affected by gravity.
      */
-    public boolean hasGravity() {
+    public bool hasGravity() {
         if (!isBlock()) {
             return false;
         }

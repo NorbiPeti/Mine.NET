@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PigZapEvent extends EntityEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean canceled;
+    private bool canceled;
     private final PigZombie pigzombie;
     private final LightningStrike bolt;
 
@@ -21,11 +21,11 @@ public class PigZapEvent extends EntityEvent implements Cancellable {
         this.pigzombie = pigzombie;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return canceled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         canceled = cancel;
     }
 

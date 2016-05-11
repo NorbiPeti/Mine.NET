@@ -359,7 +359,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
      * @param max Maximum vector
      * @return whether this vector is in the AABB
      */
-    public boolean isInAABB(Vector min, Vector max) {
+    public bool isInAABB(Vector min, Vector max) {
         return x >= min.x && x <= max.x && y >= min.y && y <= max.y && z >= min.z && z <= max.z;
     }
 
@@ -370,7 +370,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
      * @param radius Sphere radius
      * @return whether this vector is in the sphere
      */
-    public boolean isInSphere(Vector origin, double radius) {
+    public bool isInSphere(Vector origin, double radius) {
         return (NumberConversions.square(origin.x - x) + NumberConversions.square(origin.y - y) + NumberConversions.square(origin.z - z)) <= NumberConversions.square(radius);
     }
 
@@ -538,7 +538,7 @@ public class Vector implements Cloneable, ConfigurationSerializable {
      * with epsilon.
      */
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (!(obj instanceof Vector)) {
             return false;
         }

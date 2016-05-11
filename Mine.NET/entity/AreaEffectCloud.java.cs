@@ -151,7 +151,7 @@ public interface AreaEffectCloud extends Entity {
      *
      * @return true if custom potion effects are applied
      */
-    boolean hasCustomEffects();
+    bool hasCustomEffects();
 
     /**
      * Gets an immutable list containing all custom potion effects applied to
@@ -172,7 +172,7 @@ public interface AreaEffectCloud extends Entity {
      * overwritten
      * @return true if the effect was added as a result of this call
      */
-    boolean addCustomEffect(PotionEffect effect, boolean overwrite);
+    bool addCustomEffect(PotionEffect effect, bool overwrite);
 
     /**
      * Removes a custom potion effect from this cloud.
@@ -180,7 +180,7 @@ public interface AreaEffectCloud extends Entity {
      * @param type the potion effect type to remove
      * @return true if the an effect was removed as a result of this call
      */
-    boolean removeCustomEffect(PotionEffectType type);
+    bool removeCustomEffect(PotionEffectType type);
 
     /**
      * Checks for a specific custom potion effect type on this cloud.
@@ -188,7 +188,7 @@ public interface AreaEffectCloud extends Entity {
      * @param type the potion effect type to check for
      * @return true if the potion has this effect
      */
-    boolean hasCustomEffect(PotionEffectType type);
+    bool hasCustomEffect(PotionEffectType type);
 
     /**
      * Removes all custom potion effects from this cloud.

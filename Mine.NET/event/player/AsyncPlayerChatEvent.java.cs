@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  * This event will sometimes fire synchronously, depending on how it was
  * triggered.
  * <p>
- * The constructor provides a boolean to indicate if the event was fired
+ * The constructor provides a bool to indicate if the event was fired
  * synchronously or asynchronously. When asynchronous, this event can be
  * called from any thread, sans the main thread, and has limited access to the
  * API.
@@ -25,7 +25,7 @@ import org.bukkit.event.HandlerList;
  */
 public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private String message;
     private String format = "<%1$s> %2$s";
     private final Set<Player> recipients;
@@ -38,7 +38,7 @@ public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
      * @param players the players to receive the message. This may be a lazy
      *     or unmodifiable collection.
      */
-    public AsyncPlayerChatEvent(boolean async, final Player who, final String message, final Set<Player> players) {
+    public AsyncPlayerChatEvent(bool async, final Player who, final String message, final Set<Player> players) {
         super(who, async);
         this.message = message;
         recipients = players;
@@ -121,11 +121,11 @@ public class AsyncPlayerChatEvent extends PlayerEvent implements Cancellable {
         return recipients;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel ;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

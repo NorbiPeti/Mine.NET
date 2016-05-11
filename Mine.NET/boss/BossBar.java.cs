@@ -68,7 +68,7 @@ public interface BossBar {
      * @param flag the flag to check
      * @return whether it has the flag
      */
-    boolean hasFlag(BarFlag flag);
+    bool hasFlag(BarFlag flag);
 
     /**
      * Sets the progress of the bar. Values should be between 0.0 (empty) and
@@ -119,25 +119,25 @@ public interface BossBar {
      *
      * @param visible visible status
      */
-    void setVisible(boolean visible);
+    void setVisible(bool visible);
 
     /**
      * Return if the boss bar is displayed to attached players.
      *
      * @return visible status
      */
-    boolean isVisible();
+    bool isVisible();
 
     /**
      * Shows the previously hidden boss bar to all attached players
-     * [Obsolete] {@link #setVisible(boolean)}
+     * [Obsolete] {@link #setVisible(bool)}
      */
     [Obsolete]
     void show();
 
     /**
      * Hides this boss bar from all attached players
-     * [Obsolete] {@link #setVisible(boolean)}
+     * [Obsolete] {@link #setVisible(bool)}
      */
     [Obsolete]
     void hide();

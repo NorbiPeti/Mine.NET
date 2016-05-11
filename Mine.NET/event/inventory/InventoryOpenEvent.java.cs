@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
 
     public InventoryOpenEvent(InventoryView transaction) {
         super(transaction);
@@ -35,7 +35,7 @@ public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
      *
      * @return true if this event is cancelled
      */
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
@@ -48,7 +48,7 @@ public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
      *
      * @param cancel true if you wish to cancel this event
      */
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

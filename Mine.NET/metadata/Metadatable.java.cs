@@ -36,7 +36,7 @@ public interface Metadatable {
      * @param metadataKey the unique metadata key being queried.
      * @return the existence of the metadataKey within subject.
      */
-    public boolean hasMetadata(String metadataKey);
+    public bool hasMetadata(String metadataKey);
 
     /**
      * Removes the given metadata value from the implementing object's

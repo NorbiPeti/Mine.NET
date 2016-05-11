@@ -7,12 +7,12 @@ public interface Openable {
      *
      * @return true if the door has swung counterclockwise around its hinge.
      */
-    boolean isOpen();
+    bool isOpen();
 
     /**
      * Configure this door to be either open or closed;
      *
      * @param isOpen True to open the door.
      */
-    void setOpen(boolean isOpen);
+    void setOpen(bool isOpen);
 }

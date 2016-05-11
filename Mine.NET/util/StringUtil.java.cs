@@ -48,7 +48,7 @@ public class StringUtil {
      * @throws NullPointerException if prefix is null
      * @throws IllegalArgumentException if string is null
      */
-    public static boolean startsWithIgnoreCase(String string, final String prefix) throws IllegalArgumentException, NullPointerException {
+    public static bool startsWithIgnoreCase(String string, final String prefix) throws IllegalArgumentException, NullPointerException {
         Validate.notNull(string, "Cannot check a null string for a match");
         if (string.length() < prefix.length()) {
             return false;

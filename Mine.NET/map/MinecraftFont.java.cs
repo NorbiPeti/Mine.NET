@@ -289,7 +289,7 @@ public class MinecraftFont extends MapFont {
         this(true);
     }
 
-    private MinecraftFont(boolean malleable) {
+    private MinecraftFont(bool malleable) {
         for (int i = 1; i < fontData.length; ++i) {
             char ch = (char) i;
             if (i >= 32 && i < 32 + fontChars.length()) {
@@ -297,7 +297,7 @@ public class MinecraftFont extends MapFont {
             }
 
             if (ch == ' ') {
-                setChar(ch, new CharacterSprite(spaceSize, 8, new boolean[spaceSize * 8]));
+                setChar(ch, new CharacterSprite(spaceSize, 8, new bool[spaceSize * 8]));
                 continue;
             }
 
@@ -312,7 +312,7 @@ public class MinecraftFont extends MapFont {
             }
             ++width;
 
-            boolean[] data = new boolean[width * 8];
+            bool[] data = new bool[width * 8];
             for (int r = 0; r < 8; ++r) {
                 for (int c = 0; c < width; ++c) {
                     data[r * width + c] = (rows[r] & (1 << c)) != 0;

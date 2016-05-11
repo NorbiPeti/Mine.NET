@@ -15,7 +15,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PotionSplashEvent extends ProjectileHitEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final Map<LivingEntity, Double> affectedEntities;
 
     public PotionSplashEvent(ThrownPotion potion, final Map<LivingEntity, Double> affectedEntities) {
@@ -75,11 +75,11 @@ public class PotionSplashEvent extends ProjectileHitEvent implements Cancellable
         }
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         cancelled = cancel;
     }
 

@@ -19,7 +19,7 @@ public class PlayerStatisticIncrementEvent extends PlayerEvent implements Cancel
     protected final Statistic statistic;
     private final int initialValue;
     private final int newValue;
-    private boolean isCancelled = false;
+    private bool isCancelled = false;
     private final EntityType entityType;
     private final Material material;
 
@@ -97,11 +97,11 @@ public class PlayerStatisticIncrementEvent extends PlayerEvent implements Cancel
         return material;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return isCancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.isCancelled = cancel;
     }
 

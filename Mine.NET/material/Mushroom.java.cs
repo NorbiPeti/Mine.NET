@@ -96,7 +96,7 @@ public class Mushroom extends MaterialData {
     /**
      * @return Whether this is a mushroom stem.
      */
-    public boolean isStem() {
+    public bool isStem() {
         return getData() == MushroomBlockTexture.STEM_SIDES.getData() || getData() == MushroomBlockTexture.ALL_STEM.getData();
     }
 
@@ -140,7 +140,7 @@ public class Mushroom extends MaterialData {
      * @param face The face to check.
      * @return True if it is painted.
      */
-    public boolean isFacePainted(BlockFace face) {
+    public bool isFacePainted(BlockFace face) {
         byte data = getData();
 
         if (data == MushroomBlockTexture.ALL_PORES.getData() || data == MushroomBlockTexture.STEM_SIDES.getData()
@@ -179,7 +179,7 @@ public class Mushroom extends MaterialData {
      * [Obsolete] Use MushroomBlockType cap options
      */
     [Obsolete]
-    public void setFacePainted(BlockFace face, boolean painted) {
+    public void setFacePainted(BlockFace face, bool painted) {
         if (painted == isFacePainted(face)) {
             return;
         }

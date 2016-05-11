@@ -10,7 +10,7 @@ import org.bukkit.util.Vector;
  */
 public class PlayerVelocityEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancel = false;
+    private bool cancel = false;
     private Vector velocity;
 
     public PlayerVelocityEvent(Player player, final Vector velocity) {
@@ -18,11 +18,11 @@ public class PlayerVelocityEvent extends PlayerEvent implements Cancellable {
         this.velocity = velocity;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

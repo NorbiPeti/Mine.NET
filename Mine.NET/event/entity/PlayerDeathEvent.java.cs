@@ -13,8 +13,8 @@ public class PlayerDeathEvent extends EntityDeathEvent {
     private String deathMessage = "";
     private int newLevel = 0;
     private int newTotalExp = 0;
-    private boolean keepLevel = false;
-    private boolean keepInventory = false;
+    private bool keepLevel = false;
+    private bool keepInventory = false;
 
     public PlayerDeathEvent(Player player, final List<ItemStack> drops, final int droppedExp, final String deathMessage) {
         this(player, drops, droppedExp, 0, deathMessage);
@@ -122,7 +122,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
      *
      * @return True if Player should keep all pre-death exp
      */
-    public boolean getKeepLevel() {
+    public bool getKeepLevel() {
         return keepLevel;
     }
 
@@ -137,7 +137,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
      *
      * @param keepLevel True to keep all current value levels
      */
-    public void setKeepLevel(boolean keepLevel) {
+    public void setKeepLevel(bool keepLevel) {
         this.keepLevel = keepLevel;
     }
 
@@ -146,7 +146,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
      *
      * @param keepInventory True to keep the inventory
      */
-    public void setKeepInventory(boolean keepInventory) {
+    public void setKeepInventory(bool keepInventory) {
         this.keepInventory = keepInventory;
     }
 
@@ -155,7 +155,7 @@ public class PlayerDeathEvent extends EntityDeathEvent {
      *
      * @return True if the player keeps inventory on death
      */
-    public boolean getKeepInventory() {
+    public bool getKeepInventory() {
         return keepInventory;
     }
 }

@@ -26,7 +26,7 @@ public interface BukkitTask {
      *
      * @return true if the task is run by main thread
      */
-    public boolean isSync();
+    public bool isSync();
 
     /**
      * Will attempt to cancel this task.

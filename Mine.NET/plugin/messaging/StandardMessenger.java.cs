@@ -165,7 +165,7 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public boolean isReservedChannel(String channel) {
+    public bool isReservedChannel(String channel) {
         validateChannel(channel);
 
         return channel.equals("REGISTER") || channel.equals("UNREGISTER");
@@ -355,7 +355,7 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public boolean isRegistrationValid(PluginMessageListenerRegistration registration) {
+    public bool isRegistrationValid(PluginMessageListenerRegistration registration) {
         if (registration == null) {
             throw new IllegalArgumentException("Registration cannot be null");
         }
@@ -371,7 +371,7 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public boolean isIncomingChannelRegistered(Plugin plugin, String channel) {
+    public bool isIncomingChannelRegistered(Plugin plugin, String channel) {
         if (plugin == null) {
             throw new IllegalArgumentException("Plugin cannot be null");
         }
@@ -392,7 +392,7 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public boolean isOutgoingChannelRegistered(Plugin plugin, String channel) {
+    public bool isOutgoingChannelRegistered(Plugin plugin, String channel) {
         if (plugin == null) {
             throw new IllegalArgumentException("Plugin cannot be null");
         }

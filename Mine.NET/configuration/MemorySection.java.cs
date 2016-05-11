@@ -68,7 +68,7 @@ public class MemorySection implements ConfigurationSection {
         this.fullPath = createPath(parent, path);
     }
 
-    public Set<String> getKeys(boolean deep) {
+    public Set<String> getKeys(bool deep) {
         Set<String> result = new LinkedHashSet<String>();
 
         Configuration root = getRoot();
@@ -85,7 +85,7 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
-    public Map<String, Object> getValues(boolean deep) {
+    public Map<String, Object> getValues(bool deep) {
         Map<String, Object> result = new LinkedHashMap<String, Object>();
 
         Configuration root = getRoot();
@@ -102,11 +102,11 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
-    public boolean contains(String path) {
+    public bool contains(String path) {
         return get(path) != null;
     }
 
-    public boolean isSet(String path) {
+    public bool isSet(String path) {
         Configuration root = getRoot();
         if (root == null) {
             return false;
@@ -286,7 +286,7 @@ public class MemorySection implements ConfigurationSection {
         return (val != null) ? val.toString() : def;
     }
 
-    public boolean isString(String path) {
+    public bool isString(String path) {
         Object val = get(path);
         return val instanceof String;
     }
@@ -301,24 +301,24 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof Number) ? toInt(val) : def;
     }
 
-    public boolean isInt(String path) {
+    public bool isInt(String path) {
         Object val = get(path);
         return val instanceof Integer;
     }
 
-    public boolean getBoolean(String path) {
+    public bool getBoolean(String path) {
         Object def = getDefault(path);
-        return getBoolean(path, (def instanceof Boolean) ? (Boolean) def : false);
+        return getBoolean(path, (def instanceof bool) ? (bool) def : false);
     }
 
-    public boolean getBoolean(String path, boolean def) {
+    public bool getBoolean(String path, bool def) {
         Object val = get(path, def);
-        return (val instanceof Boolean) ? (Boolean) val : def;
+        return (val instanceof bool) ? (bool) val : def;
     }
 
-    public boolean isBoolean(String path) {
+    public bool isBoolean(String path) {
         Object val = get(path);
-        return val instanceof Boolean;
+        return val instanceof bool;
     }
 
     public double getDouble(String path) {
@@ -331,7 +331,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof Number) ? toDouble(val) : def;
     }
 
-    public boolean isDouble(String path) {
+    public bool isDouble(String path) {
         Object val = get(path);
         return val instanceof Double;
     }
@@ -346,7 +346,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof Number) ? toLong(val) : def;
     }
 
-    public boolean isLong(String path) {
+    public bool isLong(String path) {
         Object val = get(path);
         return val instanceof Long;
     }
@@ -362,7 +362,7 @@ public class MemorySection implements ConfigurationSection {
         return (List<?>) ((val instanceof List) ? val : def);
     }
 
-    public boolean isList(String path) {
+    public bool isList(String path) {
         Object val = get(path);
         return val instanceof List;
     }
@@ -412,22 +412,22 @@ public class MemorySection implements ConfigurationSection {
         return result;
     }
 
-    public List<Boolean> getBooleanList(String path) {
+    public List<bool> getBooleanList(String path) {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new ArrayList<Boolean>(0);
+            return new ArrayList<bool>(0);
         }
 
-        List<Boolean> result = new ArrayList<Boolean>();
+        List<bool> result = new ArrayList<bool>();
 
         for (Object object : list) {
-            if (object instanceof Boolean) {
-                result.add((Boolean) object);
+            if (object instanceof bool) {
+                result.add((bool) object);
             } else if (object instanceof String) {
-                if (Boolean.TRUE.toString().equals(object)) {
+                if (bool.TRUE.toString().equals(object)) {
                     result.add(true);
-                } else if (Boolean.FALSE.toString().equals(object)) {
+                } else if (bool.FALSE.toString().equals(object)) {
                     result.add(false);
                 }
             }
@@ -625,7 +625,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof Vector) ? (Vector) val : def;
     }
 
-    public boolean isVector(String path) {
+    public bool isVector(String path) {
         Object val = get(path);
         return val instanceof Vector;
     }
@@ -640,7 +640,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof OfflinePlayer) ? (OfflinePlayer) val : def;
     }
 
-    public boolean isOfflinePlayer(String path) {
+    public bool isOfflinePlayer(String path) {
         Object val = get(path);
         return val instanceof OfflinePlayer;
     }
@@ -655,7 +655,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof ItemStack) ? (ItemStack) val : def;
     }
 
-    public boolean isItemStack(String path) {
+    public bool isItemStack(String path) {
         Object val = get(path);
         return val instanceof ItemStack;
     }
@@ -670,7 +670,7 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof Color) ? (Color) val : def;
     }
 
-    public boolean isColor(String path) {
+    public bool isColor(String path) {
         Object val = get(path);
         return val instanceof Color;
     }
@@ -685,13 +685,13 @@ public class MemorySection implements ConfigurationSection {
         return (val instanceof ConfigurationSection) ? createSection(path) : null;
     }
 
-    public boolean isConfigurationSection(String path) {
+    public bool isConfigurationSection(String path) {
         Object val = get(path);
         return val instanceof ConfigurationSection;
     }
 
-    protected boolean isPrimitiveWrapper(Object input) {
-        return input instanceof Integer || input instanceof Boolean ||
+    protected bool isPrimitiveWrapper(Object input) {
+        return input instanceof Integer || input instanceof bool ||
                 input instanceof Character || input instanceof Byte ||
                 input instanceof Short || input instanceof Double ||
                 input instanceof Long || input instanceof Float;
@@ -705,7 +705,7 @@ public class MemorySection implements ConfigurationSection {
         return (defaults == null) ? null : defaults.get(createPath(this, path));
     }
 
-    protected void mapChildrenKeys(Set<String> output, ConfigurationSection section, boolean deep) {
+    protected void mapChildrenKeys(Set<String> output, ConfigurationSection section, bool deep) {
         if (section instanceof MemorySection) {
             MemorySection sec = (MemorySection) section;
 
@@ -726,7 +726,7 @@ public class MemorySection implements ConfigurationSection {
         }
     }
 
-    protected void mapChildrenValues(Map<String, Object> output, ConfigurationSection section, boolean deep) {
+    protected void mapChildrenValues(Map<String, Object> output, ConfigurationSection section, bool deep) {
         if (section instanceof MemorySection) {
             MemorySection sec = (MemorySection) section;
 

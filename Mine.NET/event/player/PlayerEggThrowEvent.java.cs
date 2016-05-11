@@ -11,11 +11,11 @@ import org.bukkit.event.HandlerList;
 public class PlayerEggThrowEvent extends PlayerEvent {
     private static final HandlerList handlers = new HandlerList();
     private final Egg egg;
-    private boolean hatching;
+    private bool hatching;
     private EntityType hatchType;
     private byte numHatches;
 
-    public PlayerEggThrowEvent(Player player, final Egg egg, final boolean hatching, final byte numHatches, final EntityType hatchingType) {
+    public PlayerEggThrowEvent(Player player, final Egg egg, final bool hatching, final byte numHatches, final EntityType hatchingType) {
         super(player);
         this.egg = egg;
         this.hatching = hatching;
@@ -36,9 +36,9 @@ public class PlayerEggThrowEvent extends PlayerEvent {
      * Gets whether the egg is hatching or not. Will be what the server
      * would've done without interaction.
      *
-     * @return boolean Whether the egg is going to hatch or not
+     * @return bool Whether the egg is going to hatch or not
      */
-    public boolean isHatching() {
+    public bool isHatching() {
         return hatching;
     }
 
@@ -48,7 +48,7 @@ public class PlayerEggThrowEvent extends PlayerEvent {
      * @param hatching true if you want the egg to hatch, false if you want it
      *     not to
      */
-    public void setHatching(boolean hatching) {
+    public void setHatching(bool hatching) {
         this.hatching = hatching;
     }
 
@@ -89,7 +89,7 @@ public class PlayerEggThrowEvent extends PlayerEvent {
     /**
      * Change the number of mobs coming out of the hatched egg
      * <p>
-     * The boolean hatching will override this number. Ie. If hatching =
+     * The bool hatching will override this number. Ie. If hatching =
      * false, this number will not matter
      *
      * @param numHatches The number of mobs coming out of the egg

@@ -64,12 +64,12 @@ public sealed class PluginMessageListenerRegistration {
      *
      * @return True if this registration is still valid, otherwise false.
      */
-    public boolean isValid() {
+    public bool isValid() {
         return messenger.isRegistrationValid(this);
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public bool equals(Object obj) {
         if (obj == null) {
             return false;
         }

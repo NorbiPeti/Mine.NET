@@ -25,7 +25,7 @@ public class PotionEffectTypeWrapper extends PotionEffectType {
     }
 
     @Override
-    public boolean isInstant() {
+    public bool isInstant() {
         return getType().isInstant();
     }
 }

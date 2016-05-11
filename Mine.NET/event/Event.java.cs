@@ -12,7 +12,7 @@ import org.bukkit.plugin.PluginManager;
  */
 public abstract class Event {
     private String name;
-    private final boolean async;
+    private final bool async;
 
     /**
      * The default constructor is defined for cleaner code. This constructor
@@ -29,7 +29,7 @@ public abstract class Event {
      * @param isAsync true indicates the event will fire asynchronously, false
      *     by default from default constructor
      */
-    public Event(boolean isAsync) {
+    public Event(bool isAsync) {
         this.async = isAsync;
     }
 
@@ -71,7 +71,7 @@ public abstract class Event {
      *
      * @return false by default, true if the event fires asynchronously
      */
-    public final boolean isAsynchronous() {
+    public final bool isAsynchronous() {
         return async;
     }
 

@@ -25,7 +25,7 @@ public class WhitelistCommand extends VanillaCommand {
     }
 
     @Override
-    public boolean execute(CommandSender sender, String currentAlias, String[] args) {
+    public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
         if (args.length == 1) {
@@ -85,7 +85,7 @@ public class WhitelistCommand extends VanillaCommand {
         return false;
     }
 
-    private boolean badPerm(CommandSender sender, String perm) {
+    private bool badPerm(CommandSender sender, String perm) {
         if (!sender.hasPermission("bukkit.command.whitelist." + perm)) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to perform this action.");
             return true;

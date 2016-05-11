@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  */
 public class PlayerGameModeChangeEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
-    private boolean cancelled;
+    private bool cancelled;
     private final GameMode newGameMode;
 
     public PlayerGameModeChangeEvent(Player player, final GameMode newGameMode) {
@@ -18,11 +18,11 @@ public class PlayerGameModeChangeEvent extends PlayerEvent implements Cancellabl
         this.newGameMode = newGameMode;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 

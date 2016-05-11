@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public abstract class PlayerBucketEvent extends PlayerEvent implements Cancellable {
     private ItemStack itemStack;
-    private boolean cancelled = false;
+    private bool cancelled = false;
     private final Block blockClicked;
     private final BlockFace blockFace;
     private final Material bucket;
@@ -70,11 +70,11 @@ public abstract class PlayerBucketEvent extends PlayerEvent implements Cancellab
         return blockFace;
     }
 
-    public boolean isCancelled() {
+    public bool isCancelled() {
         return cancelled;
     }
 
-    public void setCancelled(boolean cancel) {
+    public void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 }
