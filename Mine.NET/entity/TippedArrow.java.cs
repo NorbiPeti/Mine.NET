@@ -6,7 +6,7 @@ import org.bukkit.potion.PotionData;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-public interface TippedArrow extends Arrow {
+public interface TippedArrow : Arrow {
 
     /**
      * Sets the underlying potion data

@@ -18,5 +18,5 @@ public @interface DelegateDeserialization {
      *
      * @return Delegate class
      */
-    public Class<? extends ConfigurationSerializable> value();
+    public Class<? : ConfigurationSerializable> value();
 }

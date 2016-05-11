@@ -16,7 +16,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class BanListCommand extends VanillaCommand {
+public class BanListCommand : VanillaCommand {
     private static readonly List<String> BANLIST_TYPES = ImmutableList.of("ips", "players");
 
     public BanListCommand() {

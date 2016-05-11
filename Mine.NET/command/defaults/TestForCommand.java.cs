@@ -5,7 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 [Obsolete]
-public class TestForCommand extends VanillaCommand {
+public class TestForCommand : VanillaCommand {
     public TestForCommand() {
         super("testfor");
         this.description = "Tests whether a specifed player is online";

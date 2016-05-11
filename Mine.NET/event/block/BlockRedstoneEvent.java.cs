@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a redstone current changes
  */
-public class BlockRedstoneEvent extends BlockEvent {
+public class BlockRedstoneEvent : BlockEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly int oldCurrent;
     private int newCurrent;

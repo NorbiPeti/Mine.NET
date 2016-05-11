@@ -15,7 +15,7 @@ import org.bukkit.inventory.Inventory;
  *     org.bukkit.event.inventory}.
  */
 [Obsolete]
-public class PlayerInventoryEvent extends PlayerEvent {
+public class PlayerInventoryEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     protected Inventory inventory;
 

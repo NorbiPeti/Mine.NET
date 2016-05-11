@@ -5,7 +5,7 @@ import org.bukkit.entity.EntityType;
 /**
  * Represents a creature spawner.
  */
-public interface CreatureSpawner extends BlockState {
+public interface CreatureSpawner : BlockState {
 
     /**
      * Get the spawner's creature type.

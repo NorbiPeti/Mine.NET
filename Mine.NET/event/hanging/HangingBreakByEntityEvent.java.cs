@@ -6,7 +6,7 @@ import org.bukkit.entity.Hanging;
 /**
  * Triggered when a hanging entity is removed by an entity
  */
-public class HangingBreakByEntityEvent extends HangingBreakEvent {
+public class HangingBreakByEntityEvent : HangingBreakEvent {
     private readonly Entity remover;
 
     public HangingBreakByEntityEvent(Hanging hanging, readonly Entity remover) {

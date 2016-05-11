@@ -15,7 +15,7 @@ import org.bukkit.material.types.MushroomBlockTexture;
  * @see Material#HUGE_MUSHROOM_1
  * @see Material#HUGE_MUSHROOM_2
  */
-public class Mushroom extends MaterialData {
+public class Mushroom : MaterialData {
     private static readonly byte NORTH_LIMIT = 4;
     private static readonly byte SOUTH_LIMIT = 6;
     private static readonly byte EAST_WEST_LIMIT = 3;
@@ -253,7 +253,7 @@ public class Mushroom extends MaterialData {
      * @return A set of all faces that are currently painted (an empty set if
      *     it is a stem)
      */
-    public Set<BlockFace> getPaintedFaces() {
+    public HashSet<BlockFace> getPaintedFaces() {
         EnumSet<BlockFace> faces = EnumSet.noneOf(BlockFace.class);
 
         if (isFacePainted(BlockFace.WEST)) {

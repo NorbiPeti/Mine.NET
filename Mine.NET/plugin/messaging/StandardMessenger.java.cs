@@ -12,18 +12,18 @@ import org.bukkit.plugin.Plugin;
 /**
  * Standard implementation to {@link Messenger}
  */
-public class StandardMessenger implements Messenger {
-    private readonly Dictionary<String, Set<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<String, Set<PluginMessageListenerRegistration>>();
-    private readonly Dictionary<Plugin, Set<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<Plugin, Set<PluginMessageListenerRegistration>>();
-    private readonly Dictionary<String, Set<Plugin>> outgoingByChannel = new HashMap<String, Set<Plugin>>();
-    private readonly Dictionary<Plugin, Set<String>> outgoingByPlugin = new HashMap<Plugin, Set<String>>();
+public class StandardMessenger : Messenger {
+    private readonly Dictionary<String, HashSet<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<String, HashSet<PluginMessageListenerRegistration>>();
+    private readonly Dictionary<Plugin, HashSet<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<Plugin, HashSet<PluginMessageListenerRegistration>>();
+    private readonly Dictionary<String, HashSet<Plugin>> outgoingByChannel = new HashMap<String, HashSet<Plugin>>();
+    private readonly Dictionary<Plugin, HashSet<String>> outgoingByPlugin = new HashMap<Plugin, HashSet<String>>();
     private readonly Object incomingLock = new Object();
     private readonly Object outgoingLock = new Object();
 
     private void addToOutgoing(Plugin plugin, String channel) {
         synchronized (outgoingLock) {
-            Set<Plugin> plugins = outgoingByChannel.get(channel);
-            Set<String> channels = outgoingByPlugin.get(plugin);
+            HashSet<Plugin> plugins = outgoingByChannel.get(channel);
+            HashSet<String> channels = outgoingByPlugin.get(plugin);
 
             if (plugins == null) {
                 plugins = new HashSet<Plugin>();
@@ -42,8 +42,8 @@ public class StandardMessenger implements Messenger {
 
     private void removeFromOutgoing(Plugin plugin, String channel) {
         synchronized (outgoingLock) {
-            Set<Plugin> plugins = outgoingByChannel.get(channel);
-            Set<String> channels = outgoingByPlugin.get(plugin);
+            HashSet<Plugin> plugins = outgoingByChannel.get(channel);
+            HashSet<String> channels = outgoingByPlugin.get(plugin);
 
             if (plugins != null) {
                 plugins.remove(plugin);
@@ -65,7 +65,7 @@ public class StandardMessenger implements Messenger {
 
     private void removeFromOutgoing(Plugin plugin) {
         synchronized (outgoingLock) {
-            Set<String> channels = outgoingByPlugin.get(plugin);
+            HashSet<String> channels = outgoingByPlugin.get(plugin);
 
             if (channels != null) {
                 String[] toRemove = channels.toArray(new String[0]);
@@ -81,7 +81,7 @@ public class StandardMessenger implements Messenger {
 
     private void addToIncoming(PluginMessageListenerRegistration registration) {
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByChannel.get(registration.getChannel());
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel.get(registration.getChannel());
 
             if (registrations == null) {
                 registrations = new HashSet<PluginMessageListenerRegistration>();
@@ -111,7 +111,7 @@ public class StandardMessenger implements Messenger {
 
     private void removeFromIncoming(PluginMessageListenerRegistration registration) {
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByChannel.get(registration.getChannel());
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel.get(registration.getChannel());
 
             if (registrations != null) {
                 registrations.remove(registration);
@@ -135,7 +135,7 @@ public class StandardMessenger implements Messenger {
 
     private void removeFromIncoming(Plugin plugin, String channel) {
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 PluginMessageListenerRegistration[] toRemove = registrations.toArray(new PluginMessageListenerRegistration[0]);
@@ -151,7 +151,7 @@ public class StandardMessenger implements Messenger {
 
     private void removeFromIncoming(Plugin plugin) {
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 PluginMessageListenerRegistration[] toRemove = registrations.toArray(new PluginMessageListenerRegistration[0]);
@@ -248,20 +248,20 @@ public class StandardMessenger implements Messenger {
         removeFromIncoming(plugin);
     }
 
-    public Set<String> getOutgoingChannels() {
+    public HashSet<String> getOutgoingChannels() {
         synchronized (outgoingLock) {
-            Set<String> keys = outgoingByChannel.keySet();
+            HashSet<String> keys = outgoingByChannel.keySet();
             return ImmutableSet.copyOf(keys);
         }
     }
 
-    public Set<String> getOutgoingChannels(Plugin plugin) {
+    public HashSet<String> getOutgoingChannels(Plugin plugin) {
         if (plugin == null) {
             throw new ArgumentException("Plugin cannot be null");
         }
 
         synchronized (outgoingLock) {
-            Set<String> channels = outgoingByPlugin.get(plugin);
+            HashSet<String> channels = outgoingByPlugin.get(plugin);
 
             if (channels != null) {
                 return ImmutableSet.copyOf(channels);
@@ -271,20 +271,20 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public Set<String> getIncomingChannels() {
+    public HashSet<String> getIncomingChannels() {
         synchronized (incomingLock) {
-            Set<String> keys = incomingByChannel.keySet();
+            HashSet<String> keys = incomingByChannel.keySet();
             return ImmutableSet.copyOf(keys);
         }
     }
 
-    public Set<String> getIncomingChannels(Plugin plugin) {
+    public HashSet<String> getIncomingChannels(Plugin plugin) {
         if (plugin == null) {
             throw new ArgumentException("Plugin cannot be null");
         }
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 Builder<String> builder = ImmutableSet.builder();
@@ -300,13 +300,13 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin) {
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin) {
         if (plugin == null) {
             throw new ArgumentException("Plugin cannot be null");
         }
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 return ImmutableSet.copyOf(registrations);
@@ -316,11 +316,11 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel) {
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel) {
         validateChannel(channel);
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByChannel.get(channel);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel.get(channel);
 
             if (registrations != null) {
                 return ImmutableSet.copyOf(registrations);
@@ -330,14 +330,14 @@ public class StandardMessenger implements Messenger {
         }
     }
 
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin, String channel) {
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin, String channel) {
         if (plugin == null) {
             throw new ArgumentException("Plugin cannot be null");
         }
         validateChannel(channel);
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 Builder<PluginMessageListenerRegistration> builder = ImmutableSet.builder();
@@ -361,7 +361,7 @@ public class StandardMessenger implements Messenger {
         }
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(registration.getPlugin());
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(registration.getPlugin());
 
             if (registrations != null) {
                 return registrations.contains(registration);
@@ -378,7 +378,7 @@ public class StandardMessenger implements Messenger {
         validateChannel(channel);
 
         synchronized (incomingLock) {
-            Set<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
+            HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin.get(plugin);
 
             if (registrations != null) {
                 for (PluginMessageListenerRegistration registration : registrations) {
@@ -399,7 +399,7 @@ public class StandardMessenger implements Messenger {
         validateChannel(channel);
 
         synchronized (outgoingLock) {
-            Set<String> channels = outgoingByPlugin.get(plugin);
+            HashSet<String> channels = outgoingByPlugin.get(plugin);
 
             if (channels != null) {
                 return channels.contains(channel);
@@ -418,7 +418,7 @@ public class StandardMessenger implements Messenger {
         }
         validateChannel(channel);
 
-        Set<PluginMessageListenerRegistration> registrations = getIncomingChannelRegistrations(channel);
+        HashSet<PluginMessageListenerRegistration> registrations = getIncomingChannelRegistrations(channel);
 
         for (PluginMessageListenerRegistration registration : registrations) {
             registration.getListener().onPluginMessageReceived(channel, source, message);

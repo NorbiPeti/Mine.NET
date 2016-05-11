@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
  *
  * @see Material#HOPPER
  */
-public class Hopper extends MaterialData implements Directional, Redstone {
+public class Hopper : MaterialData : Directional, Redstone {
 
     protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.DOWN;
     protected static readonly bool DEFAULT_ACTIVE = true;

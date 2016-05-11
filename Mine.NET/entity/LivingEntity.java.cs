@@ -17,7 +17,7 @@ import org.bukkit.projectiles.ProjectileSource;
 /**
  * Represents a living entity, such as a monster or player
  */
-public interface LivingEntity extends Attributable, Entity, Damageable, ProjectileSource {
+public interface LivingEntity : Attributable, Entity, Damageable, ProjectileSource {
 
     /**
      * Gets the height of the living entity's eyes above its Location.
@@ -72,7 +72,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @return list containing all blocks along the living entity's line of
      *     sight
      */
-    public List<Block> getLineOfSight(Set<Material> transparent, int maxDistance);
+    public List<Block> getLineOfSight(HashSet<Material> transparent, int maxDistance);
 
     /**
      * Gets the block that the living entity has targeted.
@@ -96,7 +96,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      *     by server by at least 100 blocks, no less)
      * @return block that the living entity has targeted
      */
-    public Block getTargetBlock(Set<Material> transparent, int maxDistance);
+    public Block getTargetBlock(HashSet<Material> transparent, int maxDistance);
 
     /**
      * Gets the last two blocks along the living entity's line of sight.
@@ -126,7 +126,7 @@ public interface LivingEntity extends Attributable, Entity, Damageable, Projecti
      * @return list containing the last 2 blocks along the living entity's
      *     line of sight
      */
-    public List<Block> getLastTwoTargetBlocks(Set<Material> transparent, int maxDistance);
+    public List<Block> getLastTwoTargetBlocks(HashSet<Material> transparent, int maxDistance);
 
     /**
      * Returns the amount of air that the living entity has remaining, in

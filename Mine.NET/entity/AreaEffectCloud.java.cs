@@ -12,7 +12,7 @@ import org.bukkit.projectiles.ProjectileSource;
  * Represents an area effect cloud which will imbue a potion effect onto
  * entities which enter it.
  */
-public interface AreaEffectCloud extends Entity {
+public interface AreaEffectCloud : Entity {
 
     /**
      * Gets the duration which this cloud will exist for (in ticks).

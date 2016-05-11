@@ -8,7 +8,7 @@ import org.bukkit.Material;
 /**
  * Represents the different types of smooth bricks.
  */
-public class SmoothBrick extends TexturedMaterial {
+public class SmoothBrick : TexturedMaterial {
 
     private static readonly List<Material> textures = new ArrayList<Material>();
     static {

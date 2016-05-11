@@ -8,7 +8,7 @@ import org.bukkit.entity.Entity;
 /**
  * Called when an entity is damaged by an entity
  */
-public class EntityDamageByEntityEvent extends EntityDamageEvent {
+public class EntityDamageByEntityEvent : EntityDamageEvent {
     private readonly Entity damager;
 
     [Obsolete]
@@ -22,7 +22,7 @@ public class EntityDamageByEntityEvent extends EntityDamageEvent {
         this.damager = damager;
     }
 
-    public EntityDamageByEntityEvent(Entity damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageByEntityEvent(Entity damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? super Double, Double>> modifierFunctions) {
         super(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }

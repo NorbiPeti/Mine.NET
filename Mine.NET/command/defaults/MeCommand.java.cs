@@ -5,7 +5,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
 [Obsolete]
-public class MeCommand extends VanillaCommand {
+public class MeCommand : VanillaCommand {
     public MeCommand() {
         super("me");
         this.description = "Performs the specified action in chat";

@@ -15,7 +15,7 @@ import java.util.Map;
  * initiates a conversation with the plugin. Each Conversation maintains its
  * own state and calls back as needed into the plugin.
  * <p>
- * The ConversationFactory implements a fluid API, allowing parameters to be
+ * The ConversationFactory : a fluid API, allowing parameters to be
  * set as an extension to the constructor.
  */
 public class ConversationFactory {
@@ -214,7 +214,7 @@ public class ConversationFactory {
         return conversation;
     }
 
-    private class NotPlayerMessagePrompt extends MessagePrompt {
+    private class NotPlayerMessagePrompt : MessagePrompt {
 
         public String getPromptText(ConversationContext context) {
             return playerOnlyMessage;

@@ -8,7 +8,7 @@ import org.bukkit.event.block.BlockExpEvent;
 /**
  * This event is called when a player takes items out of the furnace
  */
-public class FurnaceExtractEvent extends BlockExpEvent {
+public class FurnaceExtractEvent : BlockExpEvent {
     private readonly Player player;
     private readonly Material itemType;
     private readonly int itemAmount;

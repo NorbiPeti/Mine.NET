@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
  * If the event is cancelled the effect will not be applied and the item will
  * not be removed from the player's inventory.
  */
-public class PlayerItemConsumeEvent extends PlayerEvent implements Cancellable {
+public class PlayerItemConsumeEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool isCancelled = false;
     private ItemStack item;

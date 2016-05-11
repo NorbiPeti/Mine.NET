@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Represents a Wool/Cloth block
  */
-public class Wool extends MaterialData implements Colorable {
+public class Wool : MaterialData : Colorable {
     public Wool() {
         super(Material.WOOL);
     }

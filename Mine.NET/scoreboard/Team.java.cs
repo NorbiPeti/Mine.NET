@@ -140,7 +140,7 @@ public interface Team {
      * @see #getEntries()
      */
     [Obsolete]
-    Set<OfflinePlayer> getPlayers() throws IllegalStateException;
+    HashSet<OfflinePlayer> getPlayers() throws IllegalStateException;
 
     /**
      * Gets the Set of entries on the team
@@ -148,7 +148,7 @@ public interface Team {
      * @return entries on the team
      * @throws IllegalStateException if this entries has been unregistered\
      */
-    Set<String> getEntries() throws IllegalStateException;
+    HashSet<String> getEntries() throws IllegalStateException;
 
     /**
      * Gets the size of the team

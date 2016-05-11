@@ -13,7 +13,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Base Permissible for use in any Permissible object via proxy or extension
  */
-public class PermissibleBase implements Permissible {
+public class PermissibleBase : Permissible {
     private ServerOperator opable = null;
     private Permissible parent = this;
     private readonly List<PermissionAttachment> attachments = new LinkedList<PermissionAttachment>();
@@ -147,7 +147,7 @@ public class PermissibleBase implements Permissible {
 
     public void recalculatePermissions() {
         clearPermissions();
-        Set<Permission> defaults = Bukkit.getServer().getPluginManager().getDefaultPermissions(isOp());
+        HashSet<Permission> defaults = Bukkit.getServer().getPluginManager().getDefaultPermissions(isOp());
         Bukkit.getServer().getPluginManager().subscribeToDefaultPerms(isOp(), parent);
 
         for (Permission perm : defaults) {
@@ -163,7 +163,7 @@ public class PermissibleBase implements Permissible {
     }
 
     public synchronized void clearPermissions() {
-        Set<String> perms = permissions.keySet();
+        HashSet<String> perms = permissions.keySet();
 
         for (String name : perms) {
             Bukkit.getServer().getPluginManager().unsubscribeFromPermission(name, parent);
@@ -176,7 +176,7 @@ public class PermissibleBase implements Permissible {
     }
 
     private void calculateChildPermissions(Map<String, bool> children, bool invert, PermissionAttachment attachment) {
-        Set<String> keys = children.keySet();
+        HashSet<String> keys = children.keySet();
 
         for (String name : keys) {
             Permission perm = Bukkit.getServer().getPluginManager().getPermission(name);
@@ -228,11 +228,11 @@ public class PermissibleBase implements Permissible {
         }
     }
 
-    public Set<PermissionAttachmentInfo> getEffectivePermissions() {
+    public HashSet<PermissionAttachmentInfo> getEffectivePermissions() {
         return new HashSet<PermissionAttachmentInfo>(permissions.values());
     }
 
-    private class RemoveAttachmentRunnable implements Runnable {
+    private class RemoveAttachmentRunnable : Runnable {
         private PermissionAttachment attachment;
 
         public RemoveAttachmentRunnable(PermissionAttachment attachment) {

@@ -16,7 +16,7 @@ import org.bukkit.event.HandlerList;
  */
 [Obsolete]
 @Warning(reason="This event causes a login thread to synchronize with the main thread")
-public class PlayerPreLoginEvent extends Event {
+public class PlayerPreLoginEvent : Event {
     private static readonly HandlerList handlers = new HandlerList();
     private Result result;
     private String message;

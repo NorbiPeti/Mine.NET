@@ -1,6 +1,6 @@
 package org.bukkit.entity;
 
-public interface Rabbit extends Animals {
+public interface Rabbit : Animals {
 
     /**
      * @return The type of rabbit.

@@ -112,7 +112,7 @@ public interface Messenger {
      *
      * @return List of all registered outgoing plugin channels.
      */
-    public Set<String> getOutgoingChannels();
+    public HashSet<String> getOutgoingChannels();
 
     /**
      * Gets a set containing all the outgoing plugin channels that the
@@ -123,14 +123,14 @@ public interface Messenger {
      *     is registered to.
      * @throws ArgumentException Thrown if plugin is null.
      */
-    public Set<String> getOutgoingChannels(Plugin plugin);
+    public HashSet<String> getOutgoingChannels(Plugin plugin);
 
     /**
      * Gets a set containing all the incoming plugin channels.
      *
      * @return List of all registered incoming plugin channels.
      */
-    public Set<String> getIncomingChannels();
+    public HashSet<String> getIncomingChannels();
 
     /**
      * Gets a set containing all the incoming plugin channels that the
@@ -141,7 +141,7 @@ public interface Messenger {
      *     is registered for.
      * @throws ArgumentException Thrown if plugin is null.
      */
-    public Set<String> getIncomingChannels(Plugin plugin);
+    public HashSet<String> getIncomingChannels(Plugin plugin);
 
     /**
      * Gets a set containing all the incoming plugin channel registrations
@@ -151,7 +151,7 @@ public interface Messenger {
      * @return List of all registrations that the plugin has.
      * @throws ArgumentException Thrown if plugin is null.
      */
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin);
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin);
 
     /**
      * Gets a set containing all the incoming plugin channel registrations
@@ -161,7 +161,7 @@ public interface Messenger {
      * @return List of all registrations that are on the channel.
      * @throws ArgumentException Thrown if channel is null.
      */
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel);
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel);
 
     /**
      * Gets a set containing all the incoming plugin channel registrations
@@ -172,7 +172,7 @@ public interface Messenger {
      * @return List of all registrations that the plugin has.
      * @throws ArgumentException Thrown if plugin or channel is null.
      */
-    public Set<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin, String channel);
+    public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(Plugin plugin, String channel);
 
     /**
      * Checks if the specified plugin message listener registration is valid.

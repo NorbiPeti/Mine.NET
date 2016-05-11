@@ -6,7 +6,7 @@ import java.util.EventObject;
  * ConversationAbandonedEvent contains information about an abandoned
  * conversation.
  */
-public class ConversationAbandonedEvent extends EventObject {
+public class ConversationAbandonedEvent : EventObject {
 
     private ConversationContext context;
     private ConversationCanceller canceller;

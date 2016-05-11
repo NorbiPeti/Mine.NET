@@ -21,7 +21,7 @@ public interface PluginManager {
      * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? extends PluginLoader> loader) throws ArgumentException;
+    public void registerInterface(Class<? : PluginLoader> loader) throws ArgumentException;
 
     /**
      * Checks if the given plugin is loaded and returns it when applicable
@@ -121,7 +121,7 @@ public interface PluginManager {
      * @param executor EventExecutor to register
      * @param plugin Plugin to register
      */
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin);
+    public void registerEvent(Class<? : Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin);
 
     /**
      * Registers the specified executor to the given event class
@@ -133,7 +133,7 @@ public interface PluginManager {
      * @param plugin Plugin to register
      * @param ignoreCancelled Whether to pass cancelled events or not
      */
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled);
+    public void registerEvent(Class<? : Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled);
 
     /**
      * Enables the specified plugin
@@ -206,7 +206,7 @@ public interface PluginManager {
      * @param op Which set of default permissions to get
      * @return The default permissions
      */
-    public Set<Permission> getDefaultPermissions(bool op);
+    public HashSet<Permission> getDefaultPermissions(bool op);
 
     /**
      * Recalculates the defaults for the given {@link Permission}.
@@ -246,7 +246,7 @@ public interface PluginManager {
      * @param permission Permission to query for
      * @return Set containing all subscribed permissions
      */
-    public Set<Permissible> getPermissionSubscriptions(String permission);
+    public HashSet<Permissible> getPermissionSubscriptions(String permission);
 
     /**
      * Subscribes to the given Default permissions by operator status
@@ -274,7 +274,7 @@ public interface PluginManager {
      * @param op Default list to query for
      * @return Set containing all subscribed permissions
      */
-    public Set<Permissible> getDefaultPermSubscriptions(bool op);
+    public HashSet<Permissible> getDefaultPermSubscriptions(bool op);
 
     /**
      * Gets a set of all registered permissions.
@@ -283,7 +283,7 @@ public interface PluginManager {
      *
      * @return Set containing all current registered permissions
      */
-    public Set<Permission> getPermissions();
+    public HashSet<Permission> getPermissions();
 
     /**
      * Returns whether or not timing code should be used for event calls

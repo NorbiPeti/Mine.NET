@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
  * PluginNameConversationPrefix is a {@link ConversationPrefix} implementation
  * that displays the plugin name in front of conversation output.
  */
-public class PluginNameConversationPrefix implements ConversationPrefix {
+public class PluginNameConversationPrefix : ConversationPrefix {
     
     protected String separator;
     protected ChatColor prefixColor;

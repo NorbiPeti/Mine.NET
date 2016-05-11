@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * An event that's called when a block yields experience.
  */
-public class BlockExpEvent extends BlockEvent {
+public class BlockExpEvent : BlockEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private int exp;
 

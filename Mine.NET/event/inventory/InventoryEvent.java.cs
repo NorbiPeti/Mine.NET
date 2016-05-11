@@ -12,7 +12,7 @@ import org.bukkit.inventory.InventoryView;
 /**
  * Represents a player related inventory event
  */
-public class InventoryEvent extends Event {
+public class InventoryEvent : Event {
     private static readonly HandlerList handlers = new HandlerList();
     protected InventoryView transaction;
 

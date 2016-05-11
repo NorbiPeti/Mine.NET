@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a ThrownExpBottle hits and releases experience.
  */
-public class ExpBottleEvent extends ProjectileHitEvent {
+public class ExpBottleEvent : ProjectileHitEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private int exp;
     private bool showEffect = true;

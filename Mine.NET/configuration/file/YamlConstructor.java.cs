@@ -10,13 +10,13 @@ import org.yaml.snakeyaml.nodes.Tag;
 
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 
-public class YamlConstructor extends SafeConstructor {
+public class YamlConstructor : SafeConstructor {
 
     public YamlConstructor() {
         this.yamlConstructors.put(Tag.MAP, new ConstructCustomObject());
     }
 
-    private class ConstructCustomObject extends ConstructYamlMap {
+    private class ConstructCustomObject : ConstructYamlMap {
         @Override
         public Object construct(Node node) {
             if (node.isTwoStepsConstruction()) {

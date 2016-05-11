@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when the GameMode of the player is changed.
  */
-public class PlayerGameModeChangeEvent extends PlayerEvent implements Cancellable {
+public class PlayerGameModeChangeEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly GameMode newGameMode;

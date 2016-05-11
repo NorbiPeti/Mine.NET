@@ -38,7 +38,7 @@ import org.bukkit.event.HandlerList;
  * beginning of the message should be preserved. If a slash is added or
  * removed, unexpected behavior may result.
  */
-public class ServerCommandEvent extends ServerEvent implements Cancellable {
+public class ServerCommandEvent : ServerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private String command;
     private readonly CommandSender sender;

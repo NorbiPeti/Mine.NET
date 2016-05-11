@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 [Obsolete]
-public class DifficultyCommand extends VanillaCommand {
+public class DifficultyCommand : VanillaCommand {
     private static readonly List<String> DIFFICULTY_NAMES = ImmutableList.of("peaceful", "easy", "normal", "hard");
 
     public DifficultyCommand() {

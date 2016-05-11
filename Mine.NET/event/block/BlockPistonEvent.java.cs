@@ -8,7 +8,7 @@ import org.bukkit.event.Cancellable;
 /**
  * Called when a piston block is triggered
  */
-public abstract class BlockPistonEvent extends BlockEvent implements Cancellable {
+public abstract class BlockPistonEvent : BlockEvent : Cancellable {
     private bool cancelled;
     private readonly BlockFace direction;
 

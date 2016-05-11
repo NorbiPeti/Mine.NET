@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Raised when a vehicle collides with an entity.
  */
-public class VehicleEntityCollisionEvent extends VehicleCollisionEvent implements Cancellable {
+public class VehicleEntityCollisionEvent : VehicleCollisionEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Entity entity;
     private bool cancelled = false;

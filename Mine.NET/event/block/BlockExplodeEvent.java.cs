@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Called when a block explodes
  */
-public class BlockExplodeEvent extends BlockEvent implements Cancellable {
+public class BlockExplodeEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private readonly List<Block> blocks;

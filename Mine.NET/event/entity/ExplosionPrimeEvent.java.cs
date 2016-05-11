@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when an entity has made a decision to explode.
  */
-public class ExplosionPrimeEvent extends EntityEvent implements Cancellable {
+public class ExplosionPrimeEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private float radius;

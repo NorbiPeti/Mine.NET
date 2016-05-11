@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class SayCommand extends VanillaCommand {
+public class SayCommand : VanillaCommand {
     public SayCommand() {
         super("say");
         this.description = "Broadcasts the given message as the sender";

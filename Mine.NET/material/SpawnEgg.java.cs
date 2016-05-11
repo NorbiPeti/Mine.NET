@@ -7,7 +7,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 /**
  * Represents a spawn egg that can be used to spawn mobs
  */
-public class SpawnEgg extends MaterialData {
+public class SpawnEgg : MaterialData {
 
     public SpawnEgg() {
         super(Material.MONSTER_EGG);

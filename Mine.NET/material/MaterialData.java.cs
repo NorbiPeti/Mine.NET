@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Handles specific metadata for certain items or blocks
  */
-public class MaterialData implements Cloneable {
+public class MaterialData : Cloneable {
     private readonly int type;
     private byte data = 0;
 

@@ -8,7 +8,7 @@ import org.bukkit.Material;
  * Represents a book ({@link Material#BOOK_AND_QUILL} or {@link
  * Material#WRITTEN_BOOK}) that can have a title, an author, and pages.
  */
-public interface BookMeta extends ItemMeta {
+public interface BookMeta : ItemMeta {
 
     /**
      * Checks for the existence of a title in the book.

@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a chunk is loaded
  */
-public class ChunkLoadEvent extends ChunkEvent {
+public class ChunkLoadEvent : ChunkEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly bool newChunk;
 

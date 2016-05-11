@@ -15,7 +15,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class PardonCommand extends VanillaCommand {
+public class PardonCommand : VanillaCommand {
     public PardonCommand() {
         super("pardon");
         this.description = "Allows the specified player to use this server";

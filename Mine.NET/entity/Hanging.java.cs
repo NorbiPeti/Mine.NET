@@ -6,7 +6,7 @@ import org.bukkit.material.Attachable;
 /**
  * Represents a Hanging entity
  */
-public interface Hanging extends Entity, Attachable {
+public interface Hanging : Entity, Attachable {
 
     /**
      * Sets the direction of the hanging entity, potentially overriding rules

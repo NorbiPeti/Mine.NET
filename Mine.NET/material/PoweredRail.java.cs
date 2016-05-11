@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a powered rail
  */
-public class PoweredRail extends ExtendedRails implements Redstone {
+public class PoweredRail : ExtendedRails : Redstone {
     public PoweredRail() {
         super(Material.POWERED_RAIL);
     }

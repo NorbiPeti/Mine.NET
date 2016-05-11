@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a detector rail
  */
-public class DetectorRail extends ExtendedRails implements PressureSensor {
+public class DetectorRail : ExtendedRails : PressureSensor {
     public DetectorRail() {
         super(Material.DETECTOR_RAIL);
     }

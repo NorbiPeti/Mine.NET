@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a World is saved.
  */
-public class WorldSaveEvent extends WorldEvent {
+public class WorldSaveEvent : WorldEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public WorldSaveEvent(World world) {

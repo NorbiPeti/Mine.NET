@@ -4,7 +4,7 @@ package org.bukkit.entity;
  * Represents a Creature. Creatures are non-intelligent monsters or animals
  * which have very simple abilities.
  */
-public interface Creature extends LivingEntity {
+public interface Creature : LivingEntity {
 
     /**
      * Instructs this Creature to set the specified LivingEntity as its

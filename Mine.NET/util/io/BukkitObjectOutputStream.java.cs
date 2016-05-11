@@ -16,7 +16,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
  * Behavior of implementations extending this class is not guaranteed across
  * future versions.
  */
-public class BukkitObjectOutputStream extends ObjectOutputStream {
+public class BukkitObjectOutputStream : ObjectOutputStream {
 
     /**
      * Constructor provided to mirror super functionality.

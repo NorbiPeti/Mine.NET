@@ -5,7 +5,7 @@ import org.bukkit.block.Furnace;
 /**
  * Interface to the inventory of a Furnace.
  */
-public interface FurnaceInventory extends Inventory {
+public interface FurnaceInventory : Inventory {
 
     /**
      * Get the current item in the result slot.

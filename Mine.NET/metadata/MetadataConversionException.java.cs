@@ -6,7 +6,7 @@ package org.bukkit.metadata;
  * data type.
  */
 @SuppressWarnings("serial")
-public class MetadataConversionException extends RuntimeException {
+public class MetadataConversionException : RuntimeException {
     MetadataConversionException(String message) {
         super(message);
     }

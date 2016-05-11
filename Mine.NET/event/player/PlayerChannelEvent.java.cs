@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
  * This event is called after a player registers or unregisters a new plugin
  * channel.
  */
-public abstract class PlayerChannelEvent extends PlayerEvent {
+public abstract class PlayerChannelEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly String channel;
 

@@ -12,7 +12,7 @@ import org.bukkit.util.Vector;
  * If a Block Dispense event is cancelled, the block will not dispense the
  * item.
  */
-public class BlockDispenseEvent extends BlockEvent implements Cancellable {
+public class BlockDispenseEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled = false;
     private ItemStack item;

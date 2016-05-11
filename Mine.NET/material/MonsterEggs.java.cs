@@ -8,7 +8,7 @@ import org.bukkit.Material;
 /**
  * Represents the different types of monster eggs
  */
-public class MonsterEggs extends TexturedMaterial {
+public class MonsterEggs : TexturedMaterial {
 
     private static readonly List<Material> textures = new ArrayList<Material>();
     static {

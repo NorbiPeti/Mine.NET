@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * MaterialData for signs
  */
-public class Sign extends MaterialData implements Attachable {
+public class Sign : MaterialData : Attachable {
     public Sign() {
         super(Material.SIGN_POST);
     }

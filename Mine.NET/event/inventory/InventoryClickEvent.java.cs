@@ -43,7 +43,7 @@ import org.bukkit.plugin.Plugin;
  * Plugin, Runnable)}, which would execute the task on the next tick, would
  * work as well.
  */
-public class InventoryClickEvent extends InventoryInteractEvent {
+public class InventoryClickEvent : InventoryInteractEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly ClickType click;
     private readonly InventoryAction action;

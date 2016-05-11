@@ -16,7 +16,7 @@ import org.bukkit.World;
 import org.bukkit.entity.HumanEntity;
 
 [Obsolete]
-public class GameRuleCommand extends VanillaCommand {
+public class GameRuleCommand : VanillaCommand {
     private static readonly List<String> GAMERULE_STATES = ImmutableList.of("true", "false");
 
     public GameRuleCommand() {

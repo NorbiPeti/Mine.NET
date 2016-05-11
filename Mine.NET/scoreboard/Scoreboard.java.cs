@@ -37,14 +37,14 @@ public interface Scoreboard {
      * @param criteria Criteria to search by
      * @return an immutable set of Objectives using the specified Criteria
      */
-    Set<Objective> getObjectivesByCriteria(String criteria) throws ArgumentException;
+    HashSet<Objective> getObjectivesByCriteria(String criteria) throws ArgumentException;
 
     /**
      * Gets all Objectives on this Scoreboard
      *
      * @return An immutable set of all Objectives on this Scoreboard
      */
-    Set<Objective> getObjectives();
+    HashSet<Objective> getObjectives();
 
     /**
      * Gets the Objective currently displayed in a DisplaySlot on this
@@ -67,7 +67,7 @@ public interface Scoreboard {
      * @see #getScores(String)
      */
     [Obsolete]
-    Set<Score> getScores(OfflinePlayer player) throws ArgumentException;
+    HashSet<Score> getScores(OfflinePlayer player) throws ArgumentException;
 
     /**
      * Gets all scores for an entry on this Scoreboard
@@ -76,7 +76,7 @@ public interface Scoreboard {
      * @return immutable set of all scores tracked for the entry
      * @throws ArgumentException if entry is null
      */
-    Set<Score> getScores(String entry) throws ArgumentException;
+    HashSet<Score> getScores(String entry) throws ArgumentException;
 
     /**
      * Removes all scores for a player on this Scoreboard
@@ -132,7 +132,7 @@ public interface Scoreboard {
      *
      * @return an immutable set of Teams
      */
-    Set<Team> getTeams();
+    HashSet<Team> getTeams();
 
     /**
      * Registers a Team on this Scoreboard
@@ -152,14 +152,14 @@ public interface Scoreboard {
      * @see #getEntries()
      */
     [Obsolete]
-    Set<OfflinePlayer> getPlayers();
+    HashSet<OfflinePlayer> getPlayers();
 
     /**
      * Gets all entries tracked by this Scoreboard
      *
      * @return immutable set of all tracked entries
      */
-    Set<String> getEntries();
+    HashSet<String> getEntries();
 
     /**
      * Clears any objective in the specified slot.

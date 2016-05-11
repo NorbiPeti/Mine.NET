@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
  * an item in their inventory / hotbar and when they drop items from their
  * Inventory while in creative mode.
  */
-public class InventoryCreativeEvent extends InventoryClickEvent {
+public class InventoryCreativeEvent : InventoryClickEvent {
     private ItemStack item;
 
     public InventoryCreativeEvent(InventoryView what, SlotType type, int slot, ItemStack newItem) {

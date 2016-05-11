@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Thrown whenever a LivingEntity dies
  */
-public class EntityDeathEvent extends EntityEvent {
+public class EntityDeathEvent : EntityEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly List<ItemStack> drops;
     private int dropExp = 0;

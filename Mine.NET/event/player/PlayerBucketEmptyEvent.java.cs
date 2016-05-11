@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when a player empties a bucket
  */
-public class PlayerBucketEmptyEvent extends PlayerBucketEvent {
+public class PlayerBucketEmptyEvent : PlayerBucketEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public PlayerBucketEmptyEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {

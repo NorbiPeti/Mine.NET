@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when a player fills a bucket
  */
-public class PlayerBucketFillEvent extends PlayerBucketEvent {
+public class PlayerBucketFillEvent : PlayerBucketEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public PlayerBucketFillEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {

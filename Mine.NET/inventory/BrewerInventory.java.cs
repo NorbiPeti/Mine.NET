@@ -6,7 +6,7 @@ import org.bukkit.block.BrewingStand;
 /**
  * Interface to the inventory of a Brewing Stand.
  */
-public interface BrewerInventory extends Inventory {
+public interface BrewerInventory : Inventory {
 
     /**
      * Get the current ingredient for brewing.

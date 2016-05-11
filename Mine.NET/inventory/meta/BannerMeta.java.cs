@@ -4,7 +4,7 @@ import java.util.List;
 import org.bukkit.DyeColor;
 import org.bukkit.block.banner.Pattern;
 
-public interface BannerMeta extends ItemMeta {
+public interface BannerMeta : ItemMeta {
 
     /**
      * Returns the base color for this banner

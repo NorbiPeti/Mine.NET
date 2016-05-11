@@ -7,7 +7,7 @@ import org.bukkit.block.BlockFace;
  * This is the superclass for the {@link DetectorRail} and {@link PoweredRail}
  * classes
  */
-public class ExtendedRails extends Rails {
+public class ExtendedRails : Rails {
     /**
      * @param type the raw type id
      * [Obsolete] Magic value

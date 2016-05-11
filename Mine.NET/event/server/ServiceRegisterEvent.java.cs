@@ -9,7 +9,7 @@ import org.bukkit.plugin.RegisteredServiceProvider;
  * Warning: The order in which register and unregister events are called
  * should not be relied upon.
  */
-public class ServiceRegisterEvent extends ServiceEvent {
+public class ServiceRegisterEvent : ServiceEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public ServiceRegisterEvent(RegisteredServiceProvider<?> registeredProvider) {

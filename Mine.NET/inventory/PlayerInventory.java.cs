@@ -5,7 +5,7 @@ import org.bukkit.entity.HumanEntity;
 /**
  * Interface to the inventory of a Player, including the four armor slots and any extra slots.
  */
-public interface PlayerInventory extends Inventory {
+public interface PlayerInventory : Inventory {
 
     /**
      * Get all ItemStacks from the armor slots

@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 [Obsolete]
-public class ClearCommand extends VanillaCommand {
+public class ClearCommand : VanillaCommand {
     private static List<String> materials;
     static {
         ArrayList<String> materialList = new ArrayList<String>();

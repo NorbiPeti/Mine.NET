@@ -10,7 +10,7 @@ import org.bukkit.block.BlockFace;
  * @see Material#DIODE_BLOCK_OFF
  * @see Material#DIODE_BLOCK_ON
  */
-public class Diode extends MaterialData implements Directional, Redstone {
+public class Diode : MaterialData : Directional, Redstone {
 
     protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
     protected static readonly int DEFAULT_DELAY = 1;

@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents the tripwire hook
  */
-public class TripwireHook extends SimpleAttachableMaterialData implements Redstone {
+public class TripwireHook : SimpleAttachableMaterialData : Redstone {
 
     public TripwireHook() {
         super(Material.TRIPWIRE_HOOK);

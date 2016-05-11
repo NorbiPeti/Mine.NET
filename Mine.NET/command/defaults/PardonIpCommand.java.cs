@@ -13,7 +13,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class PardonIpCommand extends VanillaCommand {
+public class PardonIpCommand : VanillaCommand {
     public PardonIpCommand() {
         super("pardon-ip");
         this.description = "Allows the specified IP address to use this server";

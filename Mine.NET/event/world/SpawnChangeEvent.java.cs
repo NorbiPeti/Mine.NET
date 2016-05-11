@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
  * An event that is called when a world's spawn changes. The world's previous
  * spawn location is included.
  */
-public class SpawnChangeEvent extends WorldEvent {
+public class SpawnChangeEvent : WorldEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Location previousLocation;
 

@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Triggered when a hanging entity is created in the world
  */
-public class HangingPlaceEvent extends HangingEvent implements Cancellable {
+public class HangingPlaceEvent : HangingEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly Player player;

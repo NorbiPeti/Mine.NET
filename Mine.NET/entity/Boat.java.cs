@@ -5,7 +5,7 @@ import org.bukkit.TreeSpecies;
 /**
  * Represents a boat entity.
  */
-public interface Boat extends Vehicle {
+public interface Boat : Vehicle {
 
     /**
      * Gets the wood type of the boat.

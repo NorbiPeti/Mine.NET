@@ -16,7 +16,7 @@ import java.util.Collection;
  * If a preamble is provided to the constructor, that text will be displayed
  * before the first item in the index.
  */
-public class IndexHelpTopic extends HelpTopic {
+public class IndexHelpTopic : HelpTopic {
 
     protected String permission;
     protected String preamble;

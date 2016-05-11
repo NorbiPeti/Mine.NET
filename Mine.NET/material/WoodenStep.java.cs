@@ -8,7 +8,7 @@ import org.bukkit.TreeSpecies;
  *
  * @see Material#WOOD_STEP
  */
-public class WoodenStep extends Wood {
+public class WoodenStep : Wood {
     protected static readonly Material DEFAULT_TYPE = Material.WOOD_STEP;
     protected static readonly bool DEFAULT_INVERTED = false;
 

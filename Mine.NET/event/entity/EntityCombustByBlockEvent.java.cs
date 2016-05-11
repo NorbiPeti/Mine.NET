@@ -6,7 +6,7 @@ import org.bukkit.entity.Entity;
 /**
  * Called when a block causes an entity to combust.
  */
-public class EntityCombustByBlockEvent extends EntityCombustEvent {
+public class EntityCombustByBlockEvent : EntityCombustEvent {
     private readonly Block combuster;
 
     public EntityCombustByBlockEvent(Block combuster, readonly Entity combustee, readonly int duration) {

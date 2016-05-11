@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If a Creature Spawn event is cancelled, the creature will not spawn.
  */
-public class CreatureSpawnEvent extends EntityEvent implements Cancellable {
+public class CreatureSpawnEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly SpawnReason spawnReason;

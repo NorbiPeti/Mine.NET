@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class SaveCommand extends VanillaCommand {
+public class SaveCommand : VanillaCommand {
     public SaveCommand() {
         super("save-all");
         this.description = "Saves the server to disk";

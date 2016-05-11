@@ -17,12 +17,12 @@ import com.google.common.collect.ImmutableMap;
 /**
  * Stores data for damage events
  */
-public class EntityDamageEvent extends EntityEvent implements Cancellable {
+public class EntityDamageEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private static readonly DamageModifier[] MODIFIERS = DamageModifier.values();
     private static readonly Function<? super Double, Double> ZERO = Functions.constant(-0.0);
     private readonly Dictionary<DamageModifier, Double> modifiers;
-    private readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions;
+    private readonly Dictionary<DamageModifier, ? : Function<? super Double, Double>> modifierFunctions;
     private readonly Dictionary<DamageModifier, Double> originals;
     private bool cancelled;
     private readonly DamageCause cause;
@@ -37,7 +37,7 @@ public class EntityDamageEvent extends EntityEvent implements Cancellable {
         this(damagee, cause, new EnumMap<DamageModifier, Double>(ImmutableMap.of(DamageModifier.BASE, damage)), new EnumMap<DamageModifier, Function<? super Double, Double>>(ImmutableMap.of(DamageModifier.BASE, ZERO)));
     }
 
-    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? super Double, Double>> modifierFunctions) {
         super(damagee);
         if(modifiers.containsKey(DamageModifier.BASE)) throw new ArgumentException("BASE DamageModifier missing");
         if(!modifiers.containsKey(null)) throw new ArgumentException("Cannot have null DamageModifier");

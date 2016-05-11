@@ -16,7 +16,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
  * Behavior of implementations extending this class is not guaranteed across
  * future versions.
  */
-public class BukkitObjectInputStream extends ObjectInputStream {
+public class BukkitObjectInputStream : ObjectInputStream {
 
     /**
      * Constructor provided to mirror super functionality.

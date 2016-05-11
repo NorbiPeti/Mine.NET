@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a projectile is launched.
  */
-public class ProjectileLaunchEvent extends EntityEvent implements Cancellable {
+public class ProjectileLaunchEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
 

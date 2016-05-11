@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class ToggleDownfallCommand extends VanillaCommand {
+public class ToggleDownfallCommand : VanillaCommand {
     public ToggleDownfallCommand() {
         super("toggledownfall");
         this.description = "Toggles rain on/off on a given world";

@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a chest
  */
-public class Chest extends DirectionalContainer {
+public class Chest : DirectionalContainer {
 
     public Chest() {
         super(Material.CHEST);

@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
  * Called when an ItemStack is inserted in an enchantment table - can be
  * called multiple times
  */
-public class PrepareItemEnchantEvent extends InventoryEvent implements Cancellable {
+public class PrepareItemEnchantEvent : InventoryEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Block table;
     private readonly ItemStack item;

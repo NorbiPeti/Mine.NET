@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Holds information for player movement events
  */
-public class PlayerMoveEvent extends PlayerEvent implements Cancellable {
+public class PlayerMoveEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private Location from;

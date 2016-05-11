@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemFactory;
  * Material#LEATHER_CHESTPLATE}, {@link Material#LEATHER_HELMET}, or {@link
  * Material#LEATHER_LEGGINGS}) that can be colored.
  */
-public interface LeatherArmorMeta extends ItemMeta {
+public interface LeatherArmorMeta : ItemMeta {
 
     /**
      * Gets the color of the armor. If it has not been set otherwise, it will

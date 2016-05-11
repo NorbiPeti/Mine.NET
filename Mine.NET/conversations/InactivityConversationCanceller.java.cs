@@ -7,7 +7,7 @@ import org.bukkit.plugin.Plugin;
  * An InactivityConversationCanceller will cancel a {@link Conversation} after
  * a period of inactivity by the user.
  */
-public class InactivityConversationCanceller implements ConversationCanceller {
+public class InactivityConversationCanceller : ConversationCanceller {
     protected Plugin plugin;
     protected int timeoutSeconds;
     protected Conversation conversation;

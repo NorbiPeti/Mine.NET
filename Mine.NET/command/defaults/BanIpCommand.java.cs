@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class BanIpCommand extends VanillaCommand {
+public class BanIpCommand : VanillaCommand {
     public static readonly Pattern ipValidity = Pattern.compile("^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$");
 
     public BanIpCommand() {

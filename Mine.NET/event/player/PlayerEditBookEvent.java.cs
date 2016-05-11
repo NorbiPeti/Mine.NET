@@ -11,7 +11,7 @@ import org.bukkit.inventory.meta.BookMeta;
  * Called when a player edits or signs a book and quill item. If the event is
  * cancelled, no changes are made to the BookMeta
  */
-public class PlayerEditBookEvent extends PlayerEvent implements Cancellable {
+public class PlayerEditBookEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
 
     private readonly BookMeta previousBookMeta;

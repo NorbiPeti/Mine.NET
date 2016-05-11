@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a skull.
  */
-public class Skull extends MaterialData implements Directional {
+public class Skull : MaterialData : Directional {
     public Skull() {
         super(Material.SKULL);
     }

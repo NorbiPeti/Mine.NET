@@ -3,7 +3,7 @@ package org.bukkit.map;
 /**
  * Represents the built-in Minecraft font.
  */
-public class MinecraftFont extends MapFont {
+public class MinecraftFont : MapFont {
 
     private static readonly int spaceSize = 2;
 

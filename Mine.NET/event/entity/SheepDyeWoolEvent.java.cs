@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a sheep's wool is dyed
  */
-public class SheepDyeWoolEvent extends EntityEvent implements Cancellable {
+public class SheepDyeWoolEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private DyeColor color;

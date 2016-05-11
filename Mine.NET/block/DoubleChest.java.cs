@@ -9,7 +9,7 @@ import org.bukkit.inventory.InventoryHolder;
 /**
  * Represents a double chest.
  */
-public class DoubleChest implements InventoryHolder {
+public class DoubleChest : InventoryHolder {
     private DoubleChestInventory inventory;
 
     public DoubleChest(DoubleChestInventory chest) {

@@ -6,7 +6,7 @@ package org.bukkit.plugin;
  * Extend this class if your plugin is not a {@link
  * org.bukkit.plugin.java.JavaPlugin}
  */
-public abstract class PluginBase implements Plugin {
+public abstract class PluginBase : Plugin {
     @Override
     public readonly int hashCode() {
         return getName().hashCode();

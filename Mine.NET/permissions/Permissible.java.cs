@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Represents an object that may be assigned permissions
  */
-public interface Permissible extends ServerOperator {
+public interface Permissible : ServerOperator {
 
     /**
      * Checks if this object contains an override for the specified
@@ -118,5 +118,5 @@ public interface Permissible extends ServerOperator {
      *
      * @return Set of currently effective permissions
      */
-    public Set<PermissionAttachmentInfo> getEffectivePermissions();
+    public HashSet<PermissionAttachmentInfo> getEffectivePermissions();
 }

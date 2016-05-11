@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a firework explodes.
  */
-public class FireworkExplodeEvent extends EntityEvent implements Cancellable {
+public class FireworkExplodeEvent : EntityEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;

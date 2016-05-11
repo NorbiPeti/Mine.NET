@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player respawns.
  */
-public class PlayerRespawnEvent extends PlayerEvent {
+public class PlayerRespawnEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private Location respawnLocation;
     private readonly bool isBedSpawn;

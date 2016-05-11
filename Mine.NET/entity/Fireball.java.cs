@@ -5,7 +5,7 @@ import org.bukkit.util.Vector;
 /**
  * Represents a Fireball.
  */
-public interface Fireball extends Projectile, Explosive {
+public interface Fireball : Projectile, Explosive {
 
     /**
      * Fireballs fly straight and do not take setVelocity(...) well.

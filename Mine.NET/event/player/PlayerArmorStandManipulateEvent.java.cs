@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when a player interacts with an armor stand and will either swap, retrieve or place an item.
  */
-public class PlayerArmorStandManipulateEvent extends PlayerInteractEntityEvent {
+public class PlayerArmorStandManipulateEvent : PlayerInteractEntityEvent {
 
     private static readonly HandlerList handlers = new HandlerList();
 

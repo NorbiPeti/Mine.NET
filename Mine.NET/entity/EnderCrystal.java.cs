@@ -5,7 +5,7 @@ import org.bukkit.Location;
 /**
  * A crystal that heals nearby EnderDragons
  */
-public interface EnderCrystal extends Entity {
+public interface EnderCrystal : Entity {
 
     /**
      * Return whether or not this end crystal is showing the

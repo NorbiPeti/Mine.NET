@@ -13,7 +13,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class DefaultGameModeCommand extends VanillaCommand {
+public class DefaultGameModeCommand : VanillaCommand {
     private static readonly List<String> GAMEMODE_NAMES = ImmutableList.of("adventure", "creative", "survival");
 
     public DefaultGameModeCommand() {

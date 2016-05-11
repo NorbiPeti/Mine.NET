@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Represents an Item Frame
  */
-public interface ItemFrame extends Hanging {
+public interface ItemFrame : Hanging {
 
     /**
      * Get the item in this frame

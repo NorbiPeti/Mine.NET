@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents an arrow.
  */
-public interface Arrow extends Projectile {
+public interface Arrow : Projectile {
 
     /**
      * Gets the knockback strength for an arrow, which is the

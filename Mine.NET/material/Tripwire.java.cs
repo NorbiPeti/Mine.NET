@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents the tripwire
  */
-public class Tripwire extends MaterialData {
+public class Tripwire : MaterialData {
     
     public Tripwire() {
         super(Material.TRIPWIRE);

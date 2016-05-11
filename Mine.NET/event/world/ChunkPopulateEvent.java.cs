@@ -10,7 +10,7 @@ import org.bukkit.generator.BlockPopulator;
  * If your intent is to populate the chunk using this event, please see {@link
  * BlockPopulator}
  */
-public class ChunkPopulateEvent extends ChunkEvent {
+public class ChunkPopulateEvent : ChunkEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public ChunkPopulateEvent(Chunk chunk) {

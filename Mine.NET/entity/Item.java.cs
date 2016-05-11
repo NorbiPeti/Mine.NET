@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Represents an Item.
  */
-public interface Item extends Entity {
+public interface Item : Entity {
 
     /**
      * Gets the item stack associated with this item drop.

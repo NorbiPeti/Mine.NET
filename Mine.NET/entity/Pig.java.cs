@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents a Pig.
  */
-public interface Pig extends Animals, Vehicle {
+public interface Pig : Animals, Vehicle {
 
     /**
      * Check if the pig has a saddle.

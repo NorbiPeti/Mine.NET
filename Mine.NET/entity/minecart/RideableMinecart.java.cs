@@ -10,5 +10,5 @@ import org.bukkit.entity.Minecart;
  * Non-player entities that meet normal passenger criteria automatically
  * mount these minecarts when close enough.
  */
-public interface RideableMinecart extends Minecart {
+public interface RideableMinecart : Minecart {
 }

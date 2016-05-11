@@ -6,7 +6,7 @@ import org.bukkit.event.Event;
 /**
  * Represents a player related event
  */
-public abstract class PlayerEvent extends Event {
+public abstract class PlayerEvent : Event {
     protected Player player;
 
     public PlayerEvent(Player who) {

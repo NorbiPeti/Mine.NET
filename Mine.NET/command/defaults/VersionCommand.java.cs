@@ -28,7 +28,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class VersionCommand extends BukkitCommand {
+public class VersionCommand : BukkitCommand {
     public VersionCommand(String name) {
         super(name);
 
@@ -145,7 +145,7 @@ public class VersionCommand extends BukkitCommand {
     private readonly ReentrantLock versionLock = new ReentrantLock();
     private bool hasVersion = false;
     private String versionMessage = null;
-    private readonly Set<CommandSender> versionWaiters = new HashSet<CommandSender>();
+    private readonly HashSet<CommandSender> versionWaiters = new HashSet<CommandSender>();
     private bool versionTaskStarted = false;
     private long lastCheck = 0;
 

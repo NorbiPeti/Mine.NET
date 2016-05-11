@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
  * <p>
  * If a Block Damage event is cancelled, the block will not be damaged.
  */
-public class BlockDamageEvent extends BlockEvent implements Cancellable {
+public class BlockDamageEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Player player;
     private bool instaBreak;

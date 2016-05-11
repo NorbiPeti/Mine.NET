@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * For players see {@link org.bukkit.event.player.PlayerPortalEvent}
  */
-public class EntityPortalEvent extends EntityTeleportEvent {
+public class EntityPortalEvent : EntityTeleportEvent {
     private static readonly HandlerList handlers = new HandlerList();
     protected bool useTravelAgent = true;
     protected TravelAgent travelAgent;

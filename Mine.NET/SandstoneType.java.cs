@@ -1,51 +1,12 @@
-package org.bukkit;
-
-import java.util.Map;
-
-import com.google.common.collect.Maps;
-
-/**
+namespace Mine.NET
+{
+    /**
  * Represents the three different types of Sandstone
  */
-public enum SandstoneType {
-    CRACKED(0x0),
-    GLYPHED(0x1),
-    SMOOTH(0x2);
-
-    private readonly byte data;
-    private readonly static Dictionary<Byte, SandstoneType> BY_DATA = Maps.newHashMap();
-
-    private SandstoneType(int data) {
-        this.data = (byte) data;
-    }
-
-    /**
-     * Gets the associated data value representing this type of sandstone
-     *
-     * @return A byte containing the data value of this sandstone type
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public byte getData() {
-        return data;
-    }
-
-    /**
-     * Gets the type of sandstone with the given data value
-     *
-     * @param data Data value to fetch
-     * @return The {@link SandstoneType} representing the given value, or null
-     *     if it doesn't exist
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static SandstoneType getByData(byte data) {
-        return BY_DATA.get(data);
-    }
-
-    static {
-        for (SandstoneType type : values()) {
-            BY_DATA.put(type.data, type);
-        }
+    public enum SandstoneType
+    {
+        CRACKED = 0x0,
+        GLYPHED = 0x1,
+        SMOOTH = 0x2
     }
 }

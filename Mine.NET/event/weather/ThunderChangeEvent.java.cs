@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Stores data for thunder state changing in a world
  */
-public class ThunderChangeEvent extends WeatherEvent implements Cancellable {
+public class ThunderChangeEvent : WeatherEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly bool to;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.bukkit.command.Command;
 
-public abstract class BukkitCommand extends Command {
+public abstract class BukkitCommand : Command {
     protected BukkitCommand(String name) {
         super(name);
     }

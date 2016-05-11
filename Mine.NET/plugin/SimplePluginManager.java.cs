@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
+import java.util.IEnumerator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,7 +37,7 @@ import com.google.common.collect.ImmutableSet;
 /**
  * Handles all plugin management from the Server
  */
-public sealed class SimplePluginManager implements PluginManager {
+public sealed class SimplePluginManager : PluginManager {
     private readonly Server server;
     private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
     private readonly List<Plugin> plugins = new ArrayList<Plugin>();
@@ -45,7 +45,7 @@ public sealed class SimplePluginManager implements PluginManager {
     private static File updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
     private readonly Dictionary<String, Permission> permissions = new HashMap<String, Permission>();
-    private readonly Dictionary<bool, Set<Permission>> defaultPerms = new LinkedHashMap<bool, Set<Permission>>();
+    private readonly Dictionary<bool, HashSet<Permission>> defaultPerms = new LinkedHashMap<bool, HashSet<Permission>>();
     private readonly Dictionary<String, Dictionary<Permissible, bool>> permSubs = new HashMap<String, Dictionary<Permissible, bool>>();
     private readonly Dictionary<bool, Dictionary<Permissible, bool>> defSubs = new HashMap<bool, Dictionary<Permissible, bool>>();
     private bool useTimings = false;
@@ -65,11 +65,11 @@ public sealed class SimplePluginManager implements PluginManager {
      * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? extends PluginLoader> loader) throws ArgumentException {
+    public void registerInterface(Class<? : PluginLoader> loader) throws ArgumentException {
         PluginLoader instance;
 
         if (PluginLoader.class.isAssignableFrom(loader)) {
-            Constructor<? extends PluginLoader> constructor;
+            Constructor<? : PluginLoader> constructor;
 
             try {
                 constructor = loader.getConstructor(Server.class);
@@ -105,14 +105,14 @@ public sealed class SimplePluginManager implements PluginManager {
         if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
 
         List<Plugin> result = new ArrayList<Plugin>();
-        Set<Pattern> filters = fileAssociations.keySet();
+        HashSet<Pattern> filters = fileAssociations.keySet();
 
         if (!(server.getUpdateFolder().equals(""))) {
             updateDirectory = new File(directory, server.getUpdateFolder());
         }
 
         Dictionary<String, File> plugins = new HashMap<String, File>();
-        Set<String> loadedPlugins = new HashSet<String>();
+        HashSet<String> loadedPlugins = new HashSet<String>();
         Dictionary<String, Collection<String>> dependencies = new HashMap<String, Collection<String>>();
         Dictionary<String, Collection<String>> softDependencies = new HashMap<String, Collection<String>>();
 
@@ -190,13 +190,13 @@ public sealed class SimplePluginManager implements PluginManager {
 
         while (!plugins.isEmpty()) {
             bool missingDependency = true;
-            Iterator<String> pluginIterator = plugins.keySet().iterator();
+            IEnumerator<String> pluginIterator = plugins.keySet().iterator();
 
             while (pluginIterator.hasNext()) {
                 String plugin = pluginIterator.next();
 
                 if (dependencies.containsKey(plugin)) {
-                    Iterator<String> dependencyIterator = dependencies.get(plugin).iterator();
+                    IEnumerator<String> dependencyIterator = dependencies.get(plugin).iterator();
 
                     while (dependencyIterator.hasNext()) {
                         String dependency = dependencyIterator.next();
@@ -226,7 +226,7 @@ public sealed class SimplePluginManager implements PluginManager {
                     }
                 }
                 if (softDependencies.containsKey(plugin)) {
-                    Iterator<String> softDependencyIterator = softDependencies.get(plugin).iterator();
+                    IEnumerator<String> softDependencyIterator = softDependencies.get(plugin).iterator();
 
                     while (softDependencyIterator.hasNext()) {
                         String softDependency = softDependencyIterator.next();
@@ -284,7 +284,7 @@ public sealed class SimplePluginManager implements PluginManager {
                 if (missingDependency) {
                     softDependencies.clear();
                     dependencies.clear();
-                    Iterator<File> failedPluginIterator = plugins.values().iterator();
+                    IEnumerator<File> failedPluginIterator = plugins.values().iterator();
 
                     while (failedPluginIterator.hasNext()) {
                         File file = failedPluginIterator.next();
@@ -315,7 +315,7 @@ public sealed class SimplePluginManager implements PluginManager {
 
         checkUpdate(file);
 
-        Set<Pattern> filters = fileAssociations.keySet();
+        HashSet<Pattern> filters = fileAssociations.keySet();
         Plugin result = null;
 
         for (Pattern filter : filters) {
@@ -523,13 +523,13 @@ public sealed class SimplePluginManager implements PluginManager {
             throw new IllegalPluginAccessException("Plugin attempted to register " + listener + " while not enabled");
         }
 
-        for (Map.Entry<Class<? extends Event>, Set<RegisteredListener>> entry : plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
+        for (Map.Entry<Class<? : Event>, HashSet<RegisteredListener>> entry : plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
             getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
         }
 
     }
 
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin) {
+    public void registerEvent(Class<? : Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin) {
         registerEvent(event, listener, priority, executor, plugin, false);
     }
 
@@ -545,7 +545,7 @@ public sealed class SimplePluginManager implements PluginManager {
      * @param ignoreCancelled Do not call executor if event was already
      *     cancelled
      */
-    public void registerEvent(Class<? extends Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled) {
+    public void registerEvent(Class<? : Event> event, Listener listener, EventPriority priority, EventExecutor executor, Plugin plugin, bool ignoreCancelled) {
         Validate.notNull(listener, "Listener cannot be null");
         Validate.notNull(priority, "Priority cannot be null");
         Validate.notNull(executor, "Executor cannot be null");
@@ -562,7 +562,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    private HandlerList getEventListeners(Class<? extends Event> type) {
+    private HandlerList getEventListeners(Class<? : Event> type) {
         try {
             Method method = getRegistrationClass(type).getDeclaredMethod("getHandlerList");
             method.setAccessible(true);
@@ -572,7 +572,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    private Class<? extends Event> getRegistrationClass(Class<? extends Event> clazz) {
+    private Class<? : Event> getRegistrationClass(Class<? : Event> clazz) {
         try {
             clazz.getDeclaredMethod("getHandlerList");
             return clazz;
@@ -602,7 +602,7 @@ public sealed class SimplePluginManager implements PluginManager {
         calculatePermissionDefault(perm);
     }
 
-    public Set<Permission> getDefaultPermissions(bool op) {
+    public HashSet<Permission> getDefaultPermissions(bool op) {
         return ImmutableSet.copyOf(defaultPerms.get(op));
     }
 
@@ -635,7 +635,7 @@ public sealed class SimplePluginManager implements PluginManager {
     }
 
     private void dirtyPermissibles(bool op) {
-        Set<Permissible> permissibles = getDefaultPermSubscriptions(op);
+        HashSet<Permissible> permissibles = getDefaultPermSubscriptions(op);
 
         for (Permissible p : permissibles) {
             p.recalculatePermissions();
@@ -667,7 +667,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    public Set<Permissible> getPermissionSubscriptions(String permission) {
+    public HashSet<Permissible> getPermissionSubscriptions(String permission) {
         String name = permission.toLowerCase();
         Dictionary<Permissible, bool> map = permSubs.get(name);
 
@@ -701,7 +701,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    public Set<Permissible> getDefaultPermSubscriptions(bool op) {
+    public HashSet<Permissible> getDefaultPermSubscriptions(bool op) {
         Dictionary<Permissible, bool> map = defSubs.get(op);
 
         if (map == null) {
@@ -711,7 +711,7 @@ public sealed class SimplePluginManager implements PluginManager {
         }
     }
 
-    public Set<Permission> getPermissions() {
+    public HashSet<Permission> getPermissions() {
         return new HashSet<Permission>(permissions.values());
     }
 

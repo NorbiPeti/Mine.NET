@@ -44,7 +44,7 @@ import org.yaml.snakeyaml.error.YAMLException;
 /**
  * Represents a Java plugin loader, allowing plugins in the form of .jar
  */
-public sealed class JavaPluginLoader implements PluginLoader {
+public sealed class JavaPluginLoader : PluginLoader {
     readonly Server server;
     private readonly Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
     private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
@@ -205,7 +205,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
             classes.put(name, clazz);
 
             if (ConfigurationSerializable.class.isAssignableFrom(clazz)) {
-                Class<? extends ConfigurationSerializable> serializable = clazz.asSubclass(ConfigurationSerializable.class);
+                Class<? : ConfigurationSerializable> serializable = clazz.asSubclass(ConfigurationSerializable.class);
                 ConfigurationSerialization.registerClass(serializable);
             }
         }
@@ -216,7 +216,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
 
         try {
             if ((clazz != null) && (ConfigurationSerializable.class.isAssignableFrom(clazz))) {
-                Class<? extends ConfigurationSerializable> serializable = clazz.asSubclass(ConfigurationSerializable.class);
+                Class<? : ConfigurationSerializable> serializable = clazz.asSubclass(ConfigurationSerializable.class);
                 ConfigurationSerialization.unregisterClass(serializable);
             }
         } catch (NullPointerException ex) {
@@ -225,13 +225,13 @@ public sealed class JavaPluginLoader implements PluginLoader {
         }
     }
 
-    public Dictionary<Class<? extends Event>, Set<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
+    public Dictionary<Class<? : Event>, HashSet<RegisteredListener>> createRegisteredListeners(Listener listener, readonly Plugin plugin) {
         Validate.notNull(plugin, "Plugin can not be null");
         Validate.notNull(listener, "Listener can not be null");
 
         bool useTimings = server.getPluginManager().useTimings();
-        Dictionary<Class<? extends Event>, Set<RegisteredListener>> ret = new HashMap<Class<? extends Event>, Set<RegisteredListener>>();
-        Set<Method> methods;
+        Dictionary<Class<? : Event>, HashSet<RegisteredListener>> ret = new HashMap<Class<? : Event>, HashSet<RegisteredListener>>();
+        HashSet<Method> methods;
         try {
             Method[] publicMethods = listener.getClass().getMethods();
             Method[] privateMethods = listener.getClass().getDeclaredMethods();
@@ -260,9 +260,9 @@ public sealed class JavaPluginLoader implements PluginLoader {
                 plugin.getLogger().severe(plugin.getDescription().getFullName() + " attempted to register an invalid EventHandler method signature \"" + method.toGenericString() + "\" in " + listener.getClass());
                 continue;
             }
-            sealed class<? extends Event> eventClass = checkClass.asSubclass(Event.class);
+            sealed class<? : Event> eventClass = checkClass.asSubclass(Event.class);
             method.setAccessible(true);
-            Set<RegisteredListener> eventSet = ret.get(eventClass);
+            HashSet<RegisteredListener> eventSet = ret.get(eventClass);
             if (eventSet == null) {
                 eventSet = new HashSet<RegisteredListener>();
                 ret.put(eventClass, eventSet);
@@ -362,7 +362,7 @@ public sealed class JavaPluginLoader implements PluginLoader {
 
             if (cloader instanceof PluginClassLoader) {
                 PluginClassLoader loader = (PluginClassLoader) cloader;
-                Set<String> names = loader.getClasses();
+                HashSet<String> names = loader.getClasses();
 
                 for (String name : names) {
                     removeClass(name);

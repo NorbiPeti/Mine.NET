@@ -6,7 +6,7 @@ import org.bukkit.configuration.*;
  * Various settings for controlling the input and output of a {@link
  * FileConfiguration}
  */
-public class FileConfigurationOptions extends MemoryConfigurationOptions {
+public class FileConfigurationOptions : MemoryConfigurationOptions {
     private String header = null;
     private bool copyHeader = true;
 

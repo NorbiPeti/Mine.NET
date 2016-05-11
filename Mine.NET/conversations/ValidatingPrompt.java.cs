@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
  * ValidatingPrompt will keep replaying the prompt text until the user enters
  * a valid response.
  */
-public abstract class ValidatingPrompt implements Prompt {
+public abstract class ValidatingPrompt : Prompt {
     public ValidatingPrompt() {
         super();
     }

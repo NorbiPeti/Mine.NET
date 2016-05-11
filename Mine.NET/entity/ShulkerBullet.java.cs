@@ -1,6 +1,6 @@
 package org.bukkit.entity;
 
-public interface ShulkerBullet extends Projectile {
+public interface ShulkerBullet : Projectile {
 
     /**
      * Retrieve the target of this bullet.

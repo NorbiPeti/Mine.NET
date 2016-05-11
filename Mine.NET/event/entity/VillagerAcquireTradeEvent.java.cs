@@ -8,7 +8,7 @@ import org.bukkit.inventory.MerchantRecipe;
 /**
  * Called whenever a villager acquires a new trade.
  */
-public class VillagerAcquireTradeEvent extends EntityEvent implements Cancellable {
+public class VillagerAcquireTradeEvent : EntityEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;

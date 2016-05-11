@@ -4,7 +4,7 @@ import org.bukkit.entity.Item;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-public class ItemMergeEvent extends EntityEvent implements Cancellable {
+public class ItemMergeEvent : EntityEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;

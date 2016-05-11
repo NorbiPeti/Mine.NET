@@ -5,7 +5,7 @@ import org.bukkit.projectiles.ProjectileSource;
 /**
  * Represents a shootable entity.
  */
-public interface Projectile extends Entity {
+public interface Projectile : Entity {
 
     /**
      * This method exists for legacy reasons to provide backwards

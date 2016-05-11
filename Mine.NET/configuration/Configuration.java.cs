@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * Represents a source of configurable options and settings
  */
-public interface Configuration extends ConfigurationSection {
+public interface Configuration : ConfigurationSection {
     /**
      * Sets the default value of the given path as provided.
      * <p>

@@ -1,7 +1,7 @@
 package org.bukkit.inventory;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.IEnumerator;
 import java.util.List;
 
 import org.apache.commons.lang.Validate;
@@ -13,7 +13,7 @@ import org.bukkit.material.MaterialData;
  * Represents a shapeless recipe, where the arrangement of the ingredients on
  * the crafting grid does not matter.
  */
-public class ShapelessRecipe implements Recipe {
+public class ShapelessRecipe : Recipe {
     private ItemStack output;
     private List<ItemStack> ingredients = new ArrayList<ItemStack>();
 
@@ -191,7 +191,7 @@ public class ShapelessRecipe implements Recipe {
      */
     [Obsolete]
     public ShapelessRecipe removeIngredient(int count, Material ingredient, int rawdata) {
-        Iterator<ItemStack> iterator = ingredients.iterator();
+        IEnumerator<ItemStack> iterator = ingredients.iterator();
         while (count > 0 && iterator.hasNext()) {
             ItemStack stack = iterator.next();
             if (stack.getType() == ingredient && stack.getDurability() == rawdata) {

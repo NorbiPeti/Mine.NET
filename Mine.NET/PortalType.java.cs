@@ -1,22 +1,24 @@
-package org.bukkit;
-
-/**
- * Represents various types of portals that can be made in a world.
- */
-public enum PortalType {
-
+namespace Mine.NET
+{
     /**
-     * This is a Nether portal, made of obsidian.
+     * Represents various types of portals that can be made in a world.
      */
-    NETHER,
+    public enum PortalType
+    {
 
-    /**
-     * This is an Ender portal.
-     */
-    ENDER,
+        /**
+         * This is a Nether portal, made of obsidian.
+         */
+        NETHER,
 
-    /**
-     * This is a custom Plugin portal.
-     */
-    CUSTOM;
+        /**
+         * This is an Ender portal.
+         */
+        ENDER,
+
+        /**
+         * This is a custom Plugin portal.
+         */
+        CUSTOM
+    }
 }

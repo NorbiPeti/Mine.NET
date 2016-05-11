@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Stores data for lightning striking
  */
-public class LightningStrikeEvent extends WeatherEvent implements Cancellable {
+public class LightningStrikeEvent : WeatherEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly LightningStrike bolt;

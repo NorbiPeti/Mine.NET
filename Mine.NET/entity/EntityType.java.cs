@@ -204,7 +204,7 @@ public enum EntityType {
     UNKNOWN(null, null, -1, false);
 
     private String name;
-    private Class<? extends Entity> clazz;
+    private Class<? : Entity> clazz;
     private short typeId;
     private bool independent, living;
 
@@ -222,11 +222,11 @@ public enum EntityType {
         }
     }
 
-    private EntityType(String name, Class<? extends Entity> clazz, int typeId) {
+    private EntityType(String name, Class<? : Entity> clazz, int typeId) {
         this(name, clazz, typeId, true);
     }
 
-    private EntityType(String name, Class<? extends Entity> clazz, int typeId, bool independent) {
+    private EntityType(String name, Class<? : Entity> clazz, int typeId, bool independent) {
         this.name = name;
         this.clazz = clazz;
         this.typeId = (short) typeId;
@@ -246,7 +246,7 @@ public enum EntityType {
         return name;
     }
 
-    public Class<? extends Entity> getEntityClass() {
+    public Class<? : Entity> getEntityClass() {
         return clazz;
     }
 

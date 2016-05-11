@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a command block
  */
-public class Command extends MaterialData implements Redstone {
+public class Command : MaterialData : Redstone {
     public Command() {
         super(Material.COMMAND);
     }

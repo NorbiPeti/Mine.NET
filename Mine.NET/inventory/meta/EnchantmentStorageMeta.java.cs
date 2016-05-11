@@ -10,7 +10,7 @@ import org.bukkit.enchantments.Enchantment;
  * opposed to being enchanted. {@link Material#ENCHANTED_BOOK} is an example
  * of an item with enchantment storage.
  */
-public interface EnchantmentStorageMeta extends ItemMeta {
+public interface EnchantmentStorageMeta : ItemMeta {
 
     /**
      * Checks for the existence of any stored enchantments.

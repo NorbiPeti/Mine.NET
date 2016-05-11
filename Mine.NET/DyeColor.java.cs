@@ -1,79 +1,82 @@
-
 using System;
 using System.Collections.Generic;
-/**
-* All supported color values for dyes and cloth
-*/
-public class DyeColor {
-    public enum Colors
-    {
-        /**
-         * Represents white dye.
-         */
-        WHITE,
-        /**
-         * Represents orange dye.
-         */
-        ORANGE,
-        /**
-         * Represents magenta dye.
-         */
-        MAGENTA,
-        /**
-         * Represents light blue dye.
-         */
-        LIGHT_BLUE,
-        /**
-         * Represents yellow dye.
-         */
-        YELLOW,
-        /**
-         * Represents lime dye.
-         */
-        LIME,
-        /**
-         * Represents pink dye.
-         */
-        PINK,
-        /**
-         * Represents gray dye.
-         */
-        GRAY,
-        /**
-         * Represents silver dye.
-         */
-        SILVER,
-        /**
-         * Represents cyan dye.
-         */
-        CYAN,
-        /**
-         * Represents purple dye.
-         */
-        PURPLE,
-        /**
-         * Represents blue dye.
-         */
-        BLUE,
-        /**
-         * Represents brown dye.
-         */
-        BROWN,
-        /**
-         * Represents green dye.
-         */
-        GREEN,
-        /**
-         * Represents red dye.
-         */
-        RED,
-        /**
-         * Represents black dye.
-         */
-        BLACK
-    }
 
-    private static Dictionary<Colors, DyeColor> AllColors = new Dictionary<Colors, DyeColor>
+namespace Mine.NET
+{
+    /**
+    * All supported color values for dyes and cloth
+*/
+    public class DyeColor
+    {
+        public enum Colors
+        {
+            /**
+             * Represents white dye.
+             */
+            WHITE,
+            /**
+             * Represents orange dye.
+             */
+            ORANGE,
+            /**
+             * Represents magenta dye.
+             */
+            MAGENTA,
+            /**
+             * Represents light blue dye.
+             */
+            LIGHT_BLUE,
+            /**
+             * Represents yellow dye.
+             */
+            YELLOW,
+            /**
+             * Represents lime dye.
+             */
+            LIME,
+            /**
+             * Represents pink dye.
+             */
+            PINK,
+            /**
+             * Represents gray dye.
+             */
+            GRAY,
+            /**
+             * Represents silver dye.
+             */
+            SILVER,
+            /**
+             * Represents cyan dye.
+             */
+            CYAN,
+            /**
+             * Represents purple dye.
+             */
+            PURPLE,
+            /**
+             * Represents blue dye.
+             */
+            BLUE,
+            /**
+             * Represents brown dye.
+             */
+            BROWN,
+            /**
+             * Represents green dye.
+             */
+            GREEN,
+            /**
+             * Represents red dye.
+             */
+            RED,
+            /**
+             * Represents black dye.
+             */
+            BLACK
+        }
+
+        private static Dictionary<Colors, DyeColor> AllColors = new Dictionary<Colors, DyeColor>
     {
         /**
          * Represents white dye.
@@ -141,159 +144,175 @@ public class DyeColor {
         { Colors.BLACK, new DyeColor(0xF, 0x0, Color.fromRGB(0x191919), Color.fromRGB(0x1E1B1B)) }
     };
 
-    private readonly byte woolData;
-    private readonly byte dyeData;
-    private readonly Color color;
-    private readonly Color firework;
-    private readonly static DyeColor[] BY_WOOL_DATA;
-    private readonly static DyeColor[] BY_DYE_DATA;
-    private readonly static Dictionary<Color, DyeColor> BY_COLOR;
-    private readonly static Dictionary<Color, DyeColor> BY_FIREWORK;
+        private readonly byte woolData;
+        private readonly byte dyeData;
+        private readonly Color color;
+        private readonly Color firework;
+        private readonly static DyeColor[] BY_WOOL_DATA;
+        private readonly static DyeColor[] BY_DYE_DATA;
+        private readonly static Dictionary<Color, DyeColor> BY_COLOR;
+        private readonly static Dictionary<Color, DyeColor> BY_FIREWORK;
 
-    private DyeColor(int woolData, int dyeData, Color color, Color firework) {
-        this.woolData = (byte) woolData;
-        this.dyeData = (byte) dyeData;
-        this.color = color;
-        this.firework = firework;
-    }
-
-    /**
-     * Gets the associated (wool) data value representing this color.
-     *
-     * @return A byte containing the (wool) data value of this color
-     * [Obsolete] The name is misleading. It would imply {@link
-     *     Material#INK_SACK} but uses {@link Material#WOOL}
-     * @see #getWoolData()
-     * @see #getDyeData()
-     */
-    [Obsolete]
-    public byte getData() {
-        return getWoolData();
-    }
-
-    /**
-     * Gets the associated wool data value representing this color.
-     *
-     * @return A byte containing the wool data value of this color
-     * @see #getDyeData()
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public byte getWoolData() {
-        return woolData;
-    }
-
-    /**
-     * Gets the associated dye data value representing this color.
-     *
-     * @return A byte containing the dye data value of this color
-     * @see #getWoolData()
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public byte getDyeData() {
-        return dyeData;
-    }
-
-    /**
-     * Gets the color that this dye represents.
-     *
-     * @return The {@link Color} that this dye represents
-     */
-    public Color getColor() {
-        return color;
-    }
-
-    /**
-     * Gets the firework color that this dye represents.
-     *
-     * @return The {@link Color} that this dye represents
-     */
-    public Color getFireworkColor() {
-        return firework;
-    }
-
-    /**
-     * Gets the DyeColor with the given (wool) data value.
-     *
-     * @param data (wool) data value to fetch
-     * @return The {@link DyeColor} representing the given value, or null if
-     *     it doesn't exist
-     * [Obsolete] The name is misleading. It would imply {@link
-     *     Material#INK_SACK} but uses {@link Material#WOOL}
-     * @see #getByDyeData(byte)
-     * @see #getByWoolData(byte)
-     */
-    [Obsolete]
-    public static DyeColor getByData(byte data) {
-        return getByWoolData(data);
-    }
-
-    /**
-     * Gets the DyeColor with the given wool data value.
-     *
-     * @param data Wool data value to fetch
-     * @return The {@link DyeColor} representing the given value, or null if
-     *     it doesn't exist
-     * @see #getByDyeData(byte)
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static DyeColor getByWoolData(byte data) {
-        int i = 0xff & data;
-        if (i >= BY_WOOL_DATA.Length) {
-            return null;
+        private DyeColor(int woolData, int dyeData, Color color, Color firework)
+        {
+            this.woolData = (byte)woolData;
+            this.dyeData = (byte)dyeData;
+            this.color = color;
+            this.firework = firework;
         }
-        return BY_WOOL_DATA[i];
-    }
 
-    /**
-     * Gets the DyeColor with the given dye data value.
-     *
-     * @param data Dye data value to fetch
-     * @return The {@link DyeColor} representing the given value, or null if
-     *     it doesn't exist
-     * @see #getByWoolData(byte)
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static DyeColor getByDyeData(byte data) {
-        int i = 0xff & data;
-        if (i >= BY_DYE_DATA.Length) {
-            return null;
+        /**
+         * Gets the associated (wool) data value representing this color.
+         *
+         * @return A byte containing the (wool) data value of this color
+         * [Obsolete] The name is misleading. It would imply {@link
+         *     Material#INK_SACK} but uses {@link Material#WOOL}
+         * @see #getWoolData()
+         * @see #getDyeData()
+         */
+        [Obsolete]
+        public byte getData()
+        {
+            return getWoolData();
         }
-        return BY_DYE_DATA[i];
-    }
 
-    /**
-     * Gets the DyeColor with the given color value.
-     *
-     * @param color Color value to get the dye by
-     * @return The {@link DyeColor} representing the given value, or null if
-     *     it doesn't exist
-     */
-    public static DyeColor getByColor(Color color) {
-        return BY_COLOR[color];
-    }
+        /**
+         * Gets the associated wool data value representing this color.
+         *
+         * @return A byte containing the wool data value of this color
+         * @see #getDyeData()
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public byte getWoolData()
+        {
+            return woolData;
+        }
 
-    /**
-     * Gets the DyeColor with the given firework color value.
-     *
-     * @param color Color value to get dye by
-     * @return The {@link DyeColor} representing the given value, or null if
-     *     it doesn't exist
-     */
-    public static DyeColor getByFireworkColor(Color color) {
-        return BY_FIREWORK[color];
-    }
+        /**
+         * Gets the associated dye data value representing this color.
+         *
+         * @return A byte containing the dye data value of this color
+         * @see #getWoolData()
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public byte getDyeData()
+        {
+            return dyeData;
+        }
 
-    static DyeColor() {
-        BY_WOOL_DATA = new DyeColor[AllColors.Values.Count];
-        BY_DYE_DATA = new DyeColor[AllColors.Values.Count];
+        /**
+         * Gets the color that this dye represents.
+         *
+         * @return The {@link Color} that this dye represents
+         */
+        public Color getColor()
+        {
+            return color;
+        }
 
-        foreach (DyeColor color in AllColors.Values) {
-            BY_WOOL_DATA[color.woolData & 0xff] = color;
-            BY_DYE_DATA[color.dyeData & 0xff] = color;
+        /**
+         * Gets the firework color that this dye represents.
+         *
+         * @return The {@link Color} that this dye represents
+         */
+        public Color getFireworkColor()
+        {
+            return firework;
+        }
+
+        /**
+         * Gets the DyeColor with the given (wool) data value.
+         *
+         * @param data (wool) data value to fetch
+         * @return The {@link DyeColor} representing the given value, or null if
+         *     it doesn't exist
+         * [Obsolete] The name is misleading. It would imply {@link
+         *     Material#INK_SACK} but uses {@link Material#WOOL}
+         * @see #getByDyeData(byte)
+         * @see #getByWoolData(byte)
+         */
+        [Obsolete]
+        public static DyeColor getByData(byte data)
+        {
+            return getByWoolData(data);
+        }
+
+        /**
+         * Gets the DyeColor with the given wool data value.
+         *
+         * @param data Wool data value to fetch
+         * @return The {@link DyeColor} representing the given value, or null if
+         *     it doesn't exist
+         * @see #getByDyeData(byte)
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public static DyeColor getByWoolData(byte data)
+        {
+            int i = 0xff & data;
+            if (i >= BY_WOOL_DATA.Length)
+            {
+                return null;
+            }
+            return BY_WOOL_DATA[i];
+        }
+
+        /**
+         * Gets the DyeColor with the given dye data value.
+         *
+         * @param data Dye data value to fetch
+         * @return The {@link DyeColor} representing the given value, or null if
+         *     it doesn't exist
+         * @see #getByWoolData(byte)
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public static DyeColor getByDyeData(byte data)
+        {
+            int i = 0xff & data;
+            if (i >= BY_DYE_DATA.Length)
+            {
+                return null;
+            }
+            return BY_DYE_DATA[i];
+        }
+
+        /**
+         * Gets the DyeColor with the given color value.
+         *
+         * @param color Color value to get the dye by
+         * @return The {@link DyeColor} representing the given value, or null if
+         *     it doesn't exist
+         */
+        public static DyeColor getByColor(Color color)
+        {
+            return BY_COLOR[color];
+        }
+
+        /**
+         * Gets the DyeColor with the given firework color value.
+         *
+         * @param color Color value to get dye by
+         * @return The {@link DyeColor} representing the given value, or null if
+         *     it doesn't exist
+         */
+        public static DyeColor getByFireworkColor(Color color)
+        {
+            return BY_FIREWORK[color];
+        }
+
+        static DyeColor()
+        {
+            BY_WOOL_DATA = new DyeColor[AllColors.Values.Count];
+            BY_DYE_DATA = new DyeColor[AllColors.Values.Count];
+
+            foreach (DyeColor color in AllColors.Values)
+            {
+                BY_WOOL_DATA[color.woolData & 0xff] = color;
+                BY_DYE_DATA[color.dyeData & 0xff] = color;
+            }
         }
     }
 }

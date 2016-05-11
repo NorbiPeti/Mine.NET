@@ -4,7 +4,7 @@ import java.util.EventListener;
 
 /**
  */
-public interface ConversationAbandonedListener extends EventListener {
+public interface ConversationAbandonedListener : EventListener {
     /**
      * Called whenever a {@link Conversation} is abandoned.
      *

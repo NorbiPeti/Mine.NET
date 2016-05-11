@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Raised when a vehicle is created.
  */
-public class VehicleCreateEvent extends VehicleEvent {
+public class VehicleCreateEvent : VehicleEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public VehicleCreateEvent(Vehicle vehicle) {

@@ -16,7 +16,7 @@ import static org.bukkit.util.NumberConversions.checkFinite;
  * <code>clone()</code> in order to get a copy.
  */
 @SerializableAs("Vector")
-public class Vector implements Cloneable, ConfigurationSerializable {
+public class Vector : Cloneable, ConfigurationSerializable {
     private static readonly long serialVersionUID = -2657651106777219169L;
 
     private static Random random = new Random();

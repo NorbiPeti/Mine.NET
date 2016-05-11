@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 /**
  * A type of {@link ConfigurationSection} that is stored in memory.
  */
-public class MemorySection implements ConfigurationSection {
+public class MemorySection : ConfigurationSection {
     protected readonly Dictionary<String, Object> map = new LinkedHashMap<String, Object>();
     private readonly Configuration root;
     private readonly ConfigurationSection parent;
@@ -68,8 +68,8 @@ public class MemorySection implements ConfigurationSection {
         this.fullPath = createPath(parent, path);
     }
 
-    public Set<String> getKeys(bool deep) {
-        Set<String> result = new LinkedHashSet<String>();
+    public HashSet<String> getKeys(bool deep) {
+        HashSet<String> result = new LinkedHashSet<String>();
 
         Configuration root = getRoot();
         if (root != null && root.options().copyDefaults()) {
@@ -705,7 +705,7 @@ public class MemorySection implements ConfigurationSection {
         return (defaults == null) ? null : defaults.get(createPath(this, path));
     }
 
-    protected void mapChildrenKeys(Set<String> output, ConfigurationSection section, bool deep) {
+    protected void mapChildrenKeys(HashSet<String> output, ConfigurationSection section, bool deep) {
         if (section instanceof MemorySection) {
             MemorySection sec = (MemorySection) section;
 
@@ -718,7 +718,7 @@ public class MemorySection implements ConfigurationSection {
                 }
             }
         } else {
-            Set<String> keys = section.getKeys(deep);
+            HashSet<String> keys = section.getKeys(deep);
 
             for (String key : keys) {
                 output.add(createPath(section, key, this));

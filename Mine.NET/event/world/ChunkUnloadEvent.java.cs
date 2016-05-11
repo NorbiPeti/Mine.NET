@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a chunk is unloaded
  */
-public class ChunkUnloadEvent extends ChunkEvent implements Cancellable {
+public class ChunkUnloadEvent : ChunkEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
 

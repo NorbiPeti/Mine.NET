@@ -10,7 +10,7 @@ import java.util.List;
  * @see TabExecutor
  */
 [Obsolete]
-public interface TabCommandExecutor extends CommandExecutor {
+public interface TabCommandExecutor : CommandExecutor {
     public List<String> onTabComplete();
 
 }

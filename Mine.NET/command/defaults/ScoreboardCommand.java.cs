@@ -27,7 +27,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 [Obsolete]
-public class ScoreboardCommand extends VanillaCommand {
+public class ScoreboardCommand : VanillaCommand {
 
     private static readonly List<String> MAIN_CHOICES = ImmutableList.of("objectives", "players", "teams");
     private static readonly List<String> OBJECTIVES_CHOICES = ImmutableList.of("list", "add", "remove", "setdisplay");
@@ -86,7 +86,7 @@ public class ScoreboardCommand extends VanillaCommand {
                 return false;
             }
             if (args[1].equalsIgnoreCase("list")) {
-                Set<Objective> objectives = mainScoreboard.getObjectives();
+                HashSet<Objective> objectives = mainScoreboard.getObjectives();
                 if (objectives.isEmpty()) {
                     sender.sendMessage(ChatColor.RED + "There are no objectives on the scoreboard");
                     return false;
@@ -239,7 +239,7 @@ public class ScoreboardCommand extends VanillaCommand {
                     return false;
                 }
                 if (args.length == 2) {
-                    Set<String> entries = mainScoreboard.getEntries();
+                    HashSet<String> entries = mainScoreboard.getEntries();
                     if (entries.isEmpty()) {
                         sender.sendMessage(ChatColor.RED + "There are no tracked players on the scoreboard");
                     } else {
@@ -252,7 +252,7 @@ public class ScoreboardCommand extends VanillaCommand {
                         sender.sendMessage(ChatColor.RED + "'" + playerName + "' is too long for a player name");
                         return false;
                     }
-                    Set<Score> scores = mainScoreboard.getScores(playerName);
+                    HashSet<Score> scores = mainScoreboard.getScores(playerName);
                     if (scores.isEmpty()) {
                         sender.sendMessage(ChatColor.RED + "Player " + playerName + " has no scores recorded");
                     } else {
@@ -270,7 +270,7 @@ public class ScoreboardCommand extends VanillaCommand {
             }
             if (args[1].equalsIgnoreCase("list")) {
                 if (args.length == 2) {
-                    Set<Team> teams = mainScoreboard.getTeams();
+                    HashSet<Team> teams = mainScoreboard.getTeams();
                     if (teams.isEmpty()) {
                         sender.sendMessage(ChatColor.RED + "There are no teams registered on the scoreboard");
                     } else {
@@ -285,7 +285,7 @@ public class ScoreboardCommand extends VanillaCommand {
                     if (team == null) {
                         sender.sendMessage(ChatColor.RED + "No team was found by the name '" + teamName + "'");
                     } else {
-                        Set<OfflinePlayer> players = team.getPlayers();
+                        HashSet<OfflinePlayer> players = team.getPlayers();
                         if (players.isEmpty()) {
                             sender.sendMessage(ChatColor.RED + "Team " + team.getName() + " has no players");
                         } else {
@@ -345,7 +345,7 @@ public class ScoreboardCommand extends VanillaCommand {
                 if (team == null) {
                     sender.sendMessage(ChatColor.RED + "No team was found by the name '" + name + "'");
                 } else {
-                    Set<OfflinePlayer> players = team.getPlayers();
+                    HashSet<OfflinePlayer> players = team.getPlayers();
                     if (players.isEmpty()) {
                         sender.sendMessage(ChatColor.RED + "Team " + team.getName() + " is already empty, cannot remove nonexistant players");
                     } else {
@@ -365,7 +365,7 @@ public class ScoreboardCommand extends VanillaCommand {
                 if (team == null) {
                     sender.sendMessage(ChatColor.RED + "No team was found by the name '" + teamName + "'");
                 } else {
-                    Set<String> addedPlayers = new HashSet<String>();
+                    HashSet<String> addedPlayers = new HashSet<String>();
                     if ((sender instanceof Player) && args.length == 3) {
                         team.addPlayer((Player) sender);
                         addedPlayers.add(sender.getName());
@@ -390,8 +390,8 @@ public class ScoreboardCommand extends VanillaCommand {
                     sender.sendMessage(ChatColor.RED + "/scoreboard teams leave [player...]");
                     return false;
                 }
-                Set<String> left = new HashSet<String>();
-                Set<String> noTeam = new HashSet<String>();
+                HashSet<String> left = new HashSet<String>();
+                HashSet<String> noTeam = new HashSet<String>();
                 if ((sender instanceof Player) && args.length == 2) {
                     Team team = mainScoreboard.getPlayerTeam((Player) sender);
                     if (team != null) {
@@ -562,7 +562,7 @@ public class ScoreboardCommand extends VanillaCommand {
         return ImmutableList.of();
     }
 
-    private static String offlinePlayerSetToString(Set<OfflinePlayer> set) {
+    private static String offlinePlayerSetToString(HashSet<OfflinePlayer> set) {
         StringBuilder string = new StringBuilder();
         String lastValue = null;
         for (OfflinePlayer value : set) {

@@ -19,7 +19,7 @@ import org.bukkit.util.StringUtil;
 
 import com.google.common.collect.ImmutableList;
 
-public class TimingsCommand extends BukkitCommand {
+public class TimingsCommand : BukkitCommand {
     private static readonly List<String> TIMINGS_SUBCOMMANDS = ImmutableList.of("merged", "reset", "separate");
 
     public TimingsCommand(String name) {
@@ -84,7 +84,7 @@ public class TimingsCommand extends BukkitCommand {
                             if (count == 0) continue;
                             long avg = time / count;
                             totalTime += time;
-                            Class<? extends Event> eventClass = trl.getEventClass();
+                            Class<? : Event> eventClass = trl.getEventClass();
                             if (count > 0 && eventClass != null) {
                                 fileTimings.println("    " + eventClass.getSimpleName() + (trl.hasMultiple() ? " (and sub-classes)" : "") + " Time: " + time + " Count: " + count + " Avg: " + avg);
                             }

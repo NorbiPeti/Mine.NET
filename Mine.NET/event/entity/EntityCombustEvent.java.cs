@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If an Entity Combust event is cancelled, the entity will not combust.
  */
-public class EntityCombustEvent extends EntityEvent implements Cancellable {
+public class EntityCombustEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private int duration;
     private bool cancel;

@@ -7,7 +7,7 @@ package org.bukkit.conversations;
  * conversation flow. To halt a conversation, END_OF_CONVERSATION is returned
  * in liu of another Prompt object.
  */
-public interface Prompt extends Cloneable {
+public interface Prompt : Cloneable {
 
     /**
      * A convenience constant for indicating the end of a conversation.

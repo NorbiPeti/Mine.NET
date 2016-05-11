@@ -1,6 +1,6 @@
 package org.bukkit.event;
 
-public class EventException extends Exception {
+public class EventException : Exception {
     private static readonly long serialVersionUID = 3532808232324183999L;
     private readonly Throwable cause;
 

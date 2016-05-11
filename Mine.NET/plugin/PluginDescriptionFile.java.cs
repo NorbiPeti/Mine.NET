@@ -225,7 +225,7 @@ public sealed class PluginDescriptionFile {
     private List<Permission> permissions = null;
     private Dictionary<?, ?> lazyPermissions = null;
     private PermissionDefault defaultPerm = PermissionDefault.OP;
-    private Set<PluginAwareness> awareness = ImmutableSet.of();
+    private HashSet<PluginAwareness> awareness = ImmutableSet.of();
 
     public PluginDescriptionFile(InputStream stream) throws InvalidDescriptionException {
         loadMap(asMap(YAML.get().load(stream)));
@@ -308,7 +308,7 @@ public sealed class PluginDescriptionFile {
      * Gives the fully qualified name of the main class for a plugin. The
      * format should follow the {@link ClassLoader#loadClass(String)} syntax
      * to successfully be resolved at runtime. For most plugins, this is the
-     * class that extends {@link JavaPlugin}.
+     * class that : {@link JavaPlugin}.
      * <ul>
      * <li>This must contain the full namespace including the class file
      *     itself.
@@ -827,7 +827,7 @@ public sealed class PluginDescriptionFile {
      * <li>Each awareness starts the identifier with bang-at
      *     (<code>!@</code>).
      * <li>Unrecognized (future / unimplemented) entries are quietly replaced
-     *     by a generic object that implements PluginAwareness.
+     *     by a generic object that : PluginAwareness.
      * <li>A type of awareness must be defined by the runtime and acknowledged
      *     by the API, effectively discluding any derived type from any
      *     plugin's classpath.
@@ -848,7 +848,7 @@ public sealed class PluginDescriptionFile {
      *
      * @return a set containing every awareness for the plugin
      */
-    public Set<PluginAwareness> getAwareness() {
+    public HashSet<PluginAwareness> getAwareness() {
         return awareness;
     }
 
@@ -1013,7 +1013,7 @@ public sealed class PluginDescriptionFile {
         }
 
         if (map.get("awareness") instanceof Iterable) {
-            Set<PluginAwareness> awareness = new HashSet<PluginAwareness>();
+            HashSet<PluginAwareness> awareness = new HashSet<PluginAwareness>();
             try {
                 for (Object o : (Iterable<?>) map.get("awareness")) {
                     awareness.add((PluginAwareness) o);

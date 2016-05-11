@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * Represents a {@link Command} belonging to a plugin
  */
-public sealed class PluginCommand extends Command implements PluginIdentifiableCommand {
+public sealed class PluginCommand : Command : PluginIdentifiableCommand {
     private readonly Plugin owningPlugin;
     private CommandExecutor executor;
     private TabCompleter completer;
@@ -76,7 +76,7 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
     /**
      * Sets the {@link TabCompleter} to run when tab-completing this command.
      * <p>
-     * If no TabCompleter is specified, and the command's executor implements
+     * If no TabCompleter is specified, and the command's executor :
      * TabCompleter, then the executor will be used for tab completion.
      *
      * @param completer New tab completer
@@ -109,7 +109,7 @@ public sealed class PluginCommand extends Command implements PluginIdentifiableC
      * Delegates to the tab completer if present.
      * <p>
      * If it is not present or returns null, will delegate to the current
-     * command executor if it implements {@link TabCompleter}. If a non-null
+     * command executor if it : {@link TabCompleter}. If a non-null
      * list has not been found, will default to standard player name
      * completion in {@link
      * Command#tabComplete(CommandSender, String, String[])}.

@@ -6,7 +6,7 @@ import org.bukkit.World;
 /**
  * Creates perlin noise through unbiased octaves
  */
-public class PerlinOctaveGenerator extends OctaveGenerator {
+public class PerlinOctaveGenerator : OctaveGenerator {
 
     /**
      * Creates a perlin octave generator for the given world

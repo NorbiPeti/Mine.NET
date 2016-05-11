@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a piston retracts
  */
-public class BlockPistonRetractEvent extends BlockPistonEvent {
+public class BlockPistonRetractEvent : BlockPistonEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private List<Block> blocks;
     

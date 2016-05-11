@@ -14,7 +14,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class TimeCommand extends VanillaCommand {
+public class TimeCommand : VanillaCommand {
     private static readonly List<String> TABCOMPLETE_ADD_SET = ImmutableList.of("add", "set");
     private static readonly List<String> TABCOMPLETE_DAY_NIGHT = ImmutableList.of("day", "night");
 

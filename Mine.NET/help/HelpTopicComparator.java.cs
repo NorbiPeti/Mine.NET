@@ -10,7 +10,7 @@ import java.util.Comparator;
  * All topics are listed in alphabetic order, but topics that start with a
  * slash come after topics that don't.
  */
-public class HelpTopicComparator implements Comparator<HelpTopic> {
+public class HelpTopicComparator : Comparator<HelpTopic> {
     
     // Singleton implementations
     private static readonly TopicNameComparator tnc = new TopicNameComparator();
@@ -29,7 +29,7 @@ public class HelpTopicComparator implements Comparator<HelpTopic> {
         return tnc.compare(lhs.getName(), rhs.getName());
     }
 
-    public static class TopicNameComparator implements Comparator<String> {
+    public static class TopicNameComparator : Comparator<String> {
         private TopicNameComparator(){}
         
         public int compare(String lhs, String rhs) {

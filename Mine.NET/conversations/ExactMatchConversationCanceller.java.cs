@@ -4,7 +4,7 @@ package org.bukkit.conversations;
  * An ExactMatchConversationCanceller cancels a conversation if the user
  * enters an exact input string
  */
-public class ExactMatchConversationCanceller implements ConversationCanceller {
+public class ExactMatchConversationCanceller : ConversationCanceller {
     private String escapeSequence;
 
     /**

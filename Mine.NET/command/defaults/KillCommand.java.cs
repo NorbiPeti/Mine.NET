@@ -11,7 +11,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class KillCommand extends VanillaCommand {
+public class KillCommand : VanillaCommand {
     public KillCommand() {
         super("kill");
         this.description = "Commits suicide, only usable as a player";

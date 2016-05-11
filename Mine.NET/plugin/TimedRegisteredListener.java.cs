@@ -8,10 +8,10 @@ import org.bukkit.event.Listener;
 /**
  * Extends RegisteredListener to include timing information
  */
-public class TimedRegisteredListener extends RegisteredListener {
+public class TimedRegisteredListener : RegisteredListener {
     private int count;
     private long totalTime;
-    private Class<? extends Event> eventClass;
+    private Class<? : Event> eventClass;
     private bool multiple = false;
 
     public TimedRegisteredListener(Listener pluginListener, readonly EventExecutor eventExecutor, readonly EventPriority eventPriority, readonly Plugin registeredPlugin, readonly bool listenCancelled) {
@@ -25,7 +25,7 @@ public class TimedRegisteredListener extends RegisteredListener {
             return;
         }
         count++;
-        Class<? extends Event> newEventClass = event.getClass();
+        Class<? : Event> newEventClass = event.getClass();
         if (this.eventClass == null) {
             this.eventClass = newEventClass;
         } else if (!this.eventClass.equals(newEventClass)) {
@@ -81,7 +81,7 @@ public class TimedRegisteredListener extends RegisteredListener {
      *
      * @return the event class handled by this RegisteredListener
      */
-    public Class<? extends Event> getEventClass() {
+    public Class<? : Event> getEventClass() {
         return eventClass;
     }
 

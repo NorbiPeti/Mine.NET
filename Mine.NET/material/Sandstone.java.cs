@@ -6,7 +6,7 @@ import org.bukkit.SandstoneType;
 /**
  * Represents the different types of sandstone.
  */
-public class Sandstone extends MaterialData {
+public class Sandstone : MaterialData {
     public Sandstone() {
         super(Material.SANDSTONE);
     }

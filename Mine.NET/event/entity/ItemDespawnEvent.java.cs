@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  * Cancelling the event results in the item being allowed to exist for 5 more
  * minutes. This behavior is not guaranteed and may change in future versions.
  */
-public class ItemDespawnEvent extends EntityEvent implements Cancellable {
+public class ItemDespawnEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly Location location;

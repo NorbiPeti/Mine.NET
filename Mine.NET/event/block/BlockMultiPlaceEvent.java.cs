@@ -15,7 +15,7 @@ import java.util.List;
  * the placed block would exist if the placement only affected a single
  * block.
  */
-public class BlockMultiPlaceEvent extends BlockPlaceEvent {
+public class BlockMultiPlaceEvent : BlockPlaceEvent {
     private readonly List<BlockState> states;
 
     public BlockMultiPlaceEvent(List<BlockState> states, Block clicked, ItemStack itemInHand, Player thePlayer, bool canBuild) {

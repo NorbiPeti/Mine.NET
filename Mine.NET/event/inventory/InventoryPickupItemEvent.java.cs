@@ -9,7 +9,7 @@ import org.bukkit.inventory.Inventory;
 /**
  * Called when a hopper or hopper minecart picks up a dropped item.
  */
-public class InventoryPickupItemEvent extends Event implements Cancellable {
+public class InventoryPickupItemEvent : Event : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly Inventory inventory;

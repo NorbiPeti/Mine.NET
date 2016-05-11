@@ -6,7 +6,7 @@ import org.apache.commons.lang.Validate;
  * Various settings for controlling the input and output of a {@link
  * YamlConfiguration}
  */
-public class YamlConfigurationOptions extends FileConfigurationOptions {
+public class YamlConfigurationOptions : FileConfigurationOptions {
     private int indent = 2;
 
     protected YamlConfigurationOptions(YamlConfiguration configuration) {

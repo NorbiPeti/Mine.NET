@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a furnace or a dispenser.
  */
-public class DirectionalContainer extends MaterialData implements Directional {
+public class DirectionalContainer : MaterialData : Directional {
     /**
      * @param type the raw type id
      * [Obsolete] Magic value

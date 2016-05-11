@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Called when an entity explodes
  */
-public class EntityExplodeEvent extends EntityEvent implements Cancellable {
+public class EntityExplodeEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private readonly Location location;

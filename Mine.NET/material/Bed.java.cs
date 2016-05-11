@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a bed.
  */
-public class Bed extends MaterialData implements Directional {
+public class Bed : MaterialData : Directional {
 
     /**
      * Default constructor for a bed.

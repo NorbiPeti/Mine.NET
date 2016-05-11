@@ -10,7 +10,7 @@ import org.bukkit.TreeSpecies;
  * @see Material#LEAVES
  * @see Material#LEAVES_2
  */
-public class Leaves extends Wood {
+public class Leaves : Wood {
     protected static readonly Material DEFAULT_TYPE = Material.LEAVES;
     protected static readonly bool DEFAULT_DECAYABLE = true;
 

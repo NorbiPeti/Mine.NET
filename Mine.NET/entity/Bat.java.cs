@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents a Bat
  */
-public interface Bat extends Ambient {
+public interface Bat : Ambient {
 
     /**
      * Checks the current waking state of this bat.

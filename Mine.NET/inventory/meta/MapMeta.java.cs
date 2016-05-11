@@ -3,7 +3,7 @@ package org.bukkit.inventory.meta;
 /**
  * Represents a map that can be scalable.
  */
-public interface MapMeta extends ItemMeta {
+public interface MapMeta : ItemMeta {
 
     /**
      * Checks to see if this map is scaling.

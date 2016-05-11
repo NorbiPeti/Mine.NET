@@ -10,7 +10,7 @@ import org.bukkit.util.NumberConversions;
 /**
  * Concrete implementation of an attribute modifier.
  */
-public class AttributeModifier implements ConfigurationSerializable {
+public class AttributeModifier : ConfigurationSerializable {
 
     private readonly Guid uuid;
     private readonly String name;

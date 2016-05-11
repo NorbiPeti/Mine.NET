@@ -7,7 +7,7 @@ import org.bukkit.TreeSpecies;
 /**
  * Represents a flower pot.
  */
-public class FlowerPot extends MaterialData {
+public class FlowerPot : MaterialData {
 
     /**
      * Default constructor for a flower pot.

@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player throws an egg and it might hatch
  */
-public class PlayerEggThrowEvent extends PlayerEvent {
+public class PlayerEggThrowEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Egg egg;
     private bool hatching;

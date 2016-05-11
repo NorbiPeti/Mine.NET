@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
  * An abstract base class for events that describe an interaction between a
  * HumanEntity and the contents of an Inventory.
  */
-public abstract class InventoryInteractEvent extends InventoryEvent implements Cancellable {
+public abstract class InventoryInteractEvent : InventoryEvent : Cancellable {
     private Result result = Result.DEFAULT;
 
     public InventoryInteractEvent(InventoryView transaction) {

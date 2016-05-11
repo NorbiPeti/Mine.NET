@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Represents the different types of long grasses.
  */
-public class LongGrass extends MaterialData {
+public class LongGrass : MaterialData {
     public LongGrass() {
         super(Material.LONG_GRASS);
     }

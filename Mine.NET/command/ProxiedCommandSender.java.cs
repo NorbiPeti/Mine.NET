@@ -1,7 +1,7 @@
 
 package org.bukkit.command;
 
-public interface ProxiedCommandSender extends CommandSender {
+public interface ProxiedCommandSender : CommandSender {
 
     /**
      * Returns the CommandSender which triggered this proxied command

@@ -2,7 +2,7 @@ package org.bukkit.material;
 
 import org.bukkit.Material;
 
-public class Cake extends MaterialData {
+public class Cake : MaterialData {
     public Cake() {
         super(Material.CAKE_BLOCK);
     }

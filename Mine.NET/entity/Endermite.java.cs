@@ -1,4 +1,4 @@
 package org.bukkit.entity;
 
-public interface Endermite extends Monster {
+public interface Endermite : Monster {
 }

@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
  * Called when an ItemStack is successfully enchanted (currently at
  * enchantment table)
  */
-public class EnchantItemEvent extends InventoryEvent implements Cancellable {
+public class EnchantItemEvent : InventoryEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Block table;
     private readonly ItemStack item;

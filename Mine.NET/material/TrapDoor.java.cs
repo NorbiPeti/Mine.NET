@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a trap door
  */
-public class TrapDoor extends SimpleAttachableMaterialData implements Openable {
+public class TrapDoor : SimpleAttachableMaterialData : Openable {
     public TrapDoor() {
         super(Material.TRAP_DOOR);
     }

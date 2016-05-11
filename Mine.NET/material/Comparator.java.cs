@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFace;
  * @see Material#REDSTONE_COMPARATOR_OFF
  * @see Material#REDSTONE_COMPARATOR_ON
  */
-public class Comparator extends MaterialData implements Directional, Redstone {
+public class Comparator : MaterialData : Directional, Redstone {
     protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
     protected static readonly bool DEFAULT_SUBTRACTION_MODE = false;
     protected static readonly bool DEFAULT_STATE = false;

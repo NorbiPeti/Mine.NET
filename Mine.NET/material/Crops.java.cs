@@ -12,7 +12,7 @@ import org.bukkit.Material;
  * @see Material#BEETROOT_BLOCK
  * @see Material#NETHER_WARTS
  */
-public class Crops extends MaterialData {
+public class Crops : MaterialData {
     protected static readonly Material DEFAULT_TYPE = Material.CROPS;
     protected static readonly CropState DEFAULT_STATE = CropState.SEEDED;
 

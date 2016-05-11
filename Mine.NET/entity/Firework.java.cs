@@ -2,7 +2,7 @@ package org.bukkit.entity;
 
 import org.bukkit.inventory.meta.FireworkMeta;
 
-public interface Firework extends Entity {
+public interface Firework : Entity {
 
     /**
      * Get a copy of the fireworks meta

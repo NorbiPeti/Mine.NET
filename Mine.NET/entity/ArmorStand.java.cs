@@ -3,7 +3,7 @@ package org.bukkit.entity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.EulerAngle;
 
-public interface ArmorStand extends LivingEntity {
+public interface ArmorStand : LivingEntity {
 
     /**
      * Returns the item the armor stand is

@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If a Sign Change event is cancelled, the sign will not be changed.
  */
-public class SignChangeEvent extends BlockEvent implements Cancellable {
+public class SignChangeEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private readonly Player player;

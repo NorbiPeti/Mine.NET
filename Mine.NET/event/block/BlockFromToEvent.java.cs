@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  * If a Block From To event is cancelled, the block will not move (the liquid
  * will not flow).
  */
-public class BlockFromToEvent extends BlockEvent implements Cancellable {
+public class BlockFromToEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     protected Block to;
     protected BlockFace face;

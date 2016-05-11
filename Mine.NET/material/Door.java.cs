@@ -19,7 +19,7 @@ import org.bukkit.block.BlockFace;
  * @see Material#ACACIA_DOOR
  * @see Material#DARK_OAK_DOOR
  */
-public class Door extends MaterialData implements Directional, Openable {
+public class Door : MaterialData : Directional, Openable {
 
     // This class breaks API contracts on Directional and Openable because
     // of the way doors are currently implemented. Beware!

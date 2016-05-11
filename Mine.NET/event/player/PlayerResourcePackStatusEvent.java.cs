@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
  * Called when a player takes action on a resource pack request sent via
  * {@link Player#setResourcePack(java.lang.String)}.
  */
-public class PlayerResourcePackStatusEvent extends PlayerEvent {
+public class PlayerResourcePackStatusEvent : PlayerEvent {
 
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Status status;

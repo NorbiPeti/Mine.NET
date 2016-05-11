@@ -3,7 +3,7 @@ package org.bukkit.plugin;
 /**
  * Thrown when attempting to load an invalid Plugin file
  */
-public class UnknownDependencyException extends RuntimeException {
+public class UnknownDependencyException : RuntimeException {
 
     private static readonly long serialVersionUID = 5721389371901775895L;
 

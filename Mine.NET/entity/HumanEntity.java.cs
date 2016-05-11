@@ -13,7 +13,7 @@ import org.bukkit.permissions.Permissible;
 /**
  * Represents a human entity, such as an NPC or a player
  */
-public interface HumanEntity extends LivingEntity, AnimalTamer, Permissible, InventoryHolder {
+public interface HumanEntity : LivingEntity, AnimalTamer, Permissible, InventoryHolder {
 
     /**
      * Returns the name of this player

@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when a player interacts with a Bucket
  */
-public abstract class PlayerBucketEvent extends PlayerEvent implements Cancellable {
+public abstract class PlayerBucketEvent : PlayerEvent : Cancellable {
     private ItemStack itemStack;
     private bool cancelled = false;
     private readonly Block blockClicked;

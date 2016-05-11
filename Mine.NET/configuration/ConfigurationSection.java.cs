@@ -27,7 +27,7 @@ public interface ConfigurationSection {
      *     list.
      * @return Set of keys contained within this ConfigurationSection.
      */
-    public Set<String> getKeys(bool deep);
+    public HashSet<String> getKeys(bool deep);
 
     /**
      * Gets a Map containing all keys and their values for this section.

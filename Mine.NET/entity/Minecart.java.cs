@@ -7,7 +7,7 @@ import org.bukkit.util.Vector;
 /**
  * Represents a minecart entity.
  */
-public interface Minecart extends Vehicle {
+public interface Minecart : Vehicle {
 
     /**
      * This method exists for legacy reasons to provide backwards

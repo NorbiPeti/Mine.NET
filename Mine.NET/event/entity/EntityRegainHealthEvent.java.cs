@@ -8,7 +8,7 @@ import org.bukkit.util.NumberConversions;
 /**
  * Stores data for health-regain events
  */
-public class EntityRegainHealthEvent extends EntityEvent implements Cancellable {
+public class EntityRegainHealthEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private double amount;

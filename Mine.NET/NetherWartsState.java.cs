@@ -1,19 +1,22 @@
-public enum NetherWartsState {
+namespace Mine.NET
+{
+    public enum NetherWartsState {
 
-    /**
-     * State when first seeded
-     */
-    SEEDED,
-    /**
-     * First growth stage
-     */
-    STAGE_ONE,
-    /**
-     * Second growth stage
-     */
-    STAGE_TWO,
-    /**
-     * Ready to harvest
-     */
-    RIPE;
+        /**
+         * State when first seeded
+         */
+        SEEDED,
+        /**
+         * First growth stage
+         */
+        STAGE_ONE,
+        /**
+         * Second growth stage
+         */
+        STAGE_TWO,
+        /**
+         * Ready to harvest
+         */
+        RIPE
+    }
 }

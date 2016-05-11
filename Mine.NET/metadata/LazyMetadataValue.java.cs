@@ -7,7 +7,7 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.plugin.Plugin;
 
 /**
- * The LazyMetadataValue class implements a type of metadata that is not
+ * The LazyMetadataValue class : a type of metadata that is not
  * computed until another plugin asks for it.
  * <p>
  * By making metadata values lazy, no computation is done by the providing
@@ -17,7 +17,7 @@ import org.bukkit.plugin.Plugin;
  * level. Once invalidated, the LazyMetadataValue will recompute its value
  * when asked.
  */
-public class LazyMetadataValue extends MetadataValueAdapter implements MetadataValue {
+public class LazyMetadataValue : MetadataValueAdapter : MetadataValue {
     private Callable<Object> lazyValue;
     private CacheStrategy cacheStrategy;
     private SoftReference<Object> internalValue;

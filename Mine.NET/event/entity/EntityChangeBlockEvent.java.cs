@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when any Entity, excluding players, changes a block.
  */
-public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
+public class EntityChangeBlockEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Block block;
     private bool cancel;

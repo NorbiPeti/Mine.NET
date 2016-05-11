@@ -13,7 +13,7 @@ import org.bukkit.util.NumberConversions;
  * writing an implementation of MetadataValue is as simple as implementing
  * value() and invalidate().
  */
-public abstract class MetadataValueAdapter implements MetadataValue {
+public abstract class MetadataValueAdapter : MetadataValue {
     protected readonly WeakReference<Plugin> owningPlugin;
 
     protected MetadataValueAdapter(Plugin owningPlugin) {

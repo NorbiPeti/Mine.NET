@@ -14,7 +14,7 @@ import org.bukkit.event.HandlerList;
  * movement based statistics.
  *
  */
-public class PlayerStatisticIncrementEvent extends PlayerEvent implements Cancellable {
+public class PlayerStatisticIncrementEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     protected readonly Statistic statistic;
     private readonly int initialValue;

@@ -5,7 +5,7 @@ package org.bukkit.plugin.messaging;
  * "REGISTER")
  */
 @SuppressWarnings("serial")
-public class ReservedChannelException extends RuntimeException {
+public class ReservedChannelException : RuntimeException {
     public ReservedChannelException() {
         this("Attempted to register for a reserved channel name.");
     }

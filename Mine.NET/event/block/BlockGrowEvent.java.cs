@@ -19,7 +19,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If a Block Grow event is cancelled, the block will not grow.
  */
-public class BlockGrowEvent extends BlockEvent implements Cancellable {
+public class BlockGrowEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly BlockState newState;
     private bool cancelled = false;

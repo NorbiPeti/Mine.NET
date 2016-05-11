@@ -3,7 +3,7 @@ package org.bukkit.material;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 
-public class Banner extends MaterialData implements Attachable {
+public class Banner : MaterialData : Attachable {
 
     public Banner() {
         super(Material.BANNER);

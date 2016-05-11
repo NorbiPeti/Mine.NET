@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Thrown when a player picks an item up from the ground
  */
-public class PlayerPickupItemEvent extends PlayerEvent implements Cancellable {
+public class PlayerPickupItemEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Item item;
     private bool cancel = false;

@@ -8,7 +8,7 @@ import org.bukkit.event.entity.EntityUnleashEvent;
 /**
  * Called prior to an entity being unleashed due to a player's action.
  */
-public class PlayerUnleashEntityEvent extends EntityUnleashEvent implements Cancellable {
+public class PlayerUnleashEntityEvent : EntityUnleashEvent : Cancellable {
     private readonly Player player;
     private bool cancelled = false;
 

@@ -10,7 +10,7 @@ import org.bukkit.TreeSpecies;
  * @see Material#SAPLING
  * @see Material#WOOD_DOUBLE_STEP
  */
-public class Wood extends MaterialData {
+public class Wood : MaterialData {
     protected static readonly Material DEFAULT_TYPE = Material.WOOD;
     protected static readonly TreeSpecies DEFAULT_SPECIES = TreeSpecies.GENERIC;
 

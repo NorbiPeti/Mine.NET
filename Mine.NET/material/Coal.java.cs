@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Represents the different types of coals.
  */
-public class Coal extends MaterialData {
+public class Coal : MaterialData {
     public Coal() {
         super(Material.COAL);
     }

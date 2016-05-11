@@ -6,7 +6,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.HandlerList;
 
-public class CauldronLevelChangeEvent extends BlockEvent implements Cancellable {
+public class CauldronLevelChangeEvent : BlockEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;

@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called immediately prior to a creature being leashed by a player.
  */
-public class PlayerLeashEntityEvent extends Event implements Cancellable {
+public class PlayerLeashEntityEvent : Event : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Entity leashHolder;
     private readonly Entity entity;

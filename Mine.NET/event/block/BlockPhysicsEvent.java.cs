@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Thrown when a block physics check is called
  */
-public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
+public class BlockPhysicsEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly int changed;
     private bool cancel = false;

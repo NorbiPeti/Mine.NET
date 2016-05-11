@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class ListCommand extends VanillaCommand {
+public class ListCommand : VanillaCommand {
     public ListCommand() {
         super("list");
         this.description = "Lists all online players";
@@ -25,7 +25,7 @@ public class ListCommand extends VanillaCommand {
 
         StringBuilder online = new StringBuilder();
 
-        readonly Collection<? extends Player> players = Bukkit.getOnlinePlayers();
+        readonly Collection<? : Player> players = Bukkit.getOnlinePlayers();
 
         for (Player player : players) {
             // If a player is hidden from the sender don't show them in the list

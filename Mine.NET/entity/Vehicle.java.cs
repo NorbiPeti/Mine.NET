@@ -5,7 +5,7 @@ import org.bukkit.util.Vector;
 /**
  * Represents a vehicle entity.
  */
-public interface Vehicle extends Entity {
+public interface Vehicle : Entity {
 
     /**
      * Gets the vehicle's velocity.

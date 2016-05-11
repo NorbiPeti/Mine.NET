@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 /**
  * Thrown when a player picks up an arrow from the ground.
  */
-public class PlayerPickupArrowEvent extends PlayerPickupItemEvent {
+public class PlayerPickupArrowEvent : PlayerPickupItemEvent {
 
     private readonly Arrow arrow;
 

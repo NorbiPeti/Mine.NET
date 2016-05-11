@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class BanCommand extends VanillaCommand {
+public class BanCommand : VanillaCommand {
     public BanCommand() {
         super("ban");
         this.description = "Prevents the specified player from using this server";

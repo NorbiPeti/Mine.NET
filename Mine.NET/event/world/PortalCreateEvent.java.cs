@@ -11,7 +11,7 @@ import java.util.Collection;
 /**
  * Called when a portal is created
  */
-public class PortalCreateEvent extends WorldEvent implements Cancellable {
+public class PortalCreateEvent : WorldEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private readonly ArrayList<Block> blocks = new ArrayList<Block>();

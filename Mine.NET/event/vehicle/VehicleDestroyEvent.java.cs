@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  * player or the environment. This is not raised if the boat is simply
  * 'removed' due to other means.
  */
-public class VehicleDestroyEvent extends VehicleEvent implements Cancellable {
+public class VehicleDestroyEvent : VehicleEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Entity attacker;
     private bool cancelled;

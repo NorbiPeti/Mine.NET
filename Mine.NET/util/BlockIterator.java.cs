@@ -8,13 +8,13 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.LivingEntity;
 
-import java.util.Iterator;
+import java.util.IEnumerator;
 import java.util.NoSuchElementException;
 
 /**
  * This class performs ray tracing and iterates along blocks on a line
  */
-public class BlockIterator implements Iterator<Block> {
+public class BlockIterator : IEnumerator<Block> {
 
     private readonly World world;
     private readonly int maxDistance;

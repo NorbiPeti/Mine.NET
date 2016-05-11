@@ -13,7 +13,7 @@ import org.bukkit.event.inventory.InventoryType;
  * Interface to the various inventories. Behavior relating to {@link
  * Material#AIR} is unspecified.
  */
-public interface Inventory extends Iterable<ItemStack> {
+public interface Inventory : Iterable<ItemStack> {
 
     /**
      * Returns the size of the inventory
@@ -255,7 +255,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public HashMap<Integer, ? extends ItemStack> all(int materialId);
+    public HashMap<Integer, ? : ItemStack> all(int materialId);
 
     /**
      * Returns a HashMap with all slots and ItemStacks in the inventory with
@@ -269,7 +269,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * @return A HashMap containing the slot index, ItemStack pairs
      * @throws ArgumentException if material is null
      */
-    public HashMap<Integer, ? extends ItemStack> all(Material material) throws ArgumentException;
+    public HashMap<Integer, ? : ItemStack> all(Material material) throws ArgumentException;
 
     /**
      * Finds all slots in the inventory containing any ItemStacks with the
@@ -283,7 +283,7 @@ public interface Inventory extends Iterable<ItemStack> {
      * @param item The ItemStack to match against
      * @return A map from slot indexes to item at index
      */
-    public HashMap<Integer, ? extends ItemStack> all(ItemStack item);
+    public HashMap<Integer, ? : ItemStack> all(ItemStack item);
 
     /**
      * Finds the first slot in the inventory containing an ItemStack with the

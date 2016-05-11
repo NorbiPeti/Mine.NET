@@ -5,7 +5,7 @@ import org.bukkit.Location;
 /**
  * Represents an end gateway.
  */
-public interface EndGateway extends BlockState {
+public interface EndGateway : BlockState {
 
     /**
      * Gets the location that entities are teleported to when 

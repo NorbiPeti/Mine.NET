@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player attempts to tab-complete a chat message.
  */
-public class PlayerChatTabCompleteEvent extends PlayerEvent {
+public class PlayerChatTabCompleteEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly String message;
     private readonly String lastToken;

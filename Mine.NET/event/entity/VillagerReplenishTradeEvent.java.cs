@@ -11,7 +11,7 @@ import org.bukkit.inventory.MerchantRecipe;
  *
  * @see MerchantRecipe#getMaxUses()
  */
-public class VillagerReplenishTradeEvent extends EntityEvent implements Cancellable {
+public class VillagerReplenishTradeEvent : EntityEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;

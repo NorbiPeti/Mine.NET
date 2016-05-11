@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Raised when a vehicle moves.
  */
-public class VehicleMoveEvent extends VehicleEvent {
+public class VehicleMoveEvent : VehicleEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Location from;
     private readonly Location to;

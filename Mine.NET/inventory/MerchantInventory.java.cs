@@ -5,7 +5,7 @@ package org.bukkit.inventory;
  * <br>
  * The holder of this Inventory is the owning Villager.
  */
-public interface MerchantInventory extends Inventory {
+public interface MerchantInventory : Inventory {
 
     /**
      * Get the index of the currently selected recipe.

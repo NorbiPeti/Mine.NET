@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Team;
 
 [Obsolete]
-public class SpreadPlayersCommand extends VanillaCommand {
+public class SpreadPlayersCommand : VanillaCommand {
     private static readonly Random random = new Random();
 
     public SpreadPlayersCommand() {
@@ -243,7 +243,7 @@ public class SpreadPlayersCommand extends VanillaCommand {
     }
 
     private int getTeams(List<Player> players) {
-        Set<Team> teams = Sets.newHashSet();
+        HashSet<Team> teams = Sets.newHashSet();
 
         for (Player player : players) {
             teams.add(player.getScoreboard().getPlayerTeam(player));

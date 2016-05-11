@@ -20,7 +20,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.StringUtil;
 
 [Obsolete]
-public class EnchantCommand extends VanillaCommand {
+public class EnchantCommand : VanillaCommand {
     private static readonly List<String> ENCHANTMENT_NAMES = new ArrayList<String>();
 
     public EnchantCommand() {

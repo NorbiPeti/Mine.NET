@@ -10,7 +10,7 @@ import com.google.common.collect.ImmutableSet;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.IEnumerator;
 import java.util.Map;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -19,7 +19,7 @@ import java.util.Set;
 /**
  * A simple services manager.
  */
-public class SimpleServicesManager implements ServicesManager {
+public class SimpleServicesManager : ServicesManager {
 
     /**
      * Map of providers.
@@ -66,12 +66,12 @@ public class SimpleServicesManager implements ServicesManager {
     public void unregisterAll(Plugin plugin) {
         ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
         synchronized (providers) {
-            Iterator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
                     Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    Iterator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -108,7 +108,7 @@ public class SimpleServicesManager implements ServicesManager {
     public void unregister(Class<?> service, Object provider) {
         ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
         synchronized (providers) {
-            Iterator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
@@ -119,7 +119,7 @@ public class SimpleServicesManager implements ServicesManager {
                         continue;
                     }
 
-                    Iterator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -155,12 +155,12 @@ public class SimpleServicesManager implements ServicesManager {
     public void unregister(Object provider) {
         ArrayList<ServiceUnregisterEvent> unregisteredEvents = new ArrayList<ServiceUnregisterEvent>();
         synchronized (providers) {
-            Iterator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
                     Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    Iterator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -285,7 +285,7 @@ public class SimpleServicesManager implements ServicesManager {
      *
      * @return a copy of the set of known services
      */
-    public Set<Class<?>> getKnownServices() {
+    public HashSet<Class<?>> getKnownServices() {
         synchronized (providers) {
             return ImmutableSet.<Class<?>>copyOf(providers.keySet());
         }

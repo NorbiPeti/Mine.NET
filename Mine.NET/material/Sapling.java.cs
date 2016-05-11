@@ -8,7 +8,7 @@ import org.bukkit.TreeSpecies;
  *
  * @see Material#SAPLING
  */
-public class Sapling extends Wood {
+public class Sapling : Wood {
 
     /**
      * Constructs a sapling.

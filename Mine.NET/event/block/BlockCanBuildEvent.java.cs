@@ -15,7 +15,7 @@ import org.bukkit.event.HandlerList;
  *     #getMaterial()} or {@link #getMaterialId()} instead.
  * </ul>
  */
-public class BlockCanBuildEvent extends BlockEvent {
+public class BlockCanBuildEvent : BlockEvent {
     private static readonly HandlerList handlers = new HandlerList();
     protected bool buildable;
 

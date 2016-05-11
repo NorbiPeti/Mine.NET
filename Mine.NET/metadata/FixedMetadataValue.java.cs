@@ -9,11 +9,11 @@ import java.util.concurrent.Callable;
  * value forever after initialization. Invalidating a FixedMetadataValue has
  * no effect.
  * <p>
- * This class extends LazyMetadataValue for historical reasons, even though it
+ * This class : LazyMetadataValue for historical reasons, even though it
  * overrides all the implementation methods. it is possible that in the future
  * that the inheritance hierarchy may change.
  */
-public class FixedMetadataValue extends LazyMetadataValue {
+public class FixedMetadataValue : LazyMetadataValue {
 
     /**
      * Store the internal value that is represented by this fixed value.

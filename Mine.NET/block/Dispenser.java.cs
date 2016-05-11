@@ -6,7 +6,7 @@ import org.bukkit.projectiles.BlockProjectileSource;
 /**
  * Represents a dispenser.
  */
-public interface Dispenser extends BlockState, InventoryHolder {
+public interface Dispenser : BlockState, InventoryHolder {
 
     /**
      * Gets the BlockProjectileSource object for this dispenser.

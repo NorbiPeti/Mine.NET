@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents a potion or item that can have custom effects.
  */
-public interface PotionMeta extends ItemMeta {
+public interface PotionMeta : ItemMeta {
 
     /**
      * Sets the underlying potion data

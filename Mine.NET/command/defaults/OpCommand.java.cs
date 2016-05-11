@@ -16,7 +16,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class OpCommand extends VanillaCommand {
+public class OpCommand : VanillaCommand {
     public OpCommand() {
         super("op");
         this.description = "Gives the specified player operator status";

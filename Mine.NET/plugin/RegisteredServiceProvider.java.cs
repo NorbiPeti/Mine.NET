@@ -5,7 +5,7 @@ package org.bukkit.plugin;
  *
  * @param <T> Service
  */
-public class RegisteredServiceProvider<T> implements Comparable<RegisteredServiceProvider<?>> {
+public class RegisteredServiceProvider<T> : Comparable<RegisteredServiceProvider<?>> {
 
     private Class<T> service;
     private Plugin plugin;

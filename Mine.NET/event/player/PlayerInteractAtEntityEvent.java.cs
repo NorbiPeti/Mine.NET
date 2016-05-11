@@ -10,7 +10,7 @@ import org.bukkit.util.Vector;
  * Represents an event that is called when a player right clicks an entity
  * with a location on the entity the was clicked.
  */
-public class PlayerInteractAtEntityEvent extends PlayerInteractEntityEvent {
+public class PlayerInteractAtEntityEvent : PlayerInteractEntityEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Vector position;
 

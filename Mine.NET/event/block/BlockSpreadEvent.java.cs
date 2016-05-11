@@ -20,7 +20,7 @@ import org.bukkit.event.HandlerList;
  *
  * @see BlockFormEvent
  */
-public class BlockSpreadEvent extends BlockFormEvent {
+public class BlockSpreadEvent : BlockFormEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Block source;
 

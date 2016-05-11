@@ -1,441 +1,443 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-/**
-* An enum of all material IDs accepted by the official server and client
-*/
-public class Material
-{
-    public enum Materials
-    {
-        AIR,
-        STONE,
-        GRASS,
-        DIRT,
-        COBBLESTONE,
-        WOOD,
-        SAPLING,
-        BEDROCK,
-        WATER,
-        STATIONARY_WATER,
-        LAVA,
-        STATIONARY_LAVA,
-        SAND,
-        GRAVEL,
-        GOLD_ORE,
-        IRON_ORE,
-        COAL_ORE,
-        LOG,
-        LEAVES,
-        SPONGE,
-        GLASS,
-        LAPIS_ORE,
-        LAPIS_BLOCK,
-        DISPENSER,
-        SANDSTONE,
-        NOTE_BLOCK,
-        BED_BLOCK,
-        POWERED_RAIL,
-        DETECTOR_RAIL,
-        PISTON_STICKY_BASE,
-        WEB,
-        LONG_GRASS,
-        DEAD_BUSH,
-        PISTON_BASE,
-        PISTON_EXTENSION,
-        WOOL,
-        PISTON_MOVING_PIECE,
-        YELLOW_FLOWER,
-        RED_ROSE,
-        BROWN_MUSHROOM,
-        RED_MUSHROOM,
-        GOLD_BLOCK,
-        IRON_BLOCK,
-        DOUBLE_STEP,
-        STEP,
-        BRICK,
-        TNT,
-        BOOKSHELF,
-        MOSSY_COBBLESTONE,
-        OBSIDIAN,
-        TORCH,
-        FIRE,
-        MOB_SPAWNER,
-        WOOD_STAIRS,
-        CHEST,
-        REDSTONE_WIRE,
-        DIAMOND_ORE,
-        DIAMOND_BLOCK,
-        WORKBENCH,
-        CROPS,
-        SOIL,
-        FURNACE,
-        BURNING_FURNACE,
-        SIGN_POST,
-        WOODEN_DOOR,
-        LADDER,
-        RAILS,
-        COBBLESTONE_STAIRS,
-        WALL_SIGN,
-        LEVER,
-        STONE_PLATE,
-        IRON_DOOR_BLOCK,
-        WOOD_PLATE,
-        REDSTONE_ORE,
-        GLOWING_REDSTONE_ORE,
-        REDSTONE_TORCH_OFF,
-        REDSTONE_TORCH_ON,
-        STONE_BUTTON,
-        SNOW,
-        ICE,
-        SNOW_BLOCK,
-        CACTUS,
-        CLAY,
-        SUGAR_CANE_BLOCK,
-        JUKEBOX,
-        FENCE,
-        PUMPKIN,
-        NETHERRACK,
-        SOUL_SAND,
-        GLOWSTONE,
-        PORTAL,
-        JACK_O_LANTERN,
-        CAKE_BLOCK,
-        DIODE_BLOCK_OFF,
-        DIODE_BLOCK_ON,
-        STAINED_GLASS,
-        TRAP_DOOR,
-        MONSTER_EGGS,
-        SMOOTH_BRICK,
-        HUGE_MUSHROOM_1,
-        HUGE_MUSHROOM_2,
-        IRON_FENCE,
-        THIN_GLASS,
-        MELON_BLOCK,
-        PUMPKIN_STEM,
-        MELON_STEM,
-        VINE,
-        FENCE_GATE,
-        BRICK_STAIRS,
-        SMOOTH_STAIRS,
-        MYCEL,
-        WATER_LILY,
-        NETHER_BRICK,
-        NETHER_FENCE,
-        NETHER_BRICK_STAIRS,
-        NETHER_WARTS,
-        ENCHANTMENT_TABLE,
-        BREWING_STAND,
-        CAULDRON,
-        ENDER_PORTAL,
-        ENDER_PORTAL_FRAME,
-        ENDER_STONE,
-        DRAGON_EGG,
-        REDSTONE_LAMP_OFF,
-        REDSTONE_LAMP_ON,
-        WOOD_DOUBLE_STEP,
-        WOOD_STEP,
-        COCOA,
-        SANDSTONE_STAIRS,
-        EMERALD_ORE,
-        ENDER_CHEST,
-        TRIPWIRE_HOOK,
-        TRIPWIRE,
-        EMERALD_BLOCK,
-        SPRUCE_WOOD_STAIRS,
-        BIRCH_WOOD_STAIRS,
-        JUNGLE_WOOD_STAIRS,
-        COMMAND,
-        BEACON,
-        COBBLE_WALL,
-        FLOWER_POT,
-        CARROT,
-        POTATO,
-        WOOD_BUTTON,
-        SKULL,
-        ANVIL,
-        TRAPPED_CHEST,
-        GOLD_PLATE,
-        IRON_PLATE,
-        REDSTONE_COMPARATOR_OFF,
-        REDSTONE_COMPARATOR_ON,
-        DAYLIGHT_DETECTOR,
-        REDSTONE_BLOCK,
-        QUARTZ_ORE,
-        HOPPER,
-        QUARTZ_BLOCK,
-        QUARTZ_STAIRS,
-        ACTIVATOR_RAIL,
-        DROPPER,
-        STAINED_CLAY,
-        STAINED_GLASS_PANE,
-        LEAVES_2,
-        LOG_2,
-        ACACIA_STAIRS,
-        DARK_OAK_STAIRS,
-        SLIME_BLOCK,
-        BARRIER,
-        IRON_TRAPDOOR,
-        PRISMARINE,
-        SEA_LANTERN,
-        HAY_BLOCK,
-        CARPET,
-        HARD_CLAY,
-        COAL_BLOCK,
-        PACKED_ICE,
-        DOUBLE_PLANT,
-        STANDING_BANNER,
-        WALL_BANNER,
-        DAYLIGHT_DETECTOR_INVERTED,
-        RED_SANDSTONE,
-        RED_SANDSTONE_STAIRS,
-        DOUBLE_STONE_SLAB2,
-        STONE_SLAB2,
-        SPRUCE_FENCE_GATE,
-        BIRCH_FENCE_GATE,
-        JUNGLE_FENCE_GATE,
-        DARK_OAK_FENCE_GATE,
-        ACACIA_FENCE_GATE,
-        SPRUCE_FENCE,
-        BIRCH_FENCE,
-        JUNGLE_FENCE,
-        DARK_OAK_FENCE,
-        ACACIA_FENCE,
-        SPRUCE_DOOR,
-        BIRCH_DOOR,
-        JUNGLE_DOOR,
-        ACACIA_DOOR,
-        DARK_OAK_DOOR,
-        END_ROD,
-        CHORUS_PLANT,
-        CHORUS_FLOWER,
-        PURPUR_BLOCK,
-        PURPUR_PILLAR,
-        PURPUR_STAIRS,
-        PURPUR_DOUBLE_SLAB,
-        PURPUR_SLAB,
-        END_BRICKS,
-        BEETROOT_BLOCK,
-        GRASS_PATH,
-        END_GATEWAY,
-        COMMAND_REPEATING,
-        COMMAND_CHAIN,
-        FROSTED_ICE,
-        STRUCTURE_BLOCK,
-        // ----- Item Separator -----
-        IRON_SPADE,
-        IRON_PICKAXE,
-        IRON_AXE,
-        FLINT_AND_STEEL,
-        APPLE,
-        BOW,
-        ARROW,
-        COAL,
-        DIAMOND,
-        IRON_INGOT,
-        GOLD_INGOT,
-        IRON_SWORD,
-        WOOD_SWORD,
-        WOOD_SPADE,
-        WOOD_PICKAXE,
-        WOOD_AXE,
-        STONE_SWORD,
-        STONE_SPADE,
-        STONE_PICKAXE,
-        STONE_AXE,
-        DIAMOND_SWORD,
-        DIAMOND_SPADE,
-        DIAMOND_PICKAXE,
-        DIAMOND_AXE,
-        STICK,
-        BOWL,
-        MUSHROOM_SOUP,
-        GOLD_SWORD,
-        GOLD_SPADE,
-        GOLD_PICKAXE,
-        GOLD_AXE,
-        STRING,
-        FEATHER,
-        SULPHUR,
-        WOOD_HOE,
-        STONE_HOE,
-        IRON_HOE,
-        DIAMOND_HOE,
-        GOLD_HOE,
-        SEEDS,
-        WHEAT,
-        BREAD,
-        LEATHER_HELMET,
-        LEATHER_CHESTPLATE,
-        LEATHER_LEGGINGS,
-        LEATHER_BOOTS,
-        CHAINMAIL_HELMET,
-        CHAINMAIL_CHESTPLATE,
-        CHAINMAIL_LEGGINGS,
-        CHAINMAIL_BOOTS,
-        IRON_HELMET,
-        IRON_CHESTPLATE,
-        IRON_LEGGINGS,
-        IRON_BOOTS,
-        DIAMOND_HELMET,
-        DIAMOND_CHESTPLATE,
-        DIAMOND_LEGGINGS,
-        DIAMOND_BOOTS,
-        GOLD_HELMET,
-        GOLD_CHESTPLATE,
-        GOLD_LEGGINGS,
-        GOLD_BOOTS,
-        FLINT,
-        PORK,
-        GRILLED_PORK,
-        PAINTING,
-        GOLDEN_APPLE,
-        SIGN,
-        WOOD_DOOR,
-        BUCKET,
-        WATER_BUCKET,
-        LAVA_BUCKET,
-        MINECART,
-        SADDLE,
-        IRON_DOOR,
-        REDSTONE,
-        SNOW_BALL,
-        BOAT,
-        LEATHER,
-        MILK_BUCKET,
-        CLAY_BRICK,
-        CLAY_BALL,
-        SUGAR_CANE,
-        PAPER,
-        BOOK,
-        SLIME_BALL,
-        STORAGE_MINECART,
-        POWERED_MINECART,
-        EGG,
-        COMPASS,
-        FISHING_ROD,
-        WATCH,
-        GLOWSTONE_DUST,
-        RAW_FISH,
-        COOKED_FISH,
-        INK_SACK,
-        BONE,
-        SUGAR,
-        CAKE,
-        BED,
-        DIODE,
-        COOKIE,
-        /**
-         * @see MapView
-         */
-        MAP,
-        SHEARS,
-        MELON,
-        PUMPKIN_SEEDS,
-        MELON_SEEDS,
-        RAW_BEEF,
-        COOKED_BEEF,
-        RAW_CHICKEN,
-        COOKED_CHICKEN,
-        ROTTEN_FLESH,
-        ENDER_PEARL,
-        BLAZE_ROD,
-        GHAST_TEAR,
-        GOLD_NUGGET,
-        NETHER_STALK,
-        POTION,
-        GLASS_BOTTLE,
-        SPIDER_EYE,
-        FERMENTED_SPIDER_EYE,
-        BLAZE_POWDER,
-        MAGMA_CREAM,
-        BREWING_STAND_ITEM,
-        CAULDRON_ITEM,
-        EYE_OF_ENDER,
-        SPECKLED_MELON,
-        MONSTER_EGG,
-        EXP_BOTTLE,
-        FIREBALL,
-        BOOK_AND_QUILL,
-        WRITTEN_BOOK,
-        EMERALD,
-        ITEM_FRAME,
-        FLOWER_POT_ITEM,
-        CARROT_ITEM,
-        POTATO_ITEM,
-        BAKED_POTATO,
-        POISONOUS_POTATO,
-        EMPTY_MAP,
-        GOLDEN_CARROT,
-        SKULL_ITEM,
-        CARROT_STICK,
-        NETHER_STAR,
-        PUMPKIN_PIE,
-        FIREWORK,
-        FIREWORK_CHARGE,
-        ENCHANTED_BOOK,
-        REDSTONE_COMPARATOR,
-        NETHER_BRICK_ITEM,
-        QUARTZ,
-        EXPLOSIVE_MINECART,
-        HOPPER_MINECART,
-        PRISMARINE_SHARD,
-        PRISMARINE_CRYSTALS,
-        RABBIT,
-        COOKED_RABBIT,
-        RABBIT_STEW,
-        RABBIT_FOOT,
-        RABBIT_HIDE,
-        ARMOR_STAND,
-        IRON_BARDING,
-        GOLD_BARDING,
-        DIAMOND_BARDING,
-        LEASH,
-        NAME_TAG,
-        COMMAND_MINECART,
-        MUTTON,
-        COOKED_MUTTON,
-        BANNER,
-        END_CRYSTAL,
-        SPRUCE_DOOR_ITEM,
-        BIRCH_DOOR_ITEM,
-        JUNGLE_DOOR_ITEM,
-        ACACIA_DOOR_ITEM,
-        DARK_OAK_DOOR_ITEM,
-        CHORUS_FRUIT,
-        CHORUS_FRUIT_POPPED,
-        BEETROOT,
-        BEETROOT_SEEDS,
-        BEETROOT_SOUP,
-        DRAGONS_BREATH,
-        SPLASH_POTION,
-        SPECTRAL_ARROW,
-        TIPPED_ARROW,
-        LINGERING_POTION,
-        SHIELD,
-        ELYTRA,
-        BOAT_SPRUCE,
-        BOAT_BIRCH,
-        BOAT_JUNGLE,
-        BOAT_ACACIA,
-        BOAT_DARK_OAK,
-        GOLD_RECORD,
-        GREEN_RECORD,
-        RECORD_3,
-        RECORD_4,
-        RECORD_5,
-        RECORD_6,
-        RECORD_7,
-        RECORD_8,
-        RECORD_9,
-        RECORD_10,
-        RECORD_11,
-        RECORD_12
-    }
 
-    public static Dictionary<Materials, Material> AllMaterials = new Dictionary<Materials, Material>
+namespace Mine.NET
+{
+    /**
+    * An enum of all material IDs accepted by the official server and client
+*/
+    public class Material
+    {
+        public enum Materials
+        {
+            AIR,
+            STONE,
+            GRASS,
+            DIRT,
+            COBBLESTONE,
+            WOOD,
+            SAPLING,
+            BEDROCK,
+            WATER,
+            STATIONARY_WATER,
+            LAVA,
+            STATIONARY_LAVA,
+            SAND,
+            GRAVEL,
+            GOLD_ORE,
+            IRON_ORE,
+            COAL_ORE,
+            LOG,
+            LEAVES,
+            SPONGE,
+            GLASS,
+            LAPIS_ORE,
+            LAPIS_BLOCK,
+            DISPENSER,
+            SANDSTONE,
+            NOTE_BLOCK,
+            BED_BLOCK,
+            POWERED_RAIL,
+            DETECTOR_RAIL,
+            PISTON_STICKY_BASE,
+            WEB,
+            LONG_GRASS,
+            DEAD_BUSH,
+            PISTON_BASE,
+            PISTON_EXTENSION,
+            WOOL,
+            PISTON_MOVING_PIECE,
+            YELLOW_FLOWER,
+            RED_ROSE,
+            BROWN_MUSHROOM,
+            RED_MUSHROOM,
+            GOLD_BLOCK,
+            IRON_BLOCK,
+            DOUBLE_STEP,
+            STEP,
+            BRICK,
+            TNT,
+            BOOKSHELF,
+            MOSSY_COBBLESTONE,
+            OBSIDIAN,
+            TORCH,
+            FIRE,
+            MOB_SPAWNER,
+            WOOD_STAIRS,
+            CHEST,
+            REDSTONE_WIRE,
+            DIAMOND_ORE,
+            DIAMOND_BLOCK,
+            WORKBENCH,
+            CROPS,
+            SOIL,
+            FURNACE,
+            BURNING_FURNACE,
+            SIGN_POST,
+            WOODEN_DOOR,
+            LADDER,
+            RAILS,
+            COBBLESTONE_STAIRS,
+            WALL_SIGN,
+            LEVER,
+            STONE_PLATE,
+            IRON_DOOR_BLOCK,
+            WOOD_PLATE,
+            REDSTONE_ORE,
+            GLOWING_REDSTONE_ORE,
+            REDSTONE_TORCH_OFF,
+            REDSTONE_TORCH_ON,
+            STONE_BUTTON,
+            SNOW,
+            ICE,
+            SNOW_BLOCK,
+            CACTUS,
+            CLAY,
+            SUGAR_CANE_BLOCK,
+            JUKEBOX,
+            FENCE,
+            PUMPKIN,
+            NETHERRACK,
+            SOUL_SAND,
+            GLOWSTONE,
+            PORTAL,
+            JACK_O_LANTERN,
+            CAKE_BLOCK,
+            DIODE_BLOCK_OFF,
+            DIODE_BLOCK_ON,
+            STAINED_GLASS,
+            TRAP_DOOR,
+            MONSTER_EGGS,
+            SMOOTH_BRICK,
+            HUGE_MUSHROOM_1,
+            HUGE_MUSHROOM_2,
+            IRON_FENCE,
+            THIN_GLASS,
+            MELON_BLOCK,
+            PUMPKIN_STEM,
+            MELON_STEM,
+            VINE,
+            FENCE_GATE,
+            BRICK_STAIRS,
+            SMOOTH_STAIRS,
+            MYCEL,
+            WATER_LILY,
+            NETHER_BRICK,
+            NETHER_FENCE,
+            NETHER_BRICK_STAIRS,
+            NETHER_WARTS,
+            ENCHANTMENT_TABLE,
+            BREWING_STAND,
+            CAULDRON,
+            ENDER_PORTAL,
+            ENDER_PORTAL_FRAME,
+            ENDER_STONE,
+            DRAGON_EGG,
+            REDSTONE_LAMP_OFF,
+            REDSTONE_LAMP_ON,
+            WOOD_DOUBLE_STEP,
+            WOOD_STEP,
+            COCOA,
+            SANDSTONE_STAIRS,
+            EMERALD_ORE,
+            ENDER_CHEST,
+            TRIPWIRE_HOOK,
+            TRIPWIRE,
+            EMERALD_BLOCK,
+            SPRUCE_WOOD_STAIRS,
+            BIRCH_WOOD_STAIRS,
+            JUNGLE_WOOD_STAIRS,
+            COMMAND,
+            BEACON,
+            COBBLE_WALL,
+            FLOWER_POT,
+            CARROT,
+            POTATO,
+            WOOD_BUTTON,
+            SKULL,
+            ANVIL,
+            TRAPPED_CHEST,
+            GOLD_PLATE,
+            IRON_PLATE,
+            REDSTONE_COMPARATOR_OFF,
+            REDSTONE_COMPARATOR_ON,
+            DAYLIGHT_DETECTOR,
+            REDSTONE_BLOCK,
+            QUARTZ_ORE,
+            HOPPER,
+            QUARTZ_BLOCK,
+            QUARTZ_STAIRS,
+            ACTIVATOR_RAIL,
+            DROPPER,
+            STAINED_CLAY,
+            STAINED_GLASS_PANE,
+            LEAVES_2,
+            LOG_2,
+            ACACIA_STAIRS,
+            DARK_OAK_STAIRS,
+            SLIME_BLOCK,
+            BARRIER,
+            IRON_TRAPDOOR,
+            PRISMARINE,
+            SEA_LANTERN,
+            HAY_BLOCK,
+            CARPET,
+            HARD_CLAY,
+            COAL_BLOCK,
+            PACKED_ICE,
+            DOUBLE_PLANT,
+            STANDING_BANNER,
+            WALL_BANNER,
+            DAYLIGHT_DETECTOR_INVERTED,
+            RED_SANDSTONE,
+            RED_SANDSTONE_STAIRS,
+            DOUBLE_STONE_SLAB2,
+            STONE_SLAB2,
+            SPRUCE_FENCE_GATE,
+            BIRCH_FENCE_GATE,
+            JUNGLE_FENCE_GATE,
+            DARK_OAK_FENCE_GATE,
+            ACACIA_FENCE_GATE,
+            SPRUCE_FENCE,
+            BIRCH_FENCE,
+            JUNGLE_FENCE,
+            DARK_OAK_FENCE,
+            ACACIA_FENCE,
+            SPRUCE_DOOR,
+            BIRCH_DOOR,
+            JUNGLE_DOOR,
+            ACACIA_DOOR,
+            DARK_OAK_DOOR,
+            END_ROD,
+            CHORUS_PLANT,
+            CHORUS_FLOWER,
+            PURPUR_BLOCK,
+            PURPUR_PILLAR,
+            PURPUR_STAIRS,
+            PURPUR_DOUBLE_SLAB,
+            PURPUR_SLAB,
+            END_BRICKS,
+            BEETROOT_BLOCK,
+            GRASS_PATH,
+            END_GATEWAY,
+            COMMAND_REPEATING,
+            COMMAND_CHAIN,
+            FROSTED_ICE,
+            STRUCTURE_BLOCK,
+            // ----- Item Separator -----
+            IRON_SPADE,
+            IRON_PICKAXE,
+            IRON_AXE,
+            FLINT_AND_STEEL,
+            APPLE,
+            BOW,
+            ARROW,
+            COAL,
+            DIAMOND,
+            IRON_INGOT,
+            GOLD_INGOT,
+            IRON_SWORD,
+            WOOD_SWORD,
+            WOOD_SPADE,
+            WOOD_PICKAXE,
+            WOOD_AXE,
+            STONE_SWORD,
+            STONE_SPADE,
+            STONE_PICKAXE,
+            STONE_AXE,
+            DIAMOND_SWORD,
+            DIAMOND_SPADE,
+            DIAMOND_PICKAXE,
+            DIAMOND_AXE,
+            STICK,
+            BOWL,
+            MUSHROOM_SOUP,
+            GOLD_SWORD,
+            GOLD_SPADE,
+            GOLD_PICKAXE,
+            GOLD_AXE,
+            STRING,
+            FEATHER,
+            SULPHUR,
+            WOOD_HOE,
+            STONE_HOE,
+            IRON_HOE,
+            DIAMOND_HOE,
+            GOLD_HOE,
+            SEEDS,
+            WHEAT,
+            BREAD,
+            LEATHER_HELMET,
+            LEATHER_CHESTPLATE,
+            LEATHER_LEGGINGS,
+            LEATHER_BOOTS,
+            CHAINMAIL_HELMET,
+            CHAINMAIL_CHESTPLATE,
+            CHAINMAIL_LEGGINGS,
+            CHAINMAIL_BOOTS,
+            IRON_HELMET,
+            IRON_CHESTPLATE,
+            IRON_LEGGINGS,
+            IRON_BOOTS,
+            DIAMOND_HELMET,
+            DIAMOND_CHESTPLATE,
+            DIAMOND_LEGGINGS,
+            DIAMOND_BOOTS,
+            GOLD_HELMET,
+            GOLD_CHESTPLATE,
+            GOLD_LEGGINGS,
+            GOLD_BOOTS,
+            FLINT,
+            PORK,
+            GRILLED_PORK,
+            PAINTING,
+            GOLDEN_APPLE,
+            SIGN,
+            WOOD_DOOR,
+            BUCKET,
+            WATER_BUCKET,
+            LAVA_BUCKET,
+            MINECART,
+            SADDLE,
+            IRON_DOOR,
+            REDSTONE,
+            SNOW_BALL,
+            BOAT,
+            LEATHER,
+            MILK_BUCKET,
+            CLAY_BRICK,
+            CLAY_BALL,
+            SUGAR_CANE,
+            PAPER,
+            BOOK,
+            SLIME_BALL,
+            STORAGE_MINECART,
+            POWERED_MINECART,
+            EGG,
+            COMPASS,
+            FISHING_ROD,
+            WATCH,
+            GLOWSTONE_DUST,
+            RAW_FISH,
+            COOKED_FISH,
+            INK_SACK,
+            BONE,
+            SUGAR,
+            CAKE,
+            BED,
+            DIODE,
+            COOKIE,
+            /**
+             * @see MapView
+             */
+            MAP,
+            SHEARS,
+            MELON,
+            PUMPKIN_SEEDS,
+            MELON_SEEDS,
+            RAW_BEEF,
+            COOKED_BEEF,
+            RAW_CHICKEN,
+            COOKED_CHICKEN,
+            ROTTEN_FLESH,
+            ENDER_PEARL,
+            BLAZE_ROD,
+            GHAST_TEAR,
+            GOLD_NUGGET,
+            NETHER_STALK,
+            POTION,
+            GLASS_BOTTLE,
+            SPIDER_EYE,
+            FERMENTED_SPIDER_EYE,
+            BLAZE_POWDER,
+            MAGMA_CREAM,
+            BREWING_STAND_ITEM,
+            CAULDRON_ITEM,
+            EYE_OF_ENDER,
+            SPECKLED_MELON,
+            MONSTER_EGG,
+            EXP_BOTTLE,
+            FIREBALL,
+            BOOK_AND_QUILL,
+            WRITTEN_BOOK,
+            EMERALD,
+            ITEM_FRAME,
+            FLOWER_POT_ITEM,
+            CARROT_ITEM,
+            POTATO_ITEM,
+            BAKED_POTATO,
+            POISONOUS_POTATO,
+            EMPTY_MAP,
+            GOLDEN_CARROT,
+            SKULL_ITEM,
+            CARROT_STICK,
+            NETHER_STAR,
+            PUMPKIN_PIE,
+            FIREWORK,
+            FIREWORK_CHARGE,
+            ENCHANTED_BOOK,
+            REDSTONE_COMPARATOR,
+            NETHER_BRICK_ITEM,
+            QUARTZ,
+            EXPLOSIVE_MINECART,
+            HOPPER_MINECART,
+            PRISMARINE_SHARD,
+            PRISMARINE_CRYSTALS,
+            RABBIT,
+            COOKED_RABBIT,
+            RABBIT_STEW,
+            RABBIT_FOOT,
+            RABBIT_HIDE,
+            ARMOR_STAND,
+            IRON_BARDING,
+            GOLD_BARDING,
+            DIAMOND_BARDING,
+            LEASH,
+            NAME_TAG,
+            COMMAND_MINECART,
+            MUTTON,
+            COOKED_MUTTON,
+            BANNER,
+            END_CRYSTAL,
+            SPRUCE_DOOR_ITEM,
+            BIRCH_DOOR_ITEM,
+            JUNGLE_DOOR_ITEM,
+            ACACIA_DOOR_ITEM,
+            DARK_OAK_DOOR_ITEM,
+            CHORUS_FRUIT,
+            CHORUS_FRUIT_POPPED,
+            BEETROOT,
+            BEETROOT_SEEDS,
+            BEETROOT_SOUP,
+            DRAGONS_BREATH,
+            SPLASH_POTION,
+            SPECTRAL_ARROW,
+            TIPPED_ARROW,
+            LINGERING_POTION,
+            SHIELD,
+            ELYTRA,
+            BOAT_SPRUCE,
+            BOAT_BIRCH,
+            BOAT_JUNGLE,
+            BOAT_ACACIA,
+            BOAT_DARK_OAK,
+            GOLD_RECORD,
+            GREEN_RECORD,
+            RECORD_3,
+            RECORD_4,
+            RECORD_5,
+            RECORD_6,
+            RECORD_7,
+            RECORD_8,
+            RECORD_9,
+            RECORD_10,
+            RECORD_11,
+            RECORD_12
+        }
+
+        public static Dictionary<Materials, Material> AllMaterials = new Dictionary<Materials, Material>
     {
         { Materials.AIR, new Material(0, 0) },
         { Materials.STONE, new Material(1) },
@@ -862,658 +864,692 @@ public class Material
         { Materials.RECORD_12, new Material(2267, 1) }
     };
 
-    private readonly int id;
-    //private readonly Constructor<? extends MaterialData> ctor;
-    private readonly int maxStack;
-    private readonly short durability;
+        private readonly int id;
+        //private readonly Constructor<? : MaterialData> ctor;
+        private readonly int maxStack;
+        private readonly short durability;
 
-    private Materials? EnumValue;
+        private Materials? EnumValue;
 
-    private Material(int id) {
-        new Material(id, 64);
-    }
+        private Material(int id)
+        {
+            new Material(id, 64);
+        }
 
-    private Material(int id, int stack) {
-        new Material(id, stack, typeof(MaterialData));
-    }
+        private Material(int id, int stack)
+        {
+            new Material(id, stack, typeof(MaterialData));
+        }
 
-    private Material(int id, int stack, int durability) {
-        new Material(id, stack, durability, typeof(MaterialData));
-    }
+        private Material(int id, int stack, int durability)
+        {
+            new Material(id, stack, durability, typeof(MaterialData));
+        }
 
-    private Material(int id, Type data) {
-        new Material(id, 64, data);
-    }
+        private Material(int id, Type data)
+        {
+            new Material(id, 64, data);
+        }
 
-    private Material(int id, int stack, Type data) {
-        new Material(id, stack, 0, data);
-    }
+        private Material(int id, int stack, Type data)
+        {
+            new Material(id, stack, 0, data);
+        }
 
-    private Type datatype;
-    private Material(int id, int stack, int durability, Type data) {
-        this.id = id;
-        this.durability = (short) durability;
-        this.maxStack = stack;
-        if (!typeof(MaterialData).IsAssignableFrom(data))
-            throw new ArgumentException("Data must be a MaterialData type", nameof(data));
-        this.datatype = data;
-    }
+        private Type datatype;
+        private Material(int id, int stack, int durability, Type data)
+        {
+            this.id = id;
+            this.durability = (short)durability;
+            this.maxStack = stack;
+            if (!typeof(MaterialData).IsAssignableFrom(data))
+                throw new ArgumentException("Data must be a MaterialData type", nameof(data));
+            this.datatype = data;
+        }
 
-    /**
-     * Gets the item ID or block ID of this Material
-     *
-     * @return ID of this material
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public int getId() {
-        return id;
-    }
+        /**
+         * Gets the item ID or block ID of this Material
+         *
+         * @return ID of this material
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public int getId()
+        {
+            return id;
+        }
 
-    /**
-     * Gets the maximum amount of this material that can be held in a stack
-     *
-     * @return Maximum stack size for this material
-     */
-    public int getMaxStackSize() {
-        return maxStack;
-    }
+        /**
+         * Gets the maximum amount of this material that can be held in a stack
+         *
+         * @return Maximum stack size for this material
+         */
+        public int getMaxStackSize()
+        {
+            return maxStack;
+        }
 
-    /**
-     * Gets the maximum durability of this material
-     *
-     * @return Maximum durability for this material
-     */
-    public short getMaxDurability() {
-        return durability;
-    }
+        /**
+         * Gets the maximum durability of this material
+         *
+         * @return Maximum durability for this material
+         */
+        public short getMaxDurability()
+        {
+            return durability;
+        }
 
-    /**
-     * Gets the MaterialData class associated with this Material
-     *
-     * @return MaterialData associated with this Material
-     */
-    public Type getData() {
-        return datatype;
-    }
+        /**
+         * Gets the MaterialData class associated with this Material
+         *
+         * @return MaterialData associated with this Material
+         */
+        public Type getData()
+        {
+            return datatype;
+        }
 
-    /**
-     * Constructs a new MaterialData relevant for this Material, with the
-     * given initial data
-     *
-     * @param raw Initial data to construct the MaterialData with
-     * @return New MaterialData with the given data
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public MaterialData getNewData(byte raw) {
+        /**
+         * Constructs a new MaterialData relevant for this Material, with the
+         * given initial data
+         *
+         * @param raw Initial data to construct the MaterialData with
+         * @return New MaterialData with the given data
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public MaterialData getNewData(byte raw)
+        {
             return (MaterialData)Activator.CreateInstance(datatype, id, raw);
-    }
+        }
 
-    /**
-     * Checks if this Material is a placable block
-     *
-     * @return true if this material is a block
-     */
-    public bool isBlock() {
-        return id < 256;
-    }
+        /**
+         * Checks if this Material is a placable block
+         *
+         * @return true if this material is a block
+         */
+        public bool isBlock()
+        {
+            return id < 256;
+        }
 
-    /**
-     * Checks if this Material is edible.
-     *
-     * @return true if this Material is edible.
-     */
-    public bool isEdible() {
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.BREAD:
-            case Materials.CARROT_ITEM:
-            case Materials.BAKED_POTATO:
-            case Materials.POTATO_ITEM:
-            case Materials.POISONOUS_POTATO:
-            case Materials.GOLDEN_CARROT:
-            case Materials.PUMPKIN_PIE:
-            case Materials.COOKIE:
-            case Materials.MELON:
-            case Materials.MUSHROOM_SOUP:
-            case Materials.RAW_CHICKEN:
-            case Materials.COOKED_CHICKEN:
-            case Materials.RAW_BEEF:
-            case Materials.COOKED_BEEF:
-            case Materials.RAW_FISH:
-            case Materials.COOKED_FISH:
-            case Materials.PORK:
-            case Materials.GRILLED_PORK:
-            case Materials.APPLE:
-            case Materials.GOLDEN_APPLE:
-            case Materials.ROTTEN_FLESH:
-            case Materials.SPIDER_EYE:
-            case Materials.RABBIT:
-            case Materials.COOKED_RABBIT:
-            case Materials.RABBIT_STEW:
-            case Materials.MUTTON:
-            case Materials.COOKED_MUTTON:
-            case Materials.BEETROOT:
-            case Materials.CHORUS_FRUIT:
-            case Materials.BEETROOT_SOUP:
-                return true;
-            default:
+        /**
+         * Checks if this Material is edible.
+         *
+         * @return true if this Material is edible.
+         */
+        public bool isEdible()
+        {
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.BREAD:
+                case Materials.CARROT_ITEM:
+                case Materials.BAKED_POTATO:
+                case Materials.POTATO_ITEM:
+                case Materials.POISONOUS_POTATO:
+                case Materials.GOLDEN_CARROT:
+                case Materials.PUMPKIN_PIE:
+                case Materials.COOKIE:
+                case Materials.MELON:
+                case Materials.MUSHROOM_SOUP:
+                case Materials.RAW_CHICKEN:
+                case Materials.COOKED_CHICKEN:
+                case Materials.RAW_BEEF:
+                case Materials.COOKED_BEEF:
+                case Materials.RAW_FISH:
+                case Materials.COOKED_FISH:
+                case Materials.PORK:
+                case Materials.GRILLED_PORK:
+                case Materials.APPLE:
+                case Materials.GOLDEN_APPLE:
+                case Materials.ROTTEN_FLESH:
+                case Materials.SPIDER_EYE:
+                case Materials.RABBIT:
+                case Materials.COOKED_RABBIT:
+                case Materials.RABBIT_STEW:
+                case Materials.MUTTON:
+                case Materials.COOKED_MUTTON:
+                case Materials.BEETROOT:
+                case Materials.CHORUS_FRUIT:
+                case Materials.BEETROOT_SOUP:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        /**
+         * Attempts to match the Material with the given name.
+         * <p>
+         * This is a match lookup; names will be converted to uppercase, then
+         * stripped of special characters in an attempt to format it like the
+         * enum.
+         * <p>
+         * Using this for match by ID is not supported.
+         *
+         * @param name Name of the material to get
+         * @return Material if found, or null
+         */
+        public static Material matchMaterial(String name)
+        {
+            if (name == null)
+                throw new ArgumentNullException(nameof(name), "Name cannot be null");
+
+            Material result = null;
+
+            String filtered = name.ToUpper();
+
+            filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
+            result = AllMaterials[(Materials)Enum.Parse(typeof(Materials), (filtered))];
+
+            return result;
+        }
+
+        /**
+         * @return True if this material represents a playable music disk.
+         */
+        public bool isRecord()
+        {
+            return id >= (int)Materials.GOLD_RECORD && id <= (int)Materials.RECORD_12;
+        }
+
+        /**
+         * Check if the material is a block and solid (cannot be passed through by
+         * a player)
+         *
+         * @return True if this material is a block and solid
+         */
+        public bool isSolid()
+        {
+            if (!isBlock() || id == 0)
+            {
                 return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.STONE:
+                case Materials.GRASS:
+                case Materials.DIRT:
+                case Materials.COBBLESTONE:
+                case Materials.WOOD:
+                case Materials.BEDROCK:
+                case Materials.SAND:
+                case Materials.GRAVEL:
+                case Materials.GOLD_ORE:
+                case Materials.IRON_ORE:
+                case Materials.COAL_ORE:
+                case Materials.LOG:
+                case Materials.LEAVES:
+                case Materials.SPONGE:
+                case Materials.GLASS:
+                case Materials.LAPIS_ORE:
+                case Materials.LAPIS_BLOCK:
+                case Materials.DISPENSER:
+                case Materials.SANDSTONE:
+                case Materials.NOTE_BLOCK:
+                case Materials.BED_BLOCK:
+                case Materials.PISTON_STICKY_BASE:
+                case Materials.PISTON_BASE:
+                case Materials.PISTON_EXTENSION:
+                case Materials.WOOL:
+                case Materials.PISTON_MOVING_PIECE:
+                case Materials.GOLD_BLOCK:
+                case Materials.IRON_BLOCK:
+                case Materials.DOUBLE_STEP:
+                case Materials.STEP:
+                case Materials.BRICK:
+                case Materials.TNT:
+                case Materials.BOOKSHELF:
+                case Materials.MOSSY_COBBLESTONE:
+                case Materials.OBSIDIAN:
+                case Materials.MOB_SPAWNER:
+                case Materials.WOOD_STAIRS:
+                case Materials.CHEST:
+                case Materials.DIAMOND_ORE:
+                case Materials.DIAMOND_BLOCK:
+                case Materials.WORKBENCH:
+                case Materials.SOIL:
+                case Materials.FURNACE:
+                case Materials.BURNING_FURNACE:
+                case Materials.SIGN_POST:
+                case Materials.WOODEN_DOOR:
+                case Materials.COBBLESTONE_STAIRS:
+                case Materials.WALL_SIGN:
+                case Materials.STONE_PLATE:
+                case Materials.IRON_DOOR_BLOCK:
+                case Materials.WOOD_PLATE:
+                case Materials.REDSTONE_ORE:
+                case Materials.GLOWING_REDSTONE_ORE:
+                case Materials.ICE:
+                case Materials.SNOW_BLOCK:
+                case Materials.CACTUS:
+                case Materials.CLAY:
+                case Materials.JUKEBOX:
+                case Materials.FENCE:
+                case Materials.PUMPKIN:
+                case Materials.NETHERRACK:
+                case Materials.SOUL_SAND:
+                case Materials.GLOWSTONE:
+                case Materials.JACK_O_LANTERN:
+                case Materials.CAKE_BLOCK:
+                case Materials.STAINED_GLASS:
+                case Materials.TRAP_DOOR:
+                case Materials.MONSTER_EGGS:
+                case Materials.SMOOTH_BRICK:
+                case Materials.HUGE_MUSHROOM_1:
+                case Materials.HUGE_MUSHROOM_2:
+                case Materials.IRON_FENCE:
+                case Materials.THIN_GLASS:
+                case Materials.MELON_BLOCK:
+                case Materials.FENCE_GATE:
+                case Materials.BRICK_STAIRS:
+                case Materials.SMOOTH_STAIRS:
+                case Materials.MYCEL:
+                case Materials.NETHER_BRICK:
+                case Materials.NETHER_FENCE:
+                case Materials.NETHER_BRICK_STAIRS:
+                case Materials.ENCHANTMENT_TABLE:
+                case Materials.BREWING_STAND:
+                case Materials.CAULDRON:
+                case Materials.ENDER_PORTAL_FRAME:
+                case Materials.ENDER_STONE:
+                case Materials.DRAGON_EGG:
+                case Materials.REDSTONE_LAMP_OFF:
+                case Materials.REDSTONE_LAMP_ON:
+                case Materials.WOOD_DOUBLE_STEP:
+                case Materials.WOOD_STEP:
+                case Materials.SANDSTONE_STAIRS:
+                case Materials.EMERALD_ORE:
+                case Materials.ENDER_CHEST:
+                case Materials.EMERALD_BLOCK:
+                case Materials.SPRUCE_WOOD_STAIRS:
+                case Materials.BIRCH_WOOD_STAIRS:
+                case Materials.JUNGLE_WOOD_STAIRS:
+                case Materials.COMMAND:
+                case Materials.BEACON:
+                case Materials.COBBLE_WALL:
+                case Materials.ANVIL:
+                case Materials.TRAPPED_CHEST:
+                case Materials.GOLD_PLATE:
+                case Materials.IRON_PLATE:
+                case Materials.DAYLIGHT_DETECTOR:
+                case Materials.REDSTONE_BLOCK:
+                case Materials.QUARTZ_ORE:
+                case Materials.HOPPER:
+                case Materials.QUARTZ_BLOCK:
+                case Materials.QUARTZ_STAIRS:
+                case Materials.DROPPER:
+                case Materials.STAINED_CLAY:
+                case Materials.HAY_BLOCK:
+                case Materials.HARD_CLAY:
+                case Materials.COAL_BLOCK:
+                case Materials.STAINED_GLASS_PANE:
+                case Materials.LEAVES_2:
+                case Materials.LOG_2:
+                case Materials.ACACIA_STAIRS:
+                case Materials.DARK_OAK_STAIRS:
+                case Materials.PACKED_ICE:
+                case Materials.RED_SANDSTONE:
+                case Materials.SLIME_BLOCK:
+                case Materials.BARRIER:
+                case Materials.IRON_TRAPDOOR:
+                case Materials.PRISMARINE:
+                case Materials.SEA_LANTERN:
+                case Materials.DOUBLE_STONE_SLAB2:
+                case Materials.RED_SANDSTONE_STAIRS:
+                case Materials.STONE_SLAB2:
+                case Materials.SPRUCE_FENCE_GATE:
+                case Materials.BIRCH_FENCE_GATE:
+                case Materials.JUNGLE_FENCE_GATE:
+                case Materials.DARK_OAK_FENCE_GATE:
+                case Materials.ACACIA_FENCE_GATE:
+                case Materials.SPRUCE_FENCE:
+                case Materials.BIRCH_FENCE:
+                case Materials.JUNGLE_FENCE:
+                case Materials.DARK_OAK_FENCE:
+                case Materials.ACACIA_FENCE:
+                case Materials.STANDING_BANNER:
+                case Materials.WALL_BANNER:
+                case Materials.DAYLIGHT_DETECTOR_INVERTED:
+                case Materials.SPRUCE_DOOR:
+                case Materials.BIRCH_DOOR:
+                case Materials.JUNGLE_DOOR:
+                case Materials.ACACIA_DOOR:
+                case Materials.DARK_OAK_DOOR:
+                case Materials.PURPUR_BLOCK:
+                case Materials.PURPUR_PILLAR:
+                case Materials.PURPUR_STAIRS:
+                case Materials.PURPUR_DOUBLE_SLAB:
+                case Materials.PURPUR_SLAB:
+                case Materials.END_BRICKS:
+                case Materials.GRASS_PATH:
+                case Materials.STRUCTURE_BLOCK:
+                case Materials.COMMAND_REPEATING:
+                case Materials.COMMAND_CHAIN:
+                case Materials.FROSTED_ICE:
+                    return true;
+                default:
+                    return false;
+            }
         }
-    }
-    /**
-     * Attempts to match the Material with the given name.
-     * <p>
-     * This is a match lookup; names will be converted to uppercase, then
-     * stripped of special characters in an attempt to format it like the
-     * enum.
-     * <p>
-     * Using this for match by ID is not supported.
-     *
-     * @param name Name of the material to get
-     * @return Material if found, or null
-     */
-    public static Material matchMaterial(String name)
-    {
-        if (name == null)
-            throw new ArgumentNullException(nameof(name), "Name cannot be null");
 
-        Material result = null;
-
-        String filtered = name.ToUpper();
-
-        filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
-        result = AllMaterials[(Materials)Enum.Parse(typeof(Materials), (filtered))];
-
-        return result;
-    }
-
-    /**
-     * @return True if this material represents a playable music disk.
-     */
-    public bool isRecord() {
-        return id >= (int)Materials.GOLD_RECORD && id <= (int)Materials.RECORD_12;
-    }
-
-    /**
-     * Check if the material is a block and solid (cannot be passed through by
-     * a player)
-     *
-     * @return True if this material is a block and solid
-     */
-    public bool isSolid() {
-        if (!isBlock() || id == 0) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.STONE:
-            case Materials.GRASS:
-            case Materials.DIRT:
-            case Materials.COBBLESTONE:
-            case Materials.WOOD:
-            case Materials.BEDROCK:
-            case Materials.SAND:
-            case Materials.GRAVEL:
-            case Materials.GOLD_ORE:
-            case Materials.IRON_ORE:
-            case Materials.COAL_ORE:
-            case Materials.LOG:
-            case Materials.LEAVES:
-            case Materials.SPONGE:
-            case Materials.GLASS:
-            case Materials.LAPIS_ORE:
-            case Materials.LAPIS_BLOCK:
-            case Materials.DISPENSER:
-            case Materials.SANDSTONE:
-            case Materials.NOTE_BLOCK:
-            case Materials.BED_BLOCK:
-            case Materials.PISTON_STICKY_BASE:
-            case Materials.PISTON_BASE:
-            case Materials.PISTON_EXTENSION:
-            case Materials.WOOL:
-            case Materials.PISTON_MOVING_PIECE:
-            case Materials.GOLD_BLOCK:
-            case Materials.IRON_BLOCK:
-            case Materials.DOUBLE_STEP:
-            case Materials.STEP:
-            case Materials.BRICK:
-            case Materials.TNT:
-            case Materials.BOOKSHELF:
-            case Materials.MOSSY_COBBLESTONE:
-            case Materials.OBSIDIAN:
-            case Materials.MOB_SPAWNER:
-            case Materials.WOOD_STAIRS:
-            case Materials.CHEST:
-            case Materials.DIAMOND_ORE:
-            case Materials.DIAMOND_BLOCK:
-            case Materials.WORKBENCH:
-            case Materials.SOIL:
-            case Materials.FURNACE:
-            case Materials.BURNING_FURNACE:
-            case Materials.SIGN_POST:
-            case Materials.WOODEN_DOOR:
-            case Materials.COBBLESTONE_STAIRS:
-            case Materials.WALL_SIGN:
-            case Materials.STONE_PLATE:
-            case Materials.IRON_DOOR_BLOCK:
-            case Materials.WOOD_PLATE:
-            case Materials.REDSTONE_ORE:
-            case Materials.GLOWING_REDSTONE_ORE:
-            case Materials.ICE:
-            case Materials.SNOW_BLOCK:
-            case Materials.CACTUS:
-            case Materials.CLAY:
-            case Materials.JUKEBOX:
-            case Materials.FENCE:
-            case Materials.PUMPKIN:
-            case Materials.NETHERRACK:
-            case Materials.SOUL_SAND:
-            case Materials.GLOWSTONE:
-            case Materials.JACK_O_LANTERN:
-            case Materials.CAKE_BLOCK:
-            case Materials.STAINED_GLASS:
-            case Materials.TRAP_DOOR:
-            case Materials.MONSTER_EGGS:
-            case Materials.SMOOTH_BRICK:
-            case Materials.HUGE_MUSHROOM_1:
-            case Materials.HUGE_MUSHROOM_2:
-            case Materials.IRON_FENCE:
-            case Materials.THIN_GLASS:
-            case Materials.MELON_BLOCK:
-            case Materials.FENCE_GATE:
-            case Materials.BRICK_STAIRS:
-            case Materials.SMOOTH_STAIRS:
-            case Materials.MYCEL:
-            case Materials.NETHER_BRICK:
-            case Materials.NETHER_FENCE:
-            case Materials.NETHER_BRICK_STAIRS:
-            case Materials.ENCHANTMENT_TABLE:
-            case Materials.BREWING_STAND:
-            case Materials.CAULDRON:
-            case Materials.ENDER_PORTAL_FRAME:
-            case Materials.ENDER_STONE:
-            case Materials.DRAGON_EGG:
-            case Materials.REDSTONE_LAMP_OFF:
-            case Materials.REDSTONE_LAMP_ON:
-            case Materials.WOOD_DOUBLE_STEP:
-            case Materials.WOOD_STEP:
-            case Materials.SANDSTONE_STAIRS:
-            case Materials.EMERALD_ORE:
-            case Materials.ENDER_CHEST:
-            case Materials.EMERALD_BLOCK:
-            case Materials.SPRUCE_WOOD_STAIRS:
-            case Materials.BIRCH_WOOD_STAIRS:
-            case Materials.JUNGLE_WOOD_STAIRS:
-            case Materials.COMMAND:
-            case Materials.BEACON:
-            case Materials.COBBLE_WALL:
-            case Materials.ANVIL:
-            case Materials.TRAPPED_CHEST:
-            case Materials.GOLD_PLATE:
-            case Materials.IRON_PLATE:
-            case Materials.DAYLIGHT_DETECTOR:
-            case Materials.REDSTONE_BLOCK:
-            case Materials.QUARTZ_ORE:
-            case Materials.HOPPER:
-            case Materials.QUARTZ_BLOCK:
-            case Materials.QUARTZ_STAIRS:
-            case Materials.DROPPER:
-            case Materials.STAINED_CLAY:
-            case Materials.HAY_BLOCK:
-            case Materials.HARD_CLAY:
-            case Materials.COAL_BLOCK:
-            case Materials.STAINED_GLASS_PANE:
-            case Materials.LEAVES_2:
-            case Materials.LOG_2:
-            case Materials.ACACIA_STAIRS:
-            case Materials.DARK_OAK_STAIRS:
-            case Materials.PACKED_ICE:
-            case Materials.RED_SANDSTONE:
-            case Materials.SLIME_BLOCK:
-            case Materials.BARRIER:
-            case Materials.IRON_TRAPDOOR:
-            case Materials.PRISMARINE:
-            case Materials.SEA_LANTERN:
-            case Materials.DOUBLE_STONE_SLAB2:
-            case Materials.RED_SANDSTONE_STAIRS:
-            case Materials.STONE_SLAB2:
-            case Materials.SPRUCE_FENCE_GATE:
-            case Materials.BIRCH_FENCE_GATE:
-            case Materials.JUNGLE_FENCE_GATE:
-            case Materials.DARK_OAK_FENCE_GATE:
-            case Materials.ACACIA_FENCE_GATE:
-            case Materials.SPRUCE_FENCE:
-            case Materials.BIRCH_FENCE:
-            case Materials.JUNGLE_FENCE:
-            case Materials.DARK_OAK_FENCE:
-            case Materials.ACACIA_FENCE:
-            case Materials.STANDING_BANNER:
-            case Materials.WALL_BANNER:
-            case Materials.DAYLIGHT_DETECTOR_INVERTED:
-            case Materials.SPRUCE_DOOR:
-            case Materials.BIRCH_DOOR:
-            case Materials.JUNGLE_DOOR:
-            case Materials.ACACIA_DOOR:
-            case Materials.DARK_OAK_DOOR:
-            case Materials.PURPUR_BLOCK:
-            case Materials.PURPUR_PILLAR:
-            case Materials.PURPUR_STAIRS:
-            case Materials.PURPUR_DOUBLE_SLAB:
-            case Materials.PURPUR_SLAB:
-            case Materials.END_BRICKS:
-            case Materials.GRASS_PATH:
-            case Materials.STRUCTURE_BLOCK:
-            case Materials.COMMAND_REPEATING:
-            case Materials.COMMAND_CHAIN:
-            case Materials.FROSTED_ICE:
-                return true;
-            default:
+        /**
+         * Check if the material is a block and does not block any light
+         *
+         * @return True if this material is a block and does not block any light
+         */
+        public bool isTransparent()
+        {
+            if (!isBlock())
+            {
                 return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.AIR:
+                case Materials.SAPLING:
+                case Materials.POWERED_RAIL:
+                case Materials.DETECTOR_RAIL:
+                case Materials.LONG_GRASS:
+                case Materials.DEAD_BUSH:
+                case Materials.YELLOW_FLOWER:
+                case Materials.RED_ROSE:
+                case Materials.BROWN_MUSHROOM:
+                case Materials.RED_MUSHROOM:
+                case Materials.TORCH:
+                case Materials.FIRE:
+                case Materials.REDSTONE_WIRE:
+                case Materials.CROPS:
+                case Materials.LADDER:
+                case Materials.RAILS:
+                case Materials.LEVER:
+                case Materials.REDSTONE_TORCH_OFF:
+                case Materials.REDSTONE_TORCH_ON:
+                case Materials.STONE_BUTTON:
+                case Materials.SNOW:
+                case Materials.SUGAR_CANE_BLOCK:
+                case Materials.PORTAL:
+                case Materials.DIODE_BLOCK_OFF:
+                case Materials.DIODE_BLOCK_ON:
+                case Materials.PUMPKIN_STEM:
+                case Materials.MELON_STEM:
+                case Materials.VINE:
+                case Materials.WATER_LILY:
+                case Materials.NETHER_WARTS:
+                case Materials.ENDER_PORTAL:
+                case Materials.COCOA:
+                case Materials.TRIPWIRE_HOOK:
+                case Materials.TRIPWIRE:
+                case Materials.FLOWER_POT:
+                case Materials.CARROT:
+                case Materials.POTATO:
+                case Materials.WOOD_BUTTON:
+                case Materials.SKULL:
+                case Materials.REDSTONE_COMPARATOR_OFF:
+                case Materials.REDSTONE_COMPARATOR_ON:
+                case Materials.ACTIVATOR_RAIL:
+                case Materials.CARPET:
+                case Materials.DOUBLE_PLANT:
+                case Materials.END_ROD:
+                case Materials.CHORUS_PLANT:
+                case Materials.CHORUS_FLOWER:
+                case Materials.BEETROOT_BLOCK:
+                case Materials.END_GATEWAY:
+                    return true;
+                default:
+                    return false;
+            }
         }
-    }
 
-    /**
-     * Check if the material is a block and does not block any light
-     *
-     * @return True if this material is a block and does not block any light
-     */
-    public bool isTransparent() {
-        if (!isBlock()) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.AIR:
-            case Materials.SAPLING:
-            case Materials.POWERED_RAIL:
-            case Materials.DETECTOR_RAIL:
-            case Materials.LONG_GRASS:
-            case Materials.DEAD_BUSH:
-            case Materials.YELLOW_FLOWER:
-            case Materials.RED_ROSE:
-            case Materials.BROWN_MUSHROOM:
-            case Materials.RED_MUSHROOM:
-            case Materials.TORCH:
-            case Materials.FIRE:
-            case Materials.REDSTONE_WIRE:
-            case Materials.CROPS:
-            case Materials.LADDER:
-            case Materials.RAILS:
-            case Materials.LEVER:
-            case Materials.REDSTONE_TORCH_OFF:
-            case Materials.REDSTONE_TORCH_ON:
-            case Materials.STONE_BUTTON:
-            case Materials.SNOW:
-            case Materials.SUGAR_CANE_BLOCK:
-            case Materials.PORTAL:
-            case Materials.DIODE_BLOCK_OFF:
-            case Materials.DIODE_BLOCK_ON:
-            case Materials.PUMPKIN_STEM:
-            case Materials.MELON_STEM:
-            case Materials.VINE:
-            case Materials.WATER_LILY:
-            case Materials.NETHER_WARTS:
-            case Materials.ENDER_PORTAL:
-            case Materials.COCOA:
-            case Materials.TRIPWIRE_HOOK:
-            case Materials.TRIPWIRE:
-            case Materials.FLOWER_POT:
-            case Materials.CARROT:
-            case Materials.POTATO:
-            case Materials.WOOD_BUTTON:
-            case Materials.SKULL:
-            case Materials.REDSTONE_COMPARATOR_OFF:
-            case Materials.REDSTONE_COMPARATOR_ON:
-            case Materials.ACTIVATOR_RAIL:
-            case Materials.CARPET:
-            case Materials.DOUBLE_PLANT:
-            case Materials.END_ROD:
-            case Materials.CHORUS_PLANT:
-            case Materials.CHORUS_FLOWER:
-            case Materials.BEETROOT_BLOCK:
-            case Materials.END_GATEWAY:
-                return true;
-            default:
+        /**
+         * Check if the material is a block and can catch fire
+         *
+         * @return True if this material is a block and can catch fire
+         */
+        public bool isFlammable()
+        {
+            if (!isBlock())
+            {
                 return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.WOOD:
+                case Materials.LOG:
+                case Materials.LEAVES:
+                case Materials.NOTE_BLOCK:
+                case Materials.BED_BLOCK:
+                case Materials.LONG_GRASS:
+                case Materials.DEAD_BUSH:
+                case Materials.WOOL:
+                case Materials.TNT:
+                case Materials.BOOKSHELF:
+                case Materials.WOOD_STAIRS:
+                case Materials.CHEST:
+                case Materials.WORKBENCH:
+                case Materials.SIGN_POST:
+                case Materials.WOODEN_DOOR:
+                case Materials.WALL_SIGN:
+                case Materials.WOOD_PLATE:
+                case Materials.JUKEBOX:
+                case Materials.FENCE:
+                case Materials.TRAP_DOOR:
+                case Materials.HUGE_MUSHROOM_1:
+                case Materials.HUGE_MUSHROOM_2:
+                case Materials.VINE:
+                case Materials.FENCE_GATE:
+                case Materials.WOOD_DOUBLE_STEP:
+                case Materials.WOOD_STEP:
+                case Materials.SPRUCE_WOOD_STAIRS:
+                case Materials.BIRCH_WOOD_STAIRS:
+                case Materials.JUNGLE_WOOD_STAIRS:
+                case Materials.TRAPPED_CHEST:
+                case Materials.DAYLIGHT_DETECTOR:
+                case Materials.CARPET:
+                case Materials.LEAVES_2:
+                case Materials.LOG_2:
+                case Materials.ACACIA_STAIRS:
+                case Materials.DARK_OAK_STAIRS:
+                case Materials.DOUBLE_PLANT:
+                case Materials.SPRUCE_FENCE_GATE:
+                case Materials.BIRCH_FENCE_GATE:
+                case Materials.JUNGLE_FENCE_GATE:
+                case Materials.DARK_OAK_FENCE_GATE:
+                case Materials.ACACIA_FENCE_GATE:
+                case Materials.SPRUCE_FENCE:
+                case Materials.BIRCH_FENCE:
+                case Materials.JUNGLE_FENCE:
+                case Materials.DARK_OAK_FENCE:
+                case Materials.ACACIA_FENCE:
+                case Materials.STANDING_BANNER:
+                case Materials.WALL_BANNER:
+                case Materials.DAYLIGHT_DETECTOR_INVERTED:
+                case Materials.SPRUCE_DOOR:
+                case Materials.BIRCH_DOOR:
+                case Materials.JUNGLE_DOOR:
+                case Materials.ACACIA_DOOR:
+                case Materials.DARK_OAK_DOOR:
+                    return true;
+                default:
+                    return false;
+            }
         }
-    }
 
-    /**
-     * Check if the material is a block and can catch fire
-     *
-     * @return True if this material is a block and can catch fire
-     */
-    public bool isFlammable() {
-        if (!isBlock()) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.WOOD:
-            case Materials.LOG:
-            case Materials.LEAVES:
-            case Materials.NOTE_BLOCK:
-            case Materials.BED_BLOCK:
-            case Materials.LONG_GRASS:
-            case Materials.DEAD_BUSH:
-            case Materials.WOOL:
-            case Materials.TNT:
-            case Materials.BOOKSHELF:
-            case Materials.WOOD_STAIRS:
-            case Materials.CHEST:
-            case Materials.WORKBENCH:
-            case Materials.SIGN_POST:
-            case Materials.WOODEN_DOOR:
-            case Materials.WALL_SIGN:
-            case Materials.WOOD_PLATE:
-            case Materials.JUKEBOX:
-            case Materials.FENCE:
-            case Materials.TRAP_DOOR:
-            case Materials.HUGE_MUSHROOM_1:
-            case Materials.HUGE_MUSHROOM_2:
-            case Materials.VINE:
-            case Materials.FENCE_GATE:
-            case Materials.WOOD_DOUBLE_STEP:
-            case Materials.WOOD_STEP:
-            case Materials.SPRUCE_WOOD_STAIRS:
-            case Materials.BIRCH_WOOD_STAIRS:
-            case Materials.JUNGLE_WOOD_STAIRS:
-            case Materials.TRAPPED_CHEST:
-            case Materials.DAYLIGHT_DETECTOR:
-            case Materials.CARPET:
-            case Materials.LEAVES_2:
-            case Materials.LOG_2:
-            case Materials.ACACIA_STAIRS:
-            case Materials.DARK_OAK_STAIRS:
-            case Materials.DOUBLE_PLANT:
-            case Materials.SPRUCE_FENCE_GATE:
-            case Materials.BIRCH_FENCE_GATE:
-            case Materials.JUNGLE_FENCE_GATE:
-            case Materials.DARK_OAK_FENCE_GATE:
-            case Materials.ACACIA_FENCE_GATE:
-            case Materials.SPRUCE_FENCE:
-            case Materials.BIRCH_FENCE:
-            case Materials.JUNGLE_FENCE:
-            case Materials.DARK_OAK_FENCE:
-            case Materials.ACACIA_FENCE:
-            case Materials.STANDING_BANNER:
-            case Materials.WALL_BANNER:
-            case Materials.DAYLIGHT_DETECTOR_INVERTED:
-            case Materials.SPRUCE_DOOR:
-            case Materials.BIRCH_DOOR:
-            case Materials.JUNGLE_DOOR:
-            case Materials.ACACIA_DOOR:
-            case Materials.DARK_OAK_DOOR:
-                return true;
-            default:
+        /**
+         * Check if the material is a block and can burn away
+         *
+         * @return True if this material is a block and can burn away
+         */
+        public bool isBurnable()
+        {
+            if (!isBlock())
+            {
                 return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.WOOD:
+                case Materials.LOG:
+                case Materials.LEAVES:
+                case Materials.LONG_GRASS:
+                case Materials.WOOL:
+                case Materials.YELLOW_FLOWER:
+                case Materials.RED_ROSE:
+                case Materials.TNT:
+                case Materials.BOOKSHELF:
+                case Materials.WOOD_STAIRS:
+                case Materials.FENCE:
+                case Materials.VINE:
+                case Materials.WOOD_DOUBLE_STEP:
+                case Materials.WOOD_STEP:
+                case Materials.SPRUCE_WOOD_STAIRS:
+                case Materials.BIRCH_WOOD_STAIRS:
+                case Materials.JUNGLE_WOOD_STAIRS:
+                case Materials.HAY_BLOCK:
+                case Materials.COAL_BLOCK:
+                case Materials.LEAVES_2:
+                case Materials.LOG_2:
+                case Materials.CARPET:
+                case Materials.DOUBLE_PLANT:
+                case Materials.DEAD_BUSH:
+                case Materials.FENCE_GATE:
+                case Materials.SPRUCE_FENCE_GATE:
+                case Materials.BIRCH_FENCE_GATE:
+                case Materials.JUNGLE_FENCE_GATE:
+                case Materials.DARK_OAK_FENCE_GATE:
+                case Materials.ACACIA_FENCE_GATE:
+                case Materials.SPRUCE_FENCE:
+                case Materials.BIRCH_FENCE:
+                case Materials.JUNGLE_FENCE:
+                case Materials.DARK_OAK_FENCE:
+                case Materials.ACACIA_FENCE:
+                case Materials.ACACIA_STAIRS:
+                case Materials.DARK_OAK_STAIRS:
+                    return true;
+                default:
+                    return false;
+            }
         }
-    }
 
-    /**
-     * Check if the material is a block and can burn away
-     *
-     * @return True if this material is a block and can burn away
-     */
-    public bool isBurnable() {
-        if (!isBlock()) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.WOOD:
-            case Materials.LOG:
-            case Materials.LEAVES:
-            case Materials.LONG_GRASS:
-            case Materials.WOOL:
-            case Materials.YELLOW_FLOWER:
-            case Materials.RED_ROSE:
-            case Materials.TNT:
-            case Materials.BOOKSHELF:
-            case Materials.WOOD_STAIRS:
-            case Materials.FENCE:
-            case Materials.VINE:
-            case Materials.WOOD_DOUBLE_STEP:
-            case Materials.WOOD_STEP:
-            case Materials.SPRUCE_WOOD_STAIRS:
-            case Materials.BIRCH_WOOD_STAIRS:
-            case Materials.JUNGLE_WOOD_STAIRS:
-            case Materials.HAY_BLOCK:
-            case Materials.COAL_BLOCK:
-            case Materials.LEAVES_2:
-            case Materials.LOG_2:
-            case Materials.CARPET:
-            case Materials.DOUBLE_PLANT:
-            case Materials.DEAD_BUSH:
-            case Materials.FENCE_GATE:
-            case Materials.SPRUCE_FENCE_GATE:
-            case Materials.BIRCH_FENCE_GATE:
-            case Materials.JUNGLE_FENCE_GATE:
-            case Materials.DARK_OAK_FENCE_GATE:
-            case Materials.ACACIA_FENCE_GATE:
-            case Materials.SPRUCE_FENCE:
-            case Materials.BIRCH_FENCE:
-            case Materials.JUNGLE_FENCE:
-            case Materials.DARK_OAK_FENCE:
-            case Materials.ACACIA_FENCE:
-            case Materials.ACACIA_STAIRS:
-            case Materials.DARK_OAK_STAIRS:
-                return true;
-            default:
+        /**
+         * Check if the material is a block and completely blocks vision
+         *
+         * @return True if this material is a block and completely blocks vision
+         */
+        public bool isOccluding()
+        {
+            if (!isBlock())
+            {
                 return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.STONE:
+                case Materials.GRASS:
+                case Materials.DIRT:
+                case Materials.COBBLESTONE:
+                case Materials.WOOD:
+                case Materials.BEDROCK:
+                case Materials.SAND:
+                case Materials.GRAVEL:
+                case Materials.GOLD_ORE:
+                case Materials.IRON_ORE:
+                case Materials.COAL_ORE:
+                case Materials.LOG:
+                case Materials.SPONGE:
+                case Materials.LAPIS_ORE:
+                case Materials.LAPIS_BLOCK:
+                case Materials.DISPENSER:
+                case Materials.SANDSTONE:
+                case Materials.NOTE_BLOCK:
+                case Materials.WOOL:
+                case Materials.GOLD_BLOCK:
+                case Materials.IRON_BLOCK:
+                case Materials.DOUBLE_STEP:
+                case Materials.BRICK:
+                case Materials.BOOKSHELF:
+                case Materials.MOSSY_COBBLESTONE:
+                case Materials.OBSIDIAN:
+                case Materials.MOB_SPAWNER:
+                case Materials.DIAMOND_ORE:
+                case Materials.DIAMOND_BLOCK:
+                case Materials.WORKBENCH:
+                case Materials.FURNACE:
+                case Materials.BURNING_FURNACE:
+                case Materials.REDSTONE_ORE:
+                case Materials.GLOWING_REDSTONE_ORE:
+                case Materials.SNOW_BLOCK:
+                case Materials.CLAY:
+                case Materials.JUKEBOX:
+                case Materials.PUMPKIN:
+                case Materials.NETHERRACK:
+                case Materials.SOUL_SAND:
+                case Materials.JACK_O_LANTERN:
+                case Materials.MONSTER_EGGS:
+                case Materials.SMOOTH_BRICK:
+                case Materials.HUGE_MUSHROOM_1:
+                case Materials.HUGE_MUSHROOM_2:
+                case Materials.MELON_BLOCK:
+                case Materials.MYCEL:
+                case Materials.NETHER_BRICK:
+                case Materials.ENDER_STONE:
+                case Materials.REDSTONE_LAMP_OFF:
+                case Materials.REDSTONE_LAMP_ON:
+                case Materials.WOOD_DOUBLE_STEP:
+                case Materials.EMERALD_ORE:
+                case Materials.EMERALD_BLOCK:
+                case Materials.COMMAND:
+                case Materials.QUARTZ_ORE:
+                case Materials.QUARTZ_BLOCK:
+                case Materials.DROPPER:
+                case Materials.STAINED_CLAY:
+                case Materials.HAY_BLOCK:
+                case Materials.HARD_CLAY:
+                case Materials.COAL_BLOCK:
+                case Materials.LOG_2:
+                case Materials.PACKED_ICE:
+                case Materials.SLIME_BLOCK:
+                case Materials.BARRIER:
+                case Materials.PRISMARINE:
+                case Materials.RED_SANDSTONE:
+                case Materials.DOUBLE_STONE_SLAB2:
+                case Materials.PURPUR_BLOCK:
+                case Materials.PURPUR_PILLAR:
+                case Materials.PURPUR_DOUBLE_SLAB:
+                case Materials.END_BRICKS:
+                case Materials.STRUCTURE_BLOCK:
+                case Materials.COMMAND_REPEATING:
+                case Materials.COMMAND_CHAIN:
+                    return true;
+                default:
+                    return false;
+            }
         }
-    }
 
-    /**
-     * Check if the material is a block and completely blocks vision
-     *
-     * @return True if this material is a block and completely blocks vision
-     */
-    public bool isOccluding() {
-        if (!isBlock()) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.STONE:
-            case Materials.GRASS:
-            case Materials.DIRT:
-            case Materials.COBBLESTONE:
-            case Materials.WOOD:
-            case Materials.BEDROCK:
-            case Materials.SAND:
-            case Materials.GRAVEL:
-            case Materials.GOLD_ORE:
-            case Materials.IRON_ORE:
-            case Materials.COAL_ORE:
-            case Materials.LOG:
-            case Materials.SPONGE:
-            case Materials.LAPIS_ORE:
-            case Materials.LAPIS_BLOCK:
-            case Materials.DISPENSER:
-            case Materials.SANDSTONE:
-            case Materials.NOTE_BLOCK:
-            case Materials.WOOL:
-            case Materials.GOLD_BLOCK:
-            case Materials.IRON_BLOCK:
-            case Materials.DOUBLE_STEP:
-            case Materials.BRICK:
-            case Materials.BOOKSHELF:
-            case Materials.MOSSY_COBBLESTONE:
-            case Materials.OBSIDIAN:
-            case Materials.MOB_SPAWNER:
-            case Materials.DIAMOND_ORE:
-            case Materials.DIAMOND_BLOCK:
-            case Materials.WORKBENCH:
-            case Materials.FURNACE:
-            case Materials.BURNING_FURNACE:
-            case Materials.REDSTONE_ORE:
-            case Materials.GLOWING_REDSTONE_ORE:
-            case Materials.SNOW_BLOCK:
-            case Materials.CLAY:
-            case Materials.JUKEBOX:
-            case Materials.PUMPKIN:
-            case Materials.NETHERRACK:
-            case Materials.SOUL_SAND:
-            case Materials.JACK_O_LANTERN:
-            case Materials.MONSTER_EGGS:
-            case Materials.SMOOTH_BRICK:
-            case Materials.HUGE_MUSHROOM_1:
-            case Materials.HUGE_MUSHROOM_2:
-            case Materials.MELON_BLOCK:
-            case Materials.MYCEL:
-            case Materials.NETHER_BRICK:
-            case Materials.ENDER_STONE:
-            case Materials.REDSTONE_LAMP_OFF:
-            case Materials.REDSTONE_LAMP_ON:
-            case Materials.WOOD_DOUBLE_STEP:
-            case Materials.EMERALD_ORE:
-            case Materials.EMERALD_BLOCK:
-            case Materials.COMMAND:
-            case Materials.QUARTZ_ORE:
-            case Materials.QUARTZ_BLOCK:
-            case Materials.DROPPER:
-            case Materials.STAINED_CLAY:
-            case Materials.HAY_BLOCK:
-            case Materials.HARD_CLAY:
-            case Materials.COAL_BLOCK:
-            case Materials.LOG_2:
-            case Materials.PACKED_ICE:
-            case Materials.SLIME_BLOCK:
-            case Materials.BARRIER:
-            case Materials.PRISMARINE:
-            case Materials.RED_SANDSTONE:
-            case Materials.DOUBLE_STONE_SLAB2:
-            case Materials.PURPUR_BLOCK:
-            case Materials.PURPUR_PILLAR:
-            case Materials.PURPUR_DOUBLE_SLAB:
-            case Materials.END_BRICKS:
-            case Materials.STRUCTURE_BLOCK:
-            case Materials.COMMAND_REPEATING:
-            case Materials.COMMAND_CHAIN:
-                return true;
-            default:
+        /**
+         * @return True if this material is affected by gravity.
+         */
+        public bool hasGravity()
+        {
+            if (!isBlock())
+            {
                 return false;
-        }
-    }
-
-    /**
-     * @return True if this material is affected by gravity.
-     */
-    public bool hasGravity() {
-        if (!isBlock()) {
-            return false;
-        }
-        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
-        switch (EnumValue) {
-            case Materials.SAND:
-            case Materials.GRAVEL:
-            case Materials.ANVIL:
-                return true;
-            default:
-                return false;
+            }
+            EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+            switch (EnumValue)
+            {
+                case Materials.SAND:
+                case Materials.GRAVEL:
+                case Materials.ANVIL:
+                    return true;
+                default:
+                    return false;
+            }
         }
     }
 }

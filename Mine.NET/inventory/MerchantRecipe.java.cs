@@ -18,7 +18,7 @@ import java.util.List;
  *
  * @see org.bukkit.event.entity.VillagerReplenishTradeEvent
  */
-public class MerchantRecipe implements Recipe {
+public class MerchantRecipe : Recipe {
 
     private ItemStack result;
     private List<ItemStack> ingredients = new ArrayList<ItemStack>();

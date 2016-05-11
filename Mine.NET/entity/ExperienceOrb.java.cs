@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents an Experience Orb.
  */
-public interface ExperienceOrb extends Entity {
+public interface ExperienceOrb : Entity {
 
     /**
      * Gets how much experience is contained within this orb

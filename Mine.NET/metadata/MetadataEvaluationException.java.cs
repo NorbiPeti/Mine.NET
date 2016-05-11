@@ -6,7 +6,7 @@ package org.bukkit.metadata;
  * originating exception will be included as this exception's cause.
  */
 @SuppressWarnings("serial")
-public class MetadataEvaluationException extends RuntimeException {
+public class MetadataEvaluationException : RuntimeException {
     MetadataEvaluationException(Throwable cause) {
         super(cause);
     }

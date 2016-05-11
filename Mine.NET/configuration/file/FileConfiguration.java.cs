@@ -26,7 +26,7 @@ import org.bukkit.configuration.MemoryConfiguration;
  * This is a base class for all File based implementations of {@link
  * Configuration}
  */
-public abstract class FileConfiguration extends MemoryConfiguration {
+public abstract class FileConfiguration : MemoryConfiguration {
 
     /**
      * Creates an empty {@link FileConfiguration} with no default values.

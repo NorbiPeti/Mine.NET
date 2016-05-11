@@ -1,6 +1,6 @@
 package org.bukkit.block;
 
-public interface CommandBlock extends BlockState {
+public interface CommandBlock : BlockState {
 
     /**
      * Gets the command that this CommandBlock will run when powered.

@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player earns an achievement.
  */
-public class PlayerAchievementAwardedEvent extends PlayerEvent implements Cancellable {
+public class PlayerAchievementAwardedEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Achievement achievement;
     private bool isCancelled = false;

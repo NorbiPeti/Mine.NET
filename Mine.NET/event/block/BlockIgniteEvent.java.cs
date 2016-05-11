@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If a Block Ignite event is cancelled, the block will not be ignited.
  */
-public class BlockIgniteEvent extends BlockEvent implements Cancellable {
+public class BlockIgniteEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly IgniteCause cause;
     private readonly Entity ignitingEntity;

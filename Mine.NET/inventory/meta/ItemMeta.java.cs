@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemFlag;
  * An implementation will handle the creation and application for ItemMeta.
  * This class should not be implemented by a plugin in a live environment.
  */
-public interface ItemMeta extends Cloneable, ConfigurationSerializable {
+public interface ItemMeta : Cloneable, ConfigurationSerializable {
 
     /**
      * Checks for existence of a display name.
@@ -145,7 +145,7 @@ public interface ItemMeta extends Cloneable, ConfigurationSerializable {
      *
      * @return A set of all itemFlags set
      */
-    Set<ItemFlag> getItemFlags();
+    HashSet<ItemFlag> getItemFlags();
 
     /**
      * Check if the specified flag is present on this item.

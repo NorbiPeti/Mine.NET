@@ -7,7 +7,7 @@ import org.bukkit.Material;
 /**
  * Represents textured materials like steps and smooth bricks
  */
-public abstract class TexturedMaterial extends MaterialData {
+public abstract class TexturedMaterial : MaterialData {
 
     public TexturedMaterial(Material m) {
         super(m);

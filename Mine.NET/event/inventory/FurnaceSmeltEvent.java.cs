@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when an ItemStack is successfully smelted in a furnace.
  */
-public class FurnaceSmeltEvent extends BlockEvent implements Cancellable {
+public class FurnaceSmeltEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly ItemStack source;
     private ItemStack result;

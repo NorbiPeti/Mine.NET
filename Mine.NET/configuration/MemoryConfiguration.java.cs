@@ -9,7 +9,7 @@ import org.apache.commons.lang.Validate;
  * from any source, and stores all values in memory only.
  * This is useful for temporary Configurations for providing defaults.
  */
-public class MemoryConfiguration extends MemorySection implements Configuration {
+public class MemoryConfiguration : MemorySection : Configuration {
     protected Configuration defaults;
     protected MemoryConfigurationOptions options;
 

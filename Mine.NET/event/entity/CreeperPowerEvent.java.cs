@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * If a Creeper Power event is cancelled, the Creeper will not be powered.
  */
-public class CreeperPowerEvent extends EntityEvent implements Cancellable {
+public class CreeperPowerEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly PowerCause cause;

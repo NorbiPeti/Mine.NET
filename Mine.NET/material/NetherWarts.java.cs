@@ -6,7 +6,7 @@ import org.bukkit.NetherWartsState;
 /**
  * Represents nether wart
  */
-public class NetherWarts extends MaterialData {
+public class NetherWarts : MaterialData {
     public NetherWarts() {
         super(Material.NETHER_WARTS);
     }

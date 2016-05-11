@@ -1,6 +1,6 @@
 package org.bukkit.potion;
 
-public class PotionEffectTypeWrapper extends PotionEffectType {
+public class PotionEffectTypeWrapper : PotionEffectType {
     protected PotionEffectTypeWrapper(int id) {
         super(id);
     }

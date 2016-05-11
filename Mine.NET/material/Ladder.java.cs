@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Represents Ladder data
  */
-public class Ladder extends SimpleAttachableMaterialData {
+public class Ladder : SimpleAttachableMaterialData {
     public Ladder() {
         super(Material.LADDER);
     }

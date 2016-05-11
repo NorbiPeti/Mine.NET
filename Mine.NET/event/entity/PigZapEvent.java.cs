@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Stores data for pigs being zapped
  */
-public class PigZapEvent extends EntityEvent implements Cancellable {
+public class PigZapEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool canceled;
     private readonly PigZombie pigzombie;

@@ -10,7 +10,7 @@ import org.bukkit.block.BlockFace;
  * @see Material#LOG
  * @see Material#LOG_2
  */
-public class Tree extends Wood {
+public class Tree : Wood {
     protected static readonly Material DEFAULT_TYPE = Material.LOG;
     protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.UP;
 

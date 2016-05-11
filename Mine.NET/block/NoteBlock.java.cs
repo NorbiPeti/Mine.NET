@@ -6,7 +6,7 @@ import org.bukkit.Note;
 /**
  * Represents a note.
  */
-public interface NoteBlock extends BlockState {
+public interface NoteBlock : BlockState {
 
     /**
      * Gets the note.

@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents a Primed TNT.
  */
-public interface TNTPrimed extends Explosive {
+public interface TNTPrimed : Explosive {
 
     /**
      * Set the number of ticks until the TNT blows up after being primed.

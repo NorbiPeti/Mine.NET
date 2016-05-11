@@ -8,5 +8,5 @@ import org.bukkit.inventory.InventoryHolder;
  * minecarts} have their own inventory that can be accessed using methods
  * from the {@link InventoryHolder} interface.
  */
-public interface StorageMinecart extends Minecart, InventoryHolder {
+public interface StorageMinecart : Minecart, InventoryHolder {
 }

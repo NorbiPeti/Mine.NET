@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 /**
  * This class is provided as an easy way to handle scheduling tasks.
  */
-public abstract class BukkitRunnable implements Runnable {
+public abstract class BukkitRunnable : Runnable {
     private int taskId = -1;
 
     /**

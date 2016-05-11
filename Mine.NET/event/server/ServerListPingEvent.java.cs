@@ -1,7 +1,7 @@
 package org.bukkit.event.server;
 
 import java.net.InetAddress;
-import java.util.Iterator;
+import java.util.IEnumerator;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
@@ -12,7 +12,7 @@ import org.bukkit.util.CachedServerIcon;
  * Called when a server list ping is coming in. Displayed players can be
  * checked and removed by {@link #iterator() iterating} over this event.
  */
-public class ServerListPingEvent extends ServerEvent implements Iterable<Player> {
+public class ServerListPingEvent : ServerEvent : Iterable<Player> {
     private static readonly int MAGIC_PLAYER_COUNT = Integer.MIN_VALUE;
     private static readonly HandlerList handlers = new HandlerList();
     private readonly InetAddress address;
@@ -131,7 +131,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
     /**
      * {@inheritDoc}
      * <p>
-     * Calling the {@link Iterator#remove()} method will force that particular
+     * Calling the {@link IEnumerator#remove()} method will force that particular
      * player to not be displayed on the player list, decrease the size
      * returned by {@link #getNumPlayers()}, and will not be returned again by
      * any new iterator.
@@ -140,7 +140,7 @@ public class ServerListPingEvent extends ServerEvent implements Iterable<Player>
      *     not support removing players
      */
     @Override
-    public Iterator<Player> iterator() throws UnsupportedOperationException {
+    public IEnumerator<Player> iterator() throws UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
 }

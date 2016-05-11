@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Represents a player related inventory event
  */
-public class InventoryOpenEvent extends InventoryEvent implements Cancellable {
+public class InventoryOpenEvent : InventoryEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
 

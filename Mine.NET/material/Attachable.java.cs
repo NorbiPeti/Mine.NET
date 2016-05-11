@@ -5,7 +5,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Indicates that a block can be attached to another block
  */
-public interface Attachable extends Directional {
+public interface Attachable : Directional {
 
     /**
      * Gets the face that this block is attached on

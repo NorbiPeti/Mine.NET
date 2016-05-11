@@ -22,7 +22,7 @@ import org.yaml.snakeyaml.representer.Representer;
  * An implementation of {@link Configuration} which saves all files in Yaml.
  * Note that this implementation is not synchronized.
  */
-public class YamlConfiguration extends FileConfiguration {
+public class YamlConfiguration : FileConfiguration {
     protected static readonly String COMMENT_PREFIX = "# ";
     protected static readonly String BLANK_CONFIG = "{}\n";
     private readonly DumperOptions yamlOptions = new DumperOptions();

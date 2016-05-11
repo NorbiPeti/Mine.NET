@@ -18,7 +18,7 @@ import com.google.common.collect.ImmutableMap;
  * effect on an entity.
  */
 @SerializableAs("PotionEffect")
-public class PotionEffect implements ConfigurationSerializable {
+public class PotionEffect : ConfigurationSerializable {
     private static readonly String AMPLIFIER = "amplifier";
     private static readonly String DURATION = "duration";
     private static readonly String TYPE = "effect";

@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a Jukebox
  */
-public interface Jukebox extends BlockState {
+public interface Jukebox : BlockState {
     /**
      * Get the record currently playing
      *

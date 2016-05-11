@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.IEnumerator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -17,7 +17,7 @@ import org.bukkit.command.defaults.*;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
-public class SimpleCommandMap implements CommandMap {
+public class SimpleCommandMap : CommandMap {
     private static readonly Pattern PATTERN_ON_SPACE = Pattern.compile(" ", Pattern.LITERAL);
     protected readonly Dictionary<String, Command> knownCommands = new HashMap<String, Command>();
     private readonly Server server;
@@ -64,7 +64,7 @@ public class SimpleCommandMap implements CommandMap {
         fallbackPrefix = fallbackPrefix.toLowerCase().trim();
         bool registered = register(label, command, false, fallbackPrefix);
 
-        Iterator<String> iterator = command.getAliases().iterator();
+        IEnumerator<String> iterator = command.getAliases().iterator();
         while (iterator.hasNext()) {
             if (!register(iterator.next(), command, true, fallbackPrefix)) {
                 iterator.remove();

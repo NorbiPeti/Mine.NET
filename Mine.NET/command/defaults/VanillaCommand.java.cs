@@ -6,7 +6,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 [Obsolete]
-public abstract class VanillaCommand extends Command {
+public abstract class VanillaCommand : Command {
     static readonly int MAX_COORD = 30000000;
     static readonly int MIN_COORD_MINUS_ONE = -30000001;
     static readonly int MIN_COORD = -30000000;

@@ -21,7 +21,7 @@ import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class AchievementCommand extends VanillaCommand {
+public class AchievementCommand : VanillaCommand {
     public AchievementCommand() {
         super("achievement");
         this.description = "Gives the specified player an achievement or changes a statistic value. Use '*' to give all achievements.";

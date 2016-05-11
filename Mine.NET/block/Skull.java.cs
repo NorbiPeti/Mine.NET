@@ -5,7 +5,7 @@ import org.bukkit.SkullType;
 /**
  * Represents a Skull
  */
-public interface Skull extends BlockState {
+public interface Skull : BlockState {
 
     /**
      * Checks to see if the skull has an owner

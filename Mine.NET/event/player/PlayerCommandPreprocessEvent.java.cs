@@ -45,12 +45,12 @@ import org.bukkit.event.HandlerList;
  * beginning of the message should be preserved. If a slash is added or
  * removed, unexpected behavior may result.
  */
-public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancellable {
+public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private String message;
     private String format = "<%1$s> %2$s";
-    private readonly Set<Player> recipients;
+    private readonly HashSet<Player> recipients;
 
     public PlayerCommandPreprocessEvent(Player player, readonly String message) {
         super(player);
@@ -58,7 +58,7 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
         this.message = message;
     }
 
-    public PlayerCommandPreprocessEvent(Player player, readonly String message, readonly Set<Player> recipients) {
+    public PlayerCommandPreprocessEvent(Player player, readonly String message, readonly HashSet<Player> recipients) {
         super(player);
         this.recipients = recipients;
         this.message = message;
@@ -157,7 +157,7 @@ public class PlayerCommandPreprocessEvent extends PlayerEvent implements Cancell
      * @return All Players who will see this chat message
      */
     [Obsolete]
-    public Set<Player> getRecipients() {
+    public HashSet<Player> getRecipients() {
         return recipients;
     }
 

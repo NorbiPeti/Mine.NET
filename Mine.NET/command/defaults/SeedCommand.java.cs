@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class SeedCommand extends VanillaCommand {
+public class SeedCommand : VanillaCommand {
     public SeedCommand() {
         super("seed");
         this.description = "Shows the world seed";

@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents the cocoa plant
  */
-public class CocoaPlant extends MaterialData implements Directional, Attachable {
+public class CocoaPlant : MaterialData : Directional, Attachable {
 
     public enum CocoaPlantSize {
         SMALL,

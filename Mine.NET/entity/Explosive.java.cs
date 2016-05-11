@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * A representation of an explosive entity
  */
-public interface Explosive extends Entity {
+public interface Explosive : Entity {
 
     /**
      * Set the radius affected by this explosive's explosion

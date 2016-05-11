@@ -9,7 +9,7 @@ import org.bukkit.entity.Entity;
 /**
  * Called when an entity is damaged by a block
  */
-public class EntityDamageByBlockEvent extends EntityDamageEvent {
+public class EntityDamageByBlockEvent : EntityDamageEvent {
     private readonly Block damager;
 
     [Obsolete]
@@ -23,7 +23,7 @@ public class EntityDamageByBlockEvent extends EntityDamageEvent {
         this.damager = damager;
     }
 
-    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? extends Function<? super Double, Double>> modifierFunctions) {
+    public EntityDamageByBlockEvent(Block damager, readonly Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? super Double, Double>> modifierFunctions) {
         super(damagee, cause, modifiers, modifierFunctions);
         this.damager = damager;
     }

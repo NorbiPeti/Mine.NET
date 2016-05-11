@@ -11,7 +11,7 @@ import org.bukkit.World;
  * <a href="http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf">
  * http://staffwww.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf</a>
  */
-public class SimplexNoiseGenerator extends PerlinNoiseGenerator {
+public class SimplexNoiseGenerator : PerlinNoiseGenerator {
     protected static readonly double SQRT_3 = Math.sqrt(3);
     protected static readonly double SQRT_5 = Math.sqrt(5);
     protected static readonly double F2 = 0.5 * (SQRT_3 - 1);

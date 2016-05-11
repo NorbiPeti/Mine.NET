@@ -9,9 +9,9 @@ import org.bukkit.block.BlockFace;
 import org.bukkit.event.HandlerList;
 
 /**
- * Called when a piston extends
+ * Called when a piston :
  */
-public class BlockPistonExtendEvent extends BlockPistonEvent {
+public class BlockPistonExtendEvent : BlockPistonEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly int length;
     private List<Block> blocks;

@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class SaveOffCommand extends VanillaCommand {
+public class SaveOffCommand : VanillaCommand {
     public SaveOffCommand() {
         super("save-off");
         this.description = "Disables server autosaving";

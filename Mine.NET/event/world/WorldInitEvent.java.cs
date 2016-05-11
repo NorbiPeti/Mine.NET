@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a World is initializing
  */
-public class WorldInitEvent extends WorldEvent {
+public class WorldInitEvent : WorldEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public WorldInitEvent(World world) {

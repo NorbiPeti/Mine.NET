@@ -8,7 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 [Obsolete]
-public class TellCommand extends VanillaCommand {
+public class TellCommand : VanillaCommand {
     public TellCommand() {
         super("tell");
         this.description = "Sends a private message to the given player";

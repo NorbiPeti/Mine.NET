@@ -15,7 +15,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 /**
  * A ClassLoader for plugins, to allow shared classes across multiple plugins
  */
-sealed class PluginClassLoader extends URLClassLoader {
+sealed class PluginClassLoader : URLClassLoader {
     private readonly JavaPluginLoader loader;
     private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
     private readonly PluginDescriptionFile description;
@@ -42,7 +42,7 @@ sealed class PluginClassLoader extends URLClassLoader {
                 throw new InvalidPluginException("Cannot find main class `" + description.getMain() + "'", ex);
             }
 
-            Class<? extends JavaPlugin> pluginClass;
+            Class<? : JavaPlugin> pluginClass;
             try {
                 pluginClass = jarClass.asSubclass(JavaPlugin.class);
             } catch (ClassCastException ex) {
@@ -87,7 +87,7 @@ sealed class PluginClassLoader extends URLClassLoader {
         return result;
     }
 
-    Set<String> getClasses() {
+    HashSet<String> getClasses() {
         return classes.keySet();
     }
 

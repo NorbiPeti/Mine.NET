@@ -5,7 +5,7 @@ import org.bukkit.material.MaterialData;
 /**
  * Represents an Enderman.
  */
-public interface Enderman extends Monster {
+public interface Enderman : Monster {
 
     /**
      * Get the id and data of the block that the Enderman is carrying.

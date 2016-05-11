@@ -19,7 +19,7 @@ import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class GiveCommand extends VanillaCommand {
+public class GiveCommand : VanillaCommand {
     private static List<String> materials;
     static {
         ArrayList<String> materialList = new ArrayList<String>();

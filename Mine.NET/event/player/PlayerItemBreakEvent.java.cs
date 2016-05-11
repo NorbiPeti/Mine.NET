@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
  * The item that's breaking will exist in the inventory with a stack size of
  * 0. After the event, the item's durability will be reset to 0.
  */
-public class PlayerItemBreakEvent extends PlayerEvent {
+public class PlayerItemBreakEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly ItemStack brokenItem;
 

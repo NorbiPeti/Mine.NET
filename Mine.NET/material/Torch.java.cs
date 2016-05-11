@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * MaterialData for torches
  */
-public class Torch extends SimpleAttachableMaterialData {
+public class Torch : SimpleAttachableMaterialData {
     public Torch() {
         super(Material.TORCH);
     }

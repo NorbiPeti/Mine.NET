@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Thrown when a LivingEntity is tamed
  */
-public class EntityTameEvent extends EntityEvent implements Cancellable {
+public class EntityTameEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly AnimalTamer owner;

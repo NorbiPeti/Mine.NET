@@ -34,5 +34,5 @@ public interface PluginMessageRecipient {
      *
      * @return Set containing all the channels that this client may accept.
      */
-    public Set<String> getListeningPluginChannels();
+    public HashSet<String> getListeningPluginChannels();
 }

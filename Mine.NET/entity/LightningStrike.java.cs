@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents an instance of a lightning strike. May or may not do damage.
  */
-public interface LightningStrike extends Weather {
+public interface LightningStrike : Weather {
 
     /**
      * Returns whether the strike is an effect that does no damage.

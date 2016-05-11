@@ -7,7 +7,7 @@ import org.bukkit.command.Command;
  * commands that inherit from a common base class or have executors that
  * inherit from a common base class. You can use a custom HelpTopic to change
  * the way all the commands in your plugin display in the help. If your plugin
- * implements a complex permissions system, a custom help topic may also be
+ * : a complex permissions system, a custom help topic may also be
  * appropriate.
  * <p>
  * To automatically bind your plugin's commands to your custom HelpTopic
@@ -29,7 +29,7 @@ import org.bukkit.command.Command;
  *
  * @param <TCommand> The base class for your custom commands.
  */
-public interface HelpTopicFactory<TCommand extends Command> {
+public interface HelpTopicFactory<TCommand : Command> {
     /**
      * This method accepts a command deriving from a custom command base class
      * and constructs a custom HelpTopic for it.

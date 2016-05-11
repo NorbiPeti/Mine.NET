@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents an {@link Entity} that has health and can take damage.
  */
-public interface Damageable extends Entity {
+public interface Damageable : Entity {
     /**
      * Deals the given amount of damage to this entity.
      *

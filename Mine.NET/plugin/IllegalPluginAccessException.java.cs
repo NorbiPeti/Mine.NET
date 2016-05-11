@@ -5,7 +5,7 @@ package org.bukkit.plugin;
  * enabled
  */
 @SuppressWarnings("serial")
-public class IllegalPluginAccessException extends RuntimeException {
+public class IllegalPluginAccessException : RuntimeException {
 
     /**
      * Creates a new instance of <code>IllegalPluginAccessException</code>

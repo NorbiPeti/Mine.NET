@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 import java.util.List;
 
 [Obsolete]
-public class SetIdleTimeoutCommand extends VanillaCommand {
+public class SetIdleTimeoutCommand : VanillaCommand {
 
     public SetIdleTimeoutCommand() {
         super("setidletimeout");

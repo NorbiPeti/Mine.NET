@@ -8,7 +8,7 @@ import org.bukkit.Material;
 /**
  * Represents the different types of steps.
  */
-public class Step extends TexturedMaterial {
+public class Step : TexturedMaterial {
     private static readonly List<Material> textures = new ArrayList<Material>();
     static {
         textures.add(Material.STONE);

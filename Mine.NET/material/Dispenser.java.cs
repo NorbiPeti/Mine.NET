@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a dispenser.
  */
-public class Dispenser extends FurnaceAndDispenser {
+public class Dispenser : FurnaceAndDispenser {
 
     public Dispenser() {
         super(Material.DISPENSER);

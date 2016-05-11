@@ -11,7 +11,7 @@ import org.bukkit.event.HandlerList;
  * <p>
  * This event is asynchronous, and not run using main thread.
  */
-public class AsyncPlayerPreLoginEvent extends Event {
+public class AsyncPlayerPreLoginEvent : Event {
     private static readonly HandlerList handlers = new HandlerList();
     private Result result;
     private String message;

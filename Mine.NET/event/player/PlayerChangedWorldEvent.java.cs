@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player switches to another world.
  */
-public class PlayerChangedWorldEvent extends PlayerEvent {
+public class PlayerChangedWorldEvent : PlayerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly World from;
 

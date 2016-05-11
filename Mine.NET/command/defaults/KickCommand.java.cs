@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class KickCommand extends VanillaCommand {
+public class KickCommand : VanillaCommand {
     public KickCommand() {
         super("kick");
         this.description = "Removes the specified player from the server";

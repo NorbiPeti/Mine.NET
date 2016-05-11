@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  *
  * @see Logger
  */
-public class PluginLogger extends Logger {
+public class PluginLogger : Logger {
     private String pluginName;
 
     /**

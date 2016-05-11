@@ -6,7 +6,7 @@ import org.bukkit.map.MapView;
 /**
  * Called when a map is initialized.
  */
-public class MapInitializeEvent extends ServerEvent {
+public class MapInitializeEvent : ServerEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly MapView mapView;
 

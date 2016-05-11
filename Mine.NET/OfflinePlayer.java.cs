@@ -1,118 +1,114 @@
-package org.bukkit;
+using System;
 
-import java.util.Date;
-import java.util.Guid;
+namespace Mine.NET
+{
+    public interface OfflinePlayer : ServerOperator, AnimalTamer, ConfigurationSerializable
+    {
 
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.entity.AnimalTamer;
-import org.bukkit.entity.Player;
-import org.bukkit.permissions.ServerOperator;
+        /**
+         * Checks if this player is currently online
+         *
+         * @return true if they are online
+         */
+        bool isOnline();
 
-public interface OfflinePlayer extends ServerOperator, AnimalTamer, ConfigurationSerializable {
+        /**
+         * Returns the name of this player
+         * <p>
+         * Names are no longer unique past a single game session. For persistent storage
+         * it is recommended that you use {@link #getUniqueId()} instead.
+         *
+         * @return Player name or null if we have not seen a name for this player yet
+         */
+        String getName(); //TODO
 
-    /**
-     * Checks if this player is currently online
-     *
-     * @return true if they are online
-     */
-    public bool isOnline();
+        /**
+         * Returns the Guid of this player
+         *
+         * @return Player Guid
+         */
+        Guid getUniqueId();
 
-    /**
-     * Returns the name of this player
-     * <p>
-     * Names are no longer unique past a single game session. For persistent storage
-     * it is recommended that you use {@link #getUniqueId()} instead.
-     *
-     * @return Player name or null if we have not seen a name for this player yet
-     */
-    public String getName();
+        /**
+         * Checks if this player is banned or not
+         *
+         * @return true if banned, otherwise false
+         */
+        bool isBanned();
 
-    /**
-     * Returns the Guid of this player
-     *
-     * @return Player Guid
-     */
-    public Guid getUniqueId();
+        /**
+         * Bans or unbans this player
+         *
+         * @param banned true if banned
+         * [Obsolete] Use {@link org.bukkit.BanList#addBan(String, String, Date,
+         *     String)} or {@link org.bukkit.BanList#pardon(String)} to enhance
+         *     functionality
+         */
+        [Obsolete]
+        void setBanned(bool banned);
 
-    /**
-     * Checks if this player is banned or not
-     *
-     * @return true if banned, otherwise false
-     */
-    public bool isBanned();
+        /**
+         * Checks if this player is whitelisted or not
+         *
+         * @return true if whitelisted
+         */
+        bool isWhitelisted();
 
-    /**
-     * Bans or unbans this player
-     *
-     * @param banned true if banned
-     * [Obsolete] Use {@link org.bukkit.BanList#addBan(String, String, Date,
-     *     String)} or {@link org.bukkit.BanList#pardon(String)} to enhance
-     *     functionality
-     */
-    [Obsolete]
-    public void setBanned(bool banned);
+        /**
+         * Sets if this player is whitelisted or not
+         *
+         * @param value true if whitelisted
+         */
+        void setWhitelisted(bool value);
 
-    /**
-     * Checks if this player is whitelisted or not
-     *
-     * @return true if whitelisted
-     */
-    public bool isWhitelisted();
+        /**
+         * Gets a {@link Player} object that this represents, if there is one
+         * <p>
+         * If the player is online, this will return that player. Otherwise,
+         * it will return null.
+         *
+         * @return Online player
+         */
+        Player getPlayer();
 
-    /**
-     * Sets if this player is whitelisted or not
-     *
-     * @param value true if whitelisted
-     */
-    public void setWhitelisted(bool value);
+        /**
+         * Gets the first date and time that this player was witnessed on this
+         * server.
+         * <p>
+         * If the player has never played before, this will return 0. Otherwise,
+         * it will be the amount of milliseconds since midnight, January 1, 1970
+         * UTC.
+         *
+         * @return Date of first log-in for this player, or 0
+         */
+        long getFirstPlayed();
 
-    /**
-     * Gets a {@link Player} object that this represents, if there is one
-     * <p>
-     * If the player is online, this will return that player. Otherwise,
-     * it will return null.
-     *
-     * @return Online player
-     */
-    public Player getPlayer();
+        /**
+         * Gets the last date and time that this player was witnessed on this
+         * server.
+         * <p>
+         * If the player has never played before, this will return 0. Otherwise,
+         * it will be the amount of milliseconds since midnight, January 1, 1970
+         * UTC.
+         *
+         * @return Date of last log-in for this player, or 0
+         */
+        long getLastPlayed();
 
-    /**
-     * Gets the first date and time that this player was witnessed on this
-     * server.
-     * <p>
-     * If the player has never played before, this will return 0. Otherwise,
-     * it will be the amount of milliseconds since midnight, January 1, 1970
-     * UTC.
-     *
-     * @return Date of first log-in for this player, or 0
-     */
-    public long getFirstPlayed();
+        /**
+         * Checks if this player has played on this server before.
+         *
+         * @return True if the player has played before, otherwise false
+         */
+        bool hasPlayedBefore();
 
-    /**
-     * Gets the last date and time that this player was witnessed on this
-     * server.
-     * <p>
-     * If the player has never played before, this will return 0. Otherwise,
-     * it will be the amount of milliseconds since midnight, January 1, 1970
-     * UTC.
-     *
-     * @return Date of last log-in for this player, or 0
-     */
-    public long getLastPlayed();
+        /**
+         * Gets the Location where the player will spawn at their bed, null if
+         * they have not slept in one or their current bed spawn is invalid.
+         *
+         * @return Bed Spawn Location if bed exists, otherwise null.
+         */
+        Location getBedSpawnLocation();
 
-    /**
-     * Checks if this player has played on this server before.
-     *
-     * @return True if the player has played before, otherwise false
-     */
-    public bool hasPlayedBefore();
-
-    /**
-     * Gets the Location where the player will spawn at their bed, null if
-     * they have not slept in one or their current bed spawn is invalid.
-     *
-     * @return Bed Spawn Location if bed exists, otherwise null.
-     */
-    public Location getBedSpawnLocation();
-
+    }
 }

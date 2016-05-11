@@ -5,7 +5,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * A simple wrapper for ease of selecting {@link Enchantment}s
  */
-public class EnchantmentWrapper extends Enchantment {
+public class EnchantmentWrapper : Enchantment {
     public EnchantmentWrapper(int id) {
         super(id);
     }

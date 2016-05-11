@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Thrown when a player is fishing
  */
-public class PlayerFishEvent extends PlayerEvent implements Cancellable {
+public class PlayerFishEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly Entity entity;
     private bool cancel = false;

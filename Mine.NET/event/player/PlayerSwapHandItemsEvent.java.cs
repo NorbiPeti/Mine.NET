@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
  * Called when a player swap items between main hand and off hand using the
  * hotkey.
  */
-public class PlayerSwapHandItemsEvent extends PlayerEvent implements Cancellable {
+public class PlayerSwapHandItemsEvent : PlayerEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     //

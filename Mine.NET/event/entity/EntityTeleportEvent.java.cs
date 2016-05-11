@@ -9,7 +9,7 @@ import org.bukkit.event.HandlerList;
  * Thrown when a non-player entity (such as an Enderman) tries to teleport
  * from one location to another.
  */
-public class EntityTeleportEvent extends EntityEvent implements Cancellable {
+public class EntityTeleportEvent : EntityEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
     private Location from;

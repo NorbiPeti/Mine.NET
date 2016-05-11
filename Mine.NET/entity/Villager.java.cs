@@ -8,7 +8,7 @@ import org.bukkit.inventory.MerchantRecipe;
 /**
  * Represents a villager NPC
  */
-public interface Villager extends Ageable, NPC, InventoryHolder {
+public interface Villager : Ageable, NPC, InventoryHolder {
 
     /**
      * Gets the current profession of this villager.

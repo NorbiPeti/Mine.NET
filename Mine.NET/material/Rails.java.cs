@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents minecart rails.
  */
-public class Rails extends MaterialData {
+public class Rails : MaterialData {
 
     public Rails() {
         super(Material.RAILS);

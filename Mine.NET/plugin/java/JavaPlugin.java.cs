@@ -45,7 +45,7 @@ import com.google.common.io.ByteStreams;
 /**
  * Represents a Java plugin
  */
-public abstract class JavaPlugin extends PluginBase {
+public abstract class JavaPlugin : PluginBase {
     private bool isEnabled = false;
     private PluginLoader loader = null;
     private Server server = null;
@@ -475,9 +475,9 @@ public abstract class JavaPlugin extends PluginBase {
      * does not extend the class, where the intended plugin would have
      * resided in a different jar / classloader.
      *
-     * @param <T> a class that extends JavaPlugin
+     * @param <T> a class that : JavaPlugin
      * @param clazz the class desired
-     * @return the plugin that provides and implements said class
+     * @return the plugin that provides and : said class
      * @throws ArgumentException if clazz is null
      * @throws ArgumentException if clazz does not extend {@link
      *     JavaPlugin}
@@ -489,7 +489,7 @@ public abstract class JavaPlugin extends PluginBase {
      * @throws ClassCastException if plugin that provided the class does not
      *     extend the class
      */
-    public static <T extends JavaPlugin> T getPlugin(Class<T> clazz) {
+    public static <T : JavaPlugin> T getPlugin(Class<T> clazz) {
         Validate.notNull(clazz, "Null class cannot have a plugin");
         if (!JavaPlugin.class.isAssignableFrom(clazz)) {
             throw new ArgumentException(clazz + " does not extend " + JavaPlugin.class);

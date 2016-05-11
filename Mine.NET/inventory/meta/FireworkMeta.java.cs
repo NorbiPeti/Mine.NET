@@ -8,7 +8,7 @@ import org.bukkit.Material;
 /**
  * Represents a {@link Material#FIREWORK} and its effects.
  */
-public interface FireworkMeta extends ItemMeta {
+public interface FireworkMeta : ItemMeta {
 
     /**
      * Add another effect to this firework.

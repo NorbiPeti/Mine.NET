@@ -10,7 +10,7 @@ import org.bukkit.event.HandlerList;
  * Called when a note block is being played through player interaction or a
  * redstone current.
  */
-public class NotePlayEvent extends BlockEvent implements Cancellable {
+public class NotePlayEvent : BlockEvent : Cancellable {
 
     private static HandlerList handlers = new HandlerList();
     private Instrument instrument;

@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a player gets kicked from the server
  */
-public class PlayerKickEvent extends PlayerEvent implements Cancellable {
+public class PlayerKickEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private String leaveMessage;
     private String kickReason;

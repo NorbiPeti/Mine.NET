@@ -15,7 +15,7 @@ import org.bukkit.util.StringUtil;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class DeopCommand extends VanillaCommand {
+public class DeopCommand : VanillaCommand {
     public DeopCommand() {
         super("deop");
         this.description = "Takes the specified player's operator status";

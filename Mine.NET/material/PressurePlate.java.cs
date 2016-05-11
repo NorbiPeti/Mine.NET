@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a pressure plate
  */
-public class PressurePlate extends MaterialData implements PressureSensor {
+public class PressurePlate : MaterialData : PressureSensor {
     public PressurePlate() {
         super(Material.WOOD_PLATE);
     }

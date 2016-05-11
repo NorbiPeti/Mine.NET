@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Holds information for player teleport events
  */
-public class PlayerTeleportEvent extends PlayerMoveEvent {
+public class PlayerTeleportEvent : PlayerMoveEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private TeleportCause cause = TeleportCause.UNKNOWN;
 

@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 [Obsolete]
-public class PlaySoundCommand extends VanillaCommand {
+public class PlaySoundCommand : VanillaCommand {
     public PlaySoundCommand() {
         super("playsound");
         this.description = "Plays a sound to a given player";

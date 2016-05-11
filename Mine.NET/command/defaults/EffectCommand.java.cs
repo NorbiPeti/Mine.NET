@@ -11,7 +11,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.StringUtil;
 
 [Obsolete]
-public class EffectCommand extends VanillaCommand {
+public class EffectCommand : VanillaCommand {
     private static readonly List<String> effects;
 
     public EffectCommand() {

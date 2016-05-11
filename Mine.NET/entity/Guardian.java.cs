@@ -1,6 +1,6 @@
 package org.bukkit.entity;
 
-public interface Guardian extends Monster {
+public interface Guardian : Monster {
 
     /**
      * Check if the Guardian is an elder Guardian

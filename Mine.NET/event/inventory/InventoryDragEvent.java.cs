@@ -54,11 +54,11 @@ import com.google.common.collect.ImmutableSet;
  * task using {@link BukkitScheduler#runTask(Plugin, Runnable)}, which would
  * execute the task on the next tick, would work as well.
  */
-public class InventoryDragEvent extends InventoryInteractEvent {
+public class InventoryDragEvent : InventoryInteractEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly DragType type;
     private readonly Dictionary<Integer, ItemStack> addedItems;
-    private readonly Set<Integer> containerSlots;
+    private readonly HashSet<Integer> containerSlots;
     private readonly ItemStack oldCursor;
     private ItemStack newCursor;
 
@@ -93,7 +93,7 @@ public class InventoryDragEvent extends InventoryInteractEvent {
      *
      * @return list of raw slot ids, suitable for getView().getItem(int)
      */
-    public Set<Integer> getRawSlots() {
+    public HashSet<Integer> getRawSlots() {
         return addedItems.keySet();
     }
 
@@ -103,7 +103,7 @@ public class InventoryDragEvent extends InventoryInteractEvent {
      * @return list of converted slot ids, suitable for {@link
      *     org.bukkit.inventory.Inventory#getItem(int)}.
      */
-    public Set<Integer> getInventorySlots() {
+    public HashSet<Integer> getInventorySlots() {
         return containerSlots;
     }
 

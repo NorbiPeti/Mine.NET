@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a cauldron
  */
-public class Cauldron extends MaterialData {
+public class Cauldron : MaterialData {
     private static readonly int CAULDRON_FULL = 3;
     private static readonly int CAULDRON_EMPTY = 0;
 

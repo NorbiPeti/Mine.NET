@@ -6,7 +6,7 @@ import org.bukkit.World;
 /**
  * Creates simplex noise through unbiased octaves
  */
-public class SimplexOctaveGenerator extends OctaveGenerator {
+public class SimplexOctaveGenerator : OctaveGenerator {
     private double wScale = 1;
 
     /**

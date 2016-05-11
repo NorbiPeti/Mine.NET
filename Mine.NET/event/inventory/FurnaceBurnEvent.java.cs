@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when an ItemStack is successfully burned as fuel in a furnace.
  */
-public class FurnaceBurnEvent extends BlockEvent implements Cancellable {
+public class FurnaceBurnEvent : BlockEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly ItemStack fuel;
     private int burnTime;

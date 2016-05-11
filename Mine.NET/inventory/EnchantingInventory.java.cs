@@ -3,7 +3,7 @@ package org.bukkit.inventory;
 /**
  * Interface to the inventory of an Enchantment Table.
  */
-public interface EnchantingInventory extends Inventory {
+public interface EnchantingInventory : Inventory {
 
     /**
      * Set the item being enchanted.

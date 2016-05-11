@@ -7,7 +7,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Triggered when a hanging entity is removed
  */
-public class HangingBreakEvent extends HangingEvent implements Cancellable {
+public class HangingBreakEvent : HangingEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly HangingBreakEvent.RemoveCause cause;

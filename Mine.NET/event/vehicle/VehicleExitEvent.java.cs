@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Raised when a living entity exits a vehicle.
  */
-public class VehicleExitEvent extends VehicleEvent implements Cancellable {
+public class VehicleExitEvent : VehicleEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly LivingEntity exited;

@@ -15,7 +15,7 @@ import org.bukkit.metadata.Metadatable;
  * concurrently to your own handling of it; use block.getState() to get a
  * snapshot state of a block which will not be modified.
  */
-public interface Block extends Metadatable {
+public interface Block : Metadatable {
 
     /**
      * Gets the metadata for this block

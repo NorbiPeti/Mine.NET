@@ -26,7 +26,7 @@ import org.bukkit.event.HandlerList;
  * If a Block Break event is cancelled, the block will not break and
  * experience will not drop.
  */
-public class BlockBreakEvent extends BlockExpEvent implements Cancellable {
+public class BlockBreakEvent : BlockExpEvent : Cancellable {
     private readonly Player player;
     private bool cancel;
 

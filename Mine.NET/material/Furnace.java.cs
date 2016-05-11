@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents a furnace.
  */
-public class Furnace extends FurnaceAndDispenser {
+public class Furnace : FurnaceAndDispenser {
 
     public Furnace() {
         super(Material.FURNACE);

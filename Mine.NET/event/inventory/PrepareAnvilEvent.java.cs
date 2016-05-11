@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Called when an item is put in a slot for repair by an anvil.
  */
-public class PrepareAnvilEvent extends InventoryEvent {
+public class PrepareAnvilEvent : InventoryEvent {
 
     private static readonly HandlerList handlers = new HandlerList();
     private ItemStack result;

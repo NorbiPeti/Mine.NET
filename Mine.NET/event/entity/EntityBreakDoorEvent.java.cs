@@ -10,7 +10,7 @@ import org.bukkit.entity.LivingEntity;
  * <p>
  * Cancelling the event will cause the event to be delayed
  */
-public class EntityBreakDoorEvent extends EntityChangeBlockEvent {
+public class EntityBreakDoorEvent : EntityChangeBlockEvent {
     public EntityBreakDoorEvent(LivingEntity entity, readonly Block targetBlock) {
         super(entity, targetBlock, Material.AIR, (byte) 0);
     }

@@ -6,7 +6,7 @@ import org.bukkit.event.Event;
 /**
  * Represents a block related event.
  */
-public abstract class BlockEvent extends Event {
+public abstract class BlockEvent : Event {
     protected Block block;
 
     public BlockEvent(Block theBlock) {

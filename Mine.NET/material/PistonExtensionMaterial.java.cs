@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Material data for the piston extension block
  */
-public class PistonExtensionMaterial extends MaterialData implements Attachable {
+public class PistonExtensionMaterial : MaterialData : Attachable {
     /**
      * @param type the raw type id
      * [Obsolete] Magic value

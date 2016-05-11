@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 import java.util.List;
 
 [Obsolete]
-public class SpawnpointCommand extends VanillaCommand {
+public class SpawnpointCommand : VanillaCommand {
 
     public SpawnpointCommand() {
         super("spawnpoint");

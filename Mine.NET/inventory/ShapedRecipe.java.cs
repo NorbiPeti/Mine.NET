@@ -11,7 +11,7 @@ import org.bukkit.material.MaterialData;
 /**
  * Represents a shaped (ie normal) crafting recipe.
  */
-public class ShapedRecipe implements Recipe {
+public class ShapedRecipe : Recipe {
     private ItemStack output;
     private String[] rows;
     private Dictionary<Character, ItemStack> ingredients = new HashMap<Character, ItemStack>();

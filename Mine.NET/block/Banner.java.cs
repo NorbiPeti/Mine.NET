@@ -5,7 +5,7 @@ import org.bukkit.block.banner.Pattern;
 
 import java.util.List;
 
-public interface Banner extends BlockState {
+public interface Banner : BlockState {
 
     /**
      * Returns the base color for this banner

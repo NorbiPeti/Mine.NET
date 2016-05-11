@@ -149,7 +149,7 @@ public class Permission {
      *
      * @return Set containing permissibles with this permission
      */
-    public Set<Permissible> getPermissibles() {
+    public HashSet<Permissible> getPermissibles() {
         return Bukkit.getServer().getPluginManager().getPermissionSubscriptions(name);
     }
 
@@ -160,7 +160,7 @@ public class Permission {
      * automatically called after modifying the default value
      */
     public void recalculatePermissibles() {
-        Set<Permissible> perms = getPermissibles();
+        HashSet<Permissible> perms = getPermissibles();
 
         Bukkit.getServer().getPluginManager().recalculatePermissionDefaults(this);
 

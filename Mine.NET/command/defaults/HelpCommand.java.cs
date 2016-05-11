@@ -24,7 +24,7 @@ import org.bukkit.util.ChatPaginator;
 
 import com.google.common.collect.ImmutableList;
 
-public class HelpCommand extends VanillaCommand {
+public class HelpCommand : VanillaCommand {
     public HelpCommand() {
         super("help");
         this.description = "Shows the help menu";
@@ -134,7 +134,7 @@ public class HelpCommand extends VanillaCommand {
 
     protected HelpTopic findPossibleMatches(String searchString) {
         int maxDistance = (searchString.length() / 5) + 3;
-        Set<HelpTopic> possibleMatches = new TreeSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
+        HashSet<HelpTopic> possibleMatches = new TreeSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
 
         if (searchString.startsWith("/")) {
             searchString = searchString.substring(1);

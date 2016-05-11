@@ -3,7 +3,7 @@ package org.bukkit.command;
 /**
  * Represents a command that delegates to one or more other commands
  */
-public class MultipleCommandAlias extends Command {
+public class MultipleCommandAlias : Command {
     private Command[] commands;
 
     public MultipleCommandAlias(String name, Command[] commands) {

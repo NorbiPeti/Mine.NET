@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Material data for the piston base block
  */
-public class PistonBaseMaterial extends MaterialData implements Directional, Redstone {
+public class PistonBaseMaterial : MaterialData : Directional, Redstone {
     
     /**
      * Constructs a PistonBaseMaterial

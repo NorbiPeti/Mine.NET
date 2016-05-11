@@ -16,7 +16,7 @@ import org.bukkit.inventory.EquipmentSlot;
  * This event will fire as cancelled if the vanilla behavior
  * is to do nothing (e.g interacting with air)
  */
-public class PlayerInteractEvent extends PlayerEvent implements Cancellable {
+public class PlayerInteractEvent : PlayerEvent : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     protected ItemStack item;
     protected Action action;

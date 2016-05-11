@@ -12,7 +12,7 @@ import org.bukkit.entity.Player;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class ExpCommand extends VanillaCommand {
+public class ExpCommand : VanillaCommand {
     public ExpCommand() {
         super("xp");
         this.description = "Gives the specified player a certain amount of experience. Specify <amount>L to give levels instead, with a negative amount resulting in taking levels.";

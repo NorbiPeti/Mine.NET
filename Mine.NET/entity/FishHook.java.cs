@@ -3,7 +3,7 @@ package org.bukkit.entity;
 /**
  * Represents a fishing hook.
  */
-public interface FishHook extends Projectile {
+public interface FishHook : Projectile {
     /**
      * Gets the chance of a fish biting.
      * <p>

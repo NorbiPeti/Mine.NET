@@ -8,7 +8,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
 
 @SerializableAs("Pattern")
-public class Pattern implements ConfigurationSerializable {
+public class Pattern : ConfigurationSerializable {
 
     private static readonly String COLOR = "color";
     private static readonly String PATTERN = "pattern";

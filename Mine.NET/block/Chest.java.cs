@@ -6,7 +6,7 @@ import org.bukkit.inventory.InventoryHolder;
 /**
  * Represents a chest.
  */
-public interface Chest extends BlockState, InventoryHolder {
+public interface Chest : BlockState, InventoryHolder {
 
     /**
      * Returns the chest's inventory. If this is a double chest, it returns

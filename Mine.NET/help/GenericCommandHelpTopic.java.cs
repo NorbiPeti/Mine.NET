@@ -15,7 +15,7 @@ import org.bukkit.help.HelpTopic;
  * can use this class as a base class for custom help topics, or as an example
  * for how to write your own.
  */
-public class GenericCommandHelpTopic extends HelpTopic {
+public class GenericCommandHelpTopic : HelpTopic {
 
     protected Command command;
 

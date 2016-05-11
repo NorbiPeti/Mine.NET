@@ -3,7 +3,7 @@ package org.bukkit.inventory.meta;
 
 import org.bukkit.block.BlockState;
 
-public interface BlockStateMeta extends ItemMeta {
+public interface BlockStateMeta : ItemMeta {
 
     /**
      * Returns whether the item has a block state currently

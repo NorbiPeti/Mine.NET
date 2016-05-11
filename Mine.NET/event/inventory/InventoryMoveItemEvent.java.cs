@@ -23,7 +23,7 @@ import org.bukkit.inventory.ItemStack;
  * has not been modified, the source inventory slot will be restored to its
  * former state. Otherwise any additional items will be discarded.
  */
-public class InventoryMoveItemEvent extends Event implements Cancellable {
+public class InventoryMoveItemEvent : Event : Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly Inventory sourceInventory;

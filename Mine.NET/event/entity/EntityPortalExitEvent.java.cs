@@ -11,7 +11,7 @@ import org.bukkit.util.Vector;
  * This event allows you to modify the velocity of the entity after they have
  * successfully exited the portal.
  */
-public class EntityPortalExitEvent extends EntityTeleportEvent {
+public class EntityPortalExitEvent : EntityTeleportEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private Vector before;
     private Vector after;

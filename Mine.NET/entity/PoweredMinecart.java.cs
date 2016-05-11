@@ -6,4 +6,4 @@ package org.bukkit.entity;
  * @see org.bukkit.entity.minecart.PoweredMinecart
  */
 [Obsolete]
-public interface PoweredMinecart extends org.bukkit.entity.minecart.PoweredMinecart {}
+public interface PoweredMinecart : org.bukkit.entity.minecart.PoweredMinecart {}

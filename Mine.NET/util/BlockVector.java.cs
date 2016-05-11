@@ -10,7 +10,7 @@ import org.bukkit.configuration.serialization.SerializableAs;
  * that BlockVectors are never changed once put into a hash set or hash map.
  */
 @SerializableAs("BlockVector")
-public class BlockVector extends Vector {
+public class BlockVector : Vector {
 
     /**
      * Construct the vector with all components as 0.

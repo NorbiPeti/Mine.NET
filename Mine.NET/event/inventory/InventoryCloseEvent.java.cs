@@ -8,7 +8,7 @@ import org.bukkit.inventory.InventoryView;
 /**
  * Represents a player related inventory event
  */
-public class InventoryCloseEvent extends InventoryEvent {
+public class InventoryCloseEvent : InventoryEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public InventoryCloseEvent(InventoryView transaction) {

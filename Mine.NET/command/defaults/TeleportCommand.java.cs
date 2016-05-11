@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import com.google.common.collect.ImmutableList;
 
 [Obsolete]
-public class TeleportCommand extends VanillaCommand {
+public class TeleportCommand : VanillaCommand {
 
     public TeleportCommand() {
         super("tp");

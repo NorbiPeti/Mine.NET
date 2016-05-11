@@ -4,7 +4,7 @@ package org.bukkit.conversations;
  * A ConversationCanceller is a class that cancels an active {@link
  * Conversation}. A Conversation can have more than one ConversationCanceller.
  */
-public interface ConversationCanceller extends Cloneable {
+public interface ConversationCanceller : Cloneable {
 
     /**
      * Sets the conversation this ConversationCanceller can optionally cancel.

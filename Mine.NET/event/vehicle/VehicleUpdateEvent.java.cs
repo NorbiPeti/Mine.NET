@@ -6,7 +6,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when a vehicle updates
  */
-public class VehicleUpdateEvent extends VehicleEvent {
+public class VehicleUpdateEvent : VehicleEvent {
     private static readonly HandlerList handlers = new HandlerList();
 
     public VehicleUpdateEvent(Vehicle vehicle) {

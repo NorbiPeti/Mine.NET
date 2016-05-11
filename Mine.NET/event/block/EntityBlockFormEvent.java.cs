@@ -13,7 +13,7 @@ import org.bukkit.entity.Entity;
  * <li>Frosted Ice formed by the Frost Walker enchantment.
  * </ul>
  */
-public class EntityBlockFormEvent extends BlockFormEvent {
+public class EntityBlockFormEvent : BlockFormEvent {
     private readonly Entity entity;
 
     public EntityBlockFormEvent(Entity entity, readonly Block block, readonly BlockState blockstate) {

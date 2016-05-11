@@ -6,7 +6,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Represents stairs.
  */
-public class Stairs extends MaterialData implements Directional {
+public class Stairs : MaterialData : Directional {
 
     /**
      * @param type the raw type id

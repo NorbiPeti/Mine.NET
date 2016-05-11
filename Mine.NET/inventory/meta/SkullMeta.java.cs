@@ -5,7 +5,7 @@ import org.bukkit.Material;
 /**
  * Represents a skull ({@link Material#SKULL_ITEM}) that can have an owner.
  */
-public interface SkullMeta extends ItemMeta {
+public interface SkullMeta : ItemMeta {
 
     /**
      * Gets the owner of the skull.

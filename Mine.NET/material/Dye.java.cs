@@ -6,7 +6,7 @@ import org.bukkit.Material;
 /**
  * Represents dye
  */
-public class Dye extends MaterialData implements Colorable {
+public class Dye : MaterialData : Colorable {
     public Dye() {
         super(Material.INK_SACK);
     }

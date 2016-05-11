@@ -8,7 +8,7 @@ import org.bukkit.event.HandlerList;
 /**
  * Called when an EnderDragon switches controller phase.
  */
-public class EnderDragonChangePhaseEvent extends EntityEvent implements Cancellable {
+public class EnderDragonChangePhaseEvent : EntityEvent : Cancellable {
 
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel;
