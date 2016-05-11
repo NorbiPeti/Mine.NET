@@ -867,6 +867,8 @@ public class Material
     private readonly int maxStack;
     private readonly short durability;
 
+    private Materials? EnumValue;
+
     private Material(int id) {
         new Material(id, 64);
     }
@@ -963,7 +965,8 @@ public class Material
      * @return true if this Material is edible.
      */
     public bool isEdible() {
-        switch (AllMaterials.First(m=>m.Value==this).Key) {
+        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+        switch (EnumValue) {
             case Materials.BREAD:
             case Materials.CARROT_ITEM:
             case Materials.BAKED_POTATO:
@@ -1025,7 +1028,7 @@ public class Material
             String filtered = name.ToUpper();
 
             filtered = Regex.Replace(Regex.Replace(filtered, "\\s+", "_"), "\\W", "");
-            result = AllMaterials[Enum.Parse(typeof(Materials), (filtered))];
+            result = AllMaterials[(Materials)Enum.Parse(typeof(Materials), (filtered))];
         }
 
         return result;
@@ -1044,11 +1047,12 @@ public class Material
      *
      * @return True if this material is a block and solid
      */
-    public boolean isSolid() {
+    public bool isSolid() {
         if (!isBlock() || id == 0) {
             return false;
         }
-        switch (this) {
+        EnumValue = EnumValue ?? AllMaterials.First(m => m.Value == this).Key;
+        switch (EnumValue) {
             case STONE:
             case GRASS:
             case DIRT:
