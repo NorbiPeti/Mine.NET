@@ -161,14 +161,14 @@ namespace Mine.NET
             int[,] H = new int[s1Len + 2, s2Len + 2];
 
             int INF = s1Len + s2Len;
-            H[0][0] = INF;
+            H[0,0] = INF;
             for (int i = 0; i <= s1Len; i++) {
-                H[i + 1][1] = i;
-                H[i + 1][0] = INF;
+                H[i + 1,1] = i;
+                H[i + 1,0] = INF;
             }
             for (int j = 0; j <= s2Len; j++) {
-                H[1][j + 1] = j;
-                H[0][j + 1] = INF;
+                H[1,j + 1] = j;
+                H[0,j + 1] = INF;
             }
 
             Dictionary<Character, int> sd = new HashMap<Character, int>();
