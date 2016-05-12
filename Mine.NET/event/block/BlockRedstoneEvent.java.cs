@@ -1,54 +1,60 @@
-namespace Mine.NET.event.block;
+using Mine.NET.block;
 
-import org.bukkit.block.Block;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a redstone current changes
- */
-public class BlockRedstoneEvent : BlockEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly int oldCurrent;
-    private int newCurrent;
-
-    public BlockRedstoneEvent(Block block, readonly int oldCurrent, readonly int newCurrent) {
-        base(block);
-        this.oldCurrent = oldCurrent;
-        this.newCurrent = newCurrent;
-    }
-
+namespace Mine.NET.Event.block
+{
     /**
-     * Gets the old current of this block
-     *
-     * @return The previous current
+     * Called when a redstone current changes
      */
-    public int getOldCurrent() {
-        return oldCurrent;
-    }
+    public class BlockRedstoneEvent : BlockEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly int oldCurrent;
+        private int newCurrent;
 
-    /**
-     * Gets the new current of this block
-     *
-     * @return The new current
-     */
-    public int getNewCurrent() {
-        return newCurrent;
-    }
+        public BlockRedstoneEvent(Block block, int oldCurrent, int newCurrent) : base(block)
+        {
+            this.oldCurrent = oldCurrent;
+            this.newCurrent = newCurrent;
+        }
 
-    /**
-     * Sets the new current of this block
-     *
-     * @param newCurrent The new current to set
-     */
-    public void setNewCurrent(int newCurrent) {
-        this.newCurrent = newCurrent;
-    }
+        /**
+         * Gets the old current of this block
+         *
+         * @return The previous current
+         */
+        public int getOldCurrent()
+        {
+            return oldCurrent;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Gets the new current of this block
+         *
+         * @return The new current
+         */
+        public int getNewCurrent()
+        {
+            return newCurrent;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Sets the new current of this block
+         *
+         * @param newCurrent The new current to set
+         */
+        public void setNewCurrent(int newCurrent)
+        {
+            this.newCurrent = newCurrent;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

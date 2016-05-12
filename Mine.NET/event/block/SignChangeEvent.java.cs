@@ -1,83 +1,92 @@
-namespace Mine.NET.event.block;
+using Mine.NET.block;
+using Mine.NET.entity;
+using System;
 
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a sign is changed by a player.
- * <p>
- * If a Sign Change event is cancelled, the sign will not be changed.
- */
-public class SignChangeEvent : BlockEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel = false;
-    private readonly Player player;
-    private readonly String[] lines;
-
-    public SignChangeEvent(Block theBlock, readonly Player thePlayer, readonly String[] theLines) {
-        base(theBlock);
-        this.player = thePlayer;
-        this.lines = theLines;
-    }
-
+namespace Mine.NET.Event.block
+{
     /**
-     * Gets the player changing the sign involved in this event.
-     *
-     * @return the Player involved in this event
+     * Called when a sign is changed by a player.
+     * <p>
+     * If a Sign Change event is cancelled, the sign will not be changed.
      */
-    public Player getPlayer() {
-        return player;
-    }
+    public class SignChangeEvent : BlockEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
+        private readonly Player player;
+        private readonly String[] lines;
 
-    /**
-     * Gets all of the lines of text from the sign involved in this event.
-     *
-     * @return the String array for the sign's lines new text
-     */
-    public String[] getLines() {
-        return lines;
-    }
+        public SignChangeEvent(Block theBlock, Player thePlayer, String[] theLines) : base(theBlock)
+        {
+            this.player = thePlayer;
+            this.lines = theLines;
+        }
 
-    /**
-     * Gets a single line of text from the sign involved in this event.
-     *
-     * @param index index of the line to get
-     * @return the String containing the line of text associated with the
-     *     provided index
-     * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
-     *     or < 0}
-     */
-    public String getLine(int index) {
-        return lines[index];
-    }
+        /**
+         * Gets the player changing the sign involved in this event.
+         *
+         * @return the Player involved in this event
+         */
+        public Player getPlayer()
+        {
+            return player;
+        }
 
-    /**
-     * Sets a single line for the sign involved in this event
-     *
-     * @param index index of the line to set
-     * @param line text to set
-     * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
-     *     or < 0}
-     */
-    public void setLine(int index, String line) {
-        lines[index] = line;
-    }
+        /**
+         * Gets all of the lines of text from the sign involved in this event.
+         *
+         * @return the String array for the sign's lines new text
+         */
+        public String[] getLines()
+        {
+            return lines;
+        }
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        /**
+         * Gets a single line of text from the sign involved in this event.
+         *
+         * @param index index of the line to get
+         * @return the String containing the line of text associated with the
+         *     provided index
+         * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
+         *     or < 0}
+         */
+        public String getLine(int index)
+        {
+            return lines[index];
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        /**
+         * Sets a single line for the sign involved in this event
+         *
+         * @param index index of the line to set
+         * @param line text to set
+         * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
+         *     or < 0}
+         */
+        public void setLine(int index, String line)
+        {
+            lines[index] = line;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }
