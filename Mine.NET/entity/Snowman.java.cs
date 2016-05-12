@@ -1,8 +1,10 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a snowman entity
+     */
+    public interface Snowman : Golem
+    {
 
-/**
- * Represents a snowman entity
- */
-public interface Snowman : Golem {
-
+    }
 }

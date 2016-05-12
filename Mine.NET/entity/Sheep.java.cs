@@ -1,19 +1,21 @@
-namespace Mine.NET.entity;
+using Mine.NET.material;
 
-import org.bukkit.material.Colorable;
-
-/**
- * Represents a Sheep.
- */
-public interface Sheep : Animals, Colorable {
-
+namespace Mine.NET.entity
+{
     /**
-     * @return Whether the sheep is sheared.
+     * Represents a Sheep.
      */
-    public bool isSheared();
+    public interface Sheep : Animals, Colorable
+    {
 
-    /**
-     * @param flag Whether to shear the sheep
-     */
-    public void setSheared(bool flag);
+        /**
+         * @return Whether the sheep is sheared.
+         */
+        bool isSheared();
+
+        /**
+         * @param flag Whether to shear the sheep
+         */
+        void setSheared(bool flag);
+    }
 }

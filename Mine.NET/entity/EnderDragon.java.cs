@@ -1,14 +1,30 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * Represents an Ender Dragon
+     */
+    public interface EnderDragon : ComplexLivingEntity
+    {
+        /**
+         * Gets the current phase that the dragon is performing.
+         *
+         * @return the current phase
+         */
+        EnderDragonPhase getPhase();
 
-/**
- * Represents an Ender Dragon
- */
-public interface EnderDragon : ComplexLivingEntity {
+        /**
+         * Sets the next phase for the dragon to perform.
+         *
+         * @param phase the next phase
+         */
+        void setPhase(EnderDragonPhase phase);
+    }
 
     /**
      * Represents a phase or action that an Ender Dragon can perform.
      */
-    enum Phase {
+    public enum EnderDragonPhase
+    {
         /**
          * The dragon will circle outside the ring of pillars if ender
          * crystals remain or inside the ring if not.
@@ -61,18 +77,4 @@ public interface EnderDragon : ComplexLivingEntity {
          */
         HOVER
     }
-
-    /**
-     * Gets the current phase that the dragon is performing.
-     *
-     * @return the current phase
-     */
-    Phase getPhase();
-
-    /**
-     * Sets the next phase for the dragon to perform.
-     *
-     * @param phase the next phase
-     */
-    void setPhase(Phase phase);
 }

@@ -1,12 +1,9 @@
-namespace Mine.NET.enchantments;
-
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-
+namespace Mine.NET.enchantments
+{
 /**
  * Represents the applicable target for a {@link Enchantment}
  */
-public enum EnchantmentTarget {
+public enum EnchantmentTarget { //TODO
     /**
      * Allows the Enchantment to be placed on all items
      */
@@ -159,4 +156,5 @@ public enum EnchantmentTarget {
     public bool includes(ItemStack item) {
         return includes(item.getType());
     }
+}
 }

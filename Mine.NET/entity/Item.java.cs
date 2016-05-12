@@ -1,37 +1,39 @@
-namespace Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Represents an Item.
- */
-public interface Item : Entity {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets the item stack associated with this item drop.
-     *
-     * @return An item stack.
+     * Represents an Item.
      */
-    public ItemStack getItemStack();
+    public interface Item : Entity
+    {
 
-    /**
-     * Sets the item stack associated with this item drop.
-     *
-     * @param stack An item stack.
-     */
-    public void setItemStack(ItemStack stack);
+        /**
+         * Gets the item stack associated with this item drop.
+         *
+         * @return An item stack.
+         */
+        ItemStack getItemStack();
 
-    /**
-     * Gets the delay before this Item is available to be picked up by players
-     *
-     * @return Remaining delay
-     */
-    public int getPickupDelay();
+        /**
+         * Sets the item stack associated with this item drop.
+         *
+         * @param stack An item stack.
+         */
+        void setItemStack(ItemStack stack);
 
-    /**
-     * Sets the delay before this Item is available to be picked up by players
-     *
-     * @param delay New delay
-     */
-    public void setPickupDelay(int delay);
+        /**
+         * Gets the delay before this Item is available to be picked up by players
+         *
+         * @return Remaining delay
+         */
+        int getPickupDelay();
+
+        /**
+         * Sets the delay before this Item is available to be picked up by players
+         *
+         * @param delay New delay
+         */
+        void setPickupDelay(int delay);
+    }
 }

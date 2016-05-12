@@ -1,6 +1,7 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a Giant.
- */
-public interface Giant : Monster {}
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a Giant.
+     */
+    public interface Giant : Monster { }
+}

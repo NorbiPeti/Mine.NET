@@ -1,17 +1,19 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a Slime.
- */
-public interface Slime : LivingEntity {
-
+namespace Mine.NET.entity
+{
     /**
-     * @return The size of the slime
+     * Represents a Slime.
      */
-    public int getSize();
+    public interface Slime : LivingEntity
+    {
 
-    /**
-     * @param sz The new size of the slime.
-     */
-    public void setSize(int sz);
+        /**
+         * @return The size of the slime
+         */
+        int getSize();
+
+        /**
+         * @param sz The new size of the slime.
+         */
+        void setSize(int sz);
+    }
 }

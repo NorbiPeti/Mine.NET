@@ -1,23 +1,25 @@
-namespace Mine.NET.entity;
+using Mine.NET.material;
 
-import org.bukkit.material.MaterialData;
-
-/**
- * Represents an Enderman.
- */
-public interface Enderman : Monster {
-
+namespace Mine.NET.entity
+{
     /**
-     * Get the id and data of the block that the Enderman is carrying.
-     *
-     * @return MaterialData containing the id and data of the block
+     * Represents an Enderman.
      */
-    public MaterialData getCarriedMaterial();
+    public interface Enderman : Monster
+    {
 
-    /**
-     * Set the id and data of the block that the Enderman is carring.
-     *
-     * @param material data to set the carried block to
-     */
-    public void setCarriedMaterial(MaterialData material);
+        /**
+         * Get the id and data of the block that the Enderman is carrying.
+         *
+         * @return MaterialData containing the id and data of the block
+         */
+        MaterialData getCarriedMaterial();
+
+        /**
+         * Set the id and data of the block that the Enderman is carring.
+         *
+         * @param material data to set the carried block to
+         */
+        void setCarriedMaterial(MaterialData material);
+    }
 }

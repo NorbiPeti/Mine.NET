@@ -1,25 +1,26 @@
-namespace Mine.NET.entity.minecart;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Minecart;
-import org.bukkit.inventory.InventoryHolder;
-
-/**
- * Represents a Minecart with a Hopper inside it
- */
-public interface HopperMinecart : Minecart, InventoryHolder {
-
+namespace Mine.NET.entity.minecart
+{
     /**
-     * Checks whether or not this Minecart will pick up 
-     * items into its inventory.
-     * 
-     * @return true if the Minecart will pick up items
+     * Represents a Minecart with a Hopper inside it
      */
-    bool isEnabled();
+    public interface HopperMinecart : Minecart, InventoryHolder
+    {
 
-    /**
-     * Sets whether this Minecart will pick up items.
-     * 
-     * @param enabled new enabled state
-     */
-    void setEnabled(bool enabled);
+        /**
+         * Checks whether or not this Minecart will pick up 
+         * items into its inventory.
+         * 
+         * @return true if the Minecart will pick up items
+         */
+        bool isEnabled();
+
+        /**
+         * Sets whether this Minecart will pick up items.
+         * 
+         * @param enabled new enabled state
+         */
+        void setEnabled(bool enabled);
+    }
 }

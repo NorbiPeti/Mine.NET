@@ -1,23 +1,11 @@
-namespace Mine.NET.entity;
+using Mine.NET.util;
 
-import org.bukkit.util.Vector;
-
-/**
- * Represents a vehicle entity.
- */
-public interface Vehicle : Entity {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets the vehicle's velocity.
-     *
-     * @return velocity vector
+     * Represents a vehicle entity.
      */
-    public Vector getVelocity();
-
-    /**
-     * Sets the vehicle's velocity.
-     *
-     * @param vel velocity vector
-     */
-    public void setVelocity(Vector vel);
+    public interface Vehicle : Entity
+    {
+    }
 }

@@ -1,52 +1,56 @@
-namespace Mine.NET.entity;
+using System;
 
-/**
- * Represents a Zombie.
- */
-public interface Zombie : Monster {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets whether the zombie is a baby
-     *
-     * @return Whether the zombie is a baby
+     * Represents a Zombie.
      */
-    public bool isBaby();
+    public interface Zombie : Monster
+    {
 
-    /**
-     * Sets whether the zombie is a baby
-     *
-     * @param flag Whether the zombie is a baby
-     */
-    public void setBaby(bool flag);
+        /**
+         * Gets whether the zombie is a baby
+         *
+         * @return Whether the zombie is a baby
+         */
+        bool isBaby();
 
-    /**
-     * Gets whether the zombie is a villager
-     *
-     * @return Whether the zombie is a villager
-     */
-    public bool isVillager();
+        /**
+         * Sets whether the zombie is a baby
+         *
+         * @param flag Whether the zombie is a baby
+         */
+        void setBaby(bool flag);
 
-    /**
-     * Sets whether the zombie is a villager
-     *
-     * @param flag Whether the zombie is a villager
-     * [Obsolete] Defaults to a basic villager
-     */
-    [Obsolete]
-    public void setVillager(bool flag);
+        /**
+         * Gets whether the zombie is a villager
+         *
+         * @return Whether the zombie is a villager
+         */
+        bool isVillager();
 
-    /**
-     * Sets whether the zombie is a villager
-     *
-     * @param profession the profession of the villager or null to clear
-     */
-    public void setVillagerProfession(Villager.Profession profession);
+        /**
+         * Sets whether the zombie is a villager
+         *
+         * @param flag Whether the zombie is a villager
+         * [Obsolete] Defaults to a basic villager
+         */
+        [Obsolete]
+        void setVillager(bool flag);
 
-    /**
-     * Returns the villager profession of the zombie if the
-     * zombie is a villager
-     *
-     * @return the profession or null
-     */
-    public Villager.Profession getVillagerProfession();
+        /**
+         * Sets whether the zombie is a villager
+         *
+         * @param profession the profession of the villager or null to clear
+         */
+        void setVillagerProfession(VillagerProfession profession);
+
+        /**
+         * Returns the villager profession of the zombie if the
+         * zombie is a villager
+         *
+         * @return the profession or null
+         */
+        VillagerProfession getVillagerProfession();
+    }
 }

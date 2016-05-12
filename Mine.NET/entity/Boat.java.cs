@@ -1,104 +1,106 @@
-namespace Mine.NET.entity;
+using System;
 
-import org.bukkit.TreeSpecies;
-
-/**
- * Represents a boat entity.
- */
-public interface Boat : Vehicle {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets the wood type of the boat.
-     * 
-     * @return the wood type
+     * Represents a boat entity.
      */
-    TreeSpecies getWoodType();
+    public interface Boat : Vehicle
+    {
 
-    /**
-     * Sets the wood type of the boat.
-     * 
-     * @param species the new wood type
-     */
-    void setWoodType(TreeSpecies species);
+        /**
+         * Gets the wood type of the boat.
+         * 
+         * @return the wood type
+         */
+        TreeSpecies getWoodType();
 
-    /**
-     * Gets the maximum speed of a boat. The speed is unrelated to the
-     * velocity.
-     *
-     * @return The max speed.
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public double getMaxSpeed();
+        /**
+         * Sets the wood type of the boat.
+         * 
+         * @param species the new wood type
+         */
+        void setWoodType(TreeSpecies species);
 
-    /**
-     * Sets the maximum speed of a boat. Must be nonnegative. Default is 0.4D.
-     *
-     * @param speed The max speed.
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public void setMaxSpeed(double speed);
+        /**
+         * Gets the maximum speed of a boat. The speed is unrelated to the
+         * velocity.
+         *
+         * @return The max speed.
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        double getMaxSpeed();
 
-    /**
-     * Gets the deceleration rate (newSpeed = curSpeed * rate) of occupied
-     * boats. The default is 0.2.
-     *
-     * @return The rate of deceleration
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public double getOccupiedDeceleration();
+        /**
+         * Sets the maximum speed of a boat. Must be nonnegative. Default is 0.4D.
+         *
+         * @param speed The max speed.
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        void setMaxSpeed(double speed);
 
-    /**
-     * Sets the deceleration rate (newSpeed = curSpeed * rate) of occupied
-     * boats. Setting this to a higher value allows for quicker acceleration.
-     * The default is 0.2.
-     *
-     * @param rate deceleration rate
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public void setOccupiedDeceleration(double rate);
+        /**
+         * Gets the deceleration rate (newSpeed = curSpeed * rate) of occupied
+         * boats. The default is 0.2.
+         *
+         * @return The rate of deceleration
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        double getOccupiedDeceleration();
 
-    /**
-     * Gets the deceleration rate (newSpeed = curSpeed * rate) of unoccupied
-     * boats. The default is -1. Values below 0 indicate that no additional
-     * deceleration is imposed.
-     *
-     * @return The rate of deceleration
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public double getUnoccupiedDeceleration();
+        /**
+         * Sets the deceleration rate (newSpeed = curSpeed * rate) of occupied
+         * boats. Setting this to a higher value allows for quicker acceleration.
+         * The default is 0.2.
+         *
+         * @param rate deceleration rate
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        void setOccupiedDeceleration(double rate);
 
-    /**
-     * Sets the deceleration rate (newSpeed = curSpeed * rate) of unoccupied
-     * boats. Setting this to a higher value allows for quicker deceleration
-     * of boats when a player disembarks. The default is -1. Values below 0
-     * indicate that no additional deceleration is imposed.
-     *
-     * @param rate deceleration rate
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public void setUnoccupiedDeceleration(double rate);
+        /**
+         * Gets the deceleration rate (newSpeed = curSpeed * rate) of unoccupied
+         * boats. The default is -1. Values below 0 indicate that no additional
+         * deceleration is imposed.
+         *
+         * @return The rate of deceleration
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        double getUnoccupiedDeceleration();
 
-    /**
-     * Get whether boats can work on land.
-     *
-     * @return whether boats can work on land
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public bool getWorkOnLand();
+        /**
+         * Sets the deceleration rate (newSpeed = curSpeed * rate) of unoccupied
+         * boats. Setting this to a higher value allows for quicker deceleration
+         * of boats when a player disembarks. The default is -1. Values below 0
+         * indicate that no additional deceleration is imposed.
+         *
+         * @param rate deceleration rate
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        void setUnoccupiedDeceleration(double rate);
 
-    /**
-     * Set whether boats can work on land.
-     *
-     * @param workOnLand whether boats can work on land
-     * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
-     */
-    [Obsolete]
-    public void setWorkOnLand(bool workOnLand);
+        /**
+         * Get whether boats can work on land.
+         *
+         * @return whether boats can work on land
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        bool getWorkOnLand();
+
+        /**
+         * Set whether boats can work on land.
+         *
+         * @param workOnLand whether boats can work on land
+         * [Obsolete] boats are complex and many of these methods do not work correctly across multiple versions.
+         */
+        [Obsolete]
+        void setWorkOnLand(bool workOnLand);
+    }
 }

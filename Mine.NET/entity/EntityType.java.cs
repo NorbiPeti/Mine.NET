@@ -1,238 +1,418 @@
-namespace Mine.NET.entity;
+using Mine.NET.entity.minecart;
+using System;
+using System.Collections.Generic;
 
-import java.util.HashMap;
-import java.util.Map;
+namespace Mine.NET.entity
+{
+    public enum EntityTypes {
 
-import org.bukkit.entity.minecart.CommandMinecart;
-import org.bukkit.entity.minecart.HopperMinecart;
-import org.bukkit.entity.minecart.SpawnerMinecart;
-import org.bukkit.entity.minecart.RideableMinecart;
-import org.bukkit.entity.minecart.ExplosiveMinecart;
-import org.bukkit.entity.minecart.PoweredMinecart;
-import org.bukkit.entity.minecart.StorageMinecart;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.potion.PotionEffectType;
+        // These strings MUST match the strings in nms.EntityTypes and are case sensitive.
+        /**
+         * An item resting on the ground.
+         * <p>
+         * Spawn with {@link World#dropItem(Location, ItemStack)} or {@link
+         * World#dropItemNaturally(Location, ItemStack)}
+         */ //Find: "\([^\)]+\)" - Replace: ""
+        DROPPED_ITEM,
+        /**
+         * An experience orb.
+         */
+        EXPERIENCE_ORB,
+        /**
+         * A leash attached to a fencepost.
+         */
+        LEASH_HITCH,
+        /**
+         * A painting on a wall.
+         */
+        PAINTING,
+        /**
+         * An arrow projectile; may get stuck in the ground.
+         */
+        ARROW,
+        /**
+         * A flying snowball.
+         */
+        SNOWBALL,
+        /**
+         * A flying large fireball, as thrown by a Ghast for example.
+         */
+        FIREBALL,
+        /**
+         * A flying small fireball, such as thrown by a Blaze or player.
+         */
+        SMALL_FIREBALL,
+        /**
+         * A flying ender pearl.
+         */
+        ENDER_PEARL,
+        /**
+         * An ender eye signal.
+         */
+        ENDER_SIGNAL,
+        /**
+         * A flying experience bottle.
+         */
+        THROWN_EXP_BOTTLE,
+        /**
+         * An item frame on a wall.
+         */
+        ITEM_FRAME,
+        /**
+         * A flying wither skull projectile.
+         */
+        WITHER_SKULL,
+        /**
+         * Primed TNT that is about to explode.
+         */
+        PRIMED_TNT,
+        /**
+         * A block that is going to or is about to fall.
+         */
+        FALLING_BLOCK,
+        /**
+         * Internal representation of a Firework once it has been launched.
+         */
+        FIREWORK,
+        /**
+         * Like {@link #ARROW} but tipped with a specific potion which is applied on contact.
+         */
+        TIPPED_ARROW,
+        /**
+         * Like {@link #TIPPED_ARROW} but causes the {@link PotionEffectType#GLOWING} effect on all team members.
+         */
+        SPECTRAL_ARROW,
+        /**
+         * Bullet fired by {@link #SHULKER}.
+         */
+        SHULKER_BULLET,
+        /**
+         * Like {@link #FIREBALL} but with added effects.
+         */
+        DRAGON_FIREBALL,
+        /**
+         * Mechanical entity with an inventory for placing weapons / armor into.
+         */
+        ARMOR_STAND,
+        /**
+         * @see CommandMinecart
+         */
+        MINECART_COMMAND,
+        /**
+         * A placed boat.
+         */
+        BOAT,
+        /**
+         * @see RideableMinecart
+         */
+        MINECART,
+        /**
+         * @see StorageMinecart
+         */
+        MINECART_CHEST,
+        /**
+         * @see PoweredMinecart
+         */
+        MINECART_FURNACE,
+        /**
+         * @see ExplosiveMinecart
+         */
+        MINECART_TNT,
+        /**
+         * @see HopperMinecart
+         */
+        MINECART_HOPPER,
+        /**
+         * @see SpawnerMinecart
+         */
+        MINECART_MOB_SPAWNER,
+        CREEPER,
+        SKELETON,
+        SPIDER,
+        GIANT,
+        ZOMBIE,
+        SLIME,
+        GHAST,
+        PIG_ZOMBIE,
+        ENDERMAN,
+        CAVE_SPIDER,
+        SILVERFISH,
+        BLAZE,
+        MAGMA_CUBE,
+        ENDER_DRAGON,
+        WITHER,
+        BAT,
+        WITCH,
+        ENDERMITE,
+        GUARDIAN,
+        SHULKER,
+        PIG,
+        SHEEP,
+        COW,
+        CHICKEN,
+        SQUID,
+        WOLF,
+        MUSHROOM_COW,
+        SNOWMAN,
+        OCELOT,
+        IRON_GOLEM,
+        HORSE,
+        RABBIT,
+        VILLAGER,
+        ENDER_CRYSTAL,
+        // These don't have an entity ID in nms.EntityTypes.
+        /**
+         * A flying splash potion
+         */
+        SPLASH_POTION,
+        /**
+         * A flying lingering potion
+         */
+        LINGERING_POTION,
+        AREA_EFFECT_CLOUD,
+        /**
+         * A flying chicken egg.
+         */
+        EGG,
+        /**
+         * A fishing line and bobber.
+         */
+        FISHING_HOOK,
+        /**
+         * A bolt of lightning.
+         * <p>
+         * Spawn with {@link World#strikeLightning}.
+         */
+        LIGHTNING,
+        WEATHER,
+        PLAYER,
+        COMPLEX_PART,
+        /**
+         * An unknown entity without an Entity Class
+         */
+        UNKNOWN
+    }
 
-public enum EntityType {
 
-    // These strings MUST match the strings in nms.EntityTypes and are case sensitive.
-    /**
-     * An item resting on the ground.
-     * <p>
-     * Spawn with {@link World#dropItem(Location, ItemStack)} or {@link
-     * World#dropItemNaturally(Location, ItemStack)}
-     */
-    DROPPED_ITEM("Item", Item.class, 1, false),
+
+
+
+
+
+
+
+
+
+
+    public class EntityType
+    {
+        public static Dictionary<EntityTypes, EntityType> AllEntityTypes = new Dictionary<EntityTypes, EntityType>
+        { //Find: "\*\/\s+([^\(]+)(\([^\(]+\))" - Replace: "*/\n{ $1, new EntityType$2 }" - Mostly worked - Aand I forgot the EntityTypes.
+          /**
+       * An item resting on the ground.
+       * <p>
+       * Spawn with {@link World#dropItem(Location, ItemStack)} or {@link
+       * World#dropItemNaturally(Location, ItemStack)}
+       */ //Find: "(\w+)\.class" - Replace: "typeof($1)"
+            { EntityTypes.DROPPED_ITEM, new EntityType("Item", typeof(Item), 1, false) },
     /**
      * An experience orb.
      */
-    EXPERIENCE_ORB("XPOrb", ExperienceOrb.class, 2),
+{ EntityTypes.EXPERIENCE_ORB, new EntityType("XPOrb", typeof(ExperienceOrb), 2) },
     /**
      * A leash attached to a fencepost.
      */
-    LEASH_HITCH("LeashKnot", LeashHitch.class, 8),
+{ EntityTypes.LEASH_HITCH, new EntityType("LeashKnot", typeof(LeashHitch), 8) },
     /**
      * A painting on a wall.
      */
-    PAINTING("Painting", Painting.class, 9),
+{ EntityTypes.PAINTING, new EntityType("Painting", typeof(Painting), 9) },
     /**
      * An arrow projectile; may get stuck in the ground.
      */
-    ARROW("Arrow", Arrow.class, 10),
+{ EntityTypes.ARROW, new EntityType("Arrow", typeof(Arrow), 10) },
     /**
      * A flying snowball.
      */
-    SNOWBALL("Snowball", Snowball.class, 11),
+{ EntityTypes.SNOWBALL, new EntityType("Snowball", typeof(Snowball), 11) },
     /**
      * A flying large fireball, as thrown by a Ghast for example.
      */
-    FIREBALL("Fireball", LargeFireball.class, 12),
+{ EntityTypes.FIREBALL, new EntityType("Fireball", typeof(LargeFireball), 12) },
     /**
      * A flying small fireball, such as thrown by a Blaze or player.
      */
-    SMALL_FIREBALL("SmallFireball", SmallFireball.class, 13),
+{ EntityTypes.SMALL_FIREBALL, new EntityType("SmallFireball", typeof(SmallFireball), 13) },
     /**
      * A flying ender pearl.
      */
-    ENDER_PEARL("ThrownEnderpearl", EnderPearl.class, 14),
+{ EntityTypes.ENDER_PEARL, new EntityType("ThrownEnderpearl", typeof(EnderPearl), 14) },
     /**
      * An ender eye signal.
      */
-    ENDER_SIGNAL("EyeOfEnderSignal", EnderSignal.class, 15),
+{ EntityTypes.ENDER_SIGNAL, new EntityType("EyeOfEnderSignal", typeof(EnderSignal), 15) },
     /**
      * A flying experience bottle.
      */
-    THROWN_EXP_BOTTLE("ThrownExpBottle", ThrownExpBottle.class, 17),
+{ EntityTypes.THROWN_EXP_BOTTLE, new EntityType("ThrownExpBottle", typeof(ThrownExpBottle), 17) },
     /**
      * An item frame on a wall.
      */
-    ITEM_FRAME("ItemFrame", ItemFrame.class, 18),
+{ EntityTypes.ITEM_FRAME, new EntityType("ItemFrame", typeof(ItemFrame), 18) },
     /**
      * A flying wither skull projectile.
      */
-    WITHER_SKULL("WitherSkull", WitherSkull.class, 19),
+{ EntityTypes.WITHER_SKULL, new EntityType("WitherSkull", typeof(WitherSkull), 19) },
     /**
      * Primed TNT that is about to explode.
      */
-    PRIMED_TNT("PrimedTnt", TNTPrimed.class, 20),
+{ EntityTypes.PRIMED_TNT, new EntityType("PrimedTnt", typeof(TNTPrimed), 20) },
     /**
      * A block that is going to or is about to fall.
      */
-    FALLING_BLOCK("FallingSand", FallingBlock.class, 21, false),
+{ EntityTypes.FALLING_BLOCK, new EntityType("FallingSand", typeof(FallingBlock), 21, false) },
     /**
      * Internal representation of a Firework once it has been launched.
      */
-    FIREWORK("FireworksRocketEntity", Firework.class, 22, false),
+{ EntityTypes.FIREWORK, new EntityType("FireworksRocketEntity", typeof(Firework), 22, false) },
     /**
      * Like {@link #ARROW} but tipped with a specific potion which is applied on contact.
      */
-    TIPPED_ARROW("TippedArrow", TippedArrow.class, 23),
+{ EntityTypes.TIPPED_ARROW, new EntityType("TippedArrow", typeof(TippedArrow), 23) },
     /**
      * Like {@link #TIPPED_ARROW} but causes the {@link PotionEffectType#GLOWING} effect on all team members.
      */
-    SPECTRAL_ARROW("SpectralArrow", SpectralArrow.class, 24),
+{ EntityTypes.SPECTRAL_ARROW, new EntityType("SpectralArrow", typeof(SpectralArrow), 24) },
     /**
      * Bullet fired by {@link #SHULKER}.
      */
-    SHULKER_BULLET("ShulkerBullet", ShulkerBullet.class, 25),
+{ EntityTypes.SHULKER_BULLET, new EntityType("ShulkerBullet", typeof(ShulkerBullet), 25) },
     /**
      * Like {@link #FIREBALL} but with added effects.
      */
-    DRAGON_FIREBALL("DragonFireball", DragonFireball.class, 26),
+{ EntityTypes.DRAGON_FIREBALL, new EntityType("DragonFireball", typeof(DragonFireball), 26) },
     /**
      * Mechanical entity with an inventory for placing weapons / armor into.
      */
-    ARMOR_STAND("ArmorStand", ArmorStand.class, 30, false),
+{ EntityTypes.ARMOR_STAND, new EntityType("ArmorStand", typeof(ArmorStand), 30, false) },
     /**
      * @see CommandMinecart
      */
-    MINECART_COMMAND("MinecartCommandBlock", CommandMinecart.class, 40),
+{ EntityTypes.MINECART_COMMAND, new EntityType("MinecartCommandBlock", typeof(CommandMinecart), 40) },
     /**
      * A placed boat.
      */
-    BOAT("Boat", Boat.class, 41),
+{ EntityTypes.BOAT, new EntityType("Boat", typeof(Boat), 41) },
     /**
      * @see RideableMinecart
      */
-    MINECART("MinecartRideable", RideableMinecart.class, 42),
+{ EntityTypes.MINECART, new EntityType("MinecartRideable", typeof(RideableMinecart), 42) },
     /**
      * @see StorageMinecart
      */
-    MINECART_CHEST("MinecartChest", StorageMinecart.class, 43),
+{ EntityTypes.MINECART_CHEST, new EntityType("MinecartChest", typeof(StorageMinecart), 43) },
     /**
      * @see PoweredMinecart
      */
-    MINECART_FURNACE("MinecartFurnace", PoweredMinecart.class, 44),
+{ EntityTypes.MINECART_FURNACE, new EntityType("MinecartFurnace", typeof(PoweredMinecart), 44) },
     /**
      * @see ExplosiveMinecart
      */
-    MINECART_TNT("MinecartTNT", ExplosiveMinecart.class, 45),
+{ EntityTypes.MINECART_TNT, new EntityType("MinecartTNT", typeof(ExplosiveMinecart), 45) },
     /**
      * @see HopperMinecart
      */
-    MINECART_HOPPER("MinecartHopper", HopperMinecart.class, 46),
+{ EntityTypes.MINECART_HOPPER, new EntityType("MinecartHopper", typeof(HopperMinecart), 46) },
     /**
      * @see SpawnerMinecart
      */
-    MINECART_MOB_SPAWNER("MinecartMobSpawner", SpawnerMinecart.class, 47),
-    CREEPER("Creeper", Creeper.class, 50),
-    SKELETON("Skeleton", Skeleton.class, 51),
-    SPIDER("Spider", Spider.class, 52),
-    GIANT("Giant", Giant.class, 53),
-    ZOMBIE("Zombie", Zombie.class, 54),
-    SLIME("Slime", Slime.class, 55),
-    GHAST("Ghast", Ghast.class, 56),
-    PIG_ZOMBIE("PigZombie", PigZombie.class, 57),
-    ENDERMAN("Enderman", Enderman.class, 58),
-    CAVE_SPIDER("CaveSpider", CaveSpider.class, 59),
-    SILVERFISH("Silverfish", Silverfish.class, 60),
-    BLAZE("Blaze", Blaze.class, 61),
-    MAGMA_CUBE("LavaSlime", MagmaCube.class, 62),
-    ENDER_DRAGON("EnderDragon", EnderDragon.class, 63),
-    WITHER("WitherBoss", Wither.class, 64),
-    BAT("Bat", Bat.class, 65),
-    WITCH("Witch", Witch.class, 66),
-    ENDERMITE("Endermite", Endermite.class, 67),
-    GUARDIAN("Guardian", Guardian.class, 68),
-    SHULKER("Shulker", Shulker.class, 69),
-    PIG("Pig", Pig.class, 90),
-    SHEEP("Sheep", Sheep.class, 91),
-    COW("Cow", Cow.class, 92),
-    CHICKEN("Chicken", Chicken.class, 93),
-    SQUID("Squid", Squid.class, 94),
-    WOLF("Wolf", Wolf.class, 95),
-    MUSHROOM_COW("MushroomCow", MushroomCow.class, 96),
-    SNOWMAN("SnowMan", Snowman.class, 97),
-    OCELOT("Ozelot", Ocelot.class, 98),
-    IRON_GOLEM("VillagerGolem", IronGolem.class, 99),
-    HORSE("EntityHorse", Horse.class, 100),
-    RABBIT("Rabbit", Rabbit.class, 101),
-    VILLAGER("Villager", Villager.class, 120),
-    ENDER_CRYSTAL("EnderCrystal", EnderCrystal.class, 200),
+{ EntityTypes.MINECART_MOB_SPAWNER, new EntityType("MinecartMobSpawner", typeof(SpawnerMinecart), 47) },
+    { EntityTypes.CREEPER, new EntityType("Creeper", typeof(Creeper), 50) },
+    { EntityTypes.SKELETON, new EntityType("Skeleton", typeof(Skeleton), 51) },
+    { EntityTypes.SPIDER, new EntityType("Spider", typeof(Spider), 52) },
+    { EntityTypes.GIANT, new EntityType("Giant", typeof(Giant), 53) },
+    { EntityTypes.ZOMBIE, new EntityType("Zombie", typeof(Zombie), 54) },
+    { EntityTypes.SLIME, new EntityType("Slime", typeof(Slime), 55) },
+    { EntityTypes.GHAST, new EntityType("Ghast", typeof(Ghast), 56) },
+    { EntityTypes.PIG_ZOMBIE, new EntityType("PigZombie", typeof(PigZombie), 57) },
+    { EntityTypes.ENDERMAN, new EntityType("Enderman", typeof(Enderman), 58) },
+    { EntityTypes.CAVE_SPIDER, new EntityType("CaveSpider", typeof(CaveSpider), 59) },
+    { EntityTypes.SILVERFISH, new EntityType("Silverfish", typeof(Silverfish), 60) },
+    { EntityTypes.BLAZE, new EntityType("Blaze", typeof(Blaze), 61) },
+    { EntityTypes.MAGMA_CUBE, new EntityType("LavaSlime", typeof(MagmaCube), 62) },
+    { EntityTypes.ENDER_DRAGON, new EntityType("EnderDragon", typeof(EnderDragon), 63) },
+    { EntityTypes.WITHER, new EntityType("WitherBoss", typeof(Wither), 64) },
+    { EntityTypes.BAT, new EntityType("Bat", typeof(Bat), 65) },
+    { EntityTypes.WITCH, new EntityType("Witch", typeof(Witch), 66) },
+    { EntityTypes.ENDERMITE, new EntityType("Endermite", typeof(Endermite), 67) },
+    { EntityTypes.GUARDIAN, new EntityType("Guardian", typeof(Guardian), 68) },
+    { EntityTypes.SHULKER, new EntityType("Shulker", typeof(Shulker), 69) },
+    { EntityTypes.PIG, new EntityType("Pig", typeof(Pig), 90) },
+    { EntityTypes.SHEEP, new EntityType("Sheep", typeof(Sheep), 91) },
+    { EntityTypes.COW, new EntityType("Cow", typeof(Cow), 92) },
+    { EntityTypes.CHICKEN, new EntityType("Chicken", typeof(Chicken), 93) },
+    { EntityTypes.SQUID, new EntityType("Squid", typeof(Squid), 94) },
+    { EntityTypes.WOLF, new EntityType("Wolf", typeof(Wolf), 95) },
+    { EntityTypes.MUSHROOM_COW, new EntityType("MushroomCow", typeof(MushroomCow), 96) },
+    { EntityTypes.SNOWMAN, new EntityType("SnowMan", typeof(Snowman), 97) },
+    { EntityTypes.OCELOT, new EntityType("Ozelot", typeof(Ocelot), 98) },
+    { EntityTypes.IRON_GOLEM, new EntityType("VillagerGolem", typeof(IronGolem), 99) },
+    { EntityTypes.HORSE, new EntityType("EntityHorse", typeof(Horse), 100) },
+    { EntityTypes.RABBIT, new EntityType("Rabbit", typeof(Rabbit), 101) },
+    { EntityTypes.VILLAGER, new EntityType("Villager", typeof(Villager), 120) },
+    { EntityTypes.ENDER_CRYSTAL, new EntityType("EnderCrystal", typeof(EnderCrystal), 200) },
     // These don't have an entity ID in nms.EntityTypes.
     /**
      * A flying splash potion
      */
-    SPLASH_POTION(null, SplashPotion.class, -1, false),
+{ EntityTypes.SPLASH_POTION, new EntityType(null, typeof(SplashPotion), -1, false) },
     /**
      * A flying lingering potion
      */
-    LINGERING_POTION(null, LingeringPotion.class, -1, false),
-    AREA_EFFECT_CLOUD(null, AreaEffectCloud.class, -1),
+{ EntityTypes.LINGERING_POTION, new EntityType(null, typeof(LingeringPotion), -1, false) },
+    { EntityTypes.AREA_EFFECT_CLOUD, new EntityType(null, typeof(AreaEffectCloud), -1) },
     /**
      * A flying chicken egg.
      */
-    EGG(null, Egg.class, -1, false),
+{ EntityTypes.EGG, new EntityType(null, typeof(Egg), -1, false) },
     /**
      * A fishing line and bobber.
      */
-    FISHING_HOOK(null, Fish.class, -1, false),
+{ EntityTypes.FISHING_HOOK, new EntityType(null, typeof(Fish), -1, false) },
     /**
      * A bolt of lightning.
      * <p>
      * Spawn with {@link World#strikeLightning(Location)}.
      */
-    LIGHTNING(null, LightningStrike.class, -1, false),
-    WEATHER(null, Weather.class, -1, false),
-    PLAYER(null, Player.class, -1, false),
-    COMPLEX_PART(null, ComplexEntityPart.class, -1, false),
+{ EntityTypes.LIGHTNING, new EntityType(null, typeof(LightningStrike), -1, false) },
+    { EntityTypes.WEATHER, new EntityType(null, typeof(Weather), -1, false) },
+    { EntityTypes.PLAYER, new EntityType(null, typeof(Player), -1, false) },
+    { EntityTypes.COMPLEX_PART, new EntityType(null, typeof(ComplexEntityPart), -1, false) },
     /**
      * An unknown entity without an Entity Class
      */
-    UNKNOWN(null, null, -1, false);
+{ EntityTypes.UNKNOWN, new EntityType(null, null, -1, false) }
+            };
 
     private String name;
-    private Class<? : Entity> clazz;
+    private Type clazz; //Entity
     private short typeId;
     private bool independent, living;
 
     private static readonly Dictionary<String, EntityType> NAME_MAP = new Dictionary<String, EntityType>();
-    private static readonly Dictionary<Short, EntityType> ID_MAP = new Dictionary<Short, EntityType>();
+    private static readonly Dictionary<short, EntityType> ID_MAP = new Dictionary<short, EntityType>();
 
-    static {
-        foreach (EntityType type  in  values()) {
-            if (type.name != null) {
-                NAME_MAP.Add(type.name.ToLower(), type);
-            }
-            if (type.typeId > 0) {
-                ID_MAP.Add(type.typeId, type);
-            }
+        private EntityType(String name, Type clazz, int typeId) : this(name, clazz, typeId, true)
+        {
         }
-    }
 
-    private EntityType(String name, Class<? : Entity> clazz, int typeId) {
-        this(name, clazz, typeId, true);
-    }
-
-    private EntityType(String name, Class<? : Entity> clazz, int typeId, bool independent) {
+    private EntityType(String name, Type clazz, int typeId, bool independent) {
         this.name = name;
         this.clazz = clazz;
         this.typeId = (short) typeId;
         this.independent = independent;
         if (clazz != null) {
-            this.living = LivingEntity.class.isAssignableFrom(clazz);
+            this.living = typeof(LivingEntity).IsAssignableFrom(clazz);
         }
     }
 
@@ -246,7 +426,7 @@ public enum EntityType {
         return name;
     }
 
-    public Class<? : Entity> getEntityClass() {
+    public Type getEntityClass() {
         return clazz;
     }
 
@@ -271,7 +451,7 @@ public enum EntityType {
         if (name == null) {
             return null;
         }
-        return NAME_MAP[name.ToLower(]);
+        return NAME_MAP[name.ToLower()];
     }
 
     /**
@@ -282,10 +462,10 @@ public enum EntityType {
      */
     [Obsolete]
     public static EntityType fromId(int id) {
-        if (id > Short.MAX_VALUE) {
+        if (id > short.MaxValue) {
             return null;
         }
-        return ID_MAP[(short] id);
+        return ID_MAP[(short) id];
     }
 
     /**
@@ -303,4 +483,5 @@ public enum EntityType {
     public bool isAlive() {
         return living;
     }
+}
 }

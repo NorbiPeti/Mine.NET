@@ -1,21 +1,23 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a Pig.
- */
-public interface Pig : Animals, Vehicle {
-
+namespace Mine.NET.entity
+{
     /**
-     * Check if the pig has a saddle.
-     *
-     * @return if the pig has been saddled.
+     * Represents a Pig.
      */
-    public bool hasSaddle();
+    public interface Pig : Animals, Vehicle
+    {
 
-    /**
-     * Sets if the pig has a saddle or not
-     *
-     * @param saddled set if the pig has a saddle or not.
-     */
-    public void setSaddle(bool saddled);
+        /**
+         * Check if the pig has a saddle.
+         *
+         * @return if the pig has been saddled.
+         */
+        bool hasSaddle();
+
+        /**
+         * Sets if the pig has a saddle or not
+         *
+         * @param saddled set if the pig has a saddle or not.
+         */
+        void setSaddle(bool saddled);
+    }
 }

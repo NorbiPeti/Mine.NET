@@ -1,6 +1,7 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a Ghast.
- */
-public interface Ghast : Flying {}
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a Ghast.
+     */
+    public interface Ghast : Flying { }
+}

@@ -1,3 +1,4 @@
-namespace Mine.NET.entity;
-
-public interface DragonFireball : Fireball {}
+namespace Mine.NET.entity
+{
+    public interface DragonFireball : Fireball { }
+}

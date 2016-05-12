@@ -1,277 +1,279 @@
-namespace Mine.NET.entity;
+using Mine.NET.inventory;
+using Mine.NET.util;
 
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.util.EulerAngle;
+namespace Mine.NET.entity
+{
+    public interface ArmorStand : LivingEntity
+    {
 
-public interface ArmorStand : LivingEntity {
+        /**
+         * Returns the item the armor stand is
+         * currently holding
+         *
+         * @return the held item
+         */
+        ItemStack getItemInHand();
 
-    /**
-     * Returns the item the armor stand is
-     * currently holding
-     *
-     * @return the held item
-     */
-    ItemStack getItemInHand();
+        /**
+         * Sets the item the armor stand is currently
+         * holding
+         *
+         * @param item the item to hold
+         */
+        void setItemInHand(ItemStack item);
 
-    /**
-     * Sets the item the armor stand is currently
-     * holding
-     *
-     * @param item the item to hold
-     */
-    void setItemInHand(ItemStack item);
+        /**
+         * Returns the item currently being worn
+         * by the armor stand on its feet
+         *
+         * @return the worn item
+         */
+        ItemStack getBoots();
 
-    /**
-     * Returns the item currently being worn
-     * by the armor stand on its feet
-     *
-     * @return the worn item
-     */
-    ItemStack getBoots();
+        /**
+         * Sets the item currently being worn
+         * by the armor stand on its feet
+         *
+         * @param item the item to wear
+         */
+        void setBoots(ItemStack item);
 
-    /**
-     * Sets the item currently being worn
-     * by the armor stand on its feet
-     *
-     * @param item the item to wear
-     */
-    void setBoots(ItemStack item);
+        /**
+         * Returns the item currently being worn
+         * by the armor stand on its legs
+         *
+         * @return the worn item
+         */
+        ItemStack getLeggings();
 
-    /**
-     * Returns the item currently being worn
-     * by the armor stand on its legs
-     *
-     * @return the worn item
-     */
-    ItemStack getLeggings();
+        /**
+         * Sets the item currently being worn
+         * by the armor stand on its legs
+         *
+         * @param item the item to wear
+         */
+        void setLeggings(ItemStack item);
 
-    /**
-     * Sets the item currently being worn
-     * by the armor stand on its legs
-     *
-     * @param item the item to wear
-     */
-    void setLeggings(ItemStack item);
+        /**
+         * Returns the item currently being worn
+         * by the armor stand on its chest
+         *
+         * @return the worn item
+         */
+        ItemStack getChestplate();
 
-    /**
-     * Returns the item currently being worn
-     * by the armor stand on its chest
-     *
-     * @return the worn item
-     */
-    ItemStack getChestplate();
+        /**
+         * Sets the item currently being worn
+         * by the armor stand on its chest
+         *
+         * @param item the item to wear
+         */
+        void setChestplate(ItemStack item);
 
-    /**
-     * Sets the item currently being worn
-     * by the armor stand on its chest
-     *
-     * @param item the item to wear
-     */
-    void setChestplate(ItemStack item);
+        /**
+         * Returns the item currently being worn
+         * by the armor stand on its head
+         *
+         * @return the worn item
+         */
+        ItemStack getHelmet();
 
-    /**
-     * Returns the item currently being worn
-     * by the armor stand on its head
-     *
-     * @return the worn item
-     */
-    ItemStack getHelmet();
+        /**
+         * Sets the item currently being worn
+         * by the armor stand on its head
+         *
+         * @param item the item to wear
+         */
+        void setHelmet(ItemStack item);
 
-    /**
-     * Sets the item currently being worn
-     * by the armor stand on its head
-     *
-     * @param item the item to wear
-     */
-    void setHelmet(ItemStack item);
+        /**
+         * Returns the armor stand's body's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getBodyPose();
 
-    /**
-     * Returns the armor stand's body's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getBodyPose();
+        /**
+         * Sets the armor stand's body's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setBodyPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's body's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setBodyPose(EulerAngle pose);
+        /**
+         * Returns the armor stand's left arm's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getLeftArmPose();
 
-    /**
-     * Returns the armor stand's left arm's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getLeftArmPose();
+        /**
+         * Sets the armor stand's left arm's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setLeftArmPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's left arm's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setLeftArmPose(EulerAngle pose);
+        /**
+         * Returns the armor stand's right arm's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getRightArmPose();
 
-    /**
-     * Returns the armor stand's right arm's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getRightArmPose();
+        /**
+         * Sets the armor stand's right arm's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setRightArmPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's right arm's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setRightArmPose(EulerAngle pose);
+        /**
+         * Returns the armor stand's left leg's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getLeftLegPose();
 
-    /**
-     * Returns the armor stand's left leg's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getLeftLegPose();
+        /**
+         * Sets the armor stand's left leg's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setLeftLegPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's left leg's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setLeftLegPose(EulerAngle pose);
+        /**
+         * Returns the armor stand's right leg's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getRightLegPose();
 
-    /**
-     * Returns the armor stand's right leg's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getRightLegPose();
+        /**
+         * Sets the armor stand's right leg's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setRightLegPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's right leg's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setRightLegPose(EulerAngle pose);
+        /**
+         * Returns the armor stand's head's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @return the current pose
+         */
+        EulerAngle getHeadPose();
 
-    /**
-     * Returns the armor stand's head's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @return the current pose
-     */
-    EulerAngle getHeadPose();
+        /**
+         * Sets the armor stand's head's
+         * current pose as a {@link org.bukkit.util.EulerAngle}
+         *
+         * @param pose the current pose
+         */
+        void setHeadPose(EulerAngle pose);
 
-    /**
-     * Sets the armor stand's head's
-     * current pose as a {@link org.bukkit.util.EulerAngle}
-     *
-     * @param pose the current pose
-     */
-    void setHeadPose(EulerAngle pose);
+        /**
+         * Returns whether the armor stand has
+         * a base plate
+         *
+         * @return whether it has a base plate
+         */
+        bool hasBasePlate();
 
-    /**
-     * Returns whether the armor stand has
-     * a base plate
-     *
-     * @return whether it has a base plate
-     */
-    bool hasBasePlate();
+        /**
+         * Sets whether the armor stand has a
+         * base plate
+         *
+         * @param basePlate whether is has a base plate
+         */
+        void setBasePlate(bool basePlate);
 
-    /**
-     * Sets whether the armor stand has a
-     * base plate
-     *
-     * @param basePlate whether is has a base plate
-     */
-    void setBasePlate(bool basePlate);
+        /**
+         * Returns whether gravity applies to
+         * this armor stand
+         *
+         * @return whether gravity applies
+         */
+        bool hasGravity();
 
-    /**
-     * Returns whether gravity applies to
-     * this armor stand
-     *
-     * @return whether gravity applies
-     */
-    bool hasGravity();
+        /**
+         * Sets whether gravity applies to
+         * this armor stand
+         *
+         * @param gravity whether gravity should apply
+         */
+        void setGravity(bool gravity);
 
-    /**
-     * Sets whether gravity applies to
-     * this armor stand
-     *
-     * @param gravity whether gravity should apply
-     */
-    void setGravity(bool gravity);
+        /**
+         * Returns whether the armor stand should be
+         * visible or not
+         *
+         * @return whether the stand is visible or not
+         */
+        bool isVisible();
 
-    /**
-     * Returns whether the armor stand should be
-     * visible or not
-     *
-     * @return whether the stand is visible or not
-     */
-    bool isVisible();
+        /**
+         * Sets whether the armor stand should be
+         * visible or not
+         *
+         * @param visible whether the stand is visible or not
+         */
+        void setVisible(bool visible);
 
-    /**
-     * Sets whether the armor stand should be
-     * visible or not
-     *
-     * @param visible whether the stand is visible or not
-     */
-    void setVisible(bool visible);
+        /**
+         * Returns whether this armor stand has arms
+         *
+         * @return whether this has arms or not
+         */
+        bool hasArms();
 
-    /**
-     * Returns whether this armor stand has arms
-     *
-     * @return whether this has arms or not
-     */
-    bool hasArms();
+        /**
+         * Sets whether this armor stand has arms
+         *
+         * @param arms whether this has arms or not
+         */
+        void setArms(bool arms);
 
-    /**
-     * Sets whether this armor stand has arms
-     *
-     * @param arms whether this has arms or not
-     */
-    void setArms(bool arms);
+        /**
+         * Returns whether this armor stand is scaled
+         * down
+         *
+         * @return whether this is scaled down
+         */
+        bool isSmall();
 
-    /**
-     * Returns whether this armor stand is scaled
-     * down
-     *
-     * @return whether this is scaled down
-     */
-    bool isSmall();
+        /**
+         * Sets whether this armor stand is scaled
+         * down
+         *
+         * @param small whether this is scaled down
+         */
+        void setSmall(bool small);
 
-    /**
-     * Sets whether this armor stand is scaled
-     * down
-     *
-     * @param small whether this is scaled down
-     */
-    void setSmall(bool small);
+        /**
+         * Returns whether this armor stand is a marker,
+         * meaning it has a very small collision box
+         *
+         * @return whether this is a marker
+         */
+        bool isMarker();
 
-    /**
-     * Returns whether this armor stand is a marker,
-     * meaning it has a very small collision box
-     *
-     * @return whether this is a marker
-     */
-    bool isMarker();
-
-    /**
-     * Sets whether this armor stand is a marker,
-     * meaning it has a very small collision box
-     *
-     * @param marker whether this is a marker
-     */
-    void setMarker(bool marker);
+        /**
+         * Sets whether this armor stand is a marker,
+         * meaning it has a very small collision box
+         *
+         * @param marker whether this is a marker
+         */
+        void setMarker(bool marker);
+    }
 }

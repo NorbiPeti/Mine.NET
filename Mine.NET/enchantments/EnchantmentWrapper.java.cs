@@ -1,45 +1,55 @@
-namespace Mine.NET.enchantments;
+using Mine.NET.inventory;
+using System;
 
-import org.bukkit.inventory.ItemStack;
-
-/**
- * A simple wrapper for ease of selecting {@link Enchantment}s
- */
-public class EnchantmentWrapper : Enchantment {
-    public EnchantmentWrapper(int id) {
-        base(id);
-    }
-
+namespace Mine.NET.enchantments
+{
     /**
-     * Gets the enchantment bound to this wrapper
-     *
-     * @return Enchantment
+     * A simple wrapper for ease of selecting {@link Enchantment}s
      */
-    public Enchantment getEnchantment() {
-        return Enchantment.getById(getId());
-    }
+    public class EnchantmentWrapper : Enchantment
+    {
+        public EnchantmentWrapper(int id) : base(id)
+        {
+        }
 
-    public override int getMaxLevel() {
-        return getEnchantment().getMaxLevel();
-    }
+        /**
+         * Gets the enchantment bound to this wrapper
+         *
+         * @return Enchantment
+         */
+        public Enchantment getEnchantment()
+        {
+            return Enchantment.getById(getId());
+        }
 
-    public override int getStartLevel() {
-        return getEnchantment().getStartLevel();
-    }
+        public override int getMaxLevel()
+        {
+            return getEnchantment().getMaxLevel();
+        }
 
-    public override EnchantmentTarget getItemTarget() {
-        return getEnchantment().getItemTarget();
-    }
+        public override int getStartLevel()
+        {
+            return getEnchantment().getStartLevel();
+        }
 
-    public override bool canEnchantItem(ItemStack item) {
-        return getEnchantment().canEnchantItem(item);
-    }
+        public override EnchantmentTarget getItemTarget()
+        {
+            return getEnchantment().getItemTarget();
+        }
 
-    public override String getName() {
-        return getEnchantment().getName();
-    }
+        public override bool canEnchantItem(ItemStack item)
+        {
+            return getEnchantment().canEnchantItem(item);
+        }
 
-    public override bool conflictsWith(Enchantment other) {
-        return getEnchantment().conflictsWith(other);
+        public override String getName()
+        {
+            return getEnchantment().getName();
+        }
+
+        public override bool conflictsWith(Enchantment other)
+        {
+            return getEnchantment().conflictsWith(other);
+        }
     }
 }

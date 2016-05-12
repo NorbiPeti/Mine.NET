@@ -1,8 +1,10 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * A mechanical creature that may harm enemies.
+     */
+    public interface Golem : Creature
+    {
 
-/**
- * A mechanical creature that may harm enemies.
- */
-public interface Golem : Creature {
-    
+    }
 }

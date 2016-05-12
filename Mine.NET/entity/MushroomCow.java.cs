@@ -1,8 +1,10 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a mushroom {@link Cow}
+     */
+    public interface MushroomCow : Cow
+    {
 
-/**
- * Represents a mushroom {@link Cow}
- */
-public interface MushroomCow : Cow {
-
+    }
 }

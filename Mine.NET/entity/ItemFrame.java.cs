@@ -1,39 +1,40 @@
-namespace Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.Rotation;
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Represents an Item Frame
- */
-public interface ItemFrame : Hanging {
-
+namespace Mine.NET.entity
+{
     /**
-     * Get the item in this frame
-     *
-     * @return a defensive copy the item in this item frame
+     * Represents an Item Frame
      */
-    public ItemStack getItem();
+    public interface ItemFrame : Hanging
+    {
 
-    /**
-     * Set the item in this frame
-     *
-     * @param item the new item
-     */
-    public void setItem(ItemStack item);
+        /**
+         * Get the item in this frame
+         *
+         * @return a defensive copy the item in this item frame
+         */
+        ItemStack getItem();
 
-    /**
-     * Get the rotation of the frame's item
-     *
-     * @return the direction
-     */
-    public Rotation getRotation();
+        /**
+         * Set the item in this frame
+         *
+         * @param item the new item
+         */
+        void setItem(ItemStack item);
 
-    /**
-     * Set the rotation of the frame's item
-     *
-     * @param rotation the new rotation
-     * @throws ArgumentException if rotation is null
-     */
-    public void setRotation(Rotation rotation);
+        /**
+         * Get the rotation of the frame's item
+         *
+         * @return the direction
+         */
+        Rotation getRotation();
+
+        /**
+         * Set the rotation of the frame's item
+         *
+         * @param rotation the new rotation
+         * @throws ArgumentException if rotation is null
+         */
+        void setRotation(Rotation rotation);
+    }
 }

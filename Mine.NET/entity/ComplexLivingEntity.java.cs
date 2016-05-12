@@ -1,16 +1,18 @@
-namespace Mine.NET.entity;
+using System.Collections.Generic;
 
-import java.util.Set;
-
-/**
- * Represents a complex living entity - one that is made up of various smaller
- * parts
- */
-public interface ComplexLivingEntity : LivingEntity {
+namespace Mine.NET.entity
+{
     /**
-     * Gets a list of parts that belong to this complex entity
-     *
-     * @return List of parts
+     * Represents a complex living entity - one that is made up of various smaller
+     * parts
      */
-    public HashSet<ComplexEntityPart> getParts();
+    public interface ComplexLivingEntity : LivingEntity
+    {
+        /**
+         * Gets a list of parts that belong to this complex entity
+         *
+         * @return List of parts
+         */
+        HashSet<ComplexEntityPart> getParts();
+    }
 }

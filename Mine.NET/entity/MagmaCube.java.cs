@@ -1,7 +1,9 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a MagmaCube.
- */
-public interface MagmaCube : Slime {
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a MagmaCube.
+     */
+    public interface MagmaCube : Slime
+    {
+    }
 }

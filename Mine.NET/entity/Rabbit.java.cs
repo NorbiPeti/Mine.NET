@@ -1,21 +1,24 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    public interface Rabbit : Animals
+    {
 
-public interface Rabbit : Animals {
+        /**
+         * @return The type of rabbit.
+         */
+        RabbitType getRabbitType();
 
-    /**
-     * @return The type of rabbit.
-     */
-    public Type getRabbitType();
-
-    /**
-     * @param type Sets the type of rabbit for this entity.
-     */
-    public void setRabbitType(Type type);
+        /**
+         * @param type Sets the type of rabbit for this entity.
+         */
+        void setRabbitType(RabbitType type);
+    }
 
     /**
      * Represents the various types a Rabbit might be.
      */
-    public enum RabbitType {
+    public enum RabbitType
+    {
 
         /**
          * Chocolate colored rabbit.

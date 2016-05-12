@@ -1,60 +1,41 @@
-namespace Mine.NET.entity;
+using Mine.NET.projectiles;
 
-import org.bukkit.projectiles.ProjectileSource;
-
-/**
- * Represents a shootable entity.
- */
-public interface Projectile : Entity {
-
+namespace Mine.NET.entity
+{
     /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     *
-     * @return the {@link LivingEntity} that shot this projectile
+     * Represents a shootable entity.
      */
-    [Obsolete]
-    public LivingEntity _INVALID_getShooter();
+    public interface Projectile : Entity
+    {
+        /**
+         * Retrieve the shooter of this projectile.
+         *
+         * @return the {@link ProjectileSource} that shot this projectile
+         */
+        ProjectileSource getShooter();
+        
+        /**
+         * Set the shooter of this projectile.
+         *
+         * @param source the {@link ProjectileSource} that shot this projectile
+         */
+        void setShooter(ProjectileSource source);
 
-    /**
-     * Retrieve the shooter of this projectile.
-     *
-     * @return the {@link ProjectileSource} that shot this projectile
-     */
-    public ProjectileSource getShooter();
+        /**
+         * Determine if this projectile should bounce or not when it hits.
+         * <p>
+         * If a small fireball does not bounce it will set the target on fire.
+         *
+         * @return true if it should bounce.
+         */
+        bool doesBounce();
 
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     *
-     * @param shooter the {@link LivingEntity} that shot this projectile
-     */
-    [Obsolete]
-    public void _INVALID_setShooter(LivingEntity shooter);
-
-    /**
-     * Set the shooter of this projectile.
-     *
-     * @param source the {@link ProjectileSource} that shot this projectile
-     */
-    public void setShooter(ProjectileSource source);
-
-    /**
-     * Determine if this projectile should bounce or not when it hits.
-     * <p>
-     * If a small fireball does not bounce it will set the target on fire.
-     *
-     * @return true if it should bounce.
-     */
-    public bool doesBounce();
-
-    /**
-     * Set whether or not this projectile should bounce or not when it hits
-     * something.
-     *
-     * @param doesBounce whether or not it should bounce.
-     */
-    public void setBounce(bool doesBounce);
+        /**
+         * Set whether or not this projectile should bounce or not when it hits
+         * something.
+         *
+         * @param doesBounce whether or not it should bounce.
+         */
+        void setBounce(bool doesBounce);
+    }
 }

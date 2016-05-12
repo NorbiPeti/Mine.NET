@@ -1,8 +1,10 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a Blaze monster
+     */
+    public interface Blaze : Monster
+    {
 
-/**
- * Represents a Blaze monster
- */
-public interface Blaze : Monster {
-
+    }
 }

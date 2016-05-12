@@ -1,6 +1,7 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a Silverfish.
- */
-public interface Silverfish : Monster {}
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a Silverfish.
+     */
+    public interface Silverfish : Monster { }
+}

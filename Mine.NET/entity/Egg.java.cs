@@ -1,6 +1,7 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a thrown egg.
- */
-public interface Egg : Projectile {}
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a thrown egg.
+     */
+    public interface Egg : Projectile { }
+}

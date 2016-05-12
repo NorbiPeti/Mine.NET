@@ -1,24 +1,25 @@
-namespace Mine.NET.entity;
+using Mine.NET.util;
 
-import org.bukkit.util.Vector;
-
-/**
- * Represents a Fireball.
- */
-public interface Fireball : Projectile, Explosive {
-
+namespace Mine.NET.entity
+{
     /**
-     * Fireballs fly straight and do not take setVelocity(...) well.
-     *
-     * @param direction the direction this fireball is flying toward
+     * Represents a Fireball.
      */
-    public void setDirection(Vector direction);
+    public interface Fireball : Projectile, Explosive
+    {
 
-    /**
-     * Retrieve the direction this fireball is heading toward
-     *
-     * @return the direction
-     */
-    public Vector getDirection();
+        /**
+         * Fireballs fly straight and do not take setVelocity(...) well.
+         *
+         * @param direction the direction this fireball is flying toward
+         */
+        void setDirection(Vector direction);
 
+        /**
+         * Retrieve the direction this fireball is heading toward
+         *
+         * @return the direction
+         */
+        Vector getDirection();
+    }
 }

@@ -1,376 +1,370 @@
-namespace Mine.NET.entity;
+using Mine.NET.command;
+using Mine.NET.metadata;
+using Mine.NET.util;
+using System;
+using System.Collections.Generic;
 
-import org.bukkit.Location;
-import org.bukkit.EntityEffect;
-import org.bukkit.Server;
-import org.bukkit.World;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.metadata.Metadatable;
-import org.bukkit.util.Vector;
-
-import java.util.List;
-import java.util.Guid;
-import org.bukkit.command.CommandSender;
-import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
-
-/**
- * Represents a base entity in the world
- */
-public interface Entity : Metadatable, CommandSender {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets the entity's current position
-     *
-     * @return a new copy of Location containing the position of this entity
+     * Represents a base entity in the world
      */
-    public Location getLocation();
+    public interface Entity : Metadatable, CommandSender
+    {
 
-    /**
-     * Stores the entity's current position in the provided Location object.
-     * <p>
-     * If the provided Location is null this method does nothing and returns
-     * null.
-     *
-     * @param loc the location to copy into
-     * @return The Location object provided or null
-     */
-    public Location getLocation(Location loc);
+        /**
+         * Gets the entity's current position
+         *
+         * @return a new copy of Location containing the position of this entity
+         */
+        Location getLocation();
 
-    /**
-     * Sets this entity's velocity
-     *
-     * @param velocity New velocity to travel with
-     */
-    public void setVelocity(Vector velocity);
+        /**
+         * Stores the entity's current position in the provided Location object.
+         * <p>
+         * If the provided Location is null this method does nothing and returns
+         * null.
+         *
+         * @param loc the location to copy into
+         * @return The Location object provided or null
+         */
+        Location getLocation(Location loc);
 
-    /**
-     * Gets this entity's current velocity
-     *
-     * @return Current travelling velocity of this entity
-     */
-    public Vector getVelocity();
+        /**
+         * Sets this entity's velocity
+         *
+         * @param velocity New velocity to travel with
+         */
+        void setVelocity(Vector velocity);
 
-    /**
-     * Returns true if the entity is supported by a block. This value is a
-     * state updated by the server and is not recalculated unless the entity
-     * moves.
-     *
-     * @return True if entity is on ground.
-     */
-    public bool isOnGround();
+        /**
+         * Gets this entity's current velocity
+         *
+         * @return Current travelling velocity of this entity
+         */
+        Vector getVelocity();
 
-    /**
-     * Gets the current world this entity resides in
-     *
-     * @return World
-     */
-    public World getWorld();
+        /**
+         * Returns true if the entity is supported by a block. This value is a
+         * state updated by the server and is not recalculated unless the entity
+         * moves.
+         *
+         * @return True if entity is on ground.
+         */
+        bool isOnGround();
 
-    /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
-     *
-     * @param location New location to teleport this entity to
-     * @return <code>true</code> if the teleport was successful
-     */
-    public bool teleport(Location location);
+        /**
+         * Gets the current world this entity resides in
+         *
+         * @return World
+         */
+        World getWorld();
 
-    /**
-     * Teleports this entity to the given location. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
-     *
-     * @param location New location to teleport this entity to
-     * @param cause The cause of this teleportation
-     * @return <code>true</code> if the teleport was successful
-     */
-    public bool teleport(Location location, TeleportCause cause);
+        /**
+         * Teleports this entity to the given location. If this entity is riding a
+         * vehicle, it will be dismounted prior to teleportation.
+         *
+         * @param location New location to teleport this entity to
+         * @return <code>true</code> if the teleport was successful
+         */
+        bool teleport(Location location);
 
-    /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
-     *
-     * @param destination Entity to teleport this entity to
-     * @return <code>true</code> if the teleport was successful
-     */
-    public bool teleport(Entity destination);
+        /**
+         * Teleports this entity to the given location. If this entity is riding a
+         * vehicle, it will be dismounted prior to teleportation.
+         *
+         * @param location New location to teleport this entity to
+         * @param cause The cause of this teleportation
+         * @return <code>true</code> if the teleport was successful
+         */
+        bool teleport(Location location, TeleportCause cause);
 
-    /**
-     * Teleports this entity to the target Entity. If this entity is riding a
-     * vehicle, it will be dismounted prior to teleportation.
-     *
-     * @param destination Entity to teleport this entity to
-     * @param cause The cause of this teleportation
-     * @return <code>true</code> if the teleport was successful
-     */
-    public bool teleport(Entity destination, TeleportCause cause);
+        /**
+         * Teleports this entity to the target Entity. If this entity is riding a
+         * vehicle, it will be dismounted prior to teleportation.
+         *
+         * @param destination Entity to teleport this entity to
+         * @return <code>true</code> if the teleport was successful
+         */
+        bool teleport(Entity destination);
 
-    /**
-     * Returns a list of entities within a bounding box centered around this
-     * entity
-     *
-     * @param x 1/2 the size of the box along x axis
-     * @param y 1/2 the size of the box along y axis
-     * @param z 1/2 the size of the box along z axis
-     * @return {@code List<Entity>} List of entities nearby
-     */
-    public List<org.bukkit.entity.Entity> getNearbyEntities(double x, double y, double z);
+        /**
+         * Teleports this entity to the target Entity. If this entity is riding a
+         * vehicle, it will be dismounted prior to teleportation.
+         *
+         * @param destination Entity to teleport this entity to
+         * @param cause The cause of this teleportation
+         * @return <code>true</code> if the teleport was successful
+         */
+        bool teleport(Entity destination, TeleportCause cause);
 
-    /**
-     * Returns a unique id for this entity
-     *
-     * @return Entity id
-     */
-    public int getEntityId();
+        /**
+         * Returns a list of entities within a bounding box centered around this
+         * entity
+         *
+         * @param x 1/2 the size of the box along x axis
+         * @param y 1/2 the size of the box along y axis
+         * @param z 1/2 the size of the box along z axis
+         * @return {@code List<Entity>} List of entities nearby
+         */
+        List<Entity> getNearbyEntities(double x, double y, double z);
 
-    /**
-     * Returns the entity's current fire ticks (ticks before the entity stops
-     * being on fire).
-     *
-     * @return int fireTicks
-     */
-    public int getFireTicks();
+        /**
+         * Returns a unique id for this entity
+         *
+         * @return Entity id
+         */
+        int getEntityId();
 
-    /**
-     * Returns the entity's maximum fire ticks.
-     *
-     * @return int maxFireTicks
-     */
-    public int getMaxFireTicks();
+        /**
+         * Returns the entity's current fire ticks (ticks before the entity stops
+         * being on fire).
+         *
+         * @return int fireTicks
+         */
+        int getFireTicks();
 
-    /**
-     * Sets the entity's current fire ticks (ticks before the entity stops
-     * being on fire).
-     *
-     * @param ticks Current ticks remaining
-     */
-    public void setFireTicks(int ticks);
+        /**
+         * Returns the entity's maximum fire ticks.
+         *
+         * @return int maxFireTicks
+         */
+        int getMaxFireTicks();
 
-    /**
-     * Mark the entity's removal.
-     */
-    public void remove();
+        /**
+         * Sets the entity's current fire ticks (ticks before the entity stops
+         * being on fire).
+         *
+         * @param ticks Current ticks remaining
+         */
+        void setFireTicks(int ticks);
 
-    /**
-     * Returns true if this entity has been marked for removal.
-     *
-     * @return True if it is dead.
-     */
-    public bool isDead();
+        /**
+         * Mark the entity's removal.
+         */
+        void remove();
 
-    /**
-     * Returns false if the entity has died or been despawned for some other
-     * reason.
-     *
-     * @return True if valid.
-     */
-    public bool isValid();
+        /**
+         * Returns true if this entity has been marked for removal.
+         *
+         * @return True if it is dead.
+         */
+        bool isDead();
 
-    /**
-     * Gets the {@link Server} that contains this Entity
-     *
-     * @return Server instance running this Entity
-     */
-    public Server getServer();
+        /**
+         * Returns false if the entity has died or been despawned for some other
+         * reason.
+         *
+         * @return True if valid.
+         */
+        bool isValid();
 
-    /**
-     * Gets the primary passenger of a vehicle. For vehicles that could have
-     * multiple passengers, this will only return the primary passenger.
-     *
-     * @return an entity
-     */
-    public abstract Entity getPassenger();
+        /**
+         * Gets the {@link Server} that contains this Entity
+         *
+         * @return Server instance running this Entity
+         */
 
-    /**
-     * Set the passenger of a vehicle.
-     *
-     * @param passenger The new passenger.
-     * @return false if it could not be done for whatever reason
-     */
-    public abstract bool setPassenger(Entity passenger);
+        /**
+         * Gets the primary passenger of a vehicle. For vehicles that could have
+         * multiple passengers, this will only return the primary passenger.
+         *
+         * @return an entity
+         */
+        Entity getPassenger();
 
-    /**
-     * Check if a vehicle has passengers.
-     *
-     * @return True if the vehicle has no passengers.
-     */
-    public abstract bool isEmpty();
+        /**
+         * Set the passenger of a vehicle.
+         *
+         * @param passenger The new passenger.
+         * @return false if it could not be done for whatever reason
+         */
+        bool setPassenger(Entity passenger);
 
-    /**
-     * Eject any passenger.
-     *
-     * @return True if there was a passenger.
-     */
-    public abstract bool eject();
+        /**
+         * Check if a vehicle has passengers.
+         *
+         * @return True if the vehicle has no passengers.
+         */
+        bool isEmpty();
 
-    /**
-     * Returns the distance this entity has fallen
-     *
-     * @return The distance.
-     */
-    public float getFallDistance();
+        /**
+         * Eject any passenger.
+         *
+         * @return True if there was a passenger.
+         */
+        bool eject();
 
-    /**
-     * Sets the fall distance for this entity
-     *
-     * @param distance The new distance.
-     */
-    public void setFallDistance(float distance);
+        /**
+         * Returns the distance this entity has fallen
+         *
+         * @return The distance.
+         */
+        float getFallDistance();
 
-    /**
-     * Record the last {@link EntityDamageEvent} inflicted on this entity
-     *
-     * @param event a {@link EntityDamageEvent}
-     */
-    public void setLastDamageCause(EntityDamageEvent event);
+        /**
+         * Sets the fall distance for this entity
+         *
+         * @param distance The new distance.
+         */
+        void setFallDistance(float distance);
 
-    /**
-     * Retrieve the last {@link EntityDamageEvent} inflicted on this entity.
-     * This event may have been cancelled.
-     *
-     * @return the last known {@link EntityDamageEvent} or null if hitherto
-     *     unharmed
-     */
-    public EntityDamageEvent getLastDamageCause();
+        /**
+         * Record the last {@link EntityDamageEvent} inflicted on this entity
+         *
+         * @param event a {@link EntityDamageEvent}
+         */
+        void setLastDamageCause(EntityDamageEvent event_);
 
-    /**
-     * Returns a unique and persistent id for this entity
-     *
-     * @return unique id
-     */
-    public Guid getUniqueId();
+        /**
+         * Retrieve the last {@link EntityDamageEvent} inflicted on this entity.
+         * This event may have been cancelled.
+         *
+         * @return the last known {@link EntityDamageEvent} or null if hitherto
+         *     unharmed
+         */
+        EntityDamageEvent getLastDamageCause();
 
-    /**
-     * Gets the amount of ticks this entity has lived for.
-     * <p>
-     * This is the equivalent to "age" in entities.
-     *
-     * @return Age of entity
-     */
-    public int getTicksLived();
+        /**
+         * Returns a unique and persistent id for this entity
+         *
+         * @return unique id
+         */
+        Guid getUniqueId();
 
-    /**
-     * Sets the amount of ticks this entity has lived for.
-     * <p>
-     * This is the equivalent to "age" in entities. May not be less than one
-     * tick.
-     *
-     * @param value Age of entity
-     */
-    public void setTicksLived(int value);
+        /**
+         * Gets the amount of ticks this entity has lived for.
+         * <p>
+         * This is the equivalent to "age" in entities.
+         *
+         * @return Age of entity
+         */
+        int getTicksLived();
 
-    /**
-     * Performs the specified {@link EntityEffect} for this entity.
-     * <p>
-     * This will be viewable to all players near the entity.
-     *
-     * @param type Effect to play.
-     */
-    public void playEffect(EntityEffect type);
+        /**
+         * Sets the amount of ticks this entity has lived for.
+         * <p>
+         * This is the equivalent to "age" in entities. May not be less than one
+         * tick.
+         *
+         * @param value Age of entity
+         */
+        void setTicksLived(int value);
 
-    /**
-     * Get the type of the entity.
-     *
-     * @return The entity type.
-     */
-    public EntityType getType();
+        /**
+         * Performs the specified {@link EntityEffect} for this entity.
+         * <p>
+         * This will be viewable to all players near the entity.
+         *
+         * @param type Effect to play.
+         */
+        void playEffect(EntityEffect type);
 
-    /**
-     * Returns whether this entity is inside a vehicle.
-     *
-     * @return True if the entity is in a vehicle.
-     */
-    public bool isInsideVehicle();
+        /**
+         * Get the type of the entity.
+         *
+         * @return The entity type.
+         */
+        EntityType getType();
 
-    /**
-     * Leave the current vehicle. If the entity is currently in a vehicle (and
-     * is removed from it), true will be returned, otherwise false will be
-     * returned.
-     *
-     * @return True if the entity was in a vehicle.
-     */
-    public bool leaveVehicle();
+        /**
+         * Returns whether this entity is inside a vehicle.
+         *
+         * @return True if the entity is in a vehicle.
+         */
+        bool isInsideVehicle();
 
-    /**
-     * Get the vehicle that this player is inside. If there is no vehicle,
-     * null will be returned.
-     *
-     * @return The current vehicle.
-     */
-    public Entity getVehicle();
+        /**
+         * Leave the current vehicle. If the entity is currently in a vehicle (and
+         * is removed from it), true will be returned, otherwise false will be
+         * returned.
+         *
+         * @return True if the entity was in a vehicle.
+         */
+        bool leaveVehicle();
 
-    /**
-     * Sets a custom name on a mob. This name will be used in death messages
-     * and can be sent to the client as a nameplate over the mob.
-     * <p>
-     * Setting the name to null or an empty string will clear it.
-     * <p>
-     * This value has no effect on players, they will always use their real
-     * name.
-     *
-     * @param name the name to set
-     */
-    public void setCustomName(String name);
+        /**
+         * Get the vehicle that this player is inside. If there is no vehicle,
+         * null will be returned.
+         *
+         * @return The current vehicle.
+         */
+        Entity getVehicle();
 
-    /**
-     * Gets the custom name on a mob. If there is no name this method will
-     * return null.
-     * <p>
-     * This value has no effect on players, they will always use their real
-     * name.
-     *
-     * @return name of the mob or null
-     */
-    public String getCustomName();
+        /**
+         * Sets a custom name on a mob. This name will be used in death messages
+         * and can be sent to the client as a nameplate over the mob.
+         * <p>
+         * Setting the name to null or an empty string will clear it.
+         * <p>
+         * This value has no effect on players, they will always use their real
+         * name.
+         *
+         * @param name the name to set
+         */
+        void setCustomName(String name);
 
-    /**
-     * Sets whether or not to display the mob's custom name client side. The
-     * name will be displayed above the mob similarly to a player.
-     * <p>
-     * This value has no effect on players, they will always display their
-     * name.
-     *
-     * @param flag custom name or not
-     */
-    public void setCustomNameVisible(bool flag);
+        /**
+         * Gets the custom name on a mob. If there is no name this method will
+         * return null.
+         * <p>
+         * This value has no effect on players, they will always use their real
+         * name.
+         *
+         * @return name of the mob or null
+         */
+        String getCustomName();
 
-    /**
-     * Gets whether or not the mob's custom name is displayed client side.
-     * <p>
-     * This value has no effect on players, they will always display their
-     * name.
-     *
-     * @return if the custom name is displayed
-     */
-    public bool isCustomNameVisible();
+        /**
+         * Sets whether or not to display the mob's custom name client side. The
+         * name will be displayed above the mob similarly to a player.
+         * <p>
+         * This value has no effect on players, they will always display their
+         * name.
+         *
+         * @param flag custom name or not
+         */
+        void setCustomNameVisible(bool flag);
 
-    /**
-     * Sets whether the entity has a team colored (default: white) glow.
-     *
-     * @param flag if the entity is glowing
-     */
-    void setGlowing(bool flag);
+        /**
+         * Gets whether or not the mob's custom name is displayed client side.
+         * <p>
+         * This value has no effect on players, they will always display their
+         * name.
+         *
+         * @return if the custom name is displayed
+         */
+        bool isCustomNameVisible();
 
-    /**
-     * Gets whether the entity is glowing or not.
-     *
-     * @return whether the entity is glowing
-     */
-    bool isGlowing();
+        /**
+         * Sets whether the entity has a team colored (default: white) glow.
+         *
+         * @param flag if the entity is glowing
+         */
+        void setGlowing(bool flag);
 
-    /**
-     * Sets whether the entity is invulnerable or not.
-     * <p>
-     * When an entity is invulnerable it can only be damaged by players in
-     * creative mode.
-     *
-     * @param flag if the entity is invulnerable
-     */
-    public void setInvulnerable(bool flag);
+        /**
+         * Gets whether the entity is glowing or not.
+         *
+         * @return whether the entity is glowing
+         */
+        bool isGlowing();
 
-    /**
-     * Gets whether the entity is invulnerable or not.
-     *
-     * @return whether the entity is
-     */
-    public bool isInvulnerable();
+        /**
+         * Sets whether the entity is invulnerable or not.
+         * <p>
+         * When an entity is invulnerable it can only be damaged by players in
+         * creative mode.
+         *
+         * @param flag if the entity is invulnerable
+         */
+        void setInvulnerable(bool flag);
+
+        /**
+         * Gets whether the entity is invulnerable or not.
+         *
+         * @return whether the entity is
+         */
+        bool isInvulnerable();
+    }
 }

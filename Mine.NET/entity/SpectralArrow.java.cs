@@ -1,22 +1,24 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents a spectral arrow.
- */
-public interface SpectralArrow : Arrow {
-
+namespace Mine.NET.entity
+{
     /**
-     * Returns the amount of time that this arrow will apply
-     * the glowing effect for.
-     * 
-     * @return the glowing effect ticks
+     * Represents a spectral arrow.
      */
-    int getGlowingTicks();
+    public interface SpectralArrow : Arrow
+    {
 
-    /**
-     * Sets the amount of time to apply the glowing effect for.
-     * 
-     * @param duration the glowing effect ticks
-     */
-    void setGlowingTicks(int duration);
+        /**
+         * Returns the amount of time that this arrow will apply
+         * the glowing effect for.
+         * 
+         * @return the glowing effect ticks
+         */
+        int getGlowingTicks();
+
+        /**
+         * Sets the amount of time to apply the glowing effect for.
+         * 
+         * @param duration the glowing effect ticks
+         */
+        void setGlowingTicks(int duration);
+    }
 }

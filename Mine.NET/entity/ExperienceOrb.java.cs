@@ -1,21 +1,23 @@
-namespace Mine.NET.entity;
-
-/**
- * Represents an Experience Orb.
- */
-public interface ExperienceOrb : Entity {
-
+namespace Mine.NET.entity
+{
     /**
-     * Gets how much experience is contained within this orb
-     *
-     * @return Amount of experience
+     * Represents an Experience Orb.
      */
-    public int getExperience();
+    public interface ExperienceOrb : Entity
+    {
 
-    /**
-     * Sets how much experience is contained within this orb
-     *
-     * @param value Amount of experience
-     */
-    public void setExperience(int value);
+        /**
+         * Gets how much experience is contained within this orb
+         *
+         * @return Amount of experience
+         */
+        int getExperience();
+
+        /**
+         * Sets how much experience is contained within this orb
+         *
+         * @param value Amount of experience
+         */
+        void setExperience(int value);
+    }
 }

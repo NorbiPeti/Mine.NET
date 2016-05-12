@@ -1,8 +1,10 @@
-namespace Mine.NET.entity;
+namespace Mine.NET.entity
+{
+    /**
+     * Represents a non-player char
+     */
+    public interface NPC : Creature
+    {
 
-/**
- * Represents a non-player char
- */
-public interface NPC : Creature {
-
+    }
 }

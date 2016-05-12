@@ -1,62 +1,64 @@
-namespace Mine.NET.entity;
+using System;
 
-import org.bukkit.Material;
-
-/**
- * Represents a falling block
- */
-public interface FallingBlock : Entity {
-
+namespace Mine.NET.entity
+{
     /**
-     * Get the Material of the falling block
-     *
-     * @return Material of the block
+     * Represents a falling block
      */
-    Material getMaterial();
+    public interface FallingBlock : Entity
+    {
 
-    /**
-     * Get the ID of the falling block
-     *
-     * @return ID type of the block
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    int getBlockId();
+        /**
+         * Get the Material of the falling block
+         *
+         * @return Material of the block
+         */
+        Material getMaterial();
 
-    /**
-     * Get the data for the falling block
-     *
-     * @return data of the block
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    byte getBlockData();
+        /**
+         * Get the ID of the falling block
+         *
+         * @return ID type of the block
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        int getBlockId();
 
-    /**
-     * Get if the falling block will break into an item if it cannot be placed
-     *
-     * @return true if the block will break into an item when obstructed
-     */
-    bool getDropItem();
+        /**
+         * Get the data for the falling block
+         *
+         * @return data of the block
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        byte getBlockData();
 
-    /**
-     * Set if the falling block will break into an item if it cannot be placed
-     *
-     * @param drop true to break into an item when obstructed
-     */
-    void setDropItem(bool drop);
+        /**
+         * Get if the falling block will break into an item if it cannot be placed
+         *
+         * @return true if the block will break into an item when obstructed
+         */
+        bool getDropItem();
 
-    /**
-     * Get the HurtEntities state of this block.
-     *
-     * @return whether entities will be damaged by this block.
-     */
-    bool canHurtEntities();
+        /**
+         * Set if the falling block will break into an item if it cannot be placed
+         *
+         * @param drop true to break into an item when obstructed
+         */
+        void setDropItem(bool drop);
 
-    /**
-     * Set the HurtEntities state of this block.
-     *
-     * @param hurtEntities whether entities will be damaged by this block.
-     */
-    void setHurtEntities(bool hurtEntities);
+        /**
+         * Get the HurtEntities state of this block.
+         *
+         * @return whether entities will be damaged by this block.
+         */
+        bool canHurtEntities();
+
+        /**
+         * Set the HurtEntities state of this block.
+         *
+         * @param hurtEntities whether entities will be damaged by this block.
+         */
+        void setHurtEntities(bool hurtEntities);
+    }
 }
