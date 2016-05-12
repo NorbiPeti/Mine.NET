@@ -1,24 +1,22 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.entity
+{
 /**
  * Called when a human entity's food level changes
  */
-public class FoodLevelChangeEvent : EntityEvent : Cancellable {
+public class FoodLevelChangeEvent : EntityEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private int level;
 
-    public FoodLevelChangeEvent(HumanEntity what, readonly int level) {
-        base(what);
+    public FoodLevelChangeEvent(HumanEntity what, int level) : base(what)
+        {
         this.level = level;
     }
 
-    public override HumanEntity getEntity() {
-        return (HumanEntity) entity;
+    public override Entity getEntity() {
+        return entity;
     }
 
     /**
@@ -62,4 +60,5 @@ public class FoodLevelChangeEvent : EntityEvent : Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+}
 }

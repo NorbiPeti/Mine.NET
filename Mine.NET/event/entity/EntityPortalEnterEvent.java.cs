@@ -1,35 +1,38 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.Location;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when an entity comes into contact with a portal
- */
-public class EntityPortalEnterEvent : EntityEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Location location;
-
-    public EntityPortalEnterEvent(Entity entity, readonly Location location) {
-        base(entity);
-        this.location = location;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Gets the portal block the entity is touching
-     *
-     * @return The portal block the entity is touching
+     * Called when an entity comes into contact with a portal
      */
-    public Location getLocation() {
-        return location;
-    }
+    public class EntityPortalEnterEvent : EntityEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Location location;
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public EntityPortalEnterEvent(Entity entity, Location location) : base(entity)
+        {
+            this.location = location;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Gets the portal block the entity is touching
+         *
+         * @return The portal block the entity is touching
+         */
+        public Location getLocation()
+        {
+            return location;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

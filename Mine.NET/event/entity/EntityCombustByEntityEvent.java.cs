@@ -1,24 +1,28 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-
-/**
- * Called when an entity causes another entity to combust.
- */
-public class EntityCombustByEntityEvent : EntityCombustEvent {
-    private readonly Entity combuster;
-
-    public EntityCombustByEntityEvent(Entity combuster, readonly Entity combustee, readonly int duration) {
-        base(combustee, duration);
-        this.combuster = combuster;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Get the entity that caused the combustion event.
-     *
-     * @return the Entity that set the combustee alight.
+     * Called when an entity causes another entity to combust.
      */
-    public Entity getCombuster() {
-        return combuster;
+    public class EntityCombustByEntityEvent : EntityCombustEvent
+    {
+        private readonly Entity combuster;
+
+        public EntityCombustByEntityEvent(Entity combuster, Entity combustee, int duration) :
+            base(combustee, duration)
+        {
+            this.combuster = combuster;
+        }
+
+        /**
+         * Get the entity that caused the combustion event.
+         *
+         * @return the Entity that set the combustee alight.
+         */
+        public Entity getCombuster()
+        {
+            return combuster;
+        }
     }
 }

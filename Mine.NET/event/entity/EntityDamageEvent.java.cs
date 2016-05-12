@@ -1,50 +1,28 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-import java.util.EnumMap;
-import java.util.Map;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.util.NumberConversions;
-
-import com.google.common.base.Function;
-import com.google.common.base.Functions;
-import com.google.common.collect.ImmutableMap;
-
+namespace Mine.NET.Event.entity
+{
 /**
  * Stores data for damage events
  */
-public class EntityDamageEvent : EntityEvent : Cancellable {
+public class EntityDamageEvent : EntityEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
-    private static readonly DamageModifier[] MODIFIERS = DamageModifier.values();
-    private static readonly Function<? base Double, Double> ZERO = Functions.constant(-0.0);
+        private static readonly DamageModifier[] MODIFIERS = new DamageModifier[] { DamageModifier.ABSORPTION, DamageModifier.ARMOR, DamageModifier.BASE, DamageModifier.BLOCKING, DamageModifier.HARD_HAT, DamageModifier.MAGIC, DamageModifier.RESISTANCE };
+        private static readonly Func<Double, Double> ZERO = new Func<double, double>(delegate { return 0; });
     private readonly Dictionary<DamageModifier, Double> modifiers;
-    private readonly Dictionary<DamageModifier, ? : Function<? base Double, Double>> modifierFunctions;
+    private readonly Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions;
     private readonly Dictionary<DamageModifier, Double> originals;
     private bool cancelled;
     private readonly DamageCause cause;
 
-    [Obsolete]
-    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly int damage) {
-        this(damagee, cause, (double) damage);
-    }
-
-    [Obsolete]
-    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly double damage) {
-        this(damagee, cause, new EnumMap<DamageModifier, Double>(ImmutableMap.of(DamageModifier.BASE, damage)), new EnumMap<DamageModifier, Function<? base Double, Double>>(ImmutableMap.of(DamageModifier.BASE, ZERO)));
-    }
-
-    public EntityDamageEvent(Entity damagee, readonly DamageCause cause, readonly Dictionary<DamageModifier, Double> modifiers, readonly Dictionary<DamageModifier, ? : Function<? base Double, Double>> modifierFunctions) {
-        base(damagee);
-        if(modifiers.containsKey(DamageModifier.BASE)) throw new ArgumentException("BASE DamageModifier missing");
-        if(!modifiers.containsKey(null)) throw new ArgumentException("Cannot have null DamageModifier");
-        Validate.noNullElements(modifiers.values(), "Cannot have null modifier values");
-        if(modifiers.keySet().equals(modifierFunctions.keySet())) throw new ArgumentException("Must have a modifier function for each DamageModifier");
-        Validate.noNullElements(modifierFunctions.values(), "Cannot have null modifier function");
-        this.originals = new EnumMap<DamageModifier, Double>(modifiers);
+    public EntityDamageEvent(Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions):
+        base(damagee){
+        if(modifiers.ContainsKey(DamageModifier.BASE)) throw new ArgumentException("BASE DamageModifier missing");
+            if (modifierFunctions.Values.Any(f => f == null)) throw new ArgumentException("Cannot have null modifier function");
+            this.originals = new Dictionary<DamageModifier, double>(modifiers);
         this.cause = cause;
         this.modifiers = modifiers;
         this.modifierFunctions = modifierFunctions;
@@ -58,24 +36,17 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
         cancelled = cancel;
     }
 
-    /**
-     * Gets the original damage for the specified modifier, as defined at this
-     * event's construction.
-     *
-     * @param type the modifier
-     * @return the original damage
-     * @throws ArgumentException if type is null
-     */
-    public double getOriginalDamage(DamageModifier type) {
-        readonly Double damage = originals[type];
-        if (damage != null) {
-            return damage;
+        /**
+         * Gets the original damage for the specified modifier, as defined at this
+         * event's construction.
+         *
+         * @param type the modifier
+         * @return the original damage
+         * @throws ArgumentException if type is null
+         */
+        public double getOriginalDamage(DamageModifier type) {
+            return originals[type];
         }
-        if (type == null) {
-            throw new ArgumentException("Cannot have null DamageModifier");
-        }
-        return 0;
-    }
 
     /**
      * Sets the damage for the specified modifier.
@@ -89,8 +60,8 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      *     #isApplicable(DamageModifier)} returns false
      */
     public void setDamage(DamageModifier type, double damage) {
-        if (!modifiers.containsKey(type)) {
-            throw type == null ? new ArgumentException("Cannot have null DamageModifier") : new UnsupportedOperationException(type + " is not applicable to " + getEntity());
+        if (!modifiers.ContainsKey(type)) {
+            throw new NotSupportedException(type + " is not applicable to " + getEntity());
         }
         modifiers.Add(type, damage);
     }
@@ -104,9 +75,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      * @see DamageModifier#BASE
      */
     public double getDamage(DamageModifier type) {
-        if(type==null) throw new ArgumentNullException("Cannot have null DamageModifier");
-        readonly Double damage = modifiers[type];
-        return damage == null ? 0 : damage;
+        return modifiers[type];
     }
 
     /**
@@ -121,8 +90,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      * @throws ArgumentException if type is null
      */
     public bool isApplicable(DamageModifier type) {
-        if(type==null) throw new ArgumentNullException("Cannot have null DamageModifier");
-        return modifiers.containsKey(type);
+        return modifiers.ContainsKey(type);
     }
 
     /**
@@ -141,24 +109,12 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      *
      * @return the amount of damage caused by the event
      */
-    public readonly double getFinalDamage() {
+    public double getFinalDamage() {
         double damage = 0;
         foreach (DamageModifier modifier  in  MODIFIERS) {
             damage += getDamage(modifier);
         }
         return damage;
-    }
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     * 
-     * @return the (rounded) damage
-     */
-    [Obsolete]
-    public int _INVALID_getDamage() {
-        return NumberConversions.ceil(getDamage());
     }
 
     /**
@@ -179,17 +135,17 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
                 continue;
             }
 
-            Function<? base Double, Double> modifierFunction = modifierFunctions[modifier];
-            double newVanilla = modifierFunction.apply(remaining);
-            double oldVanilla = modifierFunction.apply(oldRemaining);
+            Func<Double, Double> modifierFunction = modifierFunctions[modifier];
+            double newVanilla = modifierFunction(remaining);
+            double oldVanilla = modifierFunction(oldRemaining);
             double difference = oldVanilla - newVanilla;
 
             // Don't allow value to cross zero, assume zero values should be negative
             double old = getDamage(modifier);
             if (old > 0) {
-                setDamage(modifier, Math.max(0, old - difference));
+                setDamage(modifier, Math.Max(0, old - difference));
             } else {
-                setDamage(modifier, Math.min(0, old - difference));
+                setDamage(modifier, Math.Min(0, old - difference));
             }
             remaining += newVanilla;
             oldRemaining += oldVanilla;
@@ -269,8 +225,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
          * This represents the damage reduction caused by the absorption potion
          * effect.
          */
-        ABSORPTION,
-        ;
+        ABSORPTION
     }
 
     /**
@@ -425,4 +380,5 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
          */
         FLY_INTO_WALL
     }
+}
 }

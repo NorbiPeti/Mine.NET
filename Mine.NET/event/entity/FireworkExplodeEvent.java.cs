@@ -1,45 +1,40 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Firework;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a firework explodes.
- */
-public class FireworkExplodeEvent : EntityEvent : Cancellable {
-
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel;
-
-    public FireworkExplodeEvent(Firework what) {
-        base(what);
-    }
-
-    public override bool isCancelled() {
-        return cancel;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Set the cancelled state of this event. If the firework explosion is
-     * cancelled, the firework will still be removed, but no particles will be
-     * displayed.
-     *
-     * @param cancel whether to cancel or not.
+     * Called when a firework explodes.
      */
-    public override void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+    public class FireworkExplodeEvent : EntityEvent, Cancellable {
 
-    public override Firework getEntity() {
-        return (Firework) base.getEntity();
-    }
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel;
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public FireworkExplodeEvent(Firework what) : base(what)
+        {
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public override bool isCancelled() {
+            return cancel;
+        }
+
+        /**
+         * Set the cancelled state of this event. If the firework explosion is
+         * cancelled, the firework will still be removed, but no particles will be
+         * displayed.
+         *
+         * @param cancel whether to cancel or not.
+         */
+        public override void setCancelled(bool cancel) {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
     }
 }

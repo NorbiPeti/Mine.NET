@@ -1,61 +1,67 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
+using Mine.NET.util;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.event.HandlerList;
-import org.bukkit.util.Vector;
-
-/**
- * Called before an entity exits a portal.
- * <p>
- * This event allows you to modify the velocity of the entity after they have
- * successfully exited the portal.
- */
-public class EntityPortalExitEvent : EntityTeleportEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private Vector before;
-    private Vector after;
-
-    public EntityPortalExitEvent(Entity entity, readonly Location from, readonly Location to, readonly Vector before, readonly Vector after) {
-        base(entity, from, to);
-        this.before = before;
-        this.after = after;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Gets a copy of the velocity that the entity has before entering the
-     * portal.
-     *
-     * @return velocity of entity before entering the portal
+     * Called before an entity exits a portal.
+     * <p>
+     * This event allows you to modify the velocity of the entity after they have
+     * successfully exited the portal.
      */
-    public Vector getBefore() {
-        return this.before.clone();
-    }
+    public class EntityPortalExitEvent : EntityTeleportEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private Vector before;
+        private Vector after;
 
-    /**
-     * Gets a copy of the velocity that the entity will have after exiting the
-     * portal.
-     *
-     * @return velocity of entity after exiting the portal
-     */
-    public Vector getAfter() {
-        return this.after.clone();
-    }
+        public EntityPortalExitEvent(Entity entity, Location from, Location to, Vector before, Vector after) :
+            base(entity, from, to)
+        {
+            this.before = before;
+            this.after = after;
+        }
 
-    /**
-     * Sets the velocity that the entity will have after exiting the portal.
-     * 
-     * @param after the velocity after exiting the portal
-     */
-    public void setAfter(Vector after) {
-        this.after = after.clone();
-    }
+        /**
+         * Gets a copy of the velocity that the entity has before entering the
+         * portal.
+         *
+         * @return velocity of entity before entering the portal
+         */
+        public Vector getBefore()
+        {
+            return this.before.clone();
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Gets a copy of the velocity that the entity will have after exiting the
+         * portal.
+         *
+         * @return velocity of entity after exiting the portal
+         */
+        public Vector getAfter()
+        {
+            return this.after.clone();
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Sets the velocity that the entity will have after exiting the portal.
+         * 
+         * @param after the velocity after exiting the portal
+         */
+        public void setAfter(Vector after)
+        {
+            this.after = after.clone();
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

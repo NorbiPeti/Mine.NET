@@ -1,178 +1,177 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a creature is spawned into a world.
- * <p>
- * If a Creature Spawn event is cancelled, the creature will not spawn.
- */
-public class CreatureSpawnEvent : EntityEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool canceled;
-    private readonly SpawnReason spawnReason;
-
-    public CreatureSpawnEvent(LivingEntity spawnee, readonly SpawnReason spawnReason) {
-        base(spawnee);
-        this.spawnReason = spawnReason;
-    }
-
-    public bool isCancelled() {
-        return canceled;
-    }
-
-    public void setCancelled(bool cancel) {
-        canceled = cancel;
-    }
-
-    public override LivingEntity getEntity() {
-        return (LivingEntity) entity;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Gets the location at which the creature is spawning.
-     *
-     * @return The location at which the creature is spawning
+     * Called when a creature is spawned into a world.
+     * <p>
+     * If a Creature Spawn event is cancelled, the creature will not spawn.
      */
-    public Location getLocation() {
-        return getEntity().getLocation();
-    }
+    public class CreatureSpawnEvent : EntityEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool canceled;
+        private readonly SpawnReason spawnReason;
 
-    /**
-     * Gets the reason for why the creature is being spawned.
-     *
-     * @return A SpawnReason value detailing the reason for the creature being
-     *     spawned
-     */
-    public SpawnReason getSpawnReason() {
-        return spawnReason;
-    }
+        public CreatureSpawnEvent(LivingEntity spawnee, SpawnReason spawnReason) : base(spawnee)
+        {
+            this.spawnReason = spawnReason;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return canceled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+        public void setCancelled(bool cancel)
+        {
+            canceled = cancel;
+        }
 
-    /**
-     * An enum to specify the type of spawning
-     */
-    public enum SpawnReason {
+        public override LivingEntity getEntity()
+        {
+            return (LivingEntity)entity;
+        }
 
         /**
-         * When something spawns from natural means
-         */
-        NATURAL,
-        /**
-         * When an entity spawns as a jockey of another entity (mostly spider
-         * jockeys)
-         */
-        JOCKEY,
-        /**
-         * When a creature spawns due to chunk generation
-         */
-        CHUNK_GEN,
-        /**
-         * When a creature spawns from a spawner
-         */
-        SPAWNER,
-        /**
-         * When a creature spawns from an egg
-         */
-        EGG,
-        /**
-         * When a creature spawns from a Spawner Egg
-         */
-        SPAWNER_EGG,
-        /**
-         * When a creature spawns because of a lightning strike
-         */
-        LIGHTNING,
-        /**
-         * When a creature is spawned by a player that is sleeping
+         * Gets the location at which the creature is spawning.
          *
-         * [Obsolete] No longer used
+         * @return The location at which the creature is spawning
          */
-        [Obsolete]
-        BED,
+        public Location getLocation()
+        {
+            return getEntity().getLocation();
+        }
+
         /**
-         * When a snowman is spawned by being built
+         * Gets the reason for why the creature is being spawned.
+         *
+         * @return A SpawnReason value detailing the reason for the creature being
+         *     spawned
          */
-        BUILD_SNOWMAN,
+        public SpawnReason getSpawnReason()
+        {
+            return spawnReason;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
+
         /**
-         * When an iron golem is spawned by being built
+         * An enum to specify the type of spawning
          */
-        BUILD_IRONGOLEM,
-        /**
-         * When a wither boss is spawned by being built
-         */
-        BUILD_WITHER,
-        /**
-         * When an iron golem is spawned to defend a village
-         */
-        VILLAGE_DEFENSE,
-        /**
-         * When a zombie is spawned to invade a village
-         */
-        VILLAGE_INVASION,
-        /**
-         * When an animal breeds to create a child
-         */
-        BREEDING,
-        /**
-         * When a slime splits
-         */
-        SLIME_SPLIT,
-        /**
-         * When an entity calls for reinforcements
-         */
-        REINFORCEMENTS,
-        /**
-         * When a creature is spawned by nether portal
-         */
-        NETHER_PORTAL,
-        /**
-         * When a creature is spawned by a dispenser dispensing an egg
-         */
-        DISPENSE_EGG,
-        /**
-         * When a zombie infects a villager
-         */
-        INFECTION,
-        /**
-         * When a villager is cured from infection
-         */
-        CURED,
-        /**
-         * When an ocelot has a baby spawned along with them
-         */
-        OCELOT_BABY,
-        /**
-         * When a silverfish spawns from a block
-         */
-        SILVERFISH_BLOCK,
-        /**
-         * When an entity spawns as a mount of another entity (mostly chicken
-         * jockeys)
-         */
-        MOUNT,
-        /**
-         * When an entity spawns as a trap for players approaching
-         */
-        TRAP,
-        /**
-         * When a creature is spawned by plugins
-         */
-        CUSTOM,
-        /**
-         * When an entity is missing a SpawnReason
-         */
-        DEFAULT
+        public enum SpawnReason
+        {
+
+            /**
+             * When something spawns from natural means
+             */
+            NATURAL,
+            /**
+             * When an entity spawns as a jockey of another entity (mostly spider
+             * jockeys)
+             */
+            JOCKEY,
+            /**
+             * When a creature spawns due to chunk generation
+             */
+            CHUNK_GEN,
+            /**
+             * When a creature spawns from a spawner
+             */
+            SPAWNER,
+            /**
+             * When a creature spawns from an egg
+             */
+            EGG,
+            /**
+             * When a creature spawns from a Spawner Egg
+             */
+            SPAWNER_EGG,
+            /**
+             * When a creature spawns because of a lightning strike
+             */
+            LIGHTNING,
+            /**
+             * When a snowman is spawned by being built
+             */
+            BUILD_SNOWMAN,
+            /**
+             * When an iron golem is spawned by being built
+             */
+            BUILD_IRONGOLEM,
+            /**
+             * When a wither boss is spawned by being built
+             */
+            BUILD_WITHER,
+            /**
+             * When an iron golem is spawned to defend a village
+             */
+            VILLAGE_DEFENSE,
+            /**
+             * When a zombie is spawned to invade a village
+             */
+            VILLAGE_INVASION,
+            /**
+             * When an animal breeds to create a child
+             */
+            BREEDING,
+            /**
+             * When a slime splits
+             */
+            SLIME_SPLIT,
+            /**
+             * When an entity calls for reinforcements
+             */
+            REINFORCEMENTS,
+            /**
+             * When a creature is spawned by nether portal
+             */
+            NETHER_PORTAL,
+            /**
+             * When a creature is spawned by a dispenser dispensing an egg
+             */
+            DISPENSE_EGG,
+            /**
+             * When a zombie infects a villager
+             */
+            INFECTION,
+            /**
+             * When a villager is cured from infection
+             */
+            CURED,
+            /**
+             * When an ocelot has a baby spawned along with them
+             */
+            OCELOT_BABY,
+            /**
+             * When a silverfish spawns from a block
+             */
+            SILVERFISH_BLOCK,
+            /**
+             * When an entity spawns as a mount of another entity (mostly chicken
+             * jockeys)
+             */
+            MOUNT,
+            /**
+             * When an entity spawns as a trap for players approaching
+             */
+            TRAP,
+            /**
+             * When a creature is spawned by plugins
+             */
+            CUSTOM,
+            /**
+             * When an entity is missing a SpawnReason
+             */
+            DEFAULT
+        }
     }
 }

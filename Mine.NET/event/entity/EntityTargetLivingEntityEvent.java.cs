@@ -1,19 +1,15 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-
-/**
- * Called when an Entity targets a {@link LivingEntity} and can only target
- * LivingEntity's.
- */
-public class EntityTargetLivingEntityEvent : EntityTargetEvent{
-    public EntityTargetLivingEntityEvent(Entity entity, readonly LivingEntity target, readonly TargetReason reason) {
-        base(entity, target, reason);
-    }
-
-    public LivingEntity getTarget() {
-        return (LivingEntity) base.getTarget();
+namespace Mine.NET.Event.entity
+{
+    /**
+     * Called when an Entity targets a {@link LivingEntity} and can only target
+     * LivingEntity's.
+     */
+    public class EntityTargetLivingEntityEvent : EntityTargetEvent {
+        public EntityTargetLivingEntityEvent(Entity entity, LivingEntity target, TargetReason reason) :
+            base(entity, target, reason)
+        {
     }
 
     /**
@@ -26,9 +22,10 @@ public class EntityTargetLivingEntityEvent : EntityTargetEvent{
      *
      * @param target The entity to target
      */
-    public void setTarget(Entity target) {
+    public override void setTarget(Entity target) {
         if (target == null || target is LivingEntity) {
             base.setTarget(target);
         }
     }
+}
 }

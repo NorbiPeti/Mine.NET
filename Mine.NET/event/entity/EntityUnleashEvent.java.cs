@@ -1,51 +1,56 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called immediately prior to an entity being unleashed.
- */
-public class EntityUnleashEvent : EntityEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly UnleashReason reason;
-
-    public EntityUnleashEvent(Entity entity, UnleashReason reason) {
-        base(entity);
-        this.reason = reason;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Returns the reason for the unleashing.
-     *
-     * @return The reason
+     * Called immediately prior to an entity being unleashed.
      */
-    public UnleashReason getReason() {
-        return reason;
-    }
+    public class EntityUnleashEvent : EntityEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly UnleashReason reason;
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public EntityUnleashEvent(Entity entity, UnleashReason reason) : base(entity)
+        {
+            this.reason = reason;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+        /**
+         * Returns the reason for the unleashing.
+         *
+         * @return The reason
+         */
+        public UnleashReason getReason()
+        {
+            return reason;
+        }
 
-    public enum UnleashReason {
-        /**
-         * When the entity's leashholder has died or logged out, and so is
-         * unleashed
-         */
-        HOLDER_GONE,
-        /**
-         * When the entity's leashholder attempts to unleash it
-         */
-        PLAYER_UNLEASH,
-        /**
-         * When the entity's leashholder is more than 10 blocks away
-         */
-        DISTANCE,
-        UNKNOWN;
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
+
+        public enum UnleashReason
+        {
+            /**
+             * When the entity's leashholder has died or logged out, and so is
+             * unleashed
+             */
+            HOLDER_GONE,
+            /**
+             * When the entity's leashholder attempts to unleash it
+             */
+            PLAYER_UNLEASH,
+            /**
+             * When the entity's leashholder is more than 10 blocks away
+             */
+            DISTANCE,
+            UNKNOWN
+        }
     }
 }

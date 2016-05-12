@@ -1,34 +1,37 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.event.Event;
-
-/**
- * Represents an Entity-related event
- */
-public abstract class EntityEvent : Event {
-    protected Entity entity;
-
-    public EntityEvent(Entity what) {
-        entity = what;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Returns the Entity involved in this event
-     *
-     * @return Entity who is involved in this event
+     * Represents an Entity-related event
      */
-    public Entity getEntity() {
-        return entity;
-    }
+    public abstract class EntityEvent : Event
+    {
+        protected Entity entity;
 
-    /**
-     * Gets the EntityType of the Entity involved in this event.
-     *
-     * @return EntityType of the Entity involved in this event
-     */
-    public EntityType getEntityType() {
-        return entity.getType();
+        public EntityEvent(Entity what)
+        {
+            entity = what;
+        }
+
+        /**
+         * Returns the Entity involved in this event
+         *
+         * @return Entity who is involved in this event
+         */
+        public virtual Entity getEntity()
+        {
+            return entity;
+        }
+
+        /**
+         * Gets the EntityType of the Entity involved in this event.
+         *
+         * @return EntityType of the Entity involved in this event
+         */
+        public EntityType getEntityType()
+        {
+            return entity.getType();
+        }
     }
 }

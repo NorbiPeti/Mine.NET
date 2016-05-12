@@ -1,18 +1,16 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Horse;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.entity
+{
 /**
  * Called when a horse jumps.
  */
-public class HorseJumpEvent : EntityEvent : Cancellable {
+public class HorseJumpEvent : EntityEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private float power;
 
-    public HorseJumpEvent(Horse horse, readonly float power) {
+    public HorseJumpEvent(Horse horse, float power) {
         base(horse);
         this.power = power;
     }
@@ -79,4 +77,5 @@ public class HorseJumpEvent : EntityEvent : Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+}
 }

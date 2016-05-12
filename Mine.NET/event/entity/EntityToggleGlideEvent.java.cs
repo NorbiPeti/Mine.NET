@@ -1,9 +1,7 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.entity
+{
 /**
  * Sent when an entity's gliding status is toggled with an Elytra.
  * Examples of when this event would be called:
@@ -13,16 +11,15 @@ import org.bukkit.event.HandlerList;
  * </ul>
  * This can be visually estimated by the animation in which a player turns horizontal.
  */
-public class EntityToggleGlideEvent : EntityEvent : Cancellable {
+public class EntityToggleGlideEvent : EntityEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
 
     private bool cancel = false;
-    private readonly bool isGliding;
 
-    public EntityToggleGlideEvent(LivingEntity who, readonly bool isGliding) {
-        base(who);
-        this.isGliding = isGliding;
-    }
+        public EntityToggleGlideEvent(LivingEntity who, bool isGliding) : base(who)
+        {
+            this.isGliding = isGliding;
+        }
 
     public override bool isCancelled() {
         return cancel;
@@ -32,9 +29,7 @@ public class EntityToggleGlideEvent : EntityEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    public bool isGliding() {
-        return isGliding;
-    }
+    public bool isGliding { get; private set; }
 
     public override HandlerList getHandlers() {
         return handlers;
@@ -44,4 +39,5 @@ public class EntityToggleGlideEvent : EntityEvent : Cancellable {
         return handlers;
     }
 
+}
 }
