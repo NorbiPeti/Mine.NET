@@ -76,8 +76,7 @@ public class PlayerPortalEvent : PlayerTeleportEvent {
         this.travelAgent = travelAgent;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

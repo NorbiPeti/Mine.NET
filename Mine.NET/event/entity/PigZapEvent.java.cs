@@ -29,8 +29,7 @@ public class PigZapEvent : EntityEvent : Cancellable {
         canceled = cancel;
     }
 
-    @Override
-    public Pig getEntity() {
+    public override Pig getEntity() {
         return (Pig) entity;
     }
 
@@ -53,8 +52,7 @@ public class PigZapEvent : EntityEvent : Cancellable {
         return pigzombie;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

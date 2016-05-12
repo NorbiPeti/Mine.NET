@@ -64,11 +64,10 @@ public class Command : MaterialData : Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
-    @Override
-    public Command clone() {
+    public override Command clone() {
         return (Command) base.clone();
     }
 }

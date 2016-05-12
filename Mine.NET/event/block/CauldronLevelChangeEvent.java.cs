@@ -50,18 +50,15 @@ public class CauldronLevelChangeEvent : BlockEvent : Cancellable {
         this.newLevel = newLevel;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancelled;
     }
 
-    @Override
-    public void setCancelled(bool cancelled) {
+    public override void setCancelled(bool cancelled) {
         this.cancelled = cancelled;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

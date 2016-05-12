@@ -25,8 +25,7 @@ public class LingeringPotionSplashEvent : ProjectileHitEvent : Cancellable {
         this.entity = entity;
     }
 
-    @Override
-    public LingeringPotion getEntity() {
+    public override LingeringPotion getEntity() {
         return (LingeringPotion) base.getEntity();
     }
 
@@ -47,8 +46,7 @@ public class LingeringPotionSplashEvent : ProjectileHitEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

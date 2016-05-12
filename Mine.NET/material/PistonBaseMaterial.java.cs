@@ -47,8 +47,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         base(type, data);
     }
 
-    @Override
-    public void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFace face) {
         byte data = (byte) (getData() & 0x8);
 
         switch (face) {
@@ -71,8 +70,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         setData(data);
     }
 
-    @Override
-    public BlockFace getFacing() {
+    public override BlockFace getFacing() {
         byte dir = (byte) (getData() & 7);
 
         switch (dir) {
@@ -93,8 +91,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         }
     }
 
-    @Override
-    public bool isPowered() {
+    public override bool isPowered() {
         return (getData() & 0x8) == 0x8;
     }
 
@@ -116,8 +113,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         return this.getItemType() == Material.PISTON_STICKY_BASE;
     }
 
-    @Override
-    public PistonBaseMaterial clone() {
+    public override PistonBaseMaterial clone() {
         return (PistonBaseMaterial) base.clone();
     }
 }

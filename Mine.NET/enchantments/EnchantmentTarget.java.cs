@@ -11,8 +11,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on all items
      */
     ALL {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return true;
         }
     },
@@ -21,8 +20,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on armor
      */
     ARMOR {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return ARMOR_FEET.includes(item)
                 || ARMOR_LEGS.includes(item)
                 || ARMOR_HEAD.includes(item)
@@ -34,8 +32,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on feet slot armor
      */
     ARMOR_FEET {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.LEATHER_BOOTS)
                 || item.equals(Material.CHAINMAIL_BOOTS)
                 || item.equals(Material.IRON_BOOTS)
@@ -48,8 +45,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on leg slot armor
      */
     ARMOR_LEGS {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.LEATHER_LEGGINGS)
                 || item.equals(Material.CHAINMAIL_LEGGINGS)
                 || item.equals(Material.IRON_LEGGINGS)
@@ -62,8 +58,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on torso slot armor
      */
     ARMOR_TORSO {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.LEATHER_CHESTPLATE)
                 || item.equals(Material.CHAINMAIL_CHESTPLATE)
                 || item.equals(Material.IRON_CHESTPLATE)
@@ -76,8 +71,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on head slot armor
      */
     ARMOR_HEAD {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.LEATHER_HELMET)
                 || item.equals(Material.CHAINMAIL_HELMET)
                 || item.equals(Material.DIAMOND_HELMET)
@@ -90,8 +84,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on weapons (swords)
      */
     WEAPON {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.WOOD_SWORD)
                 || item.equals(Material.STONE_SWORD)
                 || item.equals(Material.IRON_SWORD)
@@ -105,8 +98,7 @@ public enum EnchantmentTarget {
      * axes)
      */
     TOOL {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.WOOD_SPADE)
                 || item.equals(Material.STONE_SPADE)
                 || item.equals(Material.IRON_SPADE)
@@ -136,8 +128,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on bows.
      */
     BOW {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.BOW);
         }
     },
@@ -146,8 +137,7 @@ public enum EnchantmentTarget {
      * Allows the Enchantment to be placed on fishing rods.
      */
     FISHING_ROD {
-        @Override
-        public bool includes(Material item) {
+        public override bool includes(Material item) {
             return item.equals(Material.FISHING_ROD);
         }
     };

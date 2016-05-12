@@ -15,8 +15,7 @@ public class EntityBreakDoorEvent : EntityChangeBlockEvent {
         base(entity, targetBlock, Material.AIR, (byte) 0);
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 }

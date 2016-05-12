@@ -212,7 +212,7 @@ public enum EntityType {
     private static readonly Dictionary<Short, EntityType> ID_MAP = new Dictionary<Short, EntityType>();
 
     static {
-        for (EntityType type : values()) {
+        foreach (EntityType type  in  values()) {
             if (type.name != null) {
                 NAME_MAP.Add(type.name.ToLower(), type);
             }

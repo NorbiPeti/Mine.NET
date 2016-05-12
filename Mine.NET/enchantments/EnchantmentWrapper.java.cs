@@ -19,33 +19,27 @@ public class EnchantmentWrapper : Enchantment {
         return Enchantment.getById(getId());
     }
 
-    @Override
-    public int getMaxLevel() {
+    public override int getMaxLevel() {
         return getEnchantment().getMaxLevel();
     }
 
-    @Override
-    public int getStartLevel() {
+    public override int getStartLevel() {
         return getEnchantment().getStartLevel();
     }
 
-    @Override
-    public EnchantmentTarget getItemTarget() {
+    public override EnchantmentTarget getItemTarget() {
         return getEnchantment().getItemTarget();
     }
 
-    @Override
-    public bool canEnchantItem(ItemStack item) {
+    public override bool canEnchantItem(ItemStack item) {
         return getEnchantment().canEnchantItem(item);
     }
 
-    @Override
-    public String getName() {
+    public override String getName() {
         return getEnchantment().getName();
     }
 
-    @Override
-    public bool conflictsWith(Enchantment other) {
+    public override bool conflictsWith(Enchantment other) {
         return getEnchantment().conflictsWith(other);
     }
 }

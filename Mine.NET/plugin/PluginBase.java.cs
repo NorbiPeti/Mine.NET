@@ -7,13 +7,11 @@ package org.bukkit.plugin;
  * org.bukkit.plugin.java.JavaPlugin}
  */
 public abstract class PluginBase : Plugin {
-    @Override
-    public readonly int hashCode() {
+    public override readonly int hashCode() {
         return getName().hashCode();
     }
 
-    @Override
-    public readonly bool equals(Object obj) {
+    public override readonly bool equals(Object obj) {
         if (this == obj) {
             return true;
         }

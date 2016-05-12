@@ -138,8 +138,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
         return instance.noise(x, y, z, w);
     }
 
-    @Override
-    public double noise(double xin, double yin, double zin) {
+    public override double noise(double xin, double yin, double zin) {
         xin += offsetX;
         yin += offsetY;
         zin += offsetZ;
@@ -277,8 +276,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
         return 32.0 * (n0 + n1 + n2 + n3);
     }
 
-    @Override
-    public double noise(double xin, double yin) {
+    public override double noise(double xin, double yin) {
         xin += offsetX;
         yin += offsetY;
 

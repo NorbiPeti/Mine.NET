@@ -17,8 +17,7 @@ public class PlayerBucketFillEvent : PlayerBucketEvent {
         base(who, blockClicked, blockFace, bucket, itemInHand);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

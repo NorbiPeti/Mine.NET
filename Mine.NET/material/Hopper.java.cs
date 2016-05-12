@@ -108,8 +108,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @see BlockFace
      */
-    @Override
-    public void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFace face) {
         int data = getData() & 0x8;
 
         switch (face) {
@@ -140,8 +139,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @see BlockFace
      */
-    @Override
-    public BlockFace getFacing() {
+    public override BlockFace getFacing() {
         byte data = (byte) (getData() & 0x7);
 
         switch (data) {
@@ -160,11 +158,10 @@ public class Hopper : MaterialData : Directional, Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public Hopper clone() {
+    public override Hopper clone() {
         return (Hopper) base.clone();
     }
 
@@ -173,8 +170,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @return true if the hopper is powered
      */
-    @Override
-    public bool isPowered() {
+    public override bool isPowered() {
         return (getData() & 0x8) != 0;
     }
 }

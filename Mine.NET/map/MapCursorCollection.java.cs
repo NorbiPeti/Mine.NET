@@ -16,7 +16,7 @@ public sealed class MapCursorCollection {
      * @return The size of this collection.
      */
     public int size() {
-        return cursors.size();
+        return cursors.Count;
     }
 
     /**

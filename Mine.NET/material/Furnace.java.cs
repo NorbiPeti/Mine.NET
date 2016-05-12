@@ -55,8 +55,7 @@ public class Furnace : FurnaceAndDispenser {
         base(type, data);
     }
 
-    @Override
-    public Furnace clone() {
+    public override Furnace clone() {
         return (Furnace) base.clone();
     }
 }

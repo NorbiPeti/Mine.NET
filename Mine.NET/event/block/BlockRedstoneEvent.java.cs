@@ -44,8 +44,7 @@ public class BlockRedstoneEvent : BlockEvent {
         this.newCurrent = newCurrent;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

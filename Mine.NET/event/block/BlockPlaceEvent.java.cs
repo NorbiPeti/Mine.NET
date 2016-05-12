@@ -126,8 +126,7 @@ public class BlockPlaceEvent : BlockEvent : Cancellable {
         this.canBuild = canBuild;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

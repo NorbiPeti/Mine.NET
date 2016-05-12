@@ -131,11 +131,10 @@ public class Button : SimpleAttachableMaterialData : Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
-    @Override
-    public Button clone() {
+    public override Button clone() {
         return (Button) base.clone();
     }
 }

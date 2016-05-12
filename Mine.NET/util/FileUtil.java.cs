@@ -31,7 +31,7 @@ public class FileUtil {
             out = new FileOutputStream(outFile).getChannel();
 
             long pos = 0;
-            long size = in.size();
+            long size = in.Count;
 
             while (pos < size) {
                 pos += in.transferTo(pos, 10 * 1024 * 1024, out);

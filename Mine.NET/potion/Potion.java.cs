@@ -340,7 +340,7 @@ public class Potion {
         }
 
         public static Tier getByDamageBit(int damageBit) {
-            for (Tier tier : Tier.values()) {
+            foreach (Tier tier  in  Tier.values()) {
                 if (tier.damageBit == damageBit)
                     return tier;
             }

@@ -113,7 +113,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             ));
         }
 
-        for (String pluginName : description.getDepend()) {
+        foreach (String pluginName  in  description.getDepend()) {
             if (loaders == null) {
                 throw new UnknownDependencyException(pluginName);
             }
@@ -186,7 +186,7 @@ public sealed class JavaPluginLoader : PluginLoader {
         if (cachedClass != null) {
             return cachedClass;
         } else {
-            for (String current : loaders.keySet()) {
+            foreach (String current  in  loaders.keySet()) {
                 PluginClassLoader loader = loaders[current];
 
                 try {
@@ -236,10 +236,10 @@ public sealed class JavaPluginLoader : PluginLoader {
             Method[] publicMethods = listener.getClass().getMethods();
             Method[] privateMethods = listener.getClass().getDeclaredMethods();
             methods = new HashSet<Method>(publicMethods.Length + privateMethods.Length, 1.0f);
-            for (Method method : publicMethods) {
+            foreach (Method method  in  publicMethods) {
                 methods.add(method);
             }
-            for (Method method : privateMethods) {
+            foreach (Method method  in  privateMethods) {
                 methods.add(method);
             }
         } catch (NoClassDefFoundError e) {
@@ -247,7 +247,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             return ret;
         }
 
-        for (Method method : methods) {
+        foreach (Method method  in  methods) {
             readonly EventHandler eh = method.getAnnotation(EventHandler.class);
             if (eh == null) continue;
             // Do not register bridge or synthetic methods to avoid event duplication
@@ -285,7 +285,7 @@ public sealed class JavaPluginLoader : PluginLoader {
                                     clazz.getName(),
                                     method.toGenericString(),
                                     (warning != null && warning.reason().Length != 0) ? warning.reason() : "Server performance will be affected",
-                                    Arrays.toString(plugin.getDescription().getAuthors().toArray())),
+                                    Arrays.ToString(plugin.getDescription().getAuthors().toArray())),
                             warningState == WarningState.ON ? new AuthorNagException(null) : null);
                     break;
                 }
@@ -364,7 +364,7 @@ public sealed class JavaPluginLoader : PluginLoader {
                 PluginClassLoader loader = (PluginClassLoader) cloader;
                 HashSet<String> names = loader.getClasses();
 
-                for (String name : names) {
+                foreach (String name  in  names) {
                     removeClass(name);
                 }
             }

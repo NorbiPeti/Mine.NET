@@ -48,8 +48,7 @@ public class InventoryEvent : Event {
         return transaction;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

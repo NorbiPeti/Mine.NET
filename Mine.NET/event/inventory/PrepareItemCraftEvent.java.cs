@@ -30,8 +30,7 @@ public class PrepareItemCraftEvent : InventoryEvent {
     /**
      * @return The crafting inventory on which the recipe was formed.
      */
-    @Override
-    public CraftingInventory getInventory() {
+    public override CraftingInventory getInventory() {
         return matrix;
     }
 
@@ -45,8 +44,7 @@ public class PrepareItemCraftEvent : InventoryEvent {
         return repair;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

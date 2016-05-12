@@ -16,8 +16,7 @@ public class ServiceRegisterEvent : ServiceEvent {
         base(registeredProvider);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

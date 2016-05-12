@@ -105,11 +105,10 @@ public class Skull : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public Skull clone() {
+    public override Skull clone() {
         return (Skull) base.clone();
     }
 }

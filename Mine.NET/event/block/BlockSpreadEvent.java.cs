@@ -38,8 +38,7 @@ public class BlockSpreadEvent : BlockFormEvent {
         return source;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

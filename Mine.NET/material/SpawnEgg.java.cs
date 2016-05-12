@@ -63,8 +63,7 @@ public class SpawnEgg : MaterialData {
         return "SPAWN EGG{" + getSpawnedType() + "}";
     }
 
-    @Override
-    public SpawnEgg clone() {
+    public override SpawnEgg clone() {
         return (SpawnEgg) base.clone();
     }
 }

@@ -80,7 +80,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
         int numPlayers = this.numPlayers;
         if (numPlayers == MAGIC_PLAYER_COUNT) {
             numPlayers = 0;
-            for (@SuppressWarnings("unused") readonly Player player : this) {
+            foreach (@SuppressWarnings("unused") readonly Player player  in  this) {
                 numPlayers++;
             }
         }
@@ -119,8 +119,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 
@@ -139,8 +138,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
      * @throws UnsupportedOperationException if the caller of this event does
      *     not support removing players
      */
-    @Override
-    public IEnumerator<Player> iterator() throws UnsupportedOperationException {
+    public override IEnumerator<Player> iterator() throws UnsupportedOperationException {
         throw new UnsupportedOperationException();
     }
 }

@@ -74,8 +74,7 @@ public class EntityExplodeEvent : EntityEvent : Cancellable {
         this.yield = yield;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -30,7 +30,7 @@ public interface Skeleton : Monster {
         private readonly int id;
 
         static {
-            for (SkeletonType type : values()) {
+            foreach (SkeletonType type  in  values()) {
                 types[type.getId()] = type;
             }
         }

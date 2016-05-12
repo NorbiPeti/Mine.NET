@@ -30,7 +30,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return int.valueOf(object.toString());
+            return int.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }
@@ -43,7 +43,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Float.valueOf(object.toString());
+            return Float.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }
@@ -56,7 +56,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Double.valueOf(object.toString());
+            return Double.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }
@@ -69,7 +69,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Long.valueOf(object.toString());
+            return Long.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }
@@ -82,7 +82,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Short.valueOf(object.toString());
+            return Short.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }
@@ -95,7 +95,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Byte.valueOf(object.toString());
+            return Byte.valueOf(object.ToString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }

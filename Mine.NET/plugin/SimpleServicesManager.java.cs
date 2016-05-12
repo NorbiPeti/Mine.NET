@@ -88,13 +88,13 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.Value.size() == 0) {
+                    if (entry.Value.Count == 0) {
                         it.remove();
                     }
                 }
             } catch (NoSuchElementException e) {}
         }
-        for (ServiceUnregisterEvent event : unregisteredEvents) {
+        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
             Bukkit.getServer().getPluginManager().callEvent(event);
         }
     }
@@ -136,13 +136,13 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.Value.size() == 0) {
+                    if (entry.Value.Count == 0) {
                         it.remove();
                     }
                 }
             } catch (NoSuchElementException e) {}
         }
-        for (ServiceUnregisterEvent event : unregisteredEvents) {
+        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
             Bukkit.getServer().getPluginManager().callEvent(event);
         }
     }
@@ -177,13 +177,13 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.Value.size() == 0) {
+                    if (entry.Value.Count == 0) {
                         it.remove();
                     }
                 }
             } catch (NoSuchElementException e) {}
         }
-        for (ServiceUnregisterEvent event : unregisteredEvents) {
+        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
             Bukkit.getServer().getPluginManager().callEvent(event);
         }
     }
@@ -240,8 +240,8 @@ public class SimpleServicesManager : ServicesManager {
     public List<RegisteredServiceProvider<?>> getRegistrations(Plugin plugin) {
         ImmutableList.Builder<RegisteredServiceProvider<?>> ret = ImmutableList.<RegisteredServiceProvider<?>>builder();
         synchronized (providers) {
-            for (List<RegisteredServiceProvider<?>> registered : providers.values()) {
-                for (RegisteredServiceProvider<?> provider : registered) {
+            foreach (List<RegisteredServiceProvider<?>> registered  in  providers.values()) {
+                foreach (RegisteredServiceProvider<?> provider  in  registered) {
                     if (provider.getPlugin().equals(plugin)) {
                         ret.add(provider);
                     }
@@ -271,7 +271,7 @@ public class SimpleServicesManager : ServicesManager {
 
             ret = ImmutableList.<RegisteredServiceProvider<T>>builder();
 
-            for (RegisteredServiceProvider<?> provider : registered) {
+            foreach (RegisteredServiceProvider<?> provider  in  registered) {
                 ret.add((RegisteredServiceProvider<T>) provider);
             }
 

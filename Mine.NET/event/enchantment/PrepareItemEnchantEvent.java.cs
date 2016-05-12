@@ -85,8 +85,7 @@ public class PrepareItemEnchantEvent : InventoryEvent : Cancellable {
         this.cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

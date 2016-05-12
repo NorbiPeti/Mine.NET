@@ -36,8 +36,7 @@ public class PlayerShearEntityEvent : PlayerEvent : Cancellable {
         return what;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -58,8 +58,7 @@ public class BlockExplodeEvent : BlockEvent : Cancellable {
         this.yield = yield;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

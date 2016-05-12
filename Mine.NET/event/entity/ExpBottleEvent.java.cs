@@ -16,8 +16,7 @@ public class ExpBottleEvent : ProjectileHitEvent {
         this.exp = exp;
     }
 
-    @Override
-    public ThrownExpBottle getEntity() {
+    public override ThrownExpBottle getEntity() {
         return (ThrownExpBottle) entity;
     }
 
@@ -64,8 +63,7 @@ public class ExpBottleEvent : ProjectileHitEvent {
         this.exp = exp;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

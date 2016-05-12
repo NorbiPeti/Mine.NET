@@ -48,7 +48,7 @@ public interface Ocelot : Animals, Tameable {
         private readonly int id;
 
         static {
-            for (Type type : values()) {
+            foreach (Type type  in  values()) {
                 types[type.getId()] = type;
             }
         }

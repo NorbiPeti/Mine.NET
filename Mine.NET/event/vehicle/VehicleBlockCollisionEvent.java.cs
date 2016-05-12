@@ -25,8 +25,7 @@ public class VehicleBlockCollisionEvent : VehicleCollisionEvent {
         return block;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

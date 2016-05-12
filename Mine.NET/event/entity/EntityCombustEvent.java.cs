@@ -48,8 +48,7 @@ public class EntityCombustEvent : EntityEvent : Cancellable {
         this.duration = duration;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

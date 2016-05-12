@@ -150,14 +150,14 @@ public class PermissibleBase : Permissible {
         HashSet<Permission> defaults = Bukkit.getServer().getPluginManager().getDefaultPermissions(isOp());
         Bukkit.getServer().getPluginManager().subscribeToDefaultPerms(isOp(), parent);
 
-        for (Permission perm : defaults) {
+        foreach (Permission perm  in  defaults) {
             String name = perm.getName().ToLower();
             permissions.Add(name, new PermissionAttachmentInfo(parent, name, null, true));
             Bukkit.getServer().getPluginManager().subscribeToPermission(name, parent);
             calculateChildPermissions(perm.getChildren(), false, null);
         }
 
-        for (PermissionAttachment attachment : attachments) {
+        foreach (PermissionAttachment attachment  in  attachments) {
             calculateChildPermissions(attachment.getPermissions(), false, attachment);
         }
     }
@@ -165,7 +165,7 @@ public class PermissibleBase : Permissible {
     public synchronized void clearPermissions() {
         HashSet<String> perms = permissions.keySet();
 
-        for (String name : perms) {
+        foreach (String name  in  perms) {
             Bukkit.getServer().getPluginManager().unsubscribeFromPermission(name, parent);
         }
 
@@ -178,7 +178,7 @@ public class PermissibleBase : Permissible {
     private void calculateChildPermissions(Dictionary<String, bool> children, bool invert, PermissionAttachment attachment) {
         HashSet<String> keys = children.keySet();
 
-        for (String name : keys) {
+        foreach (String name  in  keys) {
             Permission perm = Bukkit.getServer().getPluginManager().getPermission(name);
             bool value = children[name] ^ invert;
             String lname = name.ToLower();

@@ -13,13 +13,11 @@ public class ProjectileHitEvent : EntityEvent {
         base(projectile);
     }
 
-    @Override
-    public Projectile getEntity() {
+    public override Projectile getEntity() {
         return (Projectile) entity;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

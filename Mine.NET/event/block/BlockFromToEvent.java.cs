@@ -60,8 +60,7 @@ public class BlockFromToEvent : BlockEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

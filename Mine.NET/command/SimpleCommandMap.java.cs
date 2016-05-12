@@ -198,7 +198,7 @@ namespace Mine.NET
 
                     String name = commandEntry.Key; // Use the alias, not command name
 
-                    if (StringUtil.startsWithIgnoreCase(name, cmdLine))
+                    if (StringUtil.StartsWithIgnoreCase(name, cmdLine))
                     {
                         completions.Add(prefix + name);
                     }

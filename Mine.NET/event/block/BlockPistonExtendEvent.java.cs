@@ -26,7 +26,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
     public BlockPistonExtendEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
         base(block, direction);
 
-        this.Length = blocks.size();
+        this.Length = blocks.Count;
         this.blocks = blocks;
     }
 
@@ -59,8 +59,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
         return blocks;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

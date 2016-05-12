@@ -23,8 +23,7 @@ public class EntityDeathEvent : EntityEvent {
         this.dropExp = droppedExp;
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 
@@ -61,8 +60,7 @@ public class EntityDeathEvent : EntityEvent {
         return drops;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

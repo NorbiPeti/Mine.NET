@@ -44,8 +44,7 @@ public class PlayerVelocityEvent : PlayerEvent : Cancellable {
         this.velocity = velocity;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

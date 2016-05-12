@@ -139,7 +139,7 @@ public class Vine : MaterialData {
             case UP:
                 break;
             default:
-                throw new ArgumentException("Vines can't go on face " + face.toString());
+                throw new ArgumentException("Vines can't go on face " + face.ToString());
         }
     }
 
@@ -181,7 +181,7 @@ public class Vine : MaterialData {
             case UP:
                 break;
             default:
-                throw new ArgumentException("Vines can't go on face " + face.toString());
+                throw new ArgumentException("Vines can't go on face " + face.ToString());
         }
     }
 
@@ -189,8 +189,7 @@ public class Vine : MaterialData {
         return "VINE";
     }
 
-    @Override
-    public Vine clone() {
+    public override Vine clone() {
         return (Vine) base.clone();
     }
 }

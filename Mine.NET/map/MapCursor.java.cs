@@ -182,7 +182,7 @@ public sealed class MapCursor {
          */
         [Obsolete]
         public static Type byValue(byte value) {
-            for (Type t : values()) {
+            foreach (Type t  in  values()) {
                 if (t.value == value) return t;
             }
             return null;

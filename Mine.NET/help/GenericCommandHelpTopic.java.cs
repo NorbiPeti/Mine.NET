@@ -22,16 +22,16 @@ public class GenericCommandHelpTopic : HelpTopic {
     public GenericCommandHelpTopic(Command command) {
         this.command = command;
 
-        if (command.getLabel().startsWith("/")) {
+        if (command.getLabel().StartsWith("/")) {
             name = command.getLabel();
         } else {
             name = "/" + command.getLabel();
         }
 
         // The short text is the first line of the description
-        int i = command.getDescription().indexOf("\n");
+        int i = command.getDescription().IndexOf("\n");
         if (i > 1) {
-            shortText = command.getDescription().substring(0, i - 1);
+            shortText = command.getDescription().Substring(0, i - 1);
         } else {
             shortText = command.getDescription();
         }
@@ -49,16 +49,16 @@ public class GenericCommandHelpTopic : HelpTopic {
         sb.Append(ChatColors.GOLD);
         sb.Append("Usage: ");
         sb.Append(ChatColors.WHITE);
-        sb.Append(command.getUsage().replace("<command>", name.substring(1)));
+        sb.Append(command.getUsage().replace("<command>", name.Substring(1)));
 
-        if (command.getAliases().size() > 0) {
+        if (command.getAliases().Count > 0) {
             sb.Append("\n");
             sb.Append(ChatColors.GOLD);
             sb.Append("Aliases: ");
             sb.Append(ChatColors.WHITE);
             sb.Append(ChatColors.WHITE + StringUtils.join(command.getAliases(), ", "));
         }
-        fullText = sb.toString();
+        fullText = sb.ToString();
     }
 
     public bool canSee(CommandSender sender) {

@@ -56,8 +56,8 @@ public enum PermissionDefault {
     }
 
     static {
-        for (PermissionDefault value : values()) {
-            for (String name : value.names) {
+        foreach (PermissionDefault value  in  values()) {
+            foreach (String name  in  value.names) {
                 lookup.Add(name, value);
             }
         }

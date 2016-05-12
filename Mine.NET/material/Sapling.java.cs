@@ -110,11 +110,10 @@ public class Sapling : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + base.toString();
+        return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + base.ToString();
     }
 
-    @Override
-    public Sapling clone() {
+    public override Sapling clone() {
         return (Sapling) base.clone();
     }
 }

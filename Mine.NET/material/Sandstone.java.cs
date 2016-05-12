@@ -68,11 +68,10 @@ public class Sandstone : MaterialData {
     }
 
     public override string ToString() {
-        return getType() + " " + base.toString();
+        return getType() + " " + base.ToString();
     }
 
-    @Override
-    public Sandstone clone() {
+    public override Sandstone clone() {
         return (Sandstone) base.clone();
     }
 }

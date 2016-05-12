@@ -140,11 +140,10 @@ public class Crops : MaterialData {
     }
 
     public override string ToString() {
-        return getState() + " " + base.toString();
+        return getState() + " " + base.ToString();
     }
 
-    @Override
-    public Crops clone() {
+    public override Crops clone() {
         return (Crops) base.clone();
     }
 }

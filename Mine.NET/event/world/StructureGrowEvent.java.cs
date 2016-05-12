@@ -85,8 +85,7 @@ public class StructureGrowEvent : WorldEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

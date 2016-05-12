@@ -18,8 +18,7 @@ public class PrepareAnvilEvent : InventoryEvent {
         this.result = result;
     }
 
-    @Override
-    public AnvilInventory getInventory() {
+    public override AnvilInventory getInventory() {
         return (AnvilInventory) base.getInventory();
     }
 
@@ -36,8 +35,7 @@ public class PrepareAnvilEvent : InventoryEvent {
         this.result = result;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

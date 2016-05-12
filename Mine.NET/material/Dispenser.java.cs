@@ -107,8 +107,7 @@ public class Dispenser : FurnaceAndDispenser {
         }
     }
 
-    @Override
-    public Dispenser clone() {
+    public override Dispenser clone() {
         return (Dispenser) base.clone();
     }
 }

@@ -18,15 +18,13 @@ public class YamlRepresenter : Representer {
     }
 
     private class RepresentConfigurationSection : RepresentMap {
-        @Override
-        public Node representData(Object data) {
+        public override Node representData(Object data) {
             return base.representData(((ConfigurationSection) data).getValues(false));
         }
     }
 
     private class RepresentConfigurationSerializable : RepresentMap {
-        @Override
-        public Node representData(Object data) {
+        public override Node representData(Object data) {
             ConfigurationSerializable serializable = (ConfigurationSerializable) data;
             Dictionary<String, Object> values = new LinkedHashMap<String, Object>();
             values.Add(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(serializable.getClass()));

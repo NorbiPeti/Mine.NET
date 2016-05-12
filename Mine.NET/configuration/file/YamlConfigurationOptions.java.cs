@@ -13,31 +13,26 @@ public class YamlConfigurationOptions : FileConfigurationOptions {
         base(configuration);
     }
 
-    @Override
-    public YamlConfiguration configuration() {
+    public override YamlConfiguration configuration() {
         return (YamlConfiguration) base.configuration();
     }
 
-    @Override
-    public YamlConfigurationOptions copyDefaults(bool value) {
+    public override YamlConfigurationOptions copyDefaults(bool value) {
         base.copyDefaults(value);
         return this;
     }
 
-    @Override
-    public YamlConfigurationOptions pathSeparator(char value) {
+    public override YamlConfigurationOptions pathSeparator(char value) {
         base.pathSeparator(value);
         return this;
     }
 
-    @Override
-    public YamlConfigurationOptions header(String value) {
+    public override YamlConfigurationOptions header(String value) {
         base.header(value);
         return this;
     }
 
-    @Override
-    public YamlConfigurationOptions copyHeader(bool value) {
+    public override YamlConfigurationOptions copyHeader(bool value) {
         base.copyHeader(value);
         return this;
     }

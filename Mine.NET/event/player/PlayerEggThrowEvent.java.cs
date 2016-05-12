@@ -98,8 +98,7 @@ public class PlayerEggThrowEvent : PlayerEvent {
         this.numHatches = numHatches;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

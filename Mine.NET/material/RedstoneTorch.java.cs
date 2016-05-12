@@ -54,11 +54,10 @@ public class RedstoneTorch : Torch : Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
-    @Override
-    public RedstoneTorch clone() {
+    public override RedstoneTorch clone() {
         return (RedstoneTorch) base.clone();
     }
 }

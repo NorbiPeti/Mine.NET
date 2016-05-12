@@ -41,8 +41,7 @@ public class ExtendedRails : Rails {
         base(type, data);
     }
 
-    @Override
-    public bool isCurve() {
+    public override bool isCurve() {
         return false;
     }
 
@@ -56,8 +55,7 @@ public class ExtendedRails : Rails {
         return (byte) (getData() & 0x7);
     }
 
-    @Override
-    public void setDirection(BlockFace face, bool isOnSlope) {
+    public override void setDirection(BlockFace face, bool isOnSlope) {
         bool extraBitSet = (getData() & 0x8) == 0x8;
 
         if (face != BlockFace.WEST && face != BlockFace.EAST && face != BlockFace.NORTH && face != BlockFace.SOUTH) {
@@ -68,8 +66,7 @@ public class ExtendedRails : Rails {
         setData((byte) (extraBitSet ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
-    @Override
-    public ExtendedRails clone() {
+    public override ExtendedRails clone() {
         return (ExtendedRails) base.clone();
     }
 }

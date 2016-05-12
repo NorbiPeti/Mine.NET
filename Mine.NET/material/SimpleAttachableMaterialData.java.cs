@@ -57,11 +57,10 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public SimpleAttachableMaterialData clone() {
+    public override SimpleAttachableMaterialData clone() {
         return (SimpleAttachableMaterialData) base.clone();
     }
 }

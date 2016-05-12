@@ -13,8 +13,7 @@ public class PluginDisableEvent : PluginEvent {
         base(plugin);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

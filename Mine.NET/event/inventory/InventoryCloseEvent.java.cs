@@ -24,8 +24,7 @@ public class InventoryCloseEvent : InventoryEvent {
         return transaction.getPlayer();
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -117,8 +117,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      *
      * @see BlockFace
      */
-    @Override
-    public void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFace face) {
         int data = getData() & 0xC;
 
         switch (face) {
@@ -149,8 +148,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      *
      * @see BlockFace
      */
-    @Override
-    public BlockFace getFacing() {
+    public override BlockFace getFacing() {
         byte data = (byte) (getData() & 0x3);
 
         switch (data) {
@@ -170,11 +168,10 @@ public class Comparator : MaterialData : Directional, Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
+        return base.ToString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
     }
 
-    @Override
-    public Comparator clone() {
+    public override Comparator clone() {
         return (Comparator) base.clone();
     }
 
@@ -183,8 +180,7 @@ public class Comparator : MaterialData : Directional, Redstone {
      *
      * @return true if the comparator is powered
      */
-    @Override
-    public bool isPowered() {
+    public override bool isPowered() {
         return getItemType() == Material.REDSTONE_COMPARATOR_ON;
     }
 

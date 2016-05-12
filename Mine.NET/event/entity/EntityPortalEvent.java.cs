@@ -71,8 +71,7 @@ public class EntityPortalEvent : EntityTeleportEvent {
         this.travelAgent = travelAgent;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -26,8 +26,7 @@ public class ItemSpawnEvent : EntityEvent : Cancellable {
         canceled = cancel;
     }
 
-    @Override
-    public Item getEntity() {
+    public override Item getEntity() {
         return (Item) entity;
     }
 
@@ -40,8 +39,7 @@ public class ItemSpawnEvent : EntityEvent : Cancellable {
         return location;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

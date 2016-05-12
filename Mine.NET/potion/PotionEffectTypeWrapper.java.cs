@@ -5,13 +5,11 @@ public class PotionEffectTypeWrapper : PotionEffectType {
         base(id);
     }
 
-    @Override
-    public double getDurationModifier() {
+    public override double getDurationModifier() {
         return getType().getDurationModifier();
     }
 
-    @Override
-    public String getName() {
+    public override String getName() {
         return getType().getName();
     }
 
@@ -24,8 +22,7 @@ public class PotionEffectTypeWrapper : PotionEffectType {
         return PotionEffectType.getById(getId());
     }
 
-    @Override
-    public bool isInstant() {
+    public override bool isInstant() {
         return getType().isInstant();
     }
 }

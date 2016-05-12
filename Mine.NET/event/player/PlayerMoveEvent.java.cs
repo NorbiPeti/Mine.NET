@@ -92,8 +92,7 @@ public class PlayerMoveEvent : PlayerEvent : Cancellable {
         Preconditions.checkArgument(loc.getWorld() != null, "Cannot use null location with null world!");
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

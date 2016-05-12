@@ -158,11 +158,10 @@ public class Tree : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + getDirection() + " " + base.toString();
+        return getSpecies() + " " + getDirection() + " " + base.ToString();
     }
 
-    @Override
-    public Tree clone() {
+    public override Tree clone() {
         return (Tree) base.clone();
     }
 }

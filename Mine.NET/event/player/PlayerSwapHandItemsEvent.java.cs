@@ -60,18 +60,15 @@ public class PlayerSwapHandItemsEvent : PlayerEvent : Cancellable {
         this.offHandItem = offHandItem;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancelled;
     }
 
-    @Override
-    public void setCancelled(bool cancel) {
+    public override void setCancelled(bool cancel) {
         this.cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

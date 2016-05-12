@@ -127,8 +127,7 @@ public class PerlinNoiseGenerator : NoiseGenerator {
         return instance;
     }
 
-    @Override
-    public double noise(double x, double y, double z) {
+    public override double noise(double x, double y, double z) {
         x += offsetX;
         y += offsetY;
         z += offsetZ;

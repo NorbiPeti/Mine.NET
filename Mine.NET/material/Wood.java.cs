@@ -185,11 +185,10 @@ public class Wood : MaterialData {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + base.toString();
+        return getSpecies() + " " + base.ToString();
     }
 
-    @Override
-    public Wood clone() {
+    public override Wood clone() {
         return (Wood) base.clone();
     }
 }

@@ -33,8 +33,7 @@ public class PlayerInventoryEvent : PlayerEvent {
         return inventory;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -224,11 +224,10 @@ public class Banner : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public Banner clone() {
+    public override Banner clone() {
         return (Banner) base.clone();
     }
 }

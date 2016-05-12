@@ -164,7 +164,7 @@ public class Permission {
 
         Bukkit.getServer().getPluginManager().recalculatePermissionDefaults(this);
 
-        for (Permissible p : perms) {
+        foreach (Permissible p  in  perms) {
             p.recalculatePermissions();
         }
     }
@@ -228,9 +228,9 @@ public class Permission {
     public static List<Permission> loadPermissions(Dictionary<?, ?> data, String error, PermissionDefault def) {
         List<Permission> result = new List<Permission>();
 
-        for (KeyValuePair<?, ?> entry : data.entrySet()) {
+        foreach (KeyValuePair<?, ?> entry  in  data.entrySet()) {
             try {
-                result.add(Permission.loadPermission(entry.Key.toString(), (Dictionary<?, ?>) entry.Value, def, result));
+                result.add(Permission.loadPermission(entry.Key.ToString(), (Dictionary<?, ?>) entry.Value, def, result));
             } catch (Throwable ex) {
                 Bukkit.getServer().getLogger().log(Level.SEVERE, String.format(error, entry.Key), ex);
             }
@@ -287,7 +287,7 @@ public class Permission {
         Dictionary<String, bool> children = null;
 
         if (data["default"] != null) {
-            PermissionDefault value = PermissionDefault.getByName(data["default"].toString());
+            PermissionDefault value = PermissionDefault.getByName(data["default"].ToString());
             if (value != null) {
                 def = value;
             } else {
@@ -299,9 +299,9 @@ public class Permission {
             Object childrenNode = data["children"];
             if (childrenNode is Iterable) {
                 children = new LinkedHashMap<String, bool>();
-                for (Object child : (Iterable<?>) childrenNode) {
+                foreach (Object child  in  (Iterable<?>) childrenNode) {
                     if (child != null) {
-                        children.Add(child.toString(), bool.TRUE);
+                        children.Add(child.ToString(), bool.TRUE);
                     }
                 }
             } else if (childrenNode is Map) {
@@ -312,7 +312,7 @@ public class Permission {
         }
 
         if (data["description"] != null) {
-            desc = data["description"].toString();
+            desc = data["description"].ToString();
         }
 
         return new Permission(name, desc, def, children);
@@ -321,22 +321,22 @@ public class Permission {
     private static Dictionary<String, bool> extractChildren(Dictionary<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
         Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
 
-        for (KeyValuePair<?, ?> entry : input.entrySet()) {
+        foreach (KeyValuePair<?, ?> entry  in  input.entrySet()) {
             if ((entry.Value is bool)) {
-                children.Add(entry.Key.toString(), (bool) entry.Value);
+                children.Add(entry.Key.ToString(), (bool) entry.Value);
             } else if ((entry.Value is Map)) {
                 try {
-                    Permission perm = loadPermission(entry.Key.toString(), (Dictionary<?, ?>) entry.Value, def, output);
+                    Permission perm = loadPermission(entry.Key.ToString(), (Dictionary<?, ?>) entry.Value, def, output);
                     children.Add(perm.getName(), bool.TRUE);
 
                     if (output != null) {
                         output.add(perm);
                     }
                 } catch (Throwable ex) {
-                    throw new ArgumentException("Permission node '" + entry.Key.toString() + "' in child of " + name + " is invalid", ex);
+                    throw new ArgumentException("Permission node '" + entry.Key.ToString() + "' in child of " + name + " is invalid", ex);
                 }
             } else {
-                throw new ArgumentException("Child '" + entry.Key.toString() + "' contains invalid value");
+                throw new ArgumentException("Child '" + entry.Key.ToString() + "' contains invalid value");
             }
         }
 

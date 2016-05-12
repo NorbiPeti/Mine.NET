@@ -34,8 +34,7 @@ public class CreeperPowerEvent : EntityEvent : Cancellable {
         canceled = cancel;
     }
 
-    @Override
-    public Creeper getEntity() {
+    public override Creeper getEntity() {
         return (Creeper) entity;
     }
 
@@ -57,8 +56,7 @@ public class CreeperPowerEvent : EntityEvent : Cancellable {
         return cause;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

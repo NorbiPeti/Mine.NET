@@ -50,8 +50,7 @@ public class PortalCreateEvent : WorldEvent : Cancellable {
         return reason;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

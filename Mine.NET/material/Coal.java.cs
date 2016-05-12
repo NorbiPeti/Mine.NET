@@ -68,11 +68,10 @@ public class Coal : MaterialData {
     }
 
     public override string ToString() {
-        return getType() + " " + base.toString();
+        return getType() + " " + base.ToString();
     }
 
-    @Override
-    public Coal clone() {
+    public override Coal clone() {
         return (Coal) base.clone();
     }
 }

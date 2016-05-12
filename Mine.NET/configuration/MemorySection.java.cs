@@ -172,8 +172,8 @@ public class MemorySection : ConfigurationSection {
         // i2 is the trailing (lower) index
         int i1 = -1, i2;
         ConfigurationSection section = this;
-        while ((i1 = path.indexOf(separator, i2 = i1 + 1)) != -1) {
-            String node = path.substring(i2, i1);
+        while ((i1 = path.IndexOf(separator, i2 = i1 + 1)) != -1) {
+            String node = path.Substring(i2, i1);
             ConfigurationSection subSection = section.getConfigurationSection(node);
             if (subSection == null) {
                 section = section.createSection(node);
@@ -182,7 +182,7 @@ public class MemorySection : ConfigurationSection {
             }
         }
 
-        String key = path.substring(i2);
+        String key = path.Substring(i2);
         if (section == this) {
             if (value == null) {
                 map.remove(key);
@@ -215,14 +215,14 @@ public class MemorySection : ConfigurationSection {
         // i2 is the trailing (lower) index
         int i1 = -1, i2;
         ConfigurationSection section = this;
-        while ((i1 = path.indexOf(separator, i2 = i1 + 1)) != -1) {
-            section = section.getConfigurationSection(path.substring(i2, i1));
+        while ((i1 = path.IndexOf(separator, i2 = i1 + 1)) != -1) {
+            section = section.getConfigurationSection(path.Substring(i2, i1));
             if (section == null) {
                 return def;
             }
         }
 
-        String key = path.substring(i2);
+        String key = path.Substring(i2);
         if (section == this) {
             Object result = map[key];
             return (result == null) ? def : result;
@@ -242,8 +242,8 @@ public class MemorySection : ConfigurationSection {
         // i2 is the trailing (lower) index
         int i1 = -1, i2;
         ConfigurationSection section = this;
-        while ((i1 = path.indexOf(separator, i2 = i1 + 1)) != -1) {
-            String node = path.substring(i2, i1);
+        while ((i1 = path.IndexOf(separator, i2 = i1 + 1)) != -1) {
+            String node = path.Substring(i2, i1);
             ConfigurationSection subSection = section.getConfigurationSection(node);
             if (subSection == null) {
                 section = section.createSection(node);
@@ -252,7 +252,7 @@ public class MemorySection : ConfigurationSection {
             }
         }
 
-        String key = path.substring(i2);
+        String key = path.Substring(i2);
         if (section == this) {
             ConfigurationSection result = new MemorySection(this, key);
             map.Add(key, result);
@@ -264,11 +264,11 @@ public class MemorySection : ConfigurationSection {
     public ConfigurationSection createSection(String path, Dictionary<?, ?> map) {
         ConfigurationSection section = createSection(path);
 
-        for (KeyValuePair<?, ?> entry : map.entrySet()) {
+        foreach (KeyValuePair<?, ?> entry  in  map.entrySet()) {
             if (entry.Value is Map) {
-                section.createSection(entry.Key.toString(), (Dictionary<?, ?>) entry.Value);
+                section.createSection(entry.Key.ToString(), (Dictionary<?, ?>) entry.Value);
             } else {
-                section.set(entry.Key.toString(), entry.Value);
+                section.set(entry.Key.ToString(), entry.Value);
             }
         }
 
@@ -278,12 +278,12 @@ public class MemorySection : ConfigurationSection {
     // Primitives
     public String getString(String path) {
         Object def = getDefault(path);
-        return getString(path, def != null ? def.toString() : null);
+        return getString(path, def != null ? def.ToString() : null);
     }
 
     public String getString(String path, String def) {
         Object val = get(path, def);
-        return (val != null) ? val.toString() : def;
+        return (val != null) ? val.ToString() : def;
     }
 
     public bool isString(String path) {
@@ -376,7 +376,7 @@ public class MemorySection : ConfigurationSection {
 
         List<String> result = new List<String>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if ((object is String) || (isPrimitiveWrapper(object))) {
                 result.add(String.valueOf(object));
             }
@@ -394,7 +394,7 @@ public class MemorySection : ConfigurationSection {
 
         List<int> result = new List<int>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is int) {
                 result.add((int) object);
             } else if (object is String) {
@@ -421,13 +421,13 @@ public class MemorySection : ConfigurationSection {
 
         List<bool> result = new List<bool>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is bool) {
                 result.add((bool) object);
             } else if (object is String) {
-                if (bool.TRUE.toString().equals(object)) {
+                if (bool.TRUE.ToString().equals(object)) {
                     result.add(true);
-                } else if (bool.FALSE.toString().equals(object)) {
+                } else if (bool.FALSE.ToString().equals(object)) {
                     result.add(false);
                 }
             }
@@ -445,7 +445,7 @@ public class MemorySection : ConfigurationSection {
 
         List<Double> result = new List<Double>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Double) {
                 result.add((Double) object);
             } else if (object is String) {
@@ -472,7 +472,7 @@ public class MemorySection : ConfigurationSection {
 
         List<Float> result = new List<Float>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Float) {
                 result.add((Float) object);
             } else if (object is String) {
@@ -499,7 +499,7 @@ public class MemorySection : ConfigurationSection {
 
         List<Long> result = new List<Long>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Long) {
                 result.add((Long) object);
             } else if (object is String) {
@@ -526,7 +526,7 @@ public class MemorySection : ConfigurationSection {
 
         List<Byte> result = new List<Byte>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Byte) {
                 result.add((Byte) object);
             } else if (object is String) {
@@ -553,7 +553,7 @@ public class MemorySection : ConfigurationSection {
 
         List<char> result = new List<char>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is char) {
                 result.add((char) object);
             } else if (object is String) {
@@ -579,7 +579,7 @@ public class MemorySection : ConfigurationSection {
 
         List<Short> result = new List<Short>();
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Short) {
                 result.add((Short) object);
             } else if (object is String) {
@@ -605,7 +605,7 @@ public class MemorySection : ConfigurationSection {
             return result;
         }
 
-        for (Object object : list) {
+        foreach (Object object  in  list) {
             if (object is Map) {
                 result.add((Dictionary<?, ?>) object);
             }
@@ -709,7 +709,7 @@ public class MemorySection : ConfigurationSection {
         if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
-            for (KeyValuePair<String, Object> entry : sec.map.entrySet()) {
+            foreach (KeyValuePair<String, Object> entry  in  sec.map.entrySet()) {
                 output.add(createPath(section, entry.Key, this));
 
                 if ((deep) && (entry.Value is ConfigurationSection)) {
@@ -720,7 +720,7 @@ public class MemorySection : ConfigurationSection {
         } else {
             HashSet<String> keys = section.getKeys(deep);
 
-            for (String key : keys) {
+            foreach (String key  in  keys) {
                 output.add(createPath(section, key, this));
             }
         }
@@ -730,7 +730,7 @@ public class MemorySection : ConfigurationSection {
         if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
-            for (KeyValuePair<String, Object> entry : sec.map.entrySet()) {
+            foreach (KeyValuePair<String, Object> entry  in  sec.map.entrySet()) {
                 output.Add(createPath(section, entry.Key, this), entry.Value);
 
                 if (entry.Value is ConfigurationSection) {
@@ -742,7 +742,7 @@ public class MemorySection : ConfigurationSection {
         } else {
             Dictionary<String, Object> values = section.getValues(deep);
 
-            for (KeyValuePair<String, Object> entry : values.entrySet()) {
+            foreach (KeyValuePair<String, Object> entry  in  values.entrySet()) {
                 output.Add(createPath(section, entry.Key, this), entry.Value);
             }
         }
@@ -802,7 +802,7 @@ public class MemorySection : ConfigurationSection {
             builder.Append(key);
         }
 
-        return builder.toString();
+        return builder.ToString();
     }
 
     public override string ToString() {
@@ -814,6 +814,6 @@ public class MemorySection : ConfigurationSection {
             .Append("', root='")
             .Append(root == null ? null : root.getClass().getSimpleName())
             .Append("']")
-            .toString();
+            .ToString();
     }
 }

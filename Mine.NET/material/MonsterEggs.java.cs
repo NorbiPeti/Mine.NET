@@ -57,13 +57,11 @@ public class MonsterEggs : TexturedMaterial {
         base(type, data);
     }
 
-    @Override
-    public List<Material> getTextures() {
+    public override List<Material> getTextures() {
         return textures;
     }
 
-    @Override
-    public MonsterEggs clone() {
+    public override MonsterEggs clone() {
         return (MonsterEggs) base.clone();
     }
 }

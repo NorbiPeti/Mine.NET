@@ -26,8 +26,7 @@ public class ChunkLoadEvent : ChunkEvent {
         return newChunk;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

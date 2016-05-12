@@ -82,11 +82,10 @@ public class Cake : MaterialData {
     }
 
     public override string ToString() {
-        return base.toString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
+        return base.ToString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
     }
 
-    @Override
-    public Cake clone() {
+    public override Cake clone() {
         return (Cake) base.clone();
     }
 }

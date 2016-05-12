@@ -84,8 +84,7 @@ public class EntityChangeBlockEvent : EntityEvent : Cancellable {
         return data;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

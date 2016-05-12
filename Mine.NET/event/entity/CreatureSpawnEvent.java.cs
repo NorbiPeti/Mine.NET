@@ -29,8 +29,7 @@ public class CreatureSpawnEvent : EntityEvent : Cancellable {
         canceled = cancel;
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 
@@ -53,8 +52,7 @@ public class CreatureSpawnEvent : EntityEvent : Cancellable {
         return spawnReason;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

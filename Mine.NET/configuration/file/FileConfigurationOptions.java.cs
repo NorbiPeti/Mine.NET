@@ -14,19 +14,16 @@ public class FileConfigurationOptions : MemoryConfigurationOptions {
         base(configuration);
     }
 
-    @Override
-    public FileConfiguration configuration() {
+    public override FileConfiguration configuration() {
         return (FileConfiguration) base.configuration();
     }
 
-    @Override
-    public FileConfigurationOptions copyDefaults(bool value) {
+    public override FileConfigurationOptions copyDefaults(bool value) {
         base.copyDefaults(value);
         return this;
     }
 
-    @Override
-    public FileConfigurationOptions pathSeparator(char value) {
+    public override FileConfigurationOptions pathSeparator(char value) {
         base.pathSeparator(value);
         return this;
     }

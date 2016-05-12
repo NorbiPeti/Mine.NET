@@ -33,8 +33,7 @@ public class PlayerExpChangeEvent : PlayerEvent {
         exp = amount;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

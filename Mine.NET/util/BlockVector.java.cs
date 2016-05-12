@@ -101,8 +101,7 @@ public class BlockVector : Vector {
      *
      * @return vector
      */
-    @Override
-    public BlockVector clone() {
+    public override BlockVector clone() {
         return (BlockVector) base.clone();
     }
 

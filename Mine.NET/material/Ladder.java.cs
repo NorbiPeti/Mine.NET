@@ -97,8 +97,7 @@ public class Ladder : SimpleAttachableMaterialData {
 
     }
 
-    @Override
-    public Ladder clone() {
+    public override Ladder clone() {
         return (Ladder) base.clone();
     }
 }

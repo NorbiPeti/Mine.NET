@@ -51,8 +51,7 @@ public class DetectorRail : ExtendedRails : PressureSensor {
         setData((byte) (isPressed ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
-    @Override
-    public DetectorRail clone() {
+    public override DetectorRail clone() {
         return (DetectorRail) base.clone();
     }
 }

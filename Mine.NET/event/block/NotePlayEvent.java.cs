@@ -72,8 +72,7 @@ public class NotePlayEvent : BlockEvent : Cancellable {
         }
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -84,11 +84,10 @@ public class DirectionalContainer : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public DirectionalContainer clone() {
+    public override DirectionalContainer clone() {
         return (DirectionalContainer) base.clone();
     }
 }

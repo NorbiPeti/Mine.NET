@@ -151,11 +151,10 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        return base.ToString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
     }
 
-    @Override
-    public Lever clone() {
+    public override Lever clone() {
         return (Lever) base.clone();
     }
 }

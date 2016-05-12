@@ -33,8 +33,7 @@ public class PlayerQuitEvent : PlayerEvent {
         this.quitMessage = quitMessage;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

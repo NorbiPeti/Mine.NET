@@ -181,7 +181,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
             input.close();
         }
 
-        loadFromString(builder.toString());
+        loadFromString(builder.ToString());
     }
 
     /**
@@ -237,8 +237,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      */
     protected abstract String buildHeader();
 
-    @Override
-    public FileConfigurationOptions options() {
+    public override FileConfigurationOptions options() {
         if (options == null) {
             options = new FileConfigurationOptions(this);
         }

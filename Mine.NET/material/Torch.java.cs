@@ -99,8 +99,7 @@ public class Torch : SimpleAttachableMaterialData {
         setData(data);
     }
 
-    @Override
-    public Torch clone() {
+    public override Torch clone() {
         return (Torch) base.clone();
     }
 }

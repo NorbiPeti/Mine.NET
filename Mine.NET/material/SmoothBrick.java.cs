@@ -58,13 +58,11 @@ public class SmoothBrick : TexturedMaterial {
         base(type, data);
     }
 
-    @Override
-    public List<Material> getTextures() {
+    public override List<Material> getTextures() {
         return textures;
     }
 
-    @Override
-    public SmoothBrick clone() {
+    public override SmoothBrick clone() {
         return (SmoothBrick) base.clone();
     }
 }

@@ -396,8 +396,7 @@ public interface Inventory : Iterable<ItemStack> {
      */
     public InventoryHolder getHolder();
 
-    @Override
-    public ListIterator<ItemStack> iterator();
+    public override ListIterator<ItemStack> iterator();
 
     /**
      * Returns an iterator starting at the given index. If the index is

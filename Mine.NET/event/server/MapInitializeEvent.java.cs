@@ -23,8 +23,7 @@ public class MapInitializeEvent : ServerEvent {
         return mapView;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

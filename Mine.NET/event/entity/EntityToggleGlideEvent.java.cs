@@ -24,13 +24,11 @@ public class EntityToggleGlideEvent : EntityEvent : Cancellable {
         this.isGliding = isGliding;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancel;
     }
 
-    @Override
-    public void setCancelled(bool cancel) {
+    public override void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
@@ -38,8 +36,7 @@ public class EntityToggleGlideEvent : EntityEvent : Cancellable {
         return isGliding;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

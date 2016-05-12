@@ -57,7 +57,7 @@ public abstract class TexturedMaterial : MaterialData {
      */
     public Material getMaterial() {
         int n = getTextureIndex();
-        if (n > getTextures().size() - 1) {
+        if (n > getTextures().Count - 1) {
             n = 0;
         }
 
@@ -72,7 +72,7 @@ public abstract class TexturedMaterial : MaterialData {
      */
     public void setMaterial(Material material) {
         if (getTextures().contains(material)) {
-            setTextureIndex(getTextures().indexOf(material));
+            setTextureIndex(getTextures().IndexOf(material));
         } else {
             setTextureIndex(0x0);
         }
@@ -101,11 +101,10 @@ public abstract class TexturedMaterial : MaterialData {
     }
 
     public override string ToString() {
-        return getMaterial() + " " + base.toString();
+        return getMaterial() + " " + base.ToString();
     }
 
-    @Override
-    public TexturedMaterial clone() {
+    public override TexturedMaterial clone() {
         return (TexturedMaterial) base.clone();
     }
 }

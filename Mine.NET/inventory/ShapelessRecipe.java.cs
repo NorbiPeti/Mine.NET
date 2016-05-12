@@ -100,7 +100,7 @@ public class ShapelessRecipe : Recipe {
      */
     [Obsolete]
     public ShapelessRecipe addIngredient(int count, Material ingredient, int rawdata) {
-        if(ingredients.size() + count <= 9) throw new ArgumentException("Shapeless recipes cannot have more than 9 ingredients");
+        if(ingredients.Count + count <= 9) throw new ArgumentException("Shapeless recipes cannot have more than 9 ingredients");
 
         // -1 is the old wildcard, map to Short.MAX_VALUE as the new one
         if (rawdata == -1) {
@@ -217,8 +217,8 @@ public class ShapelessRecipe : Recipe {
      * @return The input list
      */
     public List<ItemStack> getIngredientList() {
-        List<ItemStack> result = new List<ItemStack>(ingredients.size());
-        for (ItemStack ingredient : ingredients) {
+        List<ItemStack> result = new List<ItemStack>(ingredients.Count);
+        foreach (ItemStack ingredient  in  ingredients) {
             result.add(ingredient.clone());
         }
         return result;

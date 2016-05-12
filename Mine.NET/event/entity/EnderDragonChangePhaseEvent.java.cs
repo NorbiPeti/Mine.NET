@@ -21,8 +21,7 @@ public class EnderDragonChangePhaseEvent : EntityEvent : Cancellable {
         this.setNewPhase(newPhase);
     }
 
-    @Override
-    public EnderDragon getEntity() {
+    public override EnderDragon getEntity() {
         return (EnderDragon) entity;
     }
 
@@ -55,18 +54,15 @@ public class EnderDragonChangePhaseEvent : EntityEvent : Cancellable {
         this.newPhase = newPhase;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancel;
     }
 
-    @Override
-    public void setCancelled(bool cancel) {
+    public override void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

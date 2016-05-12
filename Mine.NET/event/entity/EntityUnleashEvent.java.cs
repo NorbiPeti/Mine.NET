@@ -24,8 +24,7 @@ public class EntityUnleashEvent : EntityEvent {
         return reason;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

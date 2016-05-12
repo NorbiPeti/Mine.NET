@@ -37,13 +37,12 @@ public class MerchantRecipe : Recipe {
         this.experienceReward = experienceReward;
     }
 
-    @Override
-    public ItemStack getResult() {
+    public override ItemStack getResult() {
         return result;
     }
 
     public void addIngredient(ItemStack item) {
-        Preconditions.checkState(ingredients.size() < 2, "Merchant can only have 2 ingredients");
+        Preconditions.checkState(ingredients.Count < 2, "Merchant can only have 2 ingredients");
         ingredients.add(item.clone());
     }
 
@@ -53,14 +52,14 @@ public class MerchantRecipe : Recipe {
 
     public void setIngredients(List<ItemStack> ingredients) {
         this.ingredients = new List<ItemStack>();
-        for (ItemStack item : ingredients) {
+        foreach (ItemStack item  in  ingredients) {
             this.ingredients.add(item.clone());
         }
     }
 
     public List<ItemStack> getIngredients() {
         List<ItemStack> copy = new List<ItemStack>();
-        for (ItemStack item : ingredients) {
+        foreach (ItemStack item  in  ingredients) {
             copy.add(item.clone());
         }
         return copy;

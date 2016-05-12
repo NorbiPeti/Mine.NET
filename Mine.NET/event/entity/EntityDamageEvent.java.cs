@@ -143,7 +143,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      */
     public readonly double getFinalDamage() {
         double damage = 0;
-        for (DamageModifier modifier : MODIFIERS) {
+        foreach (DamageModifier modifier  in  MODIFIERS) {
             damage += getDamage(modifier);
         }
         return damage;
@@ -174,7 +174,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
         // These have to happen in the same order as the server calculates them, keep the enum sorted
         double remaining = damage;
         double oldRemaining = getDamage(DamageModifier.BASE);
-        for (DamageModifier modifier : MODIFIERS) {
+        foreach (DamageModifier modifier  in  MODIFIERS) {
             if (!isApplicable(modifier)) {
                 continue;
             }
@@ -219,8 +219,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
         return cause;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -63,7 +63,7 @@ sealed class PluginClassLoader : URLClassLoader {
     }
 
     Class<?> findClass(String name, bool checkGlobal) throws ClassNotFoundException {
-        if (name.startsWith("org.bukkit.") || name.startsWith("net.minecraft.")) {
+        if (name.StartsWith("org.bukkit.") || name.StartsWith("net.minecraft.")) {
             throw new ClassNotFoundException(name);
         }
         Class<?> result = classes[name];

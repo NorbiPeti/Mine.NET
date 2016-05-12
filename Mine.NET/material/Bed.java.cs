@@ -134,11 +134,10 @@ public class Bed : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + base.toString() + " facing " + getFacing();
+        return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public Bed clone() {
+    public override Bed clone() {
         return (Bed) base.clone();
     }
 }

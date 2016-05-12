@@ -29,8 +29,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
         this.defaults = defaults;
     }
 
-    @Override
-    public void addDefault(String path, Object value) {
+    public override void addDefault(String path, Object value) {
         if(path==null) throw new ArgumentNullException("Path may not be null");
 
         if (defaults == null) {
@@ -43,7 +42,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
     public void addDefaults(Dictionary<String, Object> defaults) {
         if(defaults==null) throw new ArgumentNullException("Defaults may not be null");
 
-        for (KeyValuePair<String, Object> entry : defaults.entrySet()) {
+        foreach (KeyValuePair<String, Object> entry  in  defaults.entrySet()) {
             addDefault(entry.Key, entry.Value);
         }
     }
@@ -64,8 +63,7 @@ public class MemoryConfiguration : MemorySection : Configuration {
         return defaults;
     }
 
-    @Override
-    public ConfigurationSection getParent() {
+    public override ConfigurationSection getParent() {
         return null;
     }
 

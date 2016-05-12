@@ -251,6 +251,5 @@ public interface Horse : Animals, Vehicle, InventoryHolder, Tameable {
      */
     public void setJumpStrength(double strength);
 
-    @Override
-    public HorseInventory getInventory();
+    public override HorseInventory getInventory();
 }

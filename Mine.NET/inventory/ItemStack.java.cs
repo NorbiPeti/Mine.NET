@@ -298,12 +298,12 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
 
     @Override
     @Utility
-    public String toString() {
+    public String ToString() {
         StringBuilder toString = new StringBuilder("ItemStack{").Append(getType().name()).Append(" x ").Append(getAmount());
         if (hasItemMeta()) {
             toString.Append(", ").Append(getItemMeta());
         }
-        return toString.Append('}').toString();
+        return toString.Append('}').ToString();
     }
 
     @Override
@@ -338,8 +338,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         return getTypeId() == stack.getTypeId() && getDurability() == stack.getDurability() && hasItemMeta() == stack.hasItemMeta() && (hasItemMeta() ? Bukkit.getItemFactory().equals(getItemMeta(), stack.getItemMeta()) : true);
     }
 
-    @Override
-    public ItemStack clone() {
+    public override ItemStack clone() {
         try {
             ItemStack itemStack = (ItemStack) base.clone();
 
@@ -415,7 +414,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
     @Utility
     public void addEnchantments(Dictionary<Enchantment, int> enchantments) {
         if(enchantments==null) throw new ArgumentNullException("Enchantments cannot be null");
-        for (KeyValuePair<Enchantment, int> entry : enchantments.entrySet()) {
+        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments.entrySet()) {
             addEnchantment(entry.Key, entry.Value);
         }
     }
@@ -454,7 +453,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      */
     @Utility
     public void addUnsafeEnchantments(Dictionary<Enchantment, int> enchantments) {
-        for (KeyValuePair<Enchantment, int> entry : enchantments.entrySet()) {
+        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments.entrySet()) {
             addUnsafeEnchantment(entry.Key, entry.Value);
         }
     }
@@ -541,8 +540,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
             if (raw is Map) {
                 Dictionary<?, ?> map = (Dictionary<?, ?>) raw;
 
-                for (KeyValuePair<?, ?> entry : map.entrySet()) {
-                    Enchantment enchantment = Enchantment.getByName(entry.Key.toString());
+                foreach (KeyValuePair<?, ?> entry  in  map.entrySet()) {
+                    Enchantment enchantment = Enchantment.getByName(entry.Key.ToString());
 
                     if ((enchantment != null) && (entry.Value is int)) {
                         result.addUnsafeEnchantment(enchantment, (int) entry.Value);

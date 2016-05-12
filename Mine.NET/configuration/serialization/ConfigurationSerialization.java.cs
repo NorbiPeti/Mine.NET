@@ -77,14 +77,14 @@ public class ConfigurationSerialization {
             ConfigurationSerializable result = (ConfigurationSerializable) method.invoke(null, args);
 
             if (result == null) {
-                Logger.getLogger(ConfigurationSerialization.class.getName()).log(Level.SEVERE, "Could not call method '" + method.toString() + "' of " + clazz + " for deserialization: method returned null");
+                Logger.getLogger(ConfigurationSerialization.class.getName()).log(Level.SEVERE, "Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization: method returned null");
             } else {
                 return result;
             }
         } catch (Throwable ex) {
             Logger.getLogger(ConfigurationSerialization.class.getName()).log(
                     Level.SEVERE,
-                    "Could not call method '" + method.toString() + "' of " + clazz + " for deserialization",
+                    "Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization",
                     ex is InvocationTargetException ? ex.getCause() : ex);
         }
 
@@ -97,7 +97,7 @@ public class ConfigurationSerialization {
         } catch (Throwable ex) {
             Logger.getLogger(ConfigurationSerialization.class.getName()).log(
                     Level.SEVERE,
-                    "Could not call constructor '" + ctor.toString() + "' of " + clazz + " for deserialization",
+                    "Could not call constructor '" + ctor.ToString() + "' of " + clazz + " for deserialization",
                     ex is InvocationTargetException ? ex.getCause() : ex);
         }
 

@@ -27,8 +27,7 @@ public class SheepDyeWoolEvent : EntityEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    @Override
-    public Sheep getEntity() {
+    public override Sheep getEntity() {
         return (Sheep) entity;
     }
 
@@ -50,8 +49,7 @@ public class SheepDyeWoolEvent : EntityEvent : Cancellable {
         this.color = color;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

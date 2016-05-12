@@ -27,8 +27,7 @@ public class PlayerInteractAtEntityEvent : PlayerInteractEntityEvent {
         return position.clone();
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

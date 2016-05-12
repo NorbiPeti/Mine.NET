@@ -74,8 +74,7 @@ public interface PlayerInventory : Inventory {
      * @see #setHelmet(ItemStack)
      * @see #setLeggings(ItemStack)
      */
-    @Override
-    public void setItem(int index, ItemStack item);
+    public override void setItem(int index, ItemStack item);
 
     /**
      * Put the given ItemStacks into the armor slots

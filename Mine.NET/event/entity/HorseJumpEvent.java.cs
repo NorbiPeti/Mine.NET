@@ -29,8 +29,7 @@ public class HorseJumpEvent : EntityEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public Horse getEntity() {
+    public override Horse getEntity() {
         return (Horse) entity;
     }
 
@@ -73,8 +72,7 @@ public class HorseJumpEvent : EntityEvent : Cancellable {
         this.power = power;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

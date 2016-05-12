@@ -9,19 +9,16 @@ public class MemoryConfigurationOptions : ConfigurationOptions {
         base(configuration);
     }
 
-    @Override
-    public MemoryConfiguration configuration() {
+    public override MemoryConfiguration configuration() {
         return (MemoryConfiguration) base.configuration();
     }
 
-    @Override
-    public MemoryConfigurationOptions copyDefaults(bool value) {
+    public override MemoryConfigurationOptions copyDefaults(bool value) {
         base.copyDefaults(value);
         return this;
     }
 
-    @Override
-    public MemoryConfigurationOptions pathSeparator(char value) {
+    public override MemoryConfigurationOptions pathSeparator(char value) {
         base.pathSeparator(value);
         return this;
     }

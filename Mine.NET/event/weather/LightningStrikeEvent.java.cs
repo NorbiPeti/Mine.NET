@@ -35,8 +35,7 @@ public class LightningStrikeEvent : WeatherEvent : Cancellable {
         return bolt;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

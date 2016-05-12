@@ -24,8 +24,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
         this.affectedEntities = affectedEntities;
     }
 
-    @Override
-    public ThrownPotion getEntity() {
+    public override ThrownPotion getEntity() {
         return (ThrownPotion) entity;
     }
 
@@ -83,8 +82,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

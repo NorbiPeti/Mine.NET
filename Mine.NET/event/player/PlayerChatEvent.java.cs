@@ -114,8 +114,7 @@ public class PlayerChatEvent : PlayerEvent : Cancellable {
         return recipients;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

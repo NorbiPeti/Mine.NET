@@ -33,8 +33,7 @@ public class PlayerJoinEvent : PlayerEvent {
         this.joinMessage = joinMessage;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

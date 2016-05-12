@@ -59,13 +59,11 @@ public class PlayerArmorStandManipulateEvent : PlayerInteractEntityEvent {
         return this.slot;
     }
 
-    @Override
-    public ArmorStand getRightClicked() {
+    public override ArmorStand getRightClicked() {
         return (ArmorStand) this.clickedEntity;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

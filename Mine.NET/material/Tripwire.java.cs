@@ -74,12 +74,11 @@ public class Tripwire : MaterialData {
         setData((byte) dat);
     }
 
-    @Override
-    public Tripwire clone() {
+    public override Tripwire clone() {
         return (Tripwire) base.clone();
     }
 
     public override string ToString() {
-        return base.toString() + (isActivated()?" Activated":"") + (isObjectTriggering()?" Triggered":"");
+        return base.ToString() + (isActivated()?" Activated":"") + (isObjectTriggering()?" Triggered":"");
     }
 }

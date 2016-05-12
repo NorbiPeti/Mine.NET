@@ -31,13 +31,11 @@ public class FixedMetadataValue : LazyMetadataValue {
         this.internalValue = value;
     }
 
-    @Override
-    public void invalidate() {
+    public override void invalidate() {
 
     }
 
-    @Override
-    public Object value() {
+    public override Object value() {
         return internalValue;
     }
 }

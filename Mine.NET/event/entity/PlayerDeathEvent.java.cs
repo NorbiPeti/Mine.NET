@@ -32,8 +32,7 @@ public class PlayerDeathEvent : EntityDeathEvent {
         this.deathMessage = deathMessage;
     }
 
-    @Override
-    public Player getEntity() {
+    public override Player getEntity() {
         return (Player) entity;
     }
 

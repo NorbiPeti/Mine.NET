@@ -112,7 +112,7 @@ public abstract class MetadataStoreBase<T> {
      */
     public synchronized void invalidateAll(Plugin owningPlugin) {
         if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
-        for (Dictionary<Plugin, MetadataValue> values : metadataMap.values()) {
+        foreach (Dictionary<Plugin, MetadataValue> values  in  metadataMap.values()) {
             if (values.containsKey(owningPlugin)) {
                 values[owningPlugin].invalidate();
             }

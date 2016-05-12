@@ -24,7 +24,7 @@ public class PlayerChatTabCompleteEvent : PlayerEvent {
         if (i < 0) {
             this.lastToken = message;
         } else {
-            this.lastToken = message.substring(i + 1);
+            this.lastToken = message.Substring(i + 1);
         }
         this.completions = completions;
     }
@@ -59,8 +59,7 @@ public class PlayerChatTabCompleteEvent : PlayerEvent {
         return completions;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

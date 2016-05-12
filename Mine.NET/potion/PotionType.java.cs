@@ -92,7 +92,7 @@ public enum PotionType {
     public static PotionType getByEffect(PotionEffectType effectType) {
         if (effectType == null)
             return WATER;
-        for (PotionType type : PotionType.values()) {
+        foreach (PotionType type  in  PotionType.values()) {
             if (effectType.equals(type.effect))
                 return type;
         }

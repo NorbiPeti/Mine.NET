@@ -18,8 +18,7 @@ public class EntityTameEvent : EntityEvent : Cancellable {
         this.owner = owner;
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 
@@ -40,8 +39,7 @@ public class EntityTameEvent : EntityEvent : Cancellable {
         return owner;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

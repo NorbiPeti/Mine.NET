@@ -123,7 +123,7 @@ public interface Villager : Ageable, NPC, InventoryHolder {
         private readonly int id;
 
         static {
-            for (Profession type : values()) {
+            foreach (Profession type  in  values()) {
                 professions[type.getId()] = type;
             }
         }

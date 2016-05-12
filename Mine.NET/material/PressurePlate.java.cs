@@ -48,11 +48,10 @@ public class PressurePlate : MaterialData : PressureSensor {
     }
 
     public override string ToString() {
-        return base.toString() + (isPressed() ? " PRESSED" : "");
+        return base.ToString() + (isPressed() ? " PRESSED" : "");
     }
 
-    @Override
-    public PressurePlate clone() {
+    public override PressurePlate clone() {
         return (PressurePlate) base.clone();
     }
 }

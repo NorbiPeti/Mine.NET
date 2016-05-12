@@ -37,8 +37,7 @@ public class BrewEvent : BlockEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

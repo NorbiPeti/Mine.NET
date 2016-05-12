@@ -24,8 +24,7 @@ public class EntityShootBowEvent : EntityEvent : Cancellable {
         this.force = force;
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 
@@ -73,8 +72,7 @@ public class EntityShootBowEvent : EntityEvent : Cancellable {
         cancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

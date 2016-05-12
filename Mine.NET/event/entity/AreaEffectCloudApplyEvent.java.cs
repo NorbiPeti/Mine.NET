@@ -25,8 +25,7 @@ public class AreaEffectCloudApplyEvent : EntityEvent {
         this.affectedEntities = affectedEntities;
     }
 
-    @Override
-    public AreaEffectCloud getEntity() {
+    public override AreaEffectCloud getEntity() {
         return (AreaEffectCloud) entity;
     }
 
@@ -44,8 +43,7 @@ public class AreaEffectCloudApplyEvent : EntityEvent {
         return affectedEntities;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

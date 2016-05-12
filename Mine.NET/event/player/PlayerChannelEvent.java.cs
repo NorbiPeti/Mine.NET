@@ -20,8 +20,7 @@ public abstract class PlayerChannelEvent : PlayerEvent {
         return channel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

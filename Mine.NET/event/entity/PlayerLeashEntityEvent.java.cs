@@ -49,8 +49,7 @@ public class PlayerLeashEntityEvent : Event : Cancellable {
         return player;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -63,8 +63,7 @@ public class PlayerItemConsumeEvent : PlayerEvent : Cancellable {
         this.isCancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

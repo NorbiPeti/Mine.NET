@@ -64,8 +64,7 @@ public class EntityTargetEvent : EntityEvent : Cancellable {
         this.target = target;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

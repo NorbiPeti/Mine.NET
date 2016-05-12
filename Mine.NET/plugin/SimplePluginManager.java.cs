@@ -88,7 +88,7 @@ public sealed class SimplePluginManager : PluginManager {
         Pattern[] patterns = instance.getPluginFileFilters();
 
         synchronized (this) {
-            for (Pattern pattern : patterns) {
+            foreach (Pattern pattern  in  patterns) {
                 fileAssociations.Add(pattern, instance);
             }
         }
@@ -117,9 +117,9 @@ public sealed class SimplePluginManager : PluginManager {
         Dictionary<String, Collection<String>> softDependencies = new Dictionary<String, Collection<String>>();
 
         // This is where it figures out all possible plugins
-        for (FileInfo file : directory.listFiles()) {
+        foreach (FileInfo file  in  directory.listFiles()) {
             PluginLoader loader = null;
-            for (Pattern filter : filters) {
+            foreach (Pattern filter  in  filters) {
                 Matcher match = filter.matcher(file.getName());
                 if (match.find()) {
                     loader = fileAssociations[filter];
@@ -135,7 +135,7 @@ public sealed class SimplePluginManager : PluginManager {
                 if (name.equalsIgnoreCase("bukkit") || name.equalsIgnoreCase("minecraft") || name.equalsIgnoreCase("mojang")) {
                     server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': Restricted Name");
                     continue;
-                } else if (description.rawName.indexOf(' ') != -1) {
+                } else if (description.rawName.IndexOf(' ') != -1) {
                     server.getLogger().warning(String.format(
                         "Plugin `%s' uses the space-char (0x20) in its name `%s' - this is discouraged",
                         description.getFullName(),
@@ -175,7 +175,7 @@ public sealed class SimplePluginManager : PluginManager {
 
             Collection<String> loadBeforeSet = description.getLoadBefore();
             if (loadBeforeSet != null && !loadBeforeSet.isEmpty()) {
-                for (String loadBeforeTarget : loadBeforeSet) {
+                foreach (String loadBeforeTarget  in  loadBeforeSet) {
                     if (softDependencies.containsKey(loadBeforeTarget)) {
                         softDependencies[loadBeforeTarget].add(description.getName());
                     } else {
@@ -295,7 +295,7 @@ public sealed class SimplePluginManager : PluginManager {
             }
         }
 
-        return result.toArray(new Plugin[result.size()]);
+        return result.toArray(new Plugin[result.Count]);
     }
 
     /**
@@ -318,7 +318,7 @@ public sealed class SimplePluginManager : PluginManager {
         HashSet<Pattern> filters = fileAssociations.keySet();
         Plugin result = null;
 
-        for (Pattern filter : filters) {
+        foreach (Pattern filter  in  filters) {
             String name = file.getName();
             Matcher match = filter.matcher(name);
 
@@ -492,7 +492,7 @@ public sealed class SimplePluginManager : PluginManager {
         HandlerList handlers = event.getHandlers();
         RegisteredListener[] listeners = handlers.getRegisteredListeners();
 
-        for (RegisteredListener registration : listeners) {
+        foreach (RegisteredListener registration  in  listeners) {
             if (!registration.getPlugin().isEnabled()) {
                 continue;
             }
@@ -523,7 +523,7 @@ public sealed class SimplePluginManager : PluginManager {
             throw new IllegalPluginAccessException("Plugin attempted to register " + listener + " while not enabled");
         }
 
-        for (KeyValuePair<Class<? : Event>, HashSet<RegisteredListener>> entry : plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
+        foreach (KeyValuePair<Class<? : Event>, HashSet<RegisteredListener>> entry  in  plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
             getEventListeners(getRegistrationClass(entry.Key)).registerAll(entry.Value);
         }
 
@@ -568,7 +568,7 @@ public sealed class SimplePluginManager : PluginManager {
             method.setAccessible(true);
             return (HandlerList) method.invoke(null);
         } catch (Exception e) {
-            throw new IllegalPluginAccessException(e.toString());
+            throw new IllegalPluginAccessException(e.ToString());
         }
     }
 
@@ -637,7 +637,7 @@ public sealed class SimplePluginManager : PluginManager {
     private void dirtyPermissibles(bool op) {
         HashSet<Permissible> permissibles = getDefaultPermSubscriptions(op);
 
-        for (Permissible p : permissibles) {
+        foreach (Permissible p  in  permissibles) {
             p.recalculatePermissions();
         }
     }

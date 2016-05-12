@@ -68,11 +68,10 @@ public class Wool : MaterialData : Colorable {
     }
 
     public override string ToString() {
-        return getColor() + " " + base.toString();
+        return getColor() + " " + base.ToString();
     }
 
-    @Override
-    public Wool clone() {
+    public override Wool clone() {
         return (Wool) base.clone();
     }
 }

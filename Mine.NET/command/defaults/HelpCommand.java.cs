@@ -114,7 +114,7 @@ namespace Mine.NET
                 String searchString = args[0];
                 foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics())
                 {
-                    String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
+                    String trimmedTopic = topic.getName().StartsWith("/") ? topic.getName().Substring(1) : topic.getName();
 
                     if (trimmedTopic.StartsWith(searchString))
                     {
@@ -138,7 +138,7 @@ namespace Mine.NET
 
             foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics())
             {
-                String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
+                String trimmedTopic = topic.getName().StartsWith("/") ? topic.getName().Substring(1) : topic.getName();
 
                 if (trimmedTopic.Length < searchString.Length)
                 {

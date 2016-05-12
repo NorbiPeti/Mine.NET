@@ -61,8 +61,7 @@ public class Step : TexturedMaterial {
         base(type, data);
     }
 
-    @Override
-    public List<Material> getTextures() {
+    public override List<Material> getTextures() {
         return textures;
     }
 
@@ -109,12 +108,11 @@ public class Step : TexturedMaterial {
         setData((byte) ((getData() & 0x8) | idx));
     }
 
-    @Override
-    public Step clone() {
+    public override Step clone() {
         return (Step) base.clone();
     }
 
     public override string ToString() {
-        return base.toString() + (isInverted()?"inverted":"");
+        return base.ToString() + (isInverted()?"inverted":"");
     }
 }

@@ -35,8 +35,7 @@ public class EntityInteractEvent : EntityEvent : Cancellable {
         return block;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

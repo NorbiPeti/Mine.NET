@@ -16,8 +16,7 @@ public class FireworkExplodeEvent : EntityEvent : Cancellable {
         base(what);
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancel;
     }
 
@@ -28,18 +27,15 @@ public class FireworkExplodeEvent : EntityEvent : Cancellable {
      *
      * @param cancel whether to cancel or not.
      */
-    @Override
-    public void setCancelled(bool cancel) {
+    public override void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 
-    @Override
-    public Firework getEntity() {
+    public override Firework getEntity() {
         return (Firework) base.getEntity();
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

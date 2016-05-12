@@ -183,7 +183,7 @@ public abstract class OctaveGenerator {
         y *= yScale;
         z *= zScale;
 
-        for (NoiseGenerator octave : octaves) {
+        foreach (NoiseGenerator octave  in  octaves) {
             result += octave.noise(x * freq, y * freq, z * freq) * amp;
             max += amp;
             freq *= frequency;

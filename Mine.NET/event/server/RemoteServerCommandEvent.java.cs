@@ -14,8 +14,7 @@ public class RemoteServerCommandEvent : ServerCommandEvent {
         base(sender, command);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

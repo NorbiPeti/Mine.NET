@@ -73,8 +73,7 @@ public class SignChangeEvent : BlockEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

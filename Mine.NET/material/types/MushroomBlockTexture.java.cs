@@ -122,7 +122,7 @@ public enum MushroomBlockTexture {
     }
 
     static {
-        for (MushroomBlockTexture type : values()) {
+        foreach (MushroomBlockTexture type  in  values()) {
             BY_DATA.Add(type.data, type);
             BY_BLOCKFACE.Add(type.capFace, type);
         }

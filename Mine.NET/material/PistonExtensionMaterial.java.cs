@@ -106,8 +106,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
         return getFacing().getOppositeFace();
     }
 
-    @Override
-    public PistonExtensionMaterial clone() {
+    public override PistonExtensionMaterial clone() {
         return (PistonExtensionMaterial) base.clone();
     }
 }

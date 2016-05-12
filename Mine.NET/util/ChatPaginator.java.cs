@@ -89,17 +89,17 @@ public class ChatPaginator {
 
             if (c == ' ' || c == '\n') {
                 if (line.Length == 0 && word.Length > lineLength) { // special case: extremely long word begins a line
-                    for (String partialWord : word.toString().Split("(?<=\\G.{" + lineLength + "})")) {
+                    foreach (String partialWord  in  word.ToString().Split("(?<=\\G.{" + lineLength + "})")) {
                         lines.add(partialWord);
                     }
                 } else if (line.Length + word.Length - lineColorChars == lineLength) { // Line exactly the correct length...newline
                     line.Append(word);
-                    lines.add(line.toString());
+                    lines.add(line.ToString());
                     line = new StringBuilder();
                     lineColorChars = 0;
                 } else if (line.Length + 1 + word.Length - lineColorChars > lineLength) { // Line too long...break the line
-                    for (String partialWord : word.toString().Split("(?<=\\G.{" + lineLength + "})")) {
-                        lines.add(line.toString());
+                    foreach (String partialWord  in  word.ToString().Split("(?<=\\G.{" + lineLength + "})")) {
+                        lines.add(line.ToString());
                         line = new StringBuilder(partialWord);
                     }
                     lineColorChars = 0;
@@ -112,7 +112,7 @@ public class ChatPaginator {
                 word = new StringBuilder();
 
                 if (c == '\n') { // Newline forces the line to flush
-                    lines.add(line.toString());
+                    lines.add(line.ToString());
                     line = new StringBuilder();
                 }
             } else {
@@ -121,14 +121,14 @@ public class ChatPaginator {
         }
 
         if(line.Length > 0) { // Only add the last line if there is anything to add
-            lines.add(line.toString());
+            lines.add(line.ToString());
         }
 
         // Iterate over the wrapped lines, applying the last color from one line to the beginning of the next
         if (lines[0].Length == 0 || lines[0][0] != ChatColors.COLOR_CHAR) {
             lines.set(0, ChatColors.WHITE + lines[0]);
         }
-        for (int i = 1; i < lines.size(); i++) {
+        for (int i = 1; i < lines.Count; i++) {
             readonly String pLine = lines[i-1];
             readonly String subLine = lines[i];
 
@@ -138,7 +138,7 @@ public class ChatPaginator {
             }
         }
 
-        return lines.toArray(new String[lines.size()]);
+        return lines.toArray(new String[lines.Count]);
     }
 
     public static class ChatPage {

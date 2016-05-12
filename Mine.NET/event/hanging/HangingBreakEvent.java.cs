@@ -60,8 +60,7 @@ public class HangingBreakEvent : HangingEvent : Cancellable {
         DEFAULT,
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

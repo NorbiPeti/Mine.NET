@@ -25,8 +25,7 @@ public class PlayerChangedWorldEvent : PlayerEvent {
         return from;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

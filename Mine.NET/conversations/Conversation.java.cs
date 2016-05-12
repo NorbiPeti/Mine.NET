@@ -217,7 +217,7 @@ public class Conversation {
             }
 
             // Test for conversation abandonment based on input
-            for(ConversationCanceller canceller : cancellers) {
+            foreach (ConversationCanceller canceller  in  cancellers) {
                 if (canceller.cancelBasedOnInput(context, input)) {
                     abandon(new ConversationAbandonedEvent(this, canceller));
                     return;
@@ -267,7 +267,7 @@ public class Conversation {
             abandoned = true;
             currentPrompt = null;
             context.getForWhom().abandonConversation(this);
-            for (ConversationAbandonedListener listener : abandonedListeners) {
+            foreach (ConversationAbandonedListener listener  in  abandonedListeners) {
                 listener.conversationAbandoned(details);
             }
         }

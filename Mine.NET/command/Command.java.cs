@@ -74,7 +74,7 @@ namespace Mine.NET
             foreach (Player player in sender.getServer().getOnlinePlayers())
             {
                 String name = player.getName();
-                if ((senderPlayer == null || senderPlayer.canSee(player)) && StringUtil.startsWithIgnoreCase(name, lastWord))
+                if ((senderPlayer == null || senderPlayer.canSee(player)) && StringUtil.StartsWithIgnoreCase(name, lastWord))
                 {
                     matchedPlayers.Add(name);
                 }

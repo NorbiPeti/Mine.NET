@@ -1,255 +1,286 @@
-package org.bukkit.command.defaults;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using System.Threading;
 
-import com.google.common.base.Charsets;
-import java.util.List;
-import java.util.Arrays;
-import java.util.List;
+namespace Mine.NET
+{
+    public class VersionCommand : BukkitCommand
+    {
+        public VersionCommand(String name) : base(name)
+        {
+            this.description = "Gets the version of this server including any plugins in use";
+            this.usageMessage = "/version [plugin name]";
+            this.setPermission("bukkit.command.version");
+            this.setAliases(new List<string> { "ver", "about" });
+        }
 
-import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.util.StringUtil;
+        public override bool execute(CommandSender sender, String currentAlias, String[] args)
+        {
+            if (!testPermission(sender)) return true;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.io.Resources;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+            if (args.Length == 0)
+            {
+                sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+                sendVersion(sender);
+            }
+            else
+            {
+                StringBuilder name = new StringBuilder();
 
-public class VersionCommand : BukkitCommand {
-    public VersionCommand(String name) {
-        base(name);
+                foreach (String arg in args)
+                {
+                    if (name.Length > 0)
+                    {
+                        name.Append(' ');
+                    }
 
-        this.description = "Gets the version of this server including any plugins in use";
-        this.usageMessage = "/version [plugin name]";
-        this.setPermission("bukkit.command.version");
-        this.setAliases(Arrays.asList("ver", "about"));
-    }
-
-    @Override
-    public bool execute(CommandSender sender, String currentAlias, String[] args) {
-        if (!testPermission(sender)) return true;
-
-        if (args.Length == 0) {
-            sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
-            sendVersion(sender);
-        } else {
-            StringBuilder name = new StringBuilder();
-
-            for (String arg : args) {
-                if (name.Length > 0) {
-                    name.Append(' ');
+                    name.Append(arg);
                 }
 
-                name.Append(arg);
-            }
+                String pluginName = name.ToString();
+                Plugin exactPlugin = Bukkit.getPluginManager().getPlugin(pluginName);
+                if (exactPlugin != null)
+                {
+                    describeToSender(exactPlugin, sender);
+                    return true;
+                }
 
-            String pluginName = name.toString();
-            Plugin exactPlugin = Bukkit.getPluginManager().getPlugin(pluginName);
-            if (exactPlugin != null) {
-                describeToSender(exactPlugin, sender);
-                return true;
-            }
+                bool found = false;
+                pluginName = pluginName.ToLower();
+                foreach (Plugin plugin in Bukkit.getPluginManager().getPlugins())
+                { //Find: "for\s*\((.+):(.+)\)" - Replace: "foreach ($1 in $2)"
+                    if (plugin.getName().ToLower().contains(pluginName))
+                    {
+                        describeToSender(plugin, sender);
+                        found = true;
+                    }
+                }
 
-            bool found = false;
-            pluginName = pluginName.ToLower();
-            for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
-                if (plugin.getName().ToLower().contains(pluginName)) {
-                    describeToSender(plugin, sender);
-                    found = true;
+                if (!found)
+                {
+                    sender.sendMessage("This server is not running any plugin by that name.");
+                    sender.sendMessage("Use /plugins to get a list of plugins.");
                 }
             }
+            return true;
+        }
 
-            if (!found) {
-                sender.sendMessage("This server is not running any plugin by that name.");
-                sender.sendMessage("Use /plugins to get a list of plugins.");
+        private void describeToSender(Plugin plugin, CommandSender sender)
+        {
+            PluginDescriptionFile desc = plugin.getDescription();
+            sender.sendMessage(ChatColors.GREEN + desc.getName() + ChatColors.WHITE + " version " + ChatColors.GREEN + desc.getVersion());
+
+            if (desc.getDescription() != null)
+            {
+                sender.sendMessage(desc.getDescription());
             }
-        }
-        return true;
-    }
 
-    private void describeToSender(Plugin plugin, CommandSender sender) {
-        PluginDescriptionFile desc = plugin.getDescription();
-        sender.sendMessage(ChatColors.GREEN + desc.getName() + ChatColors.WHITE + " version " + ChatColors.GREEN + desc.getVersion());
-
-        if (desc.getDescription() != null) {
-            sender.sendMessage(desc.getDescription());
-        }
-
-        if (desc.getWebsite() != null) {
-            sender.sendMessage("Website: " + ChatColors.GREEN + desc.getWebsite());
-        }
-
-        if (!desc.getAuthors().isEmpty()) {
-            if (desc.getAuthors().size() == 1) {
-                sender.sendMessage("Author: " + getAuthors(desc));
-            } else {
-                sender.sendMessage("Authors: " + getAuthors(desc));
+            if (desc.getWebsite() != null)
+            {
+                sender.sendMessage("Website: " + ChatColors.GREEN + desc.getWebsite());
             }
-        }
-    }
 
-    private String getAuthors(PluginDescriptionFile desc) {
-        StringBuilder result = new StringBuilder();
-        List<String> authors = desc.getAuthors();
-
-        for (int i = 0; i < authors.size(); i++) {
-            if (result.Length > 0) {
-                result.Append(ChatColors.WHITE);
-
-                if (i < authors.size() - 1) {
-                    result.Append(", ");
-                } else {
-                    result.Append(" and ");
+            if (!desc.getAuthors().isEmpty())
+            {
+                if (desc.getAuthors().Count == 1)
+                {
+                    sender.sendMessage("Author: " + getAuthors(desc));
+                }
+                else
+                {
+                    sender.sendMessage("Authors: " + getAuthors(desc));
                 }
             }
-
-            result.Append(ChatColors.GREEN);
-            result.Append(authors[i]);
         }
 
-        return result.toString();
-    }
+        private String getAuthors(PluginDescriptionFile desc)
+        {
+            StringBuilder result = new StringBuilder();
+            List<String> authors = desc.getAuthors();
 
-    @Override
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
-        if(sender==null) throw new ArgumentNullException("Sender cannot be null");
-        if(args==null) throw new ArgumentNullException("Arguments cannot be null");
-        if(alias==null) throw new ArgumentNullException("Alias cannot be null");
+            for (int i = 0; i < authors.Count; i++)
+            {
+                if (result.Length > 0)
+                {
+                    result.Append(ChatColors.WHITE);
 
-        if (args.Length == 1) {
-            List<String> completions = new List<String>();
-            String toComplete = args[0].ToLower();
-            for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
-                if (StringUtil.startsWithIgnoreCase(plugin.getName(), toComplete)) {
-                    completions.add(plugin.getName());
+                    if (i < authors.Count - 1)
+                    {
+                        result.Append(", ");
+                    }
+                    else
+                    {
+                        result.Append(" and ");
+                    }
+                }
+
+                result.Append(ChatColors.GREEN);
+                result.Append(authors[i]);
+            }
+
+            return result.ToString();
+        }
+
+        public override List<String> tabComplete(CommandSender sender, String alias, String[] args)
+        {
+            if (sender == null) throw new ArgumentNullException("Sender cannot be null");
+            if (args == null) throw new ArgumentNullException("Arguments cannot be null");
+            if (alias == null) throw new ArgumentNullException("Alias cannot be null");
+
+            if (args.Length == 1)
+            {
+                List<String> completions = new List<String>();
+                String toComplete = args[0].ToLower();
+                foreach (Plugin plugin in Bukkit.getPluginManager().getPlugins())
+                {
+                    if (StringUtil.StartsWithIgnoreCase(plugin.getName(), toComplete))
+                    {
+                        completions.Add(plugin.getName());
+                    }
+                }
+                return completions;
+            }
+            return new List<string>();
+        }
+
+        private readonly object versionLock = new object();
+        private bool hasVersion = false;
+        private String versionMessage = null;
+        private readonly HashSet<CommandSender> versionWaiters = new HashSet<CommandSender>();
+        private bool versionTaskStarted = false;
+        private long lastCheck = 0;
+
+        private void sendVersion(CommandSender sender)
+        {
+            if (hasVersion)
+            {
+                if (Environment.TickCount - lastCheck > 21600000)
+                {
+                    lastCheck = Environment.TickCount;
+                    hasVersion = false;
+                }
+                else
+                {
+                    sender.sendMessage(versionMessage);
+                    return;
                 }
             }
-            return completions;
-        }
-        return ImmutableList.of();
-    }
-
-    private readonly ReentrantLock versionLock = new ReentrantLock();
-    private bool hasVersion = false;
-    private String versionMessage = null;
-    private readonly HashSet<CommandSender> versionWaiters = new HashSet<CommandSender>();
-    private bool versionTaskStarted = false;
-    private long lastCheck = 0;
-
-    private void sendVersion(CommandSender sender) {
-        if (hasVersion) {
-            if (System.currentTimeMillis() - lastCheck > 21600000) {
-                lastCheck = System.currentTimeMillis();
-                hasVersion = false;
-            } else {
-                sender.sendMessage(versionMessage);
-                return;
-            }
-        }
-        versionLock.lock();
-        try {
-            if (hasVersion) {
-                sender.sendMessage(versionMessage);
-                return;
-            }
-            versionWaiters.add(sender);
-            sender.sendMessage("Checking version, please wait...");
-            if (!versionTaskStarted) {
-                versionTaskStarted = true;
-                new Thread(new Runnable() {
-
-                    @Override
-                    public void run() {
+            Monitor.Enter(versionLock);
+            try
+            {
+                if (hasVersion)
+                {
+                    sender.sendMessage(versionMessage);
+                    return;
+                }
+                versionWaiters.Add(sender);
+                sender.sendMessage("Checking version, please wait...");
+                if (!versionTaskStarted)
+                {
+                    versionTaskStarted = true;
+                    new Thread(delegate ()
+                    {
                         obtainVersion();
                     }
-                }).start();
-            }
-        } finally {
-            versionLock.unlock();
-        }
-    }
-
-    private void obtainVersion() {
-        String version = Bukkit.getVersion();
-        if (version == null) version = "Custom";
-        if (version.startsWith("git-Spigot-")) {
-            String[] parts = version.substring("git-Spigot-".Length).Split("-");
-            int cbVersions = getDistance("craftbukkit", parts[1].substring(0, parts[1].indexOf(' ')));
-            int spigotVersions = getDistance("spigot", parts[0]);
-            if (cbVersions == -1 || spigotVersions == -1) {
-                setVersionMessage("Error obtaining version information");
-            } else {
-                if (cbVersions == 0 && spigotVersions == 0) {
-                    setVersionMessage("You are running the latest version");
-                } else {
-                    setVersionMessage("You are " + (cbVersions + spigotVersions) + " version(s) behind");
+                    ).Start();
                 }
             }
+            finally
+            {
+                Monitor.Exit(versionLock);
+            }
+        }
 
-        } else if (version.startsWith("git-Bukkit-")) {
-            version = version.substring("git-Bukkit-".Length);
-            int cbVersions = getDistance("craftbukkit", version.substring(0, version.indexOf(' ')));
-            if (cbVersions == -1) {
-                setVersionMessage("Error obtaining version information");
-            } else {
-                if (cbVersions == 0) {
-                    setVersionMessage("You are running the latest version");
-                } else {
-                    setVersionMessage("You are " + cbVersions + " version(s) behind");
+        private void obtainVersion()
+        {
+            String version = Bukkit.getVersion();
+            if (version == null) version = "Custom";
+            if (version.StartsWith("git-Spigot-"))
+            {
+                String[] parts = version.Substring("git-Spigot-".Length).Split('-');
+                int cbVersions = getDistance("craftbukkit", parts[1].Substring(0, parts[1].IndexOf(' ')));
+                int spigotVersions = getDistance("spigot", parts[0]);
+                if (cbVersions == -1 || spigotVersions == -1)
+                {
+                    setVersionMessage("Error obtaining version information");
+                }
+                else
+                {
+                    if (cbVersions == 0 && spigotVersions == 0)
+                    {
+                        setVersionMessage("You are running the latest version");
+                    }
+                    else
+                    {
+                        setVersionMessage("You are " + (cbVersions + spigotVersions) + " version(s) behind");
+                    }
+                }
+
+            }
+            else if (version.StartsWith("git-Bukkit-"))
+            { //TODO
+                version = version.Substring("git-Bukkit-".Length);
+                int cbVersions = getDistance("craftbukkit", version.Substring(0, version.IndexOf(' ')));
+                if (cbVersions == -1)
+                {
+                    setVersionMessage("Error obtaining version information");
+                }
+                else
+                {
+                    if (cbVersions == 0)
+                    {
+                        setVersionMessage("You are running the latest version");
+                    }
+                    else
+                    {
+                        setVersionMessage("You are " + cbVersions + " version(s) behind");
+                    }
                 }
             }
-        } else {
-            setVersionMessage("Unknown version, custom build?");
-        }
-    }
-
-    private void setVersionMessage(String msg) {
-        lastCheck = System.currentTimeMillis();
-        versionMessage = msg;
-        versionLock.lock();
-        try {
-            hasVersion = true;
-            versionTaskStarted = false;
-            for (CommandSender sender : versionWaiters) {
-                sender.sendMessage(versionMessage);
+            else
+            {
+                setVersionMessage("Unknown version, custom build?");
             }
-            versionWaiters.clear();
-        } finally {
-            versionLock.unlock();
         }
-    }
 
-    private static int getDistance(String repo, String hash) {
-        try {
-            BufferedReader reader = Resources.asCharSource(
-                    new URL("https://hub.spigotmc.org/stash/rest/api/1.0/projects/SPIGOT/repos/" + repo + "/commits?since=" + URLEncoder.encode(hash, "UTF-8") + "&withCounts=true"),
-                    Charsets.UTF_8
-            ).openBufferedStream();
-            try {
-                JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-                return ((Number) obj["totalCount"]).intValue();
-            } catch (ParseException ex) {
-                ex.printStackTrace();
+        private void setVersionMessage(String msg)
+        {
+            lastCheck = Environment.TickCount;
+            versionMessage = msg;
+            Monitor.Enter(versionLock);
+            try
+            {
+                hasVersion = true;
+                versionTaskStarted = false;
+                foreach (CommandSender sender in versionWaiters)
+                {
+                    sender.sendMessage(versionMessage);
+                }
+                versionWaiters.Clear();
+            }
+            finally
+            {
+                Monitor.Exit(versionLock);
+            }
+        }
+
+        private static int getDistance(String repo, String hash)
+        {
+            try
+            {
+                var client = new WebClient(); //TODO: Encode hash - And change to own URL
+                string str = client.DownloadString("https://hub.spigotmc.org/stash/rest/api/1.0/projects/SPIGOT/repos/" + repo + "/commits?since=" + (hash) + "&withCounts=true");
+                JObject obj = new JObject(str);
+                return (int)obj["totalCount"];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 return -1;
-            } finally {
-                reader.close();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            return -1;
         }
     }
 }

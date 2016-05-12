@@ -25,8 +25,7 @@ public class SlimeSplitEvent : EntityEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    @Override
-    public Slime getEntity() {
+    public override Slime getEntity() {
         return (Slime) entity;
     }
 
@@ -48,8 +47,7 @@ public class SlimeSplitEvent : EntityEvent : Cancellable {
         this.count = count;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

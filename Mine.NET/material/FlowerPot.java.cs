@@ -126,11 +126,10 @@ public class FlowerPot : MaterialData {
     }
 
     public override string ToString() {
-        return base.toString() + " containing " + getContents();
+        return base.ToString() + " containing " + getContents();
     }
 
-    @Override
-    public FlowerPot clone() {
+    public override FlowerPot clone() {
         return (FlowerPot) base.clone();
     }
 }

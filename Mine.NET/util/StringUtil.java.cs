@@ -27,8 +27,8 @@ public class StringUtil {
         if(collection==null) throw new ArgumentNullException("Collection cannot be null");
         if(originals==null) throw new ArgumentNullException("Originals cannot be null");
 
-        for (String string : originals) {
-            if (startsWithIgnoreCase(string, token)) {
+        foreach (String string  in  originals) {
+            if (StartsWithIgnoreCase(string, token)) {
                 collection.add(string);
             }
         }
@@ -48,7 +48,7 @@ public class StringUtil {
      * @throws NullPointerException if prefix is null
      * @throws ArgumentException if string is null
      */
-    public static bool startsWithIgnoreCase(String string, readonly String prefix) throws ArgumentException, NullPointerException {
+    public static bool StartsWithIgnoreCase(String string, readonly String prefix) throws ArgumentException, NullPointerException {
         if(string==null) throw new ArgumentNullException("Cannot check a null string for a match");
         if (string.Length < prefix.Length) {
             return false;

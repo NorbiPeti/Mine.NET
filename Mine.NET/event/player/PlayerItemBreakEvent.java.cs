@@ -28,8 +28,7 @@ public class PlayerItemBreakEvent : PlayerEvent {
         return brokenItem;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

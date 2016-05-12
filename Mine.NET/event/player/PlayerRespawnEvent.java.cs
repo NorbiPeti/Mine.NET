@@ -49,8 +49,7 @@ public class PlayerRespawnEvent : PlayerEvent {
         return this.isBedSpawn;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

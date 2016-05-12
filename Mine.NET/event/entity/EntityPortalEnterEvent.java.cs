@@ -25,8 +25,7 @@ public class EntityPortalEnterEvent : EntityEvent {
         return location;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

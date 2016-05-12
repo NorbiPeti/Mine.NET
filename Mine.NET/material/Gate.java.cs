@@ -83,8 +83,7 @@ public class Gate : MaterialData : Directional, Openable {
         return (isOpen() ? "OPEN " : "CLOSED ") + " facing and opening " + getFacing();
     }
 
-    @Override
-    public Gate clone() {
+    public override Gate clone() {
         return (Gate) base.clone();
     }
 }

@@ -82,8 +82,7 @@ public class BlockCanBuildEvent : BlockEvent {
         return material;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

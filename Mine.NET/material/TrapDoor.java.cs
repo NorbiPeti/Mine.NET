@@ -122,11 +122,10 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
     }
 
     public override string ToString() {
-        return (isOpen() ? "OPEN " : "CLOSED ") + base.toString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
+        return (isOpen() ? "OPEN " : "CLOSED ") + base.ToString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
     }
 
-    @Override
-    public TrapDoor clone() {
+    public override TrapDoor clone() {
         return (TrapDoor) base.clone();
     }
 }

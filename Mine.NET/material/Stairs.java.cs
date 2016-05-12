@@ -129,11 +129,10 @@ public class Stairs : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + (isInverted()?" inverted":"");
+        return base.ToString() + " facing " + getFacing() + (isInverted()?" inverted":"");
     }
 
-    @Override
-    public Stairs clone() {
+    public override Stairs clone() {
         return (Stairs) base.clone();
     }
 }

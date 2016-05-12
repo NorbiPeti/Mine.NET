@@ -22,13 +22,12 @@ public class PluginLogger : Logger {
     public PluginLogger(Plugin context) {
         base(context.getClass().getCanonicalName(), null);
         String prefix = context.getDescription().getPrefix();
-        pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").toString() : "[" + context.getDescription().getName() + "] ";
+        pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : "[" + context.getDescription().getName() + "] ";
         setParent(context.getServer().getLogger());
         setLevel(Level.ALL);
     }
 
-    @Override
-    public void log(LogRecord logRecord) {
+    public override void log(LogRecord logRecord) {
         logRecord.setMessage(pluginName + logRecord.getMessage());
         base.log(logRecord);
     }

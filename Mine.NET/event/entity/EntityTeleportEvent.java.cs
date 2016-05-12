@@ -66,8 +66,7 @@ public class EntityTeleportEvent : EntityEvent : Cancellable {
         this.to = to;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

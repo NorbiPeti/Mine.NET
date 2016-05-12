@@ -35,8 +35,7 @@ public class PlayerGameModeChangeEvent : PlayerEvent : Cancellable {
         return newGameMode;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

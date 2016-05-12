@@ -35,8 +35,7 @@ public class PlayerLevelChangeEvent : PlayerEvent {
         return newLevel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

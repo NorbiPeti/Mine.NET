@@ -33,8 +33,7 @@ public class CraftItemEvent : InventoryClickEvent {
         return recipe;
     }
 
-    @Override
-    public CraftingInventory getInventory() {
+    public override CraftingInventory getInventory() {
         return (CraftingInventory) base.getInventory();
     }
 }

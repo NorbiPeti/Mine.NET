@@ -15,18 +15,15 @@ public class ItemMergeEvent : EntityEvent : Cancellable {
         this.target = target;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancelled;
     }
 
-    @Override
-    public void setCancelled(bool cancelled) {
+    public override void setCancelled(bool cancelled) {
         this.cancelled = cancelled;
     }
 
-    @Override
-    public Item getEntity() {
+    public override Item getEntity() {
         return (Item) entity;
     }
 
@@ -39,8 +36,7 @@ public class ItemMergeEvent : EntityEvent : Cancellable {
         return target;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

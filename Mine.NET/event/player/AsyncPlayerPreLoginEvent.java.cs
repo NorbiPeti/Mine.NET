@@ -157,8 +157,7 @@ public class AsyncPlayerPreLoginEvent : Event {
         return uniqueId;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

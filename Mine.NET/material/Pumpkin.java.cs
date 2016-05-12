@@ -103,11 +103,10 @@ public class Pumpkin : MaterialData : Directional {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + " " + (isLit() ? "" : "NOT ") + "LIT";
+        return base.ToString() + " facing " + getFacing() + " " + (isLit() ? "" : "NOT ") + "LIT";
     }
 
-    @Override
-    public Pumpkin clone() {
+    public override Pumpkin clone() {
         return (Pumpkin) base.clone();
     }
 }

@@ -51,8 +51,7 @@ public class EntityPortalExitEvent : EntityTeleportEvent {
         this.after = after.clone();
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

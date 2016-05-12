@@ -202,12 +202,12 @@ public class ConversationFactory {
         conversation.setPrefix(prefix);
 
         //Clone the conversation cancellers
-        for (ConversationCanceller canceller : cancellers) {
+        foreach (ConversationCanceller canceller  in  cancellers) {
             conversation.addConversationCanceller(canceller.clone());
         }
 
         //Add the ConversationAbandonedListeners
-        for (ConversationAbandonedListener listener : abandonedListeners) {
+        foreach (ConversationAbandonedListener listener  in  abandonedListeners) {
             conversation.addConversationAbandonedListener(listener);
         }
 

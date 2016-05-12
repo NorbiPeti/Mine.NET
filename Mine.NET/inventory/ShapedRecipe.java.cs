@@ -46,7 +46,7 @@ public class ShapedRecipe : Recipe {
         if(shape==null) throw new ArgumentNullException("Must provide a shape");
         if(shape.Length > 0 && shape.Length < 4, "Crafting recipes should be 1, 2, 3 rows, not ") throw new ArgumentException(shape.Length);
 
-        for (String row : shape) {
+        foreach (String row  in  shape) {
             if(row==null) throw new ArgumentNullException("Shape cannot have null rows");
             if(row.Length > 0 && row.Length < 4, "Crafting rows should be 1, 2, or 3 chars, not ") throw new ArgumentException(row.Length);
         }
@@ -57,8 +57,8 @@ public class ShapedRecipe : Recipe {
 
         // Remove char mappings for chars that no longer exist in the shape
         HashMap<char, ItemStack> newIngredients = new Dictionary<char, ItemStack>();
-        for (String row : shape) {
-            for (char c : row.toCharArray()) {
+        foreach (String row  in  shape) {
+            foreach (char c  in  row.toCharArray()) {
                 newIngredients.Add(c, ingredients[c]);
             }
         }
@@ -118,7 +118,7 @@ public class ShapedRecipe : Recipe {
      */
     public Dictionary<char, ItemStack> getIngredientMap() {
         HashMap<char, ItemStack> result = new Dictionary<char, ItemStack>();
-        for (KeyValuePair<char, ItemStack> ingredient : ingredients.entrySet()) {
+        foreach (KeyValuePair<char, ItemStack> ingredient  in  ingredients.entrySet()) {
             if (ingredient.Value == null) {
                 result.Add(ingredient.Key, null);
             } else {

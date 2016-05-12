@@ -256,7 +256,7 @@ public class Door : MaterialData : Directional, Openable {
     }
 
     public override string ToString() {
-        return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + base.toString();
+        return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + base.ToString();
     }
 
     /**
@@ -330,8 +330,7 @@ public class Door : MaterialData : Directional, Openable {
         setData((byte) (isHingeRight ? (getData() | 0x1) : (getData() & ~0x1)));
     }
 
-    @Override
-    public Door clone() {
+    public override Door clone() {
         return (Door) base.clone();
     }
 }

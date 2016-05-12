@@ -68,11 +68,10 @@ public class LongGrass : MaterialData {
     }
 
     public override string ToString() {
-        return getSpecies() + " " + base.toString();
+        return getSpecies() + " " + base.ToString();
     }
 
-    @Override
-    public LongGrass clone() {
+    public override LongGrass clone() {
         return (LongGrass) base.clone();
     }
 }

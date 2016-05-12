@@ -53,8 +53,7 @@ public class IndexHelpTopic : HelpTopic {
         return sender.hasPermission(permission);
     }
 
-    @Override
-    public void amendCanSee(String amendedPermission) {
+    public override void amendCanSee(String amendedPermission) {
         permission = amendedPermission;
     }
 
@@ -66,11 +65,11 @@ public class IndexHelpTopic : HelpTopic {
             sb.Append("\n");
         }
 
-        for (HelpTopic topic : allTopics) {
+        foreach (HelpTopic topic  in  allTopics) {
             if (topic.canSee(sender)) {
                 String lineStr = buildIndexLine(sender, topic).replace("\n", ". ");
                 if (sender is Player && lineStr.Length > ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH) {
-                    sb.Append(lineStr.substring(0, ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH - 3));
+                    sb.Append(lineStr.Substring(0, ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH - 3));
                     sb.Append("...");
                 } else {
                     sb.Append(lineStr);
@@ -78,7 +77,7 @@ public class IndexHelpTopic : HelpTopic {
                 sb.Append("\n");
             }
         }
-        return sb.toString();
+        return sb.ToString();
     }
 
     /**
@@ -107,6 +106,6 @@ public class IndexHelpTopic : HelpTopic {
         line.Append(": ");
         line.Append(ChatColors.WHITE);
         line.Append(topic.getShortText());
-        return line.toString();
+        return line.ToString();
     }
 }

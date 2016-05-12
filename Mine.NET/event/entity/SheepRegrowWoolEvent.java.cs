@@ -24,13 +24,11 @@ public class SheepRegrowWoolEvent : EntityEvent : Cancellable {
         this.cancel = cancel;
     }
 
-    @Override
-    public Sheep getEntity() {
+    public override Sheep getEntity() {
         return (Sheep) entity;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

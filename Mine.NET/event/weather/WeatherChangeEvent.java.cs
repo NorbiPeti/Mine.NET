@@ -34,8 +34,7 @@ public class WeatherChangeEvent : WeatherEvent : Cancellable {
         return to;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

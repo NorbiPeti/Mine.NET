@@ -284,11 +284,10 @@ public class Mushroom : MaterialData {
     }
 
     public override string ToString() {
-        return Material.getMaterial(getItemTypeId()).toString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
+        return Material.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
     }
 
-    @Override
-    public Mushroom clone() {
+    public override Mushroom clone() {
         return (Mushroom) base.clone();
     }
 }

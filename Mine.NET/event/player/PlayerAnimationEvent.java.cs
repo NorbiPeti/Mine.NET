@@ -41,8 +41,7 @@ public class PlayerAnimationEvent : PlayerEvent : Cancellable {
         this.isCancelled = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

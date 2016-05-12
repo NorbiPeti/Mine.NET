@@ -218,8 +218,7 @@ public class InventoryClickEvent : InventoryInteractEvent {
         return click;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

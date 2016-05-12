@@ -121,12 +121,11 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
         return null;
     }
 
-    @Override
-    public CocoaPlant clone() {
+    public override CocoaPlant clone() {
         return (CocoaPlant) base.clone();
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + " " + getSize();
+        return base.ToString() + " facing " + getFacing() + " " + getSize();
     }
 }

@@ -48,8 +48,7 @@ public class VehicleEntityCollisionEvent : VehicleCollisionEvent : Cancellable {
         cancelledCollision = cancel;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

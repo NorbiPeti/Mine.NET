@@ -17,8 +17,7 @@ public class ChunkPopulateEvent : ChunkEvent {
         base(chunk);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

@@ -56,8 +56,7 @@ public class Cauldron : MaterialData {
         return (isEmpty() ? "EMPTY" : (isFull() ? "FULL" : getData() + "/3 FULL")) + " CAULDRON";
     }
 
-    @Override
-    public Cauldron clone() {
+    public override Cauldron clone() {
         return (Cauldron) base.clone();
     }
 }

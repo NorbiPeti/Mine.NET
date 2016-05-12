@@ -17,8 +17,7 @@ public class YamlConstructor : SafeConstructor {
     }
 
     private class ConstructCustomObject : ConstructYamlMap {
-        @Override
-        public Object construct(Node node) {
+        public override Object construct(Node node) {
             if (node.isTwoStepsConstruction()) {
                 throw new YAMLException("Unexpected referential mapping structure. Node: " + node);
             }
@@ -26,9 +25,9 @@ public class YamlConstructor : SafeConstructor {
             Dictionary<?, ?> raw = (Dictionary<?, ?>) base.construct(node);
 
             if (raw.containsKey(ConfigurationSerialization.SERIALIZED_TYPE_KEY)) {
-                Dictionary<String, Object> typed = new LinkedHashMap<String, Object>(raw.size());
-                for (KeyValuePair<?, ?> entry : raw.entrySet()) {
-                    typed.Add(entry.Key.toString(), entry.Value);
+                Dictionary<String, Object> typed = new LinkedHashMap<String, Object>(raw.Count);
+                foreach (KeyValuePair<?, ?> entry  in  raw.entrySet()) {
+                    typed.Add(entry.Key.ToString(), entry.Value);
                 }
 
                 try {
@@ -41,8 +40,7 @@ public class YamlConstructor : SafeConstructor {
             return raw;
         }
 
-        @Override
-        public void construct2ndStep(Node node, Object object) {
+        public override void construct2ndStep(Node node, Object object) {
             throw new YAMLException("Unexpected referential mapping structure. Node: " + node);
         }
     }

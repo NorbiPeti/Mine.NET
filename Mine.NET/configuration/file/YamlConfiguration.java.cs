@@ -29,8 +29,7 @@ public class YamlConfiguration : FileConfiguration {
     private readonly Representer yamlRepresenter = new YamlRepresenter();
     private readonly Yaml yaml = new Yaml(new YamlConstructor(), yamlRepresenter, yamlOptions);
 
-    @Override
-    public String saveToString() {
+    public override String saveToString() {
         yamlOptions.setIndent(options().indent());
         yamlOptions.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         yamlRepresenter.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
@@ -45,8 +44,7 @@ public class YamlConfiguration : FileConfiguration {
         return header + dump;
     }
 
-    @Override
-    public void loadFromString(String contents) throws InvalidConfigurationException {
+    public override void loadFromString(String contents) throws InvalidConfigurationException {
         if(contents==null) throw new ArgumentNullException("Contents cannot be null");
 
         Dictionary<?, ?> input;
@@ -69,8 +67,8 @@ public class YamlConfiguration : FileConfiguration {
     }
 
     protected void convertMapsToSections(Dictionary<?, ?> input, ConfigurationSection section) {
-        for (KeyValuePair<?, ?> entry : input.entrySet()) {
-            String key = entry.Key.toString();
+        foreach (KeyValuePair<?, ?> entry  in  input.entrySet()) {
+            String key = entry.Key.ToString();
             Object value = entry.Value;
 
             if (value is Map) {
@@ -90,13 +88,13 @@ public class YamlConfiguration : FileConfiguration {
         for (int i = 0; (i < lines.Length) && (readingHeader); i++) {
             String line = lines[i];
 
-            if (line.startsWith(COMMENT_PREFIX)) {
+            if (line.StartsWith(COMMENT_PREFIX)) {
                 if (i > 0) {
                     result.Append("\n");
                 }
 
                 if (line.Length > COMMENT_PREFIX.Length) {
-                    result.Append(line.substring(COMMENT_PREFIX.Length));
+                    result.Append(line.Substring(COMMENT_PREFIX.Length));
                 }
 
                 foundHeader = true;
@@ -107,7 +105,7 @@ public class YamlConfiguration : FileConfiguration {
             }
         }
 
-        return result.toString();
+        return result.ToString();
     }
 
     @Override
@@ -145,11 +143,10 @@ public class YamlConfiguration : FileConfiguration {
             }
         }
 
-        return builder.toString();
+        return builder.ToString();
     }
 
-    @Override
-    public YamlConfigurationOptions options() {
+    public override YamlConfigurationOptions options() {
         if (options == null) {
             options = new YamlConfigurationOptions(this);
         }

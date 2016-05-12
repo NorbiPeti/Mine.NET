@@ -56,8 +56,7 @@ public class PoweredRail : ExtendedRails : Redstone {
         setData((byte) (isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
-    @Override
-    public PoweredRail clone() {
+    public override PoweredRail clone() {
         return (PoweredRail) base.clone();
     }
 }

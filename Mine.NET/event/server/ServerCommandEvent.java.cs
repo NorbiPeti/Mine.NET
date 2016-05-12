@@ -77,8 +77,7 @@ public class ServerCommandEvent : ServerEvent : Cancellable {
         return sender;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 
@@ -86,13 +85,11 @@ public class ServerCommandEvent : ServerEvent : Cancellable {
         return handlers;
     }
 
-    @Override
-    public bool isCancelled() {
+    public override bool isCancelled() {
         return cancel;
     }
 
-    @Override
-    public void setCancelled(bool cancel) {
+    public override void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 }

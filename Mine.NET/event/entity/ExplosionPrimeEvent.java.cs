@@ -69,8 +69,7 @@ public class ExplosionPrimeEvent : EntityEvent : Cancellable {
         this.fire = fire;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

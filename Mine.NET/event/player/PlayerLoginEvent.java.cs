@@ -155,8 +155,7 @@ public class PlayerLoginEvent : PlayerEvent {
         return address;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

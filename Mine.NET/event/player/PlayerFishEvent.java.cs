@@ -99,8 +99,7 @@ public class PlayerFishEvent : PlayerEvent : Cancellable {
         return state;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

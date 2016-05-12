@@ -102,8 +102,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return The folder.
      */
-    @Override
-    public readonly FileInfo getDataFolder() {
+    public override readonly FileInfo getDataFolder() {
         return dataFolder;
     }
 
@@ -112,8 +111,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return PluginLoader that controls this plugin
      */
-    @Override
-    public readonly PluginLoader getPluginLoader() {
+    public override readonly PluginLoader getPluginLoader() {
         return loader;
     }
 
@@ -122,8 +120,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return Server running this plugin
      */
-    @Override
-    public readonly Server getServer() {
+    public override readonly Server getServer() {
         return server;
     }
 
@@ -133,8 +130,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    @Override
-    public readonly bool isEnabled() {
+    public override readonly bool isEnabled() {
         return isEnabled;
     }
 
@@ -152,13 +148,11 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return Contents of the plugin.yaml file
      */
-    @Override
-    public readonly PluginDescriptionFile getDescription() {
+    public override readonly PluginDescriptionFile getDescription() {
         return description;
     }
 
-    @Override
-    public FileConfiguration getConfig() {
+    public override FileConfiguration getConfig() {
         if (newConfig == null) {
             reloadConfig();
         }
@@ -183,8 +177,7 @@ public abstract class JavaPlugin : PluginBase {
     }
 
     @SuppressWarnings("deprecation")
-    @Override
-    public void reloadConfig() {
+    public override void reloadConfig() {
         newConfig = YamlConfiguration.loadConfiguration(configFile);
 
         readonly InputStream defConfigStream = getResource("config.yml");
@@ -195,8 +188,7 @@ public abstract class JavaPlugin : PluginBase {
         newConfig.setDefaults(YamlConfiguration.loadConfiguration(new InputStreamReader(defConfigStream, Charsets.UTF_8)));
     }
 
-    @Override
-    public void saveConfig() {
+    public override void saveConfig() {
         try {
             getConfig().save(configFile);
         } catch (IOException ex) {
@@ -204,15 +196,13 @@ public abstract class JavaPlugin : PluginBase {
         }
     }
 
-    @Override
-    public void saveDefaultConfig() {
+    public override void saveDefaultConfig() {
         if (!configFile.exists()) {
             saveResource("config.yml", false);
         }
     }
 
-    @Override
-    public void saveResource(String resourcePath, bool replace) {
+    public override void saveResource(String resourcePath, bool replace) {
         if (resourcePath == null || resourcePath.equals("")) {
             throw new ArgumentException("ResourcePath cannot be null or empty");
         }
@@ -225,7 +215,7 @@ public abstract class JavaPlugin : PluginBase {
 
         FileInfo outFile = new FileInfo(dataFolder, resourcePath);
         int lastIndex = resourcePath.lastIndexOf('/');
-        FileInfo outDir = new FileInfo(dataFolder, resourcePath.substring(0, lastIndex >= 0 ? lastIndex : 0));
+        FileInfo outDir = new FileInfo(dataFolder, resourcePath.Substring(0, lastIndex >= 0 ? lastIndex : 0));
 
         if (!outDir.exists()) {
             outDir.mkdirs();
@@ -249,8 +239,7 @@ public abstract class JavaPlugin : PluginBase {
         }
     }
 
-    @Override
-    public InputStream getResource(String filename) {
+    public override InputStream getResource(String filename) {
         if (filename == null) {
             throw new ArgumentException("Filename cannot be null");
         }
@@ -376,16 +365,14 @@ public abstract class JavaPlugin : PluginBase {
     /**
      * {@inheritDoc}
      */
-    @Override
-    public bool onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public override bool onCommand(CommandSender sender, Command command, String label, String[] args) {
         return false;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
-    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+    public override List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         return null;
     }
 
@@ -412,32 +399,25 @@ public abstract class JavaPlugin : PluginBase {
         }
     }
 
-    @Override
-    public void onLoad() {}
+    public override void onLoad() {}
 
-    @Override
-    public void onDisable() {}
+    public override void onDisable() {}
 
-    @Override
-    public void onEnable() {}
+    public override void onEnable() {}
 
-    @Override
-    public ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
+    public override ChunkGenerator getDefaultWorldGenerator(String worldName, String id) {
         return null;
     }
 
-    @Override
-    public readonly bool isNaggable() {
+    public override readonly bool isNaggable() {
         return naggable;
     }
 
-    @Override
-    public readonly void setNaggable(bool canNag) {
+    public override readonly void setNaggable(bool canNag) {
         this.naggable = canNag;
     }
 
-    @Override
-    public EbeanServer getDatabase() {
+    public override EbeanServer getDatabase() {
         Preconditions.checkState(description.isDatabaseEnabled(), "Plugin does not have database: true in plugin.yml");
 
         return ebean;
@@ -457,8 +437,7 @@ public abstract class JavaPlugin : PluginBase {
         gen.runScript(true, gen.generateDropDdl());
     }
 
-    @Override
-    public readonly Logger getLogger() {
+    public override readonly Logger getLogger() {
         return logger;
     }
 

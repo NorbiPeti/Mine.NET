@@ -26,8 +26,7 @@ public class PlayerResourcePackStatusEvent : PlayerEvent {
         return status;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

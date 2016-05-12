@@ -73,8 +73,7 @@ public class Dye : MaterialData : Colorable {
         return getColor() + " DYE(" + getData() + ")";
     }
 
-    @Override
-    public Dye clone() {
+    public override Dye clone() {
         return (Dye) base.clone();
     }
 }

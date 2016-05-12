@@ -72,7 +72,7 @@ public abstract class MetadataValueAdapter : MetadataValue {
         if (value == null) {
             return "";
         }
-        return value.toString();
+        return value.ToString();
     }
 
 }

@@ -108,7 +108,7 @@ public class Rails : MaterialData {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
+        return base.ToString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
     }
 
     /**
@@ -170,8 +170,7 @@ public class Rails : MaterialData {
         }
     }
 
-    @Override
-    public Rails clone() {
+    public override Rails clone() {
         return (Rails) base.clone();
     }
 }

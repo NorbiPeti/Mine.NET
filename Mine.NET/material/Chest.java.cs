@@ -55,8 +55,7 @@ public class Chest : DirectionalContainer {
         base(type, data);
     }
 
-    @Override
-    public Chest clone() {
+    public override Chest clone() {
         return (Chest) base.clone();
     }
 }

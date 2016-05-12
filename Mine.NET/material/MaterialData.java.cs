@@ -123,8 +123,7 @@ public class MaterialData : Cloneable {
         }
     }
 
-    @Override
-    public MaterialData clone() {
+    public override MaterialData clone() {
         try {
             return (MaterialData) base.clone();
         } catch (CloneNotSupportedException e) {

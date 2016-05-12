@@ -28,8 +28,7 @@ public class BlockFormEvent : BlockGrowEvent : Cancellable {
         base(block, newState);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

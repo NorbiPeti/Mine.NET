@@ -40,8 +40,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
         base(type, data);
     }
 
-    @Override
-    public FurnaceAndDispenser clone() {
+    public override FurnaceAndDispenser clone() {
         return (FurnaceAndDispenser) base.clone();
     }
 }

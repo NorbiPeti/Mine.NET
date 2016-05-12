@@ -39,8 +39,7 @@ public class SimplexOctaveGenerator : OctaveGenerator {
         base(createOctaves(rand, octaves));
     }
 
-    @Override
-    public void setScale(double scale) {
+    public override void setScale(double scale) {
         base.setScale(scale);
         setWScale(scale);
     }
@@ -103,7 +102,7 @@ public class SimplexOctaveGenerator : OctaveGenerator {
         z *= zScale;
         w *= wScale;
 
-        for (NoiseGenerator octave : octaves) {
+        foreach (NoiseGenerator octave  in  octaves) {
             result += ((SimplexNoiseGenerator) octave).noise(x * freq, y * freq, z * freq, w * freq) * amp;
             max += amp;
             freq *= frequency;

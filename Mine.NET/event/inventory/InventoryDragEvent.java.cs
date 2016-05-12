@@ -73,7 +73,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
         this.oldCursor = oldCursor;
         this.addedItems = slots;
         ImmutableSet.Builder<int> b = ImmutableSet.builder();
-        for (int slot : slots.keySet()) {
+        foreach (int slot  in  slots.keySet()) {
             b.add(what.convertSlot(slot));
         }
         this.containerSlots = b.build();
@@ -153,8 +153,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
         return type;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

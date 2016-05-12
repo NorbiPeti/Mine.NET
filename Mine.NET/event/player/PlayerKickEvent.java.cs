@@ -64,8 +64,7 @@ public class PlayerKickEvent : PlayerEvent : Cancellable {
         this.leaveMessage = leaveMessage;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

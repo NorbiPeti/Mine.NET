@@ -90,11 +90,10 @@ public class NetherWarts : MaterialData {
     }
 
     public override string ToString() {
-        return getState() + " " + base.toString();
+        return getState() + " " + base.ToString();
     }
 
-    @Override
-    public NetherWarts clone() {
+    public override NetherWarts clone() {
         return (NetherWarts) base.clone();
     }
 }

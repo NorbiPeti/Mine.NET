@@ -36,7 +36,7 @@ public class HandlerList {
      */
     public static void bakeAll() {
         synchronized (allLists) {
-            for (HandlerList h : allLists) {
+            foreach (HandlerList h  in  allLists) {
                 h.bake();
             }
         }
@@ -47,9 +47,9 @@ public class HandlerList {
      */
     public static void unregisterAll() {
         synchronized (allLists) {
-            for (HandlerList h : allLists) {
+            foreach (HandlerList h  in  allLists) {
                 synchronized (h) {
-                    for (List<RegisteredListener> list : h.handlerslots.values()) {
+                    foreach (List<RegisteredListener> list  in  h.handlerslots.values()) {
                         list.clear();
                     }
                     h.handlers = null;
@@ -65,7 +65,7 @@ public class HandlerList {
      */
     public static void unregisterAll(Plugin plugin) {
         synchronized (allLists) {
-            for (HandlerList h : allLists) {
+            foreach (HandlerList h  in  allLists) {
                 h.unregister(plugin);
             }
         }
@@ -78,7 +78,7 @@ public class HandlerList {
      */
     public static void unregisterAll(Listener listener) {
         synchronized (allLists) {
-            for (HandlerList h : allLists) {
+            foreach (HandlerList h  in  allLists) {
                 h.unregister(listener);
             }
         }
@@ -91,7 +91,7 @@ public class HandlerList {
      */
     public HandlerList() {
         handlerslots = new EnumMap<EventPriority, List<RegisteredListener>>(EventPriority.class);
-        for (EventPriority o : EventPriority.values()) {
+        foreach (EventPriority o  in  EventPriority.values()) {
             handlerslots.Add(o, new List<RegisteredListener>());
         }
         synchronized (allLists) {
@@ -106,7 +106,7 @@ public class HandlerList {
      */
     public synchronized void register(RegisteredListener listener) {
         if (handlerslots[listener.getPriority(]).contains(listener))
-            throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority().toString());
+            throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority().ToString());
         handlers = null;
         handlerslots[listener.getPriority(]).add(listener);
     }
@@ -117,7 +117,7 @@ public class HandlerList {
      * @param listeners listeners to register
      */
     public void registerAll(Collection<RegisteredListener> listeners) {
-        for (RegisteredListener listener : listeners) {
+        foreach (RegisteredListener listener  in  listeners) {
             register(listener);
         }
     }
@@ -140,7 +140,7 @@ public class HandlerList {
      */
     public synchronized void unregister(Plugin plugin) {
         bool changed = false;
-        for (List<RegisteredListener> list : handlerslots.values()) {
+        foreach (List<RegisteredListener> list  in  handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
                 if (i.next().getPlugin().equals(plugin)) {
                     i.remove();
@@ -158,7 +158,7 @@ public class HandlerList {
      */
     public synchronized void unregister(Listener listener) {
         bool changed = false;
-        for (List<RegisteredListener> list : handlerslots.values()) {
+        foreach (List<RegisteredListener> list  in  handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
                 if (i.next().getListener().equals(listener)) {
                     i.remove();
@@ -175,10 +175,10 @@ public class HandlerList {
     public synchronized void bake() {
         if (handlers != null) return; // don't re-bake when still valid
         List<RegisteredListener> entries = new List<RegisteredListener>();
-        for (Entry<EventPriority, List<RegisteredListener>> entry : handlerslots.entrySet()) {
+        foreach (Entry<EventPriority, List<RegisteredListener>> entry  in  handlerslots.entrySet()) {
             entries.addAll(entry.Value);
         }
-        handlers = entries.toArray(new RegisteredListener[entries.size()]);
+        handlers = entries.toArray(new RegisteredListener[entries.Count]);
     }
 
     /**
@@ -202,10 +202,10 @@ public class HandlerList {
     public static List<RegisteredListener> getRegisteredListeners(Plugin plugin) {
         List<RegisteredListener> listeners = new List<RegisteredListener>();
         synchronized (allLists) {
-            for (HandlerList h : allLists) {
+            foreach (HandlerList h  in  allLists) {
                 synchronized (h) {
-                    for (List<RegisteredListener> list : h.handlerslots.values()) {
-                        for (RegisteredListener listener : list) {
+                    foreach (List<RegisteredListener> list  in  h.handlerslots.values()) {
+                        foreach (RegisteredListener listener  in  list) {
                             if (listener.getPlugin().equals(plugin)) {
                                 listeners.add(listener);
                             }

@@ -145,11 +145,10 @@ public class Leaves : Wood {
     }
 
     public override string ToString() {
-        return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + base.toString();
+        return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + base.ToString();
     }
 
-    @Override
-    public Leaves clone() {
+    public override Leaves clone() {
         return (Leaves) base.clone();
     }
 }

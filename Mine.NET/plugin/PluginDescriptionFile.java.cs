@@ -181,24 +181,22 @@ public sealed class PluginDescriptionFile {
             return new Yaml(new SafeConstructor() {
                 {
                     yamlConstructors.Add(null, new AbstractConstruct() {
-                        @Override
-                        public Object construct(Node node) {
-                            if (!node.getTag().startsWith("!@")) {
+                        public override Object construct(Node node) {
+                            if (!node.getTag().StartsWith("!@")) {
                                 // Unknown tag - will fail
                                 return SafeConstructor.undefinedConstructor.construct(node);
                             }
                             // Unknown awareness - provide a graceful substitution
                             return new PluginAwareness() {
                                 public override string ToString() {
-                                    return node.toString();
+                                    return node.ToString();
                                 }
                             };
                         }
                     });
-                    for (PluginAwareness.Flags flag : PluginAwareness.Flags.values()) {
+                    foreach (PluginAwareness.Flags flag  in  PluginAwareness.Flags.values()) {
                         yamlConstructors.Add(new Tag("!@" + flag.name()), new AbstractConstruct() {
-                            @Override
-                            public PluginAwareness.Flags construct(Node node) {
+                            public override PluginAwareness.Flags construct(Node node) {
                                 return flag;
                             }
                         });
@@ -211,9 +209,9 @@ public sealed class PluginDescriptionFile {
     private String name = null;
     private String main = null;
     private String classLoaderOf = null;
-    private List<String> depend = ImmutableList.of();
-    private List<String> softDepend = ImmutableList.of();
-    private List<String> loadBefore = ImmutableList.of();
+    private List<String> depend = new List<string>();
+    private List<String> softDepend = new List<string>();
+    private List<String> loadBefore = new List<string>();
     private String version = null;
     private Dictionary<String, Dictionary<String, Object>> commands = null;
     private String description = null;
@@ -887,7 +885,7 @@ public sealed class PluginDescriptionFile {
 
     private void loadMap(Dictionary<?, ?> map) throws InvalidDescriptionException {
         try {
-            name = rawName = map["name"].toString();
+            name = rawName = map["name"].ToString();
 
             if (!name.matches("^[A-Za-z0-9 _.-]+$")) {
                 throw new InvalidDescriptionException("name '" + name + "' contains invalid chars.");
@@ -900,7 +898,7 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            version = map["version"].toString();
+            version = map["version"].ToString();
         } catch (NullPointerException ex) {
             throw new InvalidDescriptionException(ex, "version is not defined");
         } catch (ClassCastException ex) {
@@ -908,8 +906,8 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            main = map["main"].toString();
-            if (main.startsWith("org.bukkit.")) {
+            main = map["main"].ToString();
+            if (main.StartsWith("org.bukkit.")) {
                 throw new InvalidDescriptionException("main may not be within the org.bukkit namespace");
             }
         } catch (NullPointerException ex) {
@@ -921,25 +919,25 @@ public sealed class PluginDescriptionFile {
         if (map["commands"] != null) {
             ImmutableMap.Builder<String, Dictionary<String, Object>> commandsBuilder = ImmutableMap.<String, Dictionary<String, Object>>builder();
             try {
-                for (KeyValuePair<?, ?> command : ((Dictionary<?, ?>) map["commands"]).entrySet()) {
+                foreach (KeyValuePair<?, ?> command  in  ((Dictionary<?, ?>) map["commands"]).entrySet()) {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
                     if (command.Value != null) {
-                        for (KeyValuePair<?, ?> commandEntry : ((Dictionary<?, ?>) command.Value).entrySet()) {
+                        foreach (KeyValuePair<?, ?> commandEntry  in  ((Dictionary<?, ?>) command.Value).entrySet()) {
                             if (commandEntry.Value is Iterable) {
                                 // This prevents internal alias list changes
                                 ImmutableList.Builder<Object> commandSubList = ImmutableList.<Object>builder();
-                                for (Object commandSubListItem : (Iterable<?>) commandEntry.Value) {
+                                foreach (Object commandSubListItem  in  (Iterable<?>) commandEntry.Value) {
                                     if (commandSubListItem != null) {
                                         commandSubList.add(commandSubListItem);
                                     }
                                 }
-                                commandBuilder.Add(commandEntry.Key.toString(), commandSubList.build());
+                                commandBuilder.Add(commandEntry.Key.ToString(), commandSubList.build());
                             } else if (commandEntry.Value != null) {
-                                commandBuilder.Add(commandEntry.Key.toString(), commandEntry.Value);
+                                commandBuilder.Add(commandEntry.Key.ToString(), commandEntry.Value);
                             }
                         }
                     }
-                    commandsBuilder.Add(command.Key.toString(), commandBuilder.build());
+                    commandsBuilder.Add(command.Key.ToString(), commandBuilder.build());
                 }
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "commands are of wrong type");
@@ -948,7 +946,7 @@ public sealed class PluginDescriptionFile {
         }
 
         if (map["class-loader-of"] != null) {
-            classLoaderOf = map["class-loader-of"].toString();
+            classLoaderOf = map["class-loader-of"].ToString();
         }
 
         depend = makePluginNameList(map, "depend");
@@ -964,11 +962,11 @@ public sealed class PluginDescriptionFile {
         }
 
         if (map["website"] != null) {
-            website = map["website"].toString();
+            website = map["website"].ToString();
         }
 
         if (map["description"] != null) {
-            description = map["description"].toString();
+            description = map["description"].ToString();
         }
 
         if (map["load"] != null) {
@@ -984,11 +982,11 @@ public sealed class PluginDescriptionFile {
         if (map["authors"] != null) {
             ImmutableList.Builder<String> authorsBuilder = ImmutableList.<String>builder();
             if (map["author"] != null) {
-                authorsBuilder.add(map["author"].toString());
+                authorsBuilder.add(map["author"].ToString());
             }
             try {
-                for (Object o : (Iterable<?>) map["authors"]) {
-                    authorsBuilder.add(o.toString());
+                foreach (Object o  in  (Iterable<?>) map["authors"]) {
+                    authorsBuilder.add(o.ToString());
                 }
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "authors are of wrong type");
@@ -997,14 +995,14 @@ public sealed class PluginDescriptionFile {
             }
             authors = authorsBuilder.build();
         } else if (map["author"] != null) {
-            authors = ImmutableList.of(map["author"].toString());
+            authors = ImmutableList.of(map["author"].ToString());
         } else {
             authors = ImmutableList.<String>of();
         }
 
         if (map["default-permission"] != null) {
             try {
-                defaultPerm = PermissionDefault.getByName(map["default-permission"].toString());
+                defaultPerm = PermissionDefault.getByName(map["default-permission"].ToString());
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "default-permission is of wrong type");
             } catch (ArgumentException ex) {
@@ -1015,7 +1013,7 @@ public sealed class PluginDescriptionFile {
         if (map["awareness"] is Iterable) {
             HashSet<PluginAwareness> awareness = new HashSet<PluginAwareness>();
             try {
-                for (Object o : (Iterable<?>) map["awareness"]) {
+                foreach (Object o  in  (Iterable<?>) map["awareness"]) {
                     awareness.add((PluginAwareness) o);
                 }
             } catch (ClassCastException ex) {
@@ -1031,20 +1029,20 @@ public sealed class PluginDescriptionFile {
         }
 
         if (map["prefix"] != null) {
-            prefix = map["prefix"].toString();
+            prefix = map["prefix"].ToString();
         }
     }
 
     private static List<String> makePluginNameList(Dictionary<?, ?> map, readonly String key) throws InvalidDescriptionException {
         readonly Object value = map[key];
         if (value == null) {
-            return ImmutableList.of();
+            return new List<string>();
         }
 
         readonly ImmutableList.Builder<String> builder = ImmutableList.<String>builder();
         try {
-            for (Object entry : (Iterable<?>) value) {
-                builder.add(entry.toString().replace(' ', '_'));
+            foreach (Object entry  in  (Iterable<?>) value) {
+                builder.add(entry.ToString().replace(' ', '_'));
             }
         } catch (ClassCastException ex) {
             throw new InvalidDescriptionException(ex, key + " is of wrong type");
@@ -1061,8 +1059,8 @@ public sealed class PluginDescriptionFile {
         map.Add("main", main);
         map.Add("version", version);
         map.Add("database", database);
-        map.Add("order", order.toString());
-        map.Add("default-permission", defaultPerm.toString());
+        map.Add("order", order.ToString());
+        map.Add("default-permission", defaultPerm.ToString());
 
         if (commands != null) {
             map.Add("command", commands);
@@ -1080,9 +1078,9 @@ public sealed class PluginDescriptionFile {
             map.Add("description", description);
         }
 
-        if (authors.size() == 1) {
+        if (authors.Count == 1) {
             map.Add("author", authors[0]);
-        } else if (authors.size() > 1) {
+        } else if (authors.Count > 1) {
             map.Add("authors", authors);
         }
 

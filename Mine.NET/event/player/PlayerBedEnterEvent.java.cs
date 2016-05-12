@@ -35,8 +35,7 @@ public class PlayerBedEnterEvent : PlayerEvent : Cancellable {
         return bed;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

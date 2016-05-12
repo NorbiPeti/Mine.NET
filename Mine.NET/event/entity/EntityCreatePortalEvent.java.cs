@@ -23,8 +23,7 @@ public class EntityCreatePortalEvent : EntityEvent : Cancellable {
         this.type = type;
     }
 
-    @Override
-    public LivingEntity getEntity() {
+    public override LivingEntity getEntity() {
         return (LivingEntity) entity;
     }
 
@@ -54,8 +53,7 @@ public class EntityCreatePortalEvent : EntityEvent : Cancellable {
         return type;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

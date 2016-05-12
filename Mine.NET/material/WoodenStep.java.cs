@@ -94,12 +94,11 @@ public class WoodenStep : Wood {
         setData((byte) dat);
     }
 
-    @Override
-    public WoodenStep clone() {
+    public override WoodenStep clone() {
         return (WoodenStep) base.clone();
     }
 
     public override string ToString() {
-        return base.toString() + " " + getSpecies() + (isInverted() ? " inverted" : "");
+        return base.ToString() + " " + getSpecies() + (isInverted() ? " inverted" : "");
     }
 }

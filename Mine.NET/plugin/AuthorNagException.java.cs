@@ -13,8 +13,7 @@ public class AuthorNagException : RuntimeException {
         this.message = message;
     }
 
-    @Override
-    public String getMessage() {
+    public override String getMessage() {
         return message;
     }
 }

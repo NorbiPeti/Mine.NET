@@ -105,8 +105,7 @@ public class PlayerEditBookEvent : PlayerEvent : Cancellable {
         isSigning = signing;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

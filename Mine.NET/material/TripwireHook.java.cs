@@ -117,12 +117,11 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
         return isActivated();
     }
 
-    @Override
-    public TripwireHook clone() {
+    public override TripwireHook clone() {
         return (TripwireHook) base.clone();
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing() + (isActivated()?" Activated":"") + (isConnected()?" Connected":"");
+        return base.ToString() + " facing " + getFacing() + (isActivated()?" Activated":"") + (isConnected()?" Connected":"");
     }
 }

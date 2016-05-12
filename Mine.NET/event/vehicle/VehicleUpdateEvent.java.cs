@@ -13,8 +13,7 @@ public class VehicleUpdateEvent : VehicleEvent {
         base(vehicle);
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

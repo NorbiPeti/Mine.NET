@@ -51,8 +51,7 @@ public class PlayerInteractEntityEvent : PlayerEvent : Cancellable {
         return hand;
     }
 
-    @Override
-    public HandlerList getHandlers() {
+    public override HandlerList getHandlers() {
         return handlers;
     }
 

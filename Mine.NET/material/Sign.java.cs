@@ -241,11 +241,10 @@ public class Sign : MaterialData : Attachable {
     }
 
     public override string ToString() {
-        return base.toString() + " facing " + getFacing();
+        return base.ToString() + " facing " + getFacing();
     }
 
-    @Override
-    public Sign clone() {
+    public override Sign clone() {
         return (Sign) base.clone();
     }
 }

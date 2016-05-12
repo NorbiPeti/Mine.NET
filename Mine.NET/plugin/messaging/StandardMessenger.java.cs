@@ -72,7 +72,7 @@ public class StandardMessenger : Messenger {
 
                 outgoingByPlugin.remove(plugin);
 
-                for (String channel : toRemove) {
+                foreach (String channel  in  toRemove) {
                     removeFromOutgoing(plugin, channel);
                 }
             }
@@ -140,7 +140,7 @@ public class StandardMessenger : Messenger {
             if (registrations != null) {
                 PluginMessageListenerRegistration[] toRemove = registrations.toArray(new PluginMessageListenerRegistration[0]);
 
-                for (PluginMessageListenerRegistration registration : toRemove) {
+                foreach (PluginMessageListenerRegistration registration  in  toRemove) {
                     if (registration.getChannel().equals(channel)) {
                         removeFromIncoming(registration);
                     }
@@ -158,7 +158,7 @@ public class StandardMessenger : Messenger {
 
                 incomingByPlugin.remove(plugin);
 
-                for (PluginMessageListenerRegistration registration : toRemove) {
+                foreach (PluginMessageListenerRegistration registration  in  toRemove) {
                     removeFromIncoming(registration);
                 }
             }
@@ -289,7 +289,7 @@ public class StandardMessenger : Messenger {
             if (registrations != null) {
                 Builder<String> builder = ImmutableSet.builder();
 
-                for (PluginMessageListenerRegistration registration : registrations) {
+                foreach (PluginMessageListenerRegistration registration  in  registrations) {
                     builder.add(registration.getChannel());
                 }
 
@@ -342,7 +342,7 @@ public class StandardMessenger : Messenger {
             if (registrations != null) {
                 Builder<PluginMessageListenerRegistration> builder = ImmutableSet.builder();
 
-                for (PluginMessageListenerRegistration registration : registrations) {
+                foreach (PluginMessageListenerRegistration registration  in  registrations) {
                     if (registration.getChannel().equals(channel)) {
                         builder.add(registration);
                     }
@@ -381,7 +381,7 @@ public class StandardMessenger : Messenger {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
-                for (PluginMessageListenerRegistration registration : registrations) {
+                foreach (PluginMessageListenerRegistration registration  in  registrations) {
                     if (registration.getChannel().equals(channel)) {
                         return true;
                     }
@@ -420,7 +420,7 @@ public class StandardMessenger : Messenger {
 
         HashSet<PluginMessageListenerRegistration> registrations = getIncomingChannelRegistrations(channel);
 
-        for (PluginMessageListenerRegistration registration : registrations) {
+        foreach (PluginMessageListenerRegistration registration  in  registrations) {
             registration.getListener().onPluginMessageReceived(channel, source, message);
         }
     }
