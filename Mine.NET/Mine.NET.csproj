@@ -113,7 +113,6 @@
     <Compile Include="command\ProxiedCommandSender.java.cs" />
     <Compile Include="command\RemoteConsoleCommandSender.java.cs" />
     <Compile Include="command\SimpleCommandMap.java.cs" />
-    <Compile Include="command\TabCommandExecutor.java.cs" />
     <Compile Include="command\TabCompleter.java.cs" />
     <Compile Include="command\TabExecutor.java.cs" />
     <Compile Include="configuration\Configuration.java.cs" />
