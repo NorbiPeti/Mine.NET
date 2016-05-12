@@ -41,11 +41,11 @@ public class ChatPaginator {
     public static ChatPage paginate(String unpaginatedString, int pageNumber, int lineLength, int pageHeight) {
         String[] lines = wordWrap(unpaginatedString, lineLength);
 
-        int totalPages = lines.length / pageHeight + (lines.length % pageHeight == 0 ? 0 : 1);
+        int totalPages = lines.Length / pageHeight + (lines.Length % pageHeight == 0 ? 0 : 1);
         int actualPageNumber = pageNumber <= totalPages ? pageNumber : totalPages;
 
         int from = (actualPageNumber - 1) * pageHeight;
-        int to = from + pageHeight <= lines.length  ? from + pageHeight : lines.length;
+        int to = from + pageHeight <= lines.Length  ? from + pageHeight : lines.Length;
         String[] selectedLines = Java15Compat.Arrays_copyOfRange(lines, from, to);
 
         return new ChatPage(selectedLines, actualPageNumber, totalPages);
@@ -76,7 +76,7 @@ public class ChatPaginator {
         List<String> lines = new LinkedList<String>();
         int lineColorChars = 0;
 
-        for (int i = 0; i < rawChars.length; i++) {
+        for (int i = 0; i < rawChars.Length; i++) {
             char c = rawChars[i];
 
             // skip chat color modifiers

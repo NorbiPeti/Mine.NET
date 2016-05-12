@@ -69,9 +69,9 @@ public class YamlConfiguration : FileConfiguration {
     }
 
     protected void convertMapsToSections(Dictionary<?, ?> input, ConfigurationSection section) {
-        for (Map.Entry<?, ?> entry : input.entrySet()) {
-            String key = entry.getKey().toString();
-            Object value = entry.getValue();
+        for (KeyValuePair<?, ?> entry : input.entrySet()) {
+            String key = entry.Key.toString();
+            Object value = entry.Value;
 
             if (value is Map) {
                 convertMapsToSections((Dictionary<?, ?>) value, section.createSection(key));
@@ -87,7 +87,7 @@ public class YamlConfiguration : FileConfiguration {
         bool readingHeader = true;
         bool foundHeader = false;
 
-        for (int i = 0; (i < lines.length) && (readingHeader); i++) {
+        for (int i = 0; (i < lines.Length) && (readingHeader); i++) {
             String line = lines[i];
 
             if (line.startsWith(COMMENT_PREFIX)) {
@@ -135,7 +135,7 @@ public class YamlConfiguration : FileConfiguration {
         String[] lines = header.Split("\r?\n", -1);
         bool startedHeader = false;
 
-        for (int i = lines.length - 1; i >= 0; i--) {
+        for (int i = lines.Length - 1; i >= 0; i--) {
             builder.insert(0, "\n");
 
             if ((startedHeader) || (lines[i].Length != 0)) {

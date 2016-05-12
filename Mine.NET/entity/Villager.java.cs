@@ -119,7 +119,7 @@ public interface Villager : Ageable, NPC, InventoryHolder {
         BLACKSMITH(3),
         BUTCHER(4);
 
-        private static readonly Profession[] professions = new Profession[Profession.values().length];
+        private static readonly Profession[] professions = new Profession[Profession.values().Length];
         private readonly int id;
 
         static {
@@ -152,7 +152,7 @@ public interface Villager : Ageable, NPC, InventoryHolder {
          */
         [Obsolete]
         public static Profession getProfession(int id) {
-            return (id >= professions.length) ? null : professions[id];
+            return (id >= professions.Length) ? null : professions[id];
         }
     }
 }

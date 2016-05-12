@@ -10,7 +10,7 @@ public class MessageTooLargeException : RuntimeException {
     }
 
     public MessageTooLargeException(byte[] message) {
-        this(message.length);
+        this(message.Length);
     }
 
     public MessageTooLargeException(int length) {

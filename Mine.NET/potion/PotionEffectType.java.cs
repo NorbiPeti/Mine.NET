@@ -233,7 +233,7 @@ public abstract class PotionEffectType {
      */
     [Obsolete]
     public static PotionEffectType getById(int id) {
-        if (id >= byId.length || id < 0)
+        if (id >= byId.Length || id < 0)
             return null;
         return byId[id];
     }
@@ -246,7 +246,7 @@ public abstract class PotionEffectType {
      */
     public static PotionEffectType getByName(String name) {
         if(name==null) throw new ArgumentNullException("name cannot be null");
-        return byName[name.toLowerCase(]);
+        return byName[name.ToLower(]);
     }
 
     /**
@@ -257,7 +257,7 @@ public abstract class PotionEffectType {
      * @param type PotionType to register
      */
     public static void registerPotionEffectType(PotionEffectType type) {
-        if (byId[type.id] != null || byName.containsKey(type.getName().toLowerCase())) {
+        if (byId[type.id] != null || byName.containsKey(type.getName().ToLower())) {
             throw new ArgumentException("Cannot set already-set type");
         } else if (!acceptingNew) {
             throw new IllegalStateException(
@@ -265,7 +265,7 @@ public abstract class PotionEffectType {
         }
 
         byId[type.id] = type;
-        byName.Add(type.getName().toLowerCase(), type);
+        byName.Add(type.getName().ToLower(), type);
     }
 
     /**

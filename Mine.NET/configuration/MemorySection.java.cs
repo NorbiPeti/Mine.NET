@@ -264,11 +264,11 @@ public class MemorySection : ConfigurationSection {
     public ConfigurationSection createSection(String path, Dictionary<?, ?> map) {
         ConfigurationSection section = createSection(path);
 
-        for (Map.Entry<?, ?> entry : map.entrySet()) {
-            if (entry.getValue() is Map) {
-                section.createSection(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue());
+        for (KeyValuePair<?, ?> entry : map.entrySet()) {
+            if (entry.Value is Map) {
+                section.createSection(entry.Key.toString(), (Dictionary<?, ?>) entry.Value);
             } else {
-                section.set(entry.getKey().toString(), entry.getValue());
+                section.set(entry.Key.toString(), entry.Value);
             }
         }
 
@@ -709,11 +709,11 @@ public class MemorySection : ConfigurationSection {
         if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
-            for (Map.Entry<String, Object> entry : sec.map.entrySet()) {
-                output.add(createPath(section, entry.getKey(), this));
+            for (KeyValuePair<String, Object> entry : sec.map.entrySet()) {
+                output.add(createPath(section, entry.Key, this));
 
-                if ((deep) && (entry.getValue() is ConfigurationSection)) {
-                    ConfigurationSection subsection = (ConfigurationSection) entry.getValue();
+                if ((deep) && (entry.Value is ConfigurationSection)) {
+                    ConfigurationSection subsection = (ConfigurationSection) entry.Value;
                     mapChildrenKeys(output, subsection, deep);
                 }
             }
@@ -730,20 +730,20 @@ public class MemorySection : ConfigurationSection {
         if (section is MemorySection) {
             MemorySection sec = (MemorySection) section;
 
-            for (Map.Entry<String, Object> entry : sec.map.entrySet()) {
-                output.Add(createPath(section, entry.getKey(), this), entry.getValue());
+            for (KeyValuePair<String, Object> entry : sec.map.entrySet()) {
+                output.Add(createPath(section, entry.Key, this), entry.Value);
 
-                if (entry.getValue() is ConfigurationSection) {
+                if (entry.Value is ConfigurationSection) {
                     if (deep) {
-                        mapChildrenValues(output, (ConfigurationSection) entry.getValue(), deep);
+                        mapChildrenValues(output, (ConfigurationSection) entry.Value, deep);
                     }
                 }
             }
         } else {
             Dictionary<String, Object> values = section.getValues(deep);
 
-            for (Map.Entry<String, Object> entry : values.entrySet()) {
-                output.Add(createPath(section, entry.getKey(), this), entry.getValue());
+            for (KeyValuePair<String, Object> entry : values.entrySet()) {
+                output.Add(createPath(section, entry.Key, this), entry.Value);
             }
         }
     }

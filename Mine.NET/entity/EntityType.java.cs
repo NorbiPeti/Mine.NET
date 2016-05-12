@@ -214,7 +214,7 @@ public enum EntityType {
     static {
         for (EntityType type : values()) {
             if (type.name != null) {
-                NAME_MAP.Add(type.name.toLowerCase(), type);
+                NAME_MAP.Add(type.name.ToLower(), type);
             }
             if (type.typeId > 0) {
                 ID_MAP.Add(type.typeId, type);
@@ -271,7 +271,7 @@ public enum EntityType {
         if (name == null) {
             return null;
         }
-        return NAME_MAP[name.toLowerCase(]);
+        return NAME_MAP[name.ToLower(]);
     }
 
     /**

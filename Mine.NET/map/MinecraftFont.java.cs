@@ -290,7 +290,7 @@ public class MinecraftFont : MapFont {
     }
 
     private MinecraftFont(bool malleable) {
-        for (int i = 1; i < fontData.length; ++i) {
+        for (int i = 1; i < fontData.Length; ++i) {
             char ch = (char) i;
             if (i >= 32 && i < 32 + fontChars.Length) {
                 ch = fontChars[i - 32];

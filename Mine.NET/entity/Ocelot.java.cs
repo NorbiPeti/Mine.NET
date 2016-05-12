@@ -44,7 +44,7 @@ public interface Ocelot : Animals, Tameable {
         RED_CAT(2),
         SIAMESE_CAT(3);
 
-        private static readonly Type[] types = new Type[Type.values().length];
+        private static readonly Type[] types = new Type[Type.values().Length];
         private readonly int id;
 
         static {
@@ -77,7 +77,7 @@ public interface Ocelot : Animals, Tameable {
          */
         [Obsolete]
         public static Type getType(int id) {
-            return (id >= types.length) ? null : types[id];
+            return (id >= types.Length) ? null : types[id];
         }
     }
 }

@@ -181,7 +181,7 @@ public class Permission {
      */
     public Permission addParent(String name, bool value) {
         PluginManager pm = Bukkit.getServer().getPluginManager();
-        String lname = name.toLowerCase();
+        String lname = name.ToLower();
 
         Permission perm = pm.getPermission(lname);
 
@@ -228,11 +228,11 @@ public class Permission {
     public static List<Permission> loadPermissions(Dictionary<?, ?> data, String error, PermissionDefault def) {
         List<Permission> result = new List<Permission>();
 
-        for (Map.Entry<?, ?> entry : data.entrySet()) {
+        for (KeyValuePair<?, ?> entry : data.entrySet()) {
             try {
-                result.add(Permission.loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, result));
+                result.add(Permission.loadPermission(entry.Key.toString(), (Dictionary<?, ?>) entry.Value, def, result));
             } catch (Throwable ex) {
-                Bukkit.getServer().getLogger().log(Level.SEVERE, String.format(error, entry.getKey()), ex);
+                Bukkit.getServer().getLogger().log(Level.SEVERE, String.format(error, entry.Key), ex);
             }
         }
 
@@ -321,22 +321,22 @@ public class Permission {
     private static Dictionary<String, bool> extractChildren(Dictionary<?, ?> input, String name, PermissionDefault def, List<Permission> output) {
         Dictionary<String, bool> children = new LinkedHashMap<String, bool>();
 
-        for (Map.Entry<?, ?> entry : input.entrySet()) {
-            if ((entry.getValue() is bool)) {
-                children.Add(entry.getKey().toString(), (bool) entry.getValue());
-            } else if ((entry.getValue() is Map)) {
+        for (KeyValuePair<?, ?> entry : input.entrySet()) {
+            if ((entry.Value is bool)) {
+                children.Add(entry.Key.toString(), (bool) entry.Value);
+            } else if ((entry.Value is Map)) {
                 try {
-                    Permission perm = loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, output);
+                    Permission perm = loadPermission(entry.Key.toString(), (Dictionary<?, ?>) entry.Value, def, output);
                     children.Add(perm.getName(), bool.TRUE);
 
                     if (output != null) {
                         output.add(perm);
                     }
                 } catch (Throwable ex) {
-                    throw new ArgumentException("Permission node '" + entry.getKey().toString() + "' in child of " + name + " is invalid", ex);
+                    throw new ArgumentException("Permission node '" + entry.Key.toString() + "' in child of " + name + " is invalid", ex);
                 }
             } else {
-                throw new ArgumentException("Child '" + entry.getKey().toString() + "' contains invalid value");
+                throw new ArgumentException("Child '" + entry.Key.toString() + "' contains invalid value");
             }
         }
 

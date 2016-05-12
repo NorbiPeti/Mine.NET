@@ -26,7 +26,7 @@ public interface Skeleton : Monster {
         NORMAL(0),
         WITHER(1);
 
-        private static readonly SkeletonType[] types = new SkeletonType[SkeletonType.values().length];
+        private static readonly SkeletonType[] types = new SkeletonType[SkeletonType.values().Length];
         private readonly int id;
 
         static {
@@ -59,7 +59,7 @@ public interface Skeleton : Monster {
          */
         [Obsolete]
         public static SkeletonType getType(int id) {
-            return (id >= types.length) ? null : types[id];
+            return (id >= types.Length) ? null : types[id];
         }
     }
 }

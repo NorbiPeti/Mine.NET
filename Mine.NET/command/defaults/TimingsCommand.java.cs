@@ -32,7 +32,7 @@ public class TimingsCommand : BukkitCommand {
     @Override
     public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
-        if (args.length != 1)  {
+        if (args.Length != 1)  {
             sender.sendMessage(ChatColors.RED + "Usage: " + usageMessage);
             return false;
         }
@@ -116,7 +116,7 @@ public class TimingsCommand : BukkitCommand {
         if(args==null) throw new ArgumentNullException("Arguments cannot be null");
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
-        if (args.length == 1) {
+        if (args.Length == 1) {
             return StringUtil.copyPartialMatches(args[0], TIMINGS_SUBCOMMANDS, new List<String>(TIMINGS_SUBCOMMANDS.size()));
         }
         return ImmutableList.of();

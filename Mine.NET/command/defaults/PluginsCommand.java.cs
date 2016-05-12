@@ -1,43 +1,40 @@
-package org.bukkit.command.defaults;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-import java.util.Arrays;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.Plugin;
-
-public class PluginsCommand : BukkitCommand {
-    public PluginsCommand(String name) {
-        base(name);
-        this.description = "Gets a list of plugins running on the server";
-        this.usageMessage = "/plugins";
-        this.setPermission("bukkit.command.plugins");
-        this.setAliases(Arrays.asList("pl"));
-    }
-
-    @Override
-    public bool execute(CommandSender sender, String currentAlias, String[] args) {
-        if (!testPermission(sender)) return true;
-
-        sender.sendMessage("Plugins " + getPluginList());
-        return true;
-    }
-
-    private String getPluginList() {
-        StringBuilder pluginList = new StringBuilder();
-        Plugin[] plugins = Bukkit.getPluginManager().getPlugins();
-
-        for (Plugin plugin : plugins) {
-            if (pluginList.Length > 0) {
-                pluginList.Append(ChatColors.WHITE);
-                pluginList.Append(", ");
-            }
-
-            pluginList.Append(plugin.isEnabled() ? ChatColors.GREEN : ChatColors.RED);
-            pluginList.Append(plugin.getDescription().getName());
+namespace Mine.NET
+{
+    public class PluginsCommand : BukkitCommand {
+        public PluginsCommand(String name) : base(name)
+        {
+            this.description = "Gets a list of plugins on the server";
+            this.usageMessage = "/plugins";
+            this.setPermission("bukkit.command.plugins");
+            this.setAliases(new List<string> { "pl" }));
         }
 
-        return "(" + plugins.length + "): " + pluginList.toString();
+        public override bool execute(CommandSender sender, String currentAlias, String[] args) {
+            if (!testPermission(sender)) return true;
+
+            sender.sendMessage("Plugins " + getPluginList());
+            return true;
+        }
+
+        private String getPluginList() {
+            StringBuilder pluginList = new StringBuilder();
+            Plugin[] plugins = Bukkit.getPluginManager().getPlugins();
+
+            foreach (Plugin plugin in plugins) {
+                if (pluginList.Length > 0) {
+                    pluginList.Append(ChatColors.WHITE);
+                    pluginList.Append(", ");
+                }
+
+                pluginList.Append(plugin.isEnabled() ? ChatColors.GREEN : ChatColors.RED);
+                pluginList.Append(plugin.getDescription().getName());
+            }
+
+            return "(" + plugins.Length + "): " + pluginList.ToString();
+        }
     }
 }

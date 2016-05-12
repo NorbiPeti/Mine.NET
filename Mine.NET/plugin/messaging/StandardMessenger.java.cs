@@ -473,7 +473,7 @@ public class StandardMessenger : Messenger {
         if (!messenger.isOutgoingChannelRegistered(source, channel)) {
             throw new ChannelNotRegisteredException(channel);
         }
-        if (message.length > Messenger.MAX_MESSAGE_SIZE) {
+        if (message.Length > Messenger.MAX_MESSAGE_SIZE) {
             throw new MessageTooLargeException(message);
         }
         validateChannel(channel);

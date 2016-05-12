@@ -20,13 +20,13 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
     public BlockPistonExtendEvent(Block block, readonly int length, readonly BlockFace direction) {
         base(block, direction);
 
-        this.length = length;
+        this.Length = length;
     }
 
     public BlockPistonExtendEvent(Block block, readonly List<Block> blocks, readonly BlockFace direction) {
         base(block, direction);
 
-        this.length = blocks.size();
+        this.Length = blocks.size();
         this.blocks = blocks;
     }
 
@@ -39,7 +39,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
      */
     [Obsolete]
     public int getLength {
-        return this.length;
+        return this.Length;
     }
 
     /**

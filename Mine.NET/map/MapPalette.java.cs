@@ -173,7 +173,7 @@ public sealed class MapPalette {
         temp.getRGB(0, 0, temp.getWidth(), temp.getHeight(), pixels, 0, temp.getWidth());
 
         byte[] result = new byte[temp.getWidth() * temp.getHeight()];
-        for (int i = 0; i < pixels.length; i++) {
+        for (int i = 0; i < pixels.Length; i++) {
             result[i] = matchColor(new Color(pixels[i], true));
         }
         return result;
@@ -209,7 +209,7 @@ public sealed class MapPalette {
         int index = 0;
         double best = -1;
 
-        for (int i = 4; i < colors.length; i++) {
+        for (int i = 4; i < colors.Length; i++) {
             double distance = getDistance(color, colors[i]);
             if (distance < best || best == -1) {
                 best = distance;

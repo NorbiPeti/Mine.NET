@@ -50,7 +50,7 @@ public class PermissibleBase : Permissible {
             throw new ArgumentException("Permission name cannot be null");
         }
 
-        return permissions.containsKey(name.toLowerCase());
+        return permissions.containsKey(name.ToLower());
     }
 
     public bool isPermissionSet(Permission perm) {
@@ -66,10 +66,10 @@ public class PermissibleBase : Permissible {
             throw new ArgumentException("Permission name cannot be null");
         }
 
-        String name = inName.toLowerCase();
+        String name = inName.ToLower();
 
         if (isPermissionSet(name)) {
-            return permissions[name].getValue();
+            return permissions[name].Value;
         } else {
             Permission perm = Bukkit.getServer().getPluginManager().getPermission(name);
 
@@ -86,10 +86,10 @@ public class PermissibleBase : Permissible {
             throw new ArgumentException("Permission cannot be null");
         }
 
-        String name = perm.getName().toLowerCase();
+        String name = perm.getName().ToLower();
 
         if (isPermissionSet(name)) {
-            return permissions[name].getValue();
+            return permissions[name].Value;
         }
         return perm.getDefault().getValue(isOp());
     }
@@ -151,7 +151,7 @@ public class PermissibleBase : Permissible {
         Bukkit.getServer().getPluginManager().subscribeToDefaultPerms(isOp(), parent);
 
         for (Permission perm : defaults) {
-            String name = perm.getName().toLowerCase();
+            String name = perm.getName().ToLower();
             permissions.Add(name, new PermissionAttachmentInfo(parent, name, null, true));
             Bukkit.getServer().getPluginManager().subscribeToPermission(name, parent);
             calculateChildPermissions(perm.getChildren(), false, null);
@@ -181,7 +181,7 @@ public class PermissibleBase : Permissible {
         for (String name : keys) {
             Permission perm = Bukkit.getServer().getPluginManager().getPermission(name);
             bool value = children[name] ^ invert;
-            String lname = name.toLowerCase();
+            String lname = name.ToLower();
 
             permissions.Add(lname, new PermissionAttachmentInfo(parent, lname, attachment, value));
             Bukkit.getServer().getPluginManager().subscribeToPermission(name, parent);

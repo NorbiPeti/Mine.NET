@@ -8,9 +8,14 @@ namespace Mine.NET
 {
     public class Logger
     {
-        internal void Severe(object p)
+        public void Severe(object p)
         {
             throw new NotImplementedException(); //TODO
+        }
+
+        public void Warning(string v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

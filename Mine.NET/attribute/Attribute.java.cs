@@ -44,6 +44,6 @@ namespace Mine.NET
         /**
          * Chance of a zombie to spawn reinforcements.
          */
-        ZOMBIE_SPAWN_REINFORCEMENTS;
+        ZOMBIE_SPAWN_REINFORCEMENTS
     }
 }

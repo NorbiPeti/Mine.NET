@@ -412,7 +412,7 @@ public sealed class SimplePluginManager : PluginManager {
 
     public void disablePlugins() {
         Plugin[] plugins = getPlugins();
-        for (int i = plugins.length - 1; i >= 0; i--) {
+        for (int i = plugins.Length - 1; i >= 0; i--) {
             disablePlugin(plugins[i]);
         }
     }
@@ -523,8 +523,8 @@ public sealed class SimplePluginManager : PluginManager {
             throw new IllegalPluginAccessException("Plugin attempted to register " + listener + " while not enabled");
         }
 
-        for (Map.Entry<Class<? : Event>, HashSet<RegisteredListener>> entry : plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
-            getEventListeners(getRegistrationClass(entry.getKey())).registerAll(entry.getValue());
+        for (KeyValuePair<Class<? : Event>, HashSet<RegisteredListener>> entry : plugin.getPluginLoader().createRegisteredListeners(listener, plugin).entrySet()) {
+            getEventListeners(getRegistrationClass(entry.Key)).registerAll(entry.Value);
         }
 
     }
@@ -588,11 +588,11 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public Permission getPermission(String name) {
-        return permissions[name.toLowerCase(]);
+        return permissions[name.ToLower(]);
     }
 
     public void addPermission(Permission perm) {
-        String name = perm.getName().toLowerCase();
+        String name = perm.getName().ToLower();
 
         if (permissions.containsKey(name)) {
             throw new ArgumentException("The permission " + name + " is already defined!");
@@ -611,11 +611,11 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public void removePermission(String name) {
-        permissions.remove(name.toLowerCase());
+        permissions.remove(name.ToLower());
     }
 
     public void recalculatePermissionDefaults(Permission perm) {
-        if (perm != null && permissions.containsKey(perm.getName().toLowerCase())) {
+        if (perm != null && permissions.containsKey(perm.getName().ToLower())) {
             defaultPerms[true].remove(perm);
             defaultPerms[false].remove(perm);
 
@@ -643,7 +643,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public void subscribeToPermission(String permission, Permissible permissible) {
-        String name = permission.toLowerCase();
+        String name = permission.ToLower();
         Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map == null) {
@@ -655,7 +655,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public void unsubscribeFromPermission(String permission, Permissible permissible) {
-        String name = permission.toLowerCase();
+        String name = permission.ToLower();
         Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map != null) {
@@ -668,7 +668,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public HashSet<Permissible> getPermissionSubscriptions(String permission) {
-        String name = permission.toLowerCase();
+        String name = permission.ToLower();
         Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map == null) {

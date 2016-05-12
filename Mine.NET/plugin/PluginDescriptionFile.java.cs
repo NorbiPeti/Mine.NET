@@ -921,25 +921,25 @@ public sealed class PluginDescriptionFile {
         if (map["commands"] != null) {
             ImmutableMap.Builder<String, Dictionary<String, Object>> commandsBuilder = ImmutableMap.<String, Dictionary<String, Object>>builder();
             try {
-                for (Map.Entry<?, ?> command : ((Dictionary<?, ?>) map["commands"]).entrySet()) {
+                for (KeyValuePair<?, ?> command : ((Dictionary<?, ?>) map["commands"]).entrySet()) {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
-                    if (command.getValue() != null) {
-                        for (Map.Entry<?, ?> commandEntry : ((Dictionary<?, ?>) command.getValue()).entrySet()) {
-                            if (commandEntry.getValue() is Iterable) {
+                    if (command.Value != null) {
+                        for (KeyValuePair<?, ?> commandEntry : ((Dictionary<?, ?>) command.Value).entrySet()) {
+                            if (commandEntry.Value is Iterable) {
                                 // This prevents internal alias list changes
                                 ImmutableList.Builder<Object> commandSubList = ImmutableList.<Object>builder();
-                                for (Object commandSubListItem : (Iterable<?>) commandEntry.getValue()) {
+                                for (Object commandSubListItem : (Iterable<?>) commandEntry.Value) {
                                     if (commandSubListItem != null) {
                                         commandSubList.add(commandSubListItem);
                                     }
                                 }
-                                commandBuilder.Add(commandEntry.getKey().toString(), commandSubList.build());
-                            } else if (commandEntry.getValue() != null) {
-                                commandBuilder.Add(commandEntry.getKey().toString(), commandEntry.getValue());
+                                commandBuilder.Add(commandEntry.Key.toString(), commandSubList.build());
+                            } else if (commandEntry.Value != null) {
+                                commandBuilder.Add(commandEntry.Key.toString(), commandEntry.Value);
                             }
                         }
                     }
-                    commandsBuilder.Add(command.getKey().toString(), commandBuilder.build());
+                    commandsBuilder.Add(command.Key.toString(), commandBuilder.build());
                 }
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "commands are of wrong type");

@@ -43,8 +43,8 @@ public class MemoryConfiguration : MemorySection : Configuration {
     public void addDefaults(Dictionary<String, Object> defaults) {
         if(defaults==null) throw new ArgumentNullException("Defaults may not be null");
 
-        for (Map.Entry<String, Object> entry : defaults.entrySet()) {
-            addDefault(entry.getKey(), entry.getValue());
+        for (KeyValuePair<String, Object> entry : defaults.entrySet()) {
+            addDefault(entry.Key, entry.Value);
         }
     }
 

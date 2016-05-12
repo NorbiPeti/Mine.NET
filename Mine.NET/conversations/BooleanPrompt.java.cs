@@ -16,7 +16,7 @@ public abstract class BooleanPrompt : ValidatingPrompt{
     @Override
     protected bool isInputValid(ConversationContext context, String input) {
         String[] accepted = {"true", "false", "on", "off", "yes", "no"};
-        return ArrayUtils.contains(accepted, input.toLowerCase());
+        return ArrayUtils.contains(accepted, input.ToLower());
     }
 
     @Override

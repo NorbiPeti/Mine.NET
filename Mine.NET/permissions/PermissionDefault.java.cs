@@ -48,7 +48,7 @@ public enum PermissionDefault {
      * @return Specified value, or null if not found
      */
     public static PermissionDefault getByName(String name) {
-        return lookup[name.toLowerCase(].replaceAll("[^a-z!]", ""));
+        return lookup[name.ToLower(].replaceAll("[^a-z!]", ""));
     }
 
     public override string ToString() {

@@ -44,14 +44,14 @@ public class ShapedRecipe : Recipe {
      */
     public ShapedRecipe shape(String... shape) {
         if(shape==null) throw new ArgumentNullException("Must provide a shape");
-        if(shape.length > 0 && shape.length < 4, "Crafting recipes should be 1, 2, 3 rows, not ") throw new ArgumentException(shape.length);
+        if(shape.Length > 0 && shape.Length < 4, "Crafting recipes should be 1, 2, 3 rows, not ") throw new ArgumentException(shape.Length);
 
         for (String row : shape) {
             if(row==null) throw new ArgumentNullException("Shape cannot have null rows");
             if(row.Length > 0 && row.Length < 4, "Crafting rows should be 1, 2, or 3 chars, not ") throw new ArgumentException(row.Length);
         }
-        this.rows = new String[shape.length];
-        for (int i = 0; i < shape.length; i++) {
+        this.rows = new String[shape.Length];
+        for (int i = 0; i < shape.Length; i++) {
             this.rows[i] = shape[i];
         }
 
@@ -118,11 +118,11 @@ public class ShapedRecipe : Recipe {
      */
     public Dictionary<char, ItemStack> getIngredientMap() {
         HashMap<char, ItemStack> result = new Dictionary<char, ItemStack>();
-        for (Map.Entry<char, ItemStack> ingredient : ingredients.entrySet()) {
-            if (ingredient.getValue() == null) {
-                result.Add(ingredient.getKey(), null);
+        for (KeyValuePair<char, ItemStack> ingredient : ingredients.entrySet()) {
+            if (ingredient.Value == null) {
+                result.Add(ingredient.Key, null);
             } else {
-                result.Add(ingredient.getKey(), ingredient.getValue().clone());
+                result.Add(ingredient.Key, ingredient.Value.clone());
             }
         }
         return result;

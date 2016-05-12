@@ -39,7 +39,7 @@ public class StringUtil {
     /**
      * This method uses a region to check case-insensitive equality. This
      * means the internal array does not need to be copied like a
-     * toLowerCase() call would.
+     * ToLower() call would.
      *
      * @param string String to check
      * @param prefix Prefix of string to compare

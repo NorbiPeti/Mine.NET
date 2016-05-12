@@ -42,7 +42,7 @@ public class VersionCommand : BukkitCommand {
     public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
-        if (args.length == 0) {
+        if (args.Length == 0) {
             sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
             sendVersion(sender);
         } else {
@@ -64,9 +64,9 @@ public class VersionCommand : BukkitCommand {
             }
 
             bool found = false;
-            pluginName = pluginName.toLowerCase();
+            pluginName = pluginName.ToLower();
             for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
-                if (plugin.getName().toLowerCase().contains(pluginName)) {
+                if (plugin.getName().ToLower().contains(pluginName)) {
                     describeToSender(plugin, sender);
                     found = true;
                 }
@@ -129,9 +129,9 @@ public class VersionCommand : BukkitCommand {
         if(args==null) throw new ArgumentNullException("Arguments cannot be null");
         if(alias==null) throw new ArgumentNullException("Alias cannot be null");
 
-        if (args.length == 1) {
+        if (args.Length == 1) {
             List<String> completions = new List<String>();
-            String toComplete = args[0].toLowerCase();
+            String toComplete = args[0].ToLower();
             for (Plugin plugin : Bukkit.getPluginManager().getPlugins()) {
                 if (StringUtil.startsWithIgnoreCase(plugin.getName(), toComplete)) {
                     completions.add(plugin.getName());

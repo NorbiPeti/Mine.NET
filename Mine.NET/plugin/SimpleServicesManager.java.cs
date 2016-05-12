@@ -66,12 +66,12 @@ public class SimpleServicesManager : ServicesManager {
     public void unregisterAll(Plugin plugin) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
-            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
-                    Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -88,7 +88,7 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.getValue().size() == 0) {
+                    if (entry.Value.size() == 0) {
                         it.remove();
                     }
                 }
@@ -108,18 +108,18 @@ public class SimpleServicesManager : ServicesManager {
     public void unregister(Class<?> service, Object provider) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
-            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
-                    Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
+                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
 
                     // We want a particular service
-                    if (entry.getKey() != service) {
+                    if (entry.Key != service) {
                         continue;
                     }
 
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -136,7 +136,7 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.getValue().size() == 0) {
+                    if (entry.Value.size() == 0) {
                         it.remove();
                     }
                 }
@@ -155,12 +155,12 @@ public class SimpleServicesManager : ServicesManager {
     public void unregister(Object provider) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
         synchronized (providers) {
-            IEnumerator<Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
                 while (it.hasNext()) {
-                    Map.Entry<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.getValue().iterator();
+                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
+                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
 
                     try {
                         // Removed entries that are from this plugin
@@ -177,7 +177,7 @@ public class SimpleServicesManager : ServicesManager {
                     }
 
                     // Get rid of the empty list
-                    if (entry.getValue().size() == 0) {
+                    if (entry.Value.size() == 0) {
                         it.remove();
                     }
                 }

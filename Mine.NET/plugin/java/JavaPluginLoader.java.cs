@@ -235,7 +235,7 @@ public sealed class JavaPluginLoader : PluginLoader {
         try {
             Method[] publicMethods = listener.getClass().getMethods();
             Method[] privateMethods = listener.getClass().getDeclaredMethods();
-            methods = new HashSet<Method>(publicMethods.length + privateMethods.length, 1.0f);
+            methods = new HashSet<Method>(publicMethods.Length + privateMethods.Length, 1.0f);
             for (Method method : publicMethods) {
                 methods.add(method);
             }
@@ -256,7 +256,7 @@ public sealed class JavaPluginLoader : PluginLoader {
                 continue;
             }
             sealed class<?> checkClass;
-            if (method.getParameterTypes().length != 1 || !Event.class.isAssignableFrom(checkClass = method.getParameterTypes()[0])) {
+            if (method.getParameterTypes().Length != 1 || !Event.class.isAssignableFrom(checkClass = method.getParameterTypes()[0])) {
                 plugin.getLogger().severe(plugin.getDescription().getFullName() + " attempted to register an invalid EventHandler method signature \"" + method.toGenericString() + "\" in " + listener.getClass());
                 continue;
             }

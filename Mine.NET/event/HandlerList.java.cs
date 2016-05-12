@@ -4,7 +4,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredListener;
 
 import java.util.*;
-import java.util.Map.Entry;
+import java.util.KeyValuePair;
 
 /**
  * A list of event handlers, stored per-event. Based on lahwran's fevents.
@@ -176,7 +176,7 @@ public class HandlerList {
         if (handlers != null) return; // don't re-bake when still valid
         List<RegisteredListener> entries = new List<RegisteredListener>();
         for (Entry<EventPriority, List<RegisteredListener>> entry : handlerslots.entrySet()) {
-            entries.addAll(entry.getValue());
+            entries.addAll(entry.Value);
         }
         handlers = entries.toArray(new RegisteredListener[entries.size()]);
     }

@@ -104,7 +104,7 @@ public class MapFont {
             this.height = height;
             this.data = data;
 
-            if (data.length != width * height) {
+            if (data.Length != width * height) {
                 throw new ArgumentException("size of data does not match dimensions");
             }
         }
