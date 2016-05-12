@@ -7,7 +7,7 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.configuration.InvalidConfigurationException;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileInfo;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,7 +23,7 @@ import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.MemoryConfiguration;
 
 /**
- * This is a base class for all File based implementations of {@link
+ * This is a base class for all FileInfo based implementations of {@link
  * Configuration}
  */
 public abstract class FileConfiguration : MemoryConfiguration {
@@ -55,13 +55,13 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * This method will save using the system default encoding, or possibly
      * using UTF8.
      *
-     * @param file File to save to.
+     * @param file FileInfo to save to.
      * @throws IOException Thrown when the given file cannot be written to for
      *     any reason.
      * @throws ArgumentException Thrown when file is null.
      */
-    public void save(File file) throws IOException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public void save(FileInfo file) throws IOException {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         Files.createParentDirs(file);
 
@@ -86,15 +86,15 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * This method will save using the system default encoding, or possibly
      * using UTF8.
      *
-     * @param file File to save to.
+     * @param file FileInfo to save to.
      * @throws IOException Thrown when the given file cannot be written to for
      *     any reason.
      * @throws ArgumentException Thrown when file is null.
      */
     public void save(String file) throws IOException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
-        save(new File(file));
+        save(new FileInfo(file));
     }
 
     /**
@@ -114,7 +114,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * If the file cannot be loaded for any reason, an exception will be
      * thrown.
      *
-     * @param file File to load from.
+     * @param file FileInfo to load from.
      * @throws FileNotFoundException Thrown when the given file cannot be
      *     opened.
      * @throws IOException Thrown when the given file cannot be read.
@@ -122,8 +122,8 @@ public abstract class FileConfiguration : MemoryConfiguration {
      *     a valid Configuration.
      * @throws ArgumentException Thrown when file is null.
      */
-    public void load(File file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public void load(FileInfo file) throws FileNotFoundException, IOException, InvalidConfigurationException {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         readonly FileInputStream stream = new FileInputStream(file);
 
@@ -194,7 +194,7 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * If the file cannot be loaded for any reason, an exception will be
      * thrown.
      *
-     * @param file File to load from.
+     * @param file FileInfo to load from.
      * @throws FileNotFoundException Thrown when the given file cannot be
      *     opened.
      * @throws IOException Thrown when the given file cannot be read.
@@ -203,9 +203,9 @@ public abstract class FileConfiguration : MemoryConfiguration {
      * @throws ArgumentException Thrown when file is null.
      */
     public void load(String file) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
-        load(new File(file));
+        load(new FileInfo(file));
     }
 
     /**

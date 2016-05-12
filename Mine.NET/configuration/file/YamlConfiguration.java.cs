@@ -1,6 +1,6 @@
 package org.bukkit.configuration.file;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -170,8 +170,8 @@ public class YamlConfiguration : FileConfiguration {
      * @return Resulting configuration
      * @throws ArgumentException Thrown if file is null
      */
-    public static YamlConfiguration loadConfiguration(File file) {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public static YamlConfiguration loadConfiguration(FileInfo file) {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         YamlConfiguration config = new YamlConfiguration();
 

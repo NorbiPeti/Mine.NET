@@ -1,6 +1,6 @@
 package org.bukkit.plugin;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -42,7 +42,7 @@ public sealed class SimplePluginManager : PluginManager {
     private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new Dictionary<Pattern, PluginLoader>();
     private readonly List<Plugin> plugins = new List<Plugin>();
     private readonly Dictionary<String, Plugin> lookupNames = new Dictionary<String, Plugin>();
-    private static File updateDirectory = null;
+    private static FileInfo updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
     private readonly Dictionary<String, Permission> permissions = new Dictionary<String, Permission>();
     private readonly Dictionary<bool, HashSet<Permission>> defaultPerms = new LinkedHashMap<bool, HashSet<Permission>>();
@@ -100,7 +100,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    public Plugin[] loadPlugins(File directory) {
+    public Plugin[] loadPlugins(FileInfo directory) {
         if(directory==null) throw new ArgumentNullException("Directory cannot be null");
         if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
 
@@ -108,16 +108,16 @@ public sealed class SimplePluginManager : PluginManager {
         HashSet<Pattern> filters = fileAssociations.keySet();
 
         if (!(server.getUpdateFolder().equals(""))) {
-            updateDirectory = new File(directory, server.getUpdateFolder());
+            updateDirectory = new FileInfo(directory, server.getUpdateFolder());
         }
 
-        Dictionary<String, File> plugins = new Dictionary<String, File>();
+        Dictionary<String, FileInfo> plugins = new Dictionary<String, FileInfo>();
         HashSet<String> loadedPlugins = new HashSet<String>();
         Dictionary<String, Collection<String>> dependencies = new Dictionary<String, Collection<String>>();
         Dictionary<String, Collection<String>> softDependencies = new Dictionary<String, Collection<String>>();
 
         // This is where it figures out all possible plugins
-        for (File file : directory.listFiles()) {
+        for (FileInfo file : directory.listFiles()) {
             PluginLoader loader = null;
             for (Pattern filter : filters) {
                 Matcher match = filter.matcher(file.getName());
@@ -147,7 +147,7 @@ public sealed class SimplePluginManager : PluginManager {
                 continue;
             }
 
-            File replacedFile = plugins.Add(description.getName(), file);
+            FileInfo replacedFile = plugins.Add(description.getName(), file);
             if (replacedFile != null) {
                 server.getLogger().severe(String.format(
                     "Ambiguous plugin name `%s' for files `%s' and `%s' in `%s'",
@@ -208,7 +208,7 @@ public sealed class SimplePluginManager : PluginManager {
                         // We have a dependency not found
                         } else if (!plugins.containsKey(dependency)) {
                             missingDependency = false;
-                            File file = plugins[plugin];
+                            FileInfo file = plugins[plugin];
                             pluginIterator.remove();
                             softDependencies.remove(plugin);
                             dependencies.remove(plugin);
@@ -243,7 +243,7 @@ public sealed class SimplePluginManager : PluginManager {
                 }
                 if (!(dependencies.containsKey(plugin) || softDependencies.containsKey(plugin)) && plugins.containsKey(plugin)) {
                     // We're clear to load, no more soft or hard dependencies left
-                    File file = plugins[plugin];
+                    FileInfo file = plugins[plugin];
                     pluginIterator.remove();
                     missingDependency = false;
 
@@ -268,7 +268,7 @@ public sealed class SimplePluginManager : PluginManager {
                     if (!dependencies.containsKey(plugin)) {
                         softDependencies.remove(plugin);
                         missingDependency = false;
-                        File file = plugins[plugin];
+                        FileInfo file = plugins[plugin];
                         pluginIterator.remove();
 
                         try {
@@ -284,10 +284,10 @@ public sealed class SimplePluginManager : PluginManager {
                 if (missingDependency) {
                     softDependencies.clear();
                     dependencies.clear();
-                    IEnumerator<File> failedPluginIterator = plugins.values().iterator();
+                    IEnumerator<FileInfo> failedPluginIterator = plugins.values().iterator();
 
                     while (failedPluginIterator.hasNext()) {
-                        File file = failedPluginIterator.next();
+                        FileInfo file = failedPluginIterator.next();
                         failedPluginIterator.remove();
                         server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': circular dependency detected");
                     }
@@ -301,17 +301,17 @@ public sealed class SimplePluginManager : PluginManager {
     /**
      * Loads the plugin in the specified file
      * <p>
-     * File must be valid according to the current enabled Plugin interfaces
+     * FileInfo must be valid according to the current enabled Plugin interfaces
      *
-     * @param file File containing the plugin to load
+     * @param file FileInfo containing the plugin to load
      * @return The Plugin loaded, or null if it was invalid
      * @throws InvalidPluginException Thrown when the specified file is not a
      *     valid plugin
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public synchronized Plugin loadPlugin(File file) throws InvalidPluginException, UnknownDependencyException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public synchronized Plugin loadPlugin(FileInfo file) throws InvalidPluginException, UnknownDependencyException {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         checkUpdate(file);
 
@@ -337,12 +337,12 @@ public sealed class SimplePluginManager : PluginManager {
         return result;
     }
 
-    private void checkUpdate(File file) {
+    private void checkUpdate(FileInfo file) {
         if (updateDirectory == null || !updateDirectory.isDirectory()) {
             return;
         }
 
-        File updateFile = new File(updateDirectory, file.getName());
+        FileInfo updateFile = new FileInfo(updateDirectory, file.getName());
         if (updateFile.isFile() && FileUtil.copy(updateFile, file)) {
             updateFile.delete();
         }

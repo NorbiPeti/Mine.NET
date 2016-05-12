@@ -1,6 +1,6 @@
 package org.bukkit.plugin;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -17,7 +17,7 @@ public interface PluginLoader {
     /**
      * Loads the plugin contained in the specified file
      *
-     * @param file File to attempt to load
+     * @param file FileInfo to attempt to load
      * @return Plugin that was contained in the specified file, or null if
      *     unsuccessful
      * @throws InvalidPluginException Thrown when the specified file is not a
@@ -25,18 +25,18 @@ public interface PluginLoader {
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public Plugin loadPlugin(File file) throws InvalidPluginException, UnknownDependencyException;
+    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException, UnknownDependencyException;
 
     /**
      * Loads a PluginDescriptionFile from the specified file
      *
-     * @param file File to attempt to load from
+     * @param file FileInfo to attempt to load from
      * @return A new PluginDescriptionFile loaded from the plugin.yml in the
      *     specified file
      * @throws InvalidDescriptionException If the plugin description file
      *     could not be created
      */
-    public PluginDescriptionFile getPluginDescription(File file) throws InvalidDescriptionException;
+    public PluginDescriptionFile getPluginDescription(FileInfo file) throws InvalidDescriptionException;
 
     /**
      * Returns a list of all filename filters expected by this PluginLoader

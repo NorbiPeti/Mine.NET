@@ -1,6 +1,6 @@
 package org.bukkit.plugin;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
@@ -23,7 +23,7 @@ public interface Plugin : TabExecutor {
      *
      * @return The folder
      */
-    public File getDataFolder();
+    public FileInfo getDataFolder();
 
     /**
      * Returns the plugin.yaml file containing the details for this plugin
@@ -47,7 +47,7 @@ public interface Plugin : TabExecutor {
      * Gets an embedded resource in this plugin
      *
      * @param filename Filename of the resource
-     * @return File if found, otherwise null
+     * @return FileInfo if found, otherwise null
      */
     public InputStream getResource(String filename);
 

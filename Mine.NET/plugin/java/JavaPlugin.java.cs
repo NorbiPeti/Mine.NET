@@ -1,6 +1,6 @@
 package org.bukkit.plugin.java;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,14 +49,14 @@ public abstract class JavaPlugin : PluginBase {
     private bool isEnabled = false;
     private PluginLoader loader = null;
     private Server server = null;
-    private File file = null;
+    private FileInfo file = null;
     private PluginDescriptionFile description = null;
-    private File dataFolder = null;
+    private FileInfo dataFolder = null;
     private ClassLoader classLoader = null;
     private bool naggable = true;
     private EbeanServer ebean = null;
     private FileConfiguration newConfig = null;
-    private File configFile = null;
+    private FileInfo configFile = null;
     private PluginLogger logger = null;
 
     public JavaPlugin() {
@@ -70,7 +70,7 @@ public abstract class JavaPlugin : PluginBase {
     /**
      * [Obsolete] This method is intended for unit testing purposes when the
      *     other {@linkplain #JavaPlugin(JavaPluginLoader,
-     *     PluginDescriptionFile, File, File) constructor} cannot be used.
+     *     PluginDescriptionFile, FileInfo, FileInfo) constructor} cannot be used.
      *     <p>
      *     Its existence may be temporary.
      * @param loader the plugin loader
@@ -80,7 +80,7 @@ public abstract class JavaPlugin : PluginBase {
      * @param file the location of the plugin
      */
     [Obsolete]
-    protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
+    protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader is PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
@@ -88,7 +88,7 @@ public abstract class JavaPlugin : PluginBase {
         init(loader, server, description, dataFolder, file, classLoader);
     }
 
-    protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) {
+    protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader is PluginClassLoader) {
             throw new IllegalStateException("Cannot use initialization constructor at runtime");
@@ -103,7 +103,7 @@ public abstract class JavaPlugin : PluginBase {
      * @return The folder.
      */
     @Override
-    public readonly File getDataFolder() {
+    public readonly FileInfo getDataFolder() {
         return dataFolder;
     }
 
@@ -141,9 +141,9 @@ public abstract class JavaPlugin : PluginBase {
     /**
      * Returns the file which contains this plugin
      *
-     * @return File containing this plugin
+     * @return FileInfo containing this plugin
      */
-    protected File getFile() {
+    protected FileInfo getFile() {
         return file;
     }
 
@@ -223,9 +223,9 @@ public abstract class JavaPlugin : PluginBase {
             throw new ArgumentException("The embedded resource '" + resourcePath + "' cannot be found in " + file);
         }
 
-        File outFile = new File(dataFolder, resourcePath);
+        FileInfo outFile = new FileInfo(dataFolder, resourcePath);
         int lastIndex = resourcePath.lastIndexOf('/');
-        File outDir = new File(dataFolder, resourcePath.substring(0, lastIndex >= 0 ? lastIndex : 0));
+        FileInfo outDir = new FileInfo(dataFolder, resourcePath.substring(0, lastIndex >= 0 ? lastIndex : 0));
 
         if (!outDir.exists()) {
             outDir.mkdirs();
@@ -307,21 +307,21 @@ public abstract class JavaPlugin : PluginBase {
      *     replaced by the specially provided constructor(s).
      */
     [Obsolete]
-    protected readonly void initialize(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
+    protected readonly void initialize(PluginLoader loader, Server server, PluginDescriptionFile description, FileInfo dataFolder, FileInfo file, ClassLoader classLoader) {
         if (server.getWarningState() == WarningState.OFF) {
             return;
         }
         getLogger().log(Level.WARNING, getClass().getName() + " is already initialized", server.getWarningState() == WarningState.DEFAULT ? null : new AuthorNagException("Explicit initialization"));
     }
 
-    readonly void init(PluginLoader loader, Server server, PluginDescriptionFile description, File dataFolder, File file, ClassLoader classLoader) {
+    readonly void init(PluginLoader loader, Server server, PluginDescriptionFile description, FileInfo dataFolder, FileInfo file, ClassLoader classLoader) {
         this.loader = loader;
         this.server = server;
         this.file = file;
         this.description = description;
         this.dataFolder = dataFolder;
         this.classLoader = classLoader;
-        this.configFile = new File(dataFolder, "config.yml");
+        this.configFile = new FileInfo(dataFolder, "config.yml");
         this.logger = new PluginLogger(this);
 
         if (description.isDatabaseEnabled()) {

@@ -1,6 +1,6 @@
 package org.bukkit.plugin.java;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -19,13 +19,13 @@ sealed class PluginClassLoader : URLClassLoader {
     private readonly JavaPluginLoader loader;
     private readonly Dictionary<String, Class<?>> classes = new Dictionary<String, Class<?>>();
     private readonly PluginDescriptionFile description;
-    private readonly File dataFolder;
-    private readonly File file;
+    private readonly FileInfo dataFolder;
+    private readonly FileInfo file;
     readonly JavaPlugin plugin;
     private JavaPlugin pluginInit;
     private IllegalStateException pluginState;
 
-    PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly File dataFolder, readonly File file) throws InvalidPluginException, MalformedURLException {
+    PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) throws InvalidPluginException, MalformedURLException {
         base(new URL[] {file.toURI().toURL()}, parent);
         if(loader==null) throw new ArgumentNullException("Loader cannot be null");
 

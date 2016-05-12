@@ -1,6 +1,6 @@
 package org.bukkit.plugin;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.util.Set;
 
 import org.bukkit.event.Event;
@@ -61,9 +61,9 @@ public interface PluginManager {
     /**
      * Loads the plugin in the specified file
      * <p>
-     * File must be valid according to the current enabled Plugin interfaces
+     * FileInfo must be valid according to the current enabled Plugin interfaces
      *
-     * @param file File containing the plugin to load
+     * @param file FileInfo containing the plugin to load
      * @return The Plugin loaded, or null if it was invalid
      * @throws InvalidPluginException Thrown when the specified file is not a
      *     valid plugin
@@ -72,7 +72,7 @@ public interface PluginManager {
      * @throws UnknownDependencyException If a required dependency could not
      *     be resolved
      */
-    public Plugin loadPlugin(File file) throws InvalidPluginException, InvalidDescriptionException, UnknownDependencyException;
+    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException, InvalidDescriptionException, UnknownDependencyException;
 
     /**
      * Loads the plugins contained within the specified directory
@@ -80,7 +80,7 @@ public interface PluginManager {
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    public Plugin[] loadPlugins(File directory);
+    public Plugin[] loadPlugins(FileInfo directory);
 
     /**
      * Disables all the loaded plugins

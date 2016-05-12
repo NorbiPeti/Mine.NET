@@ -297,7 +297,7 @@ namespace Mine.NET
          *
          * @return the update folder
          */
-        public static File getUpdateFolderFile()
+        public static FileInfo getUpdateFolderFile()
         {
             return server.getUpdateFolderFile();
         }
@@ -896,7 +896,7 @@ namespace Mine.NET
          *
          * @return folder that contains all worlds
          */
-        public static File getWorldContainer()
+        public static FileInfo getWorldContainer()
         {
             return server.getWorldContainer();
         }
@@ -1132,7 +1132,7 @@ namespace Mine.NET
          * @return a cached server-icon that can be used for a {@link
          *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
          */
-        public static CachedServerIcon loadServerIcon(File file)
+        public static CachedServerIcon loadServerIcon(FileInfo file)
         {
             return server.loadServerIcon(file);
         }

@@ -9,7 +9,7 @@ import org.bukkit.event.server.ServerListPingEvent;
  *
  * @see Server#getServerIcon()
  * @see Server#loadServerIcon(java.awt.image.BufferedImage)
- * @see Server#loadServerIcon(java.io.File)
+ * @see Server#loadServerIcon(java.io.FileInfo)
  * @see ServerListPingEvent#setServerIcon(CachedServerIcon)
  */
 public interface CachedServerIcon {}

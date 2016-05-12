@@ -1,6 +1,6 @@
 package org.bukkit.plugin.java;
 
-import java.io.File;
+import java.io.FileInfo;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,8 +61,8 @@ public sealed class JavaPluginLoader : PluginLoader {
         server = instance;
     }
 
-    public Plugin loadPlugin(File file) throws InvalidPluginException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         if (!file.exists()) {
             throw new InvalidPluginException(new FileNotFoundException(file.getPath() + " does not exist"));
@@ -75,10 +75,10 @@ public sealed class JavaPluginLoader : PluginLoader {
             throw new InvalidPluginException(ex);
         }
 
-        readonly File parentFile = file.getParentFile();
-        readonly File dataFolder = new File(parentFile, description.getName());
+        readonly FileInfo parentFile = file.getParentFile();
+        readonly FileInfo dataFolder = new FileInfo(parentFile, description.getName());
         @SuppressWarnings("deprecation")
-        readonly File oldDataFolder = new File(parentFile, description.getRawName());
+        readonly FileInfo oldDataFolder = new FileInfo(parentFile, description.getRawName());
 
         // Found old data folder
         if (dataFolder.equals(oldDataFolder)) {
@@ -138,8 +138,8 @@ public sealed class JavaPluginLoader : PluginLoader {
         return loader.plugin;
     }
 
-    public PluginDescriptionFile getPluginDescription(File file) throws InvalidDescriptionException {
-        if(file==null) throw new ArgumentNullException("File cannot be null");
+    public PluginDescriptionFile getPluginDescription(FileInfo file) throws InvalidDescriptionException {
+        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         JarFile jar = null;
         InputStream stream = null;
