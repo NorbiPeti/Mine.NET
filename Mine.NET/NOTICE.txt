@@ -1,0 +1,1 @@
+﻿This program is derived from Spigot See: https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse for Spgiot source.
