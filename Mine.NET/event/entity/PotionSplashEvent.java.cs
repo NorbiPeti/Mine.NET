@@ -56,7 +56,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
      *     fully hit by potion effects
      */
     public double getIntensity(LivingEntity entity) {
-        Double intensity = affectedEntities.get(entity);
+        Double intensity = affectedEntities[entity];
         return intensity != null ? intensity : 0.0;
     }
 
@@ -71,7 +71,7 @@ public class PotionSplashEvent : ProjectileHitEvent : Cancellable {
         if (intensity <= 0.0) {
             affectedEntities.remove(entity);
         } else {
-            affectedEntities.put(entity, Math.min(intensity, 1.0));
+            affectedEntities.Add(entity, Math.min(intensity, 1.0));
         }
     }
 

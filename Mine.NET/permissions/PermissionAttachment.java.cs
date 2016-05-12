@@ -83,7 +83,7 @@ public class PermissionAttachment {
      * @param value New value of the permission
      */
     public void setPermission(String name, bool value) {
-        permissions.put(name.toLowerCase(), value);
+        permissions.Add(name.toLowerCase(), value);
         permissible.recalculatePermissions();
     }
 

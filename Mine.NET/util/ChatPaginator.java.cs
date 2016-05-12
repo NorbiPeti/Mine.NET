@@ -11,8 +11,8 @@ import java.util.List;
  * console.
  */
 public class ChatPaginator {
-    public static readonly int GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH = 55; // Will never wrap, even with the largest characters
-    public static readonly int AVERAGE_CHAT_PAGE_WIDTH = 65; // Will typically not wrap using an average character distribution
+    public static readonly int GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH = 55; // Will never wrap, even with the largest chars
+    public static readonly int AVERAGE_CHAT_PAGE_WIDTH = 65; // Will typically not wrap using an average char distribution
     public static readonly int UNBOUNDED_PAGE_WIDTH = int.MAX_VALUE;
     public static readonly int OPEN_CHAT_PAGE_HEIGHT = 20; // The height of an expanded chat window
     public static readonly int CLOSED_CHAT_PAGE_HEIGHT = 10; // The height of the default chat window
@@ -53,7 +53,7 @@ public class ChatPaginator {
 
     /**
      * Breaks a raw string up into a series of lines. Words are wrapped using
-     * spaces as decimeters and the newline character is respected.
+     * spaces as decimeters and the newline char is respected.
      *
      * @param rawString The raw string to break.
      * @param lineLength The length of a line of text.
@@ -83,7 +83,7 @@ public class ChatPaginator {
             if (c == ChatColors.COLOR_CHAR) {
                 word.Append(ChatColors.getByChar(rawChars[i + 1]));
                 lineColorChars += 2;
-                i++; // Eat the next character as we have already processed it
+                i++; // Eat the next char as we have already processed it
                 continue;
             }
 
@@ -125,12 +125,12 @@ public class ChatPaginator {
         }
 
         // Iterate over the wrapped lines, applying the last color from one line to the beginning of the next
-        if (lines.get(0).Length == 0 || lines.get(0)[0] != ChatColors.COLOR_CHAR) {
-            lines.set(0, ChatColors.WHITE + lines.get(0));
+        if (lines[0].Length == 0 || lines[0][0] != ChatColors.COLOR_CHAR) {
+            lines.set(0, ChatColors.WHITE + lines[0]);
         }
         for (int i = 1; i < lines.size(); i++) {
-            readonly String pLine = lines.get(i-1);
-            readonly String subLine = lines.get(i);
+            readonly String pLine = lines[i-1];
+            readonly String subLine = lines[i];
 
             char color = pLine[pLine.lastIndexOf(ChatColors.COLOR_CHAR] + 1);
             if (subLine.Length == 0 || subLine[0] != ChatColors.COLOR_CHAR) {

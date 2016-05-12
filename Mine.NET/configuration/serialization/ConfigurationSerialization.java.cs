@@ -26,7 +26,7 @@ import org.bukkit.util.Vector;
 public class ConfigurationSerialization {
     public static readonly String SERIALIZED_TYPE_KEY = "==";
     private sealed class<? : ConfigurationSerializable> clazz;
-    private static Dictionary<String, Class<? : ConfigurationSerializable>> aliases = new HashMap<String, Class<? : ConfigurationSerializable>>();
+    private static Dictionary<String, Class<? : ConfigurationSerializable>> aliases = new Dictionary<String, Class<? : ConfigurationSerializable>>();
 
     static {
         registerClass(Vector.class);
@@ -175,7 +175,7 @@ public class ConfigurationSerialization {
 
         if (args.containsKey(SERIALIZED_TYPE_KEY)) {
             try {
-                String alias = (String) args.get(SERIALIZED_TYPE_KEY);
+                String alias = (String) args[SERIALIZED_TYPE_KEY];
 
                 if (alias == null) {
                     throw new ArgumentException("Cannot have null alias");
@@ -219,7 +219,7 @@ public class ConfigurationSerialization {
      * @see SerializableAs
      */
     public static void registerClass(Class<? : ConfigurationSerializable> clazz, String alias) {
-        aliases.put(alias, clazz);
+        aliases.Add(alias, clazz);
     }
 
     /**
@@ -251,7 +251,7 @@ public class ConfigurationSerialization {
      * @return Registered class, or null if not found
      */
     public static Class<? : ConfigurationSerializable> getClassByAlias(String alias) {
-        return aliases.get(alias);
+        return aliases[alias];
     }
 
     /**

@@ -7,37 +7,37 @@ import java.util.HashMap;
  */
 public class MapFont {
 
-    private readonly HashMap<Character, CharacterSprite> chars = new HashMap<Character, CharacterSprite>();
+    private readonly HashMap<char, charSprite> chars = new Dictionary<char, charSprite>();
     private int height = 0;
     protected bool malleable = true;
 
     /**
-     * Set the sprite for a given character.
+     * Set the sprite for a given char.
      *
-     * @param ch The character to set the sprite for.
-     * @param sprite The CharacterSprite to set.
+     * @param ch The char to set the sprite for.
+     * @param sprite The charSprite to set.
      * @throws IllegalStateException if this font is static.
      */
-    public void setChar(char ch, CharacterSprite sprite) {
+    public void setChar(char ch, charSprite sprite) {
         if (!malleable) {
             throw new IllegalStateException("this font is not malleable");
         }
 
-        chars.put(ch, sprite);
+        chars.Add(ch, sprite);
         if (sprite.getHeight() > height) {
             height = sprite.getHeight();
         }
     }
 
     /**
-     * Get the sprite for a given character.
+     * Get the sprite for a given char.
      *
-     * @param ch The character to get the sprite for.
-     * @return The CharacterSprite associated with the character, or null if
+     * @param ch The char to get the sprite for.
+     * @return The charSprite associated with the char, or null if
      *     there is none.
      */
-    public CharacterSprite getChar(char ch) {
-        return chars.get(ch);
+    public charSprite getChar(char ch) {
+        return chars[ch];
     }
 
     /**
@@ -49,7 +49,7 @@ public class MapFont {
      */
     public int getWidth(String text) {
         if (!isValid(text)) {
-            throw new ArgumentException("text contains invalid characters");
+            throw new ArgumentException("text contains invalid chars");
         }
 
         if (text.Length == 0){
@@ -58,9 +58,9 @@ public class MapFont {
 
         int result = 0;
         for (int i = 0; i < text.Length; ++i) {
-            result += chars.get(text[i]).getWidth();
+            result += chars[text[i]].getWidth();
         }
-        result += text.Length - 1; // Account for 1px spacing between characters
+        result += text.Length - 1; // Account for 1px spacing between chars
 
         return result;
     }
@@ -78,28 +78,28 @@ public class MapFont {
      * Check whether the given text is valid.
      *
      * @param text The text.
-     * @return True if the string contains only defined characters, false
+     * @return True if the string contains only defined chars, false
      *     otherwise.
      */
     public bool isValid(String text) {
         for (int i = 0; i < text.Length; ++i) {
             char ch = text[i];
             if (ch == '\u00A7' || ch == '\n') continue;
-            if (chars.get(ch) == null) return false;
+            if (chars[ch] == null) return false;
         }
         return true;
     }
 
     /**
-     * Represents the graphics for a single character in a MapFont.
+     * Represents the graphics for a single char in a MapFont.
      */
-    public static class CharacterSprite {
+    public static class charSprite {
 
         private readonly int width;
         private readonly int height;
         private readonly bool[] data;
 
-        public CharacterSprite(int width, int height, bool[] data) {
+        public charSprite(int width, int height, bool[] data) {
             this.width = width;
             this.height = height;
             this.data = data;
@@ -110,7 +110,7 @@ public class MapFont {
         }
 
         /**
-         * Get the value of a pixel of the character.
+         * Get the value of a pixel of the char.
          *
          * @param row The row, in the range [0,8).
          * @param col The column, in the range [0,8).
@@ -122,18 +122,18 @@ public class MapFont {
         }
 
         /**
-         * Get the width of the character sprite.
+         * Get the width of the char sprite.
          *
-         * @return The width of the character.
+         * @return The width of the char.
          */
         public int getWidth() {
             return width;
         }
 
         /**
-         * Get the height of the character sprite.
+         * Get the height of the char sprite.
          *
-         * @return The height of the character.
+         * @return The height of the char.
          */
         public int getHeight() {
             return height;

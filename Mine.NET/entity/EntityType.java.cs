@@ -208,16 +208,16 @@ public enum EntityType {
     private short typeId;
     private bool independent, living;
 
-    private static readonly Dictionary<String, EntityType> NAME_MAP = new HashMap<String, EntityType>();
-    private static readonly Dictionary<Short, EntityType> ID_MAP = new HashMap<Short, EntityType>();
+    private static readonly Dictionary<String, EntityType> NAME_MAP = new Dictionary<String, EntityType>();
+    private static readonly Dictionary<Short, EntityType> ID_MAP = new Dictionary<Short, EntityType>();
 
     static {
         for (EntityType type : values()) {
             if (type.name != null) {
-                NAME_MAP.put(type.name.toLowerCase(), type);
+                NAME_MAP.Add(type.name.toLowerCase(), type);
             }
             if (type.typeId > 0) {
-                ID_MAP.put(type.typeId, type);
+                ID_MAP.Add(type.typeId, type);
             }
         }
     }
@@ -271,7 +271,7 @@ public enum EntityType {
         if (name == null) {
             return null;
         }
-        return NAME_MAP.get(name.toLowerCase());
+        return NAME_MAP[name.toLowerCase(]);
     }
 
     /**
@@ -285,7 +285,7 @@ public enum EntityType {
         if (id > Short.MAX_VALUE) {
             return null;
         }
-        return ID_MAP.get((short) id);
+        return ID_MAP[(short] id);
     }
 
     /**

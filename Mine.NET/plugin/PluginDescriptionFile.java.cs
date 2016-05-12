@@ -180,7 +180,7 @@ public sealed class PluginDescriptionFile {
         protected Yaml initialValue() {
             return new Yaml(new SafeConstructor() {
                 {
-                    yamlConstructors.put(null, new AbstractConstruct() {
+                    yamlConstructors.Add(null, new AbstractConstruct() {
                         @Override
                         public Object construct(Node node) {
                             if (!node.getTag().startsWith("!@")) {
@@ -196,7 +196,7 @@ public sealed class PluginDescriptionFile {
                         }
                     });
                     for (PluginAwareness.Flags flag : PluginAwareness.Flags.values()) {
-                        yamlConstructors.put(new Tag("!@" + flag.name()), new AbstractConstruct() {
+                        yamlConstructors.Add(new Tag("!@" + flag.name()), new AbstractConstruct() {
                             @Override
                             public PluginAwareness.Flags construct(Node node) {
                                 return flag;
@@ -259,8 +259,8 @@ public sealed class PluginDescriptionFile {
      * Gives the name of the plugin. This name is a unique identifier for
      * plugins.
      * <ul>
-     * <li>Must consist of all alphanumeric characters, underscores, hyphon,
-     *     and period (a-z,A-Z,0-9, _.-). Any other character will cause the
+     * <li>Must consist of all alphanumeric chars, underscores, hyphon,
+     *     and period (a-z,A-Z,0-9, _.-). Any other char will cause the
      *     plugin.yml to fail loading.
      * <li>Used to determine the name of the plugin's data folder. Data
      *     folders are placed in the ./plugins/ directory by default, but this
@@ -887,10 +887,10 @@ public sealed class PluginDescriptionFile {
 
     private void loadMap(Dictionary<?, ?> map) throws InvalidDescriptionException {
         try {
-            name = rawName = map.get("name").toString();
+            name = rawName = map["name"].toString();
 
             if (!name.matches("^[A-Za-z0-9 _.-]+$")) {
-                throw new InvalidDescriptionException("name '" + name + "' contains invalid characters.");
+                throw new InvalidDescriptionException("name '" + name + "' contains invalid chars.");
             }
             name = name.replace(' ', '_');
         } catch (NullPointerException ex) {
@@ -900,7 +900,7 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            version = map.get("version").toString();
+            version = map["version"].toString();
         } catch (NullPointerException ex) {
             throw new InvalidDescriptionException(ex, "version is not defined");
         } catch (ClassCastException ex) {
@@ -908,7 +908,7 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            main = map.get("main").toString();
+            main = map["main"].toString();
             if (main.startsWith("org.bukkit.")) {
                 throw new InvalidDescriptionException("main may not be within the org.bukkit namespace");
             }
@@ -918,10 +918,10 @@ public sealed class PluginDescriptionFile {
             throw new InvalidDescriptionException(ex, "main is of wrong type");
         }
 
-        if (map.get("commands") != null) {
+        if (map["commands"] != null) {
             ImmutableMap.Builder<String, Dictionary<String, Object>> commandsBuilder = ImmutableMap.<String, Dictionary<String, Object>>builder();
             try {
-                for (Map.Entry<?, ?> command : ((Dictionary<?, ?>) map.get("commands")).entrySet()) {
+                for (Map.Entry<?, ?> command : ((Dictionary<?, ?>) map["commands"]).entrySet()) {
                     ImmutableMap.Builder<String, Object> commandBuilder = ImmutableMap.<String, Object>builder();
                     if (command.getValue() != null) {
                         for (Map.Entry<?, ?> commandEntry : ((Dictionary<?, ?>) command.getValue()).entrySet()) {
@@ -933,13 +933,13 @@ public sealed class PluginDescriptionFile {
                                         commandSubList.add(commandSubListItem);
                                     }
                                 }
-                                commandBuilder.put(commandEntry.getKey().toString(), commandSubList.build());
+                                commandBuilder.Add(commandEntry.getKey().toString(), commandSubList.build());
                             } else if (commandEntry.getValue() != null) {
-                                commandBuilder.put(commandEntry.getKey().toString(), commandEntry.getValue());
+                                commandBuilder.Add(commandEntry.getKey().toString(), commandEntry.getValue());
                             }
                         }
                     }
-                    commandsBuilder.put(command.getKey().toString(), commandBuilder.build());
+                    commandsBuilder.Add(command.getKey().toString(), commandBuilder.build());
                 }
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "commands are of wrong type");
@@ -947,33 +947,33 @@ public sealed class PluginDescriptionFile {
             commands = commandsBuilder.build();
         }
 
-        if (map.get("class-loader-of") != null) {
-            classLoaderOf = map.get("class-loader-of").toString();
+        if (map["class-loader-of"] != null) {
+            classLoaderOf = map["class-loader-of"].toString();
         }
 
         depend = makePluginNameList(map, "depend");
         softDepend = makePluginNameList(map, "softdepend");
         loadBefore = makePluginNameList(map, "loadbefore");
 
-        if (map.get("database") != null) {
+        if (map["database"] != null) {
             try {
-                database = (bool) map.get("database");
+                database = (bool) map["database"];
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "database is of wrong type");
             }
         }
 
-        if (map.get("website") != null) {
-            website = map.get("website").toString();
+        if (map["website"] != null) {
+            website = map["website"].toString();
         }
 
-        if (map.get("description") != null) {
-            description = map.get("description").toString();
+        if (map["description"] != null) {
+            description = map["description"].toString();
         }
 
-        if (map.get("load") != null) {
+        if (map["load"] != null) {
             try {
-                order = PluginLoadOrder.valueOf(((String) map.get("load")).toUpperCase().replaceAll("\\W", ""));
+                order = PluginLoadOrder.valueOf(((String) map["load"]).toUpperCase().replaceAll("\\W", ""));
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "load is of wrong type");
             } catch (ArgumentException ex) {
@@ -981,13 +981,13 @@ public sealed class PluginDescriptionFile {
             }
         }
 
-        if (map.get("authors") != null) {
+        if (map["authors"] != null) {
             ImmutableList.Builder<String> authorsBuilder = ImmutableList.<String>builder();
-            if (map.get("author") != null) {
-                authorsBuilder.add(map.get("author").toString());
+            if (map["author"] != null) {
+                authorsBuilder.add(map["author"].toString());
             }
             try {
-                for (Object o : (Iterable<?>) map.get("authors")) {
+                for (Object o : (Iterable<?>) map["authors"]) {
                     authorsBuilder.add(o.toString());
                 }
             } catch (ClassCastException ex) {
@@ -996,15 +996,15 @@ public sealed class PluginDescriptionFile {
                 throw new InvalidDescriptionException(ex, "authors are improperly defined");
             }
             authors = authorsBuilder.build();
-        } else if (map.get("author") != null) {
-            authors = ImmutableList.of(map.get("author").toString());
+        } else if (map["author"] != null) {
+            authors = ImmutableList.of(map["author"].toString());
         } else {
             authors = ImmutableList.<String>of();
         }
 
-        if (map.get("default-permission") != null) {
+        if (map["default-permission"] != null) {
             try {
-                defaultPerm = PermissionDefault.getByName(map.get("default-permission").toString());
+                defaultPerm = PermissionDefault.getByName(map["default-permission"].toString());
             } catch (ClassCastException ex) {
                 throw new InvalidDescriptionException(ex, "default-permission is of wrong type");
             } catch (ArgumentException ex) {
@@ -1012,10 +1012,10 @@ public sealed class PluginDescriptionFile {
             }
         }
 
-        if (map.get("awareness") is Iterable) {
+        if (map["awareness"] is Iterable) {
             HashSet<PluginAwareness> awareness = new HashSet<PluginAwareness>();
             try {
-                for (Object o : (Iterable<?>) map.get("awareness")) {
+                for (Object o : (Iterable<?>) map["awareness"]) {
                     awareness.add((PluginAwareness) o);
                 }
             } catch (ClassCastException ex) {
@@ -1025,18 +1025,18 @@ public sealed class PluginDescriptionFile {
         }
 
         try {
-            lazyPermissions = (Dictionary<?, ?>) map.get("permissions");
+            lazyPermissions = (Dictionary<?, ?>) map["permissions"];
         } catch (ClassCastException ex) {
             throw new InvalidDescriptionException(ex, "permissions are of the wrong type");
         }
 
-        if (map.get("prefix") != null) {
-            prefix = map.get("prefix").toString();
+        if (map["prefix"] != null) {
+            prefix = map["prefix"].toString();
         }
     }
 
     private static List<String> makePluginNameList(Dictionary<?, ?> map, readonly String key) throws InvalidDescriptionException {
-        readonly Object value = map.get(key);
+        readonly Object value = map[key];
         if (value == null) {
             return ImmutableList.of();
         }
@@ -1055,43 +1055,43 @@ public sealed class PluginDescriptionFile {
     }
 
     private Dictionary<String, Object> saveMap() {
-        Dictionary<String, Object> map = new HashMap<String, Object>();
+        Dictionary<String, Object> map = new Dictionary<String, Object>();
 
-        map.put("name", name);
-        map.put("main", main);
-        map.put("version", version);
-        map.put("database", database);
-        map.put("order", order.toString());
-        map.put("default-permission", defaultPerm.toString());
+        map.Add("name", name);
+        map.Add("main", main);
+        map.Add("version", version);
+        map.Add("database", database);
+        map.Add("order", order.toString());
+        map.Add("default-permission", defaultPerm.toString());
 
         if (commands != null) {
-            map.put("command", commands);
+            map.Add("command", commands);
         }
         if (depend != null) {
-            map.put("depend", depend);
+            map.Add("depend", depend);
         }
         if (softDepend != null) {
-            map.put("softdepend", softDepend);
+            map.Add("softdepend", softDepend);
         }
         if (website != null) {
-            map.put("website", website);
+            map.Add("website", website);
         }
         if (description != null) {
-            map.put("description", description);
+            map.Add("description", description);
         }
 
         if (authors.size() == 1) {
-            map.put("author", authors.get(0));
+            map.Add("author", authors[0]);
         } else if (authors.size() > 1) {
-            map.put("authors", authors);
+            map.Add("authors", authors);
         }
 
         if (classLoaderOf != null) {
-            map.put("class-loader-of", classLoaderOf);
+            map.Add("class-loader-of", classLoaderOf);
         }
 
         if (prefix != null) {
-            map.put("prefix", prefix);
+            map.Add("prefix", prefix);
         }
 
         return map;

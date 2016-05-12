@@ -220,7 +220,7 @@ public abstract class PotionEffectType {
     }
 
     private static readonly PotionEffectType[] byId = new PotionEffectType[28];
-    private static readonly Dictionary<String, PotionEffectType> byName = new HashMap<String, PotionEffectType>();
+    private static readonly Dictionary<String, PotionEffectType> byName = new Dictionary<String, PotionEffectType>();
     // will break on updates.
     private static bool acceptingNew = true;
 
@@ -246,7 +246,7 @@ public abstract class PotionEffectType {
      */
     public static PotionEffectType getByName(String name) {
         if(name==null) throw new ArgumentNullException("name cannot be null");
-        return byName.get(name.toLowerCase());
+        return byName[name.toLowerCase(]);
     }
 
     /**
@@ -265,7 +265,7 @@ public abstract class PotionEffectType {
         }
 
         byId[type.id] = type;
-        byName.put(type.getName().toLowerCase(), type);
+        byName.Add(type.getName().toLowerCase(), type);
     }
 
     /**

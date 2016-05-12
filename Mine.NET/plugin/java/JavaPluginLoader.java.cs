@@ -47,7 +47,7 @@ import org.yaml.snakeyaml.error.YAMLException;
 public sealed class JavaPluginLoader : PluginLoader {
     readonly Server server;
     private readonly Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
-    private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly Dictionary<String, Class<?>> classes = new Dictionary<String, Class<?>>();
     private readonly Dictionary<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
 
     /**
@@ -117,7 +117,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             if (loaders == null) {
                 throw new UnknownDependencyException(pluginName);
             }
-            PluginClassLoader current = loaders.get(pluginName);
+            PluginClassLoader current = loaders[pluginName];
 
             if (current == null) {
                 throw new UnknownDependencyException(pluginName);
@@ -133,7 +133,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             throw new InvalidPluginException(ex);
         }
 
-        loaders.put(description.getName(), loader);
+        loaders.Add(description.getName(), loader);
 
         return loader.plugin;
     }
@@ -181,13 +181,13 @@ public sealed class JavaPluginLoader : PluginLoader {
     }
 
     Class<?> getClassByName(String name) {
-        Class<?> cachedClass = classes.get(name);
+        Class<?> cachedClass = classes[name];
 
         if (cachedClass != null) {
             return cachedClass;
         } else {
             for (String current : loaders.keySet()) {
-                PluginClassLoader loader = loaders.get(current);
+                PluginClassLoader loader = loaders[current];
 
                 try {
                     cachedClass = loader.findClass(name, false);
@@ -202,7 +202,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
     void setClass(String name, sealed class<?> clazz) {
         if (!classes.containsKey(name)) {
-            classes.put(name, clazz);
+            classes.Add(name, clazz);
 
             if (ConfigurationSerializable.class.isAssignableFrom(clazz)) {
                 Class<? : ConfigurationSerializable> serializable = clazz.asSubclass(ConfigurationSerializable.class);
@@ -230,7 +230,7 @@ public sealed class JavaPluginLoader : PluginLoader {
         if(listener==null) throw new ArgumentNullException("Listener can not be null");
 
         bool useTimings = server.getPluginManager().useTimings();
-        Dictionary<Class<? : Event>, HashSet<RegisteredListener>> ret = new HashMap<Class<? : Event>, HashSet<RegisteredListener>>();
+        Dictionary<Class<? : Event>, HashSet<RegisteredListener>> ret = new Dictionary<Class<? : Event>, HashSet<RegisteredListener>>();
         HashSet<Method> methods;
         try {
             Method[] publicMethods = listener.getClass().getMethods();
@@ -262,10 +262,10 @@ public sealed class JavaPluginLoader : PluginLoader {
             }
             sealed class<? : Event> eventClass = checkClass.asSubclass(Event.class);
             method.setAccessible(true);
-            HashSet<RegisteredListener> eventSet = ret.get(eventClass);
+            HashSet<RegisteredListener> eventSet = ret[eventClass];
             if (eventSet == null) {
                 eventSet = new HashSet<RegisteredListener>();
-                ret.put(eventClass, eventSet);
+                ret.Add(eventClass, eventSet);
             }
 
             for (Class<?> clazz = eventClass; Event.class.isAssignableFrom(clazz); clazz = clazz.getSuperclass()) {
@@ -325,7 +325,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             String pluginName = jPlugin.getDescription().getName();
 
             if (!loaders.containsKey(pluginName)) {
-                loaders.put(pluginName, (PluginClassLoader) jPlugin.getClassLoader());
+                loaders.Add(pluginName, (PluginClassLoader) jPlugin.getClassLoader());
             }
 
             try {

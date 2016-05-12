@@ -202,7 +202,7 @@ public class Permission {
      * @param value The value to set this permission to
      */
     public void addParent(Permission perm, bool value) {
-        perm.getChildren().put(getName(), value);
+        perm.getChildren().Add(getName(), value);
         perm.recalculatePermissibles();
     }
 
@@ -286,8 +286,8 @@ public class Permission {
         String desc = null;
         Dictionary<String, bool> children = null;
 
-        if (data.get("default") != null) {
-            PermissionDefault value = PermissionDefault.getByName(data.get("default").toString());
+        if (data["default"] != null) {
+            PermissionDefault value = PermissionDefault.getByName(data["default"].toString());
             if (value != null) {
                 def = value;
             } else {
@@ -295,13 +295,13 @@ public class Permission {
             }
         }
 
-        if (data.get("children") != null) {
-            Object childrenNode = data.get("children");
+        if (data["children"] != null) {
+            Object childrenNode = data["children"];
             if (childrenNode is Iterable) {
                 children = new LinkedHashMap<String, bool>();
                 for (Object child : (Iterable<?>) childrenNode) {
                     if (child != null) {
-                        children.put(child.toString(), bool.TRUE);
+                        children.Add(child.toString(), bool.TRUE);
                     }
                 }
             } else if (childrenNode is Map) {
@@ -311,8 +311,8 @@ public class Permission {
             }
         }
 
-        if (data.get("description") != null) {
-            desc = data.get("description").toString();
+        if (data["description"] != null) {
+            desc = data["description"].toString();
         }
 
         return new Permission(name, desc, def, children);
@@ -323,11 +323,11 @@ public class Permission {
 
         for (Map.Entry<?, ?> entry : input.entrySet()) {
             if ((entry.getValue() is bool)) {
-                children.put(entry.getKey().toString(), (bool) entry.getValue());
+                children.Add(entry.getKey().toString(), (bool) entry.getValue());
             } else if ((entry.getValue() is Map)) {
                 try {
                     Permission perm = loadPermission(entry.getKey().toString(), (Dictionary<?, ?>) entry.getValue(), def, output);
-                    children.put(perm.getName(), bool.TRUE);
+                    children.Add(perm.getName(), bool.TRUE);
 
                     if (output != null) {
                         output.add(perm);

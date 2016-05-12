@@ -58,7 +58,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
     /**
      * Sets the name that is shown on the in-game player list.
      * <p>
-     * The name cannot be longer than 16 characters, but {@link ChatColor} is
+     * The name cannot be longer than 16 chars, but {@link ChatColor} is
      * supported.
      * <p>
      * If the value is null, the name will be identical to {@link #getName()}.
@@ -67,8 +67,8 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * will appear as two different people. If a player joins afterwards with
      * a name that conflicts with a player's custom list name, the joining
      * player's player list name will have a random number appended to it (1-2
-     * characters long in the default implementation). If the joining player's
-     * name is 15 or 16 characters long, part of the name will be truncated at
+     * chars long in the default implementation). If the joining player's
+     * name is 15 or 16 chars long, part of the name will be truncated at
      * the end to allow the addition of the two digits.
      *
      * @param name new player list name
@@ -936,7 +936,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * </ul>
      *
      * @param url The URL from which the client will download the texture
-     *     pack. The string must contain only US-ASCII characters and should
+     *     pack. The string must contain only US-ASCII chars and should
      *     be encoded as per RFC 1738.
      * @throws ArgumentException Thrown if the URL is null.
      * @throws ArgumentException Thrown if the URL is too long.
@@ -967,7 +967,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * </ul>
      *
      * @param url The URL from which the client will download the resource
-     *     pack. The string must contain only US-ASCII characters and should
+     *     pack. The string must contain only US-ASCII chars and should
      *     be encoded as per RFC 1738.
      * @throws ArgumentException Thrown if the URL is null.
      * @throws ArgumentException Thrown if the URL is too long. The

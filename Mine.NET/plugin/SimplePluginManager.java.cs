@@ -39,23 +39,23 @@ import com.google.common.collect.ImmutableSet;
  */
 public sealed class SimplePluginManager : PluginManager {
     private readonly Server server;
-    private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new HashMap<Pattern, PluginLoader>();
+    private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new Dictionary<Pattern, PluginLoader>();
     private readonly List<Plugin> plugins = new List<Plugin>();
-    private readonly Dictionary<String, Plugin> lookupNames = new HashMap<String, Plugin>();
+    private readonly Dictionary<String, Plugin> lookupNames = new Dictionary<String, Plugin>();
     private static File updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
-    private readonly Dictionary<String, Permission> permissions = new HashMap<String, Permission>();
+    private readonly Dictionary<String, Permission> permissions = new Dictionary<String, Permission>();
     private readonly Dictionary<bool, HashSet<Permission>> defaultPerms = new LinkedHashMap<bool, HashSet<Permission>>();
-    private readonly Dictionary<String, Dictionary<Permissible, bool>> permSubs = new HashMap<String, Dictionary<Permissible, bool>>();
-    private readonly Dictionary<bool, Dictionary<Permissible, bool>> defSubs = new HashMap<bool, Dictionary<Permissible, bool>>();
+    private readonly Dictionary<String, Dictionary<Permissible, bool>> permSubs = new Dictionary<String, Dictionary<Permissible, bool>>();
+    private readonly Dictionary<bool, Dictionary<Permissible, bool>> defSubs = new Dictionary<bool, Dictionary<Permissible, bool>>();
     private bool useTimings = false;
 
     public SimplePluginManager(Server instance, SimpleCommandMap commandMap) {
         server = instance;
         this.commandMap = commandMap;
 
-        defaultPerms.put(true, new HashSet<Permission>());
-        defaultPerms.put(false, new HashSet<Permission>());
+        defaultPerms.Add(true, new HashSet<Permission>());
+        defaultPerms.Add(false, new HashSet<Permission>());
     }
 
     /**
@@ -89,7 +89,7 @@ public sealed class SimplePluginManager : PluginManager {
 
         synchronized (this) {
             for (Pattern pattern : patterns) {
-                fileAssociations.put(pattern, instance);
+                fileAssociations.Add(pattern, instance);
             }
         }
     }
@@ -111,10 +111,10 @@ public sealed class SimplePluginManager : PluginManager {
             updateDirectory = new File(directory, server.getUpdateFolder());
         }
 
-        Dictionary<String, File> plugins = new HashMap<String, File>();
+        Dictionary<String, File> plugins = new Dictionary<String, File>();
         HashSet<String> loadedPlugins = new HashSet<String>();
-        Dictionary<String, Collection<String>> dependencies = new HashMap<String, Collection<String>>();
-        Dictionary<String, Collection<String>> softDependencies = new HashMap<String, Collection<String>>();
+        Dictionary<String, Collection<String>> dependencies = new Dictionary<String, Collection<String>>();
+        Dictionary<String, Collection<String>> softDependencies = new Dictionary<String, Collection<String>>();
 
         // This is where it figures out all possible plugins
         for (File file : directory.listFiles()) {
@@ -122,7 +122,7 @@ public sealed class SimplePluginManager : PluginManager {
             for (Pattern filter : filters) {
                 Matcher match = filter.matcher(file.getName());
                 if (match.find()) {
-                    loader = fileAssociations.get(filter);
+                    loader = fileAssociations[filter];
                 }
             }
 
@@ -137,7 +137,7 @@ public sealed class SimplePluginManager : PluginManager {
                     continue;
                 } else if (description.rawName.indexOf(' ') != -1) {
                     server.getLogger().warning(String.format(
-                        "Plugin `%s' uses the space-character (0x20) in its name `%s' - this is discouraged",
+                        "Plugin `%s' uses the space-char (0x20) in its name `%s' - this is discouraged",
                         description.getFullName(),
                         description.rawName
                         ));
@@ -147,7 +147,7 @@ public sealed class SimplePluginManager : PluginManager {
                 continue;
             }
 
-            File replacedFile = plugins.put(description.getName(), file);
+            File replacedFile = plugins.Add(description.getName(), file);
             if (replacedFile != null) {
                 server.getLogger().severe(String.format(
                     "Ambiguous plugin name `%s' for files `%s' and `%s' in `%s'",
@@ -162,27 +162,27 @@ public sealed class SimplePluginManager : PluginManager {
             if (softDependencySet != null && !softDependencySet.isEmpty()) {
                 if (softDependencies.containsKey(description.getName())) {
                     // Duplicates do not matter, they will be removed together if applicable
-                    softDependencies.get(description.getName()).addAll(softDependencySet);
+                    softDependencies[description.getName(]).addAll(softDependencySet);
                 } else {
-                    softDependencies.put(description.getName(), new LinkedList<String>(softDependencySet));
+                    softDependencies.Add(description.getName(), new LinkedList<String>(softDependencySet));
                 }
             }
 
             Collection<String> dependencySet = description.getDepend();
             if (dependencySet != null && !dependencySet.isEmpty()) {
-                dependencies.put(description.getName(), new LinkedList<String>(dependencySet));
+                dependencies.Add(description.getName(), new LinkedList<String>(dependencySet));
             }
 
             Collection<String> loadBeforeSet = description.getLoadBefore();
             if (loadBeforeSet != null && !loadBeforeSet.isEmpty()) {
                 for (String loadBeforeTarget : loadBeforeSet) {
                     if (softDependencies.containsKey(loadBeforeTarget)) {
-                        softDependencies.get(loadBeforeTarget).add(description.getName());
+                        softDependencies[loadBeforeTarget].add(description.getName());
                     } else {
                         // softDependencies is never iterated, so 'ghost' plugins aren't an issue
                         Collection<String> shortSoftDependency = new LinkedList<String>();
                         shortSoftDependency.add(description.getName());
-                        softDependencies.put(loadBeforeTarget, shortSoftDependency);
+                        softDependencies.Add(loadBeforeTarget, shortSoftDependency);
                     }
                 }
             }
@@ -196,7 +196,7 @@ public sealed class SimplePluginManager : PluginManager {
                 String plugin = pluginIterator.next();
 
                 if (dependencies.containsKey(plugin)) {
-                    IEnumerator<String> dependencyIterator = dependencies.get(plugin).iterator();
+                    IEnumerator<String> dependencyIterator = dependencies[plugin].iterator();
 
                     while (dependencyIterator.hasNext()) {
                         String dependency = dependencyIterator.next();
@@ -208,7 +208,7 @@ public sealed class SimplePluginManager : PluginManager {
                         // We have a dependency not found
                         } else if (!plugins.containsKey(dependency)) {
                             missingDependency = false;
-                            File file = plugins.get(plugin);
+                            File file = plugins[plugin];
                             pluginIterator.remove();
                             softDependencies.remove(plugin);
                             dependencies.remove(plugin);
@@ -221,12 +221,12 @@ public sealed class SimplePluginManager : PluginManager {
                         }
                     }
 
-                    if (dependencies.containsKey(plugin) && dependencies.get(plugin).isEmpty()) {
+                    if (dependencies.containsKey(plugin) && dependencies[plugin].isEmpty()) {
                         dependencies.remove(plugin);
                     }
                 }
                 if (softDependencies.containsKey(plugin)) {
-                    IEnumerator<String> softDependencyIterator = softDependencies.get(plugin).iterator();
+                    IEnumerator<String> softDependencyIterator = softDependencies[plugin].iterator();
 
                     while (softDependencyIterator.hasNext()) {
                         String softDependency = softDependencyIterator.next();
@@ -237,13 +237,13 @@ public sealed class SimplePluginManager : PluginManager {
                         }
                     }
 
-                    if (softDependencies.get(plugin).isEmpty()) {
+                    if (softDependencies[plugin].isEmpty()) {
                         softDependencies.remove(plugin);
                     }
                 }
                 if (!(dependencies.containsKey(plugin) || softDependencies.containsKey(plugin)) && plugins.containsKey(plugin)) {
                     // We're clear to load, no more soft or hard dependencies left
-                    File file = plugins.get(plugin);
+                    File file = plugins[plugin];
                     pluginIterator.remove();
                     missingDependency = false;
 
@@ -268,7 +268,7 @@ public sealed class SimplePluginManager : PluginManager {
                     if (!dependencies.containsKey(plugin)) {
                         softDependencies.remove(plugin);
                         missingDependency = false;
-                        File file = plugins.get(plugin);
+                        File file = plugins[plugin];
                         pluginIterator.remove();
 
                         try {
@@ -323,7 +323,7 @@ public sealed class SimplePluginManager : PluginManager {
             Matcher match = filter.matcher(name);
 
             if (match.find()) {
-                PluginLoader loader = fileAssociations.get(filter);
+                PluginLoader loader = fileAssociations[filter];
 
                 result = loader.loadPlugin(file);
             }
@@ -331,7 +331,7 @@ public sealed class SimplePluginManager : PluginManager {
 
         if (result != null) {
             plugins.add(result);
-            lookupNames.put(result.getDescription().getName(), result);
+            lookupNames.Add(result.getDescription().getName(), result);
         }
 
         return result;
@@ -357,7 +357,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @return Plugin if it exists, otherwise null
      */
     public synchronized Plugin getPlugin(String name) {
-        return lookupNames.get(name.replace(' ', '_'));
+        return lookupNames[name.replace(' ', '_']);
     }
 
     public synchronized Plugin[] getPlugins() {
@@ -460,8 +460,8 @@ public sealed class SimplePluginManager : PluginManager {
             HandlerList.unregisterAll();
             fileAssociations.clear();
             permissions.clear();
-            defaultPerms.get(true).clear();
-            defaultPerms.get(false).clear();
+            defaultPerms[true].clear();
+            defaultPerms[false].clear();
         }
     }
 
@@ -588,7 +588,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public Permission getPermission(String name) {
-        return permissions.get(name.toLowerCase());
+        return permissions[name.toLowerCase(]);
     }
 
     public void addPermission(Permission perm) {
@@ -598,12 +598,12 @@ public sealed class SimplePluginManager : PluginManager {
             throw new ArgumentException("The permission " + name + " is already defined!");
         }
 
-        permissions.put(name, perm);
+        permissions.Add(name, perm);
         calculatePermissionDefault(perm);
     }
 
     public HashSet<Permission> getDefaultPermissions(bool op) {
-        return ImmutableSet.copyOf(defaultPerms.get(op));
+        return ImmutableSet.copyOf(defaultPerms[op]);
     }
 
     public void removePermission(Permission perm) {
@@ -616,8 +616,8 @@ public sealed class SimplePluginManager : PluginManager {
 
     public void recalculatePermissionDefaults(Permission perm) {
         if (perm != null && permissions.containsKey(perm.getName().toLowerCase())) {
-            defaultPerms.get(true).remove(perm);
-            defaultPerms.get(false).remove(perm);
+            defaultPerms[true].remove(perm);
+            defaultPerms[false].remove(perm);
 
             calculatePermissionDefault(perm);
         }
@@ -625,11 +625,11 @@ public sealed class SimplePluginManager : PluginManager {
 
     private void calculatePermissionDefault(Permission perm) {
         if ((perm.getDefault() == PermissionDefault.OP) || (perm.getDefault() == PermissionDefault.TRUE)) {
-            defaultPerms.get(true).add(perm);
+            defaultPerms[true].add(perm);
             dirtyPermissibles(true);
         }
         if ((perm.getDefault() == PermissionDefault.NOT_OP) || (perm.getDefault() == PermissionDefault.TRUE)) {
-            defaultPerms.get(false).add(perm);
+            defaultPerms[false].add(perm);
             dirtyPermissibles(false);
         }
     }
@@ -644,19 +644,19 @@ public sealed class SimplePluginManager : PluginManager {
 
     public void subscribeToPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Dictionary<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map == null) {
             map = new WeakHashMap<Permissible, bool>();
-            permSubs.put(name, map);
+            permSubs.Add(name, map);
         }
 
-        map.put(permissible, true);
+        map.Add(permissible, true);
     }
 
     public void unsubscribeFromPermission(String permission, Permissible permissible) {
         String name = permission.toLowerCase();
-        Dictionary<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map != null) {
             map.remove(permissible);
@@ -669,7 +669,7 @@ public sealed class SimplePluginManager : PluginManager {
 
     public HashSet<Permissible> getPermissionSubscriptions(String permission) {
         String name = permission.toLowerCase();
-        Dictionary<Permissible, bool> map = permSubs.get(name);
+        Dictionary<Permissible, bool> map = permSubs[name];
 
         if (map == null) {
             return ImmutableSet.of();
@@ -679,18 +679,18 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public void subscribeToDefaultPerms(bool op, Permissible permissible) {
-        Dictionary<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs[op];
 
         if (map == null) {
             map = new WeakHashMap<Permissible, bool>();
-            defSubs.put(op, map);
+            defSubs.Add(op, map);
         }
 
-        map.put(permissible, true);
+        map.Add(permissible, true);
     }
 
     public void unsubscribeFromDefaultPerms(bool op, Permissible permissible) {
-        Dictionary<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs[op];
 
         if (map != null) {
             map.remove(permissible);
@@ -702,7 +702,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public HashSet<Permissible> getDefaultPermSubscriptions(bool op) {
-        Dictionary<Permissible, bool> map = defSubs.get(op);
+        Dictionary<Permissible, bool> map = defSubs[op];
 
         if (map == null) {
             return ImmutableSet.of();

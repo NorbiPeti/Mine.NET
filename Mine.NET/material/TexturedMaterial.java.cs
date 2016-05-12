@@ -61,7 +61,7 @@ public abstract class TexturedMaterial : MaterialData {
             n = 0;
         }
 
-        return getTextures().get(n);
+        return getTextures()[n];
     }
 
     /**

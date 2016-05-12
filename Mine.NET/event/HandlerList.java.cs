@@ -92,7 +92,7 @@ public class HandlerList {
     public HandlerList() {
         handlerslots = new EnumMap<EventPriority, List<RegisteredListener>>(EventPriority.class);
         for (EventPriority o : EventPriority.values()) {
-            handlerslots.put(o, new List<RegisteredListener>());
+            handlerslots.Add(o, new List<RegisteredListener>());
         }
         synchronized (allLists) {
             allLists.add(this);
@@ -105,10 +105,10 @@ public class HandlerList {
      * @param listener listener to register
      */
     public synchronized void register(RegisteredListener listener) {
-        if (handlerslots.get(listener.getPriority()).contains(listener))
+        if (handlerslots[listener.getPriority(]).contains(listener))
             throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority().toString());
         handlers = null;
-        handlerslots.get(listener.getPriority()).add(listener);
+        handlerslots[listener.getPriority(]).add(listener);
     }
 
     /**
@@ -128,7 +128,7 @@ public class HandlerList {
      * @param listener listener to remove
      */
     public synchronized void unregister(RegisteredListener listener) {
-        if (handlerslots.get(listener.getPriority()).remove(listener)) {
+        if (handlerslots[listener.getPriority(]).remove(listener)) {
             handlers = null;
         }
     }

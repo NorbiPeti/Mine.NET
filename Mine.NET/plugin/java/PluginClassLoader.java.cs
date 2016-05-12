@@ -17,7 +17,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
  */
 sealed class PluginClassLoader : URLClassLoader {
     private readonly JavaPluginLoader loader;
-    private readonly Dictionary<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private readonly Dictionary<String, Class<?>> classes = new Dictionary<String, Class<?>>();
     private readonly PluginDescriptionFile description;
     private readonly File dataFolder;
     private readonly File file;
@@ -66,7 +66,7 @@ sealed class PluginClassLoader : URLClassLoader {
         if (name.startsWith("org.bukkit.") || name.startsWith("net.minecraft.")) {
             throw new ClassNotFoundException(name);
         }
-        Class<?> result = classes.get(name);
+        Class<?> result = classes[name];
 
         if (result == null) {
             if (checkGlobal) {
@@ -81,7 +81,7 @@ sealed class PluginClassLoader : URLClassLoader {
                 }
             }
 
-            classes.put(name, result);
+            classes.Add(name, result);
         }
 
         return result;

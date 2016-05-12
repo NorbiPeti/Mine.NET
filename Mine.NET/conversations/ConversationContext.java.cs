@@ -54,7 +54,7 @@ public class ConversationContext {
      * @return The requested session data.
      */
     public Object getSessionData(Object key) {
-        return sessionData.get(key);
+        return sessionData[key];
     }
 
     /**
@@ -66,6 +66,6 @@ public class ConversationContext {
      * @param value The session data value.
      */
     public void setSessionData(Object key, Object value) {
-        sessionData.put(key, value);
+        sessionData.Add(key, value);
     }
 }

@@ -32,7 +32,7 @@ public class EnchantItemEvent : InventoryEvent : Cancellable {
         this.table = table;
         this.item = item;
         this.level = level;
-        this.enchants = new HashMap<Enchantment, int>(enchants);
+        this.enchants = new Dictionary<Enchantment, int>(enchants);
         this.cancelled = false;
         this.button = i;
     }

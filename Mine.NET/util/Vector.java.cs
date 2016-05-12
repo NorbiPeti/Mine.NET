@@ -657,9 +657,9 @@ public class Vector : Cloneable, ConfigurationSerializable {
     public Dictionary<String, Object> serialize() {
         Dictionary<String, Object> result = new LinkedHashMap<String, Object>();
 
-        result.put("x", getX());
-        result.put("y", getY());
-        result.put("z", getZ());
+        result.Add("x", getX());
+        result.Add("y", getY());
+        result.Add("z", getZ());
 
         return result;
     }
@@ -670,13 +670,13 @@ public class Vector : Cloneable, ConfigurationSerializable {
         double z = 0;
 
         if (args.containsKey("x")) {
-            x = (Double) args.get("x");
+            x = (Double) args["x"];
         }
         if (args.containsKey("y")) {
-            y = (Double) args.get("y");
+            y = (Double) args["y"];
         }
         if (args.containsKey("z")) {
-            z = (Double) args.get("z");
+            z = (Double) args["z"];
         }
 
         return new Vector(x, y, z);

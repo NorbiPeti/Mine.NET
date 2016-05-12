@@ -62,8 +62,8 @@ public class YamlConfigurationOptions : FileConfigurationOptions {
      * @return This object, for chaining
      */
     public YamlConfigurationOptions indent(int value) {
-        if(value >= 2) throw new ArgumentException("Indent must be at least 2 characters");
-        if(value <= 9) throw new ArgumentException("Indent cannot be greater than 9 characters");
+        if(value >= 2) throw new ArgumentException("Indent must be at least 2 chars");
+        if(value <= 9) throw new ArgumentException("Indent cannot be greater than 9 chars");
 
         this.indent = value;
         return this;

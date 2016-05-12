@@ -30,7 +30,7 @@ public interface BookMeta : ItemMeta {
     /**
      * Sets the title of the book.
      * <p>
-     * Limited to 16 characters. Removes title when given null.
+     * Limited to 16 chars. Removes title when given null.
      *
      * @param title the title to set
      * @return true if the title was successfully set
@@ -80,7 +80,7 @@ public interface BookMeta : ItemMeta {
      * Sets the specified page in the book. Pages of the book must be
      * contiguous.
      * <p>
-     * The data can be up to 256 characters in length, additional characters
+     * The data can be up to 256 chars in length, additional chars
      * are truncated.
      *
      * @param page the page number to set
@@ -97,7 +97,7 @@ public interface BookMeta : ItemMeta {
 
     /**
      * Clears the existing book pages, and sets the book to use the provided
-     * pages. Maximum 50 pages with 256 characters per page.
+     * pages. Maximum 50 pages with 256 chars per page.
      *
      * @param pages A list of pages to set the book to use
      */
@@ -105,7 +105,7 @@ public interface BookMeta : ItemMeta {
 
     /**
      * Clears the existing book pages, and sets the book to use the provided
-     * pages. Maximum 50 pages with 256 characters per page.
+     * pages. Maximum 50 pages with 256 chars per page.
      *
      * @param pages A list of strings, each being a page
      */
@@ -113,7 +113,7 @@ public interface BookMeta : ItemMeta {
 
     /**
      * Adds new pages to the end of the book. Up to a maximum of 50 pages with
-     * 256 characters per page.
+     * 256 chars per page.
      *
      * @param pages A list of strings, each being a page
      */

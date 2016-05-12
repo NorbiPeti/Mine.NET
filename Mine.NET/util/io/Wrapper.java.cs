@@ -14,7 +14,7 @@ class Wrapper<T : Dictionary<String, ?> & Serializable> : Serializable {
     readonly T map;
 
     static Wrapper<ImmutableMap<String, ?>> newWrapper(ConfigurationSerializable obj) {
-        return new Wrapper<ImmutableMap<String, ?>>(ImmutableMap.<String, Object>builder().put(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(obj.getClass())).putAll(obj.serialize()).build());
+        return new Wrapper<ImmutableMap<String, ?>>(ImmutableMap.<String, Object>builder().Add(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(obj.getClass())).putAll(obj.serialize()).build());
     }
 
     private Wrapper(T map) {

@@ -24,7 +24,7 @@ public class SimpleServicesManager : ServicesManager {
     /**
      * Map of providers.
      */
-    private readonly Dictionary<Class<?>, List<RegisteredServiceProvider<?>>> providers = new HashMap<Class<?>, List<RegisteredServiceProvider<?>>>();
+    private readonly Dictionary<Class<?>, List<RegisteredServiceProvider<?>>> providers = new Dictionary<Class<?>, List<RegisteredServiceProvider<?>>>();
 
     /**
      * Register a provider of a service.
@@ -38,10 +38,10 @@ public class SimpleServicesManager : ServicesManager {
     public <T> void register(Class<T> service, T provider, Plugin plugin, ServicePriority priority) {
         RegisteredServiceProvider<T> registeredProvider = null;
         synchronized (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers.get(service);
+            List<RegisteredServiceProvider<?>> registered = providers[service];
             if (registered == null) {
                 registered = new List<RegisteredServiceProvider<?>>();
-                providers.put(service, registered);
+                providers.Add(service, registered);
             }
 
             registeredProvider = new RegisteredServiceProvider<T>(service, provider, priority, plugin);
@@ -198,14 +198,14 @@ public class SimpleServicesManager : ServicesManager {
      */
     public <T> T load(Class<T> service) {
         synchronized (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers.get(service);
+            List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
                 return null;
             }
 
             // This should not be null!
-            return service.cast(registered.get(0).getProvider());
+            return service.cast(registered[0].getProvider());
         }
     }
 
@@ -220,14 +220,14 @@ public class SimpleServicesManager : ServicesManager {
     @SuppressWarnings("unchecked")
     public <T> RegisteredServiceProvider<T> getRegistration(Class<T> service) {
         synchronized (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers.get(service);
+            List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
                 return null;
             }
 
             // This should not be null!
-            return (RegisteredServiceProvider<T>) registered.get(0);
+            return (RegisteredServiceProvider<T>) registered[0];
         }
     }
 
@@ -263,7 +263,7 @@ public class SimpleServicesManager : ServicesManager {
     public <T> List<RegisteredServiceProvider<T>> getRegistrations(Class<T> service) {
         ImmutableList.Builder<RegisteredServiceProvider<T>> ret;
         synchronized (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers.get(service);
+            List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
                 return ImmutableList.<RegisteredServiceProvider<T>>of();

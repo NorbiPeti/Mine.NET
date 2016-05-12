@@ -117,7 +117,7 @@ public class VersionCommand : BukkitCommand {
             }
 
             result.Append(ChatColors.GREEN);
-            result.Append(authors.get(i));
+            result.Append(authors[i]);
         }
 
         return result.toString();
@@ -240,7 +240,7 @@ public class VersionCommand : BukkitCommand {
             ).openBufferedStream();
             try {
                 JSONObject obj = (JSONObject) new JSONParser().parse(reader);
-                return ((Number) obj.get("totalCount")).intValue();
+                return ((Number) obj["totalCount"]).intValue();
             } catch (ParseException ex) {
                 ex.printStackTrace();
                 return -1;

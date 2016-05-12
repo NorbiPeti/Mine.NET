@@ -542,19 +542,19 @@ public interface ConfigurationSection {
     public List<Byte> getByteList(String path);
 
     /**
-     * Gets the requested List of Character by path.
+     * Gets the requested List of char by path.
      * <p>
      * If the List does not exist but a default value has been specified, this
      * will return the default value. If the List does not exist and no
      * default value was specified, this will return an empty List.
      * <p>
-     * This method will attempt to cast any values into a Character if
+     * This method will attempt to cast any values into a char if
      * possible, but may miss any values out if they are not compatible.
      *
      * @param path Path of the List to get.
-     * @return Requested List of Character.
+     * @return Requested List of char.
      */
-    public List<Character> getCharacterList(String path);
+    public List<char> getcharList(String path);
 
     /**
      * Gets the requested List of Short by path.

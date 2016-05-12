@@ -32,7 +32,7 @@ public interface Objective {
      * @throws IllegalStateException if this objective has been unregistered
      * @throws ArgumentException if displayName is null
      * @throws ArgumentException if displayName is longer than 32
-     *     characters.
+     *     chars.
      */
     void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
 

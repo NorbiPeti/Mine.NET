@@ -26,7 +26,7 @@ public sealed class DefaultPermissions {
 
         if (withLegacy) {
             Permission legacy = new Permission(LEGACY_PREFIX + result.getName(), result.getDescription(), PermissionDefault.FALSE);
-            legacy.getChildren().put(result.getName(), true);
+            legacy.getChildren().Add(result.getName(), true);
             registerPermission(perm, false);
         }
 
@@ -34,7 +34,7 @@ public sealed class DefaultPermissions {
     }
 
     public static Permission registerPermission(Permission perm, Permission parent) {
-        parent.getChildren().put(perm.getName(), true);
+        parent.getChildren().Add(perm.getName(), true);
         return registerPermission(perm);
     }
 
@@ -45,7 +45,7 @@ public sealed class DefaultPermissions {
 
     public static Permission registerPermission(String name, String desc, Permission parent) {
         Permission perm = registerPermission(name, desc);
-        parent.getChildren().put(perm.getName(), true);
+        parent.getChildren().Add(perm.getName(), true);
         return perm;
     }
 
@@ -56,7 +56,7 @@ public sealed class DefaultPermissions {
 
     public static Permission registerPermission(String name, String desc, PermissionDefault def, Permission parent) {
         Permission perm = registerPermission(name, desc, def);
-        parent.getChildren().put(perm.getName(), true);
+        parent.getChildren().Add(perm.getName(), true);
         return perm;
     }
 
@@ -67,7 +67,7 @@ public sealed class DefaultPermissions {
 
     public static Permission registerPermission(String name, String desc, PermissionDefault def, Dictionary<String, bool> children, Permission parent) {
         Permission perm = registerPermission(name, desc, def, children);
-        parent.getChildren().put(perm.getName(), true);
+        parent.getChildren().Add(perm.getName(), true);
         return perm;
     }
 

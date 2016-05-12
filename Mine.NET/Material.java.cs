@@ -1022,7 +1022,7 @@ namespace Mine.NET
          * Attempts to match the Material with the given name.
          * <p>
          * This is a match lookup; names will be converted to uppercase, then
-         * stripped of special characters in an attempt to format it like the
+         * stripped of special chars in an attempt to format it like the
          * enum.
          * <p>
          * Using this for match by ID is not supported.

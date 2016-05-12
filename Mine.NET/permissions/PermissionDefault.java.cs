@@ -13,7 +13,7 @@ public enum PermissionDefault {
     NOT_OP("!op", "notop", "!operator", "notoperator", "!admin", "notadmin");
 
     private readonly String[] names;
-    private readonly static Dictionary<String, PermissionDefault> lookup = new HashMap<String, PermissionDefault>();
+    private readonly static Dictionary<String, PermissionDefault> lookup = new Dictionary<String, PermissionDefault>();
 
     private PermissionDefault(String... names) {
         this.names = names;
@@ -48,7 +48,7 @@ public enum PermissionDefault {
      * @return Specified value, or null if not found
      */
     public static PermissionDefault getByName(String name) {
-        return lookup.get(name.toLowerCase().replaceAll("[^a-z!]", ""));
+        return lookup[name.toLowerCase(].replaceAll("[^a-z!]", ""));
     }
 
     public override string ToString() {
@@ -58,7 +58,7 @@ public enum PermissionDefault {
     static {
         for (PermissionDefault value : values()) {
             for (String name : value.names) {
-                lookup.put(name, value);
+                lookup.Add(name, value);
             }
         }
     }

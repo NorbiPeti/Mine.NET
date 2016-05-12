@@ -187,7 +187,7 @@ public class MemorySection : ConfigurationSection {
             if (value == null) {
                 map.remove(key);
             } else {
-                map.put(key, value);
+                map.Add(key, value);
             }
         } else {
             section.set(key, value);
@@ -224,10 +224,10 @@ public class MemorySection : ConfigurationSection {
 
         String key = path.substring(i2);
         if (section == this) {
-            Object result = map.get(key);
+            Object result = map[key];
             return (result == null) ? def : result;
         }
-        return section.get(key, def);
+        return section[key, def];
     }
 
     public ConfigurationSection createSection(String path) {
@@ -255,7 +255,7 @@ public class MemorySection : ConfigurationSection {
         String key = path.substring(i2);
         if (section == this) {
             ConfigurationSection result = new MemorySection(this, key);
-            map.put(key, result);
+            map.Add(key, result);
             return result;
         }
         return section.createSection(key);
@@ -402,8 +402,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(int.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((int) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((int) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).intValue());
             }
@@ -453,8 +453,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(Double.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((double) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((double) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).doubleValue());
             }
@@ -480,8 +480,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(Float.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((float) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((float) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).floatValue());
             }
@@ -507,8 +507,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(Long.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((long) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((long) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).longValue());
             }
@@ -534,8 +534,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(Byte.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((byte) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((byte) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).byteValue());
             }
@@ -544,18 +544,18 @@ public class MemorySection : ConfigurationSection {
         return result;
     }
 
-    public List<Character> getCharacterList(String path) {
+    public List<char> getcharList(String path) {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new List<Character>(0);
+            return new List<char>(0);
         }
 
-        List<Character> result = new List<Character>();
+        List<char> result = new List<char>();
 
         for (Object object : list) {
-            if (object is Character) {
-                result.add((Character) object);
+            if (object is char) {
+                result.add((char) object);
             } else if (object is String) {
                 String str = (String) object;
 
@@ -587,8 +587,8 @@ public class MemorySection : ConfigurationSection {
                     result.add(Short.valueOf((String) object));
                 } catch (Exception ex) {
                 }
-            } else if (object is Character) {
-                result.add((short) ((Character) object).charValue());
+            } else if (object is char) {
+                result.add((short) ((char) object).charValue());
             } else if (object is Number) {
                 result.add(((Number) object).shortValue());
             }
@@ -692,7 +692,7 @@ public class MemorySection : ConfigurationSection {
 
     protected bool isPrimitiveWrapper(Object input) {
         return input is int || input is bool ||
-                input is Character || input is Byte ||
+                input is char || input is Byte ||
                 input is Short || input is Double ||
                 input is Long || input is Float;
     }
@@ -702,7 +702,7 @@ public class MemorySection : ConfigurationSection {
 
         Configuration root = getRoot();
         Configuration defaults = root == null ? null : root.getDefaults();
-        return (defaults == null) ? null : defaults.get(createPath(this, path));
+        return (defaults == null) ? null : defaults[createPath(this, path]);
     }
 
     protected void mapChildrenKeys(HashSet<String> output, ConfigurationSection section, bool deep) {
@@ -731,7 +731,7 @@ public class MemorySection : ConfigurationSection {
             MemorySection sec = (MemorySection) section;
 
             for (Map.Entry<String, Object> entry : sec.map.entrySet()) {
-                output.put(createPath(section, entry.getKey(), this), entry.getValue());
+                output.Add(createPath(section, entry.getKey(), this), entry.getValue());
 
                 if (entry.getValue() is ConfigurationSection) {
                     if (deep) {
@@ -743,7 +743,7 @@ public class MemorySection : ConfigurationSection {
             Dictionary<String, Object> values = section.getValues(deep);
 
             for (Map.Entry<String, Object> entry : values.entrySet()) {
-                output.put(createPath(section, entry.getKey(), this), entry.getValue());
+                output.Add(createPath(section, entry.getKey(), this), entry.getValue());
             }
         }
     }

@@ -297,7 +297,7 @@ public class MinecraftFont : MapFont {
             }
 
             if (ch == ' ') {
-                setChar(ch, new CharacterSprite(spaceSize, 8, new bool[spaceSize * 8]));
+                setChar(ch, new charSprite(spaceSize, 8, new bool[spaceSize * 8]));
                 continue;
             }
 
@@ -319,7 +319,7 @@ public class MinecraftFont : MapFont {
                 }
             }
 
-            setChar(ch, new CharacterSprite(width, 8, data));
+            setChar(ch, new charSprite(width, 8, data));
         }
 
         this.malleable = malleable;

@@ -5,15 +5,18 @@ using System.Text;
 
 namespace Mine.NET
 {
-    public class HelpCommand : VanillaCommand {
-        public HelpCommand() : base("help") {
+    public class HelpCommand : VanillaCommand
+    {
+        public HelpCommand() : base("help")
+        {
             this.description = "Shows the help menu";
             this.usageMessage = "/help <pageNumber>\n/help <topic>\n/help <topic> <pageNumber>";
             this.setAliases(new List<string> { "?" });
             this.setPermission("bukkit.command.help");
         }
-        
-    public override bool execute(CommandSender sender, String currentAlias, String[] args) {
+
+        public override bool execute(CommandSender sender, String currentAlias, String[] args)
+        {
             if (!testPermission(sender)) return true;
 
             String command;
@@ -21,23 +24,32 @@ namespace Mine.NET
             int pageHeight;
             int pageWidth;
 
-            if (args.Length == 0) {
+            if (args.Length == 0)
+            {
                 command = "";
                 pageNumber = 1;
-            } else if (int.TryParse(args[args.Length - 1], out pageNumber)) {
+            }
+            else if (int.TryParse(args[args.Length - 1], out pageNumber))
+            {
                 command = args.Take(args.Length - 1).Aggregate((a, b) => a + " " + b);
-                if (pageNumber <= 0) {
+                if (pageNumber <= 0)
+                {
                     pageNumber = 1;
                 }
-            } else {
+            }
+            else
+            {
                 command = args.Aggregate((a, b) => a + " " + b);
                 pageNumber = 1;
             }
 
-            if (sender is ConsoleCommandSender) {
+            if (sender is ConsoleCommandSender)
+            {
                 pageHeight = ChatPaginator.UNBOUNDED_PAGE_HEIGHT;
                 pageWidth = ChatPaginator.UNBOUNDED_PAGE_WIDTH;
-            } else {
+            }
+            else
+            {
                 pageHeight = ChatPaginator.CLOSED_CHAT_PAGE_HEIGHT - 1;
                 pageWidth = ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH;
             }
@@ -45,15 +57,18 @@ namespace Mine.NET
             HelpMap helpMap = Bukkit.getServer().getHelpMap();
             HelpTopic topic = helpMap.getHelpTopic(command);
 
-            if (topic == null) {
+            if (topic == null)
+            {
                 topic = helpMap.getHelpTopic("/" + command);
             }
 
-            if (topic == null) {
+            if (topic == null)
+            {
                 topic = findPossibleMatches(command);
             }
 
-            if (topic == null || !topic.canSee(sender)) {
+            if (topic == null || !topic.canSee(sender))
+            {
                 sender.sendMessage(ChatColors.RED + "No help for " + command);
                 return true;
             }
@@ -67,7 +82,8 @@ namespace Mine.NET
             header.Append("Help: ");
             header.Append(topic.getName());
             header.Append(" ");
-            if (page.getTotalPages() > 1) {
+            if (page.getTotalPages() > 1)
+            {
                 header.Append("(");
                 header.Append(page.getPageNumber());
                 header.Append("/");
@@ -75,7 +91,8 @@ namespace Mine.NET
                 header.Append(") ");
             }
             header.Append(ChatColors.YELLOW);
-            for (int i = header.Length; i < ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH; i++) {
+            for (int i = header.Length; i < ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH; i++)
+            {
                 header.Append("-");
             }
             sender.sendMessage(header.ToString());
@@ -84,19 +101,23 @@ namespace Mine.NET
 
             return true;
         }
-        
-    public override List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+
+        public override List<String> tabComplete(CommandSender sender, String alias, String[] args)
+        {
             if (sender == null) throw new ArgumentNullException("Sender cannot be null");
             if (args == null) throw new ArgumentNullException("Arguments cannot be null");
             if (alias == null) throw new ArgumentNullException("Alias cannot be null");
 
-            if (args.Length == 1) {
+            if (args.Length == 1)
+            {
                 List<String> matchedTopics = new List<String>();
                 String searchString = args[0];
-                foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics()) {
+                foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics())
+                {
                     String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
 
-                    if (trimmedTopic.StartsWith(searchString)) {
+                    if (trimmedTopic.StartsWith(searchString))
+                    {
                         matchedTopics.Add(trimmedTopic);
                     }
                 }
@@ -105,33 +126,42 @@ namespace Mine.NET
             return new List<string>();
         }
 
-        protected HelpTopic findPossibleMatches(String searchString) {
+        protected HelpTopic findPossibleMatches(String searchString)
+        {
             int maxDistance = (searchString.Length) / 5 + 3;
             SortedSet<HelpTopic> possibleMatches = new SortedSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
 
-            if (searchString.StartsWith("/")) {
+            if (searchString.StartsWith("/"))
+            {
                 searchString = searchString.Substring(1);
             }
 
-            foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics()) {
+            foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics())
+            {
                 String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
 
-                if (trimmedTopic.Length < searchString.Length) {
+                if (trimmedTopic.Length < searchString.Length)
+                {
                     continue;
                 }
                 //Find: "\.charAt\(([^\)]+)\)" - Replace: "[$1]"
-                if (char.ToLower(trimmedTopic[0]) != char.ToLower(searchString[0])) {
+                if (char.ToLower(trimmedTopic[0]) != char.ToLower(searchString[0]))
+                {
                     continue;
                 }
 
-                if (damerauLevenshteinDistance(searchString, trimmedTopic.Substring(0, searchString.Length)) < maxDistance) {
+                if (damerauLevenshteinDistance(searchString, trimmedTopic.Substring(0, searchString.Length)) < maxDistance)
+                {
                     possibleMatches.add(topic);
                 }
             }
 
-            if (possibleMatches.Count > 0) {
+            if (possibleMatches.Count > 0)
+            {
                 return new IndexHelpTopic("Search", null, null, possibleMatches, "Search for: " + searchString);
-            } else {
+            }
+            else
+            {
                 return null;
             }
         }
@@ -145,14 +175,18 @@ namespace Mine.NET
          * @return The number of substitutions, deletions, insertions, and
          * transpositions required to get from s1 to s2.
          */
-        protected static int damerauLevenshteinDistance(String s1, String s2) {
-            if (s1 == null && s2 == null) {
+        protected static int damerauLevenshteinDistance(String s1, String s2)
+        {
+            if (s1 == null && s2 == null)
+            {
                 return 0;
             }
-            if (s1 != null && s2 == null) {
+            if (s1 != null && s2 == null)
+            {
                 return s1.Length;
             }
-            if (s1 == null && s2 != null) {
+            if (s1 == null && s2 != null)
+            {
                 return s2.Length;
             }
 
@@ -161,42 +195,51 @@ namespace Mine.NET
             int[,] H = new int[s1Len + 2, s2Len + 2];
 
             int INF = s1Len + s2Len;
-            H[0,0] = INF;
-            for (int i = 0; i <= s1Len; i++) {
-                H[i + 1,1] = i;
-                H[i + 1,0] = INF;
+            H[0, 0] = INF;
+            for (int i = 0; i <= s1Len; i++)
+            {
+                H[i + 1, 1] = i;
+                H[i + 1, 0] = INF;
             }
-            for (int j = 0; j <= s2Len; j++) {
-                H[1,j + 1] = j;
-                H[0,j + 1] = INF;
+            for (int j = 0; j <= s2Len; j++)
+            {
+                H[1, j + 1] = j;
+                H[0, j + 1] = INF;
             }
 
-            Dictionary<Character, int> sd = new HashMap<Character, int>();
-            for (char Letter : (s1 + s2).toCharArray()) {
-                if (!sd.containsKey(Letter)) {
-                    sd.put(Letter, 0);
+            Dictionary<char, int> sd = new Dictionary<char, int>();
+            foreach (char Letter in (s1 + s2).ToCharArray())
+            {
+                if (!sd.ContainsKey(Letter))
+                {
+                    sd.Add(Letter, 0);
                 }
             }
 
-            for (int i = 1; i <= s1Len; i++) {
+            for (int i = 1; i <= s1Len; i++)
+            {
                 int DB = 0;
-                for (int j = 1; j <= s2Len; j++) {
-                    int i1 = sd.get(s2[j - 1]);
+                for (int j = 1; j <= s2Len; j++)
+                {
+                    int i1 = sd[s2[j - 1]]; //Find: "\.get\(([^\)]+)\)" - Replace: "[$1]"
                     int j1 = DB;
 
-                    if (s1[i - 1] == s2[j - 1]) {
-                        H[i + 1][j + 1] = H[i][j];
+                    if (s1[i - 1] == s2[j - 1])
+                    {
+                        H[i + 1, j + 1] = H[i, j];
                         DB = j;
-                    } else {
-                        H[i + 1][j + 1] = Math.min(H[i][j], Math.min(H[i + 1][j], H[i][j + 1])) + 1;
+                    }
+                    else
+                    {
+                        H[i + 1, j + 1] = Math.Min(H[i, j], Math.Min(H[i + 1, j], H[i, j + 1])) + 1;
                     }
 
-                    H[i + 1][j + 1] = Math.min(H[i + 1][j + 1], H[i1][j1] + (i - i1 - 1) + 1 + (j - j1 - 1));
+                    H[i + 1, j + 1] = Math.Min(H[i + 1, j + 1], H[i1, j1] + (i - i1 - 1) + 1 + (j - j1 - 1));
                 }
-                sd.put(s1[i - 1], i);
+                sd.Add(s1[i - 1], i);
             }
 
-            return H[s1Len + 1][s2Len + 1];
+            return H[s1Len + 1, s2Len + 1];
         }
     }
 }

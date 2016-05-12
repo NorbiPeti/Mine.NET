@@ -75,8 +75,8 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
     /**
      * Gets the command that the player is attempting to send.
      * <p>
-     * All commands begin with a special character; implementations do not
-     * consider the first character when executing the content.
+     * All commands begin with a special char; implementations do not
+     * consider the first char when executing the content.
      *
      * @return Message the player is attempting to send
      */
@@ -87,8 +87,8 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
     /**
      * Sets the command that the player will send.
      * <p>
-     * All commands begin with a special character; implementations do not
-     * consider the first character when executing the content.
+     * All commands begin with a special char; implementations do not
+     * consider the first char when executing the content.
      *
      * @param command New message that the player will send
      * @throws ArgumentException if command is null or empty

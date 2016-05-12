@@ -495,19 +495,19 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
     public Dictionary<String, Object> serialize() {
         Dictionary<String, Object> result = new LinkedHashMap<String, Object>();
 
-        result.put("type", getType().name());
+        result.Add("type", getType().name());
 
         if (getDurability() != 0) {
-            result.put("damage", getDurability());
+            result.Add("damage", getDurability());
         }
 
         if (getAmount() != 1) {
-            result.put("amount", getAmount());
+            result.Add("amount", getAmount());
         }
 
         ItemMeta meta = getItemMeta();
         if (!Bukkit.getItemFactory().equals(meta, null)) {
-            result.put("meta", meta);
+            result.Add("meta", meta);
         }
 
         return result;
@@ -521,22 +521,22 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @see ConfigurationSerializable
      */
     public static ItemStack deserialize(Dictionary<String, Object> args) {
-        Material type = Material.getMaterial((String) args.get("type"));
+        Material type = Material.getMaterial((String) args["type"]);
         short damage = 0;
         int amount = 1;
 
         if (args.containsKey("damage")) {
-            damage = ((Number) args.get("damage")).shortValue();
+            damage = ((Number) args["damage"]).shortValue();
         }
 
         if (args.containsKey("amount")) {
-            amount = ((Number) args.get("amount")).intValue();
+            amount = ((Number) args["amount"]).intValue();
         }
 
         ItemStack result = new ItemStack(type, amount, damage);
 
         if (args.containsKey("enchantments")) { // Backward compatiblity, [Obsolete]
-            Object raw = args.get("enchantments");
+            Object raw = args["enchantments"];
 
             if (raw is Map) {
                 Dictionary<?, ?> map = (Dictionary<?, ?>) raw;
@@ -550,7 +550,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
                 }
             }
         } else if (args.containsKey("meta")) { // We cannot and will not have meta when enchantments (pre-ItemMeta) exist
-            Object raw = args.get("meta");
+            Object raw = args["meta"];
             if (raw is ItemMeta) {
                 result.setItemMeta((ItemMeta) raw);
             }

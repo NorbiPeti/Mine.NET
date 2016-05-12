@@ -112,13 +112,13 @@ public class BlockVector : Vector {
         double z = 0;
 
         if (args.containsKey("x")) {
-            x = (Double) args.get("x");
+            x = (Double) args["x"];
         }
         if (args.containsKey("y")) {
-            y = (Double) args.get("y");
+            y = (Double) args["y"];
         }
         if (args.containsKey("z")) {
-            z = (Double) args.get("z");
+            z = (Double) args["z"];
         }
 
         return new BlockVector(x, y, z);

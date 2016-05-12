@@ -17,7 +17,7 @@ namespace Mine.NET
 
             foreach (KeyValuePair<String, Dictionary<String, Object>> entry in map) {
                 if (entry.Key.Contains(":")) {
-                    Bukkit.getServer().getLogger().Severe("Could not load command " + entry.Key + " for plugin " + plugin.getName() + ": Illegal Characters");
+                    Bukkit.getServer().getLogger().Severe("Could not load command " + entry.Key + " for plugin " + plugin.getName() + ": Illegal chars");
                     continue;
                 }
                 Command newCmd = new PluginCommand(entry.Key, plugin);
@@ -42,14 +42,14 @@ namespace Mine.NET
                     {
                         foreach (Object o in (IList) aliases) {
                             if (o.ToString().Contains(":")) {
-                                Bukkit.getServer().getLogger().Severe("Could not load alias " + o.ToString() + " for plugin " + plugin.getName() + ": Illegal Characters");
+                                Bukkit.getServer().getLogger().Severe("Could not load alias " + o.ToString() + " for plugin " + plugin.getName() + ": Illegal chars");
                                 continue;
                             }
                             aliasList.Add(o.ToString());
                         }
                     } else {
                         if (aliases.ToString().Contains(":")) {
-                            Bukkit.getServer().getLogger().Severe("Could not load alias " + aliases.ToString() + " for plugin " + plugin.getName() + ": Illegal Characters");
+                            Bukkit.getServer().getLogger().Severe("Could not load alias " + aliases.ToString() + " for plugin " + plugin.getName() + ": Illegal chars");
                         } else {
                             aliasList.Add(aliases.ToString());
                         }

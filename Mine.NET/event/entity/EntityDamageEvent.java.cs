@@ -67,7 +67,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      * @throws ArgumentException if type is null
      */
     public double getOriginalDamage(DamageModifier type) throws ArgumentException {
-        readonly Double damage = originals.get(type);
+        readonly Double damage = originals[type];
         if (damage != null) {
             return damage;
         }
@@ -92,7 +92,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
         if (!modifiers.containsKey(type)) {
             throw type == null ? new ArgumentException("Cannot have null DamageModifier") : new UnsupportedOperationException(type + " is not applicable to " + getEntity());
         }
-        modifiers.put(type, damage);
+        modifiers.Add(type, damage);
     }
 
     /**
@@ -105,7 +105,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
      */
     public double getDamage(DamageModifier type) throws ArgumentException {
         if(type==null) throw new ArgumentNullException("Cannot have null DamageModifier");
-        readonly Double damage = modifiers.get(type);
+        readonly Double damage = modifiers[type];
         return damage == null ? 0 : damage;
     }
 
@@ -179,7 +179,7 @@ public class EntityDamageEvent : EntityEvent : Cancellable {
                 continue;
             }
 
-            Function<? base Double, Double> modifierFunction = modifierFunctions.get(modifier);
+            Function<? base Double, Double> modifierFunction = modifierFunctions[modifier];
             double newVanilla = modifierFunction.apply(remaining);
             double oldVanilla = modifierFunction.apply(oldRemaining);
             double difference = oldVanilla - newVanilla;

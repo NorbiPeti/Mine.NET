@@ -26,7 +26,7 @@ public sealed class MapCursorCollection {
      * @return The MapCursor.
      */
     public MapCursor getCursor(int index) {
-        return cursors.get(index);
+        return cursors[index];
     }
 
     /**

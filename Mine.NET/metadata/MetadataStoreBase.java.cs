@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.*;
 
 public abstract class MetadataStoreBase<T> {
-    private Dictionary<String, Dictionary<Plugin, MetadataValue>> metadataMap = new HashMap<String, Dictionary<Plugin, MetadataValue>>();
+    private Dictionary<String, Dictionary<Plugin, MetadataValue>> metadataMap = new Dictionary<String, Dictionary<Plugin, MetadataValue>>();
 
     /**
      * Adds a metadata value to an object. Each metadata value is owned by a
@@ -35,12 +35,12 @@ public abstract class MetadataStoreBase<T> {
         Plugin owningPlugin = newMetadataValue.getOwningPlugin();
         if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
-        Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
+        Dictionary<Plugin, MetadataValue> entry = metadataMap[key];
         if (entry == null) {
             entry = new WeakHashMap<Plugin, MetadataValue>(1);
-            metadataMap.put(key, entry);
+            metadataMap.Add(key, entry);
         }
-        entry.put(owningPlugin, newMetadataValue);
+        entry.Add(owningPlugin, newMetadataValue);
     }
 
     /**
@@ -56,7 +56,7 @@ public abstract class MetadataStoreBase<T> {
     public synchronized List<MetadataValue> getMetadata(T subject, String metadataKey) {
         String key = disambiguate(subject, metadataKey);
         if (metadataMap.containsKey(key)) {
-            Collection<MetadataValue> values = metadataMap.get(key).values();
+            Collection<MetadataValue> values = metadataMap[key].values();
             return Collections.unmodifiableList(new List<MetadataValue>(values));
         } else {
             return Collections.emptyList();
@@ -90,7 +90,7 @@ public abstract class MetadataStoreBase<T> {
     public synchronized void removeMetadata(T subject, String metadataKey, Plugin owningPlugin) {
         if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         String key = disambiguate(subject, metadataKey);
-        Dictionary<Plugin, MetadataValue> entry = metadataMap.get(key);
+        Dictionary<Plugin, MetadataValue> entry = metadataMap[key];
         if (entry == null) {
             return;
         }
@@ -114,7 +114,7 @@ public abstract class MetadataStoreBase<T> {
         if(owningPlugin==null) throw new ArgumentNullException("Plugin cannot be null");
         for (Dictionary<Plugin, MetadataValue> values : metadataMap.values()) {
             if (values.containsKey(owningPlugin)) {
-                values.get(owningPlugin).invalidate();
+                values[owningPlugin].invalidate();
             }
         }
     }

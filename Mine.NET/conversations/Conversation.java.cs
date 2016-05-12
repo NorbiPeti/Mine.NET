@@ -52,7 +52,7 @@ public class Conversation {
      * @param firstPrompt The first prompt in the conversation graph.
      */
     public Conversation(Plugin plugin, Conversable forWhom, Prompt firstPrompt) {
-        this(plugin, forWhom, firstPrompt, new HashMap<Object, Object>());
+        this(plugin, forWhom, firstPrompt, new Dictionary<Object, Object>());
     }
 
     /**

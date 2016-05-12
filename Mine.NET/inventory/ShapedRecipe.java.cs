@@ -14,7 +14,7 @@ import org.bukkit.material.MaterialData;
 public class ShapedRecipe : Recipe {
     private ItemStack output;
     private String[] rows;
-    private Dictionary<Character, ItemStack> ingredients = new HashMap<Character, ItemStack>();
+    private Dictionary<char, ItemStack> ingredients = new Dictionary<char, ItemStack>();
 
     /**
      * Create a shaped recipe to craft the specified ItemStack. The
@@ -32,8 +32,8 @@ public class ShapedRecipe : Recipe {
     }
 
     /**
-     * Set the shape of this recipe to the specified rows. Each character
-     * represents a different ingredient; exactly what each character
+     * Set the shape of this recipe to the specified rows. Each char
+     * represents a different ingredient; exactly what each char
      * represents is set separately. The first row supplied corresponds with
      * the upper most part of the recipe on the workbench e.g. if all three
      * rows are supplies the first string represents the top row on the
@@ -48,18 +48,18 @@ public class ShapedRecipe : Recipe {
 
         for (String row : shape) {
             if(row==null) throw new ArgumentNullException("Shape cannot have null rows");
-            if(row.Length > 0 && row.Length < 4, "Crafting rows should be 1, 2, or 3 characters, not ") throw new ArgumentException(row.Length);
+            if(row.Length > 0 && row.Length < 4, "Crafting rows should be 1, 2, or 3 chars, not ") throw new ArgumentException(row.Length);
         }
         this.rows = new String[shape.length];
         for (int i = 0; i < shape.length; i++) {
             this.rows[i] = shape[i];
         }
 
-        // Remove character mappings for characters that no longer exist in the shape
-        HashMap<Character, ItemStack> newIngredients = new HashMap<Character, ItemStack>();
+        // Remove char mappings for chars that no longer exist in the shape
+        HashMap<char, ItemStack> newIngredients = new Dictionary<char, ItemStack>();
         for (String row : shape) {
-            for (Character c : row.toCharArray()) {
-                newIngredients.put(c, ingredients.get(c));
+            for (char c : row.toCharArray()) {
+                newIngredients.Add(c, ingredients[c]);
             }
         }
         this.ingredients = newIngredients;
@@ -68,9 +68,9 @@ public class ShapedRecipe : Recipe {
     }
 
     /**
-     * Sets the material that a character in the recipe shape refers to.
+     * Sets the material that a char in the recipe shape refers to.
      *
-     * @param key The character that represents the ingredient in the shape.
+     * @param key The char that represents the ingredient in the shape.
      * @param ingredient The ingredient.
      * @return The changed recipe, so you can chain calls.
      */
@@ -79,9 +79,9 @@ public class ShapedRecipe : Recipe {
     }
 
     /**
-     * Sets the material that a character in the recipe shape refers to.
+     * Sets the material that a char in the recipe shape refers to.
      *
-     * @param key The character that represents the ingredient in the shape.
+     * @param key The char that represents the ingredient in the shape.
      * @param ingredient The ingredient.
      * @return The changed recipe, so you can chain calls.
      */
@@ -90,9 +90,9 @@ public class ShapedRecipe : Recipe {
     }
 
     /**
-     * Sets the material that a character in the recipe shape refers to.
+     * Sets the material that a char in the recipe shape refers to.
      *
-     * @param key The character that represents the ingredient in the shape.
+     * @param key The char that represents the ingredient in the shape.
      * @param ingredient The ingredient.
      * @param raw The raw material data as an int.
      * @return The changed recipe, so you can chain calls.
@@ -107,22 +107,22 @@ public class ShapedRecipe : Recipe {
             raw = Short.MAX_VALUE;
         }
 
-        ingredients.put(key, new ItemStack(ingredient, 1, (short) raw));
+        ingredients.Add(key, new ItemStack(ingredient, 1, (short) raw));
         return this;
     }
 
     /**
      * Get a copy of the ingredients map.
      *
-     * @return The mapping of character to ingredients.
+     * @return The mapping of char to ingredients.
      */
-    public Dictionary<Character, ItemStack> getIngredientMap() {
-        HashMap<Character, ItemStack> result = new HashMap<Character, ItemStack>();
-        for (Map.Entry<Character, ItemStack> ingredient : ingredients.entrySet()) {
+    public Dictionary<char, ItemStack> getIngredientMap() {
+        HashMap<char, ItemStack> result = new Dictionary<char, ItemStack>();
+        for (Map.Entry<char, ItemStack> ingredient : ingredients.entrySet()) {
             if (ingredient.getValue() == null) {
-                result.put(ingredient.getKey(), null);
+                result.Add(ingredient.getKey(), null);
             } else {
-                result.put(ingredient.getKey(), ingredient.getValue().clone());
+                result.Add(ingredient.getKey(), ingredient.getValue().clone());
             }
         }
         return result;

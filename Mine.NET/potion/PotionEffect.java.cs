@@ -109,7 +109,7 @@ public class PotionEffect : ConfigurationSerializable {
     }
 
     private static int getInt(Dictionary<?,?> map, Object key) {
-        Object num = map.get(key);
+        Object num = map[key];
         if (num is int) {
             return (int) num;
         }
@@ -117,7 +117,7 @@ public class PotionEffect : ConfigurationSerializable {
     }
 
     private static bool getBool(Dictionary<?,?> map, Object key, bool def) {
-        Object bool = map.get(key);
+        Object bool = map[key];
         if (bool is bool) {
             return (bool) bool;
         }

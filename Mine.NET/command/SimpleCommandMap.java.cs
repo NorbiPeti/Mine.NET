@@ -81,7 +81,7 @@ namespace Mine.NET
          * @return true if command was registered, false otherwise.
          */
         private synchronized bool register(String label, Command command, bool isAlias, String fallbackPrefix) {
-            knownCommands.put(fallbackPrefix + ":" + label, command);
+            knownCommands.Add(fallbackPrefix + ":" + label, command);
             if ((command is VanillaCommand || isAlias) && knownCommands.containsKey(label)) {
                 // Request is for an alias/fallback command and it conflicts with
                 // a existing command or previous alias ignore it
@@ -92,7 +92,7 @@ namespace Mine.NET
             bool registered = true;
 
             // If the command exists but is an alias we overwrite it, otherwise we return
-            Command conflict = knownCommands.get(label);
+            Command conflict = knownCommands[label];
             if (conflict != null && conflict.getLabel().equals(label)) {
                 return false;
             }
@@ -100,7 +100,7 @@ namespace Mine.NET
             if (!isAlias) {
                 command.setLabel(label);
             }
-            knownCommands.put(label, command);
+            knownCommands.Add(label, command);
 
             return registered;
         }
@@ -144,7 +144,7 @@ namespace Mine.NET
         }
 
         public Command getCommand(String name) {
-            Command target = knownCommands.get(name.toLowerCase());
+            Command target = knownCommands[name.toLowerCase(]);
             return target;
         }
 
@@ -210,11 +210,11 @@ namespace Mine.NET
 
             for (String alias : values.keySet()) {
                 if (alias.contains(":") || alias.contains(" ")) {
-                    server.getLogger().warning("Could not register alias " + alias + " because it contains illegal characters");
+                    server.getLogger().warning("Could not register alias " + alias + " because it contains illegal chars");
                     continue;
                 }
 
-                String[] commandStrings = values.get(alias);
+                String[] commandStrings = values[alias];
                 List<String> targets = new List<String>();
                 StringBuilder bad = new StringBuilder();
 
@@ -239,7 +239,7 @@ namespace Mine.NET
 
                 // We register these as commands so they have absolute priority.
                 if (targets.size() > 0) {
-                    knownCommands.put(alias.toLowerCase(), new FormattedCommandAlias(alias.toLowerCase(), targets.toArray(new String[targets.size()])));
+                    knownCommands.Add(alias.toLowerCase(), new FormattedCommandAlias(alias.toLowerCase(), targets.toArray(new String[targets.size()])));
                 } else {
                     knownCommands.remove(alias.toLowerCase());
                 }

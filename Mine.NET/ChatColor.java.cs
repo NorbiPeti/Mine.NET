@@ -77,7 +77,7 @@ namespace Mine.NET
          */
         { ChatColors.WHITE, new ChatColor('f', 0xF) },
         /**
-         * Represents magical characters that change around randomly
+         * Represents magical chars that change around randomly
          */
         { ChatColors.MAGIC, new ChatColor('k', 0x10, true) },
         /**
@@ -103,7 +103,7 @@ namespace Mine.NET
     };
 
         /**
-         * The special character which prefixes all chat colour codes. Use this if
+         * The special char which prefixes all chat colour codes. Use this if
          * you need to dynamically convert colour codes from your custom format.
          */
         public static readonly char COLOR_CHAR = '\u00A7';
@@ -209,14 +209,14 @@ namespace Mine.NET
         }
 
         /**
-         * Translates a string using an alternate color code character into a
+         * Translates a string using an alternate color code char into a
          * string that uses the internal ChatColors.COLOR_CODE color code
-         * character. The alternate color code character will only be replaced if
+         * char. The alternate color code char will only be replaced if
          * it is immediately followed by 0-9, A-F, a-f, K-O, k-o, R or r.
          *
-         * @param altColorChar The alternate color code character to replace. Ex: {@literal &}
-         * @param textToTranslate Text containing the alternate color code character.
-         * @return Text containing the ChatColors.COLOR_CODE color code character.
+         * @param altColorChar The alternate color code char to replace. Ex: {@literal &}
+         * @param textToTranslate Text containing the alternate color code char.
+         * @return Text containing the ChatColors.COLOR_CODE color code char.
          */
         public static String translateAlternateColorCodes(char altColorChar, String textToTranslate)
         {
@@ -336,7 +336,7 @@ namespace Mine.NET
          */
         WHITE,
         /**
-         * Represents magical characters that change around randomly
+         * Represents magical chars that change around randomly
          */
         MAGIC,
         /**

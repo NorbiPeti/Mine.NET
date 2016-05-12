@@ -105,7 +105,7 @@ public enum MushroomBlockTexture {
      */
     [Obsolete]
     public static MushroomBlockTexture getByData(byte data) {
-        return BY_DATA.get(data);
+        return BY_DATA[data];
     }
 
     /**
@@ -118,13 +118,13 @@ public enum MushroomBlockTexture {
      * @see BlockFace
      */
     public static MushroomBlockTexture getCapByFace(BlockFace face) {
-        return BY_BLOCKFACE.get(face);
+        return BY_BLOCKFACE[face];
     }
 
     static {
         for (MushroomBlockTexture type : values()) {
-            BY_DATA.put(type.data, type);
-            BY_BLOCKFACE.put(type.capFace, type);
+            BY_DATA.Add(type.data, type);
+            BY_BLOCKFACE.Add(type.capFace, type);
         }
     }
 }

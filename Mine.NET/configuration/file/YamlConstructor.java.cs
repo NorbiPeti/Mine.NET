@@ -13,7 +13,7 @@ import org.bukkit.configuration.serialization.ConfigurationSerialization;
 public class YamlConstructor : SafeConstructor {
 
     public YamlConstructor() {
-        this.yamlConstructors.put(Tag.MAP, new ConstructCustomObject());
+        this.yamlConstructors.Add(Tag.MAP, new ConstructCustomObject());
     }
 
     private class ConstructCustomObject : ConstructYamlMap {
@@ -28,7 +28,7 @@ public class YamlConstructor : SafeConstructor {
             if (raw.containsKey(ConfigurationSerialization.SERIALIZED_TYPE_KEY)) {
                 Dictionary<String, Object> typed = new LinkedHashMap<String, Object>(raw.size());
                 for (Map.Entry<?, ?> entry : raw.entrySet()) {
-                    typed.put(entry.getKey().toString(), entry.getValue());
+                    typed.Add(entry.getKey().toString(), entry.getValue());
                 }
 
                 try {

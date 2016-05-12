@@ -13,8 +13,8 @@ import org.yaml.snakeyaml.representer.Representer;
 public class YamlRepresenter : Representer {
 
     public YamlRepresenter() {
-        this.multiRepresenters.put(ConfigurationSection.class, new RepresentConfigurationSection());
-        this.multiRepresenters.put(ConfigurationSerializable.class, new RepresentConfigurationSerializable());
+        this.multiRepresenters.Add(ConfigurationSection.class, new RepresentConfigurationSection());
+        this.multiRepresenters.Add(ConfigurationSerializable.class, new RepresentConfigurationSerializable());
     }
 
     private class RepresentConfigurationSection : RepresentMap {
@@ -29,7 +29,7 @@ public class YamlRepresenter : Representer {
         public Node representData(Object data) {
             ConfigurationSerializable serializable = (ConfigurationSerializable) data;
             Dictionary<String, Object> values = new LinkedHashMap<String, Object>();
-            values.put(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(serializable.getClass()));
+            values.Add(ConfigurationSerialization.SERIALIZED_TYPE_KEY, ConfigurationSerialization.getAlias(serializable.getClass()));
             values.putAll(serializable.serialize());
 
             return base.representData(values);

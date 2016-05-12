@@ -146,8 +146,8 @@ public abstract class Enchantment {
      */
     public static readonly Enchantment MENDING = new EnchantmentWrapper(70);
 
-    private static readonly Dictionary<int, Enchantment> byId = new HashMap<int, Enchantment>();
-    private static readonly Dictionary<String, Enchantment> byName = new HashMap<String, Enchantment>();
+    private static readonly Dictionary<int, Enchantment> byId = new Dictionary<int, Enchantment>();
+    private static readonly Dictionary<String, Enchantment> byName = new Dictionary<String, Enchantment>();
     private static bool acceptingNew = true;
     private readonly int id;
 
@@ -250,8 +250,8 @@ public abstract class Enchantment {
             throw new IllegalStateException("No longer accepting new enchantments (can only be done by the server implementation)");
         }
 
-        byId.put(enchantment.id, enchantment);
-        byName.put(enchantment.getName(), enchantment);
+        byId.Add(enchantment.id, enchantment);
+        byName.Add(enchantment.getName(), enchantment);
     }
 
     /**
@@ -280,7 +280,7 @@ public abstract class Enchantment {
      */
     [Obsolete]
     public static Enchantment getById(int id) {
-        return byId.get(id);
+        return byId[id];
     }
 
     /**
@@ -290,7 +290,7 @@ public abstract class Enchantment {
      * @return Resulting Enchantment, or null if not found
      */
     public static Enchantment getByName(String name) {
-        return byName.get(name);
+        return byName[name];
     }
 
     /**

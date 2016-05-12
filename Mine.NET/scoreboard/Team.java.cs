@@ -33,7 +33,7 @@ public interface Team {
      *
      * @param displayName New display name
      * @throws ArgumentException if displayName is longer than 32
-     *     characters.
+     *     chars.
      * @throws IllegalStateException if this team has been unregistered
      */
     void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
@@ -52,7 +52,7 @@ public interface Team {
      * @param prefix New prefix
      * @throws ArgumentException if prefix is null
      * @throws ArgumentException if prefix is longer than 16
-     *     characters
+     *     chars
      * @throws IllegalStateException if this team has been unregistered
      */
     void setPrefix(String prefix) throws IllegalStateException, ArgumentException;
@@ -71,7 +71,7 @@ public interface Team {
      * @param suffix the new suffix for this team.
      * @throws ArgumentException if suffix is null
      * @throws ArgumentException if suffix is longer than 16
-     *     characters
+     *     chars
      * @throws IllegalStateException if this team has been unregistered
      */
     void setSuffix(String suffix) throws IllegalStateException, ArgumentException;
