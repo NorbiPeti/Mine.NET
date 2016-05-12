@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
      * Called when a lingering potion applies it's effects. Happens
      * once every 5 ticks
      */
-    public class AreaEffectCloudApplyEvent : EntityEvent
+    public class AreaEffectCloudApplyEvent : EntityEvent<AreaEffectCloud>
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly List<LivingEntity> affectedEntities;
@@ -15,11 +15,6 @@ namespace Mine.NET.Event.entity
         public AreaEffectCloudApplyEvent(AreaEffectCloud entity, List<LivingEntity> affectedEntities) : base(entity)
         {
             this.affectedEntities = affectedEntities;
-        }
-
-        public override AreaEffectCloud getEntity()
-        {
-            return (AreaEffectCloud)entity;
         }
 
         /**

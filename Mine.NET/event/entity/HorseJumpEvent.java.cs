@@ -1,3 +1,4 @@
+using System;
 using Mine.NET.entity;
 
 namespace Mine.NET.Event.entity
@@ -5,30 +6,13 @@ namespace Mine.NET.Event.entity
 /**
  * Called when a horse jumps.
  */
-public class HorseJumpEvent : EntityEvent, Cancellable {
+public class HorseJumpEvent : EntityEvent<Horse> {
     private static readonly HandlerList handlers = new HandlerList();
-    private bool cancelled;
     private float power;
 
-    public HorseJumpEvent(Horse horse, float power) {
-        base(horse);
+    public HorseJumpEvent(Horse horse, float power) : base(horse)
+        {
         this.power = power;
-    }
-
-    public bool isCancelled() {
-        return cancelled;
-    }
-
-    /**
-     * [Obsolete] horse jumping was moved client side.
-     */
-    [Obsolete]
-    public void setCancelled(bool cancel) {
-        cancelled = cancel;
-    }
-
-    public override Horse getEntity() {
-        return (Horse) entity;
     }
 
     /**
@@ -52,24 +36,6 @@ public class HorseJumpEvent : EntityEvent, Cancellable {
         return power;
     }
 
-    /**
-     * Sets the power of the jump.
-     * <p>
-     * Jump power can be set to a value above 1.0 which will increase the
-     * strength of this jump above the horse's actual jump strength.
-     * <p>
-     * Setting the jump power to 0 will result in the jump animation still
-     * playing, but the horse not leaving the ground. Only canceling this
-     * event will result in no jump animation at all.
-     *
-     * @param power power of the jump
-     * [Obsolete] horse jumping was moved client side.
-     */
-    [Obsolete]
-    public void setPower(float power) {
-        this.power = power;
-    }
-
     public override HandlerList getHandlers() {
         return handlers;
     }
@@ -77,5 +43,5 @@ public class HorseJumpEvent : EntityEvent, Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
-}
+    }
 }

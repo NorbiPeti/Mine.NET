@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
 /**
  * Called when a human entity's food level changes
  */
-public class FoodLevelChangeEvent : EntityEvent, Cancellable {
+public class FoodLevelChangeEvent : EntityEvent<HumanEntity>, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private int level;
@@ -13,10 +13,6 @@ public class FoodLevelChangeEvent : EntityEvent, Cancellable {
     public FoodLevelChangeEvent(HumanEntity what, int level) : base(what)
         {
         this.level = level;
-    }
-
-    public override Entity getEntity() {
-        return entity;
     }
 
     /**

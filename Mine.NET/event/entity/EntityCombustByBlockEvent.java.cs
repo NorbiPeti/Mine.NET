@@ -6,7 +6,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a block causes an entity to combust.
      */
-    public class EntityCombustByBlockEvent : EntityCombustEvent
+    public class EntityCombustByBlockEvent<T> : EntityCombustEvent<T> where T : Entity
     {
         private readonly Block combuster;
 

@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
      * <p>
      * If a Creeper Power event is cancelled, the Creeper will not be powered.
      */
-    public class CreeperPowerEvent : EntityEvent, Cancellable
+    public class CreeperPowerEvent : EntityEvent<Creeper>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
@@ -33,11 +33,6 @@ namespace Mine.NET.Event.entity
         public void setCancelled(bool cancel)
         {
             canceled = cancel;
-        }
-
-        public override Creeper getEntity()
-        {
-            return (Creeper)entity;
         }
 
         /**

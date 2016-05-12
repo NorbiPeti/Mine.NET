@@ -6,7 +6,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity interacts with an object
      */
-    public class EntityInteractEvent : EntityEvent, Cancellable
+    public class EntityInteractEvent : EntityEvent<Entity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected Block block;

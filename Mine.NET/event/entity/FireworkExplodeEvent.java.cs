@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a firework explodes.
      */
-    public class FireworkExplodeEvent : EntityEvent, Cancellable {
+    public class FireworkExplodeEvent : EntityEvent<Firework>, Cancellable {
 
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
@@ -14,7 +14,7 @@ namespace Mine.NET.Event.entity
         {
         }
 
-        public override bool isCancelled() {
+        public bool isCancelled() {
             return cancel;
         }
 
@@ -25,7 +25,7 @@ namespace Mine.NET.Event.entity
          *
          * @param cancel whether to cancel or not.
          */
-        public override void setCancelled(bool cancel) {
+        public void setCancelled(bool cancel) {
             this.cancel = cancel;
         }
 

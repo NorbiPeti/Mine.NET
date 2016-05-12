@@ -57,7 +57,7 @@ namespace Mine.NET.Event.entity
             return handlers;
         }
 
-        public static HandlerList getHandlerList()
+        public static HandlerList getHandlerList() //TODO
         {
             return handlers;
         }

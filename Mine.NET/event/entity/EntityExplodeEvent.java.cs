@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity explodes
      */
-    public class EntityExplodeEvent : EntityEvent, Cancellable
+    public class EntityExplodeEvent : EntityEvent<Explosive>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;

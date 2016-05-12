@@ -8,23 +8,9 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity is damaged by a block
      */
-    public class EntityDamageByBlockEvent : EntityDamageEvent
+    public class EntityDamageByBlockEvent<T> : EntityDamageEvent<T> where T : Entity
     {
         private readonly Block damager;
-
-        [Obsolete]
-        public EntityDamageByBlockEvent(Block damager, Entity damagee, DamageCause cause, int damage) :
-            this(damager, damagee, cause, (double)damage)
-        {
-
-        }
-
-        [Obsolete]
-        public EntityDamageByBlockEvent(Block damager, Entity damagee, DamageCause cause, double damage) :
-            base(damagee, cause, damage)
-        {
-            this.damager = damager;
-        }
 
         public EntityDamageByBlockEvent(Block damager, Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions) :
             base(damagee, cause, modifiers, modifierFunctions)

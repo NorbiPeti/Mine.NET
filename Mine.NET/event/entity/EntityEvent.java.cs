@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Represents an Entity-related event
      */
-    public abstract class EntityEvent : Event
+    public abstract class EntityEvent<T> : Event where T : Entity
     {
         protected Entity entity;
 
@@ -19,9 +19,9 @@ namespace Mine.NET.Event.entity
          *
          * @return Entity who is involved in this event
          */
-        public virtual Entity getEntity()
+        public T getEntity()
         {
-            return entity;
+            return (T)entity;
         }
 
         /**

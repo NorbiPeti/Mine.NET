@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
     /**
      * Thrown whenever a LivingEntity dies
      */
-    public class EntityDeathEvent : EntityEvent
+    public class EntityDeathEvent : EntityEvent<LivingEntity>
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly List<ItemStack> drops;
@@ -23,11 +23,6 @@ namespace Mine.NET.Event.entity
         {
             this.drops = drops;
             this.dropExp = droppedExp;
-        }
-
-        public override LivingEntity getEntity()
-        {
-            return (LivingEntity)entity;
         }
 
         /**

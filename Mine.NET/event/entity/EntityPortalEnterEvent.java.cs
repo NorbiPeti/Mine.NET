@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity comes into contact with a portal
      */
-    public class EntityPortalEnterEvent : EntityEvent
+    public class EntityPortalEnterEvent : EntityEvent<Entity>
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly Location location;

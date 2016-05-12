@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity has made a decision to explode.
      */
-    public class ExplosionPrimeEvent : EntityEvent, Cancellable
+    public class ExplosionPrimeEvent : EntityEvent<Explosive>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;

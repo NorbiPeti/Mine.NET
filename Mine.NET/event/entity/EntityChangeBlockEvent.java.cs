@@ -7,12 +7,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called when any Entity, excluding players, changes a block.
      */
-    public class EntityChangeBlockEvent : EntityEvent, Cancellable
+    public class EntityChangeBlockEvent<T> : EntityEvent<T>, Cancellable where T : Entity
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly Block block;
         private bool cancel;
-        private readonly Material to;
+        private readonly Materials to;
         private readonly byte data;
 
         /**
@@ -24,7 +24,7 @@ namespace Mine.NET.Event.entity
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public EntityChangeBlockEvent(Entity what, Block block, Material to, byte data) : base(what)
+        public EntityChangeBlockEvent(Entity what, Block block, Materials to, byte data) : base(what)
         {
             this.block = block;
             this.cancel = false;
@@ -57,7 +57,7 @@ namespace Mine.NET.Event.entity
          *
          * @return the material that the block is changing into
          */
-        public Material getTo()
+        public Materials getTo()
         {
             return to;
         }

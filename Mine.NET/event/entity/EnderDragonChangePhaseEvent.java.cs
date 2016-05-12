@@ -6,7 +6,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an EnderDragon switches controller phase.
      */
-    public class EnderDragonChangePhaseEvent : EntityEvent, Cancellable {
+    public class EnderDragonChangePhaseEvent : EntityEvent<EnderDragon>, Cancellable {
 
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
@@ -17,10 +17,6 @@ namespace Mine.NET.Event.entity
         {    
             this.currentPhase = currentPhase;
             this.setNewPhase(newPhase);
-        }
-
-        public override EnderDragon getEntity() {
-            return (EnderDragon)entity;
         }
 
         /**
@@ -52,11 +48,11 @@ namespace Mine.NET.Event.entity
             this.newPhase = newPhase;
         }
 
-        public override bool isCancelled() {
+        public bool isCancelled() {
             return cancel;
         }
 
-        public override void setCancelled(bool cancel) {
+        public void setCancelled(bool cancel) {
             this.cancel = cancel;
         }
 
