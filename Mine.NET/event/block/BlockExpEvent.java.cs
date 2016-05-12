@@ -1,45 +1,49 @@
-namespace Mine.NET.event.block;
+using Mine.NET.block;
 
-import org.bukkit.block.Block;
-import org.bukkit.event.HandlerList;
-
-/**
- * An event that's called when a block yields experience.
- */
-public class BlockExpEvent : BlockEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private int exp;
-
-    public BlockExpEvent(Block block, int exp) {
-        base(block);
-
-        this.exp = exp;
-    }
-
+namespace Mine.NET.Event.block
+{
     /**
-     * Get the experience dropped by the block after the event has processed
-     *
-     * @return The experience to drop
+     * An event that's called when a block yields experience.
      */
-    public int getExpToDrop() {
-        return exp;
-    }
+    public class BlockExpEvent : BlockEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private int exp;
 
-    /**
-     * Set the amount of experience dropped by the block after the event has
-     * processed
-     *
-     * @param exp 1 or higher to drop experience, else nothing will drop
-     */
-    public void setExpToDrop(int exp) {
-        this.exp = exp;
-    }
+        public BlockExpEvent(Block block, int exp) : base(block)
+        {
+            this.exp = exp;
+        }
 
-    public HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Get the experience dropped by the block after the event has processed
+         *
+         * @return The experience to drop
+         */
+        public int getExpToDrop()
+        {
+            return exp;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Set the amount of experience dropped by the block after the event has
+         * processed
+         *
+         * @param exp 1 or higher to drop experience, else nothing will drop
+         */
+        public void setExpToDrop(int exp)
+        {
+            this.exp = exp;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

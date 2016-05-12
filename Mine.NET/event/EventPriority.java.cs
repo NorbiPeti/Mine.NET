@@ -1,4 +1,4 @@
-namespace Mine.NET.event;
+namespace Mine.NET.Event;
 
 /**
  * Represents an event's priority in execution

@@ -1,11 +1,5 @@
-namespace Mine.NET.event;
-
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.RegisteredListener;
-
-import java.util.*;
-import java.util.KeyValuePair;
-
+namespace Mine.NET.Event
+{
 /**
  * A list of event handlers, stored per-event. Based on lahwran's fevents.
  */
@@ -228,4 +222,5 @@ public class HandlerList {
             return (List<HandlerList>) allLists.clone();
         }
     }
+}
 }

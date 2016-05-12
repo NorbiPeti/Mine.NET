@@ -1,13 +1,4 @@
-namespace Mine.NET.event.block;
-
-import java.util.List;
-import java.util.Collections;
-import java.util.List;
-
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.block
 /**
  * Called when a piston :
  */

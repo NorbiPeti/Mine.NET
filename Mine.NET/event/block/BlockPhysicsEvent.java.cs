@@ -1,63 +1,50 @@
-namespace Mine.NET.event.block;
+using Mine.NET.block;
 
-import org.bukkit.block.Block;
-import org.bukkit.Material;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Thrown when a block physics check is called
- */
-public class BlockPhysicsEvent : BlockEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly int changed;
-    private bool cancel = false;
+namespace Mine.NET.Event.block
+{
 
     /**
-     *
-     * [Obsolete] Magic value
-     * @param block the block involved in this event
-     * @param changed the changed block's type id
+     * Thrown when a block physics check is called
      */
-    [Obsolete]
-    public BlockPhysicsEvent(Block block, readonly int changed) {
-        base(block);
-        this.changed = changed;
-    }
+    public class BlockPhysicsEvent : BlockEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Material changed;
+        private bool cancel = false;
 
-    /**
-     * Gets the type of block that changed, causing this event
-     *
-     * @return Changed block's type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public int getChangedTypeId() {
-        return changed;
-    }
+        public BlockPhysicsEvent(Block block, Material changed) : base(block)
+        {
+            this.changed = changed;
+        }
 
-    /**
-     * Gets the type of block that changed, causing this event
-     *
-     * @return Changed block's type
-     */
-    public Material getChangedType() {
-        return Material.getMaterial(changed);
-    }
+        /**
+         * Gets the type of block that changed, causing this event
+         *
+         * @return Changed block's type
+         */
+        public Material getChangedType()
+        {
+            return changed;
+        }
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

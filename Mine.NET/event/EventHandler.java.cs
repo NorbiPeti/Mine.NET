@@ -1,4 +1,4 @@
-namespace Mine.NET.event;
+namespace Mine.NET.Event;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

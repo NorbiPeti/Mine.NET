@@ -1,4 +1,4 @@
-namespace Mine.NET.event;
+namespace Mine.NET.Event;
 
 public class EventException : Exception {
     private static readonly long serialVersionUID = 3532808232324183999L;

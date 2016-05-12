@@ -1,4 +1,4 @@
-namespace Mine.NET.event;
+namespace Mine.NET.Event;
 
 import org.bukkit.plugin.PluginManager;
 
