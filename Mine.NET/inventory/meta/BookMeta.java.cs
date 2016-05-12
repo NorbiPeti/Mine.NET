@@ -1,4 +1,4 @@
-package org.bukkit.inventory.meta;
+namespace Mine.NET.inventory.meta;
 
 import java.util.List;
 

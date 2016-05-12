@@ -1,4 +1,4 @@
-package org.bukkit.material;
+namespace Mine.NET.material;
 
 import org.bukkit.GrassSpecies;
 import org.bukkit.Material;

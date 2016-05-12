@@ -1,91 +1,66 @@
-package org.bukkit.configuration.serialization;
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Color;
-import org.bukkit.FireworkEffect;
-import org.bukkit.Location;
-import org.bukkit.block.banner.Pattern;
-import org.bukkit.configuration.Configuration;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.util.BlockVector;
-import org.bukkit.util.Vector;
-
-/**
- * Utility class for storing and retrieving classes for {@link Configuration}.
- */
-public class ConfigurationSerialization {
+namespace Mine.NET.configuration.serialization
+{
+    /**
+     * Utility class for storing and retrieving classes for {@link Configuration}.
+     */
+    public class ConfigurationSerialization {
     public static readonly String SERIALIZED_TYPE_KEY = "==";
-    private sealed class<? : ConfigurationSerializable> clazz;
-    private static Dictionary<String, Class<? : ConfigurationSerializable>> aliases = new Dictionary<String, Class<? : ConfigurationSerializable>>();
+    private readonly Type clazz;
+    private static Dictionary<String, Type> aliases = new Dictionary<String, Class<? : ConfigurationSerializable>>();
 
-    static {
-        registerClass(Vector.class);
-        registerClass(BlockVector.class);
-        registerClass(ItemStack.class);
-        registerClass(Color.class);
-        registerClass(PotionEffect.class);
-        registerClass(FireworkEffect.class);
-        registerClass(Pattern.class);
-        registerClass(Location.class);
+    static ConfigurationSerialization() {
+        registerClass(typeof(Vector));
+        registerClass(typeof(BlockVector));
+        registerClass(typeof(ItemStack));
+        registerClass(typeof(Color));
+        registerClass(typeof(PotionEffect));
+        registerClass(typeof(FireworkEffect));
+        registerClass(typeof(Pattern));
+        registerClass(typeof(Location));
     }
 
-    protected ConfigurationSerialization(Class<? : ConfigurationSerializable> clazz) {
+    protected ConfigurationSerialization(Type clazz) {
+            if (!typeof(ConfigurationSerializable).IsAssignableFrom(clazz.GetType()))
+                throw new ArgumentException("Parameter has to be ConfigurationSerializable");
         this.clazz = clazz;
     }
 
-    protected Method getMethod(String name, bool isStatic) {
-        try {
-            Method method = clazz.getDeclaredMethod(name, Map.class);
+    protected MethodInfo getMethod(String name, bool isStatic) {
+            /*try {
+                Method method = clazz.getDeclaredMethod(name, Map.class);
 
-            if (!ConfigurationSerializable.class.isAssignableFrom(method.getReturnType())) {
-                return null;
-            }
-            if (Modifier.isStatic(method.getModifiers()) != isStatic) {
-                return null;
-            }
+                if (!ConfigurationSerializable.class.isAssignableFrom(method.getReturnType())) {
+                    return null;
+                }
+                if (Modifier.isStatic(method.getModifiers()) != isStatic) {
+                    return null;
+                }
 
-            return method;
-        } catch (NoSuchMethodException ex) {
-            return null;
-        } catch (SecurityException ex) {
-            return null;
-        }
+                return method;
+            } catch (NoSuchMethodException ex) {
+                return null;
+            } catch (SecurityException ex) {
+                return null;
+            }*/
+            throw new InvalidOperationException("I don't want to use reflection."); //TODO
     }
 
-    protected Constructor<? : ConfigurationSerializable> getConstructor() {
+    protected ConfigurationSerializable deserializeViaMethod<T>(MethodInfo method, Dictionary<String, T> args) {
         try {
-            return clazz.getConstructor(Map.class);
-        } catch (NoSuchMethodException ex) {
-            return null;
-        } catch (SecurityException ex) {
-            return null;
-        }
-    }
-
-    protected ConfigurationSerializable deserializeViaMethod(Method method, Dictionary<String, ?> args) {
-        try {
-            ConfigurationSerializable result = (ConfigurationSerializable) method.invoke(null, args);
+            ConfigurationSerializable result = (ConfigurationSerializable) method.Invoke(null, args);
 
             if (result == null) {
-                Logger.getLogger(ConfigurationSerialization.class.getName()).log(Level.SEVERE, "Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization: method returned null");
+                Logger.getLogger(typeof(ConfigurationSerialization).Name).Severe("Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization: method returned null");
             } else {
                 return result;
             }
-        } catch (Throwable ex) {
-            Logger.getLogger(ConfigurationSerialization.class.getName()).log(
-                    Level.SEVERE,
-                    "Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization",
-                    ex is InvocationTargetException ? ex.getCause() : ex);
+        } catch (Exception ex) {
+            Logger.getLogger(typeof(ConfigurationSerialization).Name).Severe(
+                    "Could not call method '" + method.ToString() + "' of " + clazz + " for deserialization");
         }
 
         return null;
@@ -94,7 +69,7 @@ public class ConfigurationSerialization {
     protected ConfigurationSerializable deserializeViaCtor(Constructor<? : ConfigurationSerializable> ctor, Dictionary<String, ?> args) {
         try {
             return ctor.newInstance(args);
-        } catch (Throwable ex) {
+        } catch (Exception ex) {
             Logger.getLogger(ConfigurationSerialization.class.getName()).log(
                     Level.SEVERE,
                     "Could not call constructor '" + ctor.ToString() + "' of " + clazz + " for deserialization",
@@ -282,4 +257,5 @@ public class ConfigurationSerialization {
 
         return clazz.getName();
     }
+}
 }

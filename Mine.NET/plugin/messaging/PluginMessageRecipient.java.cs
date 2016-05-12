@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 import java.util.Set;
 import org.bukkit.plugin.Plugin;

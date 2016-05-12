@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -353,7 +353,7 @@ public interface LivingEntity : Attributable, Entity, Damageable, ProjectileSour
      * @return the entity holding the leash
      * @throws IllegalStateException if not currently leashed
      */
-    public Entity getLeashHolder() throws IllegalStateException;
+    public Entity getLeashHolder();
 
     /**
      * Sets the leash on this entity to be held by the supplied entity.

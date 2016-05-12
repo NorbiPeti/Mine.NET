@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 /**
  * Represents the chosen main hand of a player

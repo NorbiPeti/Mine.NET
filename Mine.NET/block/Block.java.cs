@@ -1,7 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 
-namespace Mine.NET
+namespace Mine.NET.block
 {
     /**
      * Represents a block. This is a live object, and only one Block may exist for

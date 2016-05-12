@@ -1,4 +1,4 @@
-package org.bukkit.event.vehicle;
+namespace Mine.NET.event.vehicle;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Vehicle;

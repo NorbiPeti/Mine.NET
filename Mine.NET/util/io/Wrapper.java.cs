@@ -1,4 +1,4 @@
-package org.bukkit.util.io;
+namespace Mine.NET.util.io;
 
 import java.io.Serializable;
 import java.util.Map;

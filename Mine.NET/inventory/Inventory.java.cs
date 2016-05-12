@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -94,7 +94,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing items that didn't fit.
      * @throws ArgumentException if items or any element in it is null
      */
-    public HashMap<int, ItemStack> addItem(ItemStack... items) throws ArgumentException;
+    public HashMap<int, ItemStack> addItem(ItemStack... items);
 
     /**
      * Removes the given ItemStacks from the inventory.
@@ -115,7 +115,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing items that couldn't be removed.
      * @throws ArgumentException if items is null
      */
-    public HashMap<int, ItemStack> removeItem(ItemStack... items) throws ArgumentException;
+    public HashMap<int, ItemStack> removeItem(ItemStack... items);
 
     /**
      * Returns all ItemStacks from the inventory
@@ -133,7 +133,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @throws ArgumentException If the array has more items than the
      *     inventory.
      */
-    public void setContents(ItemStack[] items) throws ArgumentException;
+    public void setContents(ItemStack[] items);
 
     /**
      * Return the contents from the section of the inventory where items can
@@ -155,7 +155,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @throws ArgumentException If the array has more items than the
      * inventory.
      */
-    public void setStorageContents(ItemStack[] items) throws ArgumentException;
+    public void setStorageContents(ItemStack[] items);
 
     /**
      * Checks if the inventory contains any ItemStacks with the given
@@ -176,7 +176,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return true if an ItemStack is found with the given Material
      * @throws ArgumentException if material is null
      */
-    public bool contains(Material material) throws ArgumentException;
+    public bool contains(Material material);
 
     /**
      * Checks if the inventory contains any ItemStacks matching the given
@@ -214,7 +214,7 @@ public interface Inventory : Iterable<ItemStack> {
      *     found to add to the given amount
      * @throws ArgumentException if material is null
      */
-    public bool contains(Material material, int amount) throws ArgumentException;
+    public bool contains(Material material, int amount);
 
     /**
      * Checks if the inventory contains at least the minimum amount specified
@@ -269,7 +269,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing the slot index, ItemStack pairs
      * @throws ArgumentException if material is null
      */
-    public HashMap<int, ? : ItemStack> all(Material material) throws ArgumentException;
+    public HashMap<int, ? : ItemStack> all(Material material);
 
     /**
      * Finds all slots in the inventory containing any ItemStacks with the
@@ -304,7 +304,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return The slot index of the given Material or -1 if not found
      * @throws ArgumentException if material is null
      */
-    public int first(Material material) throws ArgumentException;
+    public int first(Material material);
 
     /**
      * Returns the first slot in the inventory containing an ItemStack with
@@ -338,7 +338,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @param material The material to remove
      * @throws ArgumentException if material is null
      */
-    public void remove(Material material) throws ArgumentException;
+    public void remove(Material material);
 
     /**
      * Removes all stacks in the inventory matching the given stack.

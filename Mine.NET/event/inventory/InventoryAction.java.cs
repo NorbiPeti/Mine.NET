@@ -1,4 +1,4 @@
-package org.bukkit.event.inventory;
+namespace Mine.NET.event.inventory;
 
 /**
  * An estimation of what the result will be.

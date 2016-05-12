@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 /**
  * A registered service provider.

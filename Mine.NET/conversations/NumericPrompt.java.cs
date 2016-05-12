@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 import org.apache.commons.lang.math.NumberUtils;
 

@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 /**
  * EulerAngle is used to represent 3 angles, one for each

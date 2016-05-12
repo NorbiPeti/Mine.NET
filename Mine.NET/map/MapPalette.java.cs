@@ -1,4 +1,4 @@
-package org.bukkit.map;
+namespace Mine.NET.map;
 
 import java.awt.Color;
 import java.awt.Graphics2D;

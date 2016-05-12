@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 /**
  * Locations for displaying objectives to the player

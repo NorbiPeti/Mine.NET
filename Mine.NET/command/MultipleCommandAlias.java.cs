@@ -1,6 +1,6 @@
 using System;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     /**
      * Represents a command that delegates to one or more other commands

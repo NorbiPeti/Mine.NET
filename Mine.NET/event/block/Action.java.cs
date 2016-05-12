@@ -1,4 +1,4 @@
-package org.bukkit.event.block;
+namespace Mine.NET.event.block;
 
 public enum Action {
 

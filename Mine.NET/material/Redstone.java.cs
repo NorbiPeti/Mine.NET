@@ -1,4 +1,4 @@
-package org.bukkit.material;
+namespace Mine.NET.material;
 
 /**
  * Indicated a Material that may carry or create a Redstone current

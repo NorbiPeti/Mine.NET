@@ -1,4 +1,4 @@
-package org.bukkit.plugin.java;
+namespace Mine.NET.plugin.java;
 
 import java.io.FileInfo;
 import java.io.FileOutputStream;

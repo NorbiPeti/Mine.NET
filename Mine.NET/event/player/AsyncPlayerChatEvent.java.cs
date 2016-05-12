@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import java.util.IllegalFormatException;
 import java.util.Set;
@@ -92,7 +92,7 @@ public class AsyncPlayerChatEvent : PlayerEvent : Cancellable {
      * @throws NullPointerException if format is null
      * @see String#format(String, Object...)
      */
-    public void setFormat(String format) throws IllegalFormatException, NullPointerException {
+    public void setFormat(String format) {
         // Oh for a better way to do this!
         try {
             String.format(format, player, message);

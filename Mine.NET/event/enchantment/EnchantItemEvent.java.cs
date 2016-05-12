@@ -1,4 +1,4 @@
-package org.bukkit.event.enchantment;
+namespace Mine.NET.event.enchantment;
 
 import java.util.HashMap;
 import java.util.Map;

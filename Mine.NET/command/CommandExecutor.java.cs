@@ -1,6 +1,6 @@
 using System;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     /**
      * Represents a class which contains a single method for executing commands

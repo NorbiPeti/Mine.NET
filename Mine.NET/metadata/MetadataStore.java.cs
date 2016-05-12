@@ -1,4 +1,4 @@
-package org.bukkit.metadata;
+namespace Mine.NET.metadata;
 
 import org.bukkit.plugin.Plugin;
 

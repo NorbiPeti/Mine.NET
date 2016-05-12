@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mine.NET
+namespace Mine.NET.command.defaults
 {
     public class PluginsCommand : BukkitCommand {
         public PluginsCommand(String name) : base(name)

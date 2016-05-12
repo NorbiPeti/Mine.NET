@@ -1,4 +1,4 @@
-package org.bukkit.map;
+namespace Mine.NET.map;
 
 /**
  * Represents a cursor on a map.

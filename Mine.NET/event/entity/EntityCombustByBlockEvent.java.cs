@@ -1,4 +1,4 @@
-package org.bukkit.event.entity;
+namespace Mine.NET.event.entity;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;

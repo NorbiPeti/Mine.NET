@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.server.ServiceRegisterEvent;

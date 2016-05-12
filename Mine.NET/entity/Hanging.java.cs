@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import org.bukkit.block.BlockFace;
 import org.bukkit.material.Attachable;

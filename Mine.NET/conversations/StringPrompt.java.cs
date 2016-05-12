@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * StringPrompt is the base class for any prompt that accepts an arbitrary

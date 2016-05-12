@@ -1,4 +1,4 @@
-package org.bukkit.scheduler;
+namespace Mine.NET.scheduler;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -14,7 +14,7 @@ public abstract class BukkitRunnable : Runnable {
      *
      * @throws IllegalStateException if task was not scheduled yet
      */
-    public synchronized void cancel() throws IllegalStateException {
+    public synchronized void cancel() {
         Bukkit.getScheduler().cancelTask(getTaskId());
     }
 
@@ -27,7 +27,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws IllegalStateException if this was already scheduled
      * @see BukkitScheduler#runTask(Plugin, Runnable)
      */
-    public synchronized BukkitTask runTask(Plugin plugin) throws ArgumentException, IllegalStateException {
+    public synchronized BukkitTask runTask(Plugin plugin) {
         checkState();
         return setupId(Bukkit.getScheduler().runTask(plugin, (Runnable) this));
     }
@@ -44,7 +44,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws IllegalStateException if this was already scheduled
      * @see BukkitScheduler#runTaskAsynchronously(Plugin, Runnable)
      */
-    public synchronized BukkitTask runTaskAsynchronously(Plugin plugin) throws ArgumentException, IllegalStateException  {
+    public synchronized BukkitTask runTaskAsynchronously(Plugin plugin)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskAsynchronously(plugin, (Runnable) this));
     }
@@ -59,7 +59,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws IllegalStateException if this was already scheduled
      * @see BukkitScheduler#runTaskLater(Plugin, Runnable, long)
      */
-    public synchronized BukkitTask runTaskLater(Plugin plugin, long delay) throws ArgumentException, IllegalStateException  {
+    public synchronized BukkitTask runTaskLater(Plugin plugin, long delay)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskLater(plugin, (Runnable) this, delay));
     }
@@ -78,7 +78,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws IllegalStateException if this was already scheduled
      * @see BukkitScheduler#runTaskLaterAsynchronously(Plugin, Runnable, long)
      */
-    public synchronized BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay) throws ArgumentException, IllegalStateException  {
+    public synchronized BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, (Runnable) this, delay));
     }
@@ -95,7 +95,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws IllegalStateException if this was already scheduled
      * @see BukkitScheduler#runTaskTimer(Plugin, Runnable, long, long)
      */
-    public synchronized BukkitTask runTaskTimer(Plugin plugin, long delay, long period) throws ArgumentException, IllegalStateException  {
+    public synchronized BukkitTask runTaskTimer(Plugin plugin, long delay, long period)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskTimer(plugin, (Runnable) this, delay, period));
     }
@@ -117,7 +117,7 @@ public abstract class BukkitRunnable : Runnable {
      * @see BukkitScheduler#runTaskTimerAsynchronously(Plugin, Runnable, long,
      *     long)
      */
-    public synchronized BukkitTask runTaskTimerAsynchronously(Plugin plugin, long delay, long period) throws ArgumentException, IllegalStateException  {
+    public synchronized BukkitTask runTaskTimerAsynchronously(Plugin plugin, long delay, long period)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, (Runnable) this, delay, period));
     }
@@ -128,7 +128,7 @@ public abstract class BukkitRunnable : Runnable {
      * @return the task id that this runnable was scheduled as
      * @throws IllegalStateException if task was not scheduled yet
      */
-    public synchronized int getTaskId() throws IllegalStateException {
+    public synchronized int getTaskId() {
         readonly int id = taskId;
         if (id == -1) {
             throw new IllegalStateException("Not scheduled yet");

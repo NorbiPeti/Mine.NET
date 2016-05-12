@@ -6,7 +6,7 @@ namespace Mine.NET
     /**
     * Represents a single firework effect.
 */
-    [Serializable]
+    [SerializableAs(]
     public sealed class FireworkEffect : ConfigurationSerializable
     {
 

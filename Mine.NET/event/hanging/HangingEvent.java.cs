@@ -1,4 +1,4 @@
-package org.bukkit.event.hanging;
+namespace Mine.NET.event.hanging;
 
 import org.bukkit.entity.Hanging;
 import org.bukkit.event.Event;

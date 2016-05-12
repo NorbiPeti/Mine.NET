@@ -1,4 +1,4 @@
-package org.bukkit.map;
+namespace Mine.NET.map;
 
 /**
  * Represents the built-in Minecraft font.

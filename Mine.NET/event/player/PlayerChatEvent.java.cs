@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import java.util.HashSet;
 import java.util.Set;

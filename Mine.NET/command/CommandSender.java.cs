@@ -1,6 +1,6 @@
 using System;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     public interface CommandSender : Permissible
     {

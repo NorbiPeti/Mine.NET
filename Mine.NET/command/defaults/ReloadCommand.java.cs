@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mine.NET
+namespace Mine.NET.command.defaults
 {
     public class ReloadCommand : BukkitCommand
     {

@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * A mechanical creature that may harm enemies.

@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 /**
  * Thrown if a Plugin Message is sent that is too large to be sent.

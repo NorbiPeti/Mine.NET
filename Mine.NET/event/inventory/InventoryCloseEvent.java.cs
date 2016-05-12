@@ -1,5 +1,5 @@
 
-package org.bukkit.event.inventory;
+namespace Mine.NET.event.inventory;
 
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.HandlerList;

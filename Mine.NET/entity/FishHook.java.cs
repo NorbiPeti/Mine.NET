@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * Represents a fishing hook.
@@ -24,5 +24,5 @@ public interface FishHook : Projectile {
      * @throws ArgumentException if the bite chance is not between 0
      *     and 1
      */
-    public void setBiteChance(double chance) throws ArgumentException;
+    public void setBiteChance(double chance);
 }

@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import java.io.InputStream;
 import java.io.Reader;
@@ -225,7 +225,7 @@ public sealed class PluginDescriptionFile {
     private PermissionDefault defaultPerm = PermissionDefault.OP;
     private HashSet<PluginAwareness> awareness = ImmutableSet.of();
 
-    public PluginDescriptionFile(InputStream stream) throws InvalidDescriptionException {
+    public PluginDescriptionFile(InputStream stream) {
         loadMap(asMap(YAML.get().load(stream)));
     }
 
@@ -236,7 +236,7 @@ public sealed class PluginDescriptionFile {
      * @throws InvalidDescriptionException If the PluginDescriptionFile is
      *     invalid
      */
-    public PluginDescriptionFile(Reader reader) throws InvalidDescriptionException {
+    public PluginDescriptionFile(Reader reader) {
         loadMap(asMap(YAML.get().load(reader)));
     }
 
@@ -883,7 +883,7 @@ public sealed class PluginDescriptionFile {
         YAML.get().dump(saveMap(), writer);
     }
 
-    private void loadMap(Dictionary<?, ?> map) throws InvalidDescriptionException {
+    private void loadMap(Dictionary<?, ?> map) {
         try {
             name = rawName = map["name"].ToString();
 
@@ -1033,7 +1033,7 @@ public sealed class PluginDescriptionFile {
         }
     }
 
-    private static List<String> makePluginNameList(Dictionary<?, ?> map, readonly String key) throws InvalidDescriptionException {
+    private static List<String> makePluginNameList(Dictionary<?, ?> map, readonly String key) {
         readonly Object value = map[key];
         if (value == null) {
             return new List<string>();
@@ -1095,7 +1095,7 @@ public sealed class PluginDescriptionFile {
         return map;
     }
 
-    private Dictionary<?,?> asMap(Object object) throws InvalidDescriptionException {
+    private Dictionary<?,?> asMap(Object object) {
         if (object is Map) {
             return (Dictionary<?,?>) object;
         }

@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 /**
  * Represents a trading inventory between a player and a villager.

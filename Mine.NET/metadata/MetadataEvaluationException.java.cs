@@ -1,4 +1,4 @@
-package org.bukkit.metadata;
+namespace Mine.NET.metadata;
 
 /**
  * A MetadataEvaluationException is thrown any time a {@link
@@ -7,7 +7,7 @@ package org.bukkit.metadata;
  */
 @SuppressWarnings("serial")
 public class MetadataEvaluationException : RuntimeException {
-    MetadataEvaluationException(Throwable cause) {
+    MetadataEvaluationException(Exception cause) {
         base(cause);
     }
 }

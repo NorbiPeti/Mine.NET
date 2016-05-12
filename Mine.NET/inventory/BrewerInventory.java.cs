@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import org.bukkit.Material;
 import org.bukkit.block.BrewingStand;

@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * Represents an instance of a lightning strike. May or may not do damage.

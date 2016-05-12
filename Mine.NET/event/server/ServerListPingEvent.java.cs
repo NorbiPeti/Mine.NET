@@ -1,4 +1,4 @@
-package org.bukkit.event.server;
+namespace Mine.NET.event.server;
 
 import java.net.InetAddress;
 import java.util.IEnumerator;
@@ -115,7 +115,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
      * @throws UnsupportedOperationException if the caller of this event does
      *     not support setting the server icon
      */
-    public void setServerIcon(CachedServerIcon icon) throws ArgumentException, UnsupportedOperationException {
+    public void setServerIcon(CachedServerIcon icon) {
         throw new UnsupportedOperationException();
     }
 
@@ -138,7 +138,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
      * @throws UnsupportedOperationException if the caller of this event does
      *     not support removing players
      */
-    public override IEnumerator<Player> iterator() throws UnsupportedOperationException {
+    public override IEnumerator<Player> iterator() {
         throw new UnsupportedOperationException();
     }
 }

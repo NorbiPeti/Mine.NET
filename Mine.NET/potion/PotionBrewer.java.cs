@@ -1,4 +1,4 @@
-package org.bukkit.potion;
+namespace Mine.NET.potion;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package org.bukkit.generator;
+namespace Mine.NET.generator;
 
 import java.util.List;
 import java.util.List;

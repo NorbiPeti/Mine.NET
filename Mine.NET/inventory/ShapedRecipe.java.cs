@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import java.util.HashMap;
 import java.util.Map;

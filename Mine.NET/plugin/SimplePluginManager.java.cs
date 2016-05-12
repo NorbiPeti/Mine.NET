@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import java.io.FileInfo;
 import java.lang.reflect.Constructor;
@@ -65,7 +65,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? : PluginLoader> loader) throws ArgumentException {
+    public void registerInterface(Class<? : PluginLoader> loader) {
         PluginLoader instance;
 
         if (PluginLoader.class.isAssignableFrom(loader)) {
@@ -310,7 +310,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public synchronized Plugin loadPlugin(FileInfo file) throws InvalidPluginException, UnknownDependencyException {
+    public synchronized Plugin loadPlugin(FileInfo file) {
         if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         checkUpdate(file);
@@ -402,7 +402,7 @@ public sealed class SimplePluginManager : PluginManager {
 
             try {
                 plugin.getPluginLoader().enablePlugin(plugin);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
@@ -421,32 +421,32 @@ public sealed class SimplePluginManager : PluginManager {
         if (plugin.isEnabled()) {
             try {
                 plugin.getPluginLoader().disablePlugin(plugin);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while disabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getScheduler().cancelTasks(plugin);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while cancelling tasks for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getServicesManager().unregisterAll(plugin);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering services for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 HandlerList.unregisterAll(plugin);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering events for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getMessenger().unregisterIncomingPluginChannel(plugin);
                 server.getMessenger().unregisterOutgoingPluginChannel(plugin);
-            } catch(Throwable ex) {
+            } catch(Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering plugin channels for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
         }
@@ -512,7 +512,7 @@ public sealed class SimplePluginManager : PluginManager {
                             ex.getMessage()
                             ));
                 }
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Could not pass event " + event.getEventName() + " to " + registration.getPlugin().getDescription().getFullName(), ex);
             }
         }

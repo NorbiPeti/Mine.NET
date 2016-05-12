@@ -1,4 +1,4 @@
-package org.bukkit.metadata;
+namespace Mine.NET.metadata;
 
 /**
  * A MetadataConversionException is thrown any time a {@link

@@ -1,4 +1,4 @@
-package org.bukkit.event.entity;
+namespace Mine.NET.event.entity;
 
 import java.util.List;
 import org.bukkit.PortalType;

@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 import org.bukkit.OfflinePlayer;
 
@@ -40,7 +40,7 @@ public interface Score {
      * @throws IllegalStateException if the associated objective has been
      *     unregistered
      */
-    int getScore() throws IllegalStateException;
+    int getScore();
 
     /**
      * Sets the current score.
@@ -49,7 +49,7 @@ public interface Score {
      * @throws IllegalStateException if the associated objective has been
      *     unregistered
      */
-    void setScore(int score) throws IllegalStateException;
+    void setScore(int score);
 
     /**
      * Gets the scoreboard for the associated objective.

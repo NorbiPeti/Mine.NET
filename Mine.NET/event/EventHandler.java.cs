@@ -1,4 +1,4 @@
-package org.bukkit.event;
+namespace Mine.NET.event;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

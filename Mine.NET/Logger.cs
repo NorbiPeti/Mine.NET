@@ -8,6 +8,11 @@ namespace Mine.NET
 {
     public class Logger
     {
+        private string name;
+        public Logger(string name)
+        {
+            this.name = name;
+        }
         public void Severe(object p)
         {
             throw new NotImplementedException(); //TODO
@@ -16,6 +21,14 @@ namespace Mine.NET
         public void Warning(string v)
         {
             throw new NotImplementedException();
+        }
+
+        private static Dictionary<string, Logger> Loggers = new Dictionary<string, Logger>();
+        public static Logger getLogger(string name)
+        {
+            if (!Loggers.ContainsKey(name))
+                Loggers.Add(name, new Logger(name));
+                return Loggers[name];
         }
     }
 }

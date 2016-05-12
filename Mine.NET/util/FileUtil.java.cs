@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 import java.nio.channels.FileChannel;
 import java.io.FileInfo;

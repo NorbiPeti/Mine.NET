@@ -1,4 +1,4 @@
-package org.bukkit.event;
+namespace Mine.NET.event;
 
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredListener;

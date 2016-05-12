@@ -1,15 +1,15 @@
-package org.bukkit.event;
+namespace Mine.NET.event;
 
 public class EventException : Exception {
     private static readonly long serialVersionUID = 3532808232324183999L;
-    private readonly Throwable cause;
+    private readonly Exception cause;
 
     /**
      * Constructs a new EventException based on the given Exception
      *
      * @param throwable Exception that triggered this Exception
      */
-    public EventException(Throwable throwable) {
+    public EventException(Exception throwable) {
         cause = throwable;
     }
 
@@ -26,7 +26,7 @@ public class EventException : Exception {
      * @param cause The exception that caused this
      * @param message The message
      */
-    public EventException(Throwable cause, String message) {
+    public EventException(Exception cause, String message) {
         base(message);
         this.cause = cause;
     }
@@ -46,7 +46,7 @@ public class EventException : Exception {
      *
      * @return Inner exception, or null if one does not exist
      */
-    public override Throwable getCause() {
+    public override Exception getCause() {
         return cause;
     }
 }

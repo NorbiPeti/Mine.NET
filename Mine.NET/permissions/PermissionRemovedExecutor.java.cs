@@ -1,4 +1,4 @@
-package org.bukkit.permissions;
+namespace Mine.NET.permissions;
 
 /**
  * Represents a class which is to be notified when a {@link

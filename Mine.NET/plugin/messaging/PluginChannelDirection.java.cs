@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 /**
  * Represents the different directions a plugin channel may go.

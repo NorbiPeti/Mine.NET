@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.BooleanUtils;

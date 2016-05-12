@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import java.util.List;
 import org.bukkit.inventory.Inventory;
@@ -48,7 +48,7 @@ public interface Villager : Ageable, NPC, InventoryHolder {
      * @return the recipe
      * @throws IndexOutOfBoundsException
      */
-    MerchantRecipe getRecipe(int i) throws IndexOutOfBoundsException;
+    MerchantRecipe getRecipe(int i);
 
     /**
      * Set the recipe at a certain index of this villager's trade list.
@@ -57,7 +57,7 @@ public interface Villager : Ageable, NPC, InventoryHolder {
      * @param recipe the recipe
      * @throws IndexOutOfBoundsException
      */
-    void setRecipe(int i, MerchantRecipe recipe) throws IndexOutOfBoundsException;
+    void setRecipe(int i, MerchantRecipe recipe);
 
     /**
      * Get the number of trades this villager currently has available.

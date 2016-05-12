@@ -1,4 +1,4 @@
-package org.bukkit.event.entity;
+namespace Mine.NET.event.entity;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.entity.EnderDragon;

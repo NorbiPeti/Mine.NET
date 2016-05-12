@@ -1,4 +1,4 @@
-package org.bukkit.event.inventory;
+namespace Mine.NET.event.inventory;
 
 /**
  * Represents the effect of a drag that will be applied to an Inventory in an

@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * MessagePrompt is the base class for any prompt that only displays a message

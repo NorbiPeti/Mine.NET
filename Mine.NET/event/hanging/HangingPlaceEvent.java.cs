@@ -1,4 +1,4 @@
-package org.bukkit.event.hanging;
+namespace Mine.NET.event.hanging;
 
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;

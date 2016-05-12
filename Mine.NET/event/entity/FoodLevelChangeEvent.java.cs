@@ -1,4 +1,4 @@
-package org.bukkit.event.entity;
+namespace Mine.NET.event.entity;
 
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.Cancellable;

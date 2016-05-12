@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import org.bukkit.Rotation;
 import org.bukkit.inventory.ItemStack;
@@ -35,5 +35,5 @@ public interface ItemFrame : Hanging {
      * @param rotation the new rotation
      * @throws ArgumentException if rotation is null
      */
-    public void setRotation(Rotation rotation) throws ArgumentException;
+    public void setRotation(Rotation rotation);
 }

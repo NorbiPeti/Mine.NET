@@ -1,4 +1,4 @@
-package org.bukkit.util.io;
+namespace Mine.NET.util.io;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,7 +24,7 @@ public class BukkitObjectInputStream : ObjectInputStream {
      * @throws IOException if an I/O error occurs while reading stream heade
      * @see ObjectInputStream#ObjectInputStream()
      */
-    protected BukkitObjectInputStream() throws IOException, SecurityException {
+    protected BukkitObjectInputStream() {
         base();
         base.enableResolveObject(true);
     }
@@ -36,17 +36,17 @@ public class BukkitObjectInputStream : ObjectInputStream {
      * @throws IOException if an I/O error occurs while reading stream header
      * @see ObjectInputStream#ObjectInputStream(InputStream)
      */
-    public BukkitObjectInputStream(InputStream in) throws IOException {
+    public BukkitObjectInputStream(InputStream in) {
         base(in);
         base.enableResolveObject(true);
     }
 
     @Override
-    protected Object resolveObject(Object obj) throws IOException {
+    protected Object resolveObject(Object obj) {
         if (obj is Wrapper) {
             try {
                 (obj = ConfigurationSerialization.deserializeObject(((Wrapper<?>) obj).map)).getClass(); // NPE
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 throw newIOException("Failed to deserialize object", ex);
             }
         }
@@ -54,7 +54,7 @@ public class BukkitObjectInputStream : ObjectInputStream {
         return base.resolveObject(obj);
     }
 
-    private static IOException newIOException(String string, Throwable cause) {
+    private static IOException newIOException(String string, Exception cause) {
         IOException exception = new IOException(string);
         exception.initCause(cause);
         return exception;

@@ -1,4 +1,4 @@
-package org.bukkit.inventory.meta;
+namespace Mine.NET.inventory.meta;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ public interface FireworkMeta : ItemMeta {
      * @param effect The firework effect to add
      * @throws ArgumentException If effect is null
      */
-    void addEffect(FireworkEffect effect) throws ArgumentException;
+    void addEffect(FireworkEffect effect);
 
     /**
      * Add several effects to this firework.
@@ -26,7 +26,7 @@ public interface FireworkMeta : ItemMeta {
      * @throws ArgumentException If any effect is null (may be thrown
      *     after changes have occurred)
      */
-    void addEffects(FireworkEffect...effects) throws ArgumentException;
+    void addEffects(FireworkEffect...effects);
 
     /**
      * Add several firework effects to this firework.
@@ -37,7 +37,7 @@ public interface FireworkMeta : ItemMeta {
      * @throws ArgumentException If any effect is null (may be thrown
      *     after changes have occurred)
      */
-    void addEffects(Iterable<FireworkEffect> effects) throws ArgumentException;
+    void addEffects(Iterable<FireworkEffect> effects);
 
     /**
      * Get the effects in this firework.
@@ -60,7 +60,7 @@ public interface FireworkMeta : ItemMeta {
      * @throws IndexOutOfBoundsException If index {@literal < 0 or index >} {@link
      *     #getEffectsSize()}
      */
-    void removeEffect(int index) throws IndexOutOfBoundsException;
+    void removeEffect(int index);
 
     /**
      * Remove all effects from this firework.
@@ -88,7 +88,7 @@ public interface FireworkMeta : ItemMeta {
      * @param power the power of the firework, from 0-128
      * @throws ArgumentException if {@literal height<0 or height>128}
      */
-    void setPower(int power) throws ArgumentException;
+    void setPower(int power);
 
     FireworkMeta clone();
 }

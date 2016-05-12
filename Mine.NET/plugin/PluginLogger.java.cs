@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import java.util.logging.Level;
 import java.util.logging.LogRecord;

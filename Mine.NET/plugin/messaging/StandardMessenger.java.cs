@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;

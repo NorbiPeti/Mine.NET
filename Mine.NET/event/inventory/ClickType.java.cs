@@ -1,4 +1,4 @@
-package org.bukkit.event.inventory;
+namespace Mine.NET.event.inventory;
 
 /**
  * What the client did to trigger this action (not the result).

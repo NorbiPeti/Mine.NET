@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 /**
  * Represents the order in which a plugin should be initialized and enabled

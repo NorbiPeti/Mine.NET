@@ -1,4 +1,4 @@
-package org.bukkit.event.block;
+namespace Mine.NET.event.block;
 
 import com.google.common.base.Preconditions;
 import org.bukkit.block.Block;

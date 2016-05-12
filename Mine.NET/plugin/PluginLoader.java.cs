@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import java.io.FileInfo;
 import java.util.Map;
@@ -25,7 +25,7 @@ public interface PluginLoader {
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException, UnknownDependencyException;
+    public Plugin loadPlugin(FileInfo file);
 
     /**
      * Loads a PluginDescriptionFile from the specified file
@@ -36,7 +36,7 @@ public interface PluginLoader {
      * @throws InvalidDescriptionException If the plugin description file
      *     could not be created
      */
-    public PluginDescriptionFile getPluginDescription(FileInfo file) throws InvalidDescriptionException;
+    public PluginDescriptionFile getPluginDescription(FileInfo file);
 
     /**
      * Returns a list of all filename filters expected by this PluginLoader

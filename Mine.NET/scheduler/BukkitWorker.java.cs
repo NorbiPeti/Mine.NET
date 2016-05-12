@@ -1,4 +1,4 @@
-package org.bukkit.scheduler;
+namespace Mine.NET.scheduler;
 
 import org.bukkit.plugin.Plugin;
 

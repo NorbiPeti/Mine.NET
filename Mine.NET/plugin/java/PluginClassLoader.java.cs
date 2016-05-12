@@ -1,4 +1,4 @@
-package org.bukkit.plugin.java;
+namespace Mine.NET.plugin.java;
 
 import java.io.FileInfo;
 import java.net.MalformedURLException;
@@ -25,7 +25,7 @@ sealed class PluginClassLoader : URLClassLoader {
     private JavaPlugin pluginInit;
     private IllegalStateException pluginState;
 
-    PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) throws InvalidPluginException, MalformedURLException {
+    PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         base(new URL[] {file.toURI().toURL()}, parent);
         if(loader==null) throw new ArgumentNullException("Loader cannot be null");
 
@@ -58,11 +58,11 @@ sealed class PluginClassLoader : URLClassLoader {
     }
 
     @Override
-    protected Class<?> findClass(String name) throws ClassNotFoundException {
+    protected Class<?> findClass(String name) {
         return findClass(name, true);
     }
 
-    Class<?> findClass(String name, bool checkGlobal) throws ClassNotFoundException {
+    Class<?> findClass(String name, bool checkGlobal) {
         if (name.StartsWith("org.bukkit.") || name.StartsWith("net.minecraft.")) {
             throw new ClassNotFoundException(name);
         }

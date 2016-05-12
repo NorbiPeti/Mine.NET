@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 /**
  * Thrown if a plugin attempts to register for a reserved channel (such as

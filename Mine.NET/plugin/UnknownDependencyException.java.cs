@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 /**
  * Thrown when attempting to load an invalid Plugin file
@@ -13,7 +13,7 @@ public class UnknownDependencyException : RuntimeException {
      *
      * @param throwable Exception that triggered this Exception
      */
-    public UnknownDependencyException(Throwable throwable) {
+    public UnknownDependencyException(Exception throwable) {
         base(throwable);
     }
 
@@ -33,7 +33,7 @@ public class UnknownDependencyException : RuntimeException {
      * @param message Brief message explaining the cause of the exception
      * @param throwable Exception that triggered this Exception
      */
-    public UnknownDependencyException(Throwable throwable, readonly String message) {
+    public UnknownDependencyException(Exception throwable, readonly String message) {
         base(message, throwable);
     }
 

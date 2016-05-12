@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 /**
  * A ItemFlag can hide some Attributes from ItemStacks

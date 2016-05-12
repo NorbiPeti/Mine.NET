@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 import org.bukkit.OfflinePlayer;
 
@@ -15,7 +15,7 @@ public interface Objective {
      * @return this objective'ss name
      * @throws IllegalStateException if this objective has been unregistered
      */
-    String getName() throws IllegalStateException;
+    String getName();
 
     /**
      * Gets the name displayed to players for this objective
@@ -23,7 +23,7 @@ public interface Objective {
      * @return this objective's display name
      * @throws IllegalStateException if this objective has been unregistered
      */
-    String getDisplayName() throws IllegalStateException;
+    String getDisplayName();
 
     /**
      * Sets the name displayed to players for this objective.
@@ -34,7 +34,7 @@ public interface Objective {
      * @throws ArgumentException if displayName is longer than 32
      *     chars.
      */
-    void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
+    void setDisplayName(String displayName);
 
     /**
      * Gets the criteria this objective tracks.
@@ -42,7 +42,7 @@ public interface Objective {
      * @return this objective's criteria
      * @throws IllegalStateException if this objective has been unregistered
      */
-    String getCriteria() throws IllegalStateException;
+    String getCriteria();
 
     /**
      * Gets if the objective's scores can be modified directly by a plugin.
@@ -51,7 +51,7 @@ public interface Objective {
      * @throws IllegalStateException if this objective has been unregistered
      * @see Criterias#HEALTH
      */
-    bool isModifiable() throws IllegalStateException;
+    bool isModifiable();
 
     /**
      * Gets the scoreboard to which this objective is attached.
@@ -66,7 +66,7 @@ public interface Objective {
      *
      * @throws IllegalStateException if this objective has been unregistered
      */
-    void unregister() throws IllegalStateException;
+    void unregister();
 
     /**
      * Sets this objective to display on the specified slot for the
@@ -75,7 +75,7 @@ public interface Objective {
      * @param slot display slot to change, or null to not display
      * @throws IllegalStateException if this objective has been unregistered
      */
-    void setDisplaySlot(DisplaySlot slot) throws IllegalStateException;
+    void setDisplaySlot(DisplaySlot slot);
 
     /**
      * Gets the display slot this objective is displayed at.
@@ -83,7 +83,7 @@ public interface Objective {
      * @return the display slot for this objective, or null if not displayed
      * @throws IllegalStateException if this objective has been unregistered
      */
-    DisplaySlot getDisplaySlot() throws IllegalStateException;
+    DisplaySlot getDisplaySlot();
 
     /**
      * Gets a player's Score for an Objective on this Scoreboard
@@ -96,7 +96,7 @@ public interface Objective {
      * @see #getScore(String)
      */
     [Obsolete]
-    Score getScore(OfflinePlayer player) throws ArgumentException, IllegalStateException;
+    Score getScore(OfflinePlayer player);
 
     /**
      * Gets an entry's Score for an Objective on this Scoreboard.
@@ -106,5 +106,5 @@ public interface Objective {
      * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this objective has been unregistered
      */
-    Score getScore(String entry) throws ArgumentException, IllegalStateException;
+    Score getScore(String entry);
 }

@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import com.google.common.base.Preconditions;
 import org.bukkit.Location;

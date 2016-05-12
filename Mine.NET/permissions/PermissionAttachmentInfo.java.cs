@@ -1,4 +1,4 @@
-package org.bukkit.permissions;
+namespace Mine.NET.permissions;
 
 /**
  * Holds information on a permission and which {@link PermissionAttachment}

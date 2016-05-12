@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 /**
  * Thrown when attempting to load an invalid PluginDescriptionFile
@@ -13,7 +13,7 @@ public class InvalidDescriptionException : Exception {
      * @param message Brief message explaining the cause of the exception
      * @param cause Exception that triggered this Exception
      */
-    public InvalidDescriptionException(Throwable cause, readonly String message) {
+    public InvalidDescriptionException(Exception cause, readonly String message) {
         base(message, cause);
     }
 
@@ -23,7 +23,7 @@ public class InvalidDescriptionException : Exception {
      *
      * @param cause Exception that triggered this Exception
      */
-    public InvalidDescriptionException(Throwable cause) {
+    public InvalidDescriptionException(Exception cause) {
         base("Invalid plugin.yml", cause);
     }
 

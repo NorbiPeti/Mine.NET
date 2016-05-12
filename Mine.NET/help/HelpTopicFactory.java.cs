@@ -1,4 +1,4 @@
-package org.bukkit.help;
+namespace Mine.NET.help;
 
 import org.bukkit.command.Command;
 

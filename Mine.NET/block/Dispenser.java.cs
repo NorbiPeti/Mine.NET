@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.block
 {
     /**
      * Represents a dispenser.

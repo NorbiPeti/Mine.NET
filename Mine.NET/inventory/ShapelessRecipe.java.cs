@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import java.util.List;
 import java.util.IEnumerator;

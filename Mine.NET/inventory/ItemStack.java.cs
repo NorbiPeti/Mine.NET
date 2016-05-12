@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import com.google.common.collect.ImmutableMap;
 import java.util.LinkedHashMap;
@@ -131,7 +131,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @throws ArgumentException if the specified stack is null or
      *     returns an item meta not created by the item factory
      */
-    public ItemStack(ItemStack stack) throws ArgumentException {
+    public ItemStack(ItemStack stack) {
         if(stack==null) throw new ArgumentNullException("Cannot copy null stack");
         this.type = stack.getTypeId();
         this.amount = stack.getAmount();

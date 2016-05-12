@@ -1,4 +1,4 @@
-package org.bukkit.enchantments;
+namespace Mine.NET.enchantments;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

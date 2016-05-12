@@ -1,4 +1,4 @@
-package org.bukkit.event.block;
+namespace Mine.NET.event.block;
 
 import java.util.List;
 import org.bukkit.Location;

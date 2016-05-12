@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 import java.lang.ref.WeakReference;
 

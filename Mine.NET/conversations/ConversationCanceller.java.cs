@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * A ConversationCanceller is a class that cancels an active {@link

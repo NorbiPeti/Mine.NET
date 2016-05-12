@@ -1,4 +1,4 @@
-package org.bukkit.material;
+namespace Mine.NET.material;
 
 import java.util.List;
 import java.util.List;

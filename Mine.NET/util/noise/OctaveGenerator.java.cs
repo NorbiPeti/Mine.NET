@@ -1,4 +1,4 @@
-package org.bukkit.util.noise;
+namespace Mine.NET.util.noise;
 
 /**
  * Creates noise using unbiased octaves

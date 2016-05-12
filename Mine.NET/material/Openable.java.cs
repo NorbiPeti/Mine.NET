@@ -1,4 +1,4 @@
-package org.bukkit.material;
+namespace Mine.NET.material;
 
 public interface Openable {
 

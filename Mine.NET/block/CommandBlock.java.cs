@@ -1,6 +1,6 @@
 using System;
 
-namespace Mine.NET
+namespace Mine.NET.block
 {
     public interface CommandBlock : BlockState
     {

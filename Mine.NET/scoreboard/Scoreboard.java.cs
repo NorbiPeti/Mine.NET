@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 import java.util.Set;
 
@@ -20,7 +20,7 @@ public interface Scoreboard {
      * @throws ArgumentException if an objective by that name already
      *     exists
      */
-    Objective registerNewObjective(String name, String criteria) throws ArgumentException;
+    Objective registerNewObjective(String name, String criteria);
 
     /**
      * Gets an Objective on this Scoreboard by name
@@ -29,7 +29,7 @@ public interface Scoreboard {
      * @return the Objective or null if it does not exist
      * @throws ArgumentException if name is null
      */
-    Objective getObjective(String name) throws ArgumentException;
+    Objective getObjective(String name);
 
     /**
      * Gets all Objectives of a Criteria on the Scoreboard
@@ -37,7 +37,7 @@ public interface Scoreboard {
      * @param criteria Criteria to search by
      * @return an immutable set of Objectives using the specified Criteria
      */
-    HashSet<Objective> getObjectivesByCriteria(String criteria) throws ArgumentException;
+    HashSet<Objective> getObjectivesByCriteria(String criteria);
 
     /**
      * Gets all Objectives on this Scoreboard
@@ -55,7 +55,7 @@ public interface Scoreboard {
      *     displayed in that DisplaySlot
      * @throws ArgumentException if slot is null
      */
-    Objective getObjective(DisplaySlot slot) throws ArgumentException;
+    Objective getObjective(DisplaySlot slot);
 
     /**
      * Gets all scores for a player on this Scoreboard
@@ -67,7 +67,7 @@ public interface Scoreboard {
      * @see #getScores(String)
      */
     [Obsolete]
-    HashSet<Score> getScores(OfflinePlayer player) throws ArgumentException;
+    HashSet<Score> getScores(OfflinePlayer player);
 
     /**
      * Gets all scores for an entry on this Scoreboard
@@ -76,7 +76,7 @@ public interface Scoreboard {
      * @return immutable set of all scores tracked for the entry
      * @throws ArgumentException if entry is null
      */
-    HashSet<Score> getScores(String entry) throws ArgumentException;
+    HashSet<Score> getScores(String entry);
 
     /**
      * Removes all scores for a player on this Scoreboard
@@ -87,7 +87,7 @@ public interface Scoreboard {
      * @see #resetScores(String)
      */
     [Obsolete]
-    void resetScores(OfflinePlayer player) throws ArgumentException;
+    void resetScores(OfflinePlayer player);
 
     /**
      * Removes all scores for an entry on this Scoreboard
@@ -95,7 +95,7 @@ public interface Scoreboard {
      * @param entry the entry to drop all current scores for
      * @throws ArgumentException if entry is null
      */
-    void resetScores(String entry) throws ArgumentException;
+    void resetScores(String entry);
 
     /**
      * Gets a player's Team on this Scoreboard
@@ -107,7 +107,7 @@ public interface Scoreboard {
      * @see #getEntryTeam(String)
      */
     [Obsolete]
-    Team getPlayerTeam(OfflinePlayer player) throws ArgumentException;
+    Team getPlayerTeam(OfflinePlayer player);
 
     /**
      * Gets a entries Team on this Scoreboard
@@ -116,7 +116,7 @@ public interface Scoreboard {
      * @return the entries Team or null if the entry is not on a team
      * @throws ArgumentException if entry is null
      */
-    Team getEntryTeam(String entry) throws ArgumentException;
+    Team getEntryTeam(String entry);
 
     /**
      * Gets a Team by name on this Scoreboard
@@ -125,7 +125,7 @@ public interface Scoreboard {
      * @return the matching Team or null if no matches
      * @throws ArgumentException if teamName is null
      */
-    Team getTeam(String teamName) throws ArgumentException;
+    Team getTeam(String teamName);
 
     /**
      * Gets all teams on this Scoreboard
@@ -142,7 +142,7 @@ public interface Scoreboard {
      * @throws ArgumentException if name is null
      * @throws ArgumentException if team by that name already exists
      */
-    Team registerNewTeam(String name) throws ArgumentException;
+    Team registerNewTeam(String name);
 
     /**
      * Gets all players tracked by this Scoreboard
@@ -167,5 +167,5 @@ public interface Scoreboard {
      * @param slot the slot to remove objectives
      * @throws ArgumentException if slot is null
      */
-    void clearSlot(DisplaySlot slot) throws ArgumentException;
+    void clearSlot(DisplaySlot slot);
 }

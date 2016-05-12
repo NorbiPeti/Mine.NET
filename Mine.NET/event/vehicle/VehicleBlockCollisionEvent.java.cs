@@ -1,4 +1,4 @@
-package org.bukkit.event.vehicle;
+namespace Mine.NET.event.vehicle;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Vehicle;

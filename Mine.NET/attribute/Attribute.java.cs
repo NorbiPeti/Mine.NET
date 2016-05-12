@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.attribute
 {
     /**
      * Types of attributes which may be present on an {@link Attributable}.

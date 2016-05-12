@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * Represents a single part of a {@link ComplexLivingEntity}

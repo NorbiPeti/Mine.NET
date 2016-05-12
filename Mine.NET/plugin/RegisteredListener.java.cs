@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import org.bukkit.event.*;
 
@@ -53,7 +53,7 @@ public class RegisteredListener {
      * @param event The event
      * @throws EventException If an event handler throws an exception.
      */
-    public void callEvent(Event event) throws EventException {
+    public void callEvent(Event event) {
         if (event is Cancellable){
             if (((Cancellable) event).isCancelled() && isIgnoringCancelled()){
                 return;

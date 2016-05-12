@@ -1,4 +1,4 @@
-package org.bukkit.potion;
+namespace Mine.NET.potion;
 
 public class PotionEffectTypeWrapper : PotionEffectType {
     protected PotionEffectTypeWrapper(int id) {

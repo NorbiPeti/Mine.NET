@@ -1,4 +1,4 @@
-package org.bukkit.potion;
+namespace Mine.NET.potion;
 
 /**
  * This enum reflects and matches each potion state that can be obtained from

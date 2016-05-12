@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 import java.util.Set;
 
@@ -18,7 +18,7 @@ public interface Team {
      * @return Objective name
      * @throws IllegalStateException if this team has been unregistered
      */
-    String getName() throws IllegalStateException;
+    String getName();
 
     /**
      * Gets the name displayed to entries for this team
@@ -26,7 +26,7 @@ public interface Team {
      * @return Team display name
      * @throws IllegalStateException if this team has been unregistered
      */
-    String getDisplayName() throws IllegalStateException;
+    String getDisplayName();
 
     /**
      * Sets the name displayed to entries for this team
@@ -36,7 +36,7 @@ public interface Team {
      *     chars.
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setDisplayName(String displayName) throws IllegalStateException, ArgumentException;
+    void setDisplayName(String displayName);
 
     /**
      * Gets the prefix prepended to the display of entries on this team.
@@ -44,7 +44,7 @@ public interface Team {
      * @return Team prefix
      * @throws IllegalStateException if this team has been unregistered
      */
-    String getPrefix() throws IllegalStateException;
+    String getPrefix();
 
     /**
      * Sets the prefix prepended to the display of entries on this team.
@@ -55,7 +55,7 @@ public interface Team {
      *     chars
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setPrefix(String prefix) throws IllegalStateException, ArgumentException;
+    void setPrefix(String prefix);
 
     /**
      * Gets the suffix appended to the display of entries on this team.
@@ -63,7 +63,7 @@ public interface Team {
      * @return the team's current suffix
      * @throws IllegalStateException if this team has been unregistered
      */
-    String getSuffix() throws IllegalStateException;
+    String getSuffix();
 
     /**
      * Sets the suffix appended to the display of entries on this team.
@@ -74,7 +74,7 @@ public interface Team {
      *     chars
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setSuffix(String suffix) throws IllegalStateException, ArgumentException;
+    void setSuffix(String suffix);
 
     /**
      * Gets the team friendly fire state
@@ -82,7 +82,7 @@ public interface Team {
      * @return true if friendly fire is enabled
      * @throws IllegalStateException if this team has been unregistered
      */
-    bool allowFriendlyFire() throws IllegalStateException;
+    bool allowFriendlyFire();
 
     /**
      * Sets the team friendly fire state
@@ -90,7 +90,7 @@ public interface Team {
      * @param enabled true if friendly fire is to be allowed
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setAllowFriendlyFire(bool enabled) throws IllegalStateException;
+    void setAllowFriendlyFire(bool enabled);
 
     /**
      * Gets the team's ability to see {@link PotionEffectType#INVISIBILITY
@@ -99,7 +99,7 @@ public interface Team {
      * @return true if team members can see invisible members
      * @throws IllegalStateException if this team has been unregistered
      */
-    bool canSeeFriendlyInvisibles() throws IllegalStateException;
+    bool canSeeFriendlyInvisibles();
 
     /**
      * Sets the team's ability to see {@link PotionEffectType#INVISIBILITY
@@ -108,7 +108,7 @@ public interface Team {
      * @param enabled true if invisible teammates are to be visible
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setCanSeeFriendlyInvisibles(bool enabled) throws IllegalStateException;
+    void setCanSeeFriendlyInvisibles(bool enabled);
 
     /**
      * Gets the team's ability to see name tags
@@ -118,7 +118,7 @@ public interface Team {
      * [Obsolete] see {@link #getOption(org.bukkit.scoreboard.Team.Option)}
      */
     [Obsolete]
-    NameTagVisibility getNameTagVisibility() throws ArgumentException;
+    NameTagVisibility getNameTagVisibility();
 
     /**
      * Set's the team's ability to see name tags
@@ -129,7 +129,7 @@ public interface Team {
      * {@link #setOption(org.bukkit.scoreboard.Team.Option, org.bukkit.scoreboard.Team.OptionStatus)}
      */
     [Obsolete]
-    void setNameTagVisibility(NameTagVisibility visibility) throws ArgumentException;
+    void setNameTagVisibility(NameTagVisibility visibility);
 
     /**
      * Gets the Set of players on the team
@@ -140,7 +140,7 @@ public interface Team {
      * @see #getEntries()
      */
     [Obsolete]
-    HashSet<OfflinePlayer> getPlayers() throws IllegalStateException;
+    HashSet<OfflinePlayer> getPlayers();
 
     /**
      * Gets the Set of entries on the team
@@ -148,7 +148,7 @@ public interface Team {
      * @return entries on the team
      * @throws IllegalStateException if this entries has been unregistered\
      */
-    HashSet<String> getEntries() throws IllegalStateException;
+    HashSet<String> getEntries();
 
     /**
      * Gets the size of the team
@@ -156,7 +156,7 @@ public interface Team {
      * @return number of entries on the team
      * @throws IllegalStateException if this team has been unregistered
      */
-    int getSize() throws IllegalStateException;
+    int getSize();
 
     /**
      * Gets the Scoreboard to which this team is attached
@@ -178,7 +178,7 @@ public interface Team {
      * @see #addEntry(String)
      */
     [Obsolete]
-    void addPlayer(OfflinePlayer player) throws IllegalStateException, ArgumentException;
+    void addPlayer(OfflinePlayer player);
 
     /**
      * This puts the specified entry onto this team for the scoreboard.
@@ -189,7 +189,7 @@ public interface Team {
      * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    void addEntry(String entry) throws IllegalStateException, ArgumentException;
+    void addEntry(String entry);
 
     /**
      * Removes the player from this team.
@@ -202,7 +202,7 @@ public interface Team {
      * @see #removeEntry(String)
      */
     [Obsolete]
-    bool removePlayer(OfflinePlayer player) throws IllegalStateException, ArgumentException;
+    bool removePlayer(OfflinePlayer player);
 
     /**
      * Removes the entry from this team.
@@ -212,14 +212,14 @@ public interface Team {
      * @throws IllegalStateException if this team has been unregistered
      * @return if the entry was a part of this team
      */
-    bool removeEntry(String entry) throws IllegalStateException, ArgumentException;
+    bool removeEntry(String entry);
 
     /**
      * Unregisters this team from the Scoreboard
      *
      * @throws IllegalStateException if this team has been unregistered
      */
-    void unregister() throws IllegalStateException;
+    void unregister();
 
     /**
      * Checks to see if the specified player is a member of this team.
@@ -232,7 +232,7 @@ public interface Team {
      * @see #hasEntry(String)
      */
     [Obsolete]
-    bool hasPlayer(OfflinePlayer player) throws ArgumentException, IllegalStateException;
+    bool hasPlayer(OfflinePlayer player);
     /**
      * Checks to see if the specified entry is a member of this team.
      *
@@ -241,7 +241,7 @@ public interface Team {
      * @throws ArgumentException if entry is null
      * @throws IllegalStateException if this team has been unregistered
      */
-    bool hasEntry(String entry) throws ArgumentException, IllegalStateException;
+    bool hasEntry(String entry);
 
     /**
      * Get an option for this team
@@ -250,7 +250,7 @@ public interface Team {
      * @return the option status
      * @throws IllegalStateException if this team has been unregistered
      */
-    OptionStatus getOption(Option option) throws IllegalStateException;
+    OptionStatus getOption(Option option);
 
     /**
      * Set an option for this team
@@ -259,7 +259,7 @@ public interface Team {
      * @param status the new option status
      * @throws IllegalStateException if this team has been unregistered
      */
-    void setOption(Option option, OptionStatus status) throws IllegalStateException;
+    void setOption(Option option, OptionStatus status);
 
     /**
      * Represents an option which may be applied to this team.

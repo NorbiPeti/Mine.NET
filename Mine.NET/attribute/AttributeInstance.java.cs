@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace Mine.NET
+namespace Mine.NET.attribute
 {
     /**
      * Represents a mutable instance of an attribute and its associated modifiers

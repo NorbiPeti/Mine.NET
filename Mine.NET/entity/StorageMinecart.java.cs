@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * [Obsolete] This class has been moved into a sub package; {@link

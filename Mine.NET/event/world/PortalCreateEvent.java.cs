@@ -1,4 +1,4 @@
-package org.bukkit.event.world;
+namespace Mine.NET.event.world;
 
 import org.bukkit.block.Block;
 import org.bukkit.World;

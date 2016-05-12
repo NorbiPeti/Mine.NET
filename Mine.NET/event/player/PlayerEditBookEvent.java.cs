@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
@@ -79,7 +79,7 @@ public class PlayerEditBookEvent : PlayerEvent : Cancellable {
      * @param newBookMeta new book meta
      * @throws ArgumentException if the new book meta is null
      */
-    public void setNewBookMeta(BookMeta newBookMeta) throws ArgumentException {
+    public void setNewBookMeta(BookMeta newBookMeta) {
         if(newBookMeta==null) throw new ArgumentNullException("New book meta must not be null");
         Bukkit.getItemFactory().equals(newBookMeta, null);
         this.newBookMeta = newBookMeta.clone();

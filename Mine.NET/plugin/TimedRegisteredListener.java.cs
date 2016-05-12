@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import org.bukkit.event.Event;
 import org.bukkit.event.EventException;
@@ -18,7 +18,7 @@ public class TimedRegisteredListener : RegisteredListener {
         base(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
     }
 
-    public override void callEvent(Event event) throws EventException {
+    public override void callEvent(Event event) {
         if (event.isAsynchronous()) {
             base.callEvent(event);
             return;

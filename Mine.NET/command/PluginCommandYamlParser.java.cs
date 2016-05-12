@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     public class PluginCommandYamlParser {
 

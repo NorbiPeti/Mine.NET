@@ -1,4 +1,4 @@
-package org.bukkit.event.inventory;
+namespace Mine.NET.event.inventory;
 
 import org.bukkit.entity.Item;
 import org.bukkit.event.Cancellable;

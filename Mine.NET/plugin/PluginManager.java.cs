@@ -1,4 +1,4 @@
-package org.bukkit.plugin;
+namespace Mine.NET.plugin;
 
 import java.io.FileInfo;
 import java.util.Set;
@@ -21,7 +21,7 @@ public interface PluginManager {
      * @throws ArgumentException Thrown when the given Class is not a
      *     valid PluginLoader
      */
-    public void registerInterface(Class<? : PluginLoader> loader) throws ArgumentException;
+    public void registerInterface(Class<? : PluginLoader> loader);
 
     /**
      * Checks if the given plugin is loaded and returns it when applicable
@@ -72,7 +72,7 @@ public interface PluginManager {
      * @throws UnknownDependencyException If a required dependency could not
      *     be resolved
      */
-    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException, InvalidDescriptionException, UnknownDependencyException;
+    public Plugin loadPlugin(FileInfo file);
 
     /**
      * Loads the plugins contained within the specified directory
@@ -102,7 +102,7 @@ public interface PluginManager {
      *     <i>Note: This is best-effort basis, and should not be used to test
      *     synchronized state. This is an indicator for flawed flow logic.</i>
      */
-    public void callEvent(Event event) throws IllegalStateException;
+    public void callEvent(Event event);
 
     /**
      * Registers all the events in the given listener class

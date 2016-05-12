@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Item;

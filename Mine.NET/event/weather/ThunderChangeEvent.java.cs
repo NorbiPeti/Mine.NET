@@ -1,4 +1,4 @@
-package org.bukkit.event.weather;
+namespace Mine.NET.event.weather;
 
 import org.bukkit.World;
 import org.bukkit.event.Cancellable;

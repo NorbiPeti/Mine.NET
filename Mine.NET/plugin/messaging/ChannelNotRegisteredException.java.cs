@@ -1,4 +1,4 @@
-package org.bukkit.plugin.messaging;
+namespace Mine.NET.plugin.messaging;
 
 /**
  * Thrown if a Plugin attempts to send a message on an unregistered channel.

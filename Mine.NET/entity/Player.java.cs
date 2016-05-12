@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import java.net.InetSocketAddress;
 
@@ -321,7 +321,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if location is null
      * @throws ArgumentException if lines is non-null and has a length less than 4
      */
-    public void sendSignChange(Location loc, String[] lines) throws ArgumentException;
+    public void sendSignChange(Location loc, String[] lines);
 
     /**
      * Render a map and send it to the player in its entirety. This may be
@@ -378,7 +378,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void incrementStatistic(Statistic statistic) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic);
 
     /**
      * Decrements the given statistic for this player.
@@ -391,7 +391,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void decrementStatistic(Statistic statistic) throws ArgumentException;
+    public void decrementStatistic(Statistic statistic);
 
     /**
      * Increments the given statistic for this player.
@@ -403,7 +403,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void incrementStatistic(Statistic statistic, int amount) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic, int amount);
 
     /**
      * Decrements the given statistic for this player.
@@ -415,7 +415,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void decrementStatistic(Statistic statistic, int amount) throws ArgumentException;
+    public void decrementStatistic(Statistic statistic, int amount);
 
     /**
      * Sets the given statistic for this player.
@@ -427,7 +427,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public void setStatistic(Statistic statistic, int newValue) throws ArgumentException;
+    public void setStatistic(Statistic statistic, int newValue);
 
     /**
      * Gets the value of the given statistic for this player.
@@ -438,7 +438,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the statistic requires an
      *     additional parameter
      */
-    public int getStatistic(Statistic statistic) throws ArgumentException;
+    public int getStatistic(Statistic statistic);
 
     /**
      * Increments the given statistic for this player for the given material.
@@ -453,7 +453,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, Material material) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic, Material material);
 
     /**
      * Decrements the given statistic for this player for the given material.
@@ -468,7 +468,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, Material material) throws ArgumentException;
+    public void decrementStatistic(Statistic statistic, Material material);
 
     /**
      * Gets the value of the given statistic for this player.
@@ -481,7 +481,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public int getStatistic(Statistic statistic, Material material) throws ArgumentException;
+    public int getStatistic(Statistic statistic, Material material);
 
     /**
      * Increments the given statistic for this player for the given material.
@@ -495,7 +495,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, Material material, int amount) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic, Material material, int amount);
 
     /**
      * Decrements the given statistic for this player for the given material.
@@ -509,7 +509,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, Material material, int amount) throws ArgumentException;
+    public void decrementStatistic(Statistic statistic, Material material, int amount);
 
     /**
      * Sets the given statistic for this player for the given material.
@@ -523,7 +523,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void setStatistic(Statistic statistic, Material material, int newValue) throws ArgumentException;
+    public void setStatistic(Statistic statistic, Material material, int newValue);
 
     /**
      * Increments the given statistic for this player for the given entity.
@@ -538,7 +538,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic, EntityType entityType);
 
     /**
      * Decrements the given statistic for this player for the given entity.
@@ -553,7 +553,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void decrementStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
+    public void decrementStatistic(Statistic statistic, EntityType entityType);
 
     /**
      * Gets the value of the given statistic for this player.
@@ -566,7 +566,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public int getStatistic(Statistic statistic, EntityType entityType) throws ArgumentException;
+    public int getStatistic(Statistic statistic, EntityType entityType);
 
     /**
      * Increments the given statistic for this player for the given entity.
@@ -580,7 +580,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if the given parameter is not valid
      *     for the statistic
      */
-    public void incrementStatistic(Statistic statistic, EntityType entityType, int amount) throws ArgumentException;
+    public void incrementStatistic(Statistic statistic, EntityType entityType, int amount);
 
     /**
      * Decrements the given statistic for this player for the given entity.
@@ -889,7 +889,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException If new speed is less than -1 or
      *     greater than 1
      */
-    public void setFlySpeed(float value) throws ArgumentException;
+    public void setFlySpeed(float value);
 
     /**
      * Sets the speed at which a client will walk. Negative values indicate
@@ -899,7 +899,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException If new speed is less than -1 or
      *     greater than 1
      */
-    public void setWalkSpeed(float value) throws ArgumentException;
+    public void setWalkSpeed(float value);
 
     /**
      * Gets the current allowed speed that a client can fly.
@@ -992,7 +992,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws IllegalStateException if this is a player that is not logged
      *     yet or has logged out
      */
-    public void setScoreboard(Scoreboard scoreboard) throws ArgumentException, IllegalStateException;
+    public void setScoreboard(Scoreboard scoreboard);
 
     /**
      * Gets if the client is displayed a 'scaled' health, that is, health on a
@@ -1026,7 +1026,7 @@ public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer
      * @throws ArgumentException if scale is {@link Double#NaN}
      * @throws ArgumentException if scale is too high
      */
-    public void setHealthScale(double scale) throws ArgumentException;
+    public void setHealthScale(double scale);
 
     /**
      * Gets the number that health is scaled to for the client.

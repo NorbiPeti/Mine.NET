@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import com.google.common.base.Preconditions;
 import java.util.List;

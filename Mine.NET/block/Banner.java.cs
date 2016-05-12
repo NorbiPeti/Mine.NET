@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Mine.NET
+namespace Mine.NET.block
 {
     public interface Banner : BlockState
     {

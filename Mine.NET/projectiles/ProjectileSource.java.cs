@@ -1,4 +1,4 @@
-package org.bukkit.projectiles;
+namespace Mine.NET.projectiles;
 
 import org.bukkit.entity.Projectile;
 import org.bukkit.util.Vector;

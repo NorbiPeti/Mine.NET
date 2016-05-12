@@ -1,4 +1,4 @@
-package org.bukkit.enchantments;
+namespace Mine.NET.enchantments;
 
 import java.util.HashMap;
 import java.util.Map;

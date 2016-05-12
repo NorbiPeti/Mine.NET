@@ -1,4 +1,4 @@
-package org.bukkit.util.io;
+namespace Mine.NET.util.io;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -24,7 +24,7 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
      * @throws IOException if an I/O error occurs while writing stream header
      * @see ObjectOutputStream#ObjectOutputStream()
      */
-    protected BukkitObjectOutputStream() throws IOException, SecurityException {
+    protected BukkitObjectOutputStream() {
         base();
         base.enableReplaceObject(true);
     }
@@ -36,13 +36,13 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
      * @throws IOException if an I/O error occurs while writing stream header
      * @see ObjectOutputStream#ObjectOutputStream(OutputStream)
      */
-    public BukkitObjectOutputStream(OutputStream out) throws IOException {
+    public BukkitObjectOutputStream(OutputStream out) {
         base(out);
         base.enableReplaceObject(true);
     }
 
     @Override
-    protected Object replaceObject(Object obj) throws IOException {
+    protected Object replaceObject(Object obj) {
         if (!(obj is Serializable) && (obj is ConfigurationSerializable)) {
             obj = Wrapper.newWrapper((ConfigurationSerializable) obj);
         }

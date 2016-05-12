@@ -1,4 +1,4 @@
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 import org.bukkit.Art;
 import org.bukkit.event.hanging.HangingBreakEvent;

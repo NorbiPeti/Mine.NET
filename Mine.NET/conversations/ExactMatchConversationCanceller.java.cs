@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * An ExactMatchConversationCanceller cancels a conversation if the user

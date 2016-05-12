@@ -8,7 +8,7 @@ namespace Mine.NET
     * return a new color. The color names listed as fields are HTML4 standards,
     * but subject to change.
 */
-    [Serializable]
+    [SerializableAs(]
     public class Color : ConfigurationSerializable
     {
         private static readonly int BIT_MASK = 0xff;

@@ -1,5 +1,5 @@
 
-package org.bukkit.entity;
+namespace Mine.NET.entity;
 
 /**
  * A wild tameable cat

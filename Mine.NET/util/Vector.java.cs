@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

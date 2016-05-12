@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 /**
  * Criteria names which trigger an objective to be modified by actions in-game

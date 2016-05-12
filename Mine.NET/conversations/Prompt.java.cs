@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * A Prompt is the main constituent of a {@link Conversation}. Each prompt

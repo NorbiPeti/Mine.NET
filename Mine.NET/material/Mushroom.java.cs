@@ -1,4 +1,4 @@
-package org.bukkit.material;
+namespace Mine.NET.material;
 
 import java.util.EnumSet;
 import java.util.Set;

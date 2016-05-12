@@ -1,4 +1,4 @@
-package org.bukkit.inventory.meta;
+namespace Mine.NET.inventory.meta;
 
 import java.util.Map;
 
@@ -64,7 +64,7 @@ public interface EnchantmentStorageMeta : ItemMeta {
      *     otherwise
      * @throws ArgumentException if enchantment is null
      */
-    bool removeStoredEnchant(Enchantment ench) throws ArgumentException;
+    bool removeStoredEnchant(Enchantment ench);
 
     /**
      * Checks if the specified enchantment conflicts with any enchantments in

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     /**
      * Represents a Command, which executes various tasks upon user input

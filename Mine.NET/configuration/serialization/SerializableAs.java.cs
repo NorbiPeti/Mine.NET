@@ -1,10 +1,7 @@
-package org.bukkit.configuration.serialization;
+using System;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
+namespace Mine.NET.configuration.serialization
+{
 /**
  * Represents an "alias" that a {@link ConfigurationSerializable} may be
  * stored as.
@@ -19,16 +16,19 @@ import java.lang.annotation.Target;
  *
  * @see ConfigurationSerialization#registerClass(Class, String)
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface SerializableAs {
-    /**
-     * This is the name your class will be stored and retrieved as.
-     * <p>
-     * This name MUST be unique. We recommend using names such as
-     * "MyPluginThing" instead of "Thing".
-     *
-     * @return Name to serialize the class as.
-     */
-    public String value();
+public class SerializableAs : Attribute {
+        /**
+         * This is the name your class will be stored and retrieved as.
+         * <p>
+         * This name MUST be unique. We recommend using names such as
+         * "MyPluginThing" instead of "Thing".
+         *
+         * @return Name to serialize the class as.
+         */
+        public string Value { get; private set; }
+        public SerializableAs(string value)
+        {
+            Value = value;
+        }
+    }
 }

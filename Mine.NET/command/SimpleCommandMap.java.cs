@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
     public class SimpleCommandMap : CommandMap
     {

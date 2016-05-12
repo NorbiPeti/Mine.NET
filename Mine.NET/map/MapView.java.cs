@@ -1,4 +1,4 @@
-package org.bukkit.map;
+namespace Mine.NET.map;
 
 import java.util.List;
 import org.bukkit.World;

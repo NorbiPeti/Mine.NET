@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.attribute
 {
     /**
      * Represents an object which may contain attributes.

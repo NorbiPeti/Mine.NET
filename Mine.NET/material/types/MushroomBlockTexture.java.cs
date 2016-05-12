@@ -1,4 +1,4 @@
-package org.bukkit.material.types;
+namespace Mine.NET.material.types;
 
 import java.util.Map;
 

@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 
-namespace Mine.NET
+namespace Mine.NET.command.defaults
 {
     public class VersionCommand : BukkitCommand
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Mine.NET
+namespace Mine.NET.command.defaults
 {
     public class TimingsCommand : BukkitCommand {
         private static readonly List<String> TIMINGS_SUBCOMMANDS = new List<String> { "merged", "reset", "separate" };

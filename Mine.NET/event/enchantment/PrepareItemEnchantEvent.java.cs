@@ -1,4 +1,4 @@
-package org.bukkit.event.enchantment;
+namespace Mine.NET.event.enchantment;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

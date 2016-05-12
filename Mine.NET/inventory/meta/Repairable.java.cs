@@ -1,4 +1,4 @@
-package org.bukkit.inventory.meta;
+namespace Mine.NET.inventory.meta;
 
 /**
  * Represents an item that can be repaired at an anvil.

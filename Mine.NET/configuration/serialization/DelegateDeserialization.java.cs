@@ -1,10 +1,5 @@
-package org.bukkit.configuration.serialization;
-
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
+namespace Mine.NET.configuration.serialization
+{
 /**
  * Applies to a {@link ConfigurationSerializable} that will delegate all
  * deserialization to another {@link ConfigurationSerializable}.
@@ -19,4 +14,5 @@ public @interface DelegateDeserialization {
      * @return Delegate class
      */
     public Class<? : ConfigurationSerializable> value();
+}
 }

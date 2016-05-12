@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Location;

@@ -1,9 +1,10 @@
+using Mine.NET.configuration.serialization;
 using System;
 using System.Collections.Generic;
 
-namespace Mine.NET
+namespace Mine.NET.block.banner
 {
-    [Serializable]
+    [SerializableAs("Pattern")]
     public class Pattern : ConfigurationSerializable {
 
         private static readonly String COLOR = "color";

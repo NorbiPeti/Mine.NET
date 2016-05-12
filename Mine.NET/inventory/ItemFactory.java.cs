@@ -1,4 +1,4 @@
-package org.bukkit.inventory;
+namespace Mine.NET.inventory;
 
 import org.bukkit.Color;
 import org.bukkit.Material;
@@ -39,7 +39,7 @@ public interface ItemFactory {
      * @throws ArgumentException if the meta was not created by this
      *     factory
      */
-    bool isApplicable(ItemMeta meta, readonly ItemStack stack) throws ArgumentException;
+    bool isApplicable(ItemMeta meta, readonly ItemStack stack);
 
     /**
      * This method checks the item meta to confirm that it is applicable (no
@@ -55,7 +55,7 @@ public interface ItemFactory {
      * @throws ArgumentException if the meta was not created by this
      *     factory
      */
-    bool isApplicable(ItemMeta meta, readonly Material material) throws ArgumentException;
+    bool isApplicable(ItemMeta meta, readonly Material material);
 
     /**
      * This method is used to compare two item meta data objects.
@@ -68,7 +68,7 @@ public interface ItemFactory {
      * @throws ArgumentException if either meta was not created by this
      *     factory
      */
-    bool equals(ItemMeta meta1, readonly ItemMeta meta2) throws ArgumentException;
+    bool equals(ItemMeta meta1, readonly ItemMeta meta2);
 
     /**
      * Returns an appropriate item meta for the specified stack.
@@ -91,7 +91,7 @@ public interface ItemFactory {
      * @throws ArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(ItemMeta meta, readonly ItemStack stack) throws ArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, readonly ItemStack stack);
 
     /**
      * Returns an appropriate item meta for the specified material.
@@ -113,7 +113,7 @@ public interface ItemFactory {
      * @throws ArgumentException if the specified meta was not created
      *     by this factory
      */
-    ItemMeta asMetaFor(ItemMeta meta, readonly Material material) throws ArgumentException;
+    ItemMeta asMetaFor(ItemMeta meta, readonly Material material);
 
     /**
      * Returns the default color for all leather armor.

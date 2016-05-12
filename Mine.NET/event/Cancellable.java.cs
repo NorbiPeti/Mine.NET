@@ -1,4 +1,4 @@
-package org.bukkit.event;
+namespace Mine.NET.event;
 
 public interface Cancellable {
 

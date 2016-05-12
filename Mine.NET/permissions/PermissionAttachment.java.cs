@@ -1,4 +1,4 @@
-package org.bukkit.permissions;
+namespace Mine.NET.permissions;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

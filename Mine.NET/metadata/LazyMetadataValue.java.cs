@@ -1,4 +1,4 @@
-package org.bukkit.metadata;
+namespace Mine.NET.metadata;
 
 import java.lang.ref.SoftReference;
 import java.util.concurrent.Callable;
@@ -78,7 +78,7 @@ public class LazyMetadataValue : MetadataValueAdapter : MetadataValue {
      * @throws MetadataEvaluationException if computing the metadata value
      *     fails.
      */
-    private synchronized void eval() throws MetadataEvaluationException {
+    private synchronized void eval() {
         if (cacheStrategy == CacheStrategy.NEVER_CACHE || internalValue.get() == null) {
             try {
                 Object value = lazyValue.call();

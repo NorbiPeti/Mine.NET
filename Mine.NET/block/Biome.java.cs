@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.block
 {
     /**
      * Holds all accepted Biomes in the default server

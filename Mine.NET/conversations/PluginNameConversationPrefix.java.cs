@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;

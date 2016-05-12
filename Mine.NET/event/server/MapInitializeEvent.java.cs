@@ -1,4 +1,4 @@
-package org.bukkit.event.server;
+namespace Mine.NET.event.server;
 
 import org.bukkit.event.HandlerList;
 import org.bukkit.map.MapView;

@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -93,7 +93,7 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
      * @param command New message that the player will send
      * @throws ArgumentException if command is null or empty
      */
-    public void setMessage(String command) throws ArgumentException {
+    public void setMessage(String command) {
         if(command==null) throw new ArgumentNullException("Command cannot be null");
         Validate.notEmpty(command, "Command cannot be empty");
         this.message = command;
@@ -105,7 +105,7 @@ public class PlayerCommandPreprocessEvent : PlayerEvent : Cancellable {
      * @param player New player which this event will execute as
      * @throws ArgumentException if the player provided is null
      */
-    public void setPlayer(Player player) throws ArgumentException {
+    public void setPlayer(Player player) {
         if(player==null) throw new ArgumentNullException("Player cannot be null");
         this.player = player;
     }

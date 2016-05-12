@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.command
 {
     public interface ConsoleCommandSender : CommandSender, Conversable
     {

@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 /**
  * Utils for casting number types to other number types

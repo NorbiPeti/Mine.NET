@@ -1,4 +1,4 @@
-package org.bukkit.entity.minecart;
+namespace Mine.NET.entity.minecart;
 
 import org.bukkit.entity.Minecart;
 

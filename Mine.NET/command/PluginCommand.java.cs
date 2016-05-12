@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mine.NET
+namespace Mine.NET.command
 {
 /**
  * Represents a {@link Command} belonging to a plugin

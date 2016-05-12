@@ -1,6 +1,6 @@
 using System;
 
-namespace Mine.NET
+namespace Mine.NET.block
 {
     /**
      * Represents a captured state of a block, which will not change

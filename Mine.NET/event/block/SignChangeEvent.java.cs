@@ -1,4 +1,4 @@
-package org.bukkit.event.block;
+namespace Mine.NET.event.block;
 
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -49,7 +49,7 @@ public class SignChangeEvent : BlockEvent : Cancellable {
      * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
      *     or < 0}
      */
-    public String getLine(int index) throws IndexOutOfBoundsException {
+    public String getLine(int index) {
         return lines[index];
     }
 
@@ -61,7 +61,7 @@ public class SignChangeEvent : BlockEvent : Cancellable {
      * @throws IndexOutOfBoundsException thrown when the provided index is {@literal > 3
      *     or < 0}
      */
-    public void setLine(int index, String line) throws IndexOutOfBoundsException {
+    public void setLine(int index, String line) {
         lines[index] = line;
     }
 

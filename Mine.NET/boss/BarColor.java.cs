@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.boss
 {
     public enum BarColor
     {

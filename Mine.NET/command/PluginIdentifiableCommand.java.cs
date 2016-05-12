@@ -1,4 +1,4 @@
-namespace Mine.NET
+namespace Mine.NET.command
 {
     /**
      * This interface is used by the help system to group commands into

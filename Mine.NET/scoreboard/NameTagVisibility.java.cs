@@ -1,4 +1,4 @@
-package org.bukkit.scoreboard;
+namespace Mine.NET.scoreboard;
 
 /**
  * [Obsolete] replaced by {@link Team.OptionStatus}

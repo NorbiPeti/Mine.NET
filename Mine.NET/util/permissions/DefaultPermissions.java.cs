@@ -1,4 +1,4 @@
-package org.bukkit.util.permissions;
+namespace Mine.NET.util.permissions;
 
 import java.util.Map;
 import org.bukkit.Bukkit;

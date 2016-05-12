@@ -1,4 +1,4 @@
-package org.bukkit.plugin.java;
+namespace Mine.NET.plugin.java;
 
 import java.io.FileInfo;
 import java.io.FileNotFoundException;
@@ -61,7 +61,7 @@ public sealed class JavaPluginLoader : PluginLoader {
         server = instance;
     }
 
-    public Plugin loadPlugin(FileInfo file) throws InvalidPluginException {
+    public Plugin loadPlugin(FileInfo file) {
         if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         if (!file.exists()) {
@@ -129,7 +129,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             loader = new PluginClassLoader(this, getClass().getClassLoader(), description, dataFolder, file);
         } catch (InvalidPluginException ex) {
             throw ex;
-        } catch (Throwable ex) {
+        } catch (Exception ex) {
             throw new InvalidPluginException(ex);
         }
 
@@ -138,7 +138,7 @@ public sealed class JavaPluginLoader : PluginLoader {
         return loader.plugin;
     }
 
-    public PluginDescriptionFile getPluginDescription(FileInfo file) throws InvalidDescriptionException {
+    public PluginDescriptionFile getPluginDescription(FileInfo file) {
         if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         JarFile jar = null;
@@ -292,7 +292,7 @@ public sealed class JavaPluginLoader : PluginLoader {
             }
 
             EventExecutor executor = new EventExecutor() {
-                public void execute(Listener listener, Event event) throws EventException {
+                public void execute(Listener listener, Event event) {
                     try {
                         if (!eventClass.isAssignableFrom(event.getClass())) {
                             return;
@@ -300,7 +300,7 @@ public sealed class JavaPluginLoader : PluginLoader {
                         method.invoke(listener, event);
                     } catch (InvocationTargetException ex) {
                         throw new EventException(ex.getCause());
-                    } catch (Throwable t) {
+                    } catch (Exception t) {
                         throw new EventException(t);
                     }
                 }
@@ -330,7 +330,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
             try {
                 jPlugin.setEnabled(true);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
@@ -354,7 +354,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
             try {
                 jPlugin.setEnabled(false);
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 server.getLogger().log(Level.SEVERE, "Error occurred while disabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 

@@ -1,4 +1,4 @@
-package org.bukkit.event.world;
+namespace Mine.NET.event.world;
 
 import org.bukkit.Chunk;
 import org.bukkit.event.Cancellable;

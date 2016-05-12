@@ -1,4 +1,4 @@
-package org.bukkit.help;
+namespace Mine.NET.help;
 
 import java.util.Collection;
 import java.util.List;

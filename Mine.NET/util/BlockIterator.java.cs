@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 import static org.bukkit.util.NumberConversions.*;
 

@@ -1,4 +1,4 @@
-package org.bukkit.event.player;
+namespace Mine.NET.event.player;
 
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.entity.Player;

@@ -1,4 +1,4 @@
-package org.bukkit.util;
+namespace Mine.NET.util;
 
 import java.util.Map;
 import org.bukkit.configuration.serialization.SerializableAs;

@@ -1,4 +1,4 @@
-package org.bukkit.inventory.meta;
+namespace Mine.NET.inventory.meta;
 
 /**
  * Represents a map that can be scalable.

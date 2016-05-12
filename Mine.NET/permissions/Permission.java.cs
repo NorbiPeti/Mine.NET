@@ -1,4 +1,4 @@
-package org.bukkit.permissions;
+namespace Mine.NET.permissions;
 
 import java.util.List;
 import java.util.LinkedHashMap;
@@ -231,7 +231,7 @@ public class Permission {
         foreach (KeyValuePair<?, ?> entry  in  data.entrySet()) {
             try {
                 result.add(Permission.loadPermission(entry.Key.ToString(), (Dictionary<?, ?>) entry.Value, def, result));
-            } catch (Throwable ex) {
+            } catch (Exception ex) {
                 Bukkit.getServer().getLogger().log(Level.SEVERE, String.format(error, entry.Key), ex);
             }
         }
@@ -332,7 +332,7 @@ public class Permission {
                     if (output != null) {
                         output.add(perm);
                     }
-                } catch (Throwable ex) {
+                } catch (Exception ex) {
                     throw new ArgumentException("Permission node '" + entry.Key.ToString() + "' in child of " + name + " is invalid", ex);
                 }
             } else {

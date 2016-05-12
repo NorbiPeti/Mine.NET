@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Mine.NET
+namespace Mine.NET.command.defaults
 {
     public class HelpCommand : VanillaCommand
     {

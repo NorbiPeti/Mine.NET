@@ -1,4 +1,4 @@
-package org.bukkit.util.permissions;
+namespace Mine.NET.util.permissions;
 
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;

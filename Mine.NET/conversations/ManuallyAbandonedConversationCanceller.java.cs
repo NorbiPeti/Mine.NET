@@ -1,4 +1,4 @@
-package org.bukkit.conversations;
+namespace Mine.NET.conversations;
 
 /**
  * The ManuallyAbandonedConversationCanceller is only used as part of a {@link
