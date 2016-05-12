@@ -105,9 +105,9 @@ namespace Mine.NET
         /**
          * Creates a new Color object from a red, green, and blue
          *
-         * @param red integer from 0-255
-         * @param green integer from 0-255
-         * @param blue integer from 0-255
+         * @param red int from 0-255
+         * @param green int from 0-255
+         * @param blue int from 0-255
          * @return a new Color object for the red, green, blue
          * @throws ArgumentException if any value is strictly {@literal >255 or <0}
          */
@@ -119,9 +119,9 @@ namespace Mine.NET
         /**
          * Creates a new Color object from a blue, green, and red
          *
-         * @param blue integer from 0-255
-         * @param green integer from 0-255
-         * @param red integer from 0-255
+         * @param blue int from 0-255
+         * @param green int from 0-255
+         * @param red int from 0-255
          * @return a new Color object for the red, green, blue
          * @throws ArgumentException if any value is strictly {@literal >255 or <0}
          */
@@ -131,10 +131,10 @@ namespace Mine.NET
         }
 
         /**
-         * Creates a new color object from an integer that contains the red,
+         * Creates a new color object from an int that contains the red,
          * green, and blue bytes in the lowest order 24 bits.
          *
-         * @param rgb the integer storing the red, green, and blue values
+         * @param rgb the int storing the red, green, and blue values
          * @return a new color object for specified values
          * @throws ArgumentException if any data is in the highest order 8
          *     bits
@@ -147,10 +147,10 @@ namespace Mine.NET
         }
 
         /**
-         * Creates a new color object from an integer that contains the blue,
+         * Creates a new color object from an int that contains the blue,
          * green, and red bytes in the lowest order 24 bits.
          *
-         * @param bgr the integer storing the blue, green, and red values
+         * @param bgr the int storing the blue, green, and red values
          * @return a new color object for specified values
          * @throws ArgumentException if any data is in the highest order 8
          *     bits
@@ -241,7 +241,7 @@ namespace Mine.NET
 
         /**
          *
-         * @return An integer representation of this color, as 0xRRGGBB
+         * @return An int representation of this color, as 0xRRGGBB
          */
         public int asRGB()
         {
@@ -250,7 +250,7 @@ namespace Mine.NET
 
         /**
          *
-         * @return An integer representation of this color, as 0xBBGGRR
+         * @return An int representation of this color, as 0xBBGGRR
          */
         public int asBGR()
         {

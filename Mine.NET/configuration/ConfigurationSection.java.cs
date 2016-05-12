@@ -452,19 +452,19 @@ public interface ConfigurationSection {
     public List<String> getStringList(String path);
 
     /**
-     * Gets the requested List of Integer by path.
+     * Gets the requested List of int by path.
      * <p>
      * If the List does not exist but a default value has been specified, this
      * will return the default value. If the List does not exist and no
      * default value was specified, this will return an empty List.
      * <p>
-     * This method will attempt to cast any values into a Integer if possible,
+     * This method will attempt to cast any values into a int if possible,
      * but may miss any values out if they are not compatible.
      *
      * @param path Path of the List to get.
-     * @return Requested List of Integer.
+     * @return Requested List of int.
      */
-    public List<Integer> getIntegerList(String path);
+    public List<int> getIntegerList(String path);
 
     /**
      * Gets the requested List of bool by path.

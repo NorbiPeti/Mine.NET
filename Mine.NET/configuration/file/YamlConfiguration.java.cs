@@ -59,7 +59,7 @@ public class YamlConfiguration : FileConfiguration {
         }
 
         String header = parseHeader(contents);
-        if (header.length() > 0) {
+        if (header.Length > 0) {
             options().header(header);
         }
 
@@ -92,16 +92,16 @@ public class YamlConfiguration : FileConfiguration {
 
             if (line.startsWith(COMMENT_PREFIX)) {
                 if (i > 0) {
-                    result.append("\n");
+                    result.Append("\n");
                 }
 
-                if (line.length() > COMMENT_PREFIX.length()) {
-                    result.append(line.substring(COMMENT_PREFIX.length()));
+                if (line.Length > COMMENT_PREFIX.Length) {
+                    result.Append(line.substring(COMMENT_PREFIX.Length));
                 }
 
                 foundHeader = true;
-            } else if ((foundHeader) && (line.length() == 0)) {
-                result.append("\n");
+            } else if ((foundHeader) && (line.Length == 0)) {
+                result.Append("\n");
             } else if (foundHeader) {
                 readingHeader = false;
             }
@@ -121,7 +121,7 @@ public class YamlConfiguration : FileConfiguration {
                 FileConfiguration filedefaults = (FileConfiguration) def;
                 String defaultsHeader = filedefaults.buildHeader();
 
-                if ((defaultsHeader != null) && (defaultsHeader.length() > 0)) {
+                if ((defaultsHeader != null) && (defaultsHeader.Length > 0)) {
                     return defaultsHeader;
                 }
             }
@@ -138,7 +138,7 @@ public class YamlConfiguration : FileConfiguration {
         for (int i = lines.length - 1; i >= 0; i--) {
             builder.insert(0, "\n");
 
-            if ((startedHeader) || (lines[i].length() != 0)) {
+            if ((startedHeader) || (lines[i].Length != 0)) {
                 builder.insert(0, lines[i]);
                 builder.insert(0, COMMENT_PREFIX);
                 startedHeader = true;

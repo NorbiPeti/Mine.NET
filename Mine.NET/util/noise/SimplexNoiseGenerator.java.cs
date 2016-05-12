@@ -395,7 +395,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
         // then find the correct traversal order for the simplex we’re in.
         // First, six pair-wise comparisons are performed between each possible pair
         // of the four coordinates, and the results are used to add up binary bits
-        // for an integer index.
+        // for an int index.
         int c1 = (x0 > y0) ? 32 : 0;
         int c2 = (x0 > z0) ? 16 : 0;
         int c3 = (y0 > z0) ? 8 : 0;
@@ -403,9 +403,9 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
         int c5 = (y0 > w0) ? 2 : 0;
         int c6 = (z0 > w0) ? 1 : 0;
         int c = c1 + c2 + c3 + c4 + c5 + c6;
-        int i1, j1, k1, l1; // The integer offsets for the second simplex corner
-        int i2, j2, k2, l2; // The integer offsets for the third simplex corner
-        int i3, j3, k3, l3; // The integer offsets for the fourth simplex corner
+        int i1, j1, k1, l1; // The int offsets for the second simplex corner
+        int i2, j2, k2, l2; // The int offsets for the third simplex corner
+        int i3, j3, k3, l3; // The int offsets for the fourth simplex corner
 
         // simplex[c] is a 4-vector with the numbers 0, 1, 2 and 3 in some order.
         // Many values of c will never occur, since e.g. x>y>z>w makes x<z, y<w and x<w

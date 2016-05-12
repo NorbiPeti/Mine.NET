@@ -45,21 +45,6 @@ namespace Mine.NET
      * Executed on tab completion for this command, returning a list of
      * options the player can tab through.
      *
-     * [Obsolete] This method is not supported and returns null
-     * @param sender Source object which is executing this command
-     * @param args All arguments passed to the command, split via ' '
-     * @return a list of tab-completions for the specified arguments. This
-     *     will never be null. List may be immutable.
-     */
-    [Obsolete]
-    public List<String> tabComplete(CommandSender sender, String[] args) {
-        return null;
-    }
-
-    /**
-     * Executed on tab completion for this command, returning a list of
-     * options the player can tab through.
-     *
      * @param sender Source object which is executing this command
      * @param alias the alias being used
      * @param args All arguments passed to the command, split via ' '
@@ -156,7 +141,7 @@ namespace Mine.NET
         }
 
         if (permissionMessage == null) {
-            target.sendMessage(ChatColor.Colors.RED + "I'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.");
+            target.sendMessage(ChatColors.RED + "I'm sorry, but you do not have permission to perform this command. Please contact the server administrators if you believe that this is in error.");
         } else if (permissionMessage.Length != 0) {
             foreach (String line in permissionMessage.Replace("<permission>", permission).Split('\n')) {
                 target.sendMessage(line);
@@ -382,7 +367,7 @@ namespace Mine.NET
         }
 
         HashSet<Permissible> users = Bukkit.getPluginManager().getPermissionSubscriptions(Server.BROADCAST_CHANNEL_ADMINISTRATIVE);
-        String colored = ChatColor.Colors.GRAY + "" + ChatColor.Colors.ITALIC + "[" + result + ChatColor.Colors.GRAY + ChatColor.Colors.ITALIC + "]";
+        String colored = ChatColors.GRAY + "" + ChatColors.ITALIC + "[" + result + ChatColors.GRAY + ChatColors.ITALIC + "]";
 
         if (sendToSource && !(source is ConsoleCommandSender)) {
             source.sendMessage(message);

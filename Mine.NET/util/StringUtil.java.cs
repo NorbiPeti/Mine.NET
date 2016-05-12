@@ -50,9 +50,9 @@ public class StringUtil {
      */
     public static bool startsWithIgnoreCase(String string, readonly String prefix) throws ArgumentException, NullPointerException {
         if(string==null) throw new ArgumentNullException("Cannot check a null string for a match");
-        if (string.length() < prefix.length()) {
+        if (string.Length < prefix.Length) {
             return false;
         }
-        return string.regionMatches(true, 0, prefix, 0, prefix.length());
+        return string.regionMatches(true, 0, prefix, 0, prefix.Length);
     }
 }

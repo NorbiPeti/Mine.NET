@@ -39,24 +39,24 @@ public class GenericCommandHelpTopic : HelpTopic {
         // Build full text
         StringBuffer sb = new StringBuffer();
 
-        sb.append(ChatColor.GOLD);
-        sb.append("Description: ");
-        sb.append(ChatColor.WHITE);
-        sb.append(command.getDescription());
+        sb.Append(ChatColors.GOLD);
+        sb.Append("Description: ");
+        sb.Append(ChatColors.WHITE);
+        sb.Append(command.getDescription());
 
-        sb.append("\n");
+        sb.Append("\n");
 
-        sb.append(ChatColor.GOLD);
-        sb.append("Usage: ");
-        sb.append(ChatColor.WHITE);
-        sb.append(command.getUsage().replace("<command>", name.substring(1)));
+        sb.Append(ChatColors.GOLD);
+        sb.Append("Usage: ");
+        sb.Append(ChatColors.WHITE);
+        sb.Append(command.getUsage().replace("<command>", name.substring(1)));
 
         if (command.getAliases().size() > 0) {
-            sb.append("\n");
-            sb.append(ChatColor.GOLD);
-            sb.append("Aliases: ");
-            sb.append(ChatColor.WHITE);
-            sb.append(ChatColor.WHITE + StringUtils.join(command.getAliases(), ", "));
+            sb.Append("\n");
+            sb.Append(ChatColors.GOLD);
+            sb.Append("Aliases: ");
+            sb.Append(ChatColors.WHITE);
+            sb.Append(ChatColors.WHITE + StringUtils.join(command.getAliases(), ", "));
         }
         fullText = sb.toString();
     }

@@ -57,12 +57,12 @@ import com.google.common.collect.ImmutableSet;
 public class InventoryDragEvent : InventoryInteractEvent {
     private static readonly HandlerList handlers = new HandlerList();
     private readonly DragType type;
-    private readonly Dictionary<Integer, ItemStack> addedItems;
-    private readonly HashSet<Integer> containerSlots;
+    private readonly Dictionary<int, ItemStack> addedItems;
+    private readonly HashSet<int> containerSlots;
     private readonly ItemStack oldCursor;
     private ItemStack newCursor;
 
-    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<Integer, ItemStack> slots) {
+    public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<int, ItemStack> slots) {
         base(what);
 
         Validate.notNull(oldCursor);
@@ -72,8 +72,8 @@ public class InventoryDragEvent : InventoryInteractEvent {
         this.newCursor = newCursor;
         this.oldCursor = oldCursor;
         this.addedItems = slots;
-        ImmutableSet.Builder<Integer> b = ImmutableSet.builder();
-        for (Integer slot : slots.keySet()) {
+        ImmutableSet.Builder<int> b = ImmutableSet.builder();
+        for (int slot : slots.keySet()) {
             b.add(what.convertSlot(slot));
         }
         this.containerSlots = b.build();
@@ -84,7 +84,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
      *
      * @return map from raw slot id to new ItemStack
      */
-    public Dictionary<Integer, ItemStack> getNewItems() {
+    public Dictionary<int, ItemStack> getNewItems() {
         return Collections.unmodifiableMap(addedItems);
     }
 
@@ -93,7 +93,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
      *
      * @return list of raw slot ids, suitable for getView().getItem(int)
      */
-    public HashSet<Integer> getRawSlots() {
+    public HashSet<int> getRawSlots() {
         return addedItems.keySet();
     }
 
@@ -103,7 +103,7 @@ public class InventoryDragEvent : InventoryInteractEvent {
      * @return list of converted slot ids, suitable for {@link
      *     org.bukkit.inventory.Inventory#getItem(int)}.
      */
-    public HashSet<Integer> getInventorySlots() {
+    public HashSet<int> getInventorySlots() {
         return containerSlots;
     }
 

@@ -201,7 +201,7 @@ public class MemorySection : ConfigurationSection {
     public Object get(String path, Object def) {
         if(path==null) throw new ArgumentNullException("Path cannot be null");
 
-        if (path.length() == 0) {
+        if (path.Length == 0) {
             return this;
         }
 
@@ -303,7 +303,7 @@ public class MemorySection : ConfigurationSection {
 
     public bool isInt(String path) {
         Object val = get(path);
-        return val is Integer;
+        return val is int;
     }
 
     public bool getBoolean(String path) {
@@ -385,21 +385,21 @@ public class MemorySection : ConfigurationSection {
         return result;
     }
 
-    public List<Integer> getIntegerList(String path) {
+    public List<int> getIntegerList(String path) {
         List<?> list = getList(path);
 
         if (list == null) {
-            return new List<Integer>(0);
+            return new List<int>(0);
         }
 
-        List<Integer> result = new List<Integer>();
+        List<int> result = new List<int>();
 
         for (Object object : list) {
-            if (object is Integer) {
-                result.add((Integer) object);
+            if (object is int) {
+                result.add((int) object);
             } else if (object is String) {
                 try {
-                    result.add(Integer.valueOf((String) object));
+                    result.add(int.valueOf((String) object));
                 } catch (Exception ex) {
                 }
             } else if (object is Character) {
@@ -559,8 +559,8 @@ public class MemorySection : ConfigurationSection {
             } else if (object is String) {
                 String str = (String) object;
 
-                if (str.length() == 1) {
-                    result.add(str.charAt(0));
+                if (str.Length == 1) {
+                    result.add(str[0]);
                 }
             } else if (object is Number) {
                 result.add((char) ((Number) object).intValue());
@@ -691,7 +691,7 @@ public class MemorySection : ConfigurationSection {
     }
 
     protected bool isPrimitiveWrapper(Object input) {
-        return input is Integer || input is bool ||
+        return input is int || input is bool ||
                 input is Character || input is Byte ||
                 input is Short || input is Double ||
                 input is Long || input is Float;
@@ -786,7 +786,7 @@ public class MemorySection : ConfigurationSection {
         StringBuilder builder = new StringBuilder();
         if (section != null) {
             for (ConfigurationSection parent = section; (parent != null) && (parent != relativeTo); parent = parent.getParent()) {
-                if (builder.length() > 0) {
+                if (builder.Length > 0) {
                     builder.insert(0, separator);
                 }
 
@@ -794,12 +794,12 @@ public class MemorySection : ConfigurationSection {
             }
         }
 
-        if ((key != null) && (key.length() > 0)) {
-            if (builder.length() > 0) {
-                builder.append(separator);
+        if ((key != null) && (key.Length > 0)) {
+            if (builder.Length > 0) {
+                builder.Append(separator);
             }
 
-            builder.append(key);
+            builder.Append(key);
         }
 
         return builder.toString();
@@ -808,12 +808,12 @@ public class MemorySection : ConfigurationSection {
     public override string ToString() {
         Configuration root = getRoot();
         return new StringBuilder()
-            .append(getClass().getSimpleName())
-            .append("[path='")
-            .append(getCurrentPath())
-            .append("', root='")
-            .append(root == null ? null : root.getClass().getSimpleName())
-            .append("']")
+            .Append(getClass().getSimpleName())
+            .Append("[path='")
+            .Append(getCurrentPath())
+            .Append("', root='")
+            .Append(root == null ? null : root.getClass().getSimpleName())
+            .Append("']")
             .toString();
     }
 }

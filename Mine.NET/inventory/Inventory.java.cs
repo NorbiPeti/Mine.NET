@@ -94,7 +94,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing items that didn't fit.
      * @throws ArgumentException if items or any element in it is null
      */
-    public HashMap<Integer, ItemStack> addItem(ItemStack... items) throws ArgumentException;
+    public HashMap<int, ItemStack> addItem(ItemStack... items) throws ArgumentException;
 
     /**
      * Removes the given ItemStacks from the inventory.
@@ -115,7 +115,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing items that couldn't be removed.
      * @throws ArgumentException if items is null
      */
-    public HashMap<Integer, ItemStack> removeItem(ItemStack... items) throws ArgumentException;
+    public HashMap<int, ItemStack> removeItem(ItemStack... items) throws ArgumentException;
 
     /**
      * Returns all ItemStacks from the inventory
@@ -255,7 +255,7 @@ public interface Inventory : Iterable<ItemStack> {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public HashMap<Integer, ? : ItemStack> all(int materialId);
+    public HashMap<int, ? : ItemStack> all(int materialId);
 
     /**
      * Returns a HashMap with all slots and ItemStacks in the inventory with
@@ -269,7 +269,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @return A HashMap containing the slot index, ItemStack pairs
      * @throws ArgumentException if material is null
      */
-    public HashMap<Integer, ? : ItemStack> all(Material material) throws ArgumentException;
+    public HashMap<int, ? : ItemStack> all(Material material) throws ArgumentException;
 
     /**
      * Finds all slots in the inventory containing any ItemStacks with the
@@ -283,7 +283,7 @@ public interface Inventory : Iterable<ItemStack> {
      * @param item The ItemStack to match against
      * @return A map from slot indexes to item at index
      */
-    public HashMap<Integer, ? : ItemStack> all(ItemStack item);
+    public HashMap<int, ? : ItemStack> all(ItemStack item);
 
     /**
      * Finds the first slot in the inventory containing an ItemStack with the

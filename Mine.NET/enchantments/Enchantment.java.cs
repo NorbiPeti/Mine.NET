@@ -146,7 +146,7 @@ public abstract class Enchantment {
      */
     public static readonly Enchantment MENDING = new EnchantmentWrapper(70);
 
-    private static readonly Dictionary<Integer, Enchantment> byId = new HashMap<Integer, Enchantment>();
+    private static readonly Dictionary<int, Enchantment> byId = new HashMap<int, Enchantment>();
     private static readonly Dictionary<String, Enchantment> byName = new HashMap<String, Enchantment>();
     private static bool acceptingNew = true;
     private readonly int id;

@@ -174,8 +174,8 @@ public abstract class FileConfiguration : MemoryConfiguration {
             String line;
 
             while ((line = input.readLine()) != null) {
-                builder.append(line);
-                builder.append('\n');
+                builder.Append(line);
+                builder.Append('\n');
             }
         } finally {
             input.close();

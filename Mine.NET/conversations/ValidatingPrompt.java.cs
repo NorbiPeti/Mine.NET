@@ -27,7 +27,7 @@ public abstract class ValidatingPrompt : Prompt {
         } else {
             String failPrompt = getFailedValidationText(context, input);
             if (failPrompt != null) {
-                context.getForWhom().sendRawMessage(ChatColor.RED + failPrompt);
+                context.getForWhom().sendRawMessage(ChatColors.RED + failPrompt);
             }
             // Redisplay this prompt to the user to re-collect input
             return this;

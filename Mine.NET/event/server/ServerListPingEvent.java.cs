@@ -13,7 +13,7 @@ import org.bukkit.util.CachedServerIcon;
  * checked and removed by {@link #iterator() iterating} over this event.
  */
 public class ServerListPingEvent : ServerEvent : Iterable<Player> {
-    private static readonly int MAGIC_PLAYER_COUNT = Integer.MIN_VALUE;
+    private static readonly int MAGIC_PLAYER_COUNT = int.MIN_VALUE;
     private static readonly HandlerList handlers = new HandlerList();
     private readonly InetAddress address;
     private String motd;

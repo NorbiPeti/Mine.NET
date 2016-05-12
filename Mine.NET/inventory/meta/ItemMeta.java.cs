@@ -94,7 +94,7 @@ public interface ItemMeta : Cloneable, ConfigurationSerializable {
      *
      * @return An immutable copy of the enchantments
      */
-    Dictionary<Enchantment, Integer> getEnchants();
+    Dictionary<Enchantment, int> getEnchants();
 
     /**
      * Adds the specified enchantment to this item meta.

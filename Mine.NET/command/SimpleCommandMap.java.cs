@@ -189,7 +189,7 @@ namespace Mine.NET
                 return null;
             }
 
-            String argLine = cmdLine.substring(spaceIndex + 1, cmdLine.length());
+            String argLine = cmdLine.substring(spaceIndex + 1, cmdLine.Length);
             String[] args = PATTERN_ON_SPACE.Split(argLine, -1);
 
             try {
@@ -223,16 +223,16 @@ namespace Mine.NET
                     Command command = getCommand(commandArgs[0]);
 
                     if (command == null) {
-                        if (bad.length() > 0) {
-                            bad.append(", ");
+                        if (bad.Length > 0) {
+                            bad.Append(", ");
                         }
-                        bad.append(commandString);
+                        bad.Append(commandString);
                     } else {
                         targets.add(commandString);
                     }
                 }
 
-                if (bad.length() > 0) {
+                if (bad.Length > 0) {
                     server.getLogger().warning("Could not register alias " + alias + " because it contains commands that do not exist: " + bad);
                     continue;
                 }

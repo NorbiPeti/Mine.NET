@@ -30,7 +30,7 @@ public sealed class NumberConversions {
         }
 
         try {
-            return Integer.valueOf(object.toString());
+            return int.valueOf(object.toString());
         } catch (NumberFormatException e) {
         } catch (NullPointerException e) {
         }

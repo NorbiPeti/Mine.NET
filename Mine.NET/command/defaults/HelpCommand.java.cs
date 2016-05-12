@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Mine.NET
@@ -7,7 +9,7 @@ namespace Mine.NET
         public HelpCommand() : base("help") {
             this.description = "Shows the help menu";
             this.usageMessage = "/help <pageNumber>\n/help <topic>\n/help <topic> <pageNumber>";
-            this.setAliases(Arrays.asList(new String[] { "?" }));
+            this.setAliases(new List<string> { "?" });
             this.setPermission("bukkit.command.help");
         }
         
@@ -22,18 +24,13 @@ namespace Mine.NET
             if (args.Length == 0) {
                 command = "";
                 pageNumber = 1;
-            } else if (NumberUtils.isDigits(args[args.Length - 1])) {
-                command = StringUtils.join(ArrayUtils.subarray(args, 0, args.Length - 1), " ");
-                try {
-                    pageNumber = NumberUtils.createInteger(args[args.Length - 1]);
-                } catch (InvalidCastException exception) {
-                    pageNumber = 1;
-                }
+            } else if (int.TryParse(args[args.Length - 1], out pageNumber)) {
+                command = args.Take(args.Length - 1).Aggregate((a, b) => a + " " + b);
                 if (pageNumber <= 0) {
                     pageNumber = 1;
                 }
             } else {
-                command = StringUtils.join(args, " ");
+                command = args.Aggregate((a, b) => a + " " + b);
                 pageNumber = 1;
             }
 
@@ -57,83 +54,82 @@ namespace Mine.NET
             }
 
             if (topic == null || !topic.canSee(sender)) {
-                sender.sendMessage(ChatColor.Colors.RED + "No help for " + command);
+                sender.sendMessage(ChatColors.RED + "No help for " + command);
                 return true;
             }
 
             ChatPaginator.ChatPage page = ChatPaginator.paginate(topic.getFullText(sender), pageNumber, pageWidth, pageHeight);
 
             StringBuilder header = new StringBuilder();
-            header.append(ChatColor.Colors.YELLOW);
-            header.append("--------- ");
-            header.append(ChatColor.Colors.WHITE);
-            header.append("Help: ");
-            header.append(topic.getName());
-            header.append(" ");
+            header.Append(ChatColors.YELLOW);
+            header.Append("--------- ");
+            header.Append(ChatColors.WHITE);
+            header.Append("Help: ");
+            header.Append(topic.getName());
+            header.Append(" ");
             if (page.getTotalPages() > 1) {
-                header.append("(");
-                header.append(page.getPageNumber());
-                header.append("/");
-                header.append(page.getTotalPages());
-                header.append(") ");
+                header.Append("(");
+                header.Append(page.getPageNumber());
+                header.Append("/");
+                header.Append(page.getTotalPages());
+                header.Append(") ");
             }
-            header.append(ChatColor.YELLOW);
-            for (int i = header.length(); i < ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH; i++) {
-                header.append("-");
+            header.Append(ChatColors.YELLOW);
+            for (int i = header.Length; i < ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH; i++) {
+                header.Append("-");
             }
-            sender.sendMessage(header.toString());
+            sender.sendMessage(header.ToString());
 
             sender.sendMessage(page.getLines());
 
             return true;
         }
-
-        @Override
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) {
+        
+    public override List<String> tabComplete(CommandSender sender, String alias, String[] args) {
             if (sender == null) throw new ArgumentNullException("Sender cannot be null");
             if (args == null) throw new ArgumentNullException("Arguments cannot be null");
             if (alias == null) throw new ArgumentNullException("Alias cannot be null");
 
-            if (args.length == 1) {
+            if (args.Length == 1) {
                 List<String> matchedTopics = new List<String>();
                 String searchString = args[0];
-                for (HelpTopic topic : Bukkit.getServer().getHelpMap().getHelpTopics()) {
+                foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics()) {
                     String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
 
-                    if (trimmedTopic.startsWith(searchString)) {
-                        matchedTopics.add(trimmedTopic);
+                    if (trimmedTopic.StartsWith(searchString)) {
+                        matchedTopics.Add(trimmedTopic);
                     }
                 }
                 return matchedTopics;
             }
-            return ImmutableList.of();
+            return new List<string>();
         }
 
         protected HelpTopic findPossibleMatches(String searchString) {
-            int maxDistance = (searchString.length() / 5) + 3;
-            HashSet<HelpTopic> possibleMatches = new TreeSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
+            int maxDistance = (searchString.Length) / 5 + 3;
+            SortedSet<HelpTopic> possibleMatches = new SortedSet<HelpTopic>(HelpTopicComparator.helpTopicComparatorInstance());
 
-            if (searchString.startsWith("/")) {
-                searchString = searchString.substring(1);
+            if (searchString.StartsWith("/")) {
+                searchString = searchString.Substring(1);
             }
 
-            for (HelpTopic topic : Bukkit.getServer().getHelpMap().getHelpTopics()) {
+            foreach (HelpTopic topic in Bukkit.getServer().getHelpMap().getHelpTopics()) {
                 String trimmedTopic = topic.getName().startsWith("/") ? topic.getName().substring(1) : topic.getName();
 
-                if (trimmedTopic.length() < searchString.length()) {
+                if (trimmedTopic.Length < searchString.Length) {
+                    continue;
+                }
+                //Find: "\.charAt\(([^\)]+)\)" - Replace: "[$1]"
+                if (char.ToLower(trimmedTopic[0]) != char.ToLower(searchString[0])) {
                     continue;
                 }
 
-                if (Character.toLowerCase(trimmedTopic.charAt(0)) != Character.toLowerCase(searchString.charAt(0))) {
-                    continue;
-                }
-
-                if (damerauLevenshteinDistance(searchString, trimmedTopic.substring(0, searchString.length())) < maxDistance) {
+                if (damerauLevenshteinDistance(searchString, trimmedTopic.Substring(0, searchString.Length)) < maxDistance) {
                     possibleMatches.add(topic);
                 }
             }
 
-            if (possibleMatches.size() > 0) {
+            if (possibleMatches.Count > 0) {
                 return new IndexHelpTopic("Search", null, null, possibleMatches, "Search for: " + searchString);
             } else {
                 return null;
@@ -154,15 +150,15 @@ namespace Mine.NET
                 return 0;
             }
             if (s1 != null && s2 == null) {
-                return s1.length();
+                return s1.Length;
             }
             if (s1 == null && s2 != null) {
-                return s2.length();
+                return s2.Length;
             }
 
-            int s1Len = s1.length();
-            int s2Len = s2.length();
-            int[][] H = new int[s1Len + 2][s2Len + 2];
+            int s1Len = s1.Length;
+            int s2Len = s2.Length;
+            int[,] H = new int[s1Len + 2, s2Len + 2];
 
             int INF = s1Len + s2Len;
             H[0][0] = INF;
@@ -175,7 +171,7 @@ namespace Mine.NET
                 H[0][j + 1] = INF;
             }
 
-            Dictionary<Character, Integer> sd = new HashMap<Character, Integer>();
+            Dictionary<Character, int> sd = new HashMap<Character, int>();
             for (char Letter : (s1 + s2).toCharArray()) {
                 if (!sd.containsKey(Letter)) {
                     sd.put(Letter, 0);
@@ -185,10 +181,10 @@ namespace Mine.NET
             for (int i = 1; i <= s1Len; i++) {
                 int DB = 0;
                 for (int j = 1; j <= s2Len; j++) {
-                    int i1 = sd.get(s2.charAt(j - 1));
+                    int i1 = sd.get(s2[j - 1]);
                     int j1 = DB;
 
-                    if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+                    if (s1[i - 1] == s2[j - 1]) {
                         H[i + 1][j + 1] = H[i][j];
                         DB = j;
                     } else {
@@ -197,7 +193,7 @@ namespace Mine.NET
 
                     H[i + 1][j + 1] = Math.min(H[i + 1][j + 1], H[i1][j1] + (i - i1 - 1) + 1 + (j - j1 - 1));
                 }
-                sd.put(s1.charAt(i - 1), i);
+                sd.put(s1[i - 1], i);
             }
 
             return H[s1Len + 1][s2Len + 1];

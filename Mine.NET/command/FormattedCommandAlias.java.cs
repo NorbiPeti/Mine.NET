@@ -21,7 +21,7 @@ namespace Mine.NET
                     if (throwable is ArgumentException) {
                         sender.sendMessage(throwable.Message);
                     } else {
-                        sender.sendMessage(ChatColor.Colors.RED + "An internal error occurred while attempting to perform this command");
+                        sender.sendMessage(ChatColors.RED + "An internal error occurred while attempting to perform this command");
                     }
                     return false;
                 }

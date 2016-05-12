@@ -10,188 +10,96 @@ namespace Mine.NET
 */
     public class ChatColor
     {
-        public enum Colors
-        {
-            /**
-             * Represents black
-             */
-            BLACK,
-            /**
-             * Represents dark blue
-             */
-            DARK_BLUE,
-            /**
-             * Represents dark green
-             */
-            DARK_GREEN,
-            /**
-             * Represents dark blue (aqua)
-             */
-            DARK_AQUA,
-            /**
-             * Represents dark red
-             */
-            DARK_RED,
-            /**
-             * Represents dark purple
-             */
-            DARK_PURPLE,
-            /**
-             * Represents gold
-             */
-            GOLD,
-            /**
-             * Represents gray
-             */
-            GRAY,
-            /**
-             * Represents dark gray
-             */
-            DARK_GRAY,
-            /**
-             * Represents blue
-             */
-            BLUE,
-            /**
-             * Represents green
-             */
-            GREEN,
-            /**
-             * Represents aqua
-             */
-            AQUA,
-            /**
-             * Represents red
-             */
-            RED,
-            /**
-             * Represents light purple
-             */
-            LIGHT_PURPLE,
-            /**
-             * Represents yellow
-             */
-            YELLOW,
-            /**
-             * Represents white
-             */
-            WHITE,
-            /**
-             * Represents magical characters that change around randomly
-             */
-            MAGIC,
-            /**
-             * Makes the text bold.
-             */
-            BOLD,
-            /**
-             * Makes a line appear through the text.
-             */
-            STRIKETHROUGH,
-            /**
-             * Makes the text appear underlined.
-             */
-            UNDERLINE,
-            /**
-             * Makes the text italic.
-             */
-            ITALIC,
-            /**
-             * Resets all previous chat colors or formats.
-             */
-            RESET //TODO: Move out of the class
-        }
-
-        private static Dictionary<Colors, ChatColor> AllColors = new Dictionary<Colors, ChatColor>
+        private static Dictionary<ChatColors, ChatColor> AllColors = new Dictionary<ChatColors, ChatColor>
         {
         /**
          * Represents black
          */
-        { Colors.BLACK, new ChatColor('0', 0x00) },
+        { ChatColors.BLACK, new ChatColor('0', 0x00) },
         /**
          * Represents dark blue
          */
-        { Colors.DARK_BLUE, new ChatColor('1', 0x1) },
+        { ChatColors.DARK_BLUE, new ChatColor('1', 0x1) },
         /**
          * Represents dark green
          */
-        { Colors.DARK_GREEN, new ChatColor('2', 0x2) },
+        { ChatColors.DARK_GREEN, new ChatColor('2', 0x2) },
         /**
          * Represents dark blue (aqua)
          */
-        { Colors.DARK_AQUA, new ChatColor('3', 0x3) },
+        { ChatColors.DARK_AQUA, new ChatColor('3', 0x3) },
         /**
          * Represents dark red
          */
-        { Colors.DARK_RED, new ChatColor('4', 0x4) },
+        { ChatColors.DARK_RED, new ChatColor('4', 0x4) },
         /**
          * Represents dark purple
          */
-        { Colors.DARK_PURPLE, new ChatColor('5', 0x5) },
+        { ChatColors.DARK_PURPLE, new ChatColor('5', 0x5) },
         /**
          * Represents gold
          */
-        { Colors.GOLD, new ChatColor('6', 0x6) },
+        { ChatColors.GOLD, new ChatColor('6', 0x6) },
         /**
          * Represents gray
          */
-        { Colors.GRAY, new ChatColor('7', 0x7) },
+        { ChatColors.GRAY, new ChatColor('7', 0x7) },
         /**
          * Represents dark gray
          */
-        { Colors.DARK_GRAY, new ChatColor('8', 0x8) },
+        { ChatColors.DARK_GRAY, new ChatColor('8', 0x8) },
         /**
          * Represents blue
          */
-        { Colors.BLUE, new ChatColor('9', 0x9) },
+        { ChatColors.BLUE, new ChatColor('9', 0x9) },
         /**
          * Represents green
          */
-        { Colors.GREEN, new ChatColor('a', 0xA) },
+        { ChatColors.GREEN, new ChatColor('a', 0xA) },
         /**
          * Represents aqua
          */
-        { Colors.AQUA, new ChatColor('b', 0xB) },
+        { ChatColors.AQUA, new ChatColor('b', 0xB) },
         /**
          * Represents red
          */
-        { Colors.RED, new ChatColor('c', 0xC) },
+        { ChatColors.RED, new ChatColor('c', 0xC) },
         /**
          * Represents light purple
          */
-        { Colors.LIGHT_PURPLE, new ChatColor('d', 0xD) },
+        { ChatColors.LIGHT_PURPLE, new ChatColor('d', 0xD) },
         /**
          * Represents yellow
          */
-        { Colors.YELLOW, new ChatColor('e', 0xE) },
+        { ChatColors.YELLOW, new ChatColor('e', 0xE) },
         /**
          * Represents white
          */
-        { Colors.WHITE, new ChatColor('f', 0xF) },
+        { ChatColors.WHITE, new ChatColor('f', 0xF) },
         /**
          * Represents magical characters that change around randomly
          */
-        { Colors.MAGIC, new ChatColor('k', 0x10, true) },
+        { ChatColors.MAGIC, new ChatColor('k', 0x10, true) },
         /**
          * Makes the text bold.
          */
-        { Colors.BOLD, new ChatColor('l', 0x11, true) },
+        { ChatColors.BOLD, new ChatColor('l', 0x11, true) },
         /**
          * Makes a line appear through the text.
          */
-        { Colors.STRIKETHROUGH, new ChatColor('m', 0x12, true) },
+        { ChatColors.STRIKETHROUGH, new ChatColor('m', 0x12, true) },
         /**
          * Makes the text appear underlined.
          */
-        { Colors.UNDERLINE, new ChatColor('n', 0x13, true) },
+        { ChatColors.UNDERLINE, new ChatColor('n', 0x13, true) },
         /**
          * Makes the text italic.
          */
-        { Colors.ITALIC, new ChatColor('o', 0x14, true) },
+        { ChatColors.ITALIC, new ChatColor('o', 0x14, true) },
         /**
-         * Resets all previous chat colors or formats.
+         * Resets all previous chat ChatColors or formats.
          */
-        { Colors.RESET, new ChatColor('r', 0x15) }
+        { ChatColors.RESET, new ChatColor('r', 0x15) }
     };
 
         /**
@@ -302,13 +210,13 @@ namespace Mine.NET
 
         /**
          * Translates a string using an alternate color code character into a
-         * string that uses the internal ChatColor.COLOR_CODE color code
+         * string that uses the internal ChatColors.COLOR_CODE color code
          * character. The alternate color code character will only be replaced if
          * it is immediately followed by 0-9, A-F, a-f, K-O, k-o, R or r.
          *
          * @param altColorChar The alternate color code character to replace. Ex: {@literal &}
          * @param textToTranslate Text containing the alternate color code character.
-         * @return Text containing the ChatColor.COLOR_CODE color code character.
+         * @return Text containing the ChatColors.COLOR_CODE color code character.
          */
         public static String translateAlternateColorCodes(char altColorChar, String textToTranslate)
         {
@@ -349,7 +257,7 @@ namespace Mine.NET
                         result = color.ToString() + result;
 
                         // Once we find a color or reset we can stop searching
-                        if (color.isColor() || color.Equals(AllColors[Colors.RESET]))
+                        if (color.isColor() || color.Equals(AllColors[ChatColors.RESET]))
                         {
                             break;
                         }
@@ -359,5 +267,97 @@ namespace Mine.NET
 
             return result;
         }
+    }
+    
+    public enum ChatColors
+    {
+        /**
+         * Represents black
+         */
+        BLACK,
+        /**
+         * Represents dark blue
+         */
+        DARK_BLUE,
+        /**
+         * Represents dark green
+         */
+        DARK_GREEN,
+        /**
+         * Represents dark blue (aqua)
+         */
+        DARK_AQUA,
+        /**
+         * Represents dark red
+         */
+        DARK_RED,
+        /**
+         * Represents dark purple
+         */
+        DARK_PURPLE,
+        /**
+         * Represents gold
+         */
+        GOLD,
+        /**
+         * Represents gray
+         */
+        GRAY,
+        /**
+         * Represents dark gray
+         */
+        DARK_GRAY,
+        /**
+         * Represents blue
+         */
+        BLUE,
+        /**
+         * Represents green
+         */
+        GREEN,
+        /**
+         * Represents aqua
+         */
+        AQUA,
+        /**
+         * Represents red
+         */
+        RED,
+        /**
+         * Represents light purple
+         */
+        LIGHT_PURPLE,
+        /**
+         * Represents yellow
+         */
+        YELLOW,
+        /**
+         * Represents white
+         */
+        WHITE,
+        /**
+         * Represents magical characters that change around randomly
+         */
+        MAGIC,
+        /**
+         * Makes the text bold.
+         */
+        BOLD,
+        /**
+         * Makes a line appear through the text.
+         */
+        STRIKETHROUGH,
+        /**
+         * Makes the text appear underlined.
+         */
+        UNDERLINE,
+        /**
+         * Makes the text italic.
+         */
+        ITALIC,
+        /**
+         * Resets all previous chat colors or formats.
+         */
+        RESET
     }
 }

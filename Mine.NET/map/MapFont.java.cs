@@ -52,15 +52,15 @@ public class MapFont {
             throw new ArgumentException("text contains invalid characters");
         }
 
-        if (text.length() == 0){
+        if (text.Length == 0){
             return 0;
         }
 
         int result = 0;
-        for (int i = 0; i < text.length(); ++i) {
-            result += chars.get(text.charAt(i)).getWidth();
+        for (int i = 0; i < text.Length; ++i) {
+            result += chars.get(text[i]).getWidth();
         }
-        result += text.length() - 1; // Account for 1px spacing between characters
+        result += text.Length - 1; // Account for 1px spacing between characters
 
         return result;
     }
@@ -82,8 +82,8 @@ public class MapFont {
      *     otherwise.
      */
     public bool isValid(String text) {
-        for (int i = 0; i < text.length(); ++i) {
-            char ch = text.charAt(i);
+        for (int i = 0; i < text.Length; ++i) {
+            char ch = text[i];
             if (ch == '\u00A7' || ch == '\n') continue;
             if (chars.get(ch) == null) return false;
         }

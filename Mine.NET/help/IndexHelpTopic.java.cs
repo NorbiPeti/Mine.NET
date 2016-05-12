@@ -62,20 +62,20 @@ public class IndexHelpTopic : HelpTopic {
         StringBuilder sb = new StringBuilder();
 
         if (preamble != null) {
-            sb.append(buildPreamble(sender));
-            sb.append("\n");
+            sb.Append(buildPreamble(sender));
+            sb.Append("\n");
         }
 
         for (HelpTopic topic : allTopics) {
             if (topic.canSee(sender)) {
                 String lineStr = buildIndexLine(sender, topic).replace("\n", ". ");
-                if (sender is Player && lineStr.length() > ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH) {
-                    sb.append(lineStr.substring(0, ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH - 3));
-                    sb.append("...");
+                if (sender is Player && lineStr.Length > ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH) {
+                    sb.Append(lineStr.substring(0, ChatPaginator.GUARANTEED_NO_WRAP_CHAT_PAGE_WIDTH - 3));
+                    sb.Append("...");
                 } else {
-                    sb.append(lineStr);
+                    sb.Append(lineStr);
                 }
-                sb.append("\n");
+                sb.Append("\n");
             }
         }
         return sb.toString();
@@ -89,7 +89,7 @@ public class IndexHelpTopic : HelpTopic {
      * @return The topic preamble.
      */
     protected String buildPreamble(CommandSender sender) {
-        return ChatColor.GRAY + preamble;
+        return ChatColors.GRAY + preamble;
     }
 
     /**
@@ -102,11 +102,11 @@ public class IndexHelpTopic : HelpTopic {
      */
     protected String buildIndexLine(CommandSender sender, HelpTopic topic) {
         StringBuilder line = new StringBuilder();
-        line.append(ChatColor.GOLD);
-        line.append(topic.getName());
-        line.append(": ");
-        line.append(ChatColor.WHITE);
-        line.append(topic.getShortText());
+        line.Append(ChatColors.GOLD);
+        line.Append(topic.getName());
+        line.Append(": ");
+        line.Append(ChatColors.WHITE);
+        line.Append(topic.getShortText());
         return line.toString();
     }
 }

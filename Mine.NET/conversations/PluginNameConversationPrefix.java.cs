@@ -17,7 +17,7 @@ public class PluginNameConversationPrefix : ConversationPrefix {
     private String cachedPrefix;
     
     public PluginNameConversationPrefix(Plugin plugin) {
-        this(plugin, " > ", ChatColor.LIGHT_PURPLE);
+        this(plugin, " > ", ChatColors.LIGHT_PURPLE);
     }
     
     public PluginNameConversationPrefix(Plugin plugin, String separator, ChatColor prefixColor) {
@@ -25,7 +25,7 @@ public class PluginNameConversationPrefix : ConversationPrefix {
         this.prefixColor = prefixColor;
         this.plugin = plugin;
 
-        cachedPrefix = prefixColor + plugin.getDescription().getName() + separator + ChatColor.WHITE;
+        cachedPrefix = prefixColor + plugin.getDescription().getName() + separator + ChatColors.WHITE;
     }
 
     /**

@@ -10,6 +10,6 @@ public class ChannelNameTooLongException : RuntimeException {
     }
 
     public ChannelNameTooLongException(String channel) {
-        base("Attempted to send a Plugin Message to a channel that was too large. The maximum length a channel may be is " + Messenger.MAX_CHANNEL_SIZE + " chars (attempted " + channel.length() + " - '" + channel + ".");
+        base("Attempted to send a Plugin Message to a channel that was too large. The maximum length a channel may be is " + Messenger.MAX_CHANNEL_SIZE + " chars (attempted " + channel.Length + " - '" + channel + ".");
     }
 }

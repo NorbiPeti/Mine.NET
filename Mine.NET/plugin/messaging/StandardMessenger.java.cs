@@ -434,7 +434,7 @@ public class StandardMessenger : Messenger {
         if (channel == null) {
             throw new ArgumentException("Channel cannot be null");
         }
-        if (channel.length() > Messenger.MAX_CHANNEL_SIZE) {
+        if (channel.Length > Messenger.MAX_CHANNEL_SIZE) {
             throw new ChannelNameTooLongException(channel);
         }
     }

@@ -39,7 +39,7 @@ public abstract class NumericPrompt : ValidatingPrompt{
     }
 
     /**
-     * Override this method to perform some action with the user's integer
+     * Override this method to perform some action with the user's int
      * response.
      *
      * @param context Context information about the conversation.

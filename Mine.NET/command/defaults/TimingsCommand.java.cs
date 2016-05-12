@@ -33,7 +33,7 @@ public class TimingsCommand : BukkitCommand {
     public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
         if (args.length != 1)  {
-            sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
+            sender.sendMessage(ChatColors.RED + "Usage: " + usageMessage);
             return false;
         }
         if (!sender.getServer().getPluginManager().useTimings()) {
@@ -104,7 +104,7 @@ public class TimingsCommand : BukkitCommand {
                 }
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Usage: " + usageMessage);
+            sender.sendMessage(ChatColors.RED + "Usage: " + usageMessage);
             return false;
         }
         return true;

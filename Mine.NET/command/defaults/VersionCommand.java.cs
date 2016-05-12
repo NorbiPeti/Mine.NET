@@ -49,11 +49,11 @@ public class VersionCommand : BukkitCommand {
             StringBuilder name = new StringBuilder();
 
             for (String arg : args) {
-                if (name.length() > 0) {
-                    name.append(' ');
+                if (name.Length > 0) {
+                    name.Append(' ');
                 }
 
-                name.append(arg);
+                name.Append(arg);
             }
 
             String pluginName = name.toString();
@@ -82,14 +82,14 @@ public class VersionCommand : BukkitCommand {
 
     private void describeToSender(Plugin plugin, CommandSender sender) {
         PluginDescriptionFile desc = plugin.getDescription();
-        sender.sendMessage(ChatColor.GREEN + desc.getName() + ChatColor.WHITE + " version " + ChatColor.GREEN + desc.getVersion());
+        sender.sendMessage(ChatColors.GREEN + desc.getName() + ChatColors.WHITE + " version " + ChatColors.GREEN + desc.getVersion());
 
         if (desc.getDescription() != null) {
             sender.sendMessage(desc.getDescription());
         }
 
         if (desc.getWebsite() != null) {
-            sender.sendMessage("Website: " + ChatColor.GREEN + desc.getWebsite());
+            sender.sendMessage("Website: " + ChatColors.GREEN + desc.getWebsite());
         }
 
         if (!desc.getAuthors().isEmpty()) {
@@ -106,18 +106,18 @@ public class VersionCommand : BukkitCommand {
         List<String> authors = desc.getAuthors();
 
         for (int i = 0; i < authors.size(); i++) {
-            if (result.length() > 0) {
-                result.append(ChatColor.WHITE);
+            if (result.Length > 0) {
+                result.Append(ChatColors.WHITE);
 
                 if (i < authors.size() - 1) {
-                    result.append(", ");
+                    result.Append(", ");
                 } else {
-                    result.append(" and ");
+                    result.Append(" and ");
                 }
             }
 
-            result.append(ChatColor.GREEN);
-            result.append(authors.get(i));
+            result.Append(ChatColors.GREEN);
+            result.Append(authors.get(i));
         }
 
         return result.toString();
@@ -186,7 +186,7 @@ public class VersionCommand : BukkitCommand {
         String version = Bukkit.getVersion();
         if (version == null) version = "Custom";
         if (version.startsWith("git-Spigot-")) {
-            String[] parts = version.substring("git-Spigot-".length()).Split("-");
+            String[] parts = version.substring("git-Spigot-".Length).Split("-");
             int cbVersions = getDistance("craftbukkit", parts[1].substring(0, parts[1].indexOf(' ')));
             int spigotVersions = getDistance("spigot", parts[0]);
             if (cbVersions == -1 || spigotVersions == -1) {
@@ -200,7 +200,7 @@ public class VersionCommand : BukkitCommand {
             }
 
         } else if (version.startsWith("git-Bukkit-")) {
-            version = version.substring("git-Bukkit-".length());
+            version = version.substring("git-Bukkit-".Length);
             int cbVersions = getDistance("craftbukkit", version.substring(0, version.indexOf(' ')));
             if (cbVersions == -1) {
                 setVersionMessage("Error obtaining version information");

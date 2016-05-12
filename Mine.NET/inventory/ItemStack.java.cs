@@ -299,11 +299,11 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
     @Override
     @Utility
     public String toString() {
-        StringBuilder toString = new StringBuilder("ItemStack{").append(getType().name()).append(" x ").append(getAmount());
+        StringBuilder toString = new StringBuilder("ItemStack{").Append(getType().name()).Append(" x ").Append(getAmount());
         if (hasItemMeta()) {
-            toString.append(", ").append(getItemMeta());
+            toString.Append(", ").Append(getItemMeta());
         }
-        return toString.append('}').toString();
+        return toString.Append('}').toString();
     }
 
     @Override
@@ -395,8 +395,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *
      * @return Map of enchantments.
      */
-    public Dictionary<Enchantment, Integer> getEnchantments() {
-        return meta == null ? ImmutableMap.<Enchantment, Integer>of() : meta.getEnchants();
+    public Dictionary<Enchantment, int> getEnchantments() {
+        return meta == null ? ImmutableMap.<Enchantment, int>of() : meta.getEnchants();
     }
 
     /**
@@ -413,9 +413,9 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *     exception is thrown.
      */
     @Utility
-    public void addEnchantments(Dictionary<Enchantment, Integer> enchantments) {
+    public void addEnchantments(Dictionary<Enchantment, int> enchantments) {
         if(enchantments==null) throw new ArgumentNullException("Enchantments cannot be null");
-        for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+        for (Map.Entry<Enchantment, int> entry : enchantments.entrySet()) {
             addEnchantment(entry.getKey(), entry.getValue());
         }
     }
@@ -453,8 +453,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @param enchantments Enchantments to add
      */
     @Utility
-    public void addUnsafeEnchantments(Dictionary<Enchantment, Integer> enchantments) {
-        for (Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
+    public void addUnsafeEnchantments(Dictionary<Enchantment, int> enchantments) {
+        for (Map.Entry<Enchantment, int> entry : enchantments.entrySet()) {
             addUnsafeEnchantment(entry.getKey(), entry.getValue());
         }
     }
@@ -544,8 +544,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
                 for (Map.Entry<?, ?> entry : map.entrySet()) {
                     Enchantment enchantment = Enchantment.getByName(entry.getKey().toString());
 
-                    if ((enchantment != null) && (entry.getValue() is Integer)) {
-                        result.addUnsafeEnchantment(enchantment, (Integer) entry.getValue());
+                    if ((enchantment != null) && (entry.getValue() is int)) {
+                        result.addUnsafeEnchantment(enchantment, (int) entry.getValue());
                     }
                 }
             }

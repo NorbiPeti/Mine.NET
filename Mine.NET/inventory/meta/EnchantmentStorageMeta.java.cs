@@ -41,7 +41,7 @@ public interface EnchantmentStorageMeta : ItemMeta {
      *
      * @return An immutable copy of the stored enchantments
      */
-    Dictionary<Enchantment, Integer> getStoredEnchants();
+    Dictionary<Enchantment, int> getStoredEnchants();
 
     /**
      * Stores the specified enchantment in this item meta.

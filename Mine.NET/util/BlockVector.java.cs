@@ -33,7 +33,7 @@ public class BlockVector : Vector {
     }
 
     /**
-     * Construct the vector with provided integer components.
+     * Construct the vector with provided int components.
      *
      * @param x X component
      * @param y Y component
@@ -93,7 +93,7 @@ public class BlockVector : Vector {
      * @return hash code
      */
     public override int GetHashCode() {
-        return (Integer.valueOf((int) x).hashCode() >> 13) ^ (Integer.valueOf((int) y).hashCode() >> 7) ^ Integer.valueOf((int) z).hashCode();
+        return (int.valueOf((int) x).hashCode() >> 13) ^ (int.valueOf((int) y).hashCode() >> 7) ^ int.valueOf((int) z).hashCode();
     }
 
     /**

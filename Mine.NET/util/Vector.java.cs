@@ -40,7 +40,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
     }
 
     /**
-     * Construct the vector with provided integer components.
+     * Construct the vector with provided int components.
      *
      * @param x X component
      * @param y Y component
@@ -152,7 +152,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
      *
      * @return the magnitude
      */
-    public double length() {
+    public double Length {
         return Math.sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
     }
 
@@ -196,7 +196,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
      * @return angle in radians
      */
     public float angle(Vector other) {
-        double dot = dot(other) / (length() * other.length());
+        double dot = dot(other) / (Length * other.Length);
 
         return (float) Math.acos(dot);
     }
@@ -328,7 +328,7 @@ public class Vector : Cloneable, ConfigurationSerializable {
      * @return the same vector
      */
     public Vector normalize() {
-        double length = length();
+        double length = Length;
 
         x /= length;
         y /= length;

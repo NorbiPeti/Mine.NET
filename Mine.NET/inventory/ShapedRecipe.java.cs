@@ -48,7 +48,7 @@ public class ShapedRecipe : Recipe {
 
         for (String row : shape) {
             if(row==null) throw new ArgumentNullException("Shape cannot have null rows");
-            if(row.length() > 0 && row.length() < 4, "Crafting rows should be 1, 2, or 3 characters, not ") throw new ArgumentException(row.length());
+            if(row.Length > 0 && row.Length < 4, "Crafting rows should be 1, 2, or 3 characters, not ") throw new ArgumentException(row.Length);
         }
         this.rows = new String[shape.length];
         for (int i = 0; i < shape.length; i++) {
@@ -94,7 +94,7 @@ public class ShapedRecipe : Recipe {
      *
      * @param key The character that represents the ingredient in the shape.
      * @param ingredient The ingredient.
-     * @param raw The raw material data as an integer.
+     * @param raw The raw material data as an int.
      * @return The changed recipe, so you can chain calls.
      * [Obsolete] Magic value
      */

@@ -22,17 +22,17 @@ public class EnchantItemEvent : InventoryEvent : Cancellable {
     private readonly ItemStack item;
     private int level;
     private bool cancelled;
-    private readonly Dictionary<Enchantment,Integer> enchants;
+    private readonly Dictionary<Enchantment,int> enchants;
     private readonly Player enchanter;
     private int button;
 
-    public EnchantItemEvent(Player enchanter, readonly InventoryView view, readonly Block table, readonly ItemStack item, readonly int level, readonly Dictionary<Enchantment, Integer> enchants, readonly int i) {
+    public EnchantItemEvent(Player enchanter, readonly InventoryView view, readonly Block table, readonly ItemStack item, readonly int level, readonly Dictionary<Enchantment, int> enchants, readonly int i) {
         base(view);
         this.enchanter = enchanter;
         this.table = table;
         this.item = item;
         this.level = level;
-        this.enchants = new HashMap<Enchantment, Integer>(enchants);
+        this.enchants = new HashMap<Enchantment, int>(enchants);
         this.cancelled = false;
         this.button = i;
     }
@@ -89,7 +89,7 @@ public class EnchantItemEvent : InventoryEvent : Cancellable {
      *
      * @return map of enchantment levels, keyed by enchantment
      */
-    public Dictionary<Enchantment, Integer> getEnchantsToAdd() {
+    public Dictionary<Enchantment, int> getEnchantsToAdd() {
         return enchants;
     }
 

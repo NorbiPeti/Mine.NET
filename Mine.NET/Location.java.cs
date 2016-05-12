@@ -402,7 +402,7 @@ namespace Mine.NET
          * @see Vector
          * @return the magnitude
          */
-        public double length() {
+        public double Length {
             return Math.Sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
         }
 

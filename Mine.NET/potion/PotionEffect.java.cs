@@ -110,8 +110,8 @@ public class PotionEffect : ConfigurationSerializable {
 
     private static int getInt(Dictionary<?,?> map, Object key) {
         Object num = map.get(key);
-        if (num is Integer) {
-            return (Integer) num;
+        if (num is int) {
+            return (int) num;
         }
         throw new NoSuchElementException(map + " does not contain " + key);
     }

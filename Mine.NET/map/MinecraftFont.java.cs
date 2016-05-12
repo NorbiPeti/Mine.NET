@@ -292,8 +292,8 @@ public class MinecraftFont : MapFont {
     private MinecraftFont(bool malleable) {
         for (int i = 1; i < fontData.length; ++i) {
             char ch = (char) i;
-            if (i >= 32 && i < 32 + fontChars.length()) {
-                ch = fontChars.charAt(i - 32);
+            if (i >= 32 && i < 32 + fontChars.Length) {
+                ch = fontChars[i - 32];
             }
 
             if (ch == ' ') {

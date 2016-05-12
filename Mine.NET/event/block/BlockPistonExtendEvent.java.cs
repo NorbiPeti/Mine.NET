@@ -38,7 +38,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
      *          inaccurate due to blocks being pushed at the side
      */
     [Obsolete]
-    public int getLength() {
+    public int getLength {
         return this.length;
     }
 
@@ -51,7 +51,7 @@ public class BlockPistonExtendEvent : BlockPistonEvent {
     public List<Block> getBlocks() {
         if (blocks == null) {
             List<Block> tmp = new List<Block>();
-            for (int i = 0; i < this.getLength(); i++) {
+            for (int i = 0; i < this.getLength; i++) {
                 tmp.add(block.getRelative(getDirection(), i + 1));
             }
             blocks = Collections.unmodifiableList(tmp);

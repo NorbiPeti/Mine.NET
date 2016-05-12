@@ -20,10 +20,10 @@ public class ReloadCommand : BukkitCommand {
     public bool execute(CommandSender sender, String currentAlias, String[] args) {
         if (!testPermission(sender)) return true;
 
-        Command.broadcastCommandMessage(sender, ChatColor.RED + "Please note that this command is not supported and may cause issues when using some plugins.");
-        Command.broadcastCommandMessage(sender, ChatColor.RED + "If you encounter any issues please use the /stop command to restart your server.");
+        Command.broadcastCommandMessage(sender, ChatColors.RED + "Please note that this command is not supported and may cause issues when using some plugins.");
+        Command.broadcastCommandMessage(sender, ChatColors.RED + "If you encounter any issues please use the /stop command to restart your server.");
         Bukkit.reload();
-        Command.broadcastCommandMessage(sender, ChatColor.GREEN + "Reload complete.");
+        Command.broadcastCommandMessage(sender, ChatColors.GREEN + "Reload complete.");
 
         return true;
     }

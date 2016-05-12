@@ -29,13 +29,13 @@ public class PluginsCommand : BukkitCommand {
         Plugin[] plugins = Bukkit.getPluginManager().getPlugins();
 
         for (Plugin plugin : plugins) {
-            if (pluginList.length() > 0) {
-                pluginList.append(ChatColor.WHITE);
-                pluginList.append(", ");
+            if (pluginList.Length > 0) {
+                pluginList.Append(ChatColors.WHITE);
+                pluginList.Append(", ");
             }
 
-            pluginList.append(plugin.isEnabled() ? ChatColor.GREEN : ChatColor.RED);
-            pluginList.append(plugin.getDescription().getName());
+            pluginList.Append(plugin.isEnabled() ? ChatColors.GREEN : ChatColors.RED);
+            pluginList.Append(plugin.getDescription().getName());
         }
 
         return "(" + plugins.length + "): " + pluginList.toString();

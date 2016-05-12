@@ -132,7 +132,7 @@ public sealed class PluginCommand : Command, PluginIdentifiableCommand {
             }
         } catch (Exception ex) {
             StringBuilder message = new StringBuilder();
-            message.Append("Unhandled exception during tab completion for command '/").append(alias).append(' ');
+            message.Append("Unhandled exception during tab completion for command '/").Append(alias).Append(' ');
             foreach (String arg in args) {
                 message.Append(arg).Append(' ');
             }

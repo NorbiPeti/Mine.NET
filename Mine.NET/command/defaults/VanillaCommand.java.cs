@@ -1,111 +1,110 @@
-package org.bukkit.command.defaults;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-import java.util.List;
+namespace Mine.NET
+{
+    [Obsolete]
+    public abstract class VanillaCommand : Command {
+        static readonly int MAX_COORD = 30000000;
+        static readonly int MIN_COORD_MINUS_ONE = -30000001;
+        static readonly int MIN_COORD = -30000000;
 
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
+        protected VanillaCommand(String name) : base(name) {
+        }
 
-[Obsolete]
-public abstract class VanillaCommand : Command {
-    static readonly int MAX_COORD = 30000000;
-    static readonly int MIN_COORD_MINUS_ONE = -30000001;
-    static readonly int MIN_COORD = -30000000;
+        protected VanillaCommand(String name, String description, String usageMessage, List<String> aliases) : base(name, description, usageMessage, aliases)
+        {
+        }
 
-    protected VanillaCommand(String name) {
-        base(name);
-    }
+        public bool matches(String input) {
+            return input.Equals(this.getName(), StringComparison.InvariantCultureIgnoreCase);
+        }
 
-    protected VanillaCommand(String name, String description, String usageMessage, List<String> aliases) {
-        base(name, description, usageMessage, aliases);
-    }
+        protected int getInteger(CommandSender sender, String value, int min) {
+            return getInteger(sender, value, min, int.MaxValue);
+        }
 
-    public bool matches(String input) {
-        return input.equalsIgnoreCase(this.getName());
-    }
+        int getInteger(CommandSender sender, String value, int min, int max) {
+            return getInteger(sender, value, min, max, false);
+        }
 
-    protected int getInteger(CommandSender sender, String value, int min) {
-        return getInteger(sender, value, min, Integer.MAX_VALUE);
-    }
+        int getInteger(CommandSender sender, String value, int min, int max, bool Throws) {
+            int i = min;
 
-    int getInteger(CommandSender sender, String value, int min, int max) {
-        return getInteger(sender, value, min, max, false);
-    }
+            try {
+                i = int.Parse(value);
+            } catch (FormatException) {
+                if (Throws) {
+                    throw new FormatException(String.Format("{0} is not a valid number", value));
+                }
+            }
 
-    int getInteger(CommandSender sender, String value, int min, int max, bool Throws) {
-        int i = min;
+            if (i < min) {
+                i = min;
+            } else if (i > max) {
+                i = max;
+            }
 
-        try {
-            i = Integer.valueOf(value);
-        } catch (NumberFormatException ex) {
-            if (Throws) {
-                throw new NumberFormatException(String.format("%s is not a valid number", value));
+            return i;
+        }
+
+        int getInteger(String value) {
+            try {
+                return int.Parse(value);
+            } catch (FormatException) {
+                return 0; //TODO: Replace null
             }
         }
 
-        if (i < min) {
-            i = min;
-        } else if (i > max) {
-            i = max;
+        public static double getRelativeDouble(double original, CommandSender sender, String input) {
+            if (input.StartsWith("~")) {
+                double value = getDouble(sender, input.Substring(1));
+                if (value == MIN_COORD_MINUS_ONE) {
+                    return MIN_COORD_MINUS_ONE;
+                }
+                return original + value;
+            } else {
+                return getDouble(sender, input);
+            }
         }
 
-        return i;
-    }
-
-    Integer getInteger(String value) {
-        try {
-            return Integer.valueOf(value);
-        } catch (NumberFormatException ex) {
-            return null;
-        }
-    }
-
-    public static double getRelativeDouble(double original, CommandSender sender, String input) {
-        if (input.startsWith("~")) {
-            double value = getDouble(sender, input.substring(1));
-            if (value == MIN_COORD_MINUS_ONE) {
+        public static double getDouble(CommandSender sender, String input) {
+            try {
+                return Double.Parse(input);
+            } catch (FormatException ex) { //TODO: Change these to TryParse
                 return MIN_COORD_MINUS_ONE;
             }
-            return original + value;
-        } else {
-            return getDouble(sender, input);
-        }
-    }
-
-    public static double getDouble(CommandSender sender, String input) {
-        try {
-            return Double.parseDouble(input);
-        } catch (NumberFormatException ex) {
-            return MIN_COORD_MINUS_ONE;
-        }
-    }
-
-    public static double getDouble(CommandSender sender, String input, double min, double max) {
-        double result = getDouble(sender, input);
-
-        // TODO: This should throw an exception instead.
-        if (result < min) {
-            result = min;
-        } else if (result > max) {
-            result = max;
         }
 
-        return result;
-    }
+        public static double getDouble(CommandSender sender, String input, double min, double max) {
+            double result = getDouble(sender, input);
 
-    String createString(String[] args, int start) {
-        return createString(args, start, " ");
-    }
-
-    String createString(String[] args, int start, String glue) {
-        StringBuilder string = new StringBuilder();
-
-        for (int x = start; x < args.length; x++) {
-            string.append(args[x]);
-            if (x != args.length - 1) {
-                string.append(glue);
+            // TODO: This should throw an exception instead.
+            if (result < min) {
+                throw new ArgumentException("The result is less than min.");
+            } else if (result > max) {
+                throw new ArgumentException("The result is more than max.");
             }
+
+            return result;
         }
 
-        return string.toString();
+        String createString(String[] args, int start) {
+            return createString(args, start, " ");
+        }
+
+        String createString(String[] args, int start, String glue) {
+            StringBuilder string_ = new StringBuilder();
+
+            for (int x = start; x < args.Length; x++) {
+                string_.Append(args[x]);
+                if (x != args.Length - 1) {
+                    string_.Append(glue);
+                }
+            }
+
+            return string_.ToString();
+        }
     }
 }
