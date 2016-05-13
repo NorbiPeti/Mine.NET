@@ -11,7 +11,7 @@ namespace Mine.NET.Event.entity
  * </ul>
  * This can be visually estimated by the animation in which a player turns horizontal.
  */
-public class EntityToggleGlideEvent : EntityEvent, Cancellable {
+public class EntityToggleGlideEvent : EntityEvent<LivingEntity>, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
 
     private bool cancel = false;
@@ -21,11 +21,11 @@ public class EntityToggleGlideEvent : EntityEvent, Cancellable {
             this.isGliding = isGliding;
         }
 
-    public override bool isCancelled() {
+    public bool isCancelled() {
         return cancel;
     }
 
-    public override void setCancelled(bool cancel) {
+    public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
 

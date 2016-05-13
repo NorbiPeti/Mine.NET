@@ -1,39 +1,34 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Sheep;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
+namespace Mine.NET.Event.entity
+{
+    /**
+     * Called when a sheep regrows its wool
+     */
+    public class SheepRegrowWoolEvent : EntityEvent<Sheep>, Cancellable {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel;
 
-/**
- * Called when a sheep regrows its wool
- */
-public class SheepRegrowWoolEvent : EntityEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel;
+        public SheepRegrowWoolEvent(Sheep sheep) : base(sheep)
+        {
+            this.cancel = false;
+        }
 
-    public SheepRegrowWoolEvent(Sheep sheep) {
-        base(sheep);
-        this.cancel = false;
+        public bool isCancelled() {
+            return cancel;
+        }
+
+        public void setCancelled(bool cancel) {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
+
     }
-
-    public bool isCancelled() {
-        return cancel;
-    }
-
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
-
-    public override Sheep getEntity() {
-        return (Sheep) entity;
-    }
-
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
-
 }

@@ -6,7 +6,7 @@ namespace Mine.NET.Event.entity
      * Thrown when a non-player entity (such as an Enderman) tries to teleport
      * from one location to another.
      */
-    public class EntityTeleportEvent : EntityEvent, Cancellable
+    public class EntityTeleportEvent : EntityEvent<Entity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;

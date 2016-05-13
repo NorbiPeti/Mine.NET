@@ -1,87 +1,96 @@
-namespace Mine.NET.event.inventory;
+using Mine.NET.block;
+using Mine.NET.Event.block;
+using Mine.NET.inventory;
 
-import org.bukkit.block.Block;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.event.block.BlockEvent;
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Called when an ItemStack is successfully burned as fuel in a furnace.
- */
-public class FurnaceBurnEvent : BlockEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly ItemStack fuel;
-    private int burnTime;
-    private bool cancelled;
-    private bool burning;
-
-    public FurnaceBurnEvent(Block furnace, readonly ItemStack fuel, readonly int burnTime) {
-        base(furnace);
-        this.fuel = fuel;
-        this.burnTime = burnTime;
-        this.cancelled = false;
-        this.burning = true;
-    }
-
+namespace Mine.NET.Event.inventory
+{
     /**
-     * Gets the fuel ItemStack for this event
-     *
-     * @return the fuel ItemStack
+     * Called when an ItemStack is successfully burned as fuel in a furnace.
      */
-    public ItemStack getFuel() {
-        return fuel;
-    }
+    public class FurnaceBurnEvent : BlockEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly ItemStack fuel;
+        private int burnTime;
+        private bool cancelled;
+        private bool burning;
 
-    /**
-     * Gets the burn time for this fuel
-     *
-     * @return the burn time for this fuel
-     */
-    public int getBurnTime() {
-        return burnTime;
-    }
+        public FurnaceBurnEvent(Block furnace, ItemStack fuel, int burnTime) : base(furnace)
+        {
+            this.fuel = fuel;
+            this.burnTime = burnTime;
+            this.cancelled = false;
+            this.burning = true;
+        }
 
-    /**
-     * Sets the burn time for this fuel
-     *
-     * @param burnTime the burn time for this fuel
-     */
-    public void setBurnTime(int burnTime) {
-        this.burnTime = burnTime;
-    }
+        /**
+         * Gets the fuel ItemStack for this event
+         *
+         * @return the fuel ItemStack
+         */
+        public ItemStack getFuel()
+        {
+            return fuel;
+        }
 
-    /**
-     * Gets whether the furnace's fuel is burning or not.
-     *
-     * @return whether the furnace's fuel is burning or not.
-     */
-    public bool isBurning() {
-        return this.burning;
-    }
+        /**
+         * Gets the burn time for this fuel
+         *
+         * @return the burn time for this fuel
+         */
+        public int getBurnTime()
+        {
+            return burnTime;
+        }
 
-    /**
-     * Sets whether the furnace's fuel is burning or not.
-     *
-     * @param burning true if the furnace's fuel is burning
-     */
-    public void setBurning(bool burning) {
-        this.burning = burning;
-    }
+        /**
+         * Sets the burn time for this fuel
+         *
+         * @param burnTime the burn time for this fuel
+         */
+        public void setBurnTime(int burnTime)
+        {
+            this.burnTime = burnTime;
+        }
 
-    public bool isCancelled() {
-        return cancelled;
-    }
+        /**
+         * Gets whether the furnace's fuel is burning or not.
+         *
+         * @return whether the furnace's fuel is burning or not.
+         */
+        public bool isBurning()
+        {
+            return this.burning;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Sets whether the furnace's fuel is burning or not.
+         *
+         * @param burning true if the furnace's fuel is burning
+         */
+        public void setBurning(bool burning)
+        {
+            this.burning = burning;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

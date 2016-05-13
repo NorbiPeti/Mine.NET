@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a creature targets or untargets another entity
      */
-    public class EntityTargetEvent : EntityEvent, Cancellable
+    public class EntityTargetEvent : EntityEvent<Entity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;

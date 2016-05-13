@@ -1,125 +1,132 @@
-namespace Mine.NET.event.inventory;
+using System;
 
-public enum InventoryType {
+namespace Mine.NET.Event.inventory
+{
+    public class InventoryType
+    {
 
-    /**
-     * A chest inventory, with 0, 9, 18, 27, 36, 45, or 54 slots of type
-     * CONTAINER.
-     */
-    CHEST(27,"Chest"),
-    /**
-     * A dispenser inventory, with 9 slots of type CONTAINER.
-     */
-    DISPENSER(9,"Dispenser"),
-    /**
-     * A dropper inventory, with 9 slots of type CONTAINER.
-     */
-    DROPPER(9, "Dropper"),
-    /**
-     * A furnace inventory, with a RESULT slot, a CRAFTING slot, and a FUEL
-     * slot.
-     */
-    FURNACE(3,"Furnace"),
-    /**
-     * A workbench inventory, with 9 CRAFTING slots and a RESULT slot.
-     */
-    WORKBENCH(10,"Crafting"),
-    /**
-     * A player's crafting inventory, with 4 CRAFTING slots and a RESULT slot.
-     * Also implies that the 4 ARMOR slots are accessible.
-     */
-    CRAFTING(5,"Crafting"),
-    /**
-     * An enchantment table inventory, with two CRAFTING slots and three
-     * enchanting buttons.
-     */
-    ENCHANTING(2,"Enchanting"),
-    /**
-     * A brewing stand inventory, with one FUEL slot and three CRAFTING slots.
-     */
-    BREWING(5,"Brewing"),
-    /**
-     * A player's inventory, with 9 QUICKBAR slots, 27 CONTAINER slots, 4 ARMOR
-     * slots and 1 offhand slot. The ARMOR and offhand slots may not be visible
-     * to the player, though.
-     */
-    PLAYER(41,"Player"),
-    /**
-     * The creative mode inventory, with only 9 QUICKBAR slots and nothing
-     * else. (The actual creative interface with the items is client-side and
-     * cannot be altered by the server.)
-     */
-    CREATIVE(9,"Creative"),
-    /**
-     * The merchant inventory, with 2 TRADE-IN slots, and 1 RESULT slot.
-     */
-    MERCHANT(3,"Villager"),
-    /**
-     * The ender chest inventory, with 27 slots.
-     */
-    ENDER_CHEST(27,"Ender Chest"),
-    /**
-     * An anvil inventory, with 2 CRAFTING slots and 1 RESULT slot
-     */
-    ANVIL(3, "Repairing"),
-    /**
-     * A beacon inventory, with 1 CRAFTING slot
-     */
-    BEACON(1, "container.beacon"),
-    /**
-     * A hopper inventory, with 5 slots of type CONTAINER.
-     */
-    HOPPER(5, "Item Hopper"),
-    ;
-
-    private readonly int size;
-    private readonly String title;
-
-    private InventoryType(int defaultSize, String defaultTitle) {
-        size = defaultSize;
-        title = defaultTitle;
-    }
-
-    public int getDefaultSize() {
-        return size;
-    }
-
-    public String getDefaultTitle() {
-        return title;
-    }
-
-    public enum SlotType {
         /**
-         * A result slot in a furnace or crafting inventory.
+         * A chest inventory, with 0, 9, 18, 27, 36, 45, or 54 slots of type
+         * CONTAINER.
          */
-        RESULT,
+        private static readonly InventoryType CHEST = new InventoryType(27, "Chest");
         /**
-         * A slot in the crafting matrix, or the input slot in a furnace
-         * inventory, the potion slot in the brewing stand, or the enchanting
+         * A dispenser inventory, with 9 slots of type CONTAINER.
+         */
+        private static readonly InventoryType DISPENSER = new InventoryType(9, "Dispenser");
+        /**
+         * A dropper inventory, with 9 slots of type CONTAINER.
+         */
+        private static readonly InventoryType DROPPER = new InventoryType(9, "Dropper");
+        /**
+         * A furnace inventory, with a RESULT slot, a CRAFTING slot, and a FUEL
          * slot.
          */
-        CRAFTING,
+        private static readonly InventoryType FURNACE = new InventoryType(3, "Furnace");
         /**
-         * An armour slot in the player's inventory.
+         * A workbench inventory, with 9 CRAFTING slots and a RESULT slot.
          */
-        ARMOR,
+        private static readonly InventoryType WORKBENCH = new InventoryType(10, "Crafting");
         /**
-         * A regular slot in the container or the player's inventory; anything
-         * not covered by the other enum values.
+         * A player's crafting inventory, with 4 CRAFTING slots and a RESULT slot.
+         * Also implies that the 4 ARMOR slots are accessible.
          */
-        CONTAINER,
+        private static readonly InventoryType CRAFTING = new InventoryType(5, "Crafting");
         /**
-         * A slot in the bottom row or quickbar.
+         * An enchantment table inventory, with two CRAFTING slots and three
+         * enchanting buttons.
          */
-        QUICKBAR,
+        private static readonly InventoryType ENCHANTING = new InventoryType(2, "Enchanting");
         /**
-         * A pseudo-slot representing the area outside the inventory window.
+         * A brewing stand inventory, with one FUEL slot and three CRAFTING slots.
          */
-        OUTSIDE,
+        private static readonly InventoryType BREWING = new InventoryType(5, "Brewing");
         /**
-         * The fuel slot in a furnace inventory, or the ingredient slot in a
-         * brewing stand inventory.
+         * A player's inventory, with 9 QUICKBAR slots, 27 CONTAINER slots, 4 ARMOR
+         * slots and 1 offhand slot. The ARMOR and offhand slots may not be visible
+         * to the player, though.
          */
-        FUEL;
+        private static readonly InventoryType PLAYER = new InventoryType(41, "Player");
+        /**
+         * The creative mode inventory, with only 9 QUICKBAR slots and nothing
+         * else. (The actual creative interface with the items is client-side and
+         * cannot be altered by the server.)
+         */
+        private static readonly InventoryType CREATIVE = new InventoryType(9, "Creative");
+        /**
+         * The merchant inventory, with 2 TRADE-IN slots, and 1 RESULT slot.
+         */
+        private static readonly InventoryType MERCHANT = new InventoryType(3, "Villager");
+        /**
+         * The ender chest inventory, with 27 slots.
+         */
+        private static readonly InventoryType ENDER_CHEST = new InventoryType(27, "Ender Chest");
+        /**
+         * An anvil inventory, with 2 CRAFTING slots and 1 RESULT slot
+         */
+        private static readonly InventoryType ANVIL = new InventoryType(3, "Repairing");
+        /**
+         * A beacon inventory, with 1 CRAFTING slot
+         */
+        private static readonly InventoryType BEACON = new InventoryType(1, "container.beacon");
+        /**
+         * A hopper inventory, with 5 slots of type CONTAINER.
+         */
+        private static readonly InventoryType HOPPER = new InventoryType(5, "Item Hopper");
+
+        private readonly int size;
+        private readonly String title;
+
+        private InventoryType(int defaultSize, String defaultTitle)
+        {
+            size = defaultSize;
+            title = defaultTitle;
+        }
+
+        public int getDefaultSize()
+        {
+            return size;
+        }
+
+        public String getDefaultTitle()
+        {
+            return title;
+        }
+
+        public enum SlotType
+        {
+            /**
+             * A result slot in a furnace or crafting inventory.
+             */
+            RESULT,
+            /**
+             * A slot in the crafting matrix, or the input slot in a furnace
+             * inventory, the potion slot in the brewing stand, or the enchanting
+             * slot.
+             */
+            CRAFTING,
+            /**
+             * An armour slot in the player's inventory.
+             */
+            ARMOR,
+            /**
+             * A regular slot in the container or the player's inventory; anything
+             * not covered by the other enum values.
+             */
+            CONTAINER,
+            /**
+             * A slot in the bottom row or quickbar.
+             */
+            QUICKBAR,
+            /**
+             * A pseudo-slot representing the area outside the inventory window.
+             */
+            OUTSIDE,
+            /**
+             * The fuel slot in a furnace inventory, or the ingredient slot in a
+             * brewing stand inventory.
+             */
+            FUEL
+        }
     }
 }

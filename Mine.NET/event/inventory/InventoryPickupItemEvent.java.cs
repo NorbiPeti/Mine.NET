@@ -1,57 +1,62 @@
-namespace Mine.NET.event.inventory;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Item;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.Inventory;
-
-/**
- * Called when a hopper or hopper minecart picks up a dropped item.
- */
-public class InventoryPickupItemEvent : Event : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancelled;
-    private readonly Inventory inventory;
-    private readonly Item item;
-
-    public InventoryPickupItemEvent(Inventory inventory, readonly Item item) {
-        base();
-        this.inventory = inventory;
-        this.item = item;
-    }
-
+namespace Mine.NET.Event.inventory
+{
     /**
-     * Gets the Inventory that picked up the item
-     *
-     * @return Inventory
+     * Called when a hopper or hopper minecart picks up a dropped item.
      */
-    public Inventory getInventory() {
-        return inventory;
-    }
+    public class InventoryPickupItemEvent : Event, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancelled;
+        private readonly Inventory inventory;
+        private readonly Item item;
 
-    /**
-     * Gets the Item entity that was picked up
-     *
-     * @return Item
-     */
-    public Item getItem() {
-        return item;
-    }
+        public InventoryPickupItemEvent(Inventory inventory, Item item) : base()
+        {
+            this.inventory = inventory;
+            this.item = item;
+        }
 
-    public bool isCancelled() {
-        return cancelled;
-    }
+        /**
+         * Gets the Inventory that picked up the item
+         *
+         * @return Inventory
+         */
+        public Inventory getInventory()
+        {
+            return inventory;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Gets the Item entity that was picked up
+         *
+         * @return Item
+         */
+        public Item getItem()
+        {
+            return item;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

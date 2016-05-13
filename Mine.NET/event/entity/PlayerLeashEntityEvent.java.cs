@@ -1,67 +1,64 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.Event;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called immediately prior to a creature being leashed by a player.
- */
-public class PlayerLeashEntityEvent : Event : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Entity leashHolder;
-    private readonly Entity entity;
-    private bool cancelled = false;
-    private readonly Player player;
-
-    public PlayerLeashEntityEvent(Entity what, Entity leashHolder, Player leasher) {
-        this.leashHolder = leashHolder;
-        this.entity = what;
-        this.player = leasher;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Returns the entity that is holding the leash.
-     *
-     * @return The leash holder
+     * Called immediately prior to a creature being leashed by a player.
      */
-    public Entity getLeashHolder() {
-        return leashHolder;
-    }
+    public class PlayerLeashEntityEvent : Event, Cancellable {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Entity leashHolder;
+        private readonly Entity entity;
+        private bool cancelled = false;
+        private readonly Player player;
 
-    /**
-     * Returns the entity being leashed.
-     *
-     * @return The entity
-     */
-    public Entity getEntity() {
-        return entity;
-    }
+        public PlayerLeashEntityEvent(Entity what, Entity leashHolder, Player leasher) {
+            this.leashHolder = leashHolder;
+            this.entity = what;
+            this.player = leasher;
+        }
 
-    /**
-     * Returns the player involved in this event
-     *
-     * @return Player who is involved in this event
-     */
-    public readonly Player getPlayer() {
-        return player;
-    }
+        /**
+         * Returns the entity that is holding the leash.
+         *
+         * @return The leash holder
+         */
+        public Entity getLeashHolder() {
+            return leashHolder;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Returns the entity being leashed.
+         *
+         * @return The entity
+         */
+        public Entity getEntity() {
+            return entity;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
+        /**
+         * Returns the player involved in this event
+         *
+         * @return Player who is involved in this event
+         */
+        public Player getPlayer() {
+            return player;
+        }
 
-    public bool isCancelled() {
-        return this.cancelled;
-    }
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancelled  = cancel;
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
+
+        public bool isCancelled() {
+            return this.cancelled;
+        }
+
+        public void setCancelled(bool cancel) {
+            this.cancelled = cancel;
+        }
     }
 }

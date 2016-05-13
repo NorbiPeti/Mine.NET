@@ -6,7 +6,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a LivingEntity shoots a bow firing an arrow
      */
-    public class EntityShootBowEvent : EntityEvent, Cancellable
+    public class EntityShootBowEvent : EntityEvent<LivingEntity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly ItemStack bow;
@@ -20,11 +20,6 @@ namespace Mine.NET.Event.entity
             this.bow = bow;
             this.projectile = projectile;
             this.force = force;
-        }
-
-        public override Entity getEntity()
-        {
-            return entity;
         }
 
         /**

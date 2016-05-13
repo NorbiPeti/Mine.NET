@@ -1,85 +1,89 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Villager;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.MerchantRecipe;
-
-/**
- * Called when a villager's trade's maximum uses is increased, due to a player's
- * trade.
- *
- * @see MerchantRecipe#getMaxUses()
- */
-public class VillagerReplenishTradeEvent : EntityEvent : Cancellable {
-
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancelled;
-    //
-    private MerchantRecipe recipe;
-    private int bonus;
-
-    public VillagerReplenishTradeEvent(Villager what, MerchantRecipe recipe, int bonus) {
-        base(what);
-        this.recipe = recipe;
-        this.bonus = bonus;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Get the recipe to replenish.
+     * Called when a villager's trade's maximum uses is increased, due to a player's
+     * trade.
      *
-     * @return the replenished recipe
+     * @see MerchantRecipe#getMaxUses()
      */
-    public MerchantRecipe getRecipe() {
-        return recipe;
-    }
+    public class VillagerReplenishTradeEvent : EntityEvent<Villager>, Cancellable
+    {
 
-    /**
-     * Set the recipe to replenish.
-     *
-     * @param recipe the replenished recipe
-     */
-    public void setRecipe(MerchantRecipe recipe) {
-        this.recipe = recipe;
-    }
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancelled;
+        //
+        private MerchantRecipe recipe;
+        private int bonus;
 
-    /**
-     * Get the bonus uses added. The maximum uses of the recipe will be
-     * increased by this number.
-     *
-     * @return the extra uses added
-     */
-    public int getBonus() {
-        return bonus;
-    }
+        public VillagerReplenishTradeEvent(Villager what, MerchantRecipe recipe, int bonus) : base(what)
+        {
+            this.recipe = recipe;
+            this.bonus = bonus;
+        }
 
-    /**
-     * Set the bonus uses added.
-     *
-     * @see VillagerReplenishTradeEvent#getBonus()
-     * @param bonus the extra uses added
-     */
-    public void setBonus(int bonus) {
-        this.bonus = bonus;
-    }
+        /**
+         * Get the recipe to replenish.
+         *
+         * @return the replenished recipe
+         */
+        public MerchantRecipe getRecipe()
+        {
+            return recipe;
+        }
 
-    public override bool isCancelled() {
-        return cancelled;
-    }
+        /**
+         * Set the recipe to replenish.
+         *
+         * @param recipe the replenished recipe
+         */
+        public void setRecipe(MerchantRecipe recipe)
+        {
+            this.recipe = recipe;
+        }
 
-    public override void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Get the bonus uses added. The maximum uses of the recipe will be
+         * increased by this number.
+         *
+         * @return the extra uses added
+         */
+        public int getBonus()
+        {
+            return bonus;
+        }
 
-    public override Villager getEntity() {
-        return (Villager) base.getEntity();
-    }
+        /**
+         * Set the bonus uses added.
+         *
+         * @see VillagerReplenishTradeEvent#getBonus()
+         * @param bonus the extra uses added
+         */
+        public void setBonus(int bonus)
+        {
+            this.bonus = bonus;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

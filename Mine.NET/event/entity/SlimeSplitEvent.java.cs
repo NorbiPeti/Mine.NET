@@ -1,19 +1,17 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Slime;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.entity
+{
 /**
  * Called when a Slime splits into smaller Slimes upon death
  */
-public class SlimeSplitEvent : EntityEvent : Cancellable {
+public class SlimeSplitEvent : EntityEvent<Slime>, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancel = false;
     private int count;
 
-    public SlimeSplitEvent(Slime slime, readonly int count) {
-        base(slime);
+    public SlimeSplitEvent(Slime slime, int count) : base(slime)
+        {
         this.count = count;
     }
 
@@ -24,11 +22,7 @@ public class SlimeSplitEvent : EntityEvent : Cancellable {
     public void setCancelled(bool cancel) {
         this.cancel = cancel;
     }
-
-    public override Slime getEntity() {
-        return (Slime) entity;
-    }
-
+    
     /**
      * Gets the amount of smaller slimes to spawn
      *
@@ -54,4 +48,4 @@ public class SlimeSplitEvent : EntityEvent : Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
-}
+}}

@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
     /**
      * Stores data for health-regain events
      */
-    public class EntityRegainHealthEvent : EntityEvent, Cancellable
+    public class EntityRegainHealthEvent : EntityEvent<Entity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;

@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called immediately prior to an entity being unleashed.
      */
-    public class EntityUnleashEvent : EntityEvent
+    public class EntityUnleashEvent : EntityEvent<Entity>
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly UnleashReason reason;

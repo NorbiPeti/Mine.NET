@@ -1,49 +1,54 @@
-namespace Mine.NET.event.inventory;
+using Mine.NET.block;
+using Mine.NET.entity;
+using Mine.NET.Event.block;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockExpEvent;
-
-/**
- * This event is called when a player takes items out of the furnace
- */
-public class FurnaceExtractEvent : BlockExpEvent {
-    private readonly Player player;
-    private readonly Material itemType;
-    private readonly int itemAmount;
-
-    public FurnaceExtractEvent(Player player, Block block, Material itemType, int itemAmount, int exp) {
-        base(block, exp);
-        this.player = player;
-        this.itemType = itemType;
-        this.itemAmount = itemAmount;
-    }
-
+namespace Mine.NET.Event.inventory
+{
     /**
-     * Get the player that triggered the event
-     *
-     * @return the relevant player
+     * This event is called when a player takes items out of the furnace
      */
-    public Player getPlayer() {
-        return player;
-    }
+    public class FurnaceExtractEvent : BlockExpEvent
+    {
+        private readonly Player player;
+        private readonly Material itemType;
+        private readonly int itemAmount;
 
-    /**
-     * Get the Material of the item being retrieved
-     *
-     * @return the material of the item
-     */
-    public Material getItemType() {
-        return itemType;
-    }
+        public FurnaceExtractEvent(Player player, Block block, Material itemType, int itemAmount, int exp) :
+            base(block, exp)
+        {
+            this.player = player;
+            this.itemType = itemType;
+            this.itemAmount = itemAmount;
+        }
 
-    /**
-     * Get the item count being retrieved
-     *
-     * @return the amount of the item
-     */
-    public int getItemAmount() {
-        return itemAmount;
+        /**
+         * Get the player that triggered the event
+         *
+         * @return the relevant player
+         */
+        public Player getPlayer()
+        {
+            return player;
+        }
+
+        /**
+         * Get the Material of the item being retrieved
+         *
+         * @return the material of the item
+         */
+        public Material getItemType()
+        {
+            return itemType;
+        }
+
+        /**
+         * Get the item count being retrieved
+         *
+         * @return the amount of the item
+         */
+        public int getItemAmount()
+        {
+            return itemAmount;
+        }
     }
 }

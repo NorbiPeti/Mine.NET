@@ -1,19 +1,17 @@
-namespace Mine.NET.event.hanging;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Hanging;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.hanging
+{
 /**
  * Triggered when a hanging entity is removed
  */
-public class HangingBreakEvent : HangingEvent : Cancellable {
+public class HangingBreakEvent : HangingEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     private bool cancelled;
     private readonly HangingBreakEvent.RemoveCause cause;
 
-    public HangingBreakEvent(Hanging hanging, readonly HangingBreakEvent.RemoveCause cause) {
-        base(hanging);
+    public HangingBreakEvent(Hanging hanging, HangingBreakEvent.RemoveCause cause) : base(hanging)
+        {
         this.cause = cause;
     }
 
@@ -67,4 +65,5 @@ public class HangingBreakEvent : HangingEvent : Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+}
 }

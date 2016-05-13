@@ -1,60 +1,55 @@
-namespace Mine.NET.event.entity;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Villager;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.MerchantRecipe;
-
-/**
- * Called whenever a villager acquires a new trade.
- */
-public class VillagerAcquireTradeEvent : EntityEvent : Cancellable {
-
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancelled;
-    //
-    private MerchantRecipe recipe;
-
-    public VillagerAcquireTradeEvent(Villager what, MerchantRecipe recipe) {
-        base(what);
-        this.recipe = recipe;
-    }
-
+namespace Mine.NET.Event.entity
+{
     /**
-     * Get the recipe to be acquired.
-     *
-     * @return the new recipe
+     * Called whenever a villager acquires a new trade.
      */
-    public MerchantRecipe getRecipe() {
-        return recipe;
-    }
+    public class VillagerAcquireTradeEvent : EntityEvent<Villager>, Cancellable {
 
-    /**
-     * Set the recipe to be acquired.
-     *
-     * @param recipe the new recipe
-     */
-    public void setRecipe(MerchantRecipe recipe) {
-        this.recipe = recipe;
-    }
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancelled;
+        //
+        private MerchantRecipe recipe;
 
-    public override bool isCancelled() {
-        return cancelled;
-    }
+        public VillagerAcquireTradeEvent(Villager what, MerchantRecipe recipe) : base(what)
+        {
+            this.recipe = recipe;
+        }
 
-    public override void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Get the recipe to be acquired.
+         *
+         * @return the new recipe
+         */
+        public MerchantRecipe getRecipe() {
+            return recipe;
+        }
 
-    public override Villager getEntity() {
-        return (Villager) base.getEntity();
-    }
+        /**
+         * Set the recipe to be acquired.
+         *
+         * @param recipe the new recipe
+         */
+        public void setRecipe(MerchantRecipe recipe) {
+            this.recipe = recipe;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled() {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel) {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
     }
 }

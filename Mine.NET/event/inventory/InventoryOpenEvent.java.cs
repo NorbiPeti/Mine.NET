@@ -1,62 +1,67 @@
-namespace Mine.NET.event.inventory;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.inventory.InventoryView;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Represents a player related inventory event
- */
-public class InventoryOpenEvent : InventoryEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancelled;
-
-    public InventoryOpenEvent(InventoryView transaction) {
-        base(transaction);
-        this.cancelled = false;
-    }
-
+namespace Mine.NET.Event.inventory
+{
     /**
-     * Returns the player involved in this event
-     *
-     * @return Player who is involved in this event
+     * Represents a player related inventory event
      */
-    public readonly HumanEntity getPlayer() {
-        return transaction.getPlayer();
-    }
+    public class InventoryOpenEvent : InventoryEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancelled;
 
-    /**
-     * Gets the cancellation state of this event. A cancelled event will not
-     * be executed in the server, but will still pass to other plugins.
-     * <p>
-     * If an inventory open event is cancelled, the inventory screen will not
-     * show.
-     *
-     * @return true if this event is cancelled
-     */
-    public bool isCancelled() {
-        return cancelled;
-    }
+        public InventoryOpenEvent(InventoryView transaction) : base(transaction)
+        {
+            this.cancelled = false;
+        }
 
-    /**
-     * Sets the cancellation state of this event. A cancelled event will not
-     * be executed in the server, but will still pass to other plugins.
-     * <p>
-     * If an inventory open event is cancelled, the inventory screen will not
-     * show.
-     *
-     * @param cancel true if you wish to cancel this event
-     */
-    public void setCancelled(bool cancel) {
-        cancelled = cancel;
-    }
+        /**
+         * Returns the player involved in this event
+         *
+         * @return Player who is involved in this event
+         */
+        public HumanEntity getPlayer()
+        {
+            return transaction.getPlayer();
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Gets the cancellation state of this event. A cancelled event will not
+         * be executed in the server, but will still pass to other plugins.
+         * <p>
+         * If an inventory open event is cancelled, the inventory screen will not
+         * show.
+         *
+         * @return true if this event is cancelled
+         */
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Sets the cancellation state of this event. A cancelled event will not
+         * be executed in the server, but will still pass to other plugins.
+         * <p>
+         * If an inventory open event is cancelled, the inventory screen will not
+         * show.
+         *
+         * @param cancel true if you wish to cancel this event
+         */
+        public void setCancelled(bool cancel)
+        {
+            cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

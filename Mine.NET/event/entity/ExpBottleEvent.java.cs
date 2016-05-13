@@ -5,7 +5,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a ThrownExpBottle hits and releases experience.
      */
-    public class ExpBottleEvent : ProjectileHitEvent
+    public class ExpBottleEvent : ProjectileHitEvent<ThrownExpBottle>
     {
         private static readonly HandlerList handlers = new HandlerList();
         private int exp;
@@ -14,11 +14,6 @@ namespace Mine.NET.Event.entity
         public ExpBottleEvent(ThrownExpBottle bottle, int exp) : base(bottle)
         {
             this.exp = exp;
-        }
-
-        public override ThrownExpBottle getEntity()
-        {
-            return (ThrownExpBottle)entity;
         }
 
         /**
