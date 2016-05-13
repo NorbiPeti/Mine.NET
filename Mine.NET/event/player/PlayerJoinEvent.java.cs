@@ -1,43 +1,49 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using System;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player joins a server
- */
-public class PlayerJoinEvent : PlayerEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private String joinMessage;
-
-    public PlayerJoinEvent(Player playerJoined, readonly String joinMessage) {
-        base(playerJoined);
-        this.joinMessage = joinMessage;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the join message to send to all online players
-     *
-     * @return string join message
+     * Called when a player joins a server
      */
-    public String getJoinMessage() {
-        return joinMessage;
-    }
+    public class PlayerJoinEvent : PlayerEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private String joinMessage;
 
-    /**
-     * Sets the join message to send to all online players
-     *
-     * @param joinMessage join message
-     */
-    public void setJoinMessage(String joinMessage) {
-        this.joinMessage = joinMessage;
-    }
+        public PlayerJoinEvent(Player playerJoined, String joinMessage) : base(playerJoined)
+        {
+            this.joinMessage = joinMessage;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Gets the join message to send to all online players
+         *
+         * @return string join message
+         */
+        public String getJoinMessage()
+        {
+            return joinMessage;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Sets the join message to send to all online players
+         *
+         * @param joinMessage join message
+         */
+        public void setJoinMessage(String joinMessage)
+        {
+            this.joinMessage = joinMessage;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

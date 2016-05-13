@@ -1,45 +1,50 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a players level changes
- */
-public class PlayerLevelChangeEvent : PlayerEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly int oldLevel;
-    private readonly int newLevel;
-
-    public PlayerLevelChangeEvent(Player player, readonly int oldLevel, readonly int newLevel) {
-         base(player);
-         this.oldLevel = oldLevel;
-         this.newLevel = newLevel;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the old level of the player
-     *
-     * @return The old level of the player
+     * Called when a players level changes
      */
-    public int getOldLevel() {
-        return oldLevel;
-    }
+    public class PlayerLevelChangeEvent : PlayerEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly int oldLevel;
+        private readonly int newLevel;
 
-    /**
-     * Gets the new level of the player
-     *
-     * @return The new (current) level of the player
-     */
-    public int getNewLevel() {
-        return newLevel;
-    }
+        public PlayerLevelChangeEvent(Player player, int oldLevel, int newLevel) : base(player)
+        {
+            this.oldLevel = oldLevel;
+            this.newLevel = newLevel;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Gets the old level of the player
+         *
+         * @return The old level of the player
+         */
+        public int getOldLevel()
+        {
+            return oldLevel;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Gets the new level of the player
+         *
+         * @return The new (current) level of the player
+         */
+        public int getNewLevel()
+        {
+            return newLevel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

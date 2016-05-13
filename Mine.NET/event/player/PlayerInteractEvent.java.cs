@@ -1,44 +1,40 @@
-namespace Mine.NET.event.player;
+using Mine.NET.block;
+using Mine.NET.entity;
+using Mine.NET.Event.block;
+using Mine.NET.inventory;
 
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.Material;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.block.Action;
-import org.bukkit.inventory.EquipmentSlot;
-
+namespace Mine.NET.Event.player
+{
 /**
  * Called when a player interacts with an object or air.
  * <p>
  * This event will fire as cancelled if the vanilla behavior
  * is to do nothing (e.g interacting with air)
  */
-public class PlayerInteractEvent : PlayerEvent : Cancellable {
+public class PlayerInteractEvent : PlayerEvent, Cancellable {
     private static readonly HandlerList handlers = new HandlerList();
     protected ItemStack item;
     protected Action action;
     protected Block blockClicked;
     protected BlockFace blockFace;
     private Result useClickedBlock;
-    private Result useItemInHand;
     private EquipmentSlot hand;
 
-    public PlayerInteractEvent(Player who, readonly Action action, readonly ItemStack item, readonly Block clickedBlock, readonly BlockFace clickedFace) {
-        this(who, action, item, clickedBlock, clickedFace, EquipmentSlot.HAND);
+    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFace clickedFace) :
+        this(who, action, item, clickedBlock, clickedFace, EquipmentSlot.HAND)
+        {
     }
 
-    public PlayerInteractEvent(Player who, readonly Action action, readonly ItemStack item, readonly Block clickedBlock, readonly BlockFace clickedFace, readonly EquipmentSlot hand) {
-        base(who);
+    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFace clickedFace, EquipmentSlot hand) :
+        base(who)
+        {
         this.action = action;
         this.item = item;
         this.blockClicked = clickedBlock;
         this.blockFace = clickedFace;
         this.hand = hand;
 
-        useItemInHand = Result.DEFAULT;
+        UseItemInHand = Result.DEFAULT;
         useClickedBlock = clickedBlock == null ? Result.DENY : Result.ALLOW;
     }
 
@@ -73,7 +69,7 @@ public class PlayerInteractEvent : PlayerEvent : Cancellable {
      */
     public void setCancelled(bool cancel) {
         setUseInteractedBlock(cancel ? Result.DENY : useInteractedBlock() == Result.DENY ? Result.DEFAULT : useInteractedBlock());
-        setUseItemInHand(cancel ? Result.DENY : useItemInHand() == Result.DENY ? Result.DEFAULT : useItemInHand());
+            UseItemInHand = cancel ? Result.DENY : UseItemInHand == Result.DENY ? Result.DEFAULT : UseItemInHand;
     }
 
     /**
@@ -91,9 +87,9 @@ public class PlayerInteractEvent : PlayerEvent : Cancellable {
      *
      * @return Material the material of the item used
      */
-    public Material getMaterial() {
+    public Materials getMaterial() {
         if (!hasItem()) {
-            return Material.AIR;
+            return Materials.AIR;
         }
 
         return item.getType();
@@ -175,16 +171,7 @@ public class PlayerInteractEvent : PlayerEvent : Cancellable {
      *
      * @return the action to take with the item in hand
      */
-    public Result useItemInHand() {
-        return useItemInHand;
-    }
-
-    /**
-     * @param useItemInHand the action to take with the item in hand
-     */
-    public void setUseItemInHand(Result useItemInHand) {
-        this.useItemInHand = useItemInHand;
-    }
+    public Result UseItemInHand { get; set; }
 
     /**
      * The hand used to perform this interaction. May be null in the case of
@@ -203,4 +190,5 @@ public class PlayerInteractEvent : PlayerEvent : Cancellable {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+}
 }

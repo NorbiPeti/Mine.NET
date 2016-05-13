@@ -1,43 +1,48 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a players experience changes naturally
- */
-public class PlayerExpChangeEvent : PlayerEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private int exp;
-
-    public PlayerExpChangeEvent(Player player, readonly int expAmount) {
-         base(player);
-         exp = expAmount;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Get the amount of experience the player will receive
-     *
-     * @return The amount of experience
+     * Called when a players experience changes naturally
      */
-    public int getAmount() {
-        return exp;
-    }
+    public class PlayerExpChangeEvent : PlayerEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private int exp;
 
-    /**
-     * Set the amount of experience the player will receive
-     *
-     * @param amount The amount of experience to set
-     */
-    public void setAmount(int amount) {
-        exp = amount;
-    }
+        public PlayerExpChangeEvent(Player player, int expAmount) : base(player)
+        {
+            exp = expAmount;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Get the amount of experience the player will receive
+         *
+         * @return The amount of experience
+         */
+        public int getAmount()
+        {
+            return exp;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Set the amount of experience the player will receive
+         *
+         * @param amount The amount of experience to set
+         */
+        public void setAmount(int amount)
+        {
+            exp = amount;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

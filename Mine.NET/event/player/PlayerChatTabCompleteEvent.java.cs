@@ -1,11 +1,9 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using System;
+using System.Collections.ObjectModel;
 
-import java.util.Collection;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-
+namespace Mine.NET.Event.player
+{
 /**
  * Called when a player attempts to tab-complete a chat message.
  */
@@ -15,12 +13,12 @@ public class PlayerChatTabCompleteEvent : PlayerEvent {
     private readonly String lastToken;
     private readonly Collection<String> completions;
 
-    public PlayerChatTabCompleteEvent(Player who, readonly String message, readonly Collection<String> completions) {
-        base(who);
+    public PlayerChatTabCompleteEvent(Player who, String message, Collection<String> completions) : base(who)
+        {
         if(message==null) throw new ArgumentNullException("Message cannot be null");
         if(completions==null) throw new ArgumentNullException("Completions cannot be null");
         this.message = message;
-        int i = message.lastIndexOf(' ');
+        int i = message.LastIndexOf(' ');
         if (i < 0) {
             this.lastToken = message;
         } else {
@@ -66,4 +64,5 @@ public class PlayerChatTabCompleteEvent : PlayerEvent {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+}
 }

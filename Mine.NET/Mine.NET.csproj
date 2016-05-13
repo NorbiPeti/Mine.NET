@@ -353,7 +353,6 @@
     <Compile Include="event\player\PlayerBucketFillEvent.java.cs" />
     <Compile Include="event\player\PlayerChangedWorldEvent.java.cs" />
     <Compile Include="event\player\PlayerChannelEvent.java.cs" />
-    <Compile Include="event\player\PlayerChatEvent.java.cs" />
     <Compile Include="event\player\PlayerChatTabCompleteEvent.java.cs" />
     <Compile Include="event\player\PlayerCommandPreprocessEvent.java.cs" />
     <Compile Include="event\player\PlayerDropItemEvent.java.cs" />
@@ -366,7 +365,6 @@
     <Compile Include="event\player\PlayerInteractAtEntityEvent.java.cs" />
     <Compile Include="event\player\PlayerInteractEntityEvent.java.cs" />
     <Compile Include="event\player\PlayerInteractEvent.java.cs" />
-    <Compile Include="event\player\PlayerInventoryEvent.java.cs" />
     <Compile Include="event\player\PlayerItemBreakEvent.java.cs" />
     <Compile Include="event\player\PlayerItemConsumeEvent.java.cs" />
     <Compile Include="event\player\PlayerItemHeldEvent.java.cs" />
@@ -378,7 +376,6 @@
     <Compile Include="event\player\PlayerPickupArrowEvent.java.cs" />
     <Compile Include="event\player\PlayerPickupItemEvent.java.cs" />
     <Compile Include="event\player\PlayerPortalEvent.java.cs" />
-    <Compile Include="event\player\PlayerPreLoginEvent.java.cs" />
     <Compile Include="event\player\PlayerQuitEvent.java.cs" />
     <Compile Include="event\player\PlayerRegisterChannelEvent.java.cs" />
     <Compile Include="event\player\PlayerResourcePackStatusEvent.java.cs" />

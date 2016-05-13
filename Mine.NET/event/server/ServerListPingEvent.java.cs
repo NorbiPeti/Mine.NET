@@ -1,6 +1,6 @@
 namespace Mine.NET.event.server;
 
-import java.net.InetAddress;
+import java.net.IPAddress;
 import java.util.IEnumerator;
 
 import org.apache.commons.lang.Validate;
@@ -15,12 +15,12 @@ import org.bukkit.util.CachedServerIcon;
 public class ServerListPingEvent : ServerEvent : Iterable<Player> {
     private static readonly int MAGIC_PLAYER_COUNT = int.MIN_VALUE;
     private static readonly HandlerList handlers = new HandlerList();
-    private readonly InetAddress address;
+    private readonly IPAddress address;
     private String motd;
     private readonly int numPlayers;
     private int maxPlayers;
 
-    public ServerListPingEvent(InetAddress address, readonly String motd, readonly int numPlayers, readonly int maxPlayers) {
+    public ServerListPingEvent(IPAddress address, readonly String motd, readonly int numPlayers, readonly int maxPlayers) {
         if(numPlayers >= 0, "Cannot have negative number of players online") throw new ArgumentException(numPlayers);
         this.address = address;
         this.motd = motd;
@@ -37,7 +37,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
      * @param motd the message of the day
      * @param maxPlayers the max number of players
      */
-    protected ServerListPingEvent(InetAddress address, readonly String motd, readonly int maxPlayers) {
+    protected ServerListPingEvent(IPAddress address, readonly String motd, readonly int maxPlayers) {
         this.numPlayers = MAGIC_PLAYER_COUNT;
         this.address = address;
         this.motd = motd;
@@ -49,7 +49,7 @@ public class ServerListPingEvent : ServerEvent : Iterable<Player> {
      *
      * @return the address
      */
-    public InetAddress getAddress() {
+    public IPAddress getAddress() {
         return address;
     }
 

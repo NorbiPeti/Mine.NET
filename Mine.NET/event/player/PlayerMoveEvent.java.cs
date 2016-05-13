@@ -1,102 +1,110 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using System;
 
-import com.google.common.base.Preconditions;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Holds information for player movement events
- */
-public class PlayerMoveEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel = false;
-    private Location from;
-    private Location to;
-
-    public PlayerMoveEvent(Player player, readonly Location from, readonly Location to) {
-        base(player);
-        this.from = from;
-        this.to = to;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the cancellation state of this event. A cancelled event will not
-     * be executed in the server, but will still pass to other plugins
-     * <p>
-     * If a move or teleport event is cancelled, the player will be moved or
-     * teleported back to the Location as defined by getFrom(). This will not
-     * fire an event
-     *
-     * @return true if this event is cancelled
+     * Holds information for player movement events
      */
-    public bool isCancelled() {
-        return cancel;
-    }
+    public class PlayerMoveEvent : PlayerEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
+        private Location from;
+        private Location to;
 
-    /**
-     * Sets the cancellation state of this event. A cancelled event will not
-     * be executed in the server, but will still pass to other plugins
-     * <p>
-     * If a move or teleport event is cancelled, the player will be moved or
-     * teleported back to the Location as defined by getFrom(). This will not
-     * fire an event
-     *
-     * @param cancel true if you wish to cancel this event
-     */
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        public PlayerMoveEvent(Player player, Location from, Location to) : base(player)
+        {
+            this.from = from;
+            this.to = to;
+        }
 
-    /**
-     * Gets the location this player moved from
-     *
-     * @return Location the player moved from
-     */
-    public Location getFrom() {
-        return from;
-    }
+        /**
+         * Gets the cancellation state of this event. A cancelled event will not
+         * be executed in the server, but will still pass to other plugins
+         * <p>
+         * If a move or teleport event is cancelled, the player will be moved or
+         * teleported back to the Location as defined by getFrom(). This will not
+         * fire an event
+         *
+         * @return true if this event is cancelled
+         */
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    /**
-     * Sets the location to mark as where the player moved from
-     *
-     * @param from New location to mark as the players previous location
-     */
-    public void setFrom(Location from) {
-        validateLocation(from);
-        this.from = from;
-    }
+        /**
+         * Sets the cancellation state of this event. A cancelled event will not
+         * be executed in the server, but will still pass to other plugins
+         * <p>
+         * If a move or teleport event is cancelled, the player will be moved or
+         * teleported back to the Location as defined by getFrom(). This will not
+         * fire an event
+         *
+         * @param cancel true if you wish to cancel this event
+         */
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
 
-    /**
-     * Gets the location this player moved to
-     *
-     * @return Location the player moved to
-     */
-    public Location getTo() {
-        return to;
-    }
+        /**
+         * Gets the location this player moved from
+         *
+         * @return Location the player moved from
+         */
+        public Location getFrom()
+        {
+            return from;
+        }
 
-    /**
-     * Sets the location that this player will move to
-     *
-     * @param to New Location this player will move to
-     */
-    public void setTo(Location to) {
-        validateLocation(to);
-        this.to = to;
-    }
+        /**
+         * Sets the location to mark as where the player moved from
+         *
+         * @param from New location to mark as the players previous location
+         */
+        public void setFrom(Location from)
+        {
+            validateLocation(from);
+            this.from = from;
+        }
 
-    private void validateLocation(Location loc) {
-        Preconditions.checkArgument(loc != null, "Cannot use null location!");
-        Preconditions.checkArgument(loc.getWorld() != null, "Cannot use null location with null world!");
-    }
+        /**
+         * Gets the location this player moved to
+         *
+         * @return Location the player moved to
+         */
+        public Location getTo()
+        {
+            return to;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Sets the location that this player will move to
+         *
+         * @param to New Location this player will move to
+         */
+        public void setTo(Location to)
+        {
+            validateLocation(to);
+            this.to = to;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        private void validateLocation(Location loc)
+        {
+            if (loc == null) throw new ArgumentNullException(nameof(loc), "Cannot use null location!");
+            if (loc.getWorld() == null) throw new ArgumentNullException(nameof(loc.getWorld), "Cannot use null location with null world!");
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

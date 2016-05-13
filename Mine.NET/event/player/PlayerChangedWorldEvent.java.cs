@@ -1,35 +1,38 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.World;
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player switches to another world.
- */
-public class PlayerChangedWorldEvent : PlayerEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly World from;
-
-    public PlayerChangedWorldEvent(Player player, readonly World from) {
-        base(player);
-        this.from = from;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the world the player is switching from.
-     *
-     * @return  player's previous world
+     * Called when a player switches to another world.
      */
-    public World getFrom() {
-        return from;
-    }
+    public class PlayerChangedWorldEvent : PlayerEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly World from;
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public PlayerChangedWorldEvent(Player player, World from) : base(player)
+        {
+            this.from = from;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Gets the world the player is switching from.
+         *
+         * @return  player's previous world
+         */
+        public World getFrom()
+        {
+            return from;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

@@ -1,3 +1,16 @@
+using Mine.NET.boss;
+using Mine.NET.command;
+using Mine.NET.entity;
+using Mine.NET.Event.inventory;
+using Mine.NET.generator;
+using Mine.NET.help;
+using Mine.NET.inventory;
+using Mine.NET.map;
+using Mine.NET.plugin;
+using Mine.NET.plugin.messaging;
+using Mine.NET.scheduler;
+using Mine.NET.scoreboard;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -88,7 +101,7 @@ namespace Mine.NET
          *
          * @return a view of currently online players.
          */
-        public abstract Collection<Player> getOnlinePlayers();
+        public abstract List<Player> getOnlinePlayers();
 
         /**
          * Get the maximum amount of players which can login to this server.
@@ -907,5 +920,8 @@ namespace Mine.NET
          */
         [Obsolete]
         public abstract UnsafeValues getUnsafe();
+
+        public abstract void sendPluginMessage(Plugin source, string channel, byte[] message);
+        public abstract HashSet<string> getListeningPluginChannels();
     }
 }

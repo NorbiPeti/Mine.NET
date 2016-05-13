@@ -1,51 +1,49 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Represents a player animation event
- */
-public class PlayerAnimationEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly PlayerAnimationType animationType;
-    private bool isCancelled = false;
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Construct a new PlayerAnimation event
-     *
-     * @param player The player instance
+     * Represents a player animation event
      */
-    public PlayerAnimationEvent(Player player) {
-        base(player);
+    public class PlayerAnimationEvent : PlayerEvent, Cancellable {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly PlayerAnimationType animationType;
+        private bool iscancelled = false;
 
-        // Only supported animation type for now:
-        animationType = PlayerAnimationType.ARM_SWING;
-    }
+        /**
+         * Construct a new PlayerAnimation event
+         *
+         * @param player The player instance
+         */
+        public PlayerAnimationEvent(Player player) : base(player)
+        {
+            // Only supported animation type for now:
+            animationType = PlayerAnimationType.ARM_SWING;
+        }
 
-    /**
-     * Get the type of this animation event
-     *
-     * @return the animation type
-     */
-    public PlayerAnimationType getAnimationType() {
-        return animationType;
-    }
+        /**
+         * Get the type of this animation event
+         *
+         * @return the animation type
+         */
+        public PlayerAnimationType getAnimationType() {
+            return animationType;
+        }
 
-    public bool isCancelled() {
-        return this.isCancelled;
-    }
+        public bool isCancelled() {
+            return this.iscancelled;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.isCancelled = cancel;
-    }
+        public void setCancelled(bool cancel) {
+            this.iscancelled = cancel;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
     }
 }

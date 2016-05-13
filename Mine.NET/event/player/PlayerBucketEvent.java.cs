@@ -1,80 +1,87 @@
-namespace Mine.NET.event.player;
+using Mine.NET.block;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Called when a player interacts with a Bucket
- */
-public abstract class PlayerBucketEvent : PlayerEvent : Cancellable {
-    private ItemStack itemStack;
-    private bool cancelled = false;
-    private readonly Block blockClicked;
-    private readonly BlockFace blockFace;
-    private readonly Material bucket;
-
-    public PlayerBucketEvent(Player who, readonly Block blockClicked, readonly BlockFace blockFace, readonly Material bucket, readonly ItemStack itemInHand) {
-        base(who);
-        this.blockClicked = blockClicked;
-        this.blockFace = blockFace;
-        this.itemStack = itemInHand;
-        this.bucket = bucket;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Returns the bucket used in this event
-     *
-     * @return the used bucket
+     * Called when a player interacts with a Bucket
      */
-    public Material getBucket() {
-        return bucket;
-    }
+    public abstract class PlayerBucketEvent : PlayerEvent, Cancellable
+    {
+        private ItemStack itemStack;
+        private bool cancelled = false;
+        private readonly Block blockClicked;
+        private readonly BlockFace blockFace;
+        private readonly Material bucket;
 
-    /**
-     * Get the resulting item in hand after the bucket event
-     *
-     * @return Itemstack hold in hand after the event.
-     */
-    public ItemStack getItemStack() {
-        return itemStack;
-    }
+        public PlayerBucketEvent(Player who, Block blockClicked, BlockFace blockFace, Material bucket, ItemStack itemInHand) :
+            base(who)
+        {
+            this.blockClicked = blockClicked;
+            this.blockFace = blockFace;
+            this.itemStack = itemInHand;
+            this.bucket = bucket;
+        }
 
-    /**
-     * Set the item in hand after the event
-     *
-     * @param itemStack the new held itemstack after the bucket event.
-     */
-    public void setItemStack(ItemStack itemStack) {
-        this.itemStack = itemStack;
-    }
+        /**
+         * Returns the bucket used in this event
+         *
+         * @return the used bucket
+         */
+        public Material getBucket()
+        {
+            return bucket;
+        }
 
-    /**
-     * Return the block clicked
-     *
-     * @return the blicked block
-     */
-    public Block getBlockClicked() {
-        return blockClicked;
-    }
+        /**
+         * Get the resulting item in hand after the bucket event
+         *
+         * @return Itemstack hold in hand after the event.
+         */
+        public ItemStack getItemStack()
+        {
+            return itemStack;
+        }
 
-    /**
-     * Get the face on the clicked block
-     *
-     * @return the clicked face
-     */
-    public BlockFace getBlockFace() {
-        return blockFace;
-    }
+        /**
+         * Set the item in hand after the event
+         *
+         * @param itemStack the new held itemstack after the bucket event.
+         */
+        public void setItemStack(ItemStack itemStack)
+        {
+            this.itemStack = itemStack;
+        }
 
-    public bool isCancelled() {
-        return cancelled;
-    }
+        /**
+         * Return the block clicked
+         *
+         * @return the blicked block
+         */
+        public Block getBlockClicked()
+        {
+            return blockClicked;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancelled = cancel;
+        /**
+         * Get the face on the clicked block
+         *
+         * @return the clicked face
+         */
+        public BlockFace getBlockFace()
+        {
+            return blockFace;
+        }
+
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
+
+        public void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
     }
 }

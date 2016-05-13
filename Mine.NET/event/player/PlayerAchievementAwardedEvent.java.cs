@@ -1,45 +1,43 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.Achievement;
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player earns an achievement.
- */
-public class PlayerAchievementAwardedEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Achievement achievement;
-    private bool isCancelled = false;
-
-    public PlayerAchievementAwardedEvent(Player player, Achievement achievement) {
-        base(player);
-        this.achievement = achievement;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the Achievement being awarded.
-     *
-     * @return the achievement being awarded
+     * Called when a player earns an achievement.
      */
-    public Achievement getAchievement() {
-        return achievement;
-    }
+    public class PlayerAchievementAwardedEvent : PlayerEvent, Cancellable {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Achievement achievement;
+        private bool iscancelled = false;
 
-    public bool isCancelled() {
-        return isCancelled;
-    }
+        public PlayerAchievementAwardedEvent(Player player, Achievement achievement) : base(player)
+        {
+            this.achievement = achievement;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.isCancelled = cancel;
-    }
+        /**
+         * Gets the Achievement being awarded.
+         *
+         * @return the achievement being awarded
+         */
+        public Achievement getAchievement() {
+            return achievement;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled() {
+            return iscancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel) {
+            this.iscancelled = cancel;
+        }
+
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
     }
 }

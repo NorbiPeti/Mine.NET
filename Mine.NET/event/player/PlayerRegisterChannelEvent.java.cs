@@ -1,13 +1,17 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using System;
 
-import org.bukkit.entity.Player;
+namespace Mine.NET.Event.player
+{
+    /**
+     * This is called immediately after a player registers for a plugin channel.
+     */
+    public class PlayerRegisterChannelEvent : PlayerChannelEvent
+    {
 
-/**
- * This is called immediately after a player registers for a plugin channel.
- */
-public class PlayerRegisterChannelEvent : PlayerChannelEvent {
-
-    public PlayerRegisterChannelEvent(Player player, readonly String channel) {
-        base(player, channel);
+        public PlayerRegisterChannelEvent(Player player, String channel) :
+            base(player, channel)
+        {
+        }
     }
 }

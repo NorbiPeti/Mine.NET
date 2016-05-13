@@ -1,37 +1,42 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using Mine.NET.inventory;
+using Mine.NET.util;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.util.Vector;
+namespace Mine.NET.Event.player
+{
+    /**
+     * Represents an event that is called when a player right clicks an entity
+     * with a location on the entity the was clicked.
+     */
+    public class PlayerInteractAtEntityEvent : PlayerInteractEntityEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Vector position;
 
-/**
- * Represents an event that is called when a player right clicks an entity
- * with a location on the entity the was clicked.
- */
-public class PlayerInteractAtEntityEvent : PlayerInteractEntityEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Vector position;
+        public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position) :
+            this(who, clickedEntity, position, EquipmentSlot.HAND)
+        {
+        }
 
-    public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position) {
-        this(who, clickedEntity, position, EquipmentSlot.HAND);
-    }
+        public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position, EquipmentSlot hand) :
+            base(who, clickedEntity, hand)
+        {
+            this.position = position;
+        }
 
-    public PlayerInteractAtEntityEvent(Player who, Entity clickedEntity, Vector position, EquipmentSlot hand) {
-        base(who, clickedEntity, hand);
-        this.position = position;
-    }
+        public Vector getClickedPosition()
+        {
+            return position.clone();
+        }
 
-    public Vector getClickedPosition() {
-        return position.clone();
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

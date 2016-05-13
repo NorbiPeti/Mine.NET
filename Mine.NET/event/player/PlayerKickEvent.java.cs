@@ -1,74 +1,74 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using System;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player gets kicked from the server
- */
-public class PlayerKickEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private String leaveMessage;
-    private String kickReason;
-    private bool cancel;
-
-    public PlayerKickEvent(Player playerKicked, readonly String kickReason, readonly String leaveMessage) {
-        base(playerKicked);
-        this.kickReason = kickReason;
-        this.leaveMessage = leaveMessage;
-        this.cancel = false;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the reason why the player is getting kicked
-     *
-     * @return string kick reason
+     * Called when a player gets kicked from the server
      */
-    public String getReason() {
-        return kickReason;
-    }
+    public class PlayerKickEvent : PlayerEvent, Cancellable {
+        private static readonly HandlerList handlers = new HandlerList();
+        private String leaveMessage;
+        private String kickReason;
+        private bool cancel;
 
-    /**
-     * Gets the leave message send to all online players
-     *
-     * @return string kick reason
-     */
-    public String getLeaveMessage() {
-        return leaveMessage;
-    }
+        public PlayerKickEvent(Player playerKicked, String kickReason, String leaveMessage) : base(playerKicked)
+        {
+            this.kickReason = kickReason;
+            this.leaveMessage = leaveMessage;
+            this.cancel = false;
+        }
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        /**
+         * Gets the reason why the player is getting kicked
+         *
+         * @return string kick reason
+         */
+        public String getReason() {
+            return kickReason;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        /**
+         * Gets the leave message send to all online players
+         *
+         * @return string kick reason
+         */
+        public String getLeaveMessage() {
+            return leaveMessage;
+        }
 
-    /**
-     * Sets the reason why the player is getting kicked
-     *
-     * @param kickReason kick reason
-     */
-    public void setReason(String kickReason) {
-        this.kickReason = kickReason;
-    }
+        public bool isCancelled() {
+            return cancel;
+        }
 
-    /**
-     * Sets the leave message send to all online players
-     *
-     * @param leaveMessage leave message
-     */
-    public void setLeaveMessage(String leaveMessage) {
-        this.leaveMessage = leaveMessage;
-    }
+        public void setCancelled(bool cancel) {
+            this.cancel = cancel;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Sets the reason why the player is getting kicked
+         *
+         * @param kickReason kick reason
+         */
+        public void setReason(String kickReason) {
+            this.kickReason = kickReason;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Sets the leave message send to all online players
+         *
+         * @param leaveMessage leave message
+         */
+        public void setLeaveMessage(String leaveMessage) {
+            this.leaveMessage = leaveMessage;
+        }
+
+        public override HandlerList getHandlers() {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList() {
+            return handlers;
+        }
     }
 }

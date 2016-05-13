@@ -1,38 +1,42 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Fired when a player's item breaks (such as a shovel or flint and steel).
- * <p>
- * The item that's breaking will exist in the inventory with a stack size of
- * 0. After the event, the item's durability will be reset to 0.
- */
-public class PlayerItemBreakEvent : PlayerEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly ItemStack brokenItem;
-
-    public PlayerItemBreakEvent(Player player, readonly ItemStack brokenItem) {
-        base(player);
-        this.brokenItem = brokenItem;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the item that broke
-     *
-     * @return The broken item
+     * Fired when a player's item breaks (such as a shovel or flint and steel).
+     * <p>
+     * The item that's breaking will exist in the inventory with a stack size of
+     * 0. After the event, the item's durability will be reset to 0.
      */
-    public ItemStack getBrokenItem() {
-        return brokenItem;
-    }
+    public class PlayerItemBreakEvent : PlayerEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly ItemStack brokenItem;
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public PlayerItemBreakEvent(Player player, ItemStack brokenItem) : base(player)
+        {
+            this.brokenItem = brokenItem;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        /**
+         * Gets the item that broke
+         *
+         * @return The broken item
+         */
+        public ItemStack getBrokenItem()
+        {
+            return brokenItem;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

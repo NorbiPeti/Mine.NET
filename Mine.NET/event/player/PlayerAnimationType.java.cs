@@ -1,8 +1,10 @@
-namespace Mine.NET.event.player;
-
-/**
- * Different types of player animations
- */
-public enum PlayerAnimationType {
-    ARM_SWING
+namespace Mine.NET.Event.player
+{
+    /**
+     * Different types of player animations
+     */
+    public enum PlayerAnimationType
+    {
+        ARM_SWING
+    }
 }

@@ -1,27 +1,28 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Arrow;
-import org.bukkit.entity.Item;
-import org.bukkit.entity.Player;
-
-/**
- * Thrown when a player picks up an arrow from the ground.
- */
-public class PlayerPickupArrowEvent : PlayerPickupItemEvent {
-
-    private readonly Arrow arrow;
-
-    public PlayerPickupArrowEvent(Player player, readonly Item item, readonly Arrow arrow) {
-        base(player, item, 0);
-        this.arrow = arrow;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Get the arrow being picked up by the player
-     *
-     * @return The arrow being picked up
+     * Thrown when a player picks up an arrow from the ground.
      */
-    public Arrow getArrow() {
-        return arrow;
+    public class PlayerPickupArrowEvent : PlayerPickupItemEvent
+    {
+
+        private readonly Arrow arrow;
+
+        public PlayerPickupArrowEvent(Player player, Item item, Arrow arrow) : base(player, item, 0)
+        {
+            this.arrow = arrow;
+        }
+
+        /**
+         * Get the arrow being picked up by the player
+         *
+         * @return The arrow being picked up
+         */
+        public Arrow getArrow()
+        {
+            return arrow;
+        }
     }
 }
