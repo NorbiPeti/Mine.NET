@@ -1,24 +1,27 @@
-namespace Mine.NET.event.vehicle;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Vehicle;
-import org.bukkit.event.Event;
-
-/**
- * Represents a vehicle-related event.
- */
-public abstract class VehicleEvent : Event {
-    protected Vehicle vehicle;
-
-    public VehicleEvent(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
+namespace Mine.NET.Event.vehicle
+{
     /**
-     * Get the vehicle.
-     *
-     * @return the vehicle
+     * Represents a vehicle-related event.
      */
-    public readonly Vehicle getVehicle() {
-        return vehicle;
+    public abstract class VehicleEvent : Event
+    {
+        protected Vehicle vehicle;
+
+        public VehicleEvent(Vehicle vehicle)
+        {
+            this.vehicle = vehicle;
+        }
+
+        /**
+         * Get the vehicle.
+         *
+         * @return the vehicle
+         */
+        public Vehicle getVehicle()
+        {
+            return vehicle;
+        }
     }
 }

@@ -1,12 +1,14 @@
-namespace Mine.NET.event.vehicle;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Vehicle;
-
-/**
- * Raised when a vehicle collides.
- */
-public abstract class VehicleCollisionEvent : VehicleEvent {
-    public VehicleCollisionEvent(Vehicle vehicle) {
-        base(vehicle);
+namespace Mine.NET.Event.vehicle
+{
+    /**
+     * Raised when a vehicle collides.
+     */
+    public abstract class VehicleCollisionEvent : VehicleEvent
+    {
+        public VehicleCollisionEvent(Vehicle vehicle) : base(vehicle)
+        {
+        }
     }
 }
