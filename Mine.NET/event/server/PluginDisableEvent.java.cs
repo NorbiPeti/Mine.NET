@@ -1,23 +1,26 @@
-namespace Mine.NET.event.server;
+using Mine.NET.plugin;
 
-import org.bukkit.event.HandlerList;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.Event.server
+{
+    /**
+     * Called when a plugin is disabled.
+     */
+    public class PluginDisableEvent : PluginEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
 
-/**
- * Called when a plugin is disabled.
- */
-public class PluginDisableEvent : PluginEvent {
-    private static readonly HandlerList handlers = new HandlerList();
+        public PluginDisableEvent(Plugin plugin) : base(plugin)
+        {
+        }
 
-    public PluginDisableEvent(Plugin plugin) {
-        base(plugin);
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

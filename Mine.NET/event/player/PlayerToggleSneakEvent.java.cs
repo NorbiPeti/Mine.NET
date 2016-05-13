@@ -1,44 +1,45 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player toggles their sneaking state
- */
-public class PlayerToggleSneakEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly bool isSneaking;
-    private bool cancel = false;
-
-    public PlayerToggleSneakEvent(Player player, readonly bool isSneaking) {
-        base(player);
-        this.isSneaking = isSneaking;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Returns whether the player is now sneaking or not.
-     *
-     * @return sneaking state
+     * Called when a player toggles their sneaking state
      */
-    public bool isSneaking() {
-        return isSneaking;
-    }
+    public class PlayerToggleSneakEvent : PlayerEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public PlayerToggleSneakEvent(Player player, bool isSneaking) : base(player)
+        {
+            this.isSneaking = isSneaking;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        /**
+         * Returns whether the player is now sneaking or not.
+         *
+         * @return sneaking state
+         */
+        public bool isSneaking { get; private set; }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

@@ -1,19 +1,23 @@
-namespace Mine.NET.event.server;
+using Mine.NET.plugin;
 
-import org.bukkit.plugin.RegisteredServiceProvider;
+namespace Mine.NET.Event.server
+{
+    /**
+     * An event relating to a registered service. This is called in a {@link
+     * org.bukkit.plugin.ServicesManager}
+     */
+    public abstract class ServiceEvent<T> : ServerEvent
+    {
+        private readonly RegisteredServiceProvider<T> provider;
 
-/**
- * An event relating to a registered service. This is called in a {@link
- * org.bukkit.plugin.ServicesManager}
- */
-public abstract class ServiceEvent : ServerEvent {
-    private readonly RegisteredServiceProvider<?> provider;
+        public ServiceEvent(RegisteredServiceProvider<T> provider)
+        {
+            this.provider = provider;
+        }
 
-    public ServiceEvent(RegisteredServiceProvider<?> provider) {
-        this.provider = provider;
-    }
-
-    public RegisteredServiceProvider<?> getProvider() {
-        return provider;
+        public RegisteredServiceProvider<T> getProvider()
+        {
+            return provider;
+        }
     }
 }

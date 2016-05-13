@@ -1,44 +1,45 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player toggles their flying state
- */
-public class PlayerToggleFlightEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly bool isFlying;
-    private bool cancel = false;
-
-    public PlayerToggleFlightEvent(Player player, readonly bool isFlying) {
-        base(player);
-        this.isFlying = isFlying;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Returns whether the player is trying to start or stop flying.
-     *
-     * @return flying state
+     * Called when a player toggles their flying state
      */
-    public bool isFlying() {
-        return isFlying;
-    }
+    public class PlayerToggleFlightEvent : PlayerEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public PlayerToggleFlightEvent(Player player, bool isFlying) : base(player)
+        {
+            this.isFlying = isFlying;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        /**
+         * Returns whether the player is trying to start or stop flying.
+         *
+         * @return flying state
+         */
+        public bool isFlying { get; private set; }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

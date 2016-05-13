@@ -1,78 +1,84 @@
-namespace Mine.NET.event.player;
+using Mine.NET.inventory;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-import org.bukkit.inventory.ItemStack;
-
-/**
- * Called when a player swap items between main hand and off hand using the
- * hotkey.
- */
-public class PlayerSwapHandItemsEvent : PlayerEvent : Cancellable {
-
-    private static readonly HandlerList handlers = new HandlerList();
-    //
-    private ItemStack mainHandItem;
-    private ItemStack offHandItem;
-    private bool cancelled;
-
-    public PlayerSwapHandItemsEvent(Player player, ItemStack mainHandItem, ItemStack offHandItem) {
-        base(player);
-
-        this.mainHandItem = mainHandItem;
-        this.offHandItem = offHandItem;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets the item switched to the main hand.
-     *
-     * @return item in the main hand
+     * Called when a player swap items between main hand and off hand using the
+     * hotkey.
      */
-    public ItemStack getMainHandItem() {
-        return mainHandItem;
-    }
+    public class PlayerSwapHandItemsEvent : PlayerEvent, Cancellable
+    {
 
-    /**
-     * Sets the item in the main hand.
-     *
-     * @param mainHandItem new item in the main hand
-     */
-    public void setMainHandItem(ItemStack mainHandItem) {
-        this.mainHandItem = mainHandItem;
-    }
+        private static readonly HandlerList handlers = new HandlerList();
+        //
+        private ItemStack mainHandItem;
+        private ItemStack offHandItem;
+        private bool cancelled;
 
-    /**
-     * Gets the item switched to the off hand.
-     *
-     * @return item in the off hand
-     */
-    public ItemStack getOffHandItem() {
-        return offHandItem;
-    }
+        public PlayerSwapHandItemsEvent(NET.entity.Player player, ItemStack mainHandItem, ItemStack offHandItem) : base(player)
+        {
+            this.mainHandItem = mainHandItem;
+            this.offHandItem = offHandItem;
+        }
 
-    /**
-     * Sets the item in the off hand.
-     *
-     * @param offHandItem new item in the off hand
-     */
-    public void setOffHandItem(ItemStack offHandItem) {
-        this.offHandItem = offHandItem;
-    }
+        /**
+         * Gets the item switched to the main hand.
+         *
+         * @return item in the main hand
+         */
+        public ItemStack getMainHandItem()
+        {
+            return mainHandItem;
+        }
 
-    public override bool isCancelled() {
-        return cancelled;
-    }
+        /**
+         * Sets the item in the main hand.
+         *
+         * @param mainHandItem new item in the main hand
+         */
+        public void setMainHandItem(ItemStack mainHandItem)
+        {
+            this.mainHandItem = mainHandItem;
+        }
 
-    public override void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Gets the item switched to the off hand.
+         *
+         * @return item in the off hand
+         */
+        public ItemStack getOffHandItem()
+        {
+            return offHandItem;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        /**
+         * Sets the item in the off hand.
+         *
+         * @param offHandItem new item in the off hand
+         */
+        public void setOffHandItem(ItemStack offHandItem)
+        {
+            this.offHandItem = offHandItem;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public override bool isCancelled()
+        {
+            return cancelled;
+        }
+
+        public override void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

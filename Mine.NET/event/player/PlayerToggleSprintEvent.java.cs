@@ -1,44 +1,45 @@
-namespace Mine.NET.event.player;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Player;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Called when a player toggles their sprinting state
- */
-public class PlayerToggleSprintEvent : PlayerEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly bool isSprinting;
-    private bool cancel = false;
-
-    public PlayerToggleSprintEvent(Player player, readonly bool isSprinting) {
-        base(player);
-        this.isSprinting = isSprinting;
-    }
-
+namespace Mine.NET.Event.player
+{
     /**
-     * Gets whether the player is now sprinting or not.
-     *
-     * @return sprinting state
+     * Called when a player toggles their sprinting state
      */
-    public bool isSprinting() {
-        return isSprinting;
-    }
+    public class PlayerToggleSprintEvent : PlayerEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public PlayerToggleSprintEvent(Player player, bool isSprinting) : base(player)
+        {
+            this.isSprinting = isSprinting;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
+        /**
+         * Gets whether the player is now sprinting or not.
+         *
+         * @return sprinting state
+         */
+        public bool isSprinting { get; private set; }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }
