@@ -1552,5 +1552,15 @@ namespace Mine.NET
                     return false;
             }
         }
+
+        public override string ToString()
+        {
+            return AllMaterials.First(m => m.Value == this).Key.ToString();
+        }
+
+        public static Material getMaterial(string type)
+        {
+            return AllMaterials[Enum.Parse(typeof(Materials), type];
+        }
     }
 }

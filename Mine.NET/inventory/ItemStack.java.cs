@@ -1,127 +1,58 @@
-namespace Mine.NET.inventory;
+using Mine.NET.configuration.serialization;
+using Mine.NET.enchantments;
+using Mine.NET.inventory.meta;
+using Mine.NET.material;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-import com.google.common.collect.ImmutableMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.Utility;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
-
+namespace Mine.NET.inventory
+{
 /**
  * Represents a stack of items
  */
-public class ItemStack : Cloneable, ConfigurationSerializable {
-    private int type = 0;
+public class ItemStack : ICloneable, ConfigurationSerializable {
+        private Material type = null;
     private int amount = 0;
     private MaterialData data = null;
     private short durability = 0;
     private ItemMeta meta;
-
-    @Utility
+        
     protected ItemStack() {}
 
-    /**
-     * Defaults stack size to 1, with no extra data
-     *
-     * @param type item material id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public ItemStack(int type) {
-        this(type, 1);
-    }
-
-    /**
-     * Defaults stack size to 1, with no extra data
-     *
-     * @param type item material
-     */
-    public ItemStack(Material type) {
-        this(type, 1);
-    }
-
-    /**
-     * An item stack with no extra data
-     *
-     * @param type item material id
-     * @param amount stack size
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public ItemStack(int type, readonly int amount) {
-        this(type, amount, (short) 0);
-    }
-
-    /**
-     * An item stack with no extra data
-     *
-     * @param type item material
-     * @param amount stack size
-     */
-    public ItemStack(Material type, readonly int amount) {
-        this(type.getId(), amount);
-    }
-
-    /**
-     * An item stack with the specified damage / durability
-     *
-     * @param type item material id
-     * @param amount stack size
-     * @param damage durability / damage
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public ItemStack(int type, readonly int amount, readonly short damage) {
-        this.type = type;
-        this.amount = amount;
-        this.durability = damage;
-    }
-
-    /**
-     * An item stack with the specified damage / durabiltiy
-     *
-     * @param type item material
-     * @param amount stack size
-     * @param damage durability / damage
-     */
-    public ItemStack(Material type, readonly int amount, readonly short damage) {
-        this(type.getId(), amount, damage);
-    }
-
-    /**
-     * @param type the raw type id
-     * @param amount the amount in the stack
-     * @param damage the damage value of the item
-     * @param data the data value or null
-     * [Obsolete] this method uses an ambiguous data byte object
-     */
-    [Obsolete]
-    public ItemStack(int type, readonly int amount, readonly short damage, readonly Byte data) {
-        this.type = type;
-        this.amount = amount;
-        this.durability = damage;
-        if (data != null) {
-            createData(data);
-            this.durability = data;
+        /**
+         * Defaults stack size to 1, with no extra data
+         *
+         * @param type item material
+         */
+        public ItemStack(Material type) :
+            this(type, 1)
+        {
         }
-    }
 
-    /**
-     * @param type the type
-     * @param amount the amount in the stack
-     * @param damage the damage value of the item
-     * @param data the data value or null
-     * [Obsolete] this method uses an ambiguous data byte object
-     */
-    [Obsolete]
-    public ItemStack(Material type, readonly int amount, readonly short damage, readonly Byte data) {
-        this(type.getId(), amount, damage, data);
+        /**
+         * An item stack with no extra data
+         *
+         * @param type item material
+         * @param amount stack size
+         */
+        public ItemStack(Material type, int amount)
+        {
+            this.type = type;
+            this.amount = amount;
+        }
+
+        /**
+         * An item stack with the specified damage / durabiltiy
+         *
+         * @param type item material
+         * @param amount stack size
+         * @param damage durability / damage
+         */
+        public ItemStack(Material type, int amount, short damage) {
+        this.type = type;
+        this.amount = amount;
+        this.durability = damage;
     }
 
     /**
@@ -133,12 +64,12 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      */
     public ItemStack(ItemStack stack) {
         if(stack==null) throw new ArgumentNullException("Cannot copy null stack");
-        this.type = stack.getTypeId();
+            this.type = stack.getType();
         this.amount = stack.getAmount();
         this.durability = stack.getDurability();
         this.data = stack.getData();
         if (stack.hasItemMeta()) {
-            setItemMeta0(stack.getItemMeta(), getType0());
+            setItemMeta0(stack.getItemMeta(), getType());
         }
     }
 
@@ -147,18 +78,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *
      * @return Type of the items in this stack
      */
-    @Utility
     public Material getType() {
-        return getType0(getTypeId());
-    }
-
-    private Material getType0() {
-        return getType0(this.type);
-    }
-
-    private static Material getType0(int id) {
-        Material material = Material.getMaterial(id);
-        return material == null ? Material.AIR : material;
+            return type;
     }
 
     /**
@@ -168,39 +89,15 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *
      * @param type New type to set the items in this stack to
      */
-    @Utility
     public void setType(Material type) {
         if(type==null) throw new ArgumentNullException("Material cannot be null");
-        setTypeId(type.getId());
-    }
-
-    /**
-     * Gets the type id of this item
-     *
-     * @return Type Id of the items in this stack
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public int getTypeId() {
-        return type;
-    }
-
-    /**
-     * Sets the type id of this item
-     * <p>
-     * Note that in doing so you will reset the MaterialData for this stack
-     *
-     * @param type New type id to set the items in this stack to
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public void setTypeId(int type) {
-        this.type = type;
-        if (this.meta != null) {
-            this.meta = Bukkit.getItemFactory().asMetaFor(meta, getType0());
+            this.type = type;
+            if (this.meta != null)
+            {
+                this.meta = Bukkit.getItemFactory().asMetaFor(meta, type);
+            }
+            createData((byte)0);
         }
-        createData((byte) 0);
-    }
 
     /**
      * Gets the amount of items in this stack
@@ -234,24 +131,14 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         return data;
     }
 
-    /**
-     * Sets the MaterialData for this stack of items
-     *
-     * @param data New MaterialData for this item
-     */
-    public void setData(MaterialData data) {
-        Material mat = getType();
-
-        if (data == null || mat == null || mat.getData() == null) {
+        /**
+         * Sets the MaterialData for this stack of items
+         *
+         * @param data New MaterialData for this item
+         */
+        public void setData(MaterialData data) {
             this.data = data;
-        } else {
-            if ((data.getClass() == mat.getData()) || (data.getClass() == MaterialData.class)) {
-                this.data = data;
-            } else {
-                throw new ArgumentException("Provided data is not of type " + mat.getData().getName() + ", found " + data.getClass().getName());
-            }
         }
-    }
 
     /**
      * Sets the durability of this item
@@ -277,7 +164,6 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *
      * @return The maximum you can stack this material to.
      */
-    @Utility
     public int getMaxStackSize() {
         Material material = getType();
         if (material != null) {
@@ -287,28 +173,22 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
     }
 
     private void createData(byte data) {
-        Material mat = Material.getMaterial(type);
-
-        if (mat == null) {
+        if (type == null) {
             this.data = new MaterialData(type, data);
         } else {
-            this.data = mat.getNewData(data);
+            this.data = type.getNewData(data);
         }
     }
-
-    @Override
-    @Utility
-    public String ToString() {
-        StringBuilder toString = new StringBuilder("ItemStack{").Append(getType().name()).Append(" x ").Append(getAmount());
+        
+    public override String ToString() {
+        StringBuilder toString = new StringBuilder("ItemStack{").Append(getType()).Append(" x ").Append(getAmount());
         if (hasItemMeta()) {
             toString.Append(", ").Append(getItemMeta());
         }
         return toString.Append('}').ToString();
     }
-
-    @Override
-    @Utility
-    public bool equals(Object obj) {
+        
+    public override bool Equals(Object obj) {
         if (this == obj) {
             return true;
         }
@@ -327,7 +207,6 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @param stack the item stack to compare to
      * @return true if the two stacks are equal, ignoring the amount
      */
-    @Utility
     public bool isSimilar(ItemStack stack) {
         if (stack == null) {
             return false;
@@ -335,12 +214,11 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         if (stack == this) {
             return true;
         }
-        return getTypeId() == stack.getTypeId() && getDurability() == stack.getDurability() && hasItemMeta() == stack.hasItemMeta() && (hasItemMeta() ? Bukkit.getItemFactory().equals(getItemMeta(), stack.getItemMeta()) : true);
+        return getType() == stack.getType() && getDurability() == stack.getDurability() && hasItemMeta() == stack.hasItemMeta() && (hasItemMeta() ? Bukkit.getItemFactory().equals(getItemMeta(), stack.getItemMeta()) : true);
     }
 
-    public override ItemStack clone() {
-        try {
-            ItemStack itemStack = (ItemStack) base.clone();
+        public object Clone() {
+            ItemStack itemStack = new ItemStack(this);
 
             if (this.meta != null) {
                 itemStack.meta = this.meta.clone();
@@ -351,20 +229,15 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
             }
 
             return itemStack;
-        } catch (CloneNotSupportedException e) {
-            throw new Error(e);
         }
-    }
-
-    @Override
-    @Utility
-    public readonly int hashCode() {
+        
+    public override int GetHashCode() {
         int hash = 1;
 
-        hash = hash * 31 + getTypeId();
+        hash = hash * 31 + getType().GetHashCode();
         hash = hash * 31 + getAmount();
         hash = hash * 31 + (getDurability() & 0xffff);
-        hash = hash * 31 + (hasItemMeta() ? (meta == null ? getItemMeta().hashCode() : meta.hashCode()) : 0);
+        hash = hash * 31 + (hasItemMeta() ? (meta == null ? getItemMeta().GetHashCode() : meta.GetHashCode()) : 0);
 
         return hash;
     }
@@ -395,7 +268,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @return Map of enchantments.
      */
     public Dictionary<Enchantment, int> getEnchantments() {
-        return meta == null ? ImmutableMap.<Enchantment, int>of() : meta.getEnchants();
+        return meta == null ? new Dictionary<Enchantment, int>() : meta.getEnchants();
     }
 
     /**
@@ -411,10 +284,9 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *     is null. <b>Warning</b>: Some enchantments may be added before this
      *     exception is thrown.
      */
-    @Utility
     public void addEnchantments(Dictionary<Enchantment, int> enchantments) {
         if(enchantments==null) throw new ArgumentNullException("Enchantments cannot be null");
-        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments.entrySet()) {
+        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments) {
             addEnchantment(entry.Key, entry.Value);
         }
     }
@@ -430,7 +302,6 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @throws ArgumentException if enchantment null, or enchantment is
      *     not applicable
      */
-    @Utility
     public void addEnchantment(Enchantment ench, int level) {
         if(ench==null) throw new ArgumentNullException("Enchantment cannot be null");
         if ((level < ench.getStartLevel()) || (level > ench.getMaxLevel())) {
@@ -451,9 +322,8 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *
      * @param enchantments Enchantments to add
      */
-    @Utility
     public void addUnsafeEnchantments(Dictionary<Enchantment, int> enchantments) {
-        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments.entrySet()) {
+        foreach (KeyValuePair<Enchantment, int> entry  in  enchantments) {
             addUnsafeEnchantment(entry.Key, entry.Value);
         }
     }
@@ -471,7 +341,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @param level Level of the enchantment
      */
     public void addUnsafeEnchantment(Enchantment ench, int level) {
-        (meta == null ? meta = Bukkit.getItemFactory().getItemMeta(getType0()) : meta).addEnchant(ench, level, true);
+        (meta == null ? meta = Bukkit.getItemFactory().getItemMeta(getType()) : meta).addEnchant(ench, level, true);
     }
 
     /**
@@ -489,12 +359,11 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         meta.removeEnchant(ench);
         return level;
     }
-
-    @Utility
+        
     public Dictionary<String, Object> serialize() {
-        Dictionary<String, Object> result = new LinkedHashMap<String, Object>();
+        Dictionary<String, Object> result = new Dictionary<String, Object>();
 
-        result.Add("type", getType().name());
+        result.Add("type", getType().ToString());
 
         if (getDurability() != 0) {
             result.Add("damage", getDurability());
@@ -524,36 +393,43 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
         short damage = 0;
         int amount = 1;
 
-        if (args.containsKey("damage")) {
-            damage = ((Number) args["damage"]).shortValue();
+        if (args.ContainsKey("damage")) {
+                damage = ((short)args["damage"]);
         }
 
-        if (args.containsKey("amount")) {
-            amount = ((Number) args["amount"]).intValue();
+        if (args.ContainsKey("amount")) {
+                amount = ((short)args["amount"]);
         }
 
         ItemStack result = new ItemStack(type, amount, damage);
 
-        if (args.containsKey("enchantments")) { // Backward compatiblity, [Obsolete]
-            Object raw = args["enchantments"];
+            if (args.ContainsKey("enchantments"))
+            { // Backward compatiblity, [Obsolete]
+                Object raw = args["enchantments"];
 
-            if (raw is Map) {
-                Dictionary<?, ?> map = (Dictionary<?, ?>) raw;
+                if (raw is Dictionary<Enchantment, int>) //TODO
+                {
+                    var map = (Dictionary<Enchantment, int>)raw;
 
-                foreach (KeyValuePair<?, ?> entry  in  map.entrySet()) {
-                    Enchantment enchantment = Enchantment.getByName(entry.Key.ToString());
+                    foreach (KeyValuePair<Enchantment, int> entry in map)
+                    {
+                        Enchantment enchantment = Enchantment.getByName(entry.Key.ToString());
 
-                    if ((enchantment != null) && (entry.Value is int)) {
-                        result.addUnsafeEnchantment(enchantment, (int) entry.Value);
+                        if (enchantment != null)
+                        {
+                            result.addUnsafeEnchantment(enchantment, (int)entry.Value);
+                        }
                     }
                 }
             }
-        } else if (args.containsKey("meta")) { // We cannot and will not have meta when enchantments (pre-ItemMeta) exist
-            Object raw = args["meta"];
-            if (raw is ItemMeta) {
-                result.setItemMeta((ItemMeta) raw);
+            else if (args.ContainsKey("meta"))
+            { // We cannot and will not have meta when enchantments (pre-ItemMeta) exist
+                Object raw = args["meta"];
+                if (raw is ItemMeta)
+                {
+                    result.setItemMeta((ItemMeta)raw);
+                }
             }
-        }
 
         return result;
     }
@@ -564,7 +440,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      * @return a copy of the current ItemStack's ItemData
      */
     public ItemMeta getItemMeta() {
-        return this.meta == null ? Bukkit.getItemFactory().getItemMeta(getType0()) : this.meta.clone();
+        return this.meta == null ? Bukkit.getItemFactory().getItemMeta(getType()) : this.meta.clone();
     }
 
     /**
@@ -586,7 +462,7 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
      *     the {@link ItemFactory}
      */
     public bool setItemMeta(ItemMeta itemMeta) {
-        return setItemMeta0(itemMeta, getType0());
+        return setItemMeta0(itemMeta, getType());
     }
 
     /*
@@ -607,4 +483,5 @@ public class ItemStack : Cloneable, ConfigurationSerializable {
 
         return true;
     }
+}
 }

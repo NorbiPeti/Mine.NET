@@ -34,7 +34,7 @@ namespace Mine.NET.inventory
          * @throws ArgumentException if the meta was not created by this
          *     factory
          */
-        bool isApplicable(ItemMeta meta, readonly ItemStack stack);
+        bool isApplicable(ItemMeta meta, ItemStack stack);
 
         /**
          * This method checks the item meta to confirm that it is applicable (no
@@ -50,7 +50,7 @@ namespace Mine.NET.inventory
          * @throws ArgumentException if the meta was not created by this
          *     factory
          */
-        bool isApplicable(ItemMeta meta, readonly Material material);
+        bool isApplicable(ItemMeta meta, Material material);
 
         /**
          * This method is used to compare two item meta data objects.
@@ -63,7 +63,7 @@ namespace Mine.NET.inventory
          * @throws ArgumentException if either meta was not created by this
          *     factory
          */
-        bool equals(ItemMeta meta1, readonly ItemMeta meta2);
+        bool equals(ItemMeta meta1, ItemMeta meta2);
 
         /**
          * Returns an appropriate item meta for the specified stack.
@@ -86,7 +86,7 @@ namespace Mine.NET.inventory
          * @throws ArgumentException if the specified meta was not created
          *     by this factory
          */
-        ItemMeta asMetaFor(ItemMeta meta, readonly ItemStack stack);
+        ItemMeta asMetaFor(ItemMeta meta, ItemStack stack);
 
         /**
          * Returns an appropriate item meta for the specified material.
