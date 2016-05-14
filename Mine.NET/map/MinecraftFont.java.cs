@@ -1,24 +1,27 @@
-namespace Mine.NET.map;
+using System;
 
-/**
- * Represents the built-in Minecraft font.
- */
-public class MinecraftFont : MapFont {
+namespace Mine.NET.map
+{
+    /**
+     * Represents the built-in Minecraft font.
+     */
+    public class MinecraftFont : MapFont
+    {
 
-    private static readonly int spaceSize = 2;
+        private static readonly int spaceSize = 2;
 
-    private static readonly String fontChars =
-        " !\"#$%&'()*+,-./0123456789:;<=>?" +
-        "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_" +
-        "'abcdefghijklmnopqrstuvwxyz{|}~\u007F" +
-        "\u00C7\u00FC\u00E9\u00E2\u00E4\u00E0\u00E5\u00E7" + // Çüéâäàåç
-        "\u00EA\u00EB\u00E8\u00EF\u00EE\u00EC\u00C4\u00C5" + // êëèïîìÄÅ
-        "\u00C9\u00E6\u00C6\u00F4\u00F6\u00F2\u00FB\u00F9" + // ÉæÆôöòûù
-        "\u00FF\u00D6\u00DC\u00F8\u00A3\u00D8\u00D7\u0191" + // ÿÖÜø£Ø×ƒ
-        "\u00E1\u00ED\u00F3\u00FA\u00F1\u00D1\u00AA\u00BA" + // áíóúñÑªº
-        "\u00BF\u00AE\u00AC\u00BD\u00BC\u00A1\u00AB\u00BB";  // ¿®¬½¼¡«»
+        private const String fontChars =
+            " !\"#$%&'()*+,-./0123456789:;<=>?" +
+            "@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_" +
+            "'abcdefghijklmnopqrstuvwxyz{|}~\u007F" +
+            "\u00C7\u00FC\u00E9\u00E2\u00E4\u00E0\u00E5\u00E7" + // Çüéâäàåç
+            "\u00EA\u00EB\u00E8\u00EF\u00EE\u00EC\u00C4\u00C5" + // êëèïîìÄÅ
+            "\u00C9\u00E6\u00C6\u00F4\u00F6\u00F2\u00FB\u00F9" + // ÉæÆôöòûù
+            "\u00FF\u00D6\u00DC\u00F8\u00A3\u00D8\u00D7\u0191" + // ÿÖÜø£Ø×ƒ
+            "\u00E1\u00ED\u00F3\u00FA\u00F1\u00D1\u00AA\u00BA" + // áíóúñÑªº
+            "\u00BF\u00AE\u00AC\u00BD\u00BC\u00A1\u00AB\u00BB";  // ¿®¬½¼¡«»
 
-    private static readonly int[][] fontData = new int[][] {
+        private static readonly int[,] fontData = new int[,] {
         /* null */  {0,0,0,0,0,0,0,0},
         /* 1 */  {126,129,165,129,189,153,129,126},
         /* 2 */  {126,255,219,255,195,231,255,126},
@@ -277,52 +280,61 @@ public class MinecraftFont : MapFont {
         /* 255 */  {0,0,0,0,0,0,0,0},
     };
 
-    /**
-     * A static non-malleable MinecraftFont.
-     */
-    public static readonly MinecraftFont Font = new MinecraftFont(false);
+        /**
+         * A static non-malleable MinecraftFont.
+         */
+        public static readonly MinecraftFont Font = new MinecraftFont(false);
 
-    /**
-     * Initialize a new MinecraftFont.
-     */
-    public MinecraftFont() {
-        this(true);
-    }
-
-    private MinecraftFont(bool malleable) {
-        for (int i = 1; i < fontData.Length; ++i) {
-            char ch = (char) i;
-            if (i >= 32 && i < 32 + fontChars.Length) {
-                ch = fontChars[i - 32];
-            }
-
-            if (ch == ' ') {
-                setChar(ch, new charSprite(spaceSize, 8, new bool[spaceSize * 8]));
-                continue;
-            }
-
-            int[] rows = fontData[i];
-            int width = 0;
-            for (int r = 0; r < 8; ++r) {
-                for (int c = 0; c < 8; ++c) {
-                    if ((rows[r] & (1 << c)) != 0 && c > width) {
-                        width = c;
-                    }
-                }
-            }
-            ++width;
-
-            bool[] data = new bool[width * 8];
-            for (int r = 0; r < 8; ++r) {
-                for (int c = 0; c < width; ++c) {
-                    data[r * width + c] = (rows[r] & (1 << c)) != 0;
-                }
-            }
-
-            setChar(ch, new charSprite(width, 8, data));
+        /**
+         * Initialize a new MinecraftFont.
+         */
+        public MinecraftFont() : this(true)
+        {
         }
 
-        this.malleable = malleable;
-    }
+        private MinecraftFont(bool malleable)
+        {
+            for (int i = 1; i < fontData.Length; ++i)
+            {
+                char ch = (char)i;
+                if (i >= 32 && i < 32 + fontChars.Length)
+                {
+                    ch = fontChars[i - 32];
+                }
 
+                if (ch == ' ')
+                {
+                    setChar(ch, new charSprite(spaceSize, 8, new bool[spaceSize * 8]));
+                    continue;
+                }
+
+                int width = 0;
+                for (int r = 0; r < 8; ++r)
+                {
+                    for (int c = 0; c < 8; ++c)
+                    {
+                        if ((fontData[i, r] & (1 << c)) != 0 && c > width)
+                        {
+                            width = c;
+                        }
+                    }
+                }
+                ++width;
+
+                bool[] data = new bool[width * 8];
+                for (int r = 0; r < 8; ++r)
+                {
+                    for (int c = 0; c < width; ++c)
+                    {
+                        data[r * width + c] = (fontData[i, r] & (1 << c)) != 0;
+                    }
+                }
+
+                setChar(ch, new charSprite(width, 8, data));
+            }
+
+            this.malleable = malleable;
+        }
+
+    }
 }

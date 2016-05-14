@@ -162,7 +162,7 @@ namespace Mine.NET
             return fromBGR(bgr >> 16 & BIT_MASK, bgr >> 8 & BIT_MASK, bgr >> 0 & BIT_MASK);
         }
 
-        private Color(int red, int green, int blue)
+        public Color(int red, int green, int blue)
         {
             if (red < 0 || red > BIT_MASK)
                 throw new ArgumentException("Red is not between 0-255: " + red, "red");

@@ -1,11 +1,5 @@
-namespace Mine.NET.material.types;
-
-import java.util.Map;
-
-import org.bukkit.block.BlockFace;
-
-import com.google.common.collect.Maps;
-
+namespace Mine.NET.material.types
+{
 /**
  * Represents the different textured blocks of mushroom.
  */
@@ -127,4 +121,5 @@ public enum MushroomBlockTexture {
             BY_BLOCKFACE.Add(type.capFace, type);
         }
     }
+}
 }

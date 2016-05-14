@@ -1,36 +1,36 @@
-namespace Mine.NET.map;
+using System.Drawing;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
+namespace Mine.NET.map
+{
+    /**
+     * Represents the palette that map items use.
+     * <p>
+     * These fields are hee base color ranges. Each entry corresponds to four
+     * colors of varying shades with values entry to entry + 3.
+     */
+    public sealed class MapPalette
+    {
+        // Internal mechanisms
+        private MapPalette() { }
 
-/**
- * Represents the palette that map items use.
- * <p>
- * These fields are hee base color ranges. Each entry corresponds to four
- * colors of varying shades with values entry to entry + 3.
- */
-public sealed class MapPalette {
-    // Internal mechanisms
-    private MapPalette() {}
+        private static Color c(int r, int g, int b)
+        {
+            return new Color(r, g, b);
+        }
 
-    private static Color c(int r, int g, int b) {
-        return new Color(r, g, b);
-    }
+        private static double getDistance(Color c1, Color c2)
+        {
+            double rmean = (c1.getRed() + c2.getRed()) / 2.0;
+            double r = c1.getRed() - c2.getRed();
+            double g = c1.getGreen() - c2.getGreen();
+            int b = c1.getBlue() - c2.getBlue();
+            double weightR = 2 + rmean / 256.0;
+            double weightG = 4.0;
+            double weightB = 2 + (255 - rmean) / 256.0;
+            return weightR * r * r + weightG * g * g + weightB * b * b;
+        }
 
-    private static double getDistance(Color c1, Color c2) {
-        double rmean = (c1.getRed() + c2.getRed()) / 2.0;
-        double r = c1.getRed() - c2.getRed();
-        double g = c1.getGreen() - c2.getGreen();
-        int b = c1.getBlue() - c2.getBlue();
-        double weightR = 2 + rmean / 256.0;
-        double weightG = 4.0;
-        double weightB = 2 + (255 - rmean) / 256.0;
-        return weightR * r * r + weightG * g * g + weightB * b * b;
-    }
-
-    static readonly Color[] colors = {
+        static readonly Color[] colors = {
         c(0, 0, 0), c(0, 0, 0), c(0, 0, 0), c(0, 0, 0),
         c(89, 125, 39), c(109, 153, 48), c(127, 178, 56), c(67, 94, 29),
         c(174, 164, 115), c(213, 201, 140), c(247, 233, 163), c(130, 123, 86),
@@ -69,172 +69,16 @@ public sealed class MapPalette {
         c(79, 1, 0), c(96, 1, 0), c(112, 2, 0), c(59, 1, 0),
     };
 
-    // Interface
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte TRANSPARENT = 0;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte LIGHT_GREEN = 4;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte LIGHT_BROWN = 8;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte GRAY_1 = 12;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte RED = 16;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte PALE_BLUE = 20;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte GRAY_2 = 24;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte DARK_GREEN = 28;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte WHITE = 32;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte LIGHT_GRAY = 36;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte BROWN = 40;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte DARK_GRAY = 44;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte BLUE = 48;
-    /**
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static readonly byte DARK_BROWN = 52;
-
-    /**
-     * Resize an image to 128x128.
-     *
-     * @param image The image to resize.
-     * @return The resized image.
-     */
-    public static BufferedImage resizeImage(Image image) {
-        BufferedImage result = new BufferedImage(128, 128, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics = result.createGraphics();
-        graphics.drawImage(image, 0, 0, 128, 128, null);
-        graphics.dispose();
-        return result;
-    }
-
-    /**
-     * Convert an Image to a byte[] using the palette.
-     *
-     * @param image The image to convert.
-     * @return A byte[] containing the pixels of the image.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static byte[] imageToBytes(Image image) {
-        BufferedImage temp = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-        Graphics2D graphics = temp.createGraphics();
-        graphics.drawImage(image, 0, 0, null);
-        graphics.dispose();
-
-        int[] pixels = new int[temp.getWidth() * temp.getHeight()];
-        temp.getRGB(0, 0, temp.getWidth(), temp.getHeight(), pixels, 0, temp.getWidth());
-
-        byte[] result = new byte[temp.getWidth() * temp.getHeight()];
-        for (int i = 0; i < pixels.Length; i++) {
-            result[i] = matchColor(new Color(pixels[i], true));
-        }
-        return result;
-    }
-
-    /**
-     * Get the index of the closest matching color in the palette to the given
-     * color.
-     *
-     * @param r The red component of the color.
-     * @param b The blue component of the color.
-     * @param g The green component of the color.
-     * @return The index in the palette.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static byte matchColor(int r, int g, int b) {
-        return matchColor(new Color(r, g, b));
-    }
-
-    /**
-     * Get the index of the closest matching color in the palette to the given
-     * color.
-     *
-     * @param color The Color to match.
-     * @return The index in the palette.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static byte matchColor(Color color) {
-        if (color.getAlpha() < 128) return 0;
-
-        int index = 0;
-        double best = -1;
-
-        for (int i = 4; i < colors.Length; i++) {
-            double distance = getDistance(color, colors[i]);
-            if (distance < best || best == -1) {
-                best = distance;
-                index = i;
-            }
-        }
-
-        // Minecraft has 143 colors, some of which have negative byte representations
-        return (byte) (index < 128 ? index : -129 + (index - 127));
-    }
-
-    /**
-     * Get the value of the given color in the palette.
-     *
-     * @param index The index in the palette.
-     * @return The Color of the palette entry.
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public static Color getColor(byte index) {
-        if ((index > -113 && index < 0) || index > 127) {
-            throw new IndexOutOfBoundsException();
-        } else {
-            // Minecraft has 143 colors, some of which have negative byte representations
-            return colors[index >= 0 ? index : index + 256];
+        /**
+         * Resize an image to 128x128.
+         *
+         * @param image The image to resize.
+         * @return The resized image.
+         */
+        public static Image resizeImage(Image image)
+        {
+            var result = new Bitmap(image, 128, 128);
+            return result;
         }
     }
 }
