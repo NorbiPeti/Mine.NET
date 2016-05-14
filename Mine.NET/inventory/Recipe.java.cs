@@ -1,14 +1,16 @@
-namespace Mine.NET.inventory;
-
-/**
- * Represents some type of crafting recipe.
- */
-public interface Recipe {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Get the result of this recipe.
-     *
-     * @return The result stack
+     * Represents some type of crafting recipe.
      */
-    ItemStack getResult();
+    public interface Recipe
+    {
+
+        /**
+         * Get the result of this recipe.
+         *
+         * @return The result stack
+         */
+        ItemStack getResult();
+    }
 }

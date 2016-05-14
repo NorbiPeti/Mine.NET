@@ -1,41 +1,40 @@
-namespace Mine.NET.inventory;
+using Mine.NET.block;
 
-import org.bukkit.Material;
-import org.bukkit.block.BrewingStand;
-
-/**
- * Interface to the inventory of a Brewing Stand.
- */
-public interface BrewerInventory : Inventory {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Get the current ingredient for brewing.
-     *
-     * @return The ingredient.
+     * Interface to the inventory of a Brewing Stand.
      */
-    ItemStack getIngredient();
+    public interface BrewerInventory : Inventory<BrewingStand>
+    {
 
-    /**
-     * Set the current ingredient for brewing.
-     *
-     * @param ingredient The ingredient
-     */
-    void setIngredient(ItemStack ingredient);
+        /**
+         * Get the current ingredient for brewing.
+         *
+         * @return The ingredient.
+         */
+        ItemStack getIngredient();
 
-    /**
-     * Get the current fuel for brewing.
-     *
-     * @return The fuel
-     */
-    ItemStack getFuel();
+        /**
+         * Set the current ingredient for brewing.
+         *
+         * @param ingredient The ingredient
+         */
+        void setIngredient(ItemStack ingredient);
 
-    /**
-     * Set the current fuel for brewing. Generally only
-     * {@link Material#BLAZE_POWDER} will be of use.
-     *
-     * @param fuel The fuel
-     */
-    void setFuel(ItemStack fuel);
+        /**
+         * Get the current fuel for brewing.
+         *
+         * @return The fuel
+         */
+        ItemStack getFuel();
 
-    BrewingStand getHolder();
+        /**
+         * Set the current fuel for brewing. Generally only
+         * {@link Material#BLAZE_POWDER} will be of use.
+         *
+         * @param fuel The fuel
+         */
+        void setFuel(ItemStack fuel);
+    }
 }

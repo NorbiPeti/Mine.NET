@@ -1,25 +1,25 @@
-namespace Mine.NET.inventory;
+using Mine.NET.block;
 
-import org.bukkit.block.DoubleChest;
-
-/**
- * Interface to the inventory of a Double Chest.
- */
-public interface DoubleChestInventory : Inventory {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Get the left half of this double chest.
-     *
-     * @return The left side inventory
+     * Interface to the inventory of a Double Chest.
      */
-    Inventory getLeftSide();
+    public interface DoubleChestInventory : Inventory<DoubleChest>
+    {
 
-    /**
-     * Get the right side of this double chest.
-     *
-     * @return The right side inventory
-     */
-    Inventory getRightSide();
+        /**
+         * Get the left half of this double chest.
+         *
+         * @return The left side inventory
+         */
+        Inventory getLeftSide();
 
-    DoubleChest getHolder();
+        /**
+         * Get the right side of this double chest.
+         *
+         * @return The right side inventory
+         */
+        Inventory getRightSide();
+    }
 }

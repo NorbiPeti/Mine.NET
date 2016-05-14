@@ -1,53 +1,53 @@
-namespace Mine.NET.inventory;
+using Mine.NET.block;
 
-import org.bukkit.block.Furnace;
-
-/**
- * Interface to the inventory of a Furnace.
- */
-public interface FurnaceInventory : Inventory {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Get the current item in the result slot.
-     *
-     * @return The item
+     * Interface to the inventory of a Furnace.
      */
-    ItemStack getResult();
+    public interface FurnaceInventory : Inventory<Furnace>
+    {
 
-    /**
-     * Get the current fuel.
-     *
-     * @return The item
-     */
-    ItemStack getFuel();
+        /**
+         * Get the current item in the result slot.
+         *
+         * @return The item
+         */
+        ItemStack getResult();
 
-    /**
-     * Get the item currently smelting.
-     *
-     * @return The item
-     */
-    ItemStack getSmelting();
+        /**
+         * Get the current fuel.
+         *
+         * @return The item
+         */
+        ItemStack getFuel();
 
-    /**
-     * Set the current fuel.
-     *
-     * @param stack The item
-     */
-    void setFuel(ItemStack stack);
+        /**
+         * Get the item currently smelting.
+         *
+         * @return The item
+         */
+        ItemStack getSmelting();
 
-    /**
-     * Set the current item in the result slot.
-     *
-     * @param stack The item
-     */
-    void setResult(ItemStack stack);
+        /**
+         * Set the current fuel.
+         *
+         * @param stack The item
+         */
+        void setFuel(ItemStack stack);
 
-    /**
-     * Set the item currently smelting.
-     *
-     * @param stack The item
-     */
-    void setSmelting(ItemStack stack);
+        /**
+         * Set the current item in the result slot.
+         *
+         * @param stack The item
+         */
+        void setResult(ItemStack stack);
 
-    Furnace getHolder();
+        /**
+         * Set the item currently smelting.
+         *
+         * @param stack The item
+         */
+        void setSmelting(ItemStack stack);
+    }
 }

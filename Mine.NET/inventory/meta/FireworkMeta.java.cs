@@ -8,7 +8,7 @@ import org.bukkit.Material;
 /**
  * Represents a {@link Material#FIREWORK} and its effects.
  */
-public interface FireworkMeta : ItemMeta {
+public interface FireworkMeta : ItemMeta<FireworkMeta> {
 
     /**
      * Add another effect to this firework.
@@ -89,6 +89,4 @@ public interface FireworkMeta : ItemMeta {
      * @throws ArgumentException if {@literal height<0 or height>128}
      */
     void setPower(int power);
-
-    FireworkMeta clone();
 }

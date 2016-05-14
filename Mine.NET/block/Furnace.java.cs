@@ -1,3 +1,5 @@
+using Mine.NET.inventory;
+
 namespace Mine.NET.block
 {
     /**

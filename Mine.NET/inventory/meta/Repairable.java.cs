@@ -1,31 +1,31 @@
-namespace Mine.NET.inventory.meta;
-
-/**
- * Represents an item that can be repaired at an anvil.
- */
-public interface Repairable {
-
+namespace Mine.NET.inventory.meta
+{
     /**
-     * Checks to see if this has a repair penalty
-     *
-     * @return true if this has a repair penalty
+     * Represents an item that can be repaired at an anvil.
      */
-    bool hasRepairCost();
+    public interface Repairable {
 
-    /**
-     * Gets the repair penalty
-     *
-     * @return the repair penalty
-     */
-    int getRepairCost();
+        /**
+         * Checks to see if this has a repair penalty
+         *
+         * @return true if this has a repair penalty
+         */
+        bool hasRepairCost();
 
-    /**
-     * Sets the repair penalty
-     *
-     * @param cost repair penalty
-     */
-    void setRepairCost(int cost);
+        /**
+         * Gets the repair penalty
+         *
+         * @return the repair penalty
+         */
+        int getRepairCost();
 
-    @SuppressWarnings("javadoc")
-    Repairable clone();
+        /**
+         * Sets the repair penalty
+         *
+         * @param cost repair penalty
+         */
+        void setRepairCost(int cost);
+        
+        Repairable clone();
+    }
 }

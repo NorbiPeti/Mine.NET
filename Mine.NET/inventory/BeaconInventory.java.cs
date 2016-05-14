@@ -1,21 +1,25 @@
-namespace Mine.NET.inventory;
+using Mine.NET.block;
 
-/**
- * Interface to the inventory of a Beacon.
- */
-public interface BeaconInventory : Inventory {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Set the item powering the beacon.
-     *
-     * @param item The new item
+     * Interface to the inventory of a Beacon.
      */
-    void setItem(ItemStack item);
+    public interface BeaconInventory : Inventory<Beacon>
+    {
 
-    /**
-     * Get the item powering the beacon.
-     *
-     * @return The current item.
-     */
-    ItemStack getItem();
+        /**
+         * Set the item powering the beacon.
+         *
+         * @param item The new item
+         */
+        void setItem(ItemStack item);
+
+        /**
+         * Get the item powering the beacon.
+         *
+         * @return The current item.
+         */
+        ItemStack getItem();
+    }
 }

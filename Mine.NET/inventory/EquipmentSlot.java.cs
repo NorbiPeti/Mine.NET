@@ -1,11 +1,13 @@
-namespace Mine.NET.inventory;
+namespace Mine.NET.inventory
+{
+    public enum EquipmentSlot
+    {
 
-public enum EquipmentSlot {
-
-    HAND,
-    OFF_HAND,
-    FEET,
-    LEGS,
-    CHEST,
-    HEAD
+        HAND,
+        OFF_HAND,
+        FEET,
+        LEGS,
+        CHEST,
+        HEAD
+    }
 }

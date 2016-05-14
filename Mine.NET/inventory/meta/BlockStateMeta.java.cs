@@ -1,35 +1,36 @@
+using Mine.NET.block;
 
-namespace Mine.NET.inventory.meta;
+namespace Mine.NET.inventory.meta
+{
+    public interface BlockStateMeta : ItemMeta<BlockStateMeta>
+    {
 
-import org.bukkit.block.BlockState;
+        /**
+         * Returns whether the item has a block state currently
+         * attached to it.
+         * 
+         * @return whether a block state is already attached
+         */
+        bool hasBlockState();
 
-public interface BlockStateMeta : ItemMeta {
+        /**
+         * Returns the currently attached block state for this
+         * item or creates a new one if one doesn't exist.
+         *
+         * The state is a copy, it must be set back (or to another
+         * item) with {@link #setBlockState(org.bukkit.block.BlockState)}
+         *
+         * @return the attached state or a new state
+         */
+        BlockState getBlockState();
 
-    /**
-     * Returns whether the item has a block state currently
-     * attached to it.
-     * 
-     * @return whether a block state is already attached
-     */
-    bool hasBlockState();
-
-    /**
-     * Returns the currently attached block state for this
-     * item or creates a new one if one doesn't exist.
-     *
-     * The state is a copy, it must be set back (or to another
-     * item) with {@link #setBlockState(org.bukkit.block.BlockState)}
-     *
-     * @return the attached state or a new state
-     */
-    BlockState getBlockState();
-
-    /**
-     * Attaches a copy of the passed block state to the item.
-     *
-     * @param blockState the block state to attach to the block.
-     * @throws ArgumentException if the blockState is null
-     *         or invalid for this item.
-     */
-    void setBlockState(BlockState blockState);
+        /**
+         * Attaches a copy of the passed block state to the item.
+         *
+         * @param blockState the block state to attach to the block.
+         * @throws ArgumentException if the blockState is null
+         *         or invalid for this item.
+         */
+        void setBlockState(BlockState blockState);
+    }
 }

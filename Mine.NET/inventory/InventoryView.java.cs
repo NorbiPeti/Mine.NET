@@ -1,9 +1,9 @@
-namespace Mine.NET.inventory;
+using Mine.NET.entity;
+using Mine.NET.Event.inventory;
+using System;
 
-import org.bukkit.GameMode;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.event.inventory.InventoryType;
-
+namespace Mine.NET.inventory
+{
 /**
  * Represents a view linking two inventories and a single player (whose
  * inventory may or may not be one of the two).
@@ -14,60 +14,46 @@ import org.bukkit.event.inventory.InventoryType;
  */
 public abstract class InventoryView {
     public readonly static int OUTSIDE = -999;
-    /**
-     * Represents various extra properties of certain inventory windows.
-     */
-    public enum Property {
         /**
-         * The progress of the down-pointing arrow in a brewing inventory.
+         * Represents various extra properties of certain inventory windows.
          */
-        BREW_TIME(0, InventoryType.BREWING),
-        /**
-         * The progress of the right-pointing arrow in a furnace inventory.
-         */
-        COOK_TIME(0, InventoryType.FURNACE),
-        /**
-         * The progress of the flame in a furnace inventory.
-         */
-        BURN_TIME(1, InventoryType.FURNACE),
-        /**
-         * How many total ticks the current fuel should last.
-         */
-        TICKS_FOR_CURRENT_FUEL(2, InventoryType.FURNACE),
-        /**
-         * In an enchanting inventory, the top button's experience level
-         * value.
-         */
-        ENCHANT_BUTTON1(0, InventoryType.ENCHANTING),
-        /**
-         * In an enchanting inventory, the middle button's experience level
-         * value.
-         */
-        ENCHANT_BUTTON2(1, InventoryType.ENCHANTING),
-        /**
-         * In an enchanting inventory, the bottom button's experience level
-         * value.
-         */
-        ENCHANT_BUTTON3(2, InventoryType.ENCHANTING);
-        int id;
+        public class Property
+        {
+            public static readonly Property BREW_TIME = new Property(InventoryType.BREWING);
+            /**
+             * The progress of the right-pointing arrow in a furnace inventory.
+             */
+            public static readonly Property COOK_TIME = new Property(InventoryType.FURNACE);
+            /**
+             * The progress of the flame in a furnace inventory.
+             */
+            public static readonly Property BURN_TIME = new Property(InventoryType.FURNACE);
+            /**
+             * How many total ticks the current fuel should last.
+             */
+            public static readonly Property TICKS_FOR_CURRENT_FUEL = new Property(InventoryType.FURNACE);
+            /**
+             * In an enchanting inventory, the top button's experience level
+             * value.
+             */
+            public static readonly Property ENCHANT_BUTTON1 = new Property(InventoryType.ENCHANTING);
+            /**
+             * In an enchanting inventory, the middle button's experience level
+             * value.
+             */
+            public static readonly Property ENCHANT_BUTTON2 = new Property(InventoryType.ENCHANTING);
+            /**
+             * In an enchanting inventory, the bottom button's experience level
+             * value.
+             */
+            public static readonly Property ENCHANT_BUTTON3 = new Property(InventoryType.ENCHANTING);
         InventoryType style;
-        private Property(int id, InventoryType appliesTo) {
-            this.id = id;
+        private Property(InventoryType appliesTo) {
             style = appliesTo;
         }
 
         public InventoryType getType() {
             return style;
-        }
-
-        /**
-         *
-         * @return the id of this view
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public int getId() {
-            return id;
         }
     }
     /**
@@ -144,7 +130,7 @@ public abstract class InventoryView {
      * @param item The item to put on the cursor, or null to remove the item
      *     on their cursor.
      */
-    public readonly void setCursor(ItemStack item) {
+    public void setCursor(ItemStack item) {
         getPlayer().setItemOnCursor(item);
     }
 
@@ -154,7 +140,7 @@ public abstract class InventoryView {
      * @return The item on the player's cursor, or null if they aren't holding
      *     one.
      */
-    public readonly ItemStack getCursor() {
+    public ItemStack getCursor() {
         return getPlayer().getItemOnCursor();
     }
 
@@ -170,7 +156,7 @@ public abstract class InventoryView {
      * @param rawSlot The raw slot ID.
      * @return The converted slot ID.
      */
-    public readonly int convertSlot(int rawSlot) {
+    public int convertSlot(int rawSlot) {
         int numInTop = getTopInventory().getSize();
         if (rawSlot < numInTop) {
             return rawSlot;
@@ -191,7 +177,7 @@ public abstract class InventoryView {
     /**
      * Closes the inventory view.
      */
-    public readonly void close() {
+    public void close() {
         getPlayer().closeInventory();
     }
 
@@ -204,7 +190,7 @@ public abstract class InventoryView {
      *
      * @return The total size
      */
-    public readonly int countSlots() {
+    public int countSlots() {
         return getTopInventory().getSize() + getBottomInventory().getSize();
     }
 
@@ -217,7 +203,7 @@ public abstract class InventoryView {
      * @return true if the property was updated successfully, false if the
      *     property is not supported by that inventory
      */
-    public readonly bool setProperty(Property prop, int value) {
+    public bool setProperty(Property prop, int value) {
         return getPlayer().setWindowProperty(prop, value);
     }
 
@@ -226,7 +212,8 @@ public abstract class InventoryView {
      *
      * @return The title.
      */
-    public readonly String getTitle() {
+    public String getTitle() {
         return getTopInventory().getTitle();
     }
+}
 }

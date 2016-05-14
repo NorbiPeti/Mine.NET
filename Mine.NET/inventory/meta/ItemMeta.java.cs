@@ -1,160 +1,162 @@
-namespace Mine.NET.inventory.meta;
+using Mine.NET.configuration.serialization;
+using Mine.NET.enchantments;
+using System;
+using System.Collections.Generic;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-
-/**
- * This type represents the storage mechanism for auxiliary item data.
- * <p>
- * An implementation will handle the creation and application for ItemMeta.
- * This class should not be implemented by a plugin in a live environment.
- */
-public interface ItemMeta : Cloneable, ConfigurationSerializable {
-
+namespace Mine.NET.inventory.meta
+{
     /**
-     * Checks for existence of a display name.
-     *
-     * @return true if this has a display name
-     */
-    bool hasDisplayName();
-
-    /**
-     * Gets the display name that is set.
+     * This type represents the storage mechanism for auxiliary item data.
      * <p>
-     * Plugins should check that hasDisplayName() returns <code>true</code>
-     * before calling this method.
-     *
-     * @return the display name that is set
+     * An implementation will handle the creation and application for ItemMeta.
+     * This class should not be implemented by a plugin in a live environment.
      */
-    String getDisplayName();
+    public interface ItemMeta<T> : ICloneable, ConfigurationSerializable where T : ItemMeta<T> //Recursion FTW
+    {
 
-    /**
-     * Sets the display name.
-     *
-     * @param name the name to set
-     */
-    void setDisplayName(String name);
+        /**
+         * Checks for existence of a display name.
+         *
+         * @return true if this has a display name
+         */
+        bool hasDisplayName();
 
-    /**
-     * Checks for existence of lore.
-     *
-     * @return true if this has lore
-     */
-    bool hasLore();
+        /**
+         * Gets the display name that is set.
+         * <p>
+         * Plugins should check that hasDisplayName() returns <code>true</code>
+         * before calling this method.
+         *
+         * @return the display name that is set
+         */
+        String getDisplayName();
 
-    /**
-     * Gets the lore that is set.
-     * <p>
-     * Plugins should check if hasLore() returns <code>true</code> before
-     * calling this method.
-     * 
-     * @return a list of lore that is set
-     */
-    List<String> getLore();
+        /**
+         * Sets the display name.
+         *
+         * @param name the name to set
+         */
+        void setDisplayName(String name);
 
-    /**
-     * Sets the lore for this item. 
-     * Removes lore when given null.
-     *
-     * @param lore the lore that will be set
-     */
-    void setLore(List<String> lore);
+        /**
+         * Checks for existence of lore.
+         *
+         * @return true if this has lore
+         */
+        bool hasLore();
 
-    /**
-     * Checks for the existence of any enchantments.
-     *
-     * @return true if an enchantment exists on this meta
-     */
-    bool hasEnchants();
+        /**
+         * Gets the lore that is set.
+         * <p>
+         * Plugins should check if hasLore() returns <code>true</code> before
+         * calling this method.
+         * 
+         * @return a list of lore that is set
+         */
+        List<String> getLore();
 
-    /**
-     * Checks for existence of the specified enchantment.
-     *
-     * @param ench enchantment to check
-     * @return true if this enchantment exists for this meta
-     */
-    bool hasEnchant(Enchantment ench);
+        /**
+         * Sets the lore for this item. 
+         * Removes lore when given null.
+         *
+         * @param lore the lore that will be set
+         */
+        void setLore(List<String> lore);
 
-    /**
-     * Checks for the level of the specified enchantment.
-     *
-     * @param ench enchantment to check
-     * @return The level that the specified enchantment has, or 0 if none
-     */
-    int getEnchantLevel(Enchantment ench);
+        /**
+         * Checks for the existence of any enchantments.
+         *
+         * @return true if an enchantment exists on this meta
+         */
+        bool hasEnchants();
 
-    /**
-     * Returns a copy the enchantments in this ItemMeta. <br> 
-     * Returns an empty map if none.
-     *
-     * @return An immutable copy of the enchantments
-     */
-    Dictionary<Enchantment, int> getEnchants();
+        /**
+         * Checks for existence of the specified enchantment.
+         *
+         * @param ench enchantment to check
+         * @return true if this enchantment exists for this meta
+         */
+        bool hasEnchant(Enchantment ench);
 
-    /**
-     * Adds the specified enchantment to this item meta.
-     *
-     * @param ench Enchantment to add
-     * @param level Level for the enchantment
-     * @param ignoreLevelRestriction this indicates the enchantment should be
-     *     applied, ignoring the level limit
-     * @return true if the item meta changed as a result of this call, false
-     *     otherwise
-     */
-    bool addEnchant(Enchantment ench, int level, bool ignoreLevelRestriction);
+        /**
+         * Checks for the level of the specified enchantment.
+         *
+         * @param ench enchantment to check
+         * @return The level that the specified enchantment has, or 0 if none
+         */
+        int getEnchantLevel(Enchantment ench);
 
-    /**
-     * Removes the specified enchantment from this item meta.
-     *
-     * @param ench Enchantment to remove
-     * @return true if the item meta changed as a result of this call, false
-     *     otherwise
-     */
-    bool removeEnchant(Enchantment ench);
+        /**
+         * Returns a copy the enchantments in this ItemMeta. <br> 
+         * Returns an empty map if none.
+         *
+         * @return An immutable copy of the enchantments
+         */
+        Dictionary<Enchantment, int> getEnchants();
 
-   /**
-    * Checks if the specified enchantment conflicts with any enchantments in
-    * this ItemMeta.
-    *
-    * @param ench enchantment to test
-    * @return true if the enchantment conflicts, false otherwise
-    */
-    bool hasConflictingEnchant(Enchantment ench);
+        /**
+         * Adds the specified enchantment to this item meta.
+         *
+         * @param ench Enchantment to add
+         * @param level Level for the enchantment
+         * @param ignoreLevelRestriction this indicates the enchantment should be
+         *     applied, ignoring the level limit
+         * @return true if the item meta changed as a result of this call, false
+         *     otherwise
+         */
+        bool addEnchant(Enchantment ench, int level, bool ignoreLevelRestriction);
 
-    /**
-     * Set itemflags which should be ignored when rendering a ItemStack in the Client. This Method does silently ignore double set itemFlags.
-     *
-     * @param itemFlags The hideflags which shouldn't be rendered
-     */
-    void addItemFlags(ItemFlag... itemFlags);
+        /**
+         * Removes the specified enchantment from this item meta.
+         *
+         * @param ench Enchantment to remove
+         * @return true if the item meta changed as a result of this call, false
+         *     otherwise
+         */
+        bool removeEnchant(Enchantment ench);
 
-    /**
-     * Remove specific set of itemFlags. This tells the Client it should render it again. This Method does silently ignore double removed itemFlags.
-     *
-     * @param itemFlags Hideflags which should be removed
-     */
-    void removeItemFlags(ItemFlag... itemFlags);
+        /**
+         * Checks if the specified enchantment conflicts with any enchantments in
+         * this ItemMeta.
+         *
+         * @param ench enchantment to test
+         * @return true if the enchantment conflicts, false otherwise
+         */
+        bool hasConflictingEnchant(Enchantment ench);
 
-    /**
-     * Get current set itemFlags. The collection returned is unmodifiable.
-     *
-     * @return A set of all itemFlags set
-     */
-    HashSet<ItemFlag> getItemFlags();
+        /**
+         * Set itemflags which should be ignored when rendering a ItemStack in the Client. This Method does silently ignore double set itemFlags.
+         *
+         * @param itemFlags The hideflags which shouldn't be rendered
+         */
+        void addItemFlags(params ItemFlag[] itemFlags);
 
-    /**
-     * Check if the specified flag is present on this item.
-     *
-     * @param flag the flag to check
-     * @return if it is present
-     */
-    bool hasItemFlag(ItemFlag flag);
+        /**
+         * Remove specific set of itemFlags. This tells the Client it should render it again. This Method does silently ignore double removed itemFlags.
+         *
+         * @param itemFlags Hideflags which should be removed
+         */
+        void removeItemFlags(params ItemFlag[] itemFlags);
 
-    @SuppressWarnings("javadoc")
-    ItemMeta clone();
+        /**
+         * Get current set itemFlags. The collection returned is unmodifiable.
+         *
+         * @return A set of all itemFlags set
+         */
+        HashSet<ItemFlag> getItemFlags();
+
+        /**
+         * Check if the specified flag is present on this item.
+         *
+         * @param flag the flag to check
+         * @return if it is present
+         */
+        bool hasItemFlag(ItemFlag flag);
+
+        T clone();
+    }
+
+    public interface ItemMeta : ItemMeta<ItemMeta>
+    {
+    }
 }

@@ -1,34 +1,31 @@
-namespace Mine.NET.inventory.meta;
-
-import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
-
-/**
- * Represents a meta that can store a single FireworkEffect. An example
- * includes {@link Material#FIREWORK_CHARGE}.
- */
-public interface FireworkEffectMeta : ItemMeta {
-
+namespace Mine.NET.inventory.meta
+{
     /**
-     * Sets the firework effect for this meta.
-     *
-     * @param effect the effect to set, or null to indicate none.
+     * Represents a meta that can store a single FireworkEffect. An example
+     * includes {@link Material#FIREWORK_CHARGE}.
      */
-    void setEffect(FireworkEffect effect);
+    public interface FireworkEffectMeta : ItemMeta<FireworkEffectMeta>
+    {
 
-    /**
-     * Checks if this meta has an effect.
-     *
-     * @return true if this meta has an effect, false otherwise
-     */
-    bool hasEffect();
+        /**
+         * Sets the firework effect for this meta.
+         *
+         * @param effect the effect to set, or null to indicate none.
+         */
+        void setEffect(FireworkEffect effect);
 
-    /**
-     * Gets the firework effect for this meta.
-     *
-     * @return the current effect, or null if none
-     */
-    FireworkEffect getEffect();
+        /**
+         * Checks if this meta has an effect.
+         *
+         * @return true if this meta has an effect, false otherwise
+         */
+        bool hasEffect();
 
-    FireworkEffectMeta clone();
+        /**
+         * Gets the firework effect for this meta.
+         *
+         * @return the current effect, or null if none
+         */
+        FireworkEffect getEffect();
+    }
 }

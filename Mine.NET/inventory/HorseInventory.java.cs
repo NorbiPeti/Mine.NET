@@ -1,35 +1,37 @@
-namespace Mine.NET.inventory;
-
-/**
- * An interface to the inventory of a Horse.
- */
-public interface HorseInventory : Inventory {
-
+namespace Mine.NET.inventory
+{
     /**
-     * Gets the item in the horse's saddle slot.
-     *
-     * @return the saddle item
+     * An interface to the inventory of a Horse.
      */
-    ItemStack getSaddle();
+    public interface HorseInventory : Inventory
+    {
 
-    /**
-     * Gets the item in the horse's armor slot.
-     *
-     * @return the armor item
-     */
-    ItemStack getArmor();
+        /**
+         * Gets the item in the horse's saddle slot.
+         *
+         * @return the saddle item
+         */
+        ItemStack getSaddle();
 
-    /**
-     * Sets the item in the horse's saddle slot.
-     *
-     * @param stack the new item
-     */
-    void setSaddle(ItemStack stack);
+        /**
+         * Gets the item in the horse's armor slot.
+         *
+         * @return the armor item
+         */
+        ItemStack getArmor();
 
-    /**
-     * Sets the item in the horse's armor slot.
-     *
-     * @param stack the new item
-     */
-    void setArmor(ItemStack stack);
+        /**
+         * Sets the item in the horse's saddle slot.
+         *
+         * @param stack the new item
+         */
+        void setSaddle(ItemStack stack);
+
+        /**
+         * Sets the item in the horse's armor slot.
+         *
+         * @param stack the new item
+         */
+        void setArmor(ItemStack stack);
+    }
 }

@@ -1,3 +1,10 @@
+using Mine.NET.block;
+using Mine.NET.entity;
+using Mine.NET.generator;
+using Mine.NET.inventory;
+using Mine.NET.metadata;
+using Mine.NET.plugin.messaging;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

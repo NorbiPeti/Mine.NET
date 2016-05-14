@@ -9,70 +9,70 @@ namespace Mine.NET.Event.inventory
          * A chest inventory, with 0, 9, 18, 27, 36, 45, or 54 slots of type
          * CONTAINER.
          */
-        private static readonly InventoryType CHEST = new InventoryType(27, "Chest");
+        public static readonly InventoryType CHEST = new InventoryType(27, "Chest");
         /**
          * A dispenser inventory, with 9 slots of type CONTAINER.
          */
-        private static readonly InventoryType DISPENSER = new InventoryType(9, "Dispenser");
+        public static readonly InventoryType DISPENSER = new InventoryType(9, "Dispenser");
         /**
          * A dropper inventory, with 9 slots of type CONTAINER.
          */
-        private static readonly InventoryType DROPPER = new InventoryType(9, "Dropper");
+        public static readonly InventoryType DROPPER = new InventoryType(9, "Dropper");
         /**
          * A furnace inventory, with a RESULT slot, a CRAFTING slot, and a FUEL
          * slot.
          */
-        private static readonly InventoryType FURNACE = new InventoryType(3, "Furnace");
+        public static readonly InventoryType FURNACE = new InventoryType(3, "Furnace");
         /**
          * A workbench inventory, with 9 CRAFTING slots and a RESULT slot.
          */
-        private static readonly InventoryType WORKBENCH = new InventoryType(10, "Crafting");
+        public static readonly InventoryType WORKBENCH = new InventoryType(10, "Crafting");
         /**
          * A player's crafting inventory, with 4 CRAFTING slots and a RESULT slot.
          * Also implies that the 4 ARMOR slots are accessible.
          */
-        private static readonly InventoryType CRAFTING = new InventoryType(5, "Crafting");
+        public static readonly InventoryType CRAFTING = new InventoryType(5, "Crafting");
         /**
          * An enchantment table inventory, with two CRAFTING slots and three
          * enchanting buttons.
          */
-        private static readonly InventoryType ENCHANTING = new InventoryType(2, "Enchanting");
+        public static readonly InventoryType ENCHANTING = new InventoryType(2, "Enchanting");
         /**
          * A brewing stand inventory, with one FUEL slot and three CRAFTING slots.
          */
-        private static readonly InventoryType BREWING = new InventoryType(5, "Brewing");
+        public static readonly InventoryType BREWING = new InventoryType(5, "Brewing");
         /**
          * A player's inventory, with 9 QUICKBAR slots, 27 CONTAINER slots, 4 ARMOR
          * slots and 1 offhand slot. The ARMOR and offhand slots may not be visible
          * to the player, though.
          */
-        private static readonly InventoryType PLAYER = new InventoryType(41, "Player");
+        public static readonly InventoryType PLAYER = new InventoryType(41, "Player");
         /**
          * The creative mode inventory, with only 9 QUICKBAR slots and nothing
          * else. (The actual creative interface with the items is client-side and
          * cannot be altered by the server.)
          */
-        private static readonly InventoryType CREATIVE = new InventoryType(9, "Creative");
+        public static readonly InventoryType CREATIVE = new InventoryType(9, "Creative");
         /**
          * The merchant inventory, with 2 TRADE-IN slots, and 1 RESULT slot.
          */
-        private static readonly InventoryType MERCHANT = new InventoryType(3, "Villager");
+        public static readonly InventoryType MERCHANT = new InventoryType(3, "Villager");
         /**
          * The ender chest inventory, with 27 slots.
          */
-        private static readonly InventoryType ENDER_CHEST = new InventoryType(27, "Ender Chest");
+        public static readonly InventoryType ENDER_CHEST = new InventoryType(27, "Ender Chest");
         /**
          * An anvil inventory, with 2 CRAFTING slots and 1 RESULT slot
          */
-        private static readonly InventoryType ANVIL = new InventoryType(3, "Repairing");
+        public static readonly InventoryType ANVIL = new InventoryType(3, "Repairing");
         /**
          * A beacon inventory, with 1 CRAFTING slot
          */
-        private static readonly InventoryType BEACON = new InventoryType(1, "container.beacon");
+        public static readonly InventoryType BEACON = new InventoryType(1, "container.beacon");
         /**
          * A hopper inventory, with 5 slots of type CONTAINER.
          */
-        private static readonly InventoryType HOPPER = new InventoryType(5, "Item Hopper");
+        public static readonly InventoryType HOPPER = new InventoryType(5, "Item Hopper");
 
         private readonly int size;
         private readonly String title;

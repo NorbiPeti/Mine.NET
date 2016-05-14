@@ -1,11 +1,13 @@
-namespace Mine.NET.inventory;
+namespace Mine.NET.inventory
+{
+    public interface InventoryHolder
+    {
 
-public interface InventoryHolder {
-
-    /**
-     * Get the object's inventory.
-     *
-     * @return The inventory.
-     */
-    public Inventory getInventory();
+        /**
+         * Get the object's inventory.
+         *
+         * @return The inventory.
+         */
+        Inventory getInventory();
+    }
 }
