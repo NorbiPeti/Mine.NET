@@ -1,33 +1,35 @@
-namespace Mine.NET.event.world;
+namespace Mine.NET.Event.world
+{
+    /**
+     * Called when a World is unloaded
+     */
+    public class WorldUnloadEvent : WorldEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool iscancelled;
 
-import org.bukkit.World;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
+        public WorldUnloadEvent(World world) : base(world)
+        {
+        }
 
-/**
- * Called when a World is unloaded
- */
-public class WorldUnloadEvent : WorldEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool isCancelled;
+        public bool isCancelled()
+        {
+            return this.iscancelled;
+        }
 
-    public WorldUnloadEvent(World world) {
-        base(world);
-    }
+        public void setCancelled(bool cancel)
+        {
+            this.iscancelled = cancel;
+        }
 
-    public bool isCancelled() {
-        return this.isCancelled;
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.isCancelled = cancel;
-    }
-
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

@@ -1,33 +1,29 @@
-namespace Mine.NET.Event;
+using System;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * An annotation to mark methods as being event handler methods
- */
-@Target(ElementType.METHOD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface EventHandler {
-
+namespace Mine.NET.Event
+{
     /**
-     * Define the priority of the event.
-     * <p>
-     * First priority to the last priority executed:
-     * <ol>
-     * <li>LOWEST
-     * <li>LOW
-     * <li>NORMAL
-     * <li>HIGH
-     * <li>HIGHEST
-     * <li>MONITOR
-     * </ol>
-     * 
-     * @return the priority
+     * An annotation to mark methods as being event handler methods
      */
-    EventPriority priority() default EventPriority.NORMAL;
+    [AttributeUsage(AttributeTargets.Method)]
+    public class EventHandler : Attribute {
+
+        /**
+         * Define the priority of the event.
+         * <p>
+         * First priority to the last priority executed:
+         * <ol>
+         * <li>LOWEST
+         * <li>LOW
+         * <li>NORMAL
+         * <li>HIGH
+         * <li>HIGHEST
+         * <li>MONITOR
+         * </ol>
+         * 
+         * @return the priority
+         */
+        EventPriority priority() default EventPriority.NORMAL; //TODO
 
     /**
      * Define if the handler ignores a cancelled event.
@@ -38,4 +34,5 @@ public @interface EventHandler {
      * @return whether cancelled events should be ignored
      */
     bool ignoreCancelled() default false;
+    }
 }

@@ -1,33 +1,35 @@
-namespace Mine.NET.event.world;
+namespace Mine.NET.Event.world
+{
+    /**
+     * Called when a chunk is unloaded
+     */
+    public class ChunkUnloadEvent : ChunkEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
 
-import org.bukkit.Chunk;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
+        public ChunkUnloadEvent(Chunk chunk) : base(chunk)
+        {
+        }
 
-/**
- * Called when a chunk is unloaded
- */
-public class ChunkUnloadEvent : ChunkEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel = false;
+        public bool isCancelled()
+        {
+            return cancel;
+        }
 
-    public ChunkUnloadEvent(Chunk chunk) {
-        base(chunk);
-    }
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
-
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

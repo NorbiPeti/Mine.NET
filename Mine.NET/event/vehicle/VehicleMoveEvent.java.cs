@@ -1,48 +1,51 @@
-namespace Mine.NET.event.vehicle;
+using Mine.NET.entity;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Vehicle;
-import org.bukkit.event.HandlerList;
-
-/**
- * Raised when a vehicle moves.
- */
-public class VehicleMoveEvent : VehicleEvent {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Location from;
-    private readonly Location to;
-
-    public VehicleMoveEvent(Vehicle vehicle, readonly Location from, readonly Location to) {
-        base(vehicle);
-
-        this.from = from;
-        this.to = to;
-    }
-
+namespace Mine.NET.Event.vehicle
+{
     /**
-     * Get the previous position.
-     *
-     * @return Old position.
+     * Raised when a vehicle moves.
      */
-    public Location getFrom() {
-        return from;
-    }
+    public class VehicleMoveEvent : VehicleEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Location from;
+        private readonly Location to;
 
-    /**
-     * Get the next position.
-     *
-     * @return New position.
-     */
-    public Location getTo() {
-        return to;
-    }
+        public VehicleMoveEvent(Vehicle vehicle, Location from, Location to) : base(vehicle)
+        {
+            this.from = from;
+            this.to = to;
+        }
+
+        /**
+         * Get the previous position.
+         *
+         * @return Old position.
+         */
+        public Location getFrom()
+        {
+            return from;
+        }
+
+        /**
+         * Get the next position.
+         *
+         * @return New position.
+         */
+        public Location getTo()
+        {
+            return to;
+        }
 
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

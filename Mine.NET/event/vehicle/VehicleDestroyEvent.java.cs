@@ -1,47 +1,51 @@
-namespace Mine.NET.event.vehicle;
+using Mine.NET.entity;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Vehicle;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-/**
- * Raised when a vehicle is destroyed, which could be caused by either a
- * player or the environment. This is not raised if the boat is simply
- * 'removed' due to other means.
- */
-public class VehicleDestroyEvent : VehicleEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private readonly Entity attacker;
-    private bool cancelled;
-
-    public VehicleDestroyEvent(Vehicle vehicle, readonly Entity attacker) {
-        base(vehicle);
-        this.attacker = attacker;
-    }
-
+namespace Mine.NET.Event.vehicle
+{
     /**
-     * Gets the Entity that has destroyed the vehicle, potentially null
-     *
-     * @return the Entity that has destroyed the vehicle, potentially null
+     * Raised when a vehicle is destroyed, which could be caused by either a
+     * player or the environment. This is not raised if the boat is simply
+     * 'removed' due to other means.
      */
-    public Entity getAttacker() {
-        return attacker;
-    }
+    public class VehicleDestroyEvent : VehicleEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private readonly Entity attacker;
+        private bool cancelled;
 
-    public bool isCancelled() {
-        return cancelled;
-    }
+        public VehicleDestroyEvent(Vehicle vehicle, Entity attacker) : base(vehicle)
+        {
+            this.attacker = attacker;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancelled = cancel;
-    }
+        /**
+         * Gets the Entity that has destroyed the vehicle, potentially null
+         *
+         * @return the Entity that has destroyed the vehicle, potentially null
+         */
+        public Entity getAttacker()
+        {
+            return attacker;
+        }
 
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
+        public bool isCancelled()
+        {
+            return cancelled;
+        }
 
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public void setCancelled(bool cancel)
+        {
+            this.cancelled = cancel;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }

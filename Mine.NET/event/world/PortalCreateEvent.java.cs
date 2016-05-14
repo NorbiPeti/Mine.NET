@@ -1,76 +1,80 @@
-namespace Mine.NET.event.world;
+using Mine.NET.block;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
-import org.bukkit.block.Block;
-import org.bukkit.World;
-import org.bukkit.event.Cancellable;
-import org.bukkit.event.HandlerList;
-
-import java.util.List;
-import java.util.Collection;
-
-/**
- * Called when a portal is created
- */
-public class PortalCreateEvent : WorldEvent : Cancellable {
-    private static readonly HandlerList handlers = new HandlerList();
-    private bool cancel = false;
-    private readonly List<Block> blocks = new List<Block>();
-    private CreateReason reason = CreateReason.FIRE;
-
-    public PortalCreateEvent(Collection<Block> blocks, readonly World world, CreateReason reason) {
-        base(world);
-
-        this.blocks.addAll(blocks);
-        this.reason = reason;
-    }
-
+namespace Mine.NET.Event.world
+{
     /**
-     * Gets an array list of all the blocks associated with the created portal
-     *
-     * @return array list of all the blocks associated with the created portal
+     * Called when a portal is created
      */
-    public List<Block> getBlocks() {
-        return this.blocks;
-    }
+    public class PortalCreateEvent : WorldEvent, Cancellable
+    {
+        private static readonly HandlerList handlers = new HandlerList();
+        private bool cancel = false;
+        private readonly List<Block> blocks = new List<Block>();
+        private CreateReason reason = CreateReason.FIRE;
 
-    public bool isCancelled() {
-        return cancel;
-    }
+        public PortalCreateEvent(Collection<Block> blocks, World world, CreateReason reason) : base(world)
+        {
+            this.blocks.AddRange(blocks);
+            this.reason = reason;
+        }
 
-    public void setCancelled(bool cancel) {
-        this.cancel = cancel;
-    }
-
-    /**
-     * Gets the reason for the portal's creation
-     *
-     * @return CreateReason for the portal's creation
-     */
-    public CreateReason getReason() {
-        return reason;
-    }
-
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
-    }
-
-    /**
-     * An enum to specify the various reasons for a portal's creation
-     */
-    public enum CreateReason {
         /**
-         * When a portal is created 'traditionally' due to a portal frame
-         * being set on fire.
+         * Gets an array list of all the blocks associated with the created portal
+         *
+         * @return array list of all the blocks associated with the created portal
          */
-        FIRE,
+        public List<Block> getBlocks()
+        {
+            return this.blocks;
+        }
+
+        public bool isCancelled()
+        {
+            return cancel;
+        }
+
+        public void setCancelled(bool cancel)
+        {
+            this.cancel = cancel;
+        }
+
         /**
-         * When a portal is created as a destination for an existing portal
-         * when using the custom PortalTravelAgent
+         * Gets the reason for the portal's creation
+         *
+         * @return CreateReason for the portal's creation
          */
-        OBC_DESTINATION
+        public CreateReason getReason()
+        {
+            return reason;
+        }
+
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
+
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
+
+        /**
+         * An enum to specify the various reasons for a portal's creation
+         */
+        public enum CreateReason
+        {
+            /**
+             * When a portal is created 'traditionally' due to a portal frame
+             * being set on fire.
+             */
+            FIRE,
+            /**
+             * When a portal is created as a destination for an existing portal
+             * when using the custom PortalTravelAgent
+             */
+            OBC_DESTINATION
+        }
     }
 }

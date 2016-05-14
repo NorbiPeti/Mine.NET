@@ -1,23 +1,24 @@
-namespace Mine.NET.event.world;
+namespace Mine.NET.Event.world
+{
+    /**
+     * Called when a World is initializing
+     */
+    public class WorldInitEvent : WorldEvent
+    {
+        private static readonly HandlerList handlers = new HandlerList();
 
-import org.bukkit.World;
-import org.bukkit.event.HandlerList;
+        public WorldInitEvent(World world) : base(world)
+        {
+        }
 
-/**
- * Called when a World is initializing
- */
-public class WorldInitEvent : WorldEvent {
-    private static readonly HandlerList handlers = new HandlerList();
+        public override HandlerList getHandlers()
+        {
+            return handlers;
+        }
 
-    public WorldInitEvent(World world) {
-        base(world);
-    }
-
-    public override HandlerList getHandlers() {
-        return handlers;
-    }
-
-    public static HandlerList getHandlerList() {
-        return handlers;
+        public static HandlerList getHandlerList()
+        {
+            return handlers;
+        }
     }
 }
