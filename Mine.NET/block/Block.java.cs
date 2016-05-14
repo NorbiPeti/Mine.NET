@@ -1,3 +1,5 @@
+using Mine.NET.inventory;
+using Mine.NET.metadata;
 using System;
 using System.Collections.ObjectModel;
 
@@ -65,7 +67,7 @@ namespace Mine.NET.block
          *
          * @return block type
          */
-        Material getType();
+        Materials getType();
 
         /**
          * Gets the type-id of this block

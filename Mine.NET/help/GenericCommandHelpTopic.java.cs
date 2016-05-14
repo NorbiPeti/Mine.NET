@@ -1,80 +1,92 @@
-namespace Mine.NET.help;
+using Mine.NET.command;
+using Mine.NET.command.defaults;
+using System.Linq;
+using System.Text;
 
-import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.apache.commons.lang.StringUtils;
-import org.bukkit.command.ConsoleCommandSender;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.command.defaults.VanillaCommand;
-import org.bukkit.help.HelpTopic;
+namespace Mine.NET.help
+{
+    /**
+     * Lacking an alternative, the help system will create instances of
+     * GenericCommandHelpTopic for each command in the server's CommandMap. You
+     * can use this class as a base class for custom help topics, or as an example
+     * for how to write your own.
+     */
+    public class GenericCommandHelpTopic : HelpTopic
+    {
 
-/**
- * Lacking an alternative, the help system will create instances of
- * GenericCommandHelpTopic for each command in the server's CommandMap. You
- * can use this class as a base class for custom help topics, or as an example
- * for how to write your own.
- */
-public class GenericCommandHelpTopic : HelpTopic {
+        protected Command command;
 
-    protected Command command;
+        public GenericCommandHelpTopic(Command command)
+        {
+            this.command = command;
 
-    public GenericCommandHelpTopic(Command command) {
-        this.command = command;
+            if (command.getLabel().StartsWith("/"))
+            {
+                name = command.getLabel();
+            }
+            else
+            {
+                name = "/" + command.getLabel();
+            }
 
-        if (command.getLabel().StartsWith("/")) {
-            name = command.getLabel();
-        } else {
-            name = "/" + command.getLabel();
-        }
+            // The short text is the first line of the description
+            int i = command.getDescription().IndexOf("\n");
+            if (i > 1)
+            {
+                shortText = command.getDescription().Substring(0, i - 1);
+            }
+            else
+            {
+                shortText = command.getDescription();
+            }
 
-        // The short text is the first line of the description
-        int i = command.getDescription().IndexOf("\n");
-        if (i > 1) {
-            shortText = command.getDescription().Substring(0, i - 1);
-        } else {
-            shortText = command.getDescription();
-        }
+            // Build full text
+            StringBuilder sb = new StringBuilder();
 
-        // Build full text
-        StringBuffer sb = new StringBuffer();
-
-        sb.Append(ChatColors.GOLD);
-        sb.Append("Description: ");
-        sb.Append(ChatColors.WHITE);
-        sb.Append(command.getDescription());
-
-        sb.Append("\n");
-
-        sb.Append(ChatColors.GOLD);
-        sb.Append("Usage: ");
-        sb.Append(ChatColors.WHITE);
-        sb.Append(command.getUsage().replace("<command>", name.Substring(1)));
-
-        if (command.getAliases().Count > 0) {
-            sb.Append("\n");
             sb.Append(ChatColors.GOLD);
-            sb.Append("Aliases: ");
+            sb.Append("Description: ");
             sb.Append(ChatColors.WHITE);
-            sb.Append(ChatColors.WHITE + StringUtils.join(command.getAliases(), ", "));
-        }
-        fullText = sb.ToString();
-    }
+            sb.Append(command.getDescription());
 
-    public bool canSee(CommandSender sender) {
-        if (!command.isRegistered() && !(command is VanillaCommand)) {
-            // Unregistered commands should not show up in the help (ignore VanillaCommands)
-            return false;
+            sb.Append("\n");
+
+            sb.Append(ChatColors.GOLD);
+            sb.Append("Usage: ");
+            sb.Append(ChatColors.WHITE);
+            sb.Append(command.getUsage().Replace("<command>", name.Substring(1)));
+
+            if (command.getAliases().Count > 0)
+            {
+                sb.Append("\n");
+                sb.Append(ChatColors.GOLD);
+                sb.Append("Aliases: ");
+                sb.Append(ChatColors.WHITE);
+                sb.Append(ChatColors.WHITE + command.getAliases().Aggregate((a, b) => a + ", " + b));
+            }
+            fullText = sb.ToString();
         }
 
-        if (sender is ConsoleCommandSender) {
-            return true;
-        }
+        public bool canSee(CommandSender sender)
+        {
+            if (!command.isRegistered() && !(command is VanillaCommand))
+            {
+                // Unregistered commands should not show up in the help (ignore VanillaCommands)
+                return false;
+            }
 
-        if (amendedPermission != null) {
-            return sender.hasPermission(amendedPermission);
-        } else {
-            return command.testPermissionSilent(sender);
+            if (sender is ConsoleCommandSender)
+            {
+                return true;
+            }
+
+            if (amendedPermission != null)
+            {
+                return sender.hasPermission(amendedPermission);
+            }
+            else
+            {
+                return command.testPermissionSilent(sender);
+            }
         }
     }
 }
