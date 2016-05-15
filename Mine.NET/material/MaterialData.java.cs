@@ -1,56 +1,32 @@
-namespace Mine.NET.material;
+using Mine.NET.inventory;
+using System;
 
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.Material;
-
+namespace Mine.NET.material
+{
 /**
  * Handles specific metadata for certain items or blocks
  */
-public class MaterialData : Cloneable {
-    private readonly int type;
+public class MaterialData : ICloneable {
+    private readonly Materials type;
     private byte data = 0;
 
-    /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public MaterialData(int type) {
-        this(type, (byte) 0);
-    }
+        public MaterialData(Materials type, byte data)
+        {
+            this.type = type;
+            this.data = data;
+        }
 
-    public MaterialData(Material type) {
-        this(type, (byte) 0);
-    }
+        public MaterialData(Materials type) : this(type, 0)
+        {
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public MaterialData(int type, readonly byte data) {
-        this.type = type;
-        this.data = data;
-    }
-
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public MaterialData(Material type, readonly byte data) {
-        this(type.getId(), data);
-    }
-
-    /**
-     * Gets the raw data in this material
-     *
-     * @return Raw data
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
+        /**
+         * Gets the raw data in this material
+         *
+         * @return Raw data
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
     public byte getData() {
         return data;
     }
@@ -71,19 +47,8 @@ public class MaterialData : Cloneable {
      *
      * @return Material represented by this MaterialData
      */
-    public Material getItemType() {
-        return Material.getMaterial(type);
-    }
-
-    /**
-     * Gets the Material Id that this MaterialData represents
-     *
-     * @return Material Id represented by this MaterialData
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public int getItemTypeId() {
-        return type;
+    public Materials getItemType() {
+            return type;
     }
 
     /**
@@ -123,11 +88,8 @@ public class MaterialData : Cloneable {
         }
     }
 
-    public override MaterialData clone() {
-        try {
-            return (MaterialData) base.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new Error(e);
-        }
+    public MaterialData Clone() {
+            return null; //TODO
     }
+}
 }

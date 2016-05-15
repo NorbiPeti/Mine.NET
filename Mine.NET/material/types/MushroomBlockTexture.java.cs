@@ -68,7 +68,7 @@ namespace Mine.NET.material.types
     public class MushroomBlockTexture
     {
         public static readonly Dictionary<MushroomBlockTextures, MushroomBlockTexture> AllMBT = new Dictionary<MushroomBlockTextures, MushroomBlockTexture>()
-        {
+        { //Find: "\*\/\s+([^\(]+)(\([^\(]+\))" - Replace: "*/\n{ MushroomBlockTextures.$1, new MushroomBlockTexture$2 }"
         /**
          * Pores on all faces.
          */

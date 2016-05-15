@@ -1,16 +1,18 @@
-namespace Mine.NET.material;
+using Mine.NET.block;
 
-import org.bukkit.block.BlockFace;
-
-/**
- * Indicates that a block can be attached to another block
- */
-public interface Attachable : Directional {
-
+namespace Mine.NET.material
+{
     /**
-     * Gets the face that this block is attached on
-     *
-     * @return BlockFace attached to
+     * Indicates that a block can be attached to another block
      */
-    public BlockFace getAttachedFace();
+    public interface Attachable : Directional
+    {
+
+        /**
+         * Gets the face that this block is attached on
+         *
+         * @return BlockFace attached to
+         */
+        BlockFace getAttachedFace();
+    }
 }

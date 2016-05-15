@@ -12,7 +12,7 @@ namespace Mine.NET.inventory
  * Represents a stack of items
  */
 public class ItemStack : ICloneable, ConfigurationSerializable {
-        private Material type = null;
+        private Materials type = null;
     private int amount = 0;
     private MaterialData data = null;
     private short durability = 0;
@@ -25,7 +25,7 @@ public class ItemStack : ICloneable, ConfigurationSerializable {
          *
          * @param type item material
          */
-        public ItemStack(Material type) :
+        public ItemStack(Materials type) :
             this(type, 1)
         {
         }
@@ -36,7 +36,7 @@ public class ItemStack : ICloneable, ConfigurationSerializable {
          * @param type item material
          * @param amount stack size
          */
-        public ItemStack(Material type, int amount)
+        public ItemStack(Materials type, int amount)
         {
             this.type = type;
             this.amount = amount;
@@ -49,7 +49,7 @@ public class ItemStack : ICloneable, ConfigurationSerializable {
          * @param amount stack size
          * @param damage durability / damage
          */
-        public ItemStack(Material type, int amount, short damage) {
+        public ItemStack(Materials type, int amount, short damage) {
         this.type = type;
         this.amount = amount;
         this.durability = damage;
@@ -78,7 +78,7 @@ public class ItemStack : ICloneable, ConfigurationSerializable {
      *
      * @return Type of the items in this stack
      */
-    public Material getType() {
+    public Materials getType() {
             return type;
     }
 
@@ -123,7 +123,7 @@ public class ItemStack : ICloneable, ConfigurationSerializable {
      * @return MaterialData for this item
      */
     public MaterialData getData() {
-        Material mat = getType();
+            Material mat = Material.AllMaterials[getType()];
         if (data == null && mat != null && mat.getData() != null) {
             data = mat.getNewData((byte) this.getDurability());
         }

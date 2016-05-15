@@ -5,25 +5,25 @@ namespace Mine.NET.block
      */
     public class BlockFace
     {
-        public static BlockFace NORTH = new BlockFace(0, 0, -1);
-        public static BlockFace EAST = new BlockFace(1, 0, 0);
-        public static BlockFace SOUTH = new BlockFace(0, 0, 1);
-        public static BlockFace WEST = new BlockFace(-1, 0, 0);
-        public static BlockFace UP = new BlockFace(0, 1, 0);
-        public static BlockFace DOWN = new BlockFace(0, -1, 0);
-        public static BlockFace NORTH_EAST = new BlockFace(NORTH, EAST);
-        public static BlockFace NORTH_WEST = new BlockFace(NORTH, WEST);
-        public static BlockFace SOUTH_EAST = new BlockFace(SOUTH, EAST);
-        public static BlockFace SOUTH_WEST = new BlockFace(SOUTH, WEST);
-        public static BlockFace WEST_NORTH_WEST = new BlockFace(WEST, NORTH_WEST);
-        public static BlockFace NORTH_NORTH_WEST = new BlockFace(NORTH, NORTH_WEST);
-        public static BlockFace NORTH_NORTH_EAST = new BlockFace(NORTH, NORTH_EAST);
-        public static BlockFace EAST_NORTH_EAST = new BlockFace(EAST, NORTH_EAST);
-        public static BlockFace EAST_SOUTH_EAST = new BlockFace(EAST, SOUTH_EAST);
-        public static BlockFace SOUTH_SOUTH_EAST = new BlockFace(SOUTH, SOUTH_EAST);
-        public static BlockFace SOUTH_SOUTH_WEST = new BlockFace(SOUTH, SOUTH_WEST);
-        public static BlockFace WEST_SOUTH_WEST = new BlockFace(WEST, SOUTH_WEST);
-        public static BlockFace SELF = new BlockFace(0, 0, 0);
+        public static readonly BlockFace NORTH = new BlockFace(0, 0, -1);
+        public static readonly BlockFace EAST = new BlockFace(1, 0, 0);
+        public static readonly BlockFace SOUTH = new BlockFace(0, 0, 1);
+        public static readonly BlockFace WEST = new BlockFace(-1, 0, 0);
+        public static readonly BlockFace UP = new BlockFace(0, 1, 0);
+        public static readonly BlockFace DOWN = new BlockFace(0, -1, 0);
+        public static readonly BlockFace NORTH_EAST = new BlockFace(NORTH, EAST);
+        public static readonly BlockFace NORTH_WEST = new BlockFace(NORTH, WEST);
+        public static readonly BlockFace SOUTH_EAST = new BlockFace(SOUTH, EAST);
+        public static readonly BlockFace SOUTH_WEST = new BlockFace(SOUTH, WEST);
+        public static readonly BlockFace WEST_NORTH_WEST = new BlockFace(WEST, NORTH_WEST);
+        public static readonly BlockFace NORTH_NORTH_WEST = new BlockFace(NORTH, NORTH_WEST);
+        public static readonly BlockFace NORTH_NORTH_EAST = new BlockFace(NORTH, NORTH_EAST);
+        public static readonly BlockFace EAST_NORTH_EAST = new BlockFace(EAST, NORTH_EAST);
+        public static readonly BlockFace EAST_SOUTH_EAST = new BlockFace(EAST, SOUTH_EAST);
+        public static readonly BlockFace SOUTH_SOUTH_EAST = new BlockFace(SOUTH, SOUTH_EAST);
+        public static readonly BlockFace SOUTH_SOUTH_WEST = new BlockFace(SOUTH, SOUTH_WEST);
+        public static readonly BlockFace WEST_SOUTH_WEST = new BlockFace(WEST, SOUTH_WEST);
+        public static readonly BlockFace SELF = new BlockFace(0, 0, 0);
 
         private readonly int modX;
         private readonly int modY;
