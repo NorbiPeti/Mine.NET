@@ -3,10 +3,10 @@ namespace Mine.NET.inventory.meta;
 import java.util.List;
 
 import org.bukkit.FireworkEffect;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
- * Represents a {@link Material#FIREWORK} and its effects.
+ * Represents a {@link Materials#FIREWORK} and its effects.
  */
 public interface FireworkMeta : ItemMeta<FireworkMeta> {
 

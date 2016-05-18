@@ -6,8 +6,8 @@ namespace Mine.NET.material
     /**
      * Represents a comparator in the on or off state, in normal or subtraction mode and facing in a specific direction.
      *
-     * @see Material#REDSTONE_COMPARATOR_OFF
-     * @see Material#REDSTONE_COMPARATOR_ON
+     * @see Materials#REDSTONE_COMPARATOR_OFF
+     * @see Materials#REDSTONE_COMPARATOR_ON
      */
     public class Comparator : MaterialData<byte>, Directional, Redstone {
         protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.NORTH;

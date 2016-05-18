@@ -26,7 +26,7 @@ namespace Mine.NET.material
         }
 
         /**
-         * Gets the current state of this Material, indicating if it's powered or
+         * Gets the current state of this Materials, indicating if it's powered or
          * unpowered
          *
          * @return true if powered, otherwise false
@@ -37,7 +37,7 @@ namespace Mine.NET.material
         }
 
         /**
-         * Sets the current state of this Material
+         * Sets the current state of this Materials
          *
          * @param bool
          *            whether or not the command block is powered

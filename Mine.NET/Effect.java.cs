@@ -107,7 +107,7 @@ namespace Mine.NET
         /**
          * A song from a record. Needs the record item ID as additional info
          */
-        { Effects.RECORD_PLAY, new Effect(1010, EffectType.SOUND, typeof(Material)) },
+        { Effects.RECORD_PLAY, new Effect(1010, EffectType.SOUND, typeof(Materials)) },
     /**
      * Sound of ghast shrieking.
      */
@@ -139,7 +139,7 @@ namespace Mine.NET
     /**
      * Sound of a block breaking. Needs block ID as additional info.
      */
-    { Effects.STEP_SOUND, new Effect(2001, EffectType.SOUND, typeof(Material)) },
+    { Effects.STEP_SOUND, new Effect(2001, EffectType.SOUND, typeof(Materials)) },
     /**
      * Visual effect of a splash potion breaking. Needs potion data value as
      * additional info.

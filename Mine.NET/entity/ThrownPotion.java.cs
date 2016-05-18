@@ -31,8 +31,8 @@ namespace Mine.NET.entity
         /**
          * Set the ItemStack for this thrown potion.
          * <p>
-         * The ItemStack must be of type {@link org.bukkit.Material#SPLASH_POTION}
-         * or {@link org.bukkit.Material#LINGERING_POTION}, otherwise an exception
+         * The ItemStack must be of type {@link org.bukkit.Materials#SPLASH_POTION}
+         * or {@link org.bukkit.Materials#LINGERING_POTION}, otherwise an exception
          * is thrown.
          *
          * @param item New ItemStack

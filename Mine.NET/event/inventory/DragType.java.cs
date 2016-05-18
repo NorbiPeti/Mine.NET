@@ -12,7 +12,7 @@ namespace Mine.NET.Event.inventory
         SINGLE,
         /**
          * The cursor is split evenly across all selected slots, not to exceed the
-         * Material's max stack size, with the remainder going to the cursor.
+         * Materials's max stack size, with the remainder going to the cursor.
          */
         EVEN
     }

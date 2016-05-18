@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class SpawnEgg : MaterialData {
 
     public SpawnEgg() {
-        base(Material.MONSTER_EGG);
+        base(Materials.MONSTER_EGG);
     }
 
     /**
@@ -29,7 +29,7 @@ public class SpawnEgg : MaterialData {
      */
     [Obsolete]
     public SpawnEgg(byte data) {
-        base(Material.MONSTER_EGG, data);
+        base(Materials.MONSTER_EGG, data);
     }
 
     public SpawnEgg(EntityType type) {

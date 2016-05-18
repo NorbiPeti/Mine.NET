@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -8,7 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class TrapDoor : SimpleAttachableMaterialData : Openable {
     public TrapDoor() {
-        base(Material.TRAP_DOOR);
+        base(Materials.TRAP_DOOR);
     }
 
     /**
@@ -20,7 +20,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
         base(type);
     }
 
-    public TrapDoor(Material type) {
+    public TrapDoor(Materials type) {
         base(type);
     }
 
@@ -40,7 +40,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(Material type, readonly byte data) {
+    public TrapDoor(Materials type, readonly byte data) {
         base(type, data);
     }
 

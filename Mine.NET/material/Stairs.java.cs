@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -17,7 +17,7 @@ public class Stairs : MaterialData : Directional {
         base(type);
     }
 
-    public Stairs(Material type) {
+    public Stairs(Materials type) {
         base(type);
     }
 
@@ -37,7 +37,7 @@ public class Stairs : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(Material type, readonly byte data) {
+    public Stairs(Materials type, readonly byte data) {
         base(type, data);
     }
 

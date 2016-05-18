@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the tripwire
@@ -8,7 +8,7 @@ import org.bukkit.Material;
 public class Tripwire : MaterialData {
     
     public Tripwire() {
-        base(Material.TRIPWIRE);
+        base(Materials.TRIPWIRE);
     }
 
     /**

@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.block.BlockFaces;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a lever
  */
 public class Lever : SimpleAttachableMaterialData : Redstone {
     public Lever() {
-        base(Material.LEVER);
+        base(Materials.LEVER);
     }
 
     /**
@@ -20,7 +20,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
         base(type);
     }
 
-    public Lever(Material type) {
+    public Lever(Materials type) {
         base(type);
     }
 
@@ -40,12 +40,12 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(Material type, readonly byte data) {
+    public Lever(Materials type, readonly byte data) {
         base(type, data);
     }
 
     /**
-     * Gets the current state of this Material, indicating if it's powered or
+     * Gets the current state of this Materials, indicating if it's powered or
      * unpowered
      *
      * @return true if powered, otherwise false

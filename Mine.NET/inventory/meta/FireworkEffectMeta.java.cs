@@ -2,7 +2,7 @@ namespace Mine.NET.inventory.meta
 {
     /**
      * Represents a meta that can store a single FireworkEffect. An example
-     * includes {@link Material#FIREWORK_CHARGE}.
+     * includes {@link Materials#FIREWORK_CHARGE}.
      */
     public interface FireworkEffectMeta : ItemMeta<FireworkEffectMeta>
     {

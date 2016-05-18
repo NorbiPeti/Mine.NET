@@ -19,7 +19,7 @@ namespace Mine.NET.Event.entity
          *
          * @param what the Entity causing the change
          * @param block the block (before the change)
-         * @param to the future material being changed to
+         * @param to the future Materials being changed to
          * @param data the future block data
          * [Obsolete] Magic value
          */
@@ -53,9 +53,9 @@ namespace Mine.NET.Event.entity
         }
 
         /**
-         * Gets the Material that the block is changing into
+         * Gets the Materials that the block is changing into
          *
-         * @return the material that the block is changing into
+         * @return the Materials that the block is changing into
          */
         public Materials getTo()
         {

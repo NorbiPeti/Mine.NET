@@ -3,7 +3,7 @@ using System;
 namespace Mine.NET.inventory.meta
 {
     /**
-     * Represents a skull ({@link Material#SKULL_ITEM}) that can have an owner.
+     * Represents a skull ({@link Materials#SKULL_ITEM}) that can have an owner.
      */
     public interface SkullMeta : ItemMeta<SkullMeta>
     {

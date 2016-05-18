@@ -1,10 +1,10 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
- * Material data for the piston base block
+ * Materials data for the piston base block
  */
 public class PistonBaseMaterial : MaterialData : Directional, Redstone {
     
@@ -19,7 +19,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         base(type);
     }
 
-    public PistonBaseMaterial(Material type) {
+    public PistonBaseMaterial(Materials type) {
         base(type);
     }
 
@@ -38,12 +38,12 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
     /**
      * Constructs a PistonBaseMaterial.
      * 
-     * @param type the material type to use
+     * @param type the Materials type to use
      * @param data the raw data value 
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(Material type, readonly byte data) {
+    public PistonBaseMaterial(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -110,7 +110,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      * @return true if this piston is "sticky", or false
      */
     public bool isSticky() {
-        return this.getItemType() == Material.PISTON_STICKY_BASE;
+        return this.getItemType() == Materials.PISTON_STICKY_BASE;
     }
 
     public override PistonBaseMaterial clone() {

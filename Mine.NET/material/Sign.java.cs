@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.block.BlockFaces;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * MaterialData for signs
  */
 public class Sign : MaterialData : Attachable {
     public Sign() {
-        base(Material.SIGN_POST);
+        base(Materials.SIGN_POST);
     }
 
     /**
@@ -20,7 +20,7 @@ public class Sign : MaterialData : Attachable {
         base(type);
     }
 
-    public Sign(Material type) {
+    public Sign(Materials type) {
         base(type);
     }
 
@@ -40,7 +40,7 @@ public class Sign : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(Material type, readonly byte data) {
+    public Sign(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -51,7 +51,7 @@ public class Sign : MaterialData : Attachable {
      *     a block
      */
     public bool isWallSign() {
-        return getItemType() == Material.WALL_SIGN;
+        return getItemType() == Materials.WALL_SIGN;
     }
 
     /**

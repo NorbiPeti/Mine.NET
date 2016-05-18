@@ -9,11 +9,11 @@ namespace Mine.NET.entity
     {
 
         /**
-         * Get the Material of the falling block
+         * Get the Materials of the falling block
          *
-         * @return Material of the block
+         * @return Materials of the block
          */
-        Material getMaterial();
+        Materials getMaterial();
 
         /**
          * Get the ID of the falling block

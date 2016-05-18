@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a detector rail
  */
 public class DetectorRail : ExtendedRails : PressureSensor {
     public DetectorRail() {
-        base(Material.DETECTOR_RAIL);
+        base(Materials.DETECTOR_RAIL);
     }
 
     /**
@@ -19,7 +19,7 @@ public class DetectorRail : ExtendedRails : PressureSensor {
         base(type);
     }
 
-    public DetectorRail(Material type) {
+    public DetectorRail(Materials type) {
         base(type);
     }
 
@@ -39,7 +39,7 @@ public class DetectorRail : ExtendedRails : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(Material type, readonly byte data) {
+    public DetectorRail(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -17,7 +17,7 @@ namespace Mine.NET.Event.player
         private readonly int newValue;
         private bool iscancelled = false;
         private readonly EntityType entityType;
-        private readonly Material material;
+        private readonly Materials Materials;
 
         public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue) : base(player)
         {
@@ -25,7 +25,7 @@ namespace Mine.NET.Event.player
             this.initialValue = initialValue;
             this.newValue = newValue;
             this.entityType = null;
-            this.material = null;
+            this.Materials = null;
         }
 
         public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue, EntityType entityType) : base(player)
@@ -34,16 +34,16 @@ namespace Mine.NET.Event.player
             this.initialValue = initialValue;
             this.newValue = newValue;
             this.entityType = entityType;
-            this.material = null;
+            this.Materials = null;
         }
 
-        public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue, Material material) : base(player)
+        public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue, Materials Materials) : base(player)
         {
             this.statistic = statistic;
             this.initialValue = initialValue;
             this.newValue = newValue;
             this.entityType = null;
-            this.material = material;
+            this.Materials = Materials;
         }
 
         /**
@@ -88,14 +88,14 @@ namespace Mine.NET.Event.player
         }
 
         /**
-         * Gets the Material if {@link #getStatistic() getStatistic()} is a block
+         * Gets the Materials if {@link #getStatistic() getStatistic()} is a block
          * or item statistic otherwise returns null.
          *
-         * @return the Material of the statistic
+         * @return the Materials of the statistic
          */
-        public Material getMaterial()
+        public Materials getMaterial()
         {
-            return material;
+            return Materials;
         }
 
         public bool isCancelled()

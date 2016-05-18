@@ -19,7 +19,7 @@ namespace Mine.NET
     public interface UnsafeValues
     {
 
-        Material getMaterialFromInternalName(String name);
+        Materials getMaterialFromInternalName(String name);
 
         List<String> tabCompleteInternalMaterialName(String token, List<String> completions);
 

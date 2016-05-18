@@ -3,7 +3,7 @@ namespace Mine.NET.potion;
 import java.util.Collection;
 
 import org.apache.commons.lang.Validate;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
@@ -311,13 +311,13 @@ public class Potion {
      * @return The created ItemStack
      */
     public ItemStack toItemStack(int amount) {
-        Material material;
+        Materials Materials;
         if (isSplash()) {
-            material = Material.SPLASH_POTION;
+            Materials = Materials.SPLASH_POTION;
         } else {
-            material = Material.POTION;
+            Materials = Materials.POTION;
         }
-        ItemStack itemStack = new ItemStack(material, amount);
+        ItemStack itemStack = new ItemStack(Materials, amount);
         PotionMeta meta = (PotionMeta) itemStack.getItemMeta();
         meta.setBasePotionData(new PotionData(type, level == 2, extended));
         itemStack.setItemMeta(meta);
@@ -428,7 +428,7 @@ public class Potion {
 
     public static Potion fromItemStack(ItemStack item) {
         if(item==null) throw new ArgumentNullException("item cannot be null");
-        if (item.getType() != Material.POTION)
+        if (item.getType() != Materials.POTION)
             throw new ArgumentException("item is not a potion");
         return fromDamage(item.getDurability());
     }

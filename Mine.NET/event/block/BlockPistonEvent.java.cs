@@ -32,7 +32,7 @@ namespace Mine.NET.Event.block
          */
         public bool isSticky()
         {
-            return block.getType() == Material.AllMaterials[Materials.PISTON_STICKY_BASE] || block.getType() == Material.AllMaterials[Materials.PISTON_MOVING_PIECE];
+            return block.getType() == Materials.AllMaterials[Materials.PISTON_STICKY_BASE] || block.getType() == Materials.AllMaterials[Materials.PISTON_MOVING_PIECE];
         }
 
         /**

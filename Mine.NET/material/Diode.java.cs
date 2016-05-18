@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a diode/repeater in the on or off state, with a delay and facing
  * in a specific direction.
  *
- * @see Material#DIODE_BLOCK_OFF
- * @see Material#DIODE_BLOCK_ON
+ * @see Materials#DIODE_BLOCK_OFF
+ * @see Materials#DIODE_BLOCK_ON
  */
 public class Diode : MaterialData : Directional, Redstone {
 
@@ -65,7 +65,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * @see BlockFaces
      */
     public Diode(BlockFaces facingDirection, int delay, bool state) {
-        base(state ? Material.DIODE_BLOCK_ON : Material.DIODE_BLOCK_OFF);
+        base(state ? Materials.DIODE_BLOCK_ON : Materials.DIODE_BLOCK_OFF);
         setFacingDirection(facingDirection);
         setDelay(delay);
     }
@@ -79,7 +79,7 @@ public class Diode : MaterialData : Directional, Redstone {
         base(type);
     }
 
-    public Diode(Material type) {
+    public Diode(Materials type) {
         base(type);
     }
 
@@ -99,7 +99,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Diode(Material type, byte data) {
+    public Diode(Materials type, byte data) {
         base(type, data);
     }
 
@@ -199,6 +199,6 @@ public class Diode : MaterialData : Directional, Redstone {
      * @return true if the diode is powered
      */
     public override bool isPowered() {
-        return getItemType() == Material.DIODE_BLOCK_ON;
+        return getItemType() == Materials.DIODE_BLOCK_ON;
     }
 }

@@ -19,12 +19,12 @@ namespace Mine.NET.inventory
          * recipe, you'll need to call the appropriate methods.
          *
          * @param result The item you want the recipe to create.
-         * @see ShapelessRecipe#addIngredient(Material)
+         * @see ShapelessRecipe#addIngredient(Materials)
          * @see ShapelessRecipe#addIngredient(MaterialData)
-         * @see ShapelessRecipe#addIngredient(Material,int)
-         * @see ShapelessRecipe#addIngredient(int,Material)
+         * @see ShapelessRecipe#addIngredient(Materials,int)
+         * @see ShapelessRecipe#addIngredient(int,Materials)
          * @see ShapelessRecipe#addIngredient(int,MaterialData)
-         * @see ShapelessRecipe#addIngredient(int,Material,int)
+         * @see ShapelessRecipe#addIngredient(int,Materials,int)
          */
         public ShapelessRecipe(ItemStack result)
         {
@@ -48,7 +48,7 @@ namespace Mine.NET.inventory
          * @param ingredient The ingredient to add.
          * @return The changed recipe, so you can chain calls.
          */
-        public ShapelessRecipe addIngredient(Material ingredient)
+        public ShapelessRecipe addIngredient(Materials ingredient)
         {
             return addIngredient(1, ingredient);
         }
@@ -72,7 +72,7 @@ namespace Mine.NET.inventory
          * @param ingredient The ingredient to add.
          * @return The changed recipe, so you can chain calls.
          */
-        public ShapelessRecipe addIngredient(int count, Material ingredient)
+        public ShapelessRecipe addIngredient(int count, Materials ingredient)
         {
             if (ingredients.Count + count <= 9) throw new ArgumentException("Shapeless recipes cannot have more than 9 ingredients");
 
@@ -91,7 +91,7 @@ namespace Mine.NET.inventory
          * @param ingredient The ingredient to remove
          * @return The changed recipe.
          */
-        public ShapelessRecipe removeIngredient(Material ingredient)
+        public ShapelessRecipe removeIngredient(Materials ingredient)
         {
             return removeIngredient(1, ingredient); //TODO: Only remove with data value of 0
         }
@@ -118,7 +118,7 @@ namespace Mine.NET.inventory
          * @param ingredient The ingredient to remove
          * @return The changed recipe.
          */
-        public ShapelessRecipe removeIngredient(int count, Material ingredient)
+        public ShapelessRecipe removeIngredient(int count, Materials ingredient)
         {
             IEnumerator<ItemStack> iterator = ingredients.GetEnumerator();
             ingredients.RemoveAll(i => i.getType() == ingredient && count-- > 0);

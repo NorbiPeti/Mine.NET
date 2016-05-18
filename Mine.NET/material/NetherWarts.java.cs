@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.NetherWartsState;
 
 /**
@@ -8,7 +8,7 @@ import org.bukkit.NetherWartsState;
  */
 public class NetherWarts : MaterialData {
     public NetherWarts() {
-        base(Material.NETHER_WARTS);
+        base(Materials.NETHER_WARTS);
     }
 
     public NetherWarts(NetherWartsState state) {
@@ -25,7 +25,7 @@ public class NetherWarts : MaterialData {
         base(type);
     }
 
-    public NetherWarts(Material type) {
+    public NetherWarts(Materials type) {
         base (type);
     }
 
@@ -45,7 +45,7 @@ public class NetherWarts : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(Material type, readonly byte data) {
+    public NetherWarts(Materials type, readonly byte data) {
         base(type, data);
     }
 

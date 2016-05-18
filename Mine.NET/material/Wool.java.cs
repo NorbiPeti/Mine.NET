@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.DyeColor;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a Wool/Cloth block
  */
 public class Wool : MaterialData : Colorable {
     public Wool() {
-        base(Material.WOOL);
+        base(Materials.WOOL);
     }
 
     public Wool(DyeColor color) {
@@ -25,7 +25,7 @@ public class Wool : MaterialData : Colorable {
         base(type);
     }
 
-    public Wool(Material type) {
+    public Wool(Materials type) {
         base(type);
     }
 
@@ -45,7 +45,7 @@ public class Wool : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(Material type, readonly byte data) {
+    public Wool(Materials type, readonly byte data) {
         base(type, data);
     }
 

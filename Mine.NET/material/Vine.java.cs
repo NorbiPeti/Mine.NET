@@ -3,7 +3,7 @@ namespace Mine.NET.material;
 import java.util.Arrays;
 import java.util.EnumSet;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -17,7 +17,7 @@ public class Vine : MaterialData {
     EnumSet<BlockFaces> possibleFaces = EnumSet.of(BlockFaces.WEST, BlockFaces.NORTH, BlockFaces.SOUTH, BlockFaces.EAST);
 
     public Vine() {
-        base(Material.VINE);
+        base(Materials.VINE);
     }
 
     /**
@@ -36,7 +36,7 @@ public class Vine : MaterialData {
      */
     [Obsolete]
     public Vine(byte data) {
-        base(Material.VINE, data);
+        base(Materials.VINE, data);
     }
 
     public Vine(BlockFaces... faces) {

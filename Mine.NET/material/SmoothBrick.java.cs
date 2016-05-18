@@ -3,23 +3,23 @@ namespace Mine.NET.material;
 import java.util.List;
 import java.util.List;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the different types of smooth bricks.
  */
 public class SmoothBrick : TexturedMaterial {
 
-    private static readonly List<Material> textures = new List<Material>();
+    private static readonly List<Materials> textures = new List<Materials>();
     static {
-        textures.add(Material.STONE);
-        textures.add(Material.MOSSY_COBBLESTONE);
-        textures.add(Material.COBBLESTONE);
-        textures.add(Material.SMOOTH_BRICK);
+        textures.add(Materials.STONE);
+        textures.add(Materials.MOSSY_COBBLESTONE);
+        textures.add(Materials.COBBLESTONE);
+        textures.add(Materials.SMOOTH_BRICK);
     }
 
     public SmoothBrick() {
-        base(Material.SMOOTH_BRICK);
+        base(Materials.SMOOTH_BRICK);
     }
 
     /**
@@ -31,8 +31,8 @@ public class SmoothBrick : TexturedMaterial {
         base(type);
     }
 
-    public SmoothBrick(Material type) {
-        base((textures.contains(type)) ? Material.SMOOTH_BRICK : type);
+    public SmoothBrick(Materials type) {
+        base((textures.contains(type)) ? Materials.SMOOTH_BRICK : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -54,11 +54,11 @@ public class SmoothBrick : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(Material type, readonly byte data) {
+    public SmoothBrick(Materials type, readonly byte data) {
         base(type, data);
     }
 
-    public override List<Material> getTextures() {
+    public override List<Materials> getTextures() {
         return textures;
     }
 

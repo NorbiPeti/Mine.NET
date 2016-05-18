@@ -4,16 +4,16 @@ import java.util.EnumSet;
 import java.util.Set;
 
 import org.apache.commons.lang.Validate;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
-import org.bukkit.material.types.MushroomBlockTexture;
+import org.bukkit.Materials.types.MushroomBlockTexture;
 
 /**
  * Represents a huge mushroom block with certain combinations of faces set to
  * cap, pores or stem.
  *
- * @see Material#HUGE_MUSHROOM_1
- * @see Material#HUGE_MUSHROOM_2
+ * @see Materials#HUGE_MUSHROOM_1
+ * @see Materials#HUGE_MUSHROOM_2
  */
 public class Mushroom : MaterialData {
     private static readonly byte NORTH_LIMIT = 4;
@@ -27,14 +27,14 @@ public class Mushroom : MaterialData {
     /**
      * Constructs a brown/red mushroom block with all sides set to pores.
      *
-     * @param shroom A brown or red mushroom material type.
+     * @param shroom A brown or red mushroom Materials type.
      *
-     * @see Material#HUGE_MUSHROOM_1
-     * @see Material#HUGE_MUSHROOM_2
+     * @see Materials#HUGE_MUSHROOM_1
+     * @see Materials#HUGE_MUSHROOM_2
      */
-    public Mushroom(Material shroom) {
+    public Mushroom(Materials shroom) {
         base(shroom);
-        if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
+        if(shroom == Materials.HUGE_MUSHROOM_1 || shroom == Materials.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -47,27 +47,27 @@ public class Mushroom : MaterialData {
      *
      * Specify self to set all six faces at once.
      *
-     * @param shroom A brown or red mushroom material type.
+     * @param shroom A brown or red mushroom Materials type.
      * @param capFace The face or faces to set to mushroom cap texture.
      *
-     * @see Material#HUGE_MUSHROOM_1
-     * @see Material#HUGE_MUSHROOM_2
+     * @see Materials#HUGE_MUSHROOM_1
+     * @see Materials#HUGE_MUSHROOM_2
      * @see BlockFaces
      */
-    public Mushroom(Material shroom, BlockFaces capFace) {
+    public Mushroom(Materials shroom, BlockFaces capFace) {
         this(shroom, MushroomBlockTexture.getCapByFace(capFace));
     }
 
     /**
      * Constructs a brown/red mushroom block with the specified textures.
      *
-     * @param shroom A brown or red mushroom material type.
+     * @param shroom A brown or red mushroom Materials type.
      * @param texture The textured mushroom faces.
      *
-     * @see Material#HUGE_MUSHROOM_1
-     * @see Material#HUGE_MUSHROOM_2
+     * @see Materials#HUGE_MUSHROOM_1
+     * @see Materials#HUGE_MUSHROOM_2
      */
-    public Mushroom(Material shroom, MushroomBlockTexture texture) {
+    public Mushroom(Materials shroom, MushroomBlockTexture texture) {
         this(shroom, texture.getData());
     }
 
@@ -77,9 +77,9 @@ public class Mushroom : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Mushroom(Material shroom, byte data) {
+    public Mushroom(Materials shroom, byte data) {
         base(shroom, data);
-        if(shroom == Material.HUGE_MUSHROOM_1 || shroom == Material.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
+        if(shroom == Materials.HUGE_MUSHROOM_1 || shroom == Materials.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -90,7 +90,7 @@ public class Mushroom : MaterialData {
     [Obsolete]
     public Mushroom(int type, byte data){
         base(type, data);
-        if(type == Material.HUGE_MUSHROOM_1.getId() || type == Material.HUGE_MUSHROOM_2.getId()) throw new ArgumentException("Not a mushroom!");
+        if(type == Materials.HUGE_MUSHROOM_1.getId() || type == Materials.HUGE_MUSHROOM_2.getId()) throw new ArgumentException("Not a mushroom!");
     }
 
     /**
@@ -107,7 +107,7 @@ public class Mushroom : MaterialData {
      * @see MushroomBlockTexture#ALL_STEM
      *
      * [Obsolete] Use
-     * {@link #setBlockTexture(org.bukkit.material.types.MushroomBlockTexture)}
+     * {@link #setBlockTexture(org.bukkit.Materials.types.MushroomBlockTexture)}
      * with {@link MushroomBlockTexture#STEM_SIDES } or
      * {@link MushroomBlockTexture#ALL_STEM}
      */
@@ -284,7 +284,7 @@ public class Mushroom : MaterialData {
     }
 
     public override string ToString() {
-        return Material.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
+        return Materials.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
     }
 
     public override Mushroom clone() {

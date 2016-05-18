@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
 public class TripwireHook : SimpleAttachableMaterialData : Redstone {
 
     public TripwireHook() {
-        base(Material.TRIPWIRE_HOOK);
+        base(Materials.TRIPWIRE_HOOK);
     }
 
     /**

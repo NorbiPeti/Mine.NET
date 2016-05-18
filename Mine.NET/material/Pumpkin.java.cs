@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
 public class Pumpkin : MaterialData : Directional {
 
     public Pumpkin() {
-        base(Material.PUMPKIN);
+        base(Materials.PUMPKIN);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Pumpkin : MaterialData : Directional {
         base(type);
     }
 
-    public Pumpkin(Material type) {
+    public Pumpkin(Materials type) {
         base(type);
     }
 
@@ -51,12 +51,12 @@ public class Pumpkin : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(Material type, readonly byte data) {
+    public Pumpkin(Materials type, readonly byte data) {
         base(type, data);
     }
 
     public bool isLit() {
-        return getItemType() == Material.JACK_O_LANTERN;
+        return getItemType() == Materials.JACK_O_LANTERN;
     }
 
     public void setFacingDirection(BlockFaces face) {

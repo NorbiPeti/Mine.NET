@@ -1,17 +1,17 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 import org.bukkit.block.BlockFaces;
 
 /**
  * Represents the different types of Tree block that face a direction.
  *
- * @see Material#LOG
- * @see Material#LOG_2
+ * @see Materials#LOG
+ * @see Materials#LOG_2
  */
 public class Tree : Wood {
-    protected static readonly Material DEFAULT_TYPE = Material.LOG;
+    protected static readonly Materials DEFAULT_TYPE = Materials.LOG;
     protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.UP;
 
     /**
@@ -55,7 +55,7 @@ public class Tree : Wood {
      *
      * @param type the type of tree block
      */
-    public Tree(Material type) {
+    public Tree(Materials type) {
         this(type, DEFAULT_SPECIES, DEFAULT_DIRECTION);
     }
 
@@ -65,7 +65,7 @@ public class Tree : Wood {
      * @param type the type of tree block
      * @param species the species of the tree block
      */
-    public Tree(Material type, TreeSpecies species) {
+    public Tree(Materials type, TreeSpecies species) {
         this(type, species, DEFAULT_DIRECTION);
     }
 
@@ -77,7 +77,7 @@ public class Tree : Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(Material type, TreeSpecies species, BlockFaces dir) {
+    public Tree(Materials type, TreeSpecies species, BlockFaces dir) {
         base(type, species);
         setDirection(dir);
     }
@@ -98,7 +98,7 @@ public class Tree : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(Material type, readonly byte data) {
+    public Tree(Materials type, readonly byte data) {
         base(type, data);
     }
 

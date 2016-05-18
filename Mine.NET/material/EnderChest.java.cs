@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
 public class EnderChest : DirectionalContainer {
 
     public EnderChest() {
-        base(Material.ENDER_CHEST);
+        base(Materials.ENDER_CHEST);
     }
 
     /**
@@ -31,7 +31,7 @@ public class EnderChest : DirectionalContainer {
         base(type);
     }
 
-    public EnderChest(Material type) {
+    public EnderChest(Materials type) {
         base(type);
     }
 
@@ -51,7 +51,7 @@ public class EnderChest : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(Material type, readonly byte data) {
+    public EnderChest(Materials type, readonly byte data) {
         base(type, data);
     }
 

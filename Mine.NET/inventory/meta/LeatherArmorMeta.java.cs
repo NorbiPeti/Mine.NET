@@ -1,9 +1,9 @@
 namespace Mine.NET.inventory.meta
 {
     /**
-     * Represents leather armor ({@link Material#LEATHER_BOOTS}, {@link
-     * Material#LEATHER_CHESTPLATE}, {@link Material#LEATHER_HELMET}, or {@link
-     * Material#LEATHER_LEGGINGS}) that can be colored.
+     * Represents leather armor ({@link Materials#LEATHER_BOOTS}, {@link
+     * Materials#LEATHER_CHESTPLATE}, {@link Materials#LEATHER_HELMET}, or {@link
+     * Materials#LEATHER_LEGGINGS}) that can be colored.
      */
     public interface LeatherArmorMeta : ItemMeta<LeatherArmorMeta>
     {

@@ -12,13 +12,13 @@ namespace Mine.NET.inventory
     public interface ItemFactory {
 
         /**
-         * This creates a new item meta for the material.
+         * This creates a new item meta for the Materials.
          *
-         * @param material The material to consider as base for the meta
+         * @param Materials The Materials to consider as base for the meta
          * @return a new ItemMeta that could be applied to an item stack of the
-         *     specified material
+         *     specified Materials
          */
-        ItemMeta getItemMeta(Material material);
+        ItemMeta getItemMeta(Materials Materials);
 
         /**
          * This method checks the item meta to confirm that it is applicable (no
@@ -38,19 +38,19 @@ namespace Mine.NET.inventory
 
         /**
          * This method checks the item meta to confirm that it is applicable (no
-         * data lost if applied) to the specified Material.
+         * data lost if applied) to the specified Materials.
          * <p>
          * A {@link SkullMeta} would not be valid for a sword, but a normal {@link
          * ItemMeta} from an enchanted dirt block would.
          *
          * @param meta Meta to check
-         * @param material Material that meta will be applied to
+         * @param Materials Materials that meta will be applied to
          * @return true if the meta can be applied without losing data, false
          *     otherwise
          * @throws ArgumentException if the meta was not created by this
          *     factory
          */
-        bool isApplicable(ItemMeta meta, Material material);
+        bool isApplicable(ItemMeta meta, Materials Materials);
 
         /**
          * This method is used to compare two item meta data objects.
@@ -69,7 +69,7 @@ namespace Mine.NET.inventory
          * Returns an appropriate item meta for the specified stack.
          * <p>
          * The item meta returned will always be a valid meta for a given
-         * ItemStack of the specified material. It may be a more or less specific
+         * ItemStack of the specified Materials. It may be a more or less specific
          * meta, and could also be the same meta or meta type as the parameter.
          * The item meta returned will also always be the most appropriate meta.
          * <p>
@@ -89,10 +89,10 @@ namespace Mine.NET.inventory
         ItemMeta asMetaFor(ItemMeta meta, ItemStack stack);
 
         /**
-         * Returns an appropriate item meta for the specified material.
+         * Returns an appropriate item meta for the specified Materials.
          * <p>
          * The item meta returned will always be a valid meta for a given
-         * ItemStack of the specified material. It may be a more or less specific
+         * ItemStack of the specified Materials. It may be a more or less specific
          * meta, and could also be the same meta or meta type as the parameter.
          * The item meta returned will also always be the most appropriate meta.
          * <p>
@@ -102,13 +102,13 @@ namespace Mine.NET.inventory
          * common interface.
          *
          * @param meta the meta to convert
-         * @param material the material to convert the meta for
-         * @return An appropriate item meta for the specified item material. No
+         * @param Materials the Materials to convert the meta for
+         * @return An appropriate item meta for the specified item Materials. No
          *     guarantees are made as to if a copy is returned. This will be null for air.
          * @throws ArgumentException if the specified meta was not created
          *     by this factory
          */
-        ItemMeta asMetaFor(ItemMeta meta, Material material);
+        ItemMeta asMetaFor(ItemMeta meta, Materials Materials);
 
         /**
          * Returns the default color for all leather armor.

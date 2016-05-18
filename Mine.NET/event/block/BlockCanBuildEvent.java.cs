@@ -15,7 +15,7 @@ namespace Mine.NET.Event.block
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected bool buildable;
-        private Material material;
+        private Materials Materials;
 
         /**
          * Gets whether or not the block can be built here.
@@ -42,13 +42,13 @@ namespace Mine.NET.Event.block
         }
 
         /**
-         * Gets the Material that we are trying to place.
+         * Gets the Materials that we are trying to place.
          *
-         * @return The Material that we are trying to place
+         * @return The Materials that we are trying to place
          */
-        public Material getMaterial()
+        public Materials getMaterial()
         {
-            return material;
+            return Materials;
         }
 
         public override HandlerList getHandlers()

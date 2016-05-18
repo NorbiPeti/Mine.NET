@@ -2,14 +2,14 @@ namespace Mine.NET.material;
 
 import java.util.List;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents textured materials like steps and smooth bricks
  */
 public abstract class TexturedMaterial : MaterialData {
 
-    public TexturedMaterial(Material m) {
+    public TexturedMaterial(Materials m) {
         base(m);
     }
 
@@ -38,7 +38,7 @@ public abstract class TexturedMaterial : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(Material type, readonly byte data) {
+    public TexturedMaterial(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -48,14 +48,14 @@ public abstract class TexturedMaterial : MaterialData {
      *
      * @return a list of possible textures for this block
      */
-    public abstract List<Material> getTextures();
+    public abstract List<Materials> getTextures();
 
     /**
-     * Gets the current Material this block is made of
+     * Gets the current Materials this block is made of
      *
-     * @return Material of this block
+     * @return Materials of this block
      */
-    public Material getMaterial() {
+    public Materials getMaterial() {
         int n = getTextureIndex();
         if (n > getTextures().Count - 1) {
             n = 0;
@@ -65,21 +65,21 @@ public abstract class TexturedMaterial : MaterialData {
     }
 
     /**
-     * Sets the material this block is made of
+     * Sets the Materials this block is made of
      *
-     * @param material
-     *            New material of this block
+     * @param Materials
+     *            New Materials of this block
      */
-    public void setMaterial(Material material) {
-        if (getTextures().contains(material)) {
-            setTextureIndex(getTextures().IndexOf(material));
+    public void setMaterial(Materials Materials) {
+        if (getTextures().contains(Materials)) {
+            setTextureIndex(getTextures().IndexOf(Materials));
         } else {
             setTextureIndex(0x0);
         }
     }
 
     /**
-     * Get material index from data
+     * Get Materials index from data
      *
      * @return index of data in textures list
      * [Obsolete] Magic value
@@ -90,7 +90,7 @@ public abstract class TexturedMaterial : MaterialData {
     }
 
     /**
-     * Set material index
+     * Set Materials index
      *
      * @param idx - index of data in textures list
      * [Obsolete] Magic value

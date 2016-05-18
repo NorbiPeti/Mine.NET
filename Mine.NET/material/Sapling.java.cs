@@ -1,12 +1,12 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 
 /**
  * Represents the different types of Tree block that face a direction.
  *
- * @see Material#SAPLING
+ * @see Materials#SAPLING
  */
 public class Sapling : Wood {
 
@@ -34,7 +34,7 @@ public class Sapling : Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked with bonemeal
      */
     public Sapling(TreeSpecies species, bool isInstantGrowable) {
-        this(Material.SAPLING, species, isInstantGrowable);
+        this(Materials.SAPLING, species, isInstantGrowable);
     }
 
     /**
@@ -42,7 +42,7 @@ public class Sapling : Wood {
      *
      * @param type the type of tree block
      */
-    public Sapling(Material type) {
+    public Sapling(Materials type) {
         this(type, DEFAULT_SPECIES, false);
     }
 
@@ -52,7 +52,7 @@ public class Sapling : Wood {
      * @param type the type of sapling
      * @param species the species of the sapling
      */
-    public Sapling(Material type, TreeSpecies species) {
+    public Sapling(Materials type, TreeSpecies species) {
         this(type, species, false);
     }
 
@@ -65,7 +65,7 @@ public class Sapling : Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked
      * with bonemeal
      */
-    public Sapling(Material type, TreeSpecies species, bool isInstantGrowable) {
+    public Sapling(Materials type, TreeSpecies species, bool isInstantGrowable) {
         base(type, species);
         setIsInstantGrowable(isInstantGrowable);
     }
@@ -86,7 +86,7 @@ public class Sapling : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(Material type, readonly byte data) {
+    public Sapling(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -681,34 +681,34 @@ namespace Mine.NET
 
         /**
          * Spawn a {@link FallingBlock} entity at the given {@link Location} of
-         * the specified {@link Material}. The material dictates what is falling.
+         * the specified {@link Materials}. The Materials dictates what is falling.
          * When the FallingBlock hits the ground, it will place that block.
          * <p>
-         * The Material must be a block type, check with {@link Material#isBlock()
-         * material.isBlock()}. The Material may not be air.
+         * The Materials must be a block type, check with {@link Materials#isBlock()
+         * Materials.isBlock()}. The Materials may not be air.
          *
          * @param location The {@link Location} to spawn the FallingBlock
-         * @param material The block {@link Material} type
+         * @param Materials The block {@link Materials} type
          * @param data The block data
          * @return The spawned {@link FallingBlock} instance
          * @throws ArgumentException if {@link Location} or {@link
-         *     Material} are null or {@link Material} is not a block
+         *     Materials} are null or {@link Materials} is not a block
          * [Obsolete] Magic value
          */
         [Obsolete]
-        FallingBlock spawnFallingBlock(Location location, Material material, byte data);
+        FallingBlock spawnFallingBlock(Location location, Materials Materials, byte data);
 
         /**
          * Spawn a {@link FallingBlock} entity at the given {@link Location} of
-         * the specified blockId (converted to {@link Material})
+         * the specified blockId (converted to {@link Materials})
          *
          * @param location The {@link Location} to spawn the FallingBlock
-         * @param blockId The id of the intended material
+         * @param blockId The id of the intended Materials
          * @param blockData The block data
          * @return The spawned FallingBlock instance
          * @throws ArgumentException if location is null, or blockId is
          *     invalid
-         * @see #spawnFallingBlock(org.bukkit.Location, org.bukkit.Material, byte)
+         * @see #spawnFallingBlock(org.bukkit.Location, org.bukkit.Materials, byte)
          * [Obsolete] Magic value
          */
         [Obsolete]

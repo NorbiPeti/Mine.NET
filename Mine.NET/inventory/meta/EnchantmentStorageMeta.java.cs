@@ -5,7 +5,7 @@ namespace Mine.NET.inventory.meta
 {
     /**
      * EnchantmentMeta is specific to items that can <i>store</i> enchantments, as
-     * opposed to being enchanted. {@link Material#ENCHANTED_BOOK} is an example
+     * opposed to being enchanted. {@link Materials#ENCHANTED_BOOK} is an example
      * of an item with enchantment storage.
      */
     public interface EnchantmentStorageMeta : ItemMeta<EnchantmentStorageMeta>

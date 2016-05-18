@@ -8,7 +8,7 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on all items
      */
     ALL {
-        public override bool includes(Material item) {
+        public override bool includes(Materials item) {
             return true;
         }
     },
@@ -17,7 +17,7 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on armor
      */
     ARMOR {
-        public override bool includes(Material item) {
+        public override bool includes(Materials item) {
             return ARMOR_FEET.includes(item)
                 || ARMOR_LEGS.includes(item)
                 || ARMOR_HEAD.includes(item)
@@ -29,12 +29,12 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on feet slot armor
      */
     ARMOR_FEET {
-        public override bool includes(Material item) {
-            return item.equals(Material.LEATHER_BOOTS)
-                || item.equals(Material.CHAINMAIL_BOOTS)
-                || item.equals(Material.IRON_BOOTS)
-                || item.equals(Material.DIAMOND_BOOTS)
-                || item.equals(Material.GOLD_BOOTS);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.LEATHER_BOOTS)
+                || item.equals(Materials.CHAINMAIL_BOOTS)
+                || item.equals(Materials.IRON_BOOTS)
+                || item.equals(Materials.DIAMOND_BOOTS)
+                || item.equals(Materials.GOLD_BOOTS);
         }
     },
 
@@ -42,12 +42,12 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on leg slot armor
      */
     ARMOR_LEGS {
-        public override bool includes(Material item) {
-            return item.equals(Material.LEATHER_LEGGINGS)
-                || item.equals(Material.CHAINMAIL_LEGGINGS)
-                || item.equals(Material.IRON_LEGGINGS)
-                || item.equals(Material.DIAMOND_LEGGINGS)
-                || item.equals(Material.GOLD_LEGGINGS);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.LEATHER_LEGGINGS)
+                || item.equals(Materials.CHAINMAIL_LEGGINGS)
+                || item.equals(Materials.IRON_LEGGINGS)
+                || item.equals(Materials.DIAMOND_LEGGINGS)
+                || item.equals(Materials.GOLD_LEGGINGS);
         }
     },
 
@@ -55,12 +55,12 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on torso slot armor
      */
     ARMOR_TORSO {
-        public override bool includes(Material item) {
-            return item.equals(Material.LEATHER_CHESTPLATE)
-                || item.equals(Material.CHAINMAIL_CHESTPLATE)
-                || item.equals(Material.IRON_CHESTPLATE)
-                || item.equals(Material.DIAMOND_CHESTPLATE)
-                || item.equals(Material.GOLD_CHESTPLATE);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.LEATHER_CHESTPLATE)
+                || item.equals(Materials.CHAINMAIL_CHESTPLATE)
+                || item.equals(Materials.IRON_CHESTPLATE)
+                || item.equals(Materials.DIAMOND_CHESTPLATE)
+                || item.equals(Materials.GOLD_CHESTPLATE);
         }
     },
 
@@ -68,12 +68,12 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on head slot armor
      */
     ARMOR_HEAD {
-        public override bool includes(Material item) {
-            return item.equals(Material.LEATHER_HELMET)
-                || item.equals(Material.CHAINMAIL_HELMET)
-                || item.equals(Material.DIAMOND_HELMET)
-                || item.equals(Material.IRON_HELMET)
-                || item.equals(Material.GOLD_HELMET);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.LEATHER_HELMET)
+                || item.equals(Materials.CHAINMAIL_HELMET)
+                || item.equals(Materials.DIAMOND_HELMET)
+                || item.equals(Materials.IRON_HELMET)
+                || item.equals(Materials.GOLD_HELMET);
         }
     },
 
@@ -81,12 +81,12 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on weapons (swords)
      */
     WEAPON {
-        public override bool includes(Material item) {
-            return item.equals(Material.WOOD_SWORD)
-                || item.equals(Material.STONE_SWORD)
-                || item.equals(Material.IRON_SWORD)
-                || item.equals(Material.DIAMOND_SWORD)
-                || item.equals(Material.GOLD_SWORD);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.WOOD_SWORD)
+                || item.equals(Materials.STONE_SWORD)
+                || item.equals(Materials.IRON_SWORD)
+                || item.equals(Materials.DIAMOND_SWORD)
+                || item.equals(Materials.GOLD_SWORD);
         }
     },
 
@@ -95,29 +95,29 @@ public enum EnchantmentTarget { //TODO
      * axes)
      */
     TOOL {
-        public override bool includes(Material item) {
-            return item.equals(Material.WOOD_SPADE)
-                || item.equals(Material.STONE_SPADE)
-                || item.equals(Material.IRON_SPADE)
-                || item.equals(Material.DIAMOND_SPADE)
-                || item.equals(Material.GOLD_SPADE)
-                || item.equals(Material.WOOD_PICKAXE)
-                || item.equals(Material.STONE_PICKAXE)
-                || item.equals(Material.IRON_PICKAXE)
-                || item.equals(Material.DIAMOND_PICKAXE)
-                || item.equals(Material.GOLD_PICKAXE)
-                || item.equals(Material.WOOD_HOE)         // NOTE: No vanilla enchantments for this
-                || item.equals(Material.STONE_HOE)        // NOTE: No vanilla enchantments for this
-                || item.equals(Material.IRON_HOE)         // NOTE: No vanilla enchantments for this
-                || item.equals(Material.DIAMOND_HOE)      // NOTE: No vanilla enchantments for this
-                || item.equals(Material.GOLD_HOE)         // NOTE: No vanilla enchantments for this
-                || item.equals(Material.WOOD_AXE)
-                || item.equals(Material.STONE_AXE)
-                || item.equals(Material.IRON_AXE)
-                || item.equals(Material.DIAMOND_AXE)
-                || item.equals(Material.GOLD_AXE)
-                || item.equals(Material.SHEARS)           // NOTE: No vanilla enchantments for this
-                || item.equals(Material.FLINT_AND_STEEL); // NOTE: No vanilla enchantments for this
+        public override bool includes(Materials item) {
+            return item.equals(Materials.WOOD_SPADE)
+                || item.equals(Materials.STONE_SPADE)
+                || item.equals(Materials.IRON_SPADE)
+                || item.equals(Materials.DIAMOND_SPADE)
+                || item.equals(Materials.GOLD_SPADE)
+                || item.equals(Materials.WOOD_PICKAXE)
+                || item.equals(Materials.STONE_PICKAXE)
+                || item.equals(Materials.IRON_PICKAXE)
+                || item.equals(Materials.DIAMOND_PICKAXE)
+                || item.equals(Materials.GOLD_PICKAXE)
+                || item.equals(Materials.WOOD_HOE)         // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.STONE_HOE)        // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.IRON_HOE)         // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.DIAMOND_HOE)      // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.GOLD_HOE)         // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.WOOD_AXE)
+                || item.equals(Materials.STONE_AXE)
+                || item.equals(Materials.IRON_AXE)
+                || item.equals(Materials.DIAMOND_AXE)
+                || item.equals(Materials.GOLD_AXE)
+                || item.equals(Materials.SHEARS)           // NOTE: No vanilla enchantments for this
+                || item.equals(Materials.FLINT_AND_STEEL); // NOTE: No vanilla enchantments for this
         }
     },
 
@@ -125,8 +125,8 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on bows.
      */
     BOW {
-        public override bool includes(Material item) {
-            return item.equals(Material.BOW);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.BOW);
         }
     },
 
@@ -134,8 +134,8 @@ public enum EnchantmentTarget { //TODO
      * Allows the Enchantment to be placed on fishing rods.
      */
     FISHING_ROD {
-        public override bool includes(Material item) {
-            return item.equals(Material.FISHING_ROD);
+        public override bool includes(Materials item) {
+            return item.equals(Materials.FISHING_ROD);
         }
     };
 
@@ -145,7 +145,7 @@ public enum EnchantmentTarget { //TODO
      * @param item The item to check
      * @return True if the target includes the item
      */
-    public abstract bool includes(Material item);
+    public abstract bool includes(Materials item);
 
     /**
      * Check whether this target includes the specified item.

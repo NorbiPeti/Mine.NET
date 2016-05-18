@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 namespace Mine.NET
 {
     /**
-    * An enum of all material IDs accepted by the official server and client
+    * An enum of all Materials IDs accepted by the official server and client
     */
     public enum Materials
     {
@@ -909,9 +909,9 @@ namespace Mine.NET
         }
 
         /**
-         * Gets the item ID or block ID of this Material
+         * Gets the item ID or block ID of this Materials
          *
-         * @return ID of this material
+         * @return ID of this Materials
          * [Obsolete] Magic value
          */
         [Obsolete]
@@ -921,9 +921,9 @@ namespace Mine.NET
         }
 
         /**
-         * Gets the maximum amount of this material that can be held in a stack
+         * Gets the maximum amount of this Materials that can be held in a stack
          *
-         * @return Maximum stack size for this material
+         * @return Maximum stack size for this Materials
          */
         public int getMaxStackSize()
         {
@@ -931,9 +931,9 @@ namespace Mine.NET
         }
 
         /**
-         * Gets the maximum durability of this material
+         * Gets the maximum durability of this Materials
          *
-         * @return Maximum durability for this material
+         * @return Maximum durability for this Materials
          */
         public short getMaxDurability()
         {
@@ -941,9 +941,9 @@ namespace Mine.NET
         }
 
         /**
-         * Gets the MaterialData class associated with this Material
+         * Gets the MaterialData class associated with this Materials
          *
-         * @return MaterialData associated with this Material
+         * @return MaterialData associated with this Materials
          */
         public Type getData()
         {
@@ -951,7 +951,7 @@ namespace Mine.NET
         }
 
         /**
-         * Constructs a new MaterialData relevant for this Material, with the
+         * Constructs a new MaterialData relevant for this Materials, with the
          * given initial data
          *
          * @param raw Initial data to construct the MaterialData with
@@ -965,9 +965,9 @@ namespace Mine.NET
         }
 
         /**
-         * Checks if this Material is a placable block
+         * Checks if this Materials is a placable block
          *
-         * @return true if this material is a block
+         * @return true if this Materials is a block
          */
         public bool isBlock()
         {
@@ -975,9 +975,9 @@ namespace Mine.NET
         }
 
         /**
-         * Checks if this Material is edible.
+         * Checks if this Materials is edible.
          *
-         * @return true if this Material is edible.
+         * @return true if this Materials is edible.
          */
         public bool isEdible()
         {
@@ -1020,7 +1020,7 @@ namespace Mine.NET
             }
         }
         /**
-         * Attempts to match the Material with the given name.
+         * Attempts to match the Materials with the given name.
          * <p>
          * This is a match lookup; names will be converted to uppercase, then
          * stripped of special chars in an attempt to format it like the
@@ -1028,8 +1028,8 @@ namespace Mine.NET
          * <p>
          * Using this for match by ID is not supported.
          *
-         * @param name Name of the material to get
-         * @return Material if found, or null
+         * @param name Name of the Materials to get
+         * @return Materials if found, or null
          */
         public static Material matchMaterial(String name)
         {
@@ -1047,7 +1047,7 @@ namespace Mine.NET
         }
 
         /**
-         * @return True if this material represents a playable music disk.
+         * @return True if this Materials represents a playable music disk.
          */
         public bool isRecord()
         {
@@ -1055,10 +1055,10 @@ namespace Mine.NET
         }
 
         /**
-         * Check if the material is a block and solid (cannot be passed through by
+         * Check if the Materials is a block and solid (cannot be passed through by
          * a player)
          *
-         * @return True if this material is a block and solid
+         * @return True if this Materials is a block and solid
          */
         public bool isSolid()
         {
@@ -1236,9 +1236,9 @@ namespace Mine.NET
         }
 
         /**
-         * Check if the material is a block and does not block any light
+         * Check if the Materials is a block and does not block any light
          *
-         * @return True if this material is a block and does not block any light
+         * @return True if this Materials is a block and does not block any light
          */
         public bool isTransparent()
         {
@@ -1305,9 +1305,9 @@ namespace Mine.NET
         }
 
         /**
-         * Check if the material is a block and can catch fire
+         * Check if the Materials is a block and can catch fire
          *
-         * @return True if this material is a block and can catch fire
+         * @return True if this Materials is a block and can catch fire
          */
         public bool isFlammable()
         {
@@ -1380,9 +1380,9 @@ namespace Mine.NET
         }
 
         /**
-         * Check if the material is a block and can burn away
+         * Check if the Materials is a block and can burn away
          *
-         * @return True if this material is a block and can burn away
+         * @return True if this Materials is a block and can burn away
          */
         public bool isBurnable()
         {
@@ -1437,9 +1437,9 @@ namespace Mine.NET
         }
 
         /**
-         * Check if the material is a block and completely blocks vision
+         * Check if the Materials is a block and completely blocks vision
          *
-         * @return True if this material is a block and completely blocks vision
+         * @return True if this Materials is a block and completely blocks vision
          */
         public bool isOccluding()
         {
@@ -1533,7 +1533,7 @@ namespace Mine.NET
         }
 
         /**
-         * @return True if this material is affected by gravity.
+         * @return True if this Materials is affected by gravity.
          */
         public bool hasGravity()
         {
@@ -1560,7 +1560,7 @@ namespace Mine.NET
 
         public static Material getMaterial(string type)
         {
-            return AllMaterials[Enum.Parse(typeof(Materials), type];
+            return AllMaterials[(Materials)Enum.Parse(typeof(Materials), type)];
         }
     }
 }

@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 import org.bukkit.block.BlockFaces;
 
@@ -11,13 +11,13 @@ import org.bukkit.block.BlockFaces;
  * work with modern doors. Some methods are undefined dependant on <code>isTopHalf()</code>
  * due to Minecraft's internal representation of doors.
  *
- * @see Material#WOODEN_DOOR
- * @see Material#IRON_DOOR_BLOCK
- * @see Material#SPRUCE_DOOR
- * @see Material#BIRCH_DOOR
- * @see Material#JUNGLE_DOOR
- * @see Material#ACACIA_DOOR
- * @see Material#DARK_OAK_DOOR
+ * @see Materials#WOODEN_DOOR
+ * @see Materials#IRON_DOOR_BLOCK
+ * @see Materials#SPRUCE_DOOR
+ * @see Materials#BIRCH_DOOR
+ * @see Materials#JUNGLE_DOOR
+ * @see Materials#ACACIA_DOOR
+ * @see Materials#DARK_OAK_DOOR
  */
 public class Door : MaterialData : Directional, Openable {
 
@@ -25,11 +25,11 @@ public class Door : MaterialData : Directional, Openable {
     // of the way doors are currently implemented. Beware!
 
     /**
-     * [Obsolete] Artifact of old API, equivalent to new <code>Door(Material.WOODEN_DOOR);</code>
+     * [Obsolete] Artifact of old API, equivalent to new <code>Door(Materials.WOODEN_DOOR);</code>
      */
     [Obsolete]
     public Door() {
-        base(Material.WOODEN_DOOR);
+        base(Materials.WOODEN_DOOR);
     }
 
     /**
@@ -41,55 +41,55 @@ public class Door : MaterialData : Directional, Openable {
         base(type);
     }
 
-    public Door(Material type) {
+    public Door(Materials type) {
         base(type);
     }
 
     /**
-     * Constructs the bottom half of a door of the given material type, facing the specified direction and set to closed
+     * Constructs the bottom half of a door of the given Materials type, facing the specified direction and set to closed
      *
-     * @param type The type of material this door is made of. This must match the type of the block above.
+     * @param type The type of Materials this door is made of. This must match the type of the block above.
      * @param face The direction the door is facing.
      *
-     * @see Material#WOODEN_DOOR
-     * @see Material#IRON_DOOR_BLOCK
-     * @see Material#SPRUCE_DOOR
-     * @see Material#BIRCH_DOOR
-     * @see Material#JUNGLE_DOOR
-     * @see Material#ACACIA_DOOR
-     * @see Material#DARK_OAK_DOOR
+     * @see Materials#WOODEN_DOOR
+     * @see Materials#IRON_DOOR_BLOCK
+     * @see Materials#SPRUCE_DOOR
+     * @see Materials#BIRCH_DOOR
+     * @see Materials#JUNGLE_DOOR
+     * @see Materials#ACACIA_DOOR
+     * @see Materials#DARK_OAK_DOOR
      *
      * @see BlockFaces#WEST
      * @see BlockFaces#NORTH
      * @see BlockFaces#EAST
      * @see BlockFaces#SOUTH
      */
-    public Door(Material type, BlockFaces face) {
+    public Door(Materials type, BlockFaces face) {
         this(type, face, false);
     }
 
     /**
-     * Constructs the bottom half of a door of the given material type, facing the specified direction and set to open
+     * Constructs the bottom half of a door of the given Materials type, facing the specified direction and set to open
      * or closed
      *
-     * @param type The type of material this door is made of. This must match the type of the block above.
+     * @param type The type of Materials this door is made of. This must match the type of the block above.
      * @param face The direction the door is facing.
      * @param isOpen Whether the door is currently opened.
      *
-     * @see Material#WOODEN_DOOR
-     * @see Material#IRON_DOOR_BLOCK
-     * @see Material#SPRUCE_DOOR
-     * @see Material#BIRCH_DOOR
-     * @see Material#JUNGLE_DOOR
-     * @see Material#ACACIA_DOOR
-     * @see Material#DARK_OAK_DOOR
+     * @see Materials#WOODEN_DOOR
+     * @see Materials#IRON_DOOR_BLOCK
+     * @see Materials#SPRUCE_DOOR
+     * @see Materials#BIRCH_DOOR
+     * @see Materials#JUNGLE_DOOR
+     * @see Materials#ACACIA_DOOR
+     * @see Materials#DARK_OAK_DOOR
      *
      * @see BlockFaces#WEST
      * @see BlockFaces#NORTH
      * @see BlockFaces#EAST
      * @see BlockFaces#SOUTH
      */
-    public Door(Material type, BlockFaces face, bool isOpen) {
+    public Door(Materials type, BlockFaces face, bool isOpen) {
         base(type);
         setTopHalf(false);
         setFacingDirection(face);
@@ -97,20 +97,20 @@ public class Door : MaterialData : Directional, Openable {
     }
 
     /**
-     * Constructs the top half of door of the given material type and with the hinge on the left or right
+     * Constructs the top half of door of the given Materials type and with the hinge on the left or right
      *
-     * @param type The type of material this door is made of. This must match the type of the block below.
+     * @param type The type of Materials this door is made of. This must match the type of the block below.
      * @param isHingeRight True if the hinge is on the right hand side, false if the hinge is on the left hand side.
      *
-     * @see Material#WOODEN_DOOR
-     * @see Material#IRON_DOOR_BLOCK
-     * @see Material#SPRUCE_DOOR
-     * @see Material#BIRCH_DOOR
-     * @see Material#JUNGLE_DOOR
-     * @see Material#ACACIA_DOOR
-     * @see Material#DARK_OAK_DOOR
+     * @see Materials#WOODEN_DOOR
+     * @see Materials#IRON_DOOR_BLOCK
+     * @see Materials#SPRUCE_DOOR
+     * @see Materials#BIRCH_DOOR
+     * @see Materials#JUNGLE_DOOR
+     * @see Materials#ACACIA_DOOR
+     * @see Materials#DARK_OAK_DOOR
      */
-    public Door(Material type, bool isHingeRight) {
+    public Door(Materials type, bool isHingeRight) {
         base(type);
         setTopHalf(true);
         setHinge(isHingeRight);
@@ -181,7 +181,7 @@ public class Door : MaterialData : Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(Material type, readonly byte data) {
+    public Door(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -191,28 +191,28 @@ public class Door : MaterialData : Directional, Openable {
      * @param species The species of wood door required.
      * @return The item type for the given species.
      *
-     * @see Material#WOODEN_DOOR
-     * @see Material#SPRUCE_DOOR
-     * @see Material#BIRCH_DOOR
-     * @see Material#JUNGLE_DOOR
-     * @see Material#ACACIA_DOOR
-     * @see Material#DARK_OAK_DOOR
+     * @see Materials#WOODEN_DOOR
+     * @see Materials#SPRUCE_DOOR
+     * @see Materials#BIRCH_DOOR
+     * @see Materials#JUNGLE_DOOR
+     * @see Materials#ACACIA_DOOR
+     * @see Materials#DARK_OAK_DOOR
      */
-    public static Material getWoodDoorOfSpecies(TreeSpecies species) {
+    public static Materials getWoodDoorOfSpecies(TreeSpecies species) {
         switch (species) {
             default:
             case GENERIC:
-                return Material.WOODEN_DOOR;
+                return Materials.WOODEN_DOOR;
             case BIRCH:
-                return Material.BIRCH_DOOR;
+                return Materials.BIRCH_DOOR;
             case REDWOOD:
-                return Material.SPRUCE_DOOR;
+                return Materials.SPRUCE_DOOR;
             case JUNGLE:
-                return Material.JUNGLE_DOOR;
+                return Materials.JUNGLE_DOOR;
             case ACACIA:
-                return Material.ACACIA_DOOR;
+                return Materials.ACACIA_DOOR;
             case DARK_OAK:
-                return Material.DARK_OAK_DOOR;
+                return Materials.DARK_OAK_DOOR;
         }
     }
 

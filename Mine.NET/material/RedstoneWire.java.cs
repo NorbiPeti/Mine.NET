@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents redstone wire
  */
 public class RedstoneWire : MaterialData : Redstone {
     public RedstoneWire() {
-        base(Material.REDSTONE_WIRE);
+        base(Materials.REDSTONE_WIRE);
     }
 
     /**
@@ -19,7 +19,7 @@ public class RedstoneWire : MaterialData : Redstone {
         base(type);
     }
 
-    public RedstoneWire(Material type) {
+    public RedstoneWire(Materials type) {
         base(type);
     }
 
@@ -39,12 +39,12 @@ public class RedstoneWire : MaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(Material type, readonly byte data) {
+    public RedstoneWire(Materials type, readonly byte data) {
         base(type, data);
     }
 
     /**
-     * Gets the current state of this Material, indicating if it's powered or
+     * Gets the current state of this Materials, indicating if it's powered or
      * unpowered
      *
      * @return true if powered, otherwise false

@@ -16,9 +16,9 @@ namespace Mine.NET.inventory
          * Create a furnace recipe to craft the specified ItemStack.
          *
          * @param result The item you want the recipe to create.
-         * @param source The input material.
+         * @param source The input Materials.
          */
-        public FurnaceRecipe(ItemStack result, Material source) :
+        public FurnaceRecipe(ItemStack result, Materials source) :
             this(result, source, 0, 0)
         {
         }
@@ -27,7 +27,7 @@ namespace Mine.NET.inventory
          * Create a furnace recipe to craft the specified ItemStack.
          *
          * @param result The item you want the recipe to create.
-         * @param source The input material.
+         * @param source The input Materials.
          */
         public FurnaceRecipe(ItemStack result, MaterialData source) :
             this(result, source.getItemType(), source.getData(), 0)
@@ -38,7 +38,7 @@ namespace Mine.NET.inventory
          * Create a furnace recipe to craft the specified ItemStack.
          *
          * @param result The item you want the recipe to create.
-         * @param source The input material.
+         * @param source The input Materials.
          * @param experience The experience given by this recipe
          */
         public FurnaceRecipe(ItemStack result, MaterialData source, float experience) :
@@ -50,13 +50,13 @@ namespace Mine.NET.inventory
          * Create a furnace recipe to craft the specified ItemStack.
          *
          * @param result The item you want the recipe to create.
-         * @param source The input material.
+         * @param source The input Materials.
          * @param data The data value. (Note: This is currently ignored by the
          *     CraftBukkit server.)
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public FurnaceRecipe(ItemStack result, Material source, int data) :
+        public FurnaceRecipe(ItemStack result, Materials source, int data) :
             this(result, source, data, 0)
         {
         }
@@ -65,14 +65,14 @@ namespace Mine.NET.inventory
          * Create a furnace recipe to craft the specified ItemStack.
          *
          * @param result The item you want the recipe to create.
-         * @param source The input material.
+         * @param source The input Materials.
          * @param data The data value. (Note: This is currently ignored by the
          *     CraftBukkit server.)
          * @param experience The experience given by this recipe
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public FurnaceRecipe(ItemStack result, Material source, int data, float experience)
+        public FurnaceRecipe(ItemStack result, Materials source, int data, float experience)
         {
             this.output = new ItemStack(result);
             this.ingredient = new ItemStack(source, 1, (short)data);
@@ -82,7 +82,7 @@ namespace Mine.NET.inventory
         /**
          * Sets the input of this furnace recipe.
          *
-         * @param input The input material.
+         * @param input The input Materials.
          * @return The changed recipe, so you can chain calls.
          */
         public FurnaceRecipe setInput(MaterialData input)
@@ -93,10 +93,10 @@ namespace Mine.NET.inventory
         /**
          * Sets the input of this furnace recipe.
          *
-         * @param input The input material.
+         * @param input The input Materials.
          * @return The changed recipe, so you can chain calls.
          */
-        public FurnaceRecipe setInput(Material input)
+        public FurnaceRecipe setInput(Materials input)
         {
             return setInput(input, 0);
         }
@@ -104,23 +104,23 @@ namespace Mine.NET.inventory
         /**
          * Sets the input of this furnace recipe.
          *
-         * @param input The input material.
+         * @param input The input Materials.
          * @param data The data value. (Note: This is currently ignored by the
          *     CraftBukkit server.)
          * @return The changed recipe, so you can chain calls.
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public FurnaceRecipe setInput(Material input, int data)
+        public FurnaceRecipe setInput(Materials input, int data)
         {
             this.ingredient = new ItemStack(input, 1, (short)data);
             return this;
         }
 
         /**
-         * Get the input material.
+         * Get the input Materials.
          *
-         * @return The input material.
+         * @return The input Materials.
          */
         public ItemStack getInput()
         {

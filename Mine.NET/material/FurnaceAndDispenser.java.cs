@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a furnace or dispenser, two types of directional containers
@@ -16,7 +16,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
         base(type);
     }
 
-    public FurnaceAndDispenser(Material type) {
+    public FurnaceAndDispenser(Materials type) {
         base(type);
     }
 
@@ -36,7 +36,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(Material type, readonly byte data) {
+    public FurnaceAndDispenser(Materials type, readonly byte data) {
         base(type, data);
     }
 

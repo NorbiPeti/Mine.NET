@@ -1,19 +1,19 @@
 namespace Mine.NET.material;
 
 import org.bukkit.CropState;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the different types of crops in different states of growth.
  *
- * @see Material#CROPS
- * @see Material#CARROT
- * @see Material#POTATO
- * @see Material#BEETROOT_BLOCK
- * @see Material#NETHER_WARTS
+ * @see Materials#CROPS
+ * @see Materials#CARROT
+ * @see Materials#POTATO
+ * @see Materials#BEETROOT_BLOCK
+ * @see Materials#NETHER_WARTS
  */
 public class Crops : MaterialData {
-    protected static readonly Material DEFAULT_TYPE = Material.CROPS;
+    protected static readonly Materials DEFAULT_TYPE = Materials.CROPS;
     protected static readonly CropState DEFAULT_STATE = CropState.SEEDED;
 
     /**
@@ -39,7 +39,7 @@ public class Crops : MaterialData {
      * @param type The type of crops
      * @param state The growth state of the crops
      */
-    public Crops(Material type, readonly CropState state) {
+    public Crops(Materials type, readonly CropState state) {
         base(type);
         setState(state);
     }
@@ -58,7 +58,7 @@ public class Crops : MaterialData {
      *
      * @param type The type of crops
      */
-    public Crops(Material type) {
+    public Crops(Materials type) {
         this(type, DEFAULT_STATE);
     }
 
@@ -78,7 +78,7 @@ public class Crops : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Crops(Material type, readonly byte data) {
+    public Crops(Materials type, readonly byte data) {
         base(type, data);
     }
 

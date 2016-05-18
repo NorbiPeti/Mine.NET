@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace Mine.NET.inventory.meta
 {
     /**
-     * Represents a book ({@link Material#BOOK_AND_QUILL} or {@link
-     * Material#WRITTEN_BOOK}) that can have a title, an author, and pages.
+     * Represents a book ({@link Materials#BOOK_AND_QUILL} or {@link
+     * Materials#WRITTEN_BOOK}) that can have a title, an author, and pages.
      */
     public interface BookMeta : ItemMeta<BookMeta> {
 

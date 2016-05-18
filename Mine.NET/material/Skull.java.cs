@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -8,7 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class Skull : MaterialData : Directional {
     public Skull() {
-        base(Material.SKULL);
+        base(Materials.SKULL);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Skull : MaterialData : Directional {
         base(type);
     }
 
-    public Skull(Material type) {
+    public Skull(Materials type) {
         base(type);
     }
 
@@ -50,7 +50,7 @@ public class Skull : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(Material type, readonly byte data) {
+    public Skull(Materials type, readonly byte data) {
         base(type, data);
     }
 

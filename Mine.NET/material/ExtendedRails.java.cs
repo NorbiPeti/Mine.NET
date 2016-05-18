@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -17,7 +17,7 @@ public class ExtendedRails : Rails {
         base(type);
     }
 
-    public ExtendedRails(Material type) {
+    public ExtendedRails(Materials type) {
         base(type);
     }
 
@@ -37,7 +37,7 @@ public class ExtendedRails : Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(Material type, readonly byte data) {
+    public ExtendedRails(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -8,16 +8,16 @@ namespace Mine.NET.block
         /**
          * Get the record currently playing
          *
-         * @return The record Material, or AIR if none is playing
+         * @return The record Materials, or AIR if none is playing
          */
-        Material getPlaying();
+        Materials getPlaying();
 
         /**
          * Set the record currently playing
          *
-         * @param record The record Material, or null/AIR to stop playing
+         * @param record The record Materials, or null/AIR to stop playing
          */
-        void setPlaying(Material record);
+        void setPlaying(Materials record);
 
         /**
          * Check if the jukebox is currently playing a record

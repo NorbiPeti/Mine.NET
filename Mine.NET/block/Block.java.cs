@@ -53,7 +53,7 @@ namespace Mine.NET.block
          * <pre>
          * Block block = world.getBlockAt(100, 100, 100);
          * Block shower = block.getRelative(BlockFaces.UP, 2);
-         * shower.setType(Material.WATER);
+         * shower.setType(Materials.WATER);
          * </pre>
          *
          * @param face Face of this block to return
@@ -179,17 +179,17 @@ namespace Mine.NET.block
         /**
          * Sets the type of this block
          *
-         * @param type Material to change this block to
+         * @param type Materials to change this block to
          */
-        void setType(Material type);
+        void setType(Materials type);
 
         /**
          * Sets the type of this block
          *
-         * @param type Material to change this block to
+         * @param type Materials to change this block to
          * @param applyPhysics False to cancel physics on the changed block.
          */
-        void setType(Material type, bool applyPhysics);
+        void setType(Materials type, bool applyPhysics);
 
         /**
          * Sets the type-id of this block
@@ -317,7 +317,7 @@ namespace Mine.NET.block
          * Checks if this block is empty.
          * <p>
          * A block is considered empty when {@link #getType()} returns {@link
-         * Material#AIR}.
+         * Materials#AIR}.
          *
          * @return true if this block is empty
          */
@@ -327,8 +327,8 @@ namespace Mine.NET.block
          * Checks if this block is liquid.
          * <p>
          * A block is considered liquid when {@link #getType()} returns {@link
-         * Material#WATER}, {@link Material#STATIONARY_WATER}, {@link
-         * Material#LAVA} or {@link Material#STATIONARY_LAVA}.
+         * Materials#WATER}, {@link Materials#STATIONARY_WATER}, {@link
+         * Materials#LAVA} or {@link Materials#STATIONARY_LAVA}.
          *
          * @return true if this block is liquid
          */

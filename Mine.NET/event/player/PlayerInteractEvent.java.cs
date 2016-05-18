@@ -82,10 +82,10 @@ public class PlayerInteractEvent : PlayerEvent, Cancellable {
     }
 
     /**
-     * Convenience method. Returns the material of the item represented by
+     * Convenience method. Returns the Materials of the item represented by
      * this event
      *
-     * @return Material the material of the item used
+     * @return Materials the Materials of the item used
      */
     public Materials getMaterial() {
         if (!hasItem()) {

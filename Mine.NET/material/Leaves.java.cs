@@ -1,17 +1,17 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 
 /**
  * Represents the different types of leaf block that may be permanent or can
  * decay when too far from a log.
  *
- * @see Material#LEAVES
- * @see Material#LEAVES_2
+ * @see Materials#LEAVES
+ * @see Materials#LEAVES_2
  */
 public class Leaves : Wood {
-    protected static readonly Material DEFAULT_TYPE = Material.LEAVES;
+    protected static readonly Materials DEFAULT_TYPE = Materials.LEAVES;
     protected static readonly bool DEFAULT_DECAYABLE = true;
 
     /**
@@ -55,7 +55,7 @@ public class Leaves : Wood {
      *
      * @param type the type of leaf block
      */
-    public Leaves(Material type) {
+    public Leaves(Materials type) {
         this(type, DEFAULT_SPECIES, DEFAULT_DECAYABLE);
     }
 
@@ -65,7 +65,7 @@ public class Leaves : Wood {
      * @param type the type of leaf block
      * @param species the species of the wood block
      */
-    public Leaves(Material type, TreeSpecies species) {
+    public Leaves(Materials type, TreeSpecies species) {
         this(type, species, DEFAULT_DECAYABLE);
     }
 
@@ -77,7 +77,7 @@ public class Leaves : Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(Material type, TreeSpecies species, bool isDecayable) {
+    public Leaves(Materials type, TreeSpecies species, bool isDecayable) {
         base(type, species);
         setDecayable(isDecayable);
     }
@@ -98,7 +98,7 @@ public class Leaves : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(Material type, readonly byte data) {
+    public Leaves(Materials type, readonly byte data) {
         base(type, data);
     }
 

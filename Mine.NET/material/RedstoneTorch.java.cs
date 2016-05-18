@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a redstone torch
  */
 public class RedstoneTorch : Torch : Redstone {
     public RedstoneTorch() {
-        base(Material.REDSTONE_TORCH_ON);
+        base(Materials.REDSTONE_TORCH_ON);
     }
 
     /**
@@ -19,7 +19,7 @@ public class RedstoneTorch : Torch : Redstone {
         base(type);
     }
 
-    public RedstoneTorch(Material type) {
+    public RedstoneTorch(Materials type) {
         base(type);
     }
 
@@ -39,18 +39,18 @@ public class RedstoneTorch : Torch : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(Material type, readonly byte data) {
+    public RedstoneTorch(Materials type, readonly byte data) {
         base(type, data);
     }
 
     /**
-     * Gets the current state of this Material, indicating if it's powered or
+     * Gets the current state of this Materials, indicating if it's powered or
      * unpowered
      *
      * @return true if powered, otherwise false
      */
     public bool isPowered() {
-        return getItemType() == Material.REDSTONE_TORCH_ON;
+        return getItemType() == Materials.REDSTONE_TORCH_ON;
     }
 
     public override string ToString() {

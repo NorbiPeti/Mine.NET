@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
 public class Furnace : FurnaceAndDispenser {
 
     public Furnace() {
-        base(Material.FURNACE);
+        base(Materials.FURNACE);
     }
 
     /**
@@ -31,7 +31,7 @@ public class Furnace : FurnaceAndDispenser {
         base(type);
     }
 
-    public Furnace(Material type) {
+    public Furnace(Materials type) {
         base(type);
     }
 
@@ -51,7 +51,7 @@ public class Furnace : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(Material type, readonly byte data) {
+    public Furnace(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -33,7 +33,7 @@ namespace Mine.NET.block
          *
          * @return block type
          */
-        Material getType();
+        Materials getType();
 
         /**
          * Gets the type-id of this block
@@ -114,9 +114,9 @@ namespace Mine.NET.block
         /**
          * Sets the type of this block
          *
-         * @param type Material to change this block to
+         * @param type Materials to change this block to
          */
-        void setType(Material type);
+        void setType(Materials type);
 
         /**
          * Sets the type-id of this block

@@ -253,12 +253,12 @@ namespace Mine.NET.entity
          * certain location. This will not actually change the world in any way.
          *
          * @param loc The location of the changed block
-         * @param material The new block
+         * @param Materials The new block
          * @param data The block data
          * [Obsolete] Magic value
          */
         [Obsolete]
-        void sendBlockChange(Location loc, Material material, byte data);
+        void sendBlockChange(Location loc, Materials Materials, byte data);
 
         /**
          * Send a chunk change. This fakes a chunk change packet for a user at a
@@ -285,19 +285,19 @@ namespace Mine.NET.entity
          * certain location. This will not actually change the world in any way.
          *
          * @param loc The location of the changed block
-         * @param material The new block ID
+         * @param Materials The new block ID
          * @param data The block data
          * [Obsolete] Magic value
          */
         [Obsolete]
-        void sendBlockChange(Location loc, int material, byte data);
+        void sendBlockChange(Location loc, int Materials, byte data);
 
         /**
          * Send a sign change. This fakes a sign change packet for a user at
          * a certain location. This will not actually change the world in any way.
          * This method will use a sign at the location's block or a faked sign
          * sent via {@link #sendBlockChange(org.bukkit.Location, int, byte)} or
-         * {@link #sendBlockChange(org.bukkit.Location, org.bukkit.Material, byte)}.
+         * {@link #sendBlockChange(org.bukkit.Location, org.bukkit.Materials, byte)}.
          * <p>
          * If the client does not have a sign at the given location it will
          * display an error message to the user.
@@ -427,89 +427,89 @@ namespace Mine.NET.entity
         int getStatistic(Statistic statistic);
 
         /**
-         * Increments the given statistic for this player for the given material.
+         * Increments the given statistic for this player for the given Materials.
          * <p>
          * This is equivalent to the following code:
-         * <code>incrementStatistic(Statistic, Material, 1)</code>
+         * <code>incrementStatistic(Statistic, Materials, 1)</code>
          *
          * @param statistic Statistic to increment
-         * @param material Material to offset the statistic with
+         * @param Materials Materials to offset the statistic with
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        void incrementStatistic(Statistic statistic, Material material);
+        void incrementStatistic(Statistic statistic, Materials Materials);
 
         /**
-         * Decrements the given statistic for this player for the given material.
+         * Decrements the given statistic for this player for the given Materials.
          * <p>
          * This is equivalent to the following code:
-         * <code>decrementStatistic(Statistic, Material, 1)</code>
+         * <code>decrementStatistic(Statistic, Materials, 1)</code>
          *
          * @param statistic Statistic to decrement
-         * @param material Material to offset the statistic with
+         * @param Materials Materials to offset the statistic with
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        void decrementStatistic(Statistic statistic, Material material);
+        void decrementStatistic(Statistic statistic, Materials Materials);
 
         /**
          * Gets the value of the given statistic for this player.
          *
          * @param statistic Statistic to check
-         * @param material Material offset of the statistic
+         * @param Materials Materials offset of the statistic
          * @return the value of the given statistic
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        int getStatistic(Statistic statistic, Material material);
+        int getStatistic(Statistic statistic, Materials Materials);
 
         /**
-         * Increments the given statistic for this player for the given material.
+         * Increments the given statistic for this player for the given Materials.
          *
          * @param statistic Statistic to increment
-         * @param material Material to offset the statistic with
+         * @param Materials Materials to offset the statistic with
          * @param amount Amount to increment this statistic by
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if amount is negative
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        void incrementStatistic(Statistic statistic, Material material, int amount);
+        void incrementStatistic(Statistic statistic, Materials Materials, int amount);
 
         /**
-         * Decrements the given statistic for this player for the given material.
+         * Decrements the given statistic for this player for the given Materials.
          *
          * @param statistic Statistic to decrement
-         * @param material Material to offset the statistic with
+         * @param Materials Materials to offset the statistic with
          * @param amount Amount to decrement this statistic by
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if amount is negative
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        void decrementStatistic(Statistic statistic, Material material, int amount);
+        void decrementStatistic(Statistic statistic, Materials Materials, int amount);
 
         /**
-         * Sets the given statistic for this player for the given material.
+         * Sets the given statistic for this player for the given Materials.
          *
          * @param statistic Statistic to set
-         * @param material Material to offset the statistic with
+         * @param Materials Materials to offset the statistic with
          * @param newValue The value to set this statistic to
          * @throws ArgumentException if statistic is null
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          * @throws ArgumentException if newValue is negative
          * @throws ArgumentException if the given parameter is not valid
          *     for the statistic
          */
-        void setStatistic(Statistic statistic, Material material, int newValue);
+        void setStatistic(Statistic statistic, Materials Materials, int newValue);
 
         /**
          * Increments the given statistic for this player for the given entity.

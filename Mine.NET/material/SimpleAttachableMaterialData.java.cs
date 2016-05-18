@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -22,12 +22,12 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
         setFacingDirection(direction);
     }
 
-    public SimpleAttachableMaterialData(Material type, BlockFaces direction) {
+    public SimpleAttachableMaterialData(Materials type, BlockFaces direction) {
         this(type);
         setFacingDirection(direction);
     }
 
-    public SimpleAttachableMaterialData(Material type) {
+    public SimpleAttachableMaterialData(Materials type) {
         base(type);
     }
 
@@ -47,7 +47,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SimpleAttachableMaterialData(Material type, byte data) {
+    public SimpleAttachableMaterialData(Materials type, byte data) {
         base(type, data);
     }
 

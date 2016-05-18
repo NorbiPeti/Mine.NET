@@ -13,9 +13,9 @@ namespace Mine.NET.Event.player
         private bool cancelled = false;
         private readonly Block blockClicked;
         private readonly BlockFaces BlockFaces;
-        private readonly Material bucket;
+        private readonly Materials bucket;
 
-        public PlayerBucketEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Material bucket, ItemStack itemInHand) :
+        public PlayerBucketEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
             base(who)
         {
             this.blockClicked = blockClicked;
@@ -29,7 +29,7 @@ namespace Mine.NET.Event.player
          *
          * @return the used bucket
          */
-        public Material getBucket()
+        public Materials getBucket()
         {
             return bucket;
         }

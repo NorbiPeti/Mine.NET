@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.GrassSpecies;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the different types of long grasses.
  */
 public class LongGrass : MaterialData {
     public LongGrass() {
-        base(Material.LONG_GRASS);
+        base(Materials.LONG_GRASS);
     }
 
     public LongGrass(GrassSpecies species) {
@@ -25,7 +25,7 @@ public class LongGrass : MaterialData {
         base(type);
     }
 
-    public LongGrass(Material type) {
+    public LongGrass(Materials type) {
         base(type);
     }
 
@@ -45,7 +45,7 @@ public class LongGrass : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(Material type, readonly byte data) {
+    public LongGrass(Materials type, readonly byte data) {
         base(type, data);
     }
 

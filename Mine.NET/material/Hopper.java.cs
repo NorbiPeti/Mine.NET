@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a hopper in an active or deactivated state and facing in a
  * specific direction.
  *
- * @see Material#HOPPER
+ * @see Materials#HOPPER
  */
 public class Hopper : MaterialData : Directional, Redstone {
 
@@ -44,7 +44,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * @see BlockFaces
      */
     public Hopper(BlockFaces facingDirection, bool isActive) {
-        base(Material.HOPPER);
+        base(Materials.HOPPER);
         setFacingDirection(facingDirection);
         setActive(isActive);
     }
@@ -58,7 +58,7 @@ public class Hopper : MaterialData : Directional, Redstone {
         base(type);
     }
 
-    public Hopper(Material type) {
+    public Hopper(Materials type) {
         base(type);
     }
 
@@ -78,7 +78,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Hopper(Material type, byte data) {
+    public Hopper(Materials type, byte data) {
         base(type, data);
     }
 

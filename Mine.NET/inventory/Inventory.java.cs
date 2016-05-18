@@ -7,7 +7,7 @@ namespace Mine.NET.inventory
 {
     /**
      * Interface to the various inventories. Behavior relating to {@link
-     * Material#AIR} is unspecified.
+     * Materials#AIR} is unspecified.
      */
     public interface Inventory<T> : IEnumerable<ItemStack> where T : InventoryHolder {
 
@@ -76,11 +76,11 @@ namespace Mine.NET.inventory
          * an empty HashMap.
          * <p>
          * If you pass in ItemStacks which exceed the maximum stack size for the
-         * Material, first they will be added to partial stacks where
-         * Material.getMaxStackSize() is not exceeded, up to
-         * Material.getMaxStackSize(). When there are no partial stacks left
+         * Materials, first they will be added to partial stacks where
+         * Materials.getMaxStackSize() is not exceeded, up to
+         * Materials.getMaxStackSize(). When there are no partial stacks left
          * stacks will be split on Inventory.getMaxStackSize() allowing you to
-         * exceed the maximum stack size for that material.
+         * exceed the maximum stack size for that Materials.
          * <p>
          * It is known that in some implementations this method will also set
          * the inputted argument amount to the number of that item not placed in
@@ -166,13 +166,13 @@ namespace Mine.NET.inventory
 
         /**
          * Checks if the inventory contains any ItemStacks with the given
-         * material.
+         * Materials.
          *
-         * @param material The material to check for
-         * @return true if an ItemStack is found with the given Material
-         * @throws ArgumentException if material is null
+         * @param Materials The Materials to check for
+         * @return true if an ItemStack is found with the given Materials
+         * @throws ArgumentException if Materials is null
          */
-        bool contains(Material material);
+        bool contains(Materials Materials);
 
         /**
          * Checks if the inventory contains any ItemStacks matching the given
@@ -202,15 +202,15 @@ namespace Mine.NET.inventory
 
         /**
          * Checks if the inventory contains any ItemStacks with the given
-         * material, adding to at least the minimum amount specified.
+         * Materials, adding to at least the minimum amount specified.
          *
-         * @param material The material to check for
+         * @param Materials The Materials to check for
          * @param amount The minimum amount
          * @return true if amount is less than 1, true if enough ItemStacks were
          *     found to add to the given amount
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          */
-        bool contains(Material material, int amount);
+        bool contains(Materials Materials, int amount);
 
         /**
          * Checks if the inventory contains at least the minimum amount specified
@@ -240,17 +240,17 @@ namespace Mine.NET.inventory
 
         /**
          * Returns a HashMap with all slots and ItemStacks in the inventory with
-         * the given Material.
+         * the given Materials.
          * <p>
          * The HashMap contains entries where, the key is the slot index, and the
          * value is the ItemStack in that slot. If no matching ItemStack with the
-         * given Material is found, an empty map is returned.
+         * given Materials is found, an empty map is returned.
          *
-         * @param material The material to look for
+         * @param Materials The Materials to look for
          * @return A HashMap containing the slot index, ItemStack pairs
-         * @throws ArgumentException if material is null
+         * @throws ArgumentException if Materials is null
          */
-        Dictionary<int, ItemStack> all(Material material);
+        Dictionary<int, ItemStack> all(Materials Materials);
 
         /**
          * Finds all slots in the inventory containing any ItemStacks with the
@@ -259,7 +259,7 @@ namespace Mine.NET.inventory
          * <p>
          * The HashMap contains entries where, the key is the slot index, and the
          * value is the ItemStack in that slot. If no matching ItemStack with the
-         * given Material is found, an empty map is returned.
+         * given Materials is found, an empty map is returned.
          *
          * @param item The ItemStack to match against
          * @return A map from slot indexes to item at index
@@ -279,13 +279,13 @@ namespace Mine.NET.inventory
 
         /**
          * Finds the first slot in the inventory containing an ItemStack with the
-         * given material
+         * given Materials
          *
-         * @param material The material to look for
-         * @return The slot index of the given Material or -1 if not found
-         * @throws ArgumentException if material is null
+         * @param Materials The Materials to look for
+         * @return The slot index of the given Materials or -1 if not found
+         * @throws ArgumentException if Materials is null
          */
-        int first(Material material);
+        int first(Materials Materials);
 
         /**
          * Returns the first slot in the inventory containing an ItemStack with
@@ -307,19 +307,19 @@ namespace Mine.NET.inventory
         /**
          * Removes all stacks in the inventory matching the given materialId.
          *
-         * @param materialId The material to remove
+         * @param materialId The Materials to remove
          * [Obsolete] Magic value
          */
         [Obsolete]
         void remove(int materialId);
 
         /**
-         * Removes all stacks in the inventory matching the given material.
+         * Removes all stacks in the inventory matching the given Materials.
          *
-         * @param material The material to remove
-         * @throws ArgumentException if material is null
+         * @param Materials The Materials to remove
+         * @throws ArgumentException if Materials is null
          */
-        void remove(Material material);
+        void remove(Materials Materials);
 
         /**
          * Removes all stacks in the inventory matching the given stack.

@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.GrassSpecies;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 
 /**
@@ -13,7 +13,7 @@ public class FlowerPot : MaterialData {
      * Default constructor for a flower pot.
      */
     public FlowerPot() {
-        base(Material.FLOWER_POT);
+        base(Materials.FLOWER_POT);
     }
 
     /**
@@ -25,7 +25,7 @@ public class FlowerPot : MaterialData {
         base(type);
     }
 
-    public FlowerPot(Material type) {
+    public FlowerPot(Materials type) {
         base(type);
     }
 
@@ -45,22 +45,22 @@ public class FlowerPot : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(Material type, readonly byte data) {
+    public FlowerPot(Materials type, readonly byte data) {
         base(type, data);
     }
 
     /**
-     * Get the material in the flower pot
+     * Get the Materials in the flower pot
      *
-     * @return material MaterialData for the block currently in the flower pot
+     * @return Materials MaterialData for the block currently in the flower pot
      *     or null if empty
      */
     public MaterialData getContents() {
         switch (getData()) {
             case 1:
-                return new MaterialData(Material.RED_ROSE);
+                return new MaterialData(Materials.RED_ROSE);
             case 2:
-                return new MaterialData(Material.YELLOW_FLOWER);
+                return new MaterialData(Materials.YELLOW_FLOWER);
             case 3:
                 return new Tree(TreeSpecies.GENERIC);
             case 4:
@@ -70,13 +70,13 @@ public class FlowerPot : MaterialData {
             case 6:
                 return new Tree(TreeSpecies.JUNGLE);
             case 7:
-                return new MaterialData(Material.RED_MUSHROOM);
+                return new MaterialData(Materials.RED_MUSHROOM);
             case 8:
-                return new MaterialData(Material.BROWN_MUSHROOM);
+                return new MaterialData(Materials.BROWN_MUSHROOM);
             case 9:
-                return new MaterialData(Material.CACTUS);
+                return new MaterialData(Materials.CACTUS);
             case 10:
-                return new MaterialData(Material.DEAD_BUSH);
+                return new MaterialData(Materials.DEAD_BUSH);
             case 11:
                 return new LongGrass(GrassSpecies.FERN_LIKE);
             default:
@@ -90,21 +90,21 @@ public class FlowerPot : MaterialData {
      * @param materialData MaterialData of the block to put in the flower pot.
      */
     public void setContents(MaterialData materialData) {
-        Material mat = materialData.getItemType();
+        Materials mat = materialData.getItemType();
 
-        if (mat == Material.RED_ROSE) {
+        if (mat == Materials.RED_ROSE) {
             setData((byte) 1);
-        } else if (mat == Material.YELLOW_FLOWER) {
+        } else if (mat == Materials.YELLOW_FLOWER) {
             setData((byte) 2);
-        } else if (mat == Material.RED_MUSHROOM) {
+        } else if (mat == Materials.RED_MUSHROOM) {
             setData((byte) 7);
-        } else if (mat == Material.BROWN_MUSHROOM) {
+        } else if (mat == Materials.BROWN_MUSHROOM) {
             setData((byte) 8);
-        } else if (mat == Material.CACTUS) {
+        } else if (mat == Materials.CACTUS) {
             setData((byte) 9);
-        } else if (mat == Material.DEAD_BUSH) {
+        } else if (mat == Materials.DEAD_BUSH) {
             setData((byte) 10);
-        } else if (mat == Material.SAPLING) {
+        } else if (mat == Materials.SAPLING) {
             TreeSpecies species = ((Tree) materialData).getSpecies();
 
             if (species == TreeSpecies.GENERIC) {
@@ -116,7 +116,7 @@ public class FlowerPot : MaterialData {
             } else {
                 setData((byte) 6);
             }
-        } else if (mat == Material.LONG_GRASS) {
+        } else if (mat == Materials.LONG_GRASS) {
             GrassSpecies species = ((LongGrass) materialData).getSpecies();
 
             if (species == GrassSpecies.FERN_LIKE) {

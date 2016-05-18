@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -16,7 +16,7 @@ public class DirectionalContainer : MaterialData : Directional {
         base(type);
     }
 
-    public DirectionalContainer(Material type) {
+    public DirectionalContainer(Materials type) {
         base(type);
     }
 
@@ -36,7 +36,7 @@ public class DirectionalContainer : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(Material type, readonly byte data) {
+    public DirectionalContainer(Materials type, readonly byte data) {
         base(type, data);
     }
 

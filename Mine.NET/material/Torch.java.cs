@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.block.BlockFaces;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * MaterialData for torches
  */
 public class Torch : SimpleAttachableMaterialData {
     public Torch() {
-        base(Material.TORCH);
+        base(Materials.TORCH);
     }
 
     /**
@@ -20,7 +20,7 @@ public class Torch : SimpleAttachableMaterialData {
         base(type);
     }
 
-    public Torch(Material type) {
+    public Torch(Materials type) {
         base(type);
     }
 
@@ -40,7 +40,7 @@ public class Torch : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(Material type, readonly byte data) {
+    public Torch(Materials type, readonly byte data) {
         base(type, data);
     }
 

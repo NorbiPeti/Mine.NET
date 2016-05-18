@@ -10,10 +10,10 @@ namespace Mine.NET.Event.inventory
     public class FurnaceExtractEvent : BlockExpEvent
     {
         private readonly Player player;
-        private readonly Material itemType;
+        private readonly Materials itemType;
         private readonly int itemAmount;
 
-        public FurnaceExtractEvent(Player player, Block block, Material itemType, int itemAmount, int exp) :
+        public FurnaceExtractEvent(Player player, Block block, Materials itemType, int itemAmount, int exp) :
             base(block, exp)
         {
             this.player = player;
@@ -32,11 +32,11 @@ namespace Mine.NET.Event.inventory
         }
 
         /**
-         * Get the Material of the item being retrieved
+         * Get the Materials of the item being retrieved
          *
-         * @return the material of the item
+         * @return the Materials of the item
          */
-        public Material getItemType()
+        public Materials getItemType()
         {
             return itemType;
         }

@@ -31,7 +31,7 @@ namespace Mine.NET.inventory
 
         /**
          * Set the current fuel for brewing. Generally only
-         * {@link Material#BLAZE_POWDER} will be of use.
+         * {@link Materials#BLAZE_POWDER} will be of use.
          *
          * @param fuel The fuel
          */

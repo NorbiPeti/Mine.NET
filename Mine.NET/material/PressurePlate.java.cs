@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a pressure plate
  */
 public class PressurePlate : MaterialData : PressureSensor {
     public PressurePlate() {
-        base(Material.WOOD_PLATE);
+        base(Materials.WOOD_PLATE);
     }
 
     /**
@@ -19,7 +19,7 @@ public class PressurePlate : MaterialData : PressureSensor {
         base(type);
     }
 
-    public PressurePlate(Material type) {
+    public PressurePlate(Materials type) {
         base(type);
     }
 
@@ -39,7 +39,7 @@ public class PressurePlate : MaterialData : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PressurePlate(Material type, byte data) {
+    public PressurePlate(Materials type, byte data) {
         base(type, data);
     }
 

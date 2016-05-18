@@ -1,13 +1,13 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents a powered rail
  */
 public class PoweredRail : ExtendedRails : Redstone {
     public PoweredRail() {
-        base(Material.POWERED_RAIL);
+        base(Materials.POWERED_RAIL);
     }
 
     /**
@@ -19,7 +19,7 @@ public class PoweredRail : ExtendedRails : Redstone {
         base(type);
     }
 
-    public PoweredRail(Material type) {
+    public PoweredRail(Materials type) {
         base(type);
     }
 
@@ -39,7 +39,7 @@ public class PoweredRail : ExtendedRails : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(Material type, readonly byte data) {
+    public PoweredRail(Materials type, readonly byte data) {
         base(type, data);
     }
 

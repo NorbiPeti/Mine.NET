@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.SandstoneType;
 
 /**
@@ -8,7 +8,7 @@ import org.bukkit.SandstoneType;
  */
 public class Sandstone : MaterialData {
     public Sandstone() {
-        base(Material.SANDSTONE);
+        base(Materials.SANDSTONE);
     }
 
     public Sandstone(SandstoneType type) {
@@ -25,7 +25,7 @@ public class Sandstone : MaterialData {
         base(type);
     }
 
-    public Sandstone(Material type) {
+    public Sandstone(Materials type) {
         base(type);
     }
 
@@ -45,7 +45,7 @@ public class Sandstone : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(Material type, readonly byte data) {
+    public Sandstone(Materials type, readonly byte data) {
         base(type, data);
     }
 

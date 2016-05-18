@@ -19,8 +19,8 @@ namespace Mine.NET.inventory
          *
          * @param result The item you want the recipe to create.
          * @see ShapedRecipe#shape(String...)
-         * @see ShapedRecipe#setIngredient(char, Material)
-         * @see ShapedRecipe#setIngredient(char, Material, int)
+         * @see ShapedRecipe#setIngredient(char, Materials)
+         * @see ShapedRecipe#setIngredient(char, Materials, int)
          * @see ShapedRecipe#setIngredient(char, MaterialData)
          */
         public ShapedRecipe(ItemStack result) {
@@ -64,7 +64,7 @@ namespace Mine.NET.inventory
         }
 
         /**
-         * Sets the material that a char in the recipe shape refers to.
+         * Sets the Materials that a char in the recipe shape refers to.
          *
          * @param key The char that represents the ingredient in the shape.
          * @param ingredient The ingredient.
@@ -75,13 +75,13 @@ namespace Mine.NET.inventory
         }
 
         /**
-         * Sets the material that a char in the recipe shape refers to.
+         * Sets the Materials that a char in the recipe shape refers to.
          *
          * @param key The char that represents the ingredient in the shape.
          * @param ingredient The ingredient.
          * @return The changed recipe, so you can chain calls.
          */
-        public ShapedRecipe setIngredient(char key, Material ingredient)
+        public ShapedRecipe setIngredient(char key, Materials ingredient)
         {
             if (ingredients.ContainsKey(key)) throw new ArgumentException("Symbol does not appear in the shape:", nameof(key));
 

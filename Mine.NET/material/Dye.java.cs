@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.DyeColor;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents dye
  */
 public class Dye : MaterialData : Colorable {
     public Dye() {
-        base(Material.INK_SACK);
+        base(Materials.INK_SACK);
     }
 
     /**
@@ -20,7 +20,7 @@ public class Dye : MaterialData : Colorable {
         base(type);
     }
 
-    public Dye(Material type) {
+    public Dye(Materials type) {
         base(type);
     }
 
@@ -40,7 +40,7 @@ public class Dye : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(Material type, readonly byte data) {
+    public Dye(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -48,7 +48,7 @@ public class Dye : MaterialData : Colorable {
      * @param color color of the dye
      */
     public Dye(DyeColor color) {
-        base(Material.INK_SACK, color.getDyeData());
+        base(Materials.INK_SACK, color.getDyeData());
     }
 
     /**

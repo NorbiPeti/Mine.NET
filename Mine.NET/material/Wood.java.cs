@@ -1,17 +1,17 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 
 /**
  * Represents wood blocks of different species.
  *
- * @see Material#WOOD
- * @see Material#SAPLING
- * @see Material#WOOD_DOUBLE_STEP
+ * @see Materials#WOOD
+ * @see Materials#SAPLING
+ * @see Materials#WOOD_DOUBLE_STEP
  */
 public class Wood : MaterialData {
-    protected static readonly Material DEFAULT_TYPE = Material.WOOD;
+    protected static readonly Materials DEFAULT_TYPE = Materials.WOOD;
     protected static readonly TreeSpecies DEFAULT_SPECIES = TreeSpecies.GENERIC;
 
     /**
@@ -44,7 +44,7 @@ public class Wood : MaterialData {
      *
      * @param type the type of wood block
      */
-    public Wood(Material type) {
+    public Wood(Materials type) {
         this(type, DEFAULT_SPECIES);
     }
 
@@ -54,7 +54,7 @@ public class Wood : MaterialData {
      * @param type the type of wood block
      * @param species the species of the wood block
      */
-    public Wood(Material type, readonly TreeSpecies species) {
+    public Wood(Materials type, readonly TreeSpecies species) {
         // Ensure only valid species-type combinations
         base(getSpeciesType(type, species));
         setSpecies(species);
@@ -76,7 +76,7 @@ public class Wood : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(Material type, readonly byte data) {
+    public Wood(Materials type, readonly byte data) {
         base(type, data);
     }
 
@@ -111,7 +111,7 @@ public class Wood : MaterialData {
      * @param species The required species
      * @return The actual type for this species given the desired type
      */
-    private static Material getSpeciesType(Material type, TreeSpecies species) {
+    private static Materials getSpeciesType(Materials type, TreeSpecies species) {
         switch (species) {
             case GENERIC:
             case REDWOOD:
@@ -119,9 +119,9 @@ public class Wood : MaterialData {
             case JUNGLE:
                 switch (type) {
                     case LOG_2:
-                        return Material.LOG;
+                        return Materials.LOG;
                     case LEAVES_2:
-                        return Material.LEAVES;
+                        return Materials.LEAVES;
                     default:
                 }
                 break;
@@ -129,9 +129,9 @@ public class Wood : MaterialData {
             case DARK_OAK:
                 switch (type) {
                     case LOG:
-                        return Material.LOG_2;
+                        return Materials.LOG_2;
                     case LEAVES:
-                        return Material.LEAVES_2;
+                        return Materials.LEAVES_2;
                     default:
                 }
                 break;

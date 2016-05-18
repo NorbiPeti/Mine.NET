@@ -1,14 +1,14 @@
 namespace Mine.NET.material;
 
 import org.bukkit.block.BlockFaces;
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents Ladder data
  */
 public class Ladder : SimpleAttachableMaterialData {
     public Ladder() {
-        base(Material.LADDER);
+        base(Materials.LADDER);
     }
 
     /**
@@ -20,7 +20,7 @@ public class Ladder : SimpleAttachableMaterialData {
         base(type);
     }
 
-    public Ladder(Material type) {
+    public Ladder(Materials type) {
         base(type);
     }
 
@@ -40,7 +40,7 @@ public class Ladder : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(Material type, readonly byte data) {
+    public Ladder(Materials type, readonly byte data) {
         base(type, data);
     }
 

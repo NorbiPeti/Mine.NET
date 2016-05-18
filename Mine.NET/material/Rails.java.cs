@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
 public class Rails : MaterialData {
 
     public Rails() {
-        base(Material.RAILS);
+        base(Materials.RAILS);
     }
 
     /**
@@ -21,7 +21,7 @@ public class Rails : MaterialData {
         base(type);
     }
 
-    public Rails(Material type) {
+    public Rails(Materials type) {
         base(type);
     }
 
@@ -41,7 +41,7 @@ public class Rails : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(Material type, readonly byte data) {
+    public Rails(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -18,8 +18,8 @@ namespace Mine.NET.entity
         /**
          * Set the id and data of the block that the Enderman is carring.
          *
-         * @param material data to set the carried block to
+         * @param Materials data to set the carried block to
          */
-        void setCarriedMaterial(MaterialData material);
+        void setCarriedMaterial(MaterialData Materials);
     }
 }

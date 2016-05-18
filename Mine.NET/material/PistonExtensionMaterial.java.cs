@@ -1,10 +1,10 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
 
 /**
- * Material data for the piston extension block
+ * Materials data for the piston extension block
  */
 public class PistonExtensionMaterial : MaterialData : Attachable {
     /**
@@ -16,7 +16,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
         base(type);
     }
 
-    public PistonExtensionMaterial(Material type) {
+    public PistonExtensionMaterial(Materials type) {
         base(type);
     }
 
@@ -36,7 +36,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(Material type, readonly byte data) {
+    public PistonExtensionMaterial(Materials type, readonly byte data) {
         base(type, data);
     }
 

@@ -117,9 +117,9 @@ namespace Mine.NET.entity
          * Sets the display block for this minecart.
          * Passing a null value will set the minecart to have no display block.
          *
-         * @param material the material to set as display block.
+         * @param Materials the Materials to set as display block.
          */
-        void setDisplayBlock(MaterialData material);
+        void setDisplayBlock(MaterialData Materials);
 
         /**
          * Gets the display block for this minecart.

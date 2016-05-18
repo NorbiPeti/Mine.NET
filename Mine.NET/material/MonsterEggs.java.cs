@@ -3,22 +3,22 @@ namespace Mine.NET.material;
 import java.util.List;
 import java.util.List;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the different types of monster eggs
  */
 public class MonsterEggs : TexturedMaterial {
 
-    private static readonly List<Material> textures = new List<Material>();
+    private static readonly List<Materials> textures = new List<Materials>();
     static {
-        textures.add(Material.STONE);
-        textures.add(Material.COBBLESTONE);
-        textures.add(Material.SMOOTH_BRICK);
+        textures.add(Materials.STONE);
+        textures.add(Materials.COBBLESTONE);
+        textures.add(Materials.SMOOTH_BRICK);
     }
 
     public MonsterEggs() {
-        base(Material.MONSTER_EGGS);
+        base(Materials.MONSTER_EGGS);
     }
 
     /**
@@ -30,8 +30,8 @@ public class MonsterEggs : TexturedMaterial {
         base(type);
     }
 
-    public MonsterEggs(Material type) {
-        base((textures.contains(type)) ? Material.MONSTER_EGGS : type);
+    public MonsterEggs(Materials type) {
+        base((textures.contains(type)) ? Materials.MONSTER_EGGS : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -53,11 +53,11 @@ public class MonsterEggs : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(Material type, readonly byte data) {
+    public MonsterEggs(Materials type, readonly byte data) {
         base(type, data);
     }
 
-    public override List<Material> getTextures() {
+    public override List<Materials> getTextures() {
         return textures;
     }
 

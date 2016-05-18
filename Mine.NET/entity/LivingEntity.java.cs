@@ -68,7 +68,7 @@ namespace Mine.NET.entity
          * @return list containing all blocks along the living entity's line of
          *     sight
          */
-        List<Block> getLineOfSight(HashSet<Material> transparent, int maxDistance);
+        List<Block> getLineOfSight(HashSet<Materials> transparent, int maxDistance);
 
         /**
          * Gets the block that the living entity has targeted.
@@ -92,7 +92,7 @@ namespace Mine.NET.entity
          *     by server by at least 100 blocks, no less)
          * @return block that the living entity has targeted
          */
-        Block getTargetBlock(HashSet<Material> transparent, int maxDistance);
+        Block getTargetBlock(HashSet<Materials> transparent, int maxDistance);
 
         /**
          * Gets the last two blocks along the living entity's line of sight.
@@ -122,7 +122,7 @@ namespace Mine.NET.entity
          * @return list containing the last 2 blocks along the living entity's
          *     line of sight
          */
-        List<Block> getLastTwoTargetBlocks(HashSet<Material> transparent, int maxDistance);
+        List<Block> getLastTwoTargetBlocks(HashSet<Materials> transparent, int maxDistance);
 
         /**
          * Returns the amount of air that the living entity has remaining, in

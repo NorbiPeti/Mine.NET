@@ -18,7 +18,7 @@ namespace Mine.NET.material
         }
             
         /**
-         * Gets the raw data in this material
+         * Gets the raw data in this Materials
          *
          * @return Raw data
          * [Obsolete] Magic value
@@ -29,7 +29,7 @@ namespace Mine.NET.material
         }
 
         /**
-         * Sets the raw data of this material
+         * Sets the raw data of this Materials
          *
          * @param data New raw data
          * [Obsolete] Magic value
@@ -40,9 +40,9 @@ namespace Mine.NET.material
         }
 
         /**
-         * Gets the Material that this MaterialData represents
+         * Gets the Materials that this MaterialData represents
          *
-         * @return Material represented by this MaterialData
+         * @return Materials represented by this MaterialData
          */
         public Materials getItemType()
         {

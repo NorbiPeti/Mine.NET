@@ -11,7 +11,7 @@ namespace Mine.NET.Event.player
     {
         private static readonly HandlerList handlers = new HandlerList();
 
-        public PlayerBucketEmptyEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Material bucket, ItemStack itemInHand) :
+        public PlayerBucketEmptyEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
             base(who, blockClicked, BlockFaces, bucket, itemInHand)
         {
         }

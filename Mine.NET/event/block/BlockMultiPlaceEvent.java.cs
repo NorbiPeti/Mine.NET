@@ -24,7 +24,7 @@ namespace Mine.NET.Event.block
         /**
          * Gets a list of blockstates for all blocks which were replaced by the
          * placement of the new blocks. Most of these blocks will just have a
-         * Material type of AIR.
+         * Materials type of AIR.
          *
          * @return immutable list of replaced BlockStates
          */

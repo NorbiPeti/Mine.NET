@@ -24,7 +24,7 @@ namespace Mine.NET.inventory
         /**
          * Defaults stack size to 1, with no extra data
          *
-         * @param type item material
+         * @param type item Materials
          */
         public ItemStack(Materials type) :
             this(type, 1)
@@ -34,7 +34,7 @@ namespace Mine.NET.inventory
         /**
          * An item stack with no extra data
          *
-         * @param type item material
+         * @param type item Materials
          * @param amount stack size
          */
         public ItemStack(Materials type, int amount)
@@ -46,7 +46,7 @@ namespace Mine.NET.inventory
         /**
          * An item stack with the specified damage / durabiltiy
          *
-         * @param type item material
+         * @param type item Materials
          * @param amount stack size
          * @param damage durability / damage
          */
@@ -94,9 +94,9 @@ namespace Mine.NET.inventory
          *
          * @param type New type to set the items in this stack to
          */
-        public void setType(Material type)
+        public void setType(Materials type)
         {
-            if (type == null) throw new ArgumentNullException("Material cannot be null");
+            if (type == null) throw new ArgumentNullException("Materials cannot be null");
             this.type = type;
             if (this.meta != null)
             {
@@ -132,7 +132,7 @@ namespace Mine.NET.inventory
          */
         public MaterialData getData()
         {
-            Material mat = Material.AllMaterials[getType()];
+            Materials mat = Materials.AllMaterials[getType()];
             if (data == null && mat != null && mat.getData() != null)
             {
                 data = mat.getNewData((byte)this.getDurability());
@@ -172,17 +172,17 @@ namespace Mine.NET.inventory
         }
 
         /**
-         * Get the maximum stacksize for the material hold in this ItemStack.
+         * Get the maximum stacksize for the Materials hold in this ItemStack.
          * (Returns -1 if it has no idea)
          *
-         * @return The maximum you can stack this material to.
+         * @return The maximum you can stack this Materials to.
          */
         public int getMaxStackSize()
         {
-            Material material = getType();
-            if (material != null)
+            Materials Materials = getType();
+            if (Materials != null)
             {
-                return material.getMaxStackSize();
+                return Materials.getMaxStackSize();
             }
             return -1;
         }
@@ -439,7 +439,7 @@ namespace Mine.NET.inventory
          */
         public static ItemStack deserialize(Dictionary<String, Object> args)
         {
-            Material type = Material.getMaterial((String)args["type"]);
+            Materials type = Materials.getMaterial((String)args["type"]);
             short damage = 0;
             int amount = 1;
 
@@ -523,18 +523,18 @@ namespace Mine.NET.inventory
         /*
          * Cannot be overridden, so it's safe for constructor call
          */
-        private bool setItemMeta0(ItemMeta itemMeta, Material material)
+        private bool setItemMeta0(ItemMeta itemMeta, Materials Materials)
         {
             if (itemMeta == null)
             {
                 this.meta = null;
                 return true;
             }
-            if (!Bukkit.getItemFactory().isApplicable(itemMeta, material))
+            if (!Bukkit.getItemFactory().isApplicable(itemMeta, Materials))
             {
                 return false;
             }
-            this.meta = Bukkit.getItemFactory().asMetaFor(itemMeta, material);
+            this.meta = Bukkit.getItemFactory().asMetaFor(itemMeta, Materials);
             if (this.meta == itemMeta)
             {
                 this.meta = itemMeta.clone();

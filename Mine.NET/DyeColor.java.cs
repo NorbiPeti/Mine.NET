@@ -166,7 +166,7 @@ namespace Mine.NET
          *
          * @return A byte containing the (wool) data value of this color
          * [Obsolete] The name is misleading. It would imply {@link
-         *     Material#INK_SACK} but uses {@link Material#WOOL}
+         *     Materials#INK_SACK} but uses {@link Materials#WOOL}
          * @see #getWoolData()
          * @see #getDyeData()
          */
@@ -229,7 +229,7 @@ namespace Mine.NET
          * @return The {@link DyeColor} representing the given value, or null if
          *     it doesn't exist
          * [Obsolete] The name is misleading. It would imply {@link
-         *     Material#INK_SACK} but uses {@link Material#WOOL}
+         *     Materials#INK_SACK} but uses {@link Materials#WOOL}
          * @see #getByDyeData(byte)
          * @see #getByWoolData(byte)
          */

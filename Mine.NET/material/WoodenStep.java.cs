@@ -1,15 +1,15 @@
 namespace Mine.NET.material;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
 
 /**
  * Represents the different types of wooden steps.
  *
- * @see Material#WOOD_STEP
+ * @see Materials#WOOD_STEP
  */
 public class WoodenStep : Wood {
-    protected static readonly Material DEFAULT_TYPE = Material.WOOD_STEP;
+    protected static readonly Materials DEFAULT_TYPE = Materials.WOOD_STEP;
     protected static readonly bool DEFAULT_INVERTED = false;
 
     /**
@@ -65,7 +65,7 @@ public class WoodenStep : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(Material type, readonly byte data) {
+    public WoodenStep(Materials type, readonly byte data) {
         base(type, data);
     }
 

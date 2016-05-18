@@ -3,26 +3,26 @@ namespace Mine.NET.material;
 import java.util.List;
 import java.util.List;
 
-import org.bukkit.Material;
+import org.bukkit.Materials;
 
 /**
  * Represents the different types of steps.
  */
 public class Step : TexturedMaterial {
-    private static readonly List<Material> textures = new List<Material>();
+    private static readonly List<Materials> textures = new List<Materials>();
     static {
-        textures.add(Material.STONE);
-        textures.add(Material.SANDSTONE);
-        textures.add(Material.WOOD);
-        textures.add(Material.COBBLESTONE);
-        textures.add(Material.BRICK);
-        textures.add(Material.SMOOTH_BRICK);
-        textures.add(Material.NETHER_BRICK);
-        textures.add(Material.QUARTZ_BLOCK);
+        textures.add(Materials.STONE);
+        textures.add(Materials.SANDSTONE);
+        textures.add(Materials.WOOD);
+        textures.add(Materials.COBBLESTONE);
+        textures.add(Materials.BRICK);
+        textures.add(Materials.SMOOTH_BRICK);
+        textures.add(Materials.NETHER_BRICK);
+        textures.add(Materials.QUARTZ_BLOCK);
     }
 
     public Step() {
-        base(Material.STEP);
+        base(Materials.STEP);
     }
 
     /**
@@ -34,8 +34,8 @@ public class Step : TexturedMaterial {
         base(type);
     }
 
-    public Step(Material type) {
-        base((textures.contains(type)) ? Material.STEP : type);
+    public Step(Materials type) {
+        base((textures.contains(type)) ? Materials.STEP : type);
         if (textures.contains(type)) {
             setMaterial(type);
         }
@@ -57,11 +57,11 @@ public class Step : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(Material type, readonly byte data) {
+    public Step(Materials type, readonly byte data) {
         base(type, data);
     }
 
-    public override List<Material> getTextures() {
+    public override List<Materials> getTextures() {
         return textures;
     }
 

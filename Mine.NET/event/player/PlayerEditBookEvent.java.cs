@@ -87,7 +87,7 @@ namespace Mine.NET.Event.player
 
         /**
          * Gets whether or not the book is being signed. If a book is signed the
-         * Material changes from BOOK_AND_QUILL to WRITTEN_BOOK.
+         * Materials changes from BOOK_AND_QUILL to WRITTEN_BOOK.
          *
          * @return true if the book is being signed
          */

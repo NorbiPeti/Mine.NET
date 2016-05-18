@@ -9,10 +9,10 @@ namespace Mine.NET.Event.block
     public class BlockPhysicsEvent : BlockEvent, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
-        private readonly Material changed;
+        private readonly Materials changed;
         private bool cancel = false;
 
-        public BlockPhysicsEvent(Block block, Material changed) : base(block)
+        public BlockPhysicsEvent(Block block, Materials changed) : base(block)
         {
             this.changed = changed;
         }
@@ -22,7 +22,7 @@ namespace Mine.NET.Event.block
          *
          * @return Changed block's type
          */
-        public Material getChangedType()
+        public Materials getChangedType()
         {
             return changed;
         }

@@ -292,32 +292,32 @@ namespace Mine.NET.generator
             int getMaxHeight();
 
             /**
-             * Set the block at x,y,z in the chunk data to material.
+             * Set the block at x,y,z in the chunk data to Materials.
              *
              * Note: setting blocks outside the chunk's bounds does nothing.
              *
              * @param x the x location in the chunk from 0-15 inclusive
              * @param y the y location in the chunk from 0 (inclusive) - maxHeight (exclusive)
              * @param z the z location in the chunk from 0-15 inclusive
-             * @param material the type to set the block to
+             * @param Materials the type to set the block to
              */
-            void setBlock(int x, int y, int z, Material material);
+            void setBlock(int x, int y, int z, Materials Materials);
 
             /**
-             * Set the block at x,y,z in the chunk data to material.
+             * Set the block at x,y,z in the chunk data to Materials.
              *
              * Setting blocks outside the chunk's bounds does nothing.
              *
              * @param x the x location in the chunk from 0-15 inclusive
              * @param y the y location in the chunk from 0 (inclusive) - maxHeight (exclusive)
              * @param z the z location in the chunk from 0-15 inclusive
-             * @param material the type to set the block to
+             * @param Materials the type to set the block to
              */
-            void setBlock(int x, int y, int z, MaterialData material);
+            void setBlock(int x, int y, int z, MaterialData Materials);
 
             /**
              * Set a region of this chunk from xMin, yMin, zMin (inclusive)
-             * to xMax, yMax, zMax (exclusive) to material.
+             * to xMax, yMax, zMax (exclusive) to Materials.
              *
              * Setting blocks outside the chunk's bounds does nothing.
              *
@@ -327,13 +327,13 @@ namespace Mine.NET.generator
              * @param xMax maximum x location (exclusive) in the chunk to set
              * @param yMax maximum y location (exclusive) in the chunk to set
              * @param zMax maximum z location (exclusive) in the chunk to set
-             * @param material the type to set the blocks to
+             * @param Materials the type to set the blocks to
              */
-            void setRegion(int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, Material material);
+            void setRegion(int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, Materials Materials);
 
             /**
              * Set a region of this chunk from xMin, yMin, zMin (inclusive)
-             * to xMax, yMax, zMax (exclusive) to material.
+             * to xMax, yMax, zMax (exclusive) to Materials.
              *
              * Setting blocks outside the chunk's bounds does nothing.
              *
@@ -343,9 +343,9 @@ namespace Mine.NET.generator
              * @param xMax maximum x location (exclusive) in the chunk to set
              * @param yMax maximum y location (exclusive) in the chunk to set
              * @param zMax maximum z location (exclusive) in the chunk to set
-             * @param material the type to set the blocks to
+             * @param Materials the type to set the blocks to
              */
-            void setRegion(int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, MaterialData material);
+            void setRegion(int xMin, int yMin, int zMin, int xMax, int yMax, int zMax, MaterialData Materials);
 
             /**
              * Get the type of the block at x, y, z.
@@ -355,9 +355,9 @@ namespace Mine.NET.generator
              * @param x the x location in the chunk from 0-15 inclusive
              * @param y the y location in the chunk from 0 (inclusive) - maxHeight (exclusive)
              * @param z the z location in the chunk from 0-15 inclusive
-             * @return the type of the block or Material.AIR if x, y or z are outside the chunk's bounds
+             * @return the type of the block or Materials.AIR if x, y or z are outside the chunk's bounds
              */
-            Material getType(int x, int y, int z);
+            Materials getType(int x, int y, int z);
 
             /**
              * Get the type and data of the block at x, y ,z.
