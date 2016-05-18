@@ -35,7 +35,7 @@ public interface Score {
      * Gets the current score
      *
      * @return the current score
-     * @throws IllegalStateException if the associated objective has been
+     * @throws InvalidOperationException if the associated objective has been
      *     unregistered
      */
     int getScore();
@@ -44,7 +44,7 @@ public interface Score {
      * Sets the current score.
      *
      * @param score New score
-     * @throws IllegalStateException if the associated objective has been
+     * @throws InvalidOperationException if the associated objective has been
      *     unregistered
      */
     void setScore(int score);

@@ -7,7 +7,7 @@ namespace Mine.NET.material{
  * @see Materials#SAPLING
  * @see Materials#WOOD_DOUBLE_STEP
  */
-public class Wood : MaterialData {
+public class Wood : MaterialData<byte> {
     protected static readonly Materials DEFAULT_TYPE = Materials.WOOD;
     protected static readonly TreeSpecies DEFAULT_SPECIES = TreeSpecies.GENERIC;
 
@@ -182,4 +182,5 @@ public class Wood : MaterialData {
     public override Wood clone() {
         return (Wood) base.clone();
     }
+}
 }

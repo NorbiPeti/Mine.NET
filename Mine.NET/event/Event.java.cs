@@ -60,7 +60,7 @@ namespace Mine.NET.Event
          * <ul>
          * <li>The event is never fired from inside code triggered by a
          *     synchronous event. Attempting to do so results in an {@link
-         *     java.lang.IllegalStateException}.
+         *     java.lang.InvalidOperationException}.
          * <li>However, asynchronous event handlers may fire synchronous or
          *     asynchronous events
          * <li>The event may be fired multiple times simultaneously and in any

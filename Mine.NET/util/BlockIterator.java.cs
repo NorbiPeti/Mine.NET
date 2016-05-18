@@ -156,7 +156,7 @@ public class BlockIterator : IEnumerator<Block> {
         }
 
         if (!startBlockFound) {
-            throw new IllegalStateException("Start block missed in BlockIterator");
+            throw new InvalidOperationException("Start block missed in BlockIterator");
         }
 
         // Calculate the number of planes passed to give max distance

@@ -9,7 +9,7 @@ public abstract class BukkitRunnable : Runnable {
     /**
      * Attempts to cancel this task.
      *
-     * @throws IllegalStateException if task was not scheduled yet
+     * @throws InvalidOperationException if task was not scheduled yet
      */
     public synchronized void cancel() {
         Bukkit.getScheduler().cancelTask(getTaskId());
@@ -21,7 +21,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param plugin the reference to the plugin scheduling task
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTask(Plugin, Runnable)
      */
     public synchronized BukkitTask runTask(Plugin plugin) {
@@ -38,7 +38,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param plugin the reference to the plugin scheduling task
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskAsynchronously(Plugin, Runnable)
      */
     public synchronized BukkitTask runTaskAsynchronously(Plugin plugin)  {
@@ -53,7 +53,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskLater(Plugin, Runnable, long)
      */
     public synchronized BukkitTask runTaskLater(Plugin plugin, long delay)  {
@@ -72,7 +72,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param delay the ticks to wait before running the task
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskLaterAsynchronously(Plugin, Runnable, long)
      */
     public synchronized BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay)  {
@@ -89,7 +89,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskTimer(Plugin, Runnable, long, long)
      */
     public synchronized BukkitTask runTaskTimer(Plugin plugin, long delay, long period)  {
@@ -110,7 +110,7 @@ public abstract class BukkitRunnable : Runnable {
      * @param period the ticks to wait between runs
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
-     * @throws IllegalStateException if this was already scheduled
+     * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskTimerAsynchronously(Plugin, Runnable, long,
      *     long)
      */
@@ -123,19 +123,19 @@ public abstract class BukkitRunnable : Runnable {
      * Gets the task id for this runnable.
      *
      * @return the task id that this runnable was scheduled as
-     * @throws IllegalStateException if task was not scheduled yet
+     * @throws InvalidOperationException if task was not scheduled yet
      */
     public synchronized int getTaskId() {
         readonly int id = taskId;
         if (id == -1) {
-            throw new IllegalStateException("Not scheduled yet");
+            throw new InvalidOperationException("Not scheduled yet");
         }
         return id;
     }
 
     private void checkState() {
         if (taskId != -1) {
-            throw new IllegalStateException("Already scheduled as " + taskId);
+            throw new InvalidOperationException("Already scheduled as " + taskId);
         }
     }
 

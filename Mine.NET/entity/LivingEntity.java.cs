@@ -347,7 +347,7 @@ namespace Mine.NET.entity
          * Gets the entity that is currently leading this entity.
          *
          * @return the entity holding the leash
-         * @throws IllegalStateException if not currently leashed
+         * @throws InvalidOperationException if not currently leashed
          */
         Entity getLeashHolder();
 

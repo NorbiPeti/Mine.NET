@@ -441,10 +441,10 @@ public sealed class SimplePluginManager : PluginManager {
     public void callEvent(Event event) {
         if (event.isAsynchronous()) {
             if (Thread.holdsLock(this)) {
-                throw new IllegalStateException(event.getEventName() + " cannot be triggered asynchronously from inside synchronized code.");
+                throw new InvalidOperationException(event.getEventName() + " cannot be triggered asynchronously from inside synchronized code.");
             }
             if (server.isPrimaryThread()) {
-                throw new IllegalStateException(event.getEventName() + " cannot be triggered asynchronously from primary server thread.");
+                throw new InvalidOperationException(event.getEventName() + " cannot be triggered asynchronously from primary server thread.");
             }
             fireEvent(event);
         } else {

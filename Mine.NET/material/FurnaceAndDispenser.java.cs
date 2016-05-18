@@ -1,31 +1,13 @@
-namespace Mine.NET.material{
+using System;
 
-import org.bukkit.Materials;
-
-/**
- * Represents a furnace or dispenser, two types of directional containers
- */
-public class FurnaceAndDispenser : DirectionalContainer {
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents a furnace or dispenser, two types of directional containers
      */
-    [Obsolete]
-    public FurnaceAndDispenser(int type) : base(type) {
-    }
-
-    public FurnaceAndDispenser(Materials type) : base(type) {
-    }
-
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public FurnaceAndDispenser(int type, readonly byte data) : base(type, data) {
-    }
+    public class FurnaceAndDispenser : DirectionalContainer {
+        public FurnaceAndDispenser(Materials type) : base(type) {
+        }
 
     /**
      * @param type the type
@@ -33,10 +15,11 @@ public class FurnaceAndDispenser : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(Materials type, readonly byte data) : base(type, data) {
+        public FurnaceAndDispenser(Materials type, byte data) : base(type, data) {
     }
 
     public override FurnaceAndDispenser clone() {
-        return (FurnaceAndDispenser) base.clone();
+            return (FurnaceAndDispenser)base.clone();
+        }
     }
-}}
+}

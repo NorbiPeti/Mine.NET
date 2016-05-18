@@ -100,7 +100,7 @@ public class HandlerList { //TODO
      */
     public synchronized void register(RegisteredListener listener) {
         if (handlerslots[listener.getPriority(]).contains(listener))
-            throw new IllegalStateException("This listener is already registered to priority " + listener.getPriority().ToString());
+            throw new InvalidOperationException("This listener is already registered to priority " + listener.getPriority().ToString());
         handlers = null;
         handlerslots[listener.getPriority(]).add(listener);
     }

@@ -16,6 +16,11 @@ namespace Mine.NET.material
             this.type = type;
             this.data = data;
         }
+        
+        public MaterialData(Materials type)
+        {
+            this.type = type; //TODO
+        }
             
         /**
          * Gets the raw data in this Materials

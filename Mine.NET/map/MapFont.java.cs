@@ -18,13 +18,13 @@ namespace Mine.NET.map
          *
          * @param ch The char to set the sprite for.
          * @param sprite The charSprite to set.
-         * @throws IllegalStateException if this font is static.
+         * @throws InvalidOperationException if this font is static.
          */
         public void setChar(char ch, charSprite sprite)
         {
             if (!malleable)
             {
-                throw new IllegalStateException("this font is not malleable");
+                throw new InvalidOperationException("this font is not malleable");
             }
 
             chars.Add(ch, sprite);

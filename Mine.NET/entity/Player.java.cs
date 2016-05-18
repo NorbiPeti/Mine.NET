@@ -975,7 +975,7 @@ namespace Mine.NET.entity
          * @throws ArgumentException if scoreboard is null
          * @throws ArgumentException if scoreboard was not created by the
          *     {@link org.bukkit.scoreboard.ScoreboardManager scoreboard manager}
-         * @throws IllegalStateException if this is a player that is not logged
+         * @throws InvalidOperationException if this is a player that is not logged
          *     yet or has logged out
          */
         void setScoreboard(Scoreboard scoreboard);
@@ -1038,7 +1038,7 @@ namespace Mine.NET.entity
          * {@link GameMode#SPECTATOR}.
          *
          * @param entity the entity to follow or null to reset
-         * @throws IllegalStateException if the player is not in
+         * @throws InvalidOperationException if the player is not in
          * {@link GameMode#SPECTATOR}
          */
         void setSpectatorTarget(Entity entity);

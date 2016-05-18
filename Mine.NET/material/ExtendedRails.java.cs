@@ -1,32 +1,14 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using System;
 
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
-
-/**
- * This is the superclass for the {@link DetectorRail} and {@link PoweredRail}
- * classes
- */
-public class ExtendedRails : Rails {
+namespace Mine.NET.material {
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * This is the superclass for the {@link DetectorRail} and {@link PoweredRail}
+     * classes
      */
-    [Obsolete]
-    public ExtendedRails(int type) : base(type) {
-    }
-
-    public ExtendedRails(Materials type) : base(type) {
-    }
-
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public ExtendedRails(int type, readonly byte data) : base(type, data) {
-    }
+    public class ExtendedRails : Rails {
+        public ExtendedRails(Materials type) : base(type) {
+        }
 
     /**
      * @param type the type
@@ -34,35 +16,35 @@ public class ExtendedRails : Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(Materials type, readonly byte data) : base(type, data) {
+        public ExtendedRails(Materials type, byte data) : base(type, data) {
     }
 
     public override bool isCurve() {
-        return false;
-    }
-
-    /**
-     *
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    @Override
-    protected byte getConvertedData() {
-        return (byte) (getData() & 0x7);
-    }
-
-    public override void setDirection(BlockFaces face, bool isOnSlope) {
-        bool extraBitSet = (getData() & 0x8) == 0x8;
-
-        if (face != BlockFaces.WEST && face != BlockFaces.EAST && face != BlockFaces.NORTH && face != BlockFaces.SOUTH) {
-            throw new ArgumentException("Detector rails and powered rails cannot be set on a curve!");
+            return false;
         }
 
-        base.setDirection(face, isOnSlope);
-        setData((byte) (extraBitSet ? (getData() | 0x8) : (getData() & ~0x8)));
-    }
+        /**
+         *
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        protected override byte getConvertedData() {
+            return (byte)(getData() & 0x7);
+        }
 
-    public override ExtendedRails clone() {
-        return (ExtendedRails) base.clone();
+        public override void setDirection(BlockFaces face, bool isOnSlope) {
+            bool extraBitSet = (getData() & 0x8) == 0x8; //Convert data bit fields
+
+            if (face != BlockFaces.WEST && face != BlockFaces.EAST && face != BlockFaces.NORTH && face != BlockFaces.SOUTH) {
+                throw new ArgumentException("Detector rails and powered rails cannot be set on a curve!");
+            }
+
+            base.setDirection(face, isOnSlope);
+            setData((byte)(extraBitSet ? (getData() | 0x8) : (getData() & ~0x8)));
+        }
+
+        public override ExtendedRails clone() {
+            return (ExtendedRails)base.clone();
+        }
     }
-}}
+}

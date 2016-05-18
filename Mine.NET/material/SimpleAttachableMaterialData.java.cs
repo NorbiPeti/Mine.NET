@@ -1,57 +1,50 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using System;
 
-/**
- * Simple utility class for attachable MaterialData subclasses
- */
-public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
-
-    /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public SimpleAttachableMaterialData(int type) : base(type) {
-    }
-
-    public SimpleAttachableMaterialData(int type, BlockFaces direction) : this(type) {
-        setFacingDirection(direction);
-    }
-
-    public SimpleAttachableMaterialData(Materials type, BlockFaces direction) : this(type) {
-        setFacingDirection(direction);
-    }
-
-    public SimpleAttachableMaterialData(Materials type) : base(type) {
-    }
+namespace Mine.NET.material
+{
 
     /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
+     * Simple utility class for attachable MaterialData subclasses
      */
-    [Obsolete]
-    public SimpleAttachableMaterialData(int type, byte data) : base(type, data) {
-    }
+    public abstract class SimpleAttachableMaterialData : MaterialData<byte>, Attachable
+    {
+        public SimpleAttachableMaterialData(Materials type, BlockFaces direction) : this(type)
+        {
+            setFacingDirection(direction);
+        }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public SimpleAttachableMaterialData(Materials type, byte data) : base(type, data) {
-    }
+        public SimpleAttachableMaterialData(Materials type) : base(type)
+        {
+        }
 
-    public BlockFaces getFacing() {
-        BlockFaces attachedFace = getAttachedFace();
-        return attachedFace == null ? null : attachedFace.getOppositeFace();
-    }
+        /**
+         * @param type the type
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public SimpleAttachableMaterialData(Materials type, byte data) : base(type, data)
+        {
+        }
 
-    public override string ToString() {
-        return base.ToString() + " facing " + getFacing();
-    }
+        public BlockFaces getFacing()
+        {
+            BlockFaces attachedFace = getAttachedFace();
+            return BlockFace.getOppositeFace(attachedFace);
+        }
 
-    public override SimpleAttachableMaterialData clone() {
-        return (SimpleAttachableMaterialData) base.clone();
+        public override string ToString()
+        {
+            return base.ToString() + " facing " + getFacing();
+        }
+
+        public override SimpleAttachableMaterialData clone()
+        {
+            return (SimpleAttachableMaterialData)base.clone();
+        }
+
+        public abstract BlockFaces getAttachedFace();
+        public abstract void setFacingDirection(BlockFaces face);
     }
 }

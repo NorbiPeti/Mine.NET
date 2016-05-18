@@ -20,7 +20,7 @@ public abstract class JavaPlugin : PluginBase {
     public JavaPlugin() {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (!(classLoader is PluginClassLoader)) {
-            throw new IllegalStateException("JavaPlugin requires " + PluginClassLoader.class.getName());
+            throw new InvalidOperationException("JavaPlugin requires " + PluginClassLoader.class.getName());
         }
         ((PluginClassLoader) classLoader).initialize(this);
     }
@@ -41,7 +41,7 @@ public abstract class JavaPlugin : PluginBase {
     protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader is PluginClassLoader) {
-            throw new IllegalStateException("Cannot use initialization constructor at runtime");
+            throw new InvalidOperationException("Cannot use initialization constructor at runtime");
         }
         init(loader, server, description, dataFolder, file, classLoader);
     }
@@ -49,7 +49,7 @@ public abstract class JavaPlugin : PluginBase {
     protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         readonly ClassLoader classLoader = this.getClass().getClassLoader();
         if (classLoader is PluginClassLoader) {
-            throw new IllegalStateException("Cannot use initialization constructor at runtime");
+            throw new InvalidOperationException("Cannot use initialization constructor at runtime");
         }
         init(loader, loader.server, description, dataFolder, file, classLoader);
     }
@@ -418,10 +418,10 @@ public abstract class JavaPlugin : PluginBase {
      * @throws ArgumentException if clazz is null
      * @throws ArgumentException if clazz does not extend {@link
      *     JavaPlugin}
-     * @throws IllegalStateException if clazz was not provided by a plugin,
+     * @throws InvalidOperationException if clazz was not provided by a plugin,
      *     for example, if called with
      *     <code>JavaPlugin.getPlugin(JavaPlugin.class)</code>
-     * @throws IllegalStateException if called from the static initializer for
+     * @throws InvalidOperationException if called from the static initializer for
      *     given JavaPlugin
      * @throws ClassCastException if plugin that provided the class does not
      *     extend the class
@@ -437,7 +437,7 @@ public abstract class JavaPlugin : PluginBase {
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;
         if (plugin == null) {
-            throw new IllegalStateException("Cannot get plugin for " + clazz + " from a static initializer");
+            throw new InvalidOperationException("Cannot get plugin for " + clazz + " from a static initializer");
         }
         return clazz.cast(plugin);
     }
@@ -451,7 +451,7 @@ public abstract class JavaPlugin : PluginBase {
      * @throws ArgumentException if the class is not provided by a
      *     JavaPlugin
      * @throws ArgumentException if class is null
-     * @throws IllegalStateException if called from the static initializer for
+     * @throws InvalidOperationException if called from the static initializer for
      *     given JavaPlugin
      */
     public static JavaPlugin getProvidingPlugin(Class<?> clazz) {
@@ -462,7 +462,7 @@ public abstract class JavaPlugin : PluginBase {
         }
         JavaPlugin plugin = ((PluginClassLoader) cl).plugin;
         if (plugin == null) {
-            throw new IllegalStateException("Cannot get plugin for " + clazz + " from a static initializer");
+            throw new InvalidOperationException("Cannot get plugin for " + clazz + " from a static initializer");
         }
         return plugin;
     }

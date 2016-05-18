@@ -87,7 +87,7 @@ public interface PluginManager {
      * Calls an event with the given details
      *
      * @param event Event details
-     * @throws IllegalStateException Thrown when an asynchronous event is
+     * @throws InvalidOperationException Thrown when an asynchronous event is
      *     fired from synchronous code.
      *     <p>
      *     <i>Note: This is best-effort basis, and should not be used to test

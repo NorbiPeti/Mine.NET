@@ -1,31 +1,14 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using System;
 
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
-
-/**
- * Represents a furnace or a dispenser.
- */
-public class DirectionalContainer : MaterialData : Directional {
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents a furnace or a dispenser.
      */
-    [Obsolete]
-    public DirectionalContainer(int type) : base(type) {
-    }
-
-    public DirectionalContainer(Materials type) : base(type) {
-    }
-
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public DirectionalContainer(int type, readonly byte data) : base(type, data) {
-    }
+    public class DirectionalContainer : MaterialData<byte>, Directional {
+        public DirectionalContainer(Materials type) : base(type) {
+        }
 
     /**
      * @param type the type
@@ -33,57 +16,59 @@ public class DirectionalContainer : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(Materials type, readonly byte data) : base(type, data) {
+        public DirectionalContainer(Materials type, byte data) : base(type, data) {
     }
 
-    public void setFacingDirection(BlockFaces face) {
-        byte data;
+    public virtual void setFacingDirection(BlockFaces face) {
+            byte data;
 
-        switch (face) {
-        case NORTH:
-            data = 0x2;
-            break;
+            switch (face) {
+                case BlockFaces.NORTH:
+                    data = 0x2;
+                    break;
 
-        case SOUTH:
-            data = 0x3;
-            break;
+                case BlockFaces.SOUTH:
+                    data = 0x3;
+                    break;
 
-        case WEST:
-            data = 0x4;
-            break;
+                case BlockFaces.WEST:
+                    data = 0x4;
+                    break;
 
-        case EAST:
-        default:
-            data = 0x5;
+                case BlockFaces.EAST:
+                default:
+                    data = 0x5;
+                    break;
+            }
+
+            setData(data);
         }
 
-        setData(data);
-    }
+        public virtual BlockFaces getFacing() {
+            byte data = getData();
 
-    public BlockFaces getFacing() {
-        byte data = getData();
+            switch (data) {
+                case 0x2:
+                    return BlockFaces.NORTH;
 
-        switch (data) {
-        case 0x2:
-            return BlockFaces.NORTH;
+                case 0x3:
+                    return BlockFaces.SOUTH;
 
-        case 0x3:
-            return BlockFaces.SOUTH;
+                case 0x4:
+                    return BlockFaces.WEST;
 
-        case 0x4:
-            return BlockFaces.WEST;
+                case 0x5:
+                default:
+                    return BlockFaces.EAST;
+            }
+        }
 
-        case 0x5:
-        default:
-            return BlockFaces.EAST;
+        public override string ToString() {
+            return base.ToString() + " facing " + getFacing();
+        }
+
+        public override DirectionalContainer clone() {
+            return (DirectionalContainer)base.clone();
         }
     }
-
-    public override string ToString() {
-        return base.ToString() + " facing " + getFacing();
-    }
-
-    public override DirectionalContainer clone() {
-        return (DirectionalContainer) base.clone();
-    }
-}}
+}

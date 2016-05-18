@@ -11,7 +11,7 @@ public interface Objective {
      * Gets the name of this Objective
      *
      * @return this objective'ss name
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     String getName();
 
@@ -19,7 +19,7 @@ public interface Objective {
      * Gets the name displayed to players for this objective
      *
      * @return this objective's display name
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     String getDisplayName();
 
@@ -27,7 +27,7 @@ public interface Objective {
      * Sets the name displayed to players for this objective.
      *
      * @param displayName Display name to set
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      * @throws ArgumentException if displayName is null
      * @throws ArgumentException if displayName is longer than 32
      *     chars.
@@ -38,7 +38,7 @@ public interface Objective {
      * Gets the criteria this objective tracks.
      *
      * @return this objective's criteria
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     String getCriteria();
 
@@ -46,7 +46,7 @@ public interface Objective {
      * Gets if the objective's scores can be modified directly by a plugin.
      *
      * @return true if scores are modifiable
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      * @see Criterias#HEALTH
      */
     bool isModifiable();
@@ -62,7 +62,7 @@ public interface Objective {
     /**
      * Unregisters this objective from the {@link Scoreboard scoreboard.}
      *
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     void unregister();
 
@@ -71,7 +71,7 @@ public interface Objective {
      * scoreboard, removing it from any other display slot.
      *
      * @param slot display slot to change, or null to not display
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     void setDisplaySlot(DisplaySlot slot);
 
@@ -79,7 +79,7 @@ public interface Objective {
      * Gets the display slot this objective is displayed at.
      *
      * @return the display slot for this objective, or null if not displayed
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     DisplaySlot getDisplaySlot();
 
@@ -89,7 +89,7 @@ public interface Objective {
      * @param player Player for the Score
      * @return Score tracking the Objective and player specified
      * @throws ArgumentException if player is null
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      * [Obsolete] Scoreboards can contain entries that aren't players
      * @see #getScore(String)
      */
@@ -102,7 +102,7 @@ public interface Objective {
      * @param entry Entry for the Score
      * @return Score tracking the Objective and entry specified
      * @throws ArgumentException if entry is null
-     * @throws IllegalStateException if this objective has been unregistered
+     * @throws InvalidOperationException if this objective has been unregistered
      */
     Score getScore(String entry);
 }

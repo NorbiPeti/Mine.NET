@@ -1,3 +1,6 @@
+using Mine.NET.block;
+using System;
+
 namespace Mine.NET.material{
 
 /**
@@ -7,24 +10,7 @@ public class Ladder : SimpleAttachableMaterialData {
     public Ladder() : base(Materials.LADDER) {
     }
 
-    /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Ladder(int type) : base(type) {
-    }
-
     public Ladder(Materials type) : base(type) {
-    }
-
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Ladder(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -33,7 +19,7 @@ public class Ladder : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(Materials type, readonly byte data) : base(type, data) {
+    public Ladder(Materials type, byte data) : base(type, data) {
     }
 
     /**
@@ -41,7 +27,7 @@ public class Ladder : SimpleAttachableMaterialData {
      *
      * @return BlockFaces attached to
      */
-    public BlockFaces getAttachedFace() {
+    public override BlockFaces getAttachedFace() {
         byte data = getData();
 
         switch (data) {
@@ -58,29 +44,29 @@ public class Ladder : SimpleAttachableMaterialData {
             return BlockFaces.WEST;
         }
 
-        return null;
+            return BlockFaces.SELF;
     }
 
     /**
      * Sets the direction this ladder is facing
      */
-    public void setFacingDirection(BlockFaces face) {
+    public override void setFacingDirection(BlockFaces face) {
         byte data = (byte) 0x0;
 
         switch (face) {
-        case SOUTH:
+        case BlockFaces.SOUTH:
             data = 0x2;
             break;
 
-        case NORTH:
+        case BlockFaces.NORTH:
             data = 0x3;
             break;
 
-        case EAST:
+        case BlockFaces.EAST:
             data = 0x4;
             break;
 
-        case WEST:
+        case BlockFaces.WEST:
             data = 0x5;
             break;
         }

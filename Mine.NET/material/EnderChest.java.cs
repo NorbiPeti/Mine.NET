@@ -1,56 +1,40 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using System;
 
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
-
-/**
- * Represents an ender chest
- */
-public class EnderChest : DirectionalContainer {
-
-    public EnderChest() : base(Materials.ENDER_CHEST) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * Instantiate an ender chest facing in a particular direction.
-     *
-     * @param direction the direction the ender chest's lid opens towards
+     * Represents an ender chest
      */
-    public EnderChest(BlockFaces direction) {
-        this();
-        setFacingDirection(direction);
-    }
+    public class EnderChest : DirectionalContainer {
 
-    /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public EnderChest(int type) : base(type) {
-    }
+        public EnderChest() : base(Materials.ENDER_CHEST) {
+        }
 
-    public EnderChest(Materials type) : base(type) {
-    }
+        /**
+         * Instantiate an ender chest facing in a particular direction.
+         *
+         * @param direction the direction the ender chest's lid opens towards
+         */
+        public EnderChest(BlockFaces direction) : this()
+        {
+            setFacingDirection(direction);
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public EnderChest(int type, readonly byte data) : base(type, data) {
-    }
-
+        public EnderChest(Materials type) : base(type) {
+        }
+        
     /**
      * @param type the type
      * @param data the raw data value
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(Materials type, readonly byte data) : base(type, data) {
+        public EnderChest(Materials type, byte data) : base(type, data) {
     }
 
     public override EnderChest clone() {
-        return (EnderChest) base.clone();
+            return (EnderChest)base.clone();
+        }
     }
-}}
+}

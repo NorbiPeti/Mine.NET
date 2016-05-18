@@ -11,7 +11,7 @@ sealed class PluginClassLoader : URLClassLoader {
     private readonly FileInfo file;
     readonly JavaPlugin plugin;
     private JavaPlugin pluginInit;
-    private IllegalStateException pluginState;
+    private InvalidOperationException pluginState;
 
     PluginClassLoader(JavaPluginLoader loader, readonly ClassLoader parent, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
         base(new URL[] {file.toURI().toURL()}, parent);
@@ -86,7 +86,7 @@ sealed class PluginClassLoader : URLClassLoader {
             throw new ArgumentException("Plugin already initialized!", pluginState);
         }
 
-        pluginState = new IllegalStateException("Initial initialization");
+        pluginState = new InvalidOperationException("Initial initialization");
         this.pluginInit = javaPlugin;
 
         javaPlugin.init(loader, loader.server, description, dataFolder, file, this);

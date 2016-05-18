@@ -255,7 +255,7 @@ public abstract class PotionEffectType {
         if (byId[type.id] != null || byName.containsKey(type.getName().ToLower())) {
             throw new ArgumentException("Cannot set already-set type");
         } else if (!acceptingNew) {
-            throw new IllegalStateException(
+            throw new InvalidOperationException(
                     "No longer accepting new potion effect types (can only be done by the server implementation)");
         }
 

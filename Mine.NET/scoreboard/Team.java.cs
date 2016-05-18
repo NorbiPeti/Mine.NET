@@ -11,7 +11,7 @@ public interface Team {
      * Gets the name of this Team
      *
      * @return Objective name
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     String getName();
 
@@ -19,7 +19,7 @@ public interface Team {
      * Gets the name displayed to entries for this team
      *
      * @return Team display name
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     String getDisplayName();
 
@@ -29,7 +29,7 @@ public interface Team {
      * @param displayName New display name
      * @throws ArgumentException if displayName is longer than 32
      *     chars.
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setDisplayName(String displayName);
 
@@ -37,7 +37,7 @@ public interface Team {
      * Gets the prefix prepended to the display of entries on this team.
      *
      * @return Team prefix
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     String getPrefix();
 
@@ -48,7 +48,7 @@ public interface Team {
      * @throws ArgumentException if prefix is null
      * @throws ArgumentException if prefix is longer than 16
      *     chars
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setPrefix(String prefix);
 
@@ -56,7 +56,7 @@ public interface Team {
      * Gets the suffix appended to the display of entries on this team.
      *
      * @return the team's current suffix
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     String getSuffix();
 
@@ -67,7 +67,7 @@ public interface Team {
      * @throws ArgumentException if suffix is null
      * @throws ArgumentException if suffix is longer than 16
      *     chars
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setSuffix(String suffix);
 
@@ -75,7 +75,7 @@ public interface Team {
      * Gets the team friendly fire state
      *
      * @return true if friendly fire is enabled
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     bool allowFriendlyFire();
 
@@ -83,7 +83,7 @@ public interface Team {
      * Sets the team friendly fire state
      *
      * @param enabled true if friendly fire is to be allowed
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setAllowFriendlyFire(bool enabled);
 
@@ -92,7 +92,7 @@ public interface Team {
      * invisible} teammates.
      *
      * @return true if team members can see invisible members
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     bool canSeeFriendlyInvisibles();
 
@@ -101,7 +101,7 @@ public interface Team {
      * invisible} teammates.
      *
      * @param enabled true if invisible teammates are to be visible
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setCanSeeFriendlyInvisibles(bool enabled);
 
@@ -130,7 +130,7 @@ public interface Team {
      * Gets the Set of players on the team
      *
      * @return players on the team
-     * @throws IllegalStateException if this team has been unregistered\
+     * @throws InvalidOperationException if this team has been unregistered\
      * [Obsolete] Teams can contain entries that aren't players
      * @see #getEntries()
      */
@@ -141,7 +141,7 @@ public interface Team {
      * Gets the Set of entries on the team
      *
      * @return entries on the team
-     * @throws IllegalStateException if this entries has been unregistered\
+     * @throws InvalidOperationException if this entries has been unregistered\
      */
     HashSet<String> getEntries();
 
@@ -149,7 +149,7 @@ public interface Team {
      * Gets the size of the team
      *
      * @return number of entries on the team
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     int getSize();
 
@@ -168,7 +168,7 @@ public interface Team {
      *
      * @param player the player to add
      * @throws ArgumentException if player is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #addEntry(String)
      */
@@ -182,7 +182,7 @@ public interface Team {
      *
      * @param entry the entry to add
      * @throws ArgumentException if entry is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void addEntry(String entry);
 
@@ -192,7 +192,7 @@ public interface Team {
      * @param player the player to remove
      * @return if the player was on this team
      * @throws ArgumentException if player is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #removeEntry(String)
      */
@@ -204,7 +204,7 @@ public interface Team {
      *
      * @param entry the entry to remove
      * @throws ArgumentException if entry is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      * @return if the entry was a part of this team
      */
     bool removeEntry(String entry);
@@ -212,7 +212,7 @@ public interface Team {
     /**
      * Unregisters this team from the Scoreboard
      *
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void unregister();
 
@@ -222,7 +222,7 @@ public interface Team {
      * @param player the player to search for
      * @return true if the player is a member of this team
      * @throws ArgumentException if player is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      * [Obsolete] Teams can contain entries that aren't players
      * @see #hasEntry(String)
      */
@@ -234,7 +234,7 @@ public interface Team {
      * @param entry the entry to search for
      * @return true if the entry is a member of this team
      * @throws ArgumentException if entry is null
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     bool hasEntry(String entry);
 
@@ -243,7 +243,7 @@ public interface Team {
      *
      * @param option the option to get
      * @return the option status
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     OptionStatus getOption(Option option);
 
@@ -252,7 +252,7 @@ public interface Team {
      *
      * @param option the option to set
      * @param status the new option status
-     * @throws IllegalStateException if this team has been unregistered
+     * @throws InvalidOperationException if this team has been unregistered
      */
     void setOption(Option option, OptionStatus status);
 
