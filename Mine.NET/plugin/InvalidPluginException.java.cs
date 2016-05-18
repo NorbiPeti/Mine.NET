@@ -11,8 +11,7 @@ public class InvalidPluginException : Exception {
      *
      * @param cause Exception that triggered this Exception
      */
-    public InvalidPluginException(Exception cause) {
-        base(cause);
+    public InvalidPluginException(Exception cause) : base(cause) {
     }
 
     /**
@@ -32,8 +31,7 @@ public class InvalidPluginException : Exception {
      *     getCause() method). (A null value is permitted, and indicates that
      *     the cause is nonexistent or unknown.)
      */
-    public InvalidPluginException(String message, readonly Exception cause) {
-        base(message, cause);
+    public InvalidPluginException(String message, readonly Exception cause) : base(message, cause) {
     }
 
     /**
@@ -43,7 +41,6 @@ public class InvalidPluginException : Exception {
      * @param message TThe detail message is saved for later retrieval by the
      *     getMessage() method.
      */
-    public InvalidPluginException(String message) {
-        base(message);
+    public InvalidPluginException(String message) : base(message) {
     }
 }

@@ -13,22 +13,18 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SimpleAttachableMaterialData(int type) {
-        base(type);
+    public SimpleAttachableMaterialData(int type) : base(type) {
     }
 
-    public SimpleAttachableMaterialData(int type, BlockFaces direction) {
-        this(type);
+    public SimpleAttachableMaterialData(int type, BlockFaces direction) : this(type) {
         setFacingDirection(direction);
     }
 
-    public SimpleAttachableMaterialData(Materials type, BlockFaces direction) {
-        this(type);
+    public SimpleAttachableMaterialData(Materials type, BlockFaces direction) : this(type) {
         setFacingDirection(direction);
     }
 
-    public SimpleAttachableMaterialData(Materials type) {
-        base(type);
+    public SimpleAttachableMaterialData(Materials type) : base(type) {
     }
 
     /**
@@ -37,8 +33,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SimpleAttachableMaterialData(int type, byte data) {
-        base(type, data);
+    public SimpleAttachableMaterialData(int type, byte data) : base(type, data) {
     }
 
     /**
@@ -47,8 +42,7 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SimpleAttachableMaterialData(Materials type, byte data) {
-        base(type, data);
+    public SimpleAttachableMaterialData(Materials type, byte data) : base(type, data) {
     }
 
     public BlockFaces getFacing() {

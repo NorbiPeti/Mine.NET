@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class Furnace : FurnaceAndDispenser {
 
-    public Furnace() {
-        base(Materials.FURNACE);
+    public Furnace() : base(Materials.FURNACE) {
     }
 
     /**
@@ -27,12 +26,10 @@ public class Furnace : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(int type) {
-        base(type);
+    public Furnace(int type) : base(type) {
     }
 
-    public Furnace(Materials type) {
-        base(type);
+    public Furnace(Materials type) : base(type) {
     }
 
     /**
@@ -41,8 +38,7 @@ public class Furnace : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(int type, readonly byte data) {
-        base(type, data);
+    public Furnace(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -51,8 +47,7 @@ public class Furnace : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Furnace(Materials type, readonly byte data) {
-        base(type, data);
+    public Furnace(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override Furnace clone() {

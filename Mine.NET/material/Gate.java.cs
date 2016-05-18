@@ -14,16 +14,14 @@ public class Gate : MaterialData : Directional, Openable {
     private static readonly byte GATE_NORTH = 0x2;
     private static readonly byte GATE_EAST = 0x3;
 
-    public Gate() {
-        base(Materials.FENCE_GATE);
+    public Gate() : base(Materials.FENCE_GATE) {
     }
 
     public Gate(int type, byte data){
         base(type, data);
     }
 
-    public Gate(byte data) {
-        base(Materials.FENCE_GATE, data);
+    public Gate(byte data) : base(Materials.FENCE_GATE, data) {
     }
 
     public void setFacingDirection(BlockFaces face) {

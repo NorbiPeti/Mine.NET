@@ -251,8 +251,7 @@ public class BlockIterator : IEnumerator<Block> {
      * @param loc The location for the start of the ray trace
      */
 
-    public BlockIterator(Location loc) {
-        this(loc, 0D);
+    public BlockIterator(Location loc) : this(loc, 0D) {
     }
 
     /**
@@ -274,8 +273,7 @@ public class BlockIterator : IEnumerator<Block> {
      * @param entity Information from the entity is used to set up the trace
      */
 
-    public BlockIterator(LivingEntity entity) {
-        this(entity, 0);
+    public BlockIterator(LivingEntity entity) : this(entity, 0) {
     }
 
     /**

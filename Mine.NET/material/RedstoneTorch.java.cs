@@ -6,8 +6,7 @@ import org.bukkit.Materials;
  * Represents a redstone torch
  */
 public class RedstoneTorch : Torch : Redstone {
-    public RedstoneTorch() {
-        base(Materials.REDSTONE_TORCH_ON);
+    public RedstoneTorch() : base(Materials.REDSTONE_TORCH_ON) {
     }
 
     /**
@@ -15,12 +14,10 @@ public class RedstoneTorch : Torch : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(int type) {
-        base(type);
+    public RedstoneTorch(int type) : base(type) {
     }
 
-    public RedstoneTorch(Materials type) {
-        base(type);
+    public RedstoneTorch(Materials type) : base(type) {
     }
 
     /**
@@ -29,8 +26,7 @@ public class RedstoneTorch : Torch : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(int type, readonly byte data) {
-        base(type, data);
+    public RedstoneTorch(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -39,8 +35,7 @@ public class RedstoneTorch : Torch : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneTorch(Materials type, readonly byte data) {
-        base(type, data);
+    public RedstoneTorch(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

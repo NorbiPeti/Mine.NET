@@ -17,8 +17,7 @@ public class Tree : Wood {
     /**
      * Constructs a tree block.
      */
-    public Tree() {
-        this(DEFAULT_TYPE, DEFAULT_SPECIES, DEFAULT_DIRECTION);
+    public Tree() : this(DEFAULT_TYPE, DEFAULT_SPECIES, DEFAULT_DIRECTION) {
     }
 
     /**
@@ -26,8 +25,7 @@ public class Tree : Wood {
      *
      * @param species the species of the tree block
      */
-    public Tree(TreeSpecies species) {
-        this(DEFAULT_TYPE, species, DEFAULT_DIRECTION);
+    public Tree(TreeSpecies species) : this(DEFAULT_TYPE, species, DEFAULT_DIRECTION) {
     }
 
     /**
@@ -37,8 +35,7 @@ public class Tree : Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(TreeSpecies species, BlockFaces dir) {
-        this(DEFAULT_TYPE, species, dir);
+    public Tree(TreeSpecies species, BlockFaces dir) : this(DEFAULT_TYPE, species, dir) {
     }
 
     /**
@@ -46,8 +43,7 @@ public class Tree : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(int type) {
-        base(type);
+    public Tree(int type) : base(type) {
     }
 
     /**
@@ -55,8 +51,7 @@ public class Tree : Wood {
      *
      * @param type the type of tree block
      */
-    public Tree(Materials type) {
-        this(type, DEFAULT_SPECIES, DEFAULT_DIRECTION);
+    public Tree(Materials type) : this(type, DEFAULT_SPECIES, DEFAULT_DIRECTION) {
     }
 
     /**
@@ -65,8 +60,7 @@ public class Tree : Wood {
      * @param type the type of tree block
      * @param species the species of the tree block
      */
-    public Tree(Materials type, TreeSpecies species) {
-        this(type, species, DEFAULT_DIRECTION);
+    public Tree(Materials type, TreeSpecies species) : this(type, species, DEFAULT_DIRECTION) {
     }
 
     /**
@@ -77,8 +71,7 @@ public class Tree : Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(Materials type, TreeSpecies species, BlockFaces dir) {
-        base(type, species);
+    public Tree(Materials type, TreeSpecies species, BlockFaces dir) : base(type, species) {
         setDirection(dir);
     }
 
@@ -88,8 +81,7 @@ public class Tree : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(int type, readonly byte data) {
-        base(type, data);
+    public Tree(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -98,8 +90,7 @@ public class Tree : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tree(Materials type, readonly byte data) {
-        base(type, data);
+    public Tree(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

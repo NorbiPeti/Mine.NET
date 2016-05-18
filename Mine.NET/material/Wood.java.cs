@@ -17,8 +17,7 @@ public class Wood : MaterialData {
     /**
      * Constructs a wood block.
      */
-    public Wood() {
-        this(DEFAULT_TYPE, DEFAULT_SPECIES);
+    public Wood() : this(DEFAULT_TYPE, DEFAULT_SPECIES) {
     }
 
     /**
@@ -26,8 +25,7 @@ public class Wood : MaterialData {
      * 
      * @param species the species of the wood block
      */
-    public Wood(TreeSpecies species) {
-        this(DEFAULT_TYPE, species);
+    public Wood(TreeSpecies species) : this(DEFAULT_TYPE, species) {
     }
 
     /**
@@ -35,8 +33,7 @@ public class Wood : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(int type) {
-        base(type);
+    public Wood(int type) : base(type) {
     }
 
     /**
@@ -44,8 +41,7 @@ public class Wood : MaterialData {
      *
      * @param type the type of wood block
      */
-    public Wood(Materials type) {
-        this(type, DEFAULT_SPECIES);
+    public Wood(Materials type) : this(type, DEFAULT_SPECIES) {
     }
 
     /**
@@ -66,8 +62,7 @@ public class Wood : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(int type, readonly byte data) {
-        base(type, data);
+    public Wood(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -76,8 +71,7 @@ public class Wood : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(Materials type, readonly byte data) {
-        base(type, data);
+    public Wood(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

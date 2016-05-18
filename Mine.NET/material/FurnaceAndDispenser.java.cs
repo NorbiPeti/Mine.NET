@@ -12,12 +12,10 @@ public class FurnaceAndDispenser : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(int type) {
-        base(type);
+    public FurnaceAndDispenser(int type) : base(type) {
     }
 
-    public FurnaceAndDispenser(Materials type) {
-        base(type);
+    public FurnaceAndDispenser(Materials type) : base(type) {
     }
 
     /**
@@ -26,8 +24,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(int type, readonly byte data) {
-        base(type, data);
+    public FurnaceAndDispenser(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -36,8 +33,7 @@ public class FurnaceAndDispenser : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FurnaceAndDispenser(Materials type, readonly byte data) {
-        base(type, data);
+    public FurnaceAndDispenser(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override FurnaceAndDispenser clone() {

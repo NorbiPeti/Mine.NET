@@ -15,8 +15,7 @@ public class WoodenStep : Wood {
     /**
      * Constructs a wooden step.
      */
-    public WoodenStep() {
-        this(DEFAULT_SPECIES, DEFAULT_INVERTED);
+    public WoodenStep() : this(DEFAULT_SPECIES, DEFAULT_INVERTED) {
     }
 
     /**
@@ -24,8 +23,7 @@ public class WoodenStep : Wood {
      *
      * @param species the species of the wooden step
      */
-    public WoodenStep(TreeSpecies species) {
-        this(species, DEFAULT_INVERTED);
+    public WoodenStep(TreeSpecies species) : this(species, DEFAULT_INVERTED) {
     }
 
     /**
@@ -35,8 +33,7 @@ public class WoodenStep : Wood {
      * @param species the species of the wooden step
      * @param inv true the step is at the top of the block
      */
-    public WoodenStep(TreeSpecies species, bool inv) {
-        base(DEFAULT_TYPE, species);
+    public WoodenStep(TreeSpecies species, bool inv) : base(DEFAULT_TYPE, species) {
         setInverted(inv);
     }
 
@@ -45,8 +42,7 @@ public class WoodenStep : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(int type) {
-        base(type);
+    public WoodenStep(int type) : base(type) {
     }
 
     /**
@@ -55,8 +51,7 @@ public class WoodenStep : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(int type, readonly byte data) {
-        base(type, data);
+    public WoodenStep(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -65,8 +60,7 @@ public class WoodenStep : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public WoodenStep(Materials type, readonly byte data) {
-        base(type, data);
+    public WoodenStep(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

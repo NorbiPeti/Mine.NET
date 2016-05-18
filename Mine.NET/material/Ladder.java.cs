@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * Represents Ladder data
  */
 public class Ladder : SimpleAttachableMaterialData {
-    public Ladder() {
-        base(Materials.LADDER);
+    public Ladder() : base(Materials.LADDER) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class Ladder : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(int type) {
-        base(type);
+    public Ladder(int type) : base(type) {
     }
 
-    public Ladder(Materials type) {
-        base(type);
+    public Ladder(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class Ladder : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(int type, readonly byte data) {
-        base(type, data);
+    public Ladder(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class Ladder : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Ladder(Materials type, readonly byte data) {
-        base(type, data);
+    public Ladder(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

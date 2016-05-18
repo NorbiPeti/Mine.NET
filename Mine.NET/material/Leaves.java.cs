@@ -17,8 +17,7 @@ public class Leaves : Wood {
     /**
      * Constructs a leaf block.
      */
-    public Leaves() {
-        this(DEFAULT_TYPE, DEFAULT_SPECIES, DEFAULT_DECAYABLE);
+    public Leaves() : this(DEFAULT_TYPE, DEFAULT_SPECIES, DEFAULT_DECAYABLE) {
     }
 
     /**
@@ -26,8 +25,7 @@ public class Leaves : Wood {
      *
      * @param species the species of the wood block
      */
-    public Leaves(TreeSpecies species) {
-        this(DEFAULT_TYPE, species, DEFAULT_DECAYABLE);
+    public Leaves(TreeSpecies species) : this(DEFAULT_TYPE, species, DEFAULT_DECAYABLE) {
     }
 
     /**
@@ -37,8 +35,7 @@ public class Leaves : Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(TreeSpecies species, bool isDecayable) {
-        this(DEFAULT_TYPE, species, isDecayable);
+    public Leaves(TreeSpecies species, bool isDecayable) : this(DEFAULT_TYPE, species, isDecayable) {
     }
 
     /**
@@ -46,8 +43,7 @@ public class Leaves : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(int type) {
-        base(type);
+    public Leaves(int type) : base(type) {
     }
 
     /**
@@ -55,8 +51,7 @@ public class Leaves : Wood {
      *
      * @param type the type of leaf block
      */
-    public Leaves(Materials type) {
-        this(type, DEFAULT_SPECIES, DEFAULT_DECAYABLE);
+    public Leaves(Materials type) : this(type, DEFAULT_SPECIES, DEFAULT_DECAYABLE) {
     }
 
     /**
@@ -65,8 +60,7 @@ public class Leaves : Wood {
      * @param type the type of leaf block
      * @param species the species of the wood block
      */
-    public Leaves(Materials type, TreeSpecies species) {
-        this(type, species, DEFAULT_DECAYABLE);
+    public Leaves(Materials type, TreeSpecies species) : this(type, species, DEFAULT_DECAYABLE) {
     }
 
     /**
@@ -77,8 +71,7 @@ public class Leaves : Wood {
      * @param species the species of the wood block
      * @param isDecayable whether the block is permanent or can disappear
      */
-    public Leaves(Materials type, TreeSpecies species, bool isDecayable) {
-        base(type, species);
+    public Leaves(Materials type, TreeSpecies species, bool isDecayable) : base(type, species) {
         setDecayable(isDecayable);
     }
 
@@ -88,8 +81,7 @@ public class Leaves : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(int type, readonly byte data) {
-        base(type, data);
+    public Leaves(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -98,8 +90,7 @@ public class Leaves : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Leaves(Materials type, readonly byte data) {
-        base(type, data);
+    public Leaves(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

@@ -19,7 +19,6 @@ public class IllegalPluginAccessException : RuntimeException {
      *
      * @param msg the detail message.
      */
-    public IllegalPluginAccessException(String msg) {
-        base(msg);
+    public IllegalPluginAccessException(String msg) : base(msg) {
     }
 }

@@ -6,8 +6,7 @@ import org.bukkit.Materials;
  * Represents redstone wire
  */
 public class RedstoneWire : MaterialData : Redstone {
-    public RedstoneWire() {
-        base(Materials.REDSTONE_WIRE);
+    public RedstoneWire() : base(Materials.REDSTONE_WIRE) {
     }
 
     /**
@@ -15,12 +14,10 @@ public class RedstoneWire : MaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(int type) {
-        base(type);
+    public RedstoneWire(int type) : base(type) {
     }
 
-    public RedstoneWire(Materials type) {
-        base(type);
+    public RedstoneWire(Materials type) : base(type) {
     }
 
     /**
@@ -29,8 +26,7 @@ public class RedstoneWire : MaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(int type, readonly byte data) {
-        base(type, data);
+    public RedstoneWire(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -39,8 +35,7 @@ public class RedstoneWire : MaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public RedstoneWire(Materials type, readonly byte data) {
-        base(type, data);
+    public RedstoneWire(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

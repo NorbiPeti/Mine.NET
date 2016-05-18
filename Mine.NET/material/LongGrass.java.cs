@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * Represents the different types of long grasses.
  */
 public class LongGrass : MaterialData {
-    public LongGrass() {
-        base(Materials.LONG_GRASS);
+    public LongGrass() : base(Materials.LONG_GRASS) {
     }
 
     public LongGrass(GrassSpecies species) {
@@ -21,12 +20,10 @@ public class LongGrass : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(int type) {
-        base(type);
+    public LongGrass(int type) : base(type) {
     }
 
-    public LongGrass(Materials type) {
-        base(type);
+    public LongGrass(Materials type) : base(type) {
     }
 
     /**
@@ -35,8 +32,7 @@ public class LongGrass : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(int type, readonly byte data) {
-        base(type, data);
+    public LongGrass(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -45,8 +41,7 @@ public class LongGrass : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(Materials type, readonly byte data) {
-        base(type, data);
+    public LongGrass(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

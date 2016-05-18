@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  */
 public class Tripwire : MaterialData {
     
-    public Tripwire() {
-        base(Materials.TRIPWIRE);
+    public Tripwire() : base(Materials.TRIPWIRE) {
     }
 
     /**
@@ -16,8 +15,7 @@ public class Tripwire : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tripwire(int type) {
-        base(type);
+    public Tripwire(int type) : base(type) {
     }
 
     /**
@@ -26,8 +24,7 @@ public class Tripwire : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Tripwire(int type, readonly byte data) {
-        base(type, data);
+    public Tripwire(int type, readonly byte data) : base(type, data) {
     }
 
     /**

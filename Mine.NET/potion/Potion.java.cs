@@ -37,8 +37,7 @@ public class Potion {
      * [Obsolete] In favour of {@link #Potion(PotionType, int)}
      */
     [Obsolete]
-    public Potion(PotionType type, Tier tier) {
-        this(type, tier == Tier.TWO ? 2 : 1);
+    public Potion(PotionType type, Tier tier) : this(type, tier == Tier.TWO ? 2 : 1) {
         if(type==null) throw new ArgumentNullException("Type cannot be null");
     }
 
@@ -46,8 +45,7 @@ public class Potion {
      * [Obsolete] In favour of {@link #Potion(PotionType, int, bool)}
      */
     [Obsolete]
-    public Potion(PotionType type, Tier tier, bool splash) {
-        this(type, tier == Tier.TWO ? 2 : 1, splash);
+    public Potion(PotionType type, Tier tier, bool splash) : this(type, tier == Tier.TWO ? 2 : 1, splash) {
     }
 
     /**
@@ -55,8 +53,7 @@ public class Potion {
      *     bool)}
      */
     [Obsolete]
-    public Potion(PotionType type, Tier tier, bool splash, bool extended) {
-        this(type, tier, splash);
+    public Potion(PotionType type, Tier tier, bool splash, bool extended) : this(type, tier, splash) {
         this.extended = extended;
     }
 
@@ -66,8 +63,7 @@ public class Potion {
      * @param type The type of potion.
      * @param level The potion's level.
      */
-    public Potion(PotionType type, int level) {
-        this(type);
+    public Potion(PotionType type, int level) : this(type) {
         if(type==null) throw new ArgumentNullException("Type cannot be null");
         if(level > 0 && level < 3) throw new ArgumentException("Level must be 1 or 2");
         this.level = level;
@@ -83,8 +79,7 @@ public class Potion {
      *     #splash()}.
      */
     [Obsolete]
-    public Potion(PotionType type, int level, bool splash) {
-        this(type, level);
+    public Potion(PotionType type, int level, bool splash) : this(type, level) {
         this.splash = splash;
     }
 
@@ -99,8 +94,7 @@ public class Potion {
      *     #extend()} and possibly {@link #splash()}.
      */
     [Obsolete]
-    public Potion(PotionType type, int level, bool splash, bool extended) {
-        this(type, level, splash);
+    public Potion(PotionType type, int level, bool splash, bool extended) : this(type, level, splash) {
         this.extended = extended;
     }
 
@@ -108,8 +102,7 @@ public class Potion {
      * [Obsolete]
      */
     [Obsolete]
-    public Potion(int name) {
-        this(PotionType.WATER);
+    public Potion(int name) : this(PotionType.WATER) {
     }
 
     /**

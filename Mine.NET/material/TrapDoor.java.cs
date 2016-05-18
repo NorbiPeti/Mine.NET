@@ -7,8 +7,7 @@ import org.bukkit.block.BlockFaces;
  * Represents a trap door
  */
 public class TrapDoor : SimpleAttachableMaterialData : Openable {
-    public TrapDoor() {
-        base(Materials.TRAP_DOOR);
+    public TrapDoor() : base(Materials.TRAP_DOOR) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(int type) {
-        base(type);
+    public TrapDoor(int type) : base(type) {
     }
 
-    public TrapDoor(Materials type) {
-        base(type);
+    public TrapDoor(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(int type, readonly byte data) {
-        base(type, data);
+    public TrapDoor(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TrapDoor(Materials type, readonly byte data) {
-        base(type, data);
+    public TrapDoor(Materials type, readonly byte data) : base(type, data) {
     }
 
     public bool isOpen() {

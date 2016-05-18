@@ -9,8 +9,7 @@ import org.bukkit.inventory.meta.ItemMeta;
  */
 public class SpawnEgg : MaterialData {
 
-    public SpawnEgg() {
-        base(Materials.MONSTER_EGG);
+    public SpawnEgg() : base(Materials.MONSTER_EGG) {
     }
 
     /**
@@ -28,8 +27,7 @@ public class SpawnEgg : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SpawnEgg(byte data) {
-        base(Materials.MONSTER_EGG, data);
+    public SpawnEgg(byte data) : base(Materials.MONSTER_EGG, data) {
     }
 
     public SpawnEgg(EntityType type) {

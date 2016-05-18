@@ -6,8 +6,7 @@ namespace Mine.NET.plugin.messaging;
  */
 @SuppressWarnings("serial")
 public class ReservedChannelException : RuntimeException {
-    public ReservedChannelException() {
-        this("Attempted to register for a reserved channel name.");
+    public ReservedChannelException() : this("Attempted to register for a reserved channel name.") {
     }
 
     public ReservedChannelException(String name) {

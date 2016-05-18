@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * MaterialData for torches
  */
 public class Torch : SimpleAttachableMaterialData {
-    public Torch() {
-        base(Materials.TORCH);
+    public Torch() : base(Materials.TORCH) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class Torch : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(int type) {
-        base(type);
+    public Torch(int type) : base(type) {
     }
 
-    public Torch(Materials type) {
-        base(type);
+    public Torch(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class Torch : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(int type, readonly byte data) {
-        base(type, data);
+    public Torch(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class Torch : SimpleAttachableMaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Torch(Materials type, readonly byte data) {
-        base(type, data);
+    public Torch(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * Represents dye
  */
 public class Dye : MaterialData : Colorable {
-    public Dye() {
-        base(Materials.INK_SACK);
+    public Dye() : base(Materials.INK_SACK) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class Dye : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(int type) {
-        base(type);
+    public Dye(int type) : base(type) {
     }
 
-    public Dye(Materials type) {
-        base(type);
+    public Dye(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class Dye : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(int type, readonly byte data) {
-        base(type, data);
+    public Dye(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class Dye : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dye(Materials type, readonly byte data) {
-        base(type, data);
+    public Dye(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

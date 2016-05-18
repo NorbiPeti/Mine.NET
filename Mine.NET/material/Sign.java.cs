@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * MaterialData for signs
  */
 public class Sign : MaterialData : Attachable {
-    public Sign() {
-        base(Materials.SIGN_POST);
+    public Sign() : base(Materials.SIGN_POST) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class Sign : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(int type) {
-        base(type);
+    public Sign(int type) : base(type) {
     }
 
-    public Sign(Materials type) {
-        base(type);
+    public Sign(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class Sign : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(int type, readonly byte data) {
-        base(type, data);
+    public Sign(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class Sign : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sign(Materials type, readonly byte data) {
-        base(type, data);
+    public Sign(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

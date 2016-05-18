@@ -7,7 +7,6 @@ namespace Mine.NET.metadata;
  */
 @SuppressWarnings("serial")
 public class MetadataConversionException : RuntimeException {
-    MetadataConversionException(String message) {
-        base(message);
+    MetadataConversionException(String message) : base(message) {
     }
 }

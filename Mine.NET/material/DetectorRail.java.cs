@@ -6,8 +6,7 @@ import org.bukkit.Materials;
  * Represents a detector rail
  */
 public class DetectorRail : ExtendedRails : PressureSensor {
-    public DetectorRail() {
-        base(Materials.DETECTOR_RAIL);
+    public DetectorRail() : base(Materials.DETECTOR_RAIL) {
     }
 
     /**
@@ -15,12 +14,10 @@ public class DetectorRail : ExtendedRails : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(int type) {
-        base(type);
+    public DetectorRail(int type) : base(type) {
     }
 
-    public DetectorRail(Materials type) {
-        base(type);
+    public DetectorRail(Materials type) : base(type) {
     }
 
     /**
@@ -29,8 +26,7 @@ public class DetectorRail : ExtendedRails : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(int type, readonly byte data) {
-        base(type, data);
+    public DetectorRail(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -39,8 +35,7 @@ public class DetectorRail : ExtendedRails : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DetectorRail(Materials type, readonly byte data) {
-        base(type, data);
+    public DetectorRail(Materials type, readonly byte data) : base(type, data) {
     }
 
     public bool isPressed() {

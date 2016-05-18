@@ -12,12 +12,10 @@ public class DirectionalContainer : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(int type) {
-        base(type);
+    public DirectionalContainer(int type) : base(type) {
     }
 
-    public DirectionalContainer(Materials type) {
-        base(type);
+    public DirectionalContainer(Materials type) : base(type) {
     }
 
     /**
@@ -26,8 +24,7 @@ public class DirectionalContainer : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(int type, readonly byte data) {
-        base(type, data);
+    public DirectionalContainer(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -36,8 +33,7 @@ public class DirectionalContainer : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public DirectionalContainer(Materials type, readonly byte data) {
-        base(type, data);
+    public DirectionalContainer(Materials type, readonly byte data) : base(type, data) {
     }
 
     public void setFacingDirection(BlockFaces face) {

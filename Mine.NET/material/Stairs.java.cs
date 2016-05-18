@@ -13,12 +13,10 @@ public class Stairs : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(int type) {
-        base(type);
+    public Stairs(int type) : base(type) {
     }
 
-    public Stairs(Materials type) {
-        base(type);
+    public Stairs(Materials type) : base(type) {
     }
 
     /**
@@ -27,8 +25,7 @@ public class Stairs : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(int type, readonly byte data) {
-        base(type, data);
+    public Stairs(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -37,8 +34,7 @@ public class Stairs : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Stairs(Materials type, readonly byte data) {
-        base(type, data);
+    public Stairs(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

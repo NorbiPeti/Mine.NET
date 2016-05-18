@@ -12,12 +12,10 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(int type) {
-        base(type);
+    public PistonExtensionMaterial(int type) : base(type) {
     }
 
-    public PistonExtensionMaterial(Materials type) {
-        base(type);
+    public PistonExtensionMaterial(Materials type) : base(type) {
     }
 
     /**
@@ -26,8 +24,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(int type, readonly byte data) {
-        base(type, data);
+    public PistonExtensionMaterial(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -36,8 +33,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonExtensionMaterial(Materials type, readonly byte data) {
-        base(type, data);
+    public PistonExtensionMaterial(Materials type, readonly byte data) : base(type, data) {
     }
 
     public void setFacingDirection(BlockFaces face) {

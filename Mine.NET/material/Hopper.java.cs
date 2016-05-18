@@ -18,8 +18,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * Constructs a hopper facing the default direction (down) and initially
      * active.
      */
-    public Hopper() {
-        this(DEFAULT_DIRECTION, DEFAULT_ACTIVE);
+    public Hopper() : this(DEFAULT_DIRECTION, DEFAULT_ACTIVE) {
     }
 
     /**
@@ -29,8 +28,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @see BlockFaces
      */
-    public Hopper(BlockFaces facingDirection) {
-        this(facingDirection, DEFAULT_ACTIVE);
+    public Hopper(BlockFaces facingDirection) : this(facingDirection, DEFAULT_ACTIVE) {
     }
 
     /**
@@ -43,8 +41,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @see BlockFaces
      */
-    public Hopper(BlockFaces facingDirection, bool isActive) {
-        base(Materials.HOPPER);
+    public Hopper(BlockFaces facingDirection, bool isActive) : base(Materials.HOPPER) {
         setFacingDirection(facingDirection);
         setActive(isActive);
     }
@@ -54,12 +51,10 @@ public class Hopper : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Hopper(int type) {
-        base(type);
+    public Hopper(int type) : base(type) {
     }
 
-    public Hopper(Materials type) {
-        base(type);
+    public Hopper(Materials type) : base(type) {
     }
 
     /**
@@ -68,8 +63,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Hopper(int type, byte data) {
-        base(type, data);
+    public Hopper(int type, byte data) : base(type, data) {
     }
 
     /**
@@ -78,8 +72,7 @@ public class Hopper : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Hopper(Materials type, byte data) {
-        base(type, data);
+    public Hopper(Materials type, byte data) : base(type, data) {
     }
 
     /**

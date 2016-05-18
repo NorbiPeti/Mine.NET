@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class Pumpkin : MaterialData : Directional {
 
-    public Pumpkin() {
-        base(Materials.PUMPKIN);
+    public Pumpkin() : base(Materials.PUMPKIN) {
     }
 
     /**
@@ -27,12 +26,10 @@ public class Pumpkin : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(int type) {
-        base(type);
+    public Pumpkin(int type) : base(type) {
     }
 
-    public Pumpkin(Materials type) {
-        base(type);
+    public Pumpkin(Materials type) : base(type) {
     }
 
     /**
@@ -41,8 +38,7 @@ public class Pumpkin : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(int type, readonly byte data) {
-        base(type, data);
+    public Pumpkin(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -51,8 +47,7 @@ public class Pumpkin : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Pumpkin(Materials type, readonly byte data) {
-        base(type, data);
+    public Pumpkin(Materials type, readonly byte data) : base(type, data) {
     }
 
     public bool isLit() {

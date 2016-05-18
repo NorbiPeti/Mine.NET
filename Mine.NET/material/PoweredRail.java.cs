@@ -6,8 +6,7 @@ import org.bukkit.Materials;
  * Represents a powered rail
  */
 public class PoweredRail : ExtendedRails : Redstone {
-    public PoweredRail() {
-        base(Materials.POWERED_RAIL);
+    public PoweredRail() : base(Materials.POWERED_RAIL) {
     }
 
     /**
@@ -15,12 +14,10 @@ public class PoweredRail : ExtendedRails : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(int type) {
-        base(type);
+    public PoweredRail(int type) : base(type) {
     }
 
-    public PoweredRail(Materials type) {
-        base(type);
+    public PoweredRail(Materials type) : base(type) {
     }
 
     /**
@@ -29,8 +26,7 @@ public class PoweredRail : ExtendedRails : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(int type, readonly byte data) {
-        base(type, data);
+    public PoweredRail(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -39,8 +35,7 @@ public class PoweredRail : ExtendedRails : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PoweredRail(Materials type, readonly byte data) {
-        base(type, data);
+    public PoweredRail(Materials type, readonly byte data) : base(type, data) {
     }
 
     public bool isPowered() {

@@ -5,8 +5,7 @@ namespace Mine.NET.configuration;
  * MemoryConfiguration}
  */
 public class MemoryConfigurationOptions : ConfigurationOptions {
-    protected MemoryConfigurationOptions(MemoryConfiguration configuration) {
-        base(configuration);
+    protected MemoryConfigurationOptions(MemoryConfiguration configuration) : base(configuration) {
     }
 
     public override MemoryConfiguration configuration() {

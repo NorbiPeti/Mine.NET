@@ -32,8 +32,7 @@ public class Mushroom : MaterialData {
      * @see Materials#HUGE_MUSHROOM_1
      * @see Materials#HUGE_MUSHROOM_2
      */
-    public Mushroom(Materials shroom) {
-        base(shroom);
+    public Mushroom(Materials shroom) : base(shroom) {
         if(shroom == Materials.HUGE_MUSHROOM_1 || shroom == Materials.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 
@@ -77,8 +76,7 @@ public class Mushroom : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Mushroom(Materials shroom, byte data) {
-        base(shroom, data);
+    public Mushroom(Materials shroom, byte data) : base(shroom, data) {
         if(shroom == Materials.HUGE_MUSHROOM_1 || shroom == Materials.HUGE_MUSHROOM_2) throw new ArgumentException("Not a mushroom!");
     }
 

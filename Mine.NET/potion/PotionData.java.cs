@@ -28,8 +28,7 @@ public sealed class PotionData {
         this.upgraded = upgraded;
     }
 
-    public PotionData(PotionType type) {
-        this(type, false, false);
+    public PotionData(PotionType type) : this(type, false, false) {
     }
 
     /**

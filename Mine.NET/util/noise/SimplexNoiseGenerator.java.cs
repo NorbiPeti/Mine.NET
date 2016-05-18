@@ -71,8 +71,7 @@ public class SimplexNoiseGenerator : PerlinNoiseGenerator {
      *
      * @param rand Random to construct with
      */
-    public SimplexNoiseGenerator(Random rand) {
-        base(rand);
+    public SimplexNoiseGenerator(Random rand) : base(rand) {
         offsetW = rand.nextDouble() * 256;
     }
 

@@ -61,8 +61,7 @@ public class PotionEffect : ConfigurationSerializable {
      * @param ambient the ambient status, see {@link PotionEffect#isAmbient()}
      * @param particles the particle status, see {@link PotionEffect#hasParticles()}
      */
-    public PotionEffect(PotionEffectType type, int duration, int amplifier, bool ambient, bool particles) {
-        this(type, duration, amplifier, ambient, particles, null);
+    public PotionEffect(PotionEffectType type, int duration, int amplifier, bool ambient, bool particles) : this(type, duration, amplifier, ambient, particles, null) {
     }
 
     /**
@@ -74,8 +73,7 @@ public class PotionEffect : ConfigurationSerializable {
      * @param amplifier the amplifier, see {@link PotionEffect#getAmplifier()}
      * @param ambient the ambient status, see {@link PotionEffect#isAmbient()}
      */
-    public PotionEffect(PotionEffectType type, int duration, int amplifier, bool ambient) {
-        this(type, duration, amplifier, ambient, true);
+    public PotionEffect(PotionEffectType type, int duration, int amplifier, bool ambient) : this(type, duration, amplifier, ambient, true) {
     }
 
     /**
@@ -86,8 +84,7 @@ public class PotionEffect : ConfigurationSerializable {
      * @param amplifier the amplifier for the effect
      * @see PotionEffect#PotionEffect(PotionEffectType, int, int, bool)
      */
-    public PotionEffect(PotionEffectType type, int duration, int amplifier) {
-        this(type, duration, amplifier, true);
+    public PotionEffect(PotionEffectType type, int duration, int amplifier) : this(type, duration, amplifier, true) {
     }
 
     /**

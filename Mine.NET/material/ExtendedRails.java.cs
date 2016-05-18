@@ -13,12 +13,10 @@ public class ExtendedRails : Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(int type) {
-        base(type);
+    public ExtendedRails(int type) : base(type) {
     }
 
-    public ExtendedRails(Materials type) {
-        base(type);
+    public ExtendedRails(Materials type) : base(type) {
     }
 
     /**
@@ -27,8 +25,7 @@ public class ExtendedRails : Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(int type, readonly byte data) {
-        base(type, data);
+    public ExtendedRails(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -37,8 +34,7 @@ public class ExtendedRails : Rails {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public ExtendedRails(Materials type, readonly byte data) {
-        base(type, data);
+    public ExtendedRails(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override bool isCurve() {

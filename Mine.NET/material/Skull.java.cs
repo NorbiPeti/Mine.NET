@@ -7,8 +7,7 @@ import org.bukkit.block.BlockFaces;
  * Represents a skull.
  */
 public class Skull : MaterialData : Directional {
-    public Skull() {
-        base(Materials.SKULL);
+    public Skull() : base(Materials.SKULL) {
     }
 
     /**
@@ -26,12 +25,10 @@ public class Skull : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(int type) {
-        base(type);
+    public Skull(int type) : base(type) {
     }
 
-    public Skull(Materials type) {
-        base(type);
+    public Skull(Materials type) : base(type) {
     }
 
     /**
@@ -40,8 +37,7 @@ public class Skull : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(int type, readonly byte data) {
-        base(type, data);
+    public Skull(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -50,8 +46,7 @@ public class Skull : MaterialData : Directional {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Skull(Materials type, readonly byte data) {
-        base(type, data);
+    public Skull(Materials type, readonly byte data) : base(type, data) {
     }
 
     public void setFacingDirection(BlockFaces face) {

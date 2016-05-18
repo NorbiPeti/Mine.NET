@@ -9,8 +9,7 @@ import org.bukkit.Materials;
  */
 public abstract class TexturedMaterial : MaterialData {
 
-    public TexturedMaterial(Materials m) {
-        base(m);
+    public TexturedMaterial(Materials m) : base(m) {
     }
 
     /**
@@ -18,8 +17,7 @@ public abstract class TexturedMaterial : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(int type) {
-        base(type);
+    public TexturedMaterial(int type) : base(type) {
     }
 
     /**
@@ -28,8 +26,7 @@ public abstract class TexturedMaterial : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(int type, readonly byte data) {
-        base(type, data);
+    public TexturedMaterial(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -38,8 +35,7 @@ public abstract class TexturedMaterial : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TexturedMaterial(Materials type, readonly byte data) {
-        base(type, data);
+    public TexturedMaterial(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

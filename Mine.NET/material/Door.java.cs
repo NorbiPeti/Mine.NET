@@ -28,8 +28,7 @@ public class Door : MaterialData : Directional, Openable {
      * [Obsolete] Artifact of old API, equivalent to new <code>Door(Materials.WOODEN_DOOR);</code>
      */
     [Obsolete]
-    public Door() {
-        base(Materials.WOODEN_DOOR);
+    public Door() : base(Materials.WOODEN_DOOR) {
     }
 
     /**
@@ -37,12 +36,10 @@ public class Door : MaterialData : Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(int type) {
-        base(type);
+    public Door(int type) : base(type) {
     }
 
-    public Door(Materials type) {
-        base(type);
+    public Door(Materials type) : base(type) {
     }
 
     /**
@@ -64,8 +61,7 @@ public class Door : MaterialData : Directional, Openable {
      * @see BlockFaces#EAST
      * @see BlockFaces#SOUTH
      */
-    public Door(Materials type, BlockFaces face) {
-        this(type, face, false);
+    public Door(Materials type, BlockFaces face) : this(type, face, false) {
     }
 
     /**
@@ -89,8 +85,7 @@ public class Door : MaterialData : Directional, Openable {
      * @see BlockFaces#EAST
      * @see BlockFaces#SOUTH
      */
-    public Door(Materials type, BlockFaces face, bool isOpen) {
-        base(type);
+    public Door(Materials type, BlockFaces face, bool isOpen) : base(type) {
         setTopHalf(false);
         setFacingDirection(face);
         setOpen(isOpen);
@@ -110,8 +105,7 @@ public class Door : MaterialData : Directional, Openable {
      * @see Materials#ACACIA_DOOR
      * @see Materials#DARK_OAK_DOOR
      */
-    public Door(Materials type, bool isHingeRight) {
-        base(type);
+    public Door(Materials type, bool isHingeRight) : base(type) {
         setTopHalf(true);
         setHinge(isHingeRight);
     }
@@ -171,8 +165,7 @@ public class Door : MaterialData : Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(int type, readonly byte data) {
-        base(type, data);
+    public Door(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -181,8 +174,7 @@ public class Door : MaterialData : Directional, Openable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Door(Materials type, readonly byte data) {
-        base(type, data);
+    public Door(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class EnderChest : DirectionalContainer {
 
-    public EnderChest() {
-        base(Materials.ENDER_CHEST);
+    public EnderChest() : base(Materials.ENDER_CHEST) {
     }
 
     /**
@@ -27,12 +26,10 @@ public class EnderChest : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(int type) {
-        base(type);
+    public EnderChest(int type) : base(type) {
     }
 
-    public EnderChest(Materials type) {
-        base(type);
+    public EnderChest(Materials type) : base(type) {
     }
 
     /**
@@ -41,8 +38,7 @@ public class EnderChest : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(int type, readonly byte data) {
-        base(type, data);
+    public EnderChest(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -51,8 +47,7 @@ public class EnderChest : DirectionalContainer {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public EnderChest(Materials type, readonly byte data) {
-        base(type, data);
+    public EnderChest(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override EnderChest clone() {

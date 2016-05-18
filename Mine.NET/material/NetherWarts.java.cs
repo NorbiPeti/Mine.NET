@@ -7,8 +7,7 @@ import org.bukkit.NetherWartsState;
  * Represents nether wart
  */
 public class NetherWarts : MaterialData {
-    public NetherWarts() {
-        base(Materials.NETHER_WARTS);
+    public NetherWarts() : base(Materials.NETHER_WARTS) {
     }
 
     public NetherWarts(NetherWartsState state) {
@@ -21,8 +20,7 @@ public class NetherWarts : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(int type) {
-        base(type);
+    public NetherWarts(int type) : base(type) {
     }
 
     public NetherWarts(Materials type) {
@@ -35,8 +33,7 @@ public class NetherWarts : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(int type, readonly byte data) {
-        base(type, data);
+    public NetherWarts(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -45,8 +42,7 @@ public class NetherWarts : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public NetherWarts(Materials type, readonly byte data) {
-        base(type, data);
+    public NetherWarts(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

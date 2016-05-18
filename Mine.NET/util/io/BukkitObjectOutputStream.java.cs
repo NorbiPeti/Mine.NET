@@ -36,8 +36,7 @@ public class BukkitObjectOutputStream : ObjectOutputStream {
      * @throws IOException if an I/O error occurs while writing stream header
      * @see ObjectOutputStream#ObjectOutputStream(OutputStream)
      */
-    public BukkitObjectOutputStream(OutputStream out) {
-        base(out);
+    public BukkitObjectOutputStream(OutputStream out) : base(out) {
         base.enableReplaceObject(true);
     }
 

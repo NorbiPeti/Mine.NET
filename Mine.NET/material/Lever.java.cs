@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * Represents a lever
  */
 public class Lever : SimpleAttachableMaterialData : Redstone {
-    public Lever() {
-        base(Materials.LEVER);
+    public Lever() : base(Materials.LEVER) {
     }
 
     /**
@@ -16,12 +15,10 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(int type) {
-        base(type);
+    public Lever(int type) : base(type) {
     }
 
-    public Lever(Materials type) {
-        base(type);
+    public Lever(Materials type) : base(type) {
     }
 
     /**
@@ -30,8 +27,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(int type, readonly byte data) {
-        base(type, data);
+    public Lever(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -40,8 +36,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Lever(Materials type, readonly byte data) {
-        base(type, data);
+    public Lever(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

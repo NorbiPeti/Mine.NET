@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class Rails : MaterialData {
 
-    public Rails() {
-        base(Materials.RAILS);
+    public Rails() : base(Materials.RAILS) {
     }
 
     /**
@@ -17,12 +16,10 @@ public class Rails : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(int type) {
-        base(type);
+    public Rails(int type) : base(type) {
     }
 
-    public Rails(Materials type) {
-        base(type);
+    public Rails(Materials type) : base(type) {
     }
 
     /**
@@ -31,8 +28,7 @@ public class Rails : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(int type, readonly byte data) {
-        base(type, data);
+    public Rails(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -41,8 +37,7 @@ public class Rails : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Rails(Materials type, readonly byte data) {
-        base(type, data);
+    public Rails(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

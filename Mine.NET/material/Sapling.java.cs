@@ -13,8 +13,7 @@ public class Sapling : Wood {
     /**
      * Constructs a sapling.
      */
-    public Sapling() {
-        this(DEFAULT_SPECIES);
+    public Sapling() : this(DEFAULT_SPECIES) {
     }
 
     /**
@@ -22,8 +21,7 @@ public class Sapling : Wood {
      *
      * @param species the species of the sapling
      */
-    public Sapling(TreeSpecies species) {
-        this(species, false);
+    public Sapling(TreeSpecies species) : this(species, false) {
     }
 
     /**
@@ -33,8 +31,7 @@ public class Sapling : Wood {
      * @param species the species of the tree block
      * @param isInstantGrowable true if the Sapling should grow when next ticked with bonemeal
      */
-    public Sapling(TreeSpecies species, bool isInstantGrowable) {
-        this(Materials.SAPLING, species, isInstantGrowable);
+    public Sapling(TreeSpecies species, bool isInstantGrowable) : this(Materials.SAPLING, species, isInstantGrowable) {
     }
 
     /**
@@ -42,8 +39,7 @@ public class Sapling : Wood {
      *
      * @param type the type of tree block
      */
-    public Sapling(Materials type) {
-        this(type, DEFAULT_SPECIES, false);
+    public Sapling(Materials type) : this(type, DEFAULT_SPECIES, false) {
     }
 
     /**
@@ -52,8 +48,7 @@ public class Sapling : Wood {
      * @param type the type of sapling
      * @param species the species of the sapling
      */
-    public Sapling(Materials type, TreeSpecies species) {
-        this(type, species, false);
+    public Sapling(Materials type, TreeSpecies species) : this(type, species, false) {
     }
 
     /**
@@ -65,8 +60,7 @@ public class Sapling : Wood {
      * @param isInstantGrowable true if the Sapling should grow when next ticked
      * with bonemeal
      */
-    public Sapling(Materials type, TreeSpecies species, bool isInstantGrowable) {
-        base(type, species);
+    public Sapling(Materials type, TreeSpecies species, bool isInstantGrowable) : base(type, species) {
         setIsInstantGrowable(isInstantGrowable);
     }
 
@@ -76,8 +70,7 @@ public class Sapling : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(int type, readonly byte data) {
-        base(type, data);
+    public Sapling(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -86,8 +79,7 @@ public class Sapling : Wood {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sapling(Materials type, readonly byte data) {
-        base(type, data);
+    public Sapling(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

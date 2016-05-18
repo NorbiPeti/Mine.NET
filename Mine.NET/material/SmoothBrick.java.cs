@@ -18,8 +18,7 @@ public class SmoothBrick : TexturedMaterial {
         textures.add(Materials.SMOOTH_BRICK);
     }
 
-    public SmoothBrick() {
-        base(Materials.SMOOTH_BRICK);
+    public SmoothBrick() : base(Materials.SMOOTH_BRICK) {
     }
 
     /**
@@ -27,8 +26,7 @@ public class SmoothBrick : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(int type) {
-        base(type);
+    public SmoothBrick(int type) : base(type) {
     }
 
     public SmoothBrick(Materials type) {
@@ -44,8 +42,7 @@ public class SmoothBrick : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(int type, readonly byte data) {
-        base(type, data);
+    public SmoothBrick(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -54,8 +51,7 @@ public class SmoothBrick : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public SmoothBrick(Materials type, readonly byte data) {
-        base(type, data);
+    public SmoothBrick(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override List<Materials> getTextures() {

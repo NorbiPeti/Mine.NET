@@ -6,8 +6,7 @@ import org.bukkit.Materials;
  * Represents a pressure plate
  */
 public class PressurePlate : MaterialData : PressureSensor {
-    public PressurePlate() {
-        base(Materials.WOOD_PLATE);
+    public PressurePlate() : base(Materials.WOOD_PLATE) {
     }
 
     /**
@@ -15,12 +14,10 @@ public class PressurePlate : MaterialData : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PressurePlate(int type) {
-        base(type);
+    public PressurePlate(int type) : base(type) {
     }
 
-    public PressurePlate(Materials type) {
-        base(type);
+    public PressurePlate(Materials type) : base(type) {
     }
 
     /**
@@ -29,8 +26,7 @@ public class PressurePlate : MaterialData : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PressurePlate(int type, byte data) {
-        base(type, data);
+    public PressurePlate(int type, byte data) : base(type, data) {
     }
 
     /**
@@ -39,8 +35,7 @@ public class PressurePlate : MaterialData : PressureSensor {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PressurePlate(Materials type, byte data) {
-        base(type, data);
+    public PressurePlate(Materials type, byte data) : base(type, data) {
     }
 
     public bool isPressed() {

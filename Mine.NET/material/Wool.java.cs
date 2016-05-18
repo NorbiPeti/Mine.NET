@@ -7,8 +7,7 @@ import org.bukkit.Materials;
  * Represents a Wool/Cloth block
  */
 public class Wool : MaterialData : Colorable {
-    public Wool() {
-        base(Materials.WOOL);
+    public Wool() : base(Materials.WOOL) {
     }
 
     public Wool(DyeColor color) {
@@ -21,12 +20,10 @@ public class Wool : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(int type) {
-        base(type);
+    public Wool(int type) : base(type) {
     }
 
-    public Wool(Materials type) {
-        base(type);
+    public Wool(Materials type) : base(type) {
     }
 
     /**
@@ -35,8 +32,7 @@ public class Wool : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(int type, readonly byte data) {
-        base(type, data);
+    public Wool(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -45,8 +41,7 @@ public class Wool : MaterialData : Colorable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wool(Materials type, readonly byte data) {
-        base(type, data);
+    public Wool(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

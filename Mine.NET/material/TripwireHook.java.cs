@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class TripwireHook : SimpleAttachableMaterialData : Redstone {
 
-    public TripwireHook() {
-        base(Materials.TRIPWIRE_HOOK);
+    public TripwireHook() : base(Materials.TRIPWIRE_HOOK) {
     }
 
     /**
@@ -17,8 +16,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TripwireHook(int type) {
-        base(type);
+    public TripwireHook(int type) : base(type) {
     }
 
     /**
@@ -27,8 +25,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public TripwireHook(int type, readonly byte data) {
-        base(type, data);
+    public TripwireHook(int type, readonly byte data) : base(type, data) {
     }
 
     public TripwireHook(BlockFaces dir) {

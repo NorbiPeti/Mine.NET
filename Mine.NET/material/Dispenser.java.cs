@@ -8,8 +8,7 @@ import org.bukkit.block.BlockFaces;
  */
 public class Dispenser : FurnaceAndDispenser {
 
-    public Dispenser() {
-        base(Materials.DISPENSER);
+    public Dispenser() : base(Materials.DISPENSER) {
     }
 
     public Dispenser(BlockFaces direction) {
@@ -22,12 +21,10 @@ public class Dispenser : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(int type) {
-        base(type);
+    public Dispenser(int type) : base(type) {
     }
 
-    public Dispenser(Materials type) {
-        base(type);
+    public Dispenser(Materials type) : base(type) {
     }
 
     /**
@@ -36,8 +33,7 @@ public class Dispenser : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(int type, readonly byte data) {
-        base(type, data);
+    public Dispenser(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -46,8 +42,7 @@ public class Dispenser : FurnaceAndDispenser {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Dispenser(Materials type, readonly byte data) {
-        base(type, data);
+    public Dispenser(Materials type, readonly byte data) : base(type, data) {
     }
 
     public void setFacingDirection(BlockFaces face) {

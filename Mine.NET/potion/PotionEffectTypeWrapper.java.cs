@@ -1,8 +1,7 @@
 namespace Mine.NET.potion;
 
 public class PotionEffectTypeWrapper : PotionEffectType {
-    protected PotionEffectTypeWrapper(int id) {
-        base(id);
+    protected PotionEffectTypeWrapper(int id) : base(id) {
     }
 
     public override double getDurationModifier() {

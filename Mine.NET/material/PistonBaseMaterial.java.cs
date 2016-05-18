@@ -15,12 +15,10 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(int type) {
-        base(type);
+    public PistonBaseMaterial(int type) : base(type) {
     }
 
-    public PistonBaseMaterial(Materials type) {
-        base(type);
+    public PistonBaseMaterial(Materials type) : base(type) {
     }
 
     /**
@@ -31,8 +29,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(int type, readonly byte data) {
-        base(type, data);
+    public PistonBaseMaterial(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -43,8 +40,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public PistonBaseMaterial(Materials type, readonly byte data) {
-        base(type, data);
+    public PistonBaseMaterial(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override void setFacingDirection(BlockFaces face) {

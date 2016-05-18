@@ -7,7 +7,6 @@ namespace Mine.NET.metadata;
  */
 @SuppressWarnings("serial")
 public class MetadataEvaluationException : RuntimeException {
-    MetadataEvaluationException(Exception cause) {
-        base(cause);
+    MetadataEvaluationException(Exception cause) : base(cause) {
     }
 }

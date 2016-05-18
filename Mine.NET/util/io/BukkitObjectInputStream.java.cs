@@ -36,8 +36,7 @@ public class BukkitObjectInputStream : ObjectInputStream {
      * @throws IOException if an I/O error occurs while reading stream header
      * @see ObjectInputStream#ObjectInputStream(InputStream)
      */
-    public BukkitObjectInputStream(InputStream in) {
-        base(in);
+    public BukkitObjectInputStream(InputStream in) : base(in) {
         base.enableResolveObject(true);
     }
 

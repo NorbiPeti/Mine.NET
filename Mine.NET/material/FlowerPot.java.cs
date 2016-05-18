@@ -12,8 +12,7 @@ public class FlowerPot : MaterialData {
     /**
      * Default constructor for a flower pot.
      */
-    public FlowerPot() {
-        base(Materials.FLOWER_POT);
+    public FlowerPot() : base(Materials.FLOWER_POT) {
     }
 
     /**
@@ -21,12 +20,10 @@ public class FlowerPot : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(int type) {
-        base(type);
+    public FlowerPot(int type) : base(type) {
     }
 
-    public FlowerPot(Materials type) {
-        base(type);
+    public FlowerPot(Materials type) : base(type) {
     }
 
     /**
@@ -35,8 +32,7 @@ public class FlowerPot : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(int type, readonly byte data) {
-        base(type, data);
+    public FlowerPot(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -45,8 +41,7 @@ public class FlowerPot : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public FlowerPot(Materials type, readonly byte data) {
-        base(type, data);
+    public FlowerPot(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

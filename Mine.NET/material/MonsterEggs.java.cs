@@ -17,8 +17,7 @@ public class MonsterEggs : TexturedMaterial {
         textures.add(Materials.SMOOTH_BRICK);
     }
 
-    public MonsterEggs() {
-        base(Materials.MONSTER_EGGS);
+    public MonsterEggs() : base(Materials.MONSTER_EGGS) {
     }
 
     /**
@@ -26,8 +25,7 @@ public class MonsterEggs : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(int type) {
-        base(type);
+    public MonsterEggs(int type) : base(type) {
     }
 
     public MonsterEggs(Materials type) {
@@ -43,8 +41,7 @@ public class MonsterEggs : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(int type, readonly byte data) {
-        base(type, data);
+    public MonsterEggs(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -53,8 +50,7 @@ public class MonsterEggs : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public MonsterEggs(Materials type, readonly byte data) {
-        base(type, data);
+    public MonsterEggs(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override List<Materials> getTextures() {

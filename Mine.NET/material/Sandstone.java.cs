@@ -7,8 +7,7 @@ import org.bukkit.SandstoneType;
  * Represents the different types of sandstone.
  */
 public class Sandstone : MaterialData {
-    public Sandstone() {
-        base(Materials.SANDSTONE);
+    public Sandstone() : base(Materials.SANDSTONE) {
     }
 
     public Sandstone(SandstoneType type) {
@@ -21,12 +20,10 @@ public class Sandstone : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(int type) {
-        base(type);
+    public Sandstone(int type) : base(type) {
     }
 
-    public Sandstone(Materials type) {
-        base(type);
+    public Sandstone(Materials type) : base(type) {
     }
 
     /**
@@ -35,8 +32,7 @@ public class Sandstone : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(int type, readonly byte data) {
-        base(type, data);
+    public Sandstone(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -45,8 +41,7 @@ public class Sandstone : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Sandstone(Materials type, readonly byte data) {
-        base(type, data);
+    public Sandstone(Materials type, readonly byte data) : base(type, data) {
     }
 
     /**

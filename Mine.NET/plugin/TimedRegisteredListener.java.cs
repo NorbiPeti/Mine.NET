@@ -14,8 +14,7 @@ public class TimedRegisteredListener : RegisteredListener {
     private Class<? : Event> eventClass;
     private bool multiple = false;
 
-    public TimedRegisteredListener(Listener pluginListener, readonly EventExecutor eventExecutor, readonly EventPriority eventPriority, readonly Plugin registeredPlugin, readonly bool listenCancelled) {
-        base(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled);
+    public TimedRegisteredListener(Listener pluginListener, readonly EventExecutor eventExecutor, readonly EventPriority eventPriority, readonly Plugin registeredPlugin, readonly bool listenCancelled) : base(pluginListener, eventExecutor, eventPriority, registeredPlugin, listenCancelled) {
     }
 
     public override void callEvent(Event event) {

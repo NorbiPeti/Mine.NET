@@ -16,8 +16,7 @@ public class Vine : MaterialData {
     private static readonly int VINE_SOUTH = 0x1;
     EnumSet<BlockFaces> possibleFaces = EnumSet.of(BlockFaces.WEST, BlockFaces.NORTH, BlockFaces.SOUTH, BlockFaces.EAST);
 
-    public Vine() {
-        base(Materials.VINE);
+    public Vine() : base(Materials.VINE) {
     }
 
     /**
@@ -35,8 +34,7 @@ public class Vine : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Vine(byte data) {
-        base(Materials.VINE, data);
+    public Vine(byte data) : base(Materials.VINE, data) {
     }
 
     public Vine(BlockFaces... faces) {

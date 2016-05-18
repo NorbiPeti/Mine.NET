@@ -23,32 +23,25 @@ public class Permission {
     private PermissionDefault defaultValue = DEFAULT_PERMISSION;
     private String description;
 
-    public Permission(String name) {
-        this(name, null, null, null);
+    public Permission(String name) : this(name, null, null, null) {
     }
 
-    public Permission(String name, String description) {
-        this(name, description, null, null);
+    public Permission(String name, String description) : this(name, description, null, null) {
     }
 
-    public Permission(String name, PermissionDefault defaultValue) {
-        this(name, null, defaultValue, null);
+    public Permission(String name, PermissionDefault defaultValue) : this(name, null, defaultValue, null) {
     }
 
-    public Permission(String name, String description, PermissionDefault defaultValue) {
-        this(name, description, defaultValue, null);
+    public Permission(String name, String description, PermissionDefault defaultValue) : this(name, description, defaultValue, null) {
     }
 
-    public Permission(String name, Dictionary<String, bool> children) {
-        this(name, null, null, children);
+    public Permission(String name, Dictionary<String, bool> children) : this(name, null, null, children) {
     }
 
-    public Permission(String name, String description, Dictionary<String, bool> children) {
-        this(name, description, null, children);
+    public Permission(String name, String description, Dictionary<String, bool> children) : this(name, description, null, children) {
     }
 
-    public Permission(String name, PermissionDefault defaultValue, Dictionary<String, bool> children) {
-        this(name, null, defaultValue, children);
+    public Permission(String name, PermissionDefault defaultValue, Dictionary<String, bool> children) : this(name, null, defaultValue, children) {
     }
 
     public Permission(String name, String description, PermissionDefault defaultValue, Dictionary<String, bool> children) {

@@ -21,8 +21,7 @@ public class Step : TexturedMaterial {
         textures.add(Materials.QUARTZ_BLOCK);
     }
 
-    public Step() {
-        base(Materials.STEP);
+    public Step() : base(Materials.STEP) {
     }
 
     /**
@@ -30,8 +29,7 @@ public class Step : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(int type) {
-        base(type);
+    public Step(int type) : base(type) {
     }
 
     public Step(Materials type) {
@@ -47,8 +45,7 @@ public class Step : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(int type, readonly byte data) {
-        base(type, data);
+    public Step(int type, readonly byte data) : base(type, data) {
     }
 
     /**
@@ -57,8 +54,7 @@ public class Step : TexturedMaterial {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Step(Materials type, readonly byte data) {
-        base(type, data);
+    public Step(Materials type, readonly byte data) : base(type, data) {
     }
 
     public override List<Materials> getTextures() {

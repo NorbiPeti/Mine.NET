@@ -23,8 +23,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * By default this constructor creates a diode that is switched on for
      * backwards compatibility with past implementations.
      */
-    public Diode() {
-        this(DEFAULT_DIRECTION, DEFAULT_DELAY, true);
+    public Diode() : this(DEFAULT_DIRECTION, DEFAULT_DELAY, true) {
     }
 
     /**
@@ -35,8 +34,7 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @see BlockFaces
      */
-    public Diode(BlockFaces facingDirection) {
-        this(facingDirection, DEFAULT_DELAY, DEFAULT_STATE);
+    public Diode(BlockFaces facingDirection) : this(facingDirection, DEFAULT_DELAY, DEFAULT_STATE) {
     }
 
     /**
@@ -49,8 +47,7 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @see BlockFaces
      */
-    public Diode(BlockFaces facingDirection, int delay) {
-        this(facingDirection, delay, DEFAULT_STATE);
+    public Diode(BlockFaces facingDirection, int delay) : this(facingDirection, delay, DEFAULT_STATE) {
     }
 
     /**
@@ -64,8 +61,7 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @see BlockFaces
      */
-    public Diode(BlockFaces facingDirection, int delay, bool state) {
-        base(state ? Materials.DIODE_BLOCK_ON : Materials.DIODE_BLOCK_OFF);
+    public Diode(BlockFaces facingDirection, int delay, bool state) : base(state ? Materials.DIODE_BLOCK_ON : Materials.DIODE_BLOCK_OFF) {
         setFacingDirection(facingDirection);
         setDelay(delay);
     }
@@ -75,12 +71,10 @@ public class Diode : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Diode(int type) {
-        base(type);
+    public Diode(int type) : base(type) {
     }
 
-    public Diode(Materials type) {
-        base(type);
+    public Diode(Materials type) : base(type) {
     }
 
     /**
@@ -89,8 +83,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Diode(int type, byte data) {
-        base(type, data);
+    public Diode(int type, byte data) : base(type, data) {
     }
 
     /**
@@ -99,8 +92,7 @@ public class Diode : MaterialData : Directional, Redstone {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Diode(Materials type, byte data) {
-        base(type, data);
+    public Diode(Materials type, byte data) : base(type, data) {
     }
 
     /**
