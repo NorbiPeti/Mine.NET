@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.TreeSpecies;
+namespace Mine.NET.material{
 
 /**
  * Represents the different types of Tree block that face a direction.

@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
+namespace Mine.NET.material{
 
 /**
  * Represents stairs.

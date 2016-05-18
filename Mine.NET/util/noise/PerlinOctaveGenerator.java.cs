@@ -1,7 +1,4 @@
-namespace Mine.NET.util.noise;
-
-import java.util.Random;
-import org.bukkit.World;
+namespace Mine.NET.util.noise{
 
 /**
  * Creates perlin noise through unbiased octaves

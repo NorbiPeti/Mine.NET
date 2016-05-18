@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
@@ -53,4 +53,4 @@ public class EnderChest : DirectionalContainer {
     public override EnderChest clone() {
         return (EnderChest) base.clone();
     }
-}
+}}

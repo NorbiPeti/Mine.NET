@@ -1,8 +1,4 @@
-namespace Mine.NET.metadata;
-
-import org.bukkit.plugin.Plugin;
-
-import java.util.concurrent.Callable;
+namespace Mine.NET.metadata{
 
 /**
  * A FixedMetadataValue is a special case metadata item that contains the same

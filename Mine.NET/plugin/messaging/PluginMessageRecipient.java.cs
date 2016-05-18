@@ -1,7 +1,4 @@
-namespace Mine.NET.plugin.messaging;
-
-import java.util.Set;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.plugin.messaging{
 
 /**
  * Represents a possible recipient for a Plugin Message.

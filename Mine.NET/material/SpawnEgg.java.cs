@@ -1,8 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.entity.EntityType;
-import org.bukkit.inventory.meta.ItemMeta;
+namespace Mine.NET.material{
 
 /**
  * Represents a spawn egg that can be used to spawn mobs

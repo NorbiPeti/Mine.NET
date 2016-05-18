@@ -1,16 +1,4 @@
-namespace Mine.NET.plugin.java;
-
-import java.io.FileInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.plugin.InvalidPluginException;
-import org.bukkit.plugin.PluginDescriptionFile;
+namespace Mine.NET.plugin.java{
 
 /**
  * A ClassLoader for plugins, to allow shared classes across multiple plugins

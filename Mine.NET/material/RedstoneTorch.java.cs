@@ -1,6 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents a redstone torch

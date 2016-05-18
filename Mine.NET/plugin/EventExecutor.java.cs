@@ -1,8 +1,4 @@
-namespace Mine.NET.plugin;
-
-import org.bukkit.event.Event;
-import org.bukkit.event.EventException;
-import org.bukkit.event.Listener;
+namespace Mine.NET.plugin{
 
 /**
  * Interface which defines the class for event call backs to plugins

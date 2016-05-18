@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.GrassSpecies;
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents the different types of long grasses.

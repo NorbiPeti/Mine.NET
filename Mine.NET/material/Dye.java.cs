@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.DyeColor;
 import org.bukkit.Materials;
@@ -71,4 +71,4 @@ public class Dye : MaterialData : Colorable {
     public override Dye clone() {
         return (Dye) base.clone();
     }
-}
+}}

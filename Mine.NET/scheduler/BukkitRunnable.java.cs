@@ -1,7 +1,4 @@
-namespace Mine.NET.scheduler;
-
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.scheduler{
 
 /**
  * This class is provided as an easy way to handle scheduling tasks.

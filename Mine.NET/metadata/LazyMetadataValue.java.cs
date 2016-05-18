@@ -1,10 +1,4 @@
-namespace Mine.NET.metadata;
-
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Callable;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.metadata{
 
 /**
  * The LazyMetadataValue class : a type of metadata that is not

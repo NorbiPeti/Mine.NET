@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.DyeColor;
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents a Wool/Cloth block

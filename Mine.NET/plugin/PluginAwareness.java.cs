@@ -1,6 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.util.Set;
+namespace Mine.NET.plugin{
 
 /**
  * Represents a concept that a plugin is aware of.

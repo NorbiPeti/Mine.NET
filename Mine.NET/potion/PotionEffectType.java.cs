@@ -1,9 +1,4 @@
-namespace Mine.NET.potion;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.lang.Validate;
+namespace Mine.NET.potion{
 
 /**
  * Represents a type of potion and its effect on an entity.

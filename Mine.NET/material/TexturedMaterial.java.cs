@@ -1,8 +1,4 @@
-namespace Mine.NET.material;
-
-import java.util.List;
-
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents textured materials like steps and smooth bricks

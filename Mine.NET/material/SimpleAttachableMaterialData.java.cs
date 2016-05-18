@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
+namespace Mine.NET.material{
 
 /**
  * Simple utility class for attachable MaterialData subclasses

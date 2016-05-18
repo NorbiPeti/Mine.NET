@@ -1,6 +1,4 @@
-namespace Mine.NET.projectiles;
-
-import org.bukkit.block.Block;
+namespace Mine.NET.projectiles{
 
 public interface BlockProjectileSource : ProjectileSource {
 

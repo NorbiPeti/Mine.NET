@@ -1,15 +1,4 @@
-namespace Mine.NET.util;
-
-import static org.bukkit.util.NumberConversions.*;
-
-import org.bukkit.World;
-import org.bukkit.Location;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFaces;
-import org.bukkit.entity.LivingEntity;
-
-import java.util.IEnumerator;
-import java.util.NoSuchElementException;
+namespace Mine.NET.util{
 
 /**
  * This class performs ray tracing and iterates along blocks on a line

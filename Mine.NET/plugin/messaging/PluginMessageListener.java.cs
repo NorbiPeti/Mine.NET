@@ -1,6 +1,4 @@
-namespace Mine.NET.plugin.messaging;
-
-import org.bukkit.entity.Player;
+namespace Mine.NET.plugin.messaging{
 
 /**
  * A listener for a specific Plugin Channel, which will receive notifications

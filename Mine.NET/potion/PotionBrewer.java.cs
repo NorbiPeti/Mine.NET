@@ -1,6 +1,4 @@
-namespace Mine.NET.potion;
-
-import java.util.Collection;
+namespace Mine.NET.potion{
 
 /**
  * Represents a brewer that can create {@link PotionEffect}s.

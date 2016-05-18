@@ -1,12 +1,4 @@
-namespace Mine.NET.material;
-
-import java.util.EnumSet;
-import java.util.Set;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
-import org.bukkit.Materials.types.MushroomBlockTexture;
+namespace Mine.NET.material{
 
 /**
  * Represents a huge mushroom block with certain combinations of faces set to

@@ -1,6 +1,4 @@
-namespace Mine.NET.plugin;
-
-import org.bukkit.event.*;
+namespace Mine.NET.plugin{
 
 /**
  * Stores relevant information for plugin listeners

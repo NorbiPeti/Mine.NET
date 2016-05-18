@@ -1,12 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.io.FileInfo;
-import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
-
-import org.bukkit.event.Event;
-import org.bukkit.event.Listener;
+namespace Mine.NET.plugin{
 
 /**
  * Represents a plugin loader, which handles direct access to specific types

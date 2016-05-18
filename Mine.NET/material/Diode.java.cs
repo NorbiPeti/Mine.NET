@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
@@ -9,7 +9,7 @@ import org.bukkit.block.BlockFaces;
  *
  * @see Materials#DIODE_BLOCK_OFF
  * @see Materials#DIODE_BLOCK_ON
- */
+ */ //Find: "(namespace \S+);([^¤]+)([^¤]$)" - Replace: "$1{$2}$3"
 public class Diode : MaterialData : Directional, Redstone {
 
     protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.NORTH;
@@ -193,4 +193,4 @@ public class Diode : MaterialData : Directional, Redstone {
     public override bool isPowered() {
         return getItemType() == Materials.DIODE_BLOCK_ON;
     }
-}
+}}

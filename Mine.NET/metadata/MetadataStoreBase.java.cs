@@ -1,9 +1,4 @@
-namespace Mine.NET.metadata;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.plugin.Plugin;
-
-import java.util.*;
+namespace Mine.NET.metadata{
 
 public abstract class MetadataStoreBase<T> {
     private Dictionary<String, Dictionary<Plugin, MetadataValue>> metadataMap = new Dictionary<String, Dictionary<Plugin, MetadataValue>>();

@@ -1,7 +1,4 @@
-namespace Mine.NET.util;
-
-import org.bukkit.Server;
-import org.bukkit.event.server.ServerListPingEvent;
+namespace Mine.NET.util{
 
 /**
  * This is a cached version of a server-icon. It's internal representation

@@ -1,4 +1,4 @@
-namespace Mine.NET.inventory.meta;
+namespace Mine.NET.inventory.meta{
 
 import java.util.List;
 
@@ -89,4 +89,4 @@ public interface FireworkMeta : ItemMeta<FireworkMeta> {
      * @throws ArgumentException if {@literal height<0 or height>128}
      */
     void setPower(int power);
-}
+}}

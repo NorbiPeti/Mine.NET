@@ -1,6 +1,4 @@
-namespace Mine.NET.scheduler;
-
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.scheduler{
 
 /**
  * Represents a worker thread for the scheduler. This gives information about

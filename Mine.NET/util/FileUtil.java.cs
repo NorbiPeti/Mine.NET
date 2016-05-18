@@ -1,10 +1,4 @@
-namespace Mine.NET.util;
-
-import java.nio.channels.FileChannel;
-import java.io.FileInfo;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+namespace Mine.NET.util{
 
 /**
  * Class containing file utilities

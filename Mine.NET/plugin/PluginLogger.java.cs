@@ -1,8 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
-import java.util.logging.Logger;
+namespace Mine.NET.plugin{
 
 /**
  * The PluginLogger class is a modified {@link Logger} that prepends all

@@ -1,8 +1,4 @@
-namespace Mine.NET.metadata;
-
-import org.bukkit.plugin.Plugin;
-
-import java.util.List;
+namespace Mine.NET.metadata{
 
 public interface MetadataStore<T> {
     /**

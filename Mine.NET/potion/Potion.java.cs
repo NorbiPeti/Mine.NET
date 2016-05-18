@@ -1,12 +1,4 @@
-namespace Mine.NET.potion;
-
-import java.util.Collection;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Materials;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.PotionMeta;
+namespace Mine.NET.potion{
 
 /**
  * Potion Adapter for pre-1.9 data values

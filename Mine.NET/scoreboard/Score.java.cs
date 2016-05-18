@@ -1,6 +1,4 @@
-namespace Mine.NET.scoreboard;
-
-import org.bukkit.OfflinePlayer;
+namespace Mine.NET.scoreboard{
 
 /**
  * A score entry for an {@link #getEntry() entry} on an {@link

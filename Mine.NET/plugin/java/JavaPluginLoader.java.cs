@@ -1,45 +1,4 @@
-namespace Mine.NET.plugin.java;
-
-import java.io.FileInfo;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
-import java.util.jar.JarEntry;
-import java.util.jar.JarFile;
-import java.util.logging.Level;
-import java.util.regex.Pattern;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Server;
-import org.bukkit.Warning;
-import org.bukkit.Warning.WarningState;
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
-import org.bukkit.event.Event;
-import org.bukkit.event.EventException;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.server.PluginDisableEvent;
-import org.bukkit.event.server.PluginEnableEvent;
-import org.bukkit.plugin.AuthorNagException;
-import org.bukkit.plugin.EventExecutor;
-import org.bukkit.plugin.InvalidDescriptionException;
-import org.bukkit.plugin.InvalidPluginException;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.PluginLoader;
-import org.bukkit.plugin.RegisteredListener;
-import org.bukkit.plugin.TimedRegisteredListener;
-import org.bukkit.plugin.UnknownDependencyException;
-import org.yaml.snakeyaml.error.YAMLException;
+namespace Mine.NET.plugin.java{
 
 /**
  * Represents a Java plugin loader, allowing plugins in the form of .jar

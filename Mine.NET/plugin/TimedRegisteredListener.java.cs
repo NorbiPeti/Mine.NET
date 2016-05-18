@@ -1,9 +1,4 @@
-namespace Mine.NET.plugin;
-
-import org.bukkit.event.Event;
-import org.bukkit.event.EventException;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
+namespace Mine.NET.plugin{
 
 /**
  * Extends RegisteredListener to include timing information

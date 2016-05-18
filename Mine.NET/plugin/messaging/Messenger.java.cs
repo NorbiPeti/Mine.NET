@@ -1,8 +1,4 @@
-namespace Mine.NET.plugin.messaging;
-
-import java.util.Set;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.plugin.messaging{
 
 /**
  * A class responsible for managing the registrations of plugin channels and

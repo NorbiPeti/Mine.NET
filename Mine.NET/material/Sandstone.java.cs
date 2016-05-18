@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.SandstoneType;
+namespace Mine.NET.material{
 
 /**
  * Represents the different types of sandstone.

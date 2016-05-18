@@ -1,15 +1,4 @@
-namespace Mine.NET.permissions;
-
-import java.util.List;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Level;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.PluginManager;
+namespace Mine.NET.permissions{
 
 /**
  * Represents a unique permission that may be attached to a {@link

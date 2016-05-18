@@ -1,7 +1,4 @@
-namespace Mine.NET.permissions;
-
-import java.util.HashMap;
-import java.util.Map;
+namespace Mine.NET.permissions{
 
 /**
  * Represents the possible default values for permissions

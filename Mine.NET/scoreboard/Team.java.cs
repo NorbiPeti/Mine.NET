@@ -1,9 +1,4 @@
-namespace Mine.NET.scoreboard;
-
-import java.util.Set;
-
-import org.bukkit.OfflinePlayer;
-import org.bukkit.potion.PotionEffectType;
+namespace Mine.NET.scoreboard{
 
 /**
  * A team on a scoreboard that has a common display theme and other

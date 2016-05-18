@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.block.BlockFaces;
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents Ladder data

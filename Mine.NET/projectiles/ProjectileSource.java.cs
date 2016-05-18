@@ -1,7 +1,4 @@
-namespace Mine.NET.projectiles;
-
-import org.bukkit.entity.Projectile;
-import org.bukkit.util.Vector;
+namespace Mine.NET.projectiles{
 
 /**
  * Represents a valid source of a projectile.

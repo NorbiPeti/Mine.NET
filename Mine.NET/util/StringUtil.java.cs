@@ -1,7 +1,4 @@
-namespace Mine.NET.util;
-
-import java.util.Collection;
-import org.apache.commons.lang.Validate;
+namespace Mine.NET.util{
 
 public class StringUtil {
 

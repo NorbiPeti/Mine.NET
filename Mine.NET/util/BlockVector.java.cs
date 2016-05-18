@@ -1,7 +1,4 @@
-namespace Mine.NET.util;
-
-import java.util.Map;
-import org.bukkit.configuration.serialization.SerializableAs;
+namespace Mine.NET.util{
 
 /**
  * A vector with a hash function that floors the X, Y, Z components, a la

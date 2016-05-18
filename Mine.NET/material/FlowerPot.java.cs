@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.GrassSpecies;
 import org.bukkit.Materials;
@@ -127,4 +127,4 @@ public class FlowerPot : MaterialData {
     public override FlowerPot clone() {
         return (FlowerPot) base.clone();
     }
-}
+}}

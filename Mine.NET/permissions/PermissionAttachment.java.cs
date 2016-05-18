@@ -1,8 +1,4 @@
-namespace Mine.NET.permissions;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.permissions{
 
 /**
  * Holds information about a permission attachment on a {@link Permissible}

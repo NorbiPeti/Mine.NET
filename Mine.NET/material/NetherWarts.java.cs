@@ -1,7 +1,4 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.NetherWartsState;
+namespace Mine.NET.material{
 
 /**
  * Represents nether wart

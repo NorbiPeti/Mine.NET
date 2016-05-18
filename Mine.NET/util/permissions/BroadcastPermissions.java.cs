@@ -1,7 +1,4 @@
-namespace Mine.NET.util.permissions;
-
-import org.bukkit.permissions.Permission;
-import org.bukkit.permissions.PermissionDefault;
+namespace Mine.NET.util.permissions{
 
 public sealed class BroadcastPermissions {
     private static readonly String ROOT = "bukkit.broadcast";

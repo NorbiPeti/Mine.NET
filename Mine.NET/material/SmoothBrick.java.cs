@@ -1,9 +1,4 @@
-namespace Mine.NET.material;
-
-import java.util.List;
-import java.util.List;
-
-import org.bukkit.Materials;
+namespace Mine.NET.material{
 
 /**
  * Represents the different types of smooth bricks.

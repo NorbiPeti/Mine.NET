@@ -1,6 +1,4 @@
-namespace Mine.NET.scoreboard;
-
-import org.bukkit.OfflinePlayer;
+namespace Mine.NET.scoreboard{
 
 /**
  * An objective on a scoreboard that can show scores specific to entries. This

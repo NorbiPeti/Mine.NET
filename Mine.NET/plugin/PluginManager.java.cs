@@ -1,13 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.io.FileInfo;
-import java.util.Set;
-
-import org.bukkit.event.Event;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.permissions.Permissible;
-import org.bukkit.permissions.Permission;
+namespace Mine.NET.plugin{
 
 /**
  * Handles all plugin management from the Server

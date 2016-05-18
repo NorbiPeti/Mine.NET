@@ -1,12 +1,4 @@
-namespace Mine.NET.util.io;
-
-import java.io.Serializable;
-import java.util.Map;
-
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
-
-import com.google.common.collect.ImmutableMap;
+namespace Mine.NET.util.io{
 
 class Wrapper<T : Dictionary<String, ?> & Serializable> : Serializable {
     private static readonly long serialVersionUID = -986209235411767547L;

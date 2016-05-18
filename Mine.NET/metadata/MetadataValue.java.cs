@@ -1,6 +1,4 @@
-namespace Mine.NET.metadata;
-
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.metadata{
 
 public interface MetadataValue {
 

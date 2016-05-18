@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
@@ -65,4 +65,4 @@ public class ExtendedRails : Rails {
     public override ExtendedRails clone() {
         return (ExtendedRails) base.clone();
     }
-}
+}}

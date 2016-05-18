@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 import org.bukkit.TreeSpecies;
@@ -325,4 +325,4 @@ public class Door : MaterialData : Directional, Openable {
     public override Door clone() {
         return (Door) base.clone();
     }
-}
+}}

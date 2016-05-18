@@ -1,6 +1,4 @@
-namespace Mine.NET.util;
-
-import java.lang.reflect.Array;
+namespace Mine.NET.util{
 
 public class Java15Compat {
     @SuppressWarnings("unchecked")

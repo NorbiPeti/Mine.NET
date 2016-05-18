@@ -1,6 +1,4 @@
-namespace Mine.NET.potion;
-
-import org.apache.commons.lang.Validate;
+namespace Mine.NET.potion{
 
 public sealed class PotionData {
 

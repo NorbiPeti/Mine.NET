@@ -1,10 +1,4 @@
-namespace Mine.NET.material;
-
-import java.util.Arrays;
-import java.util.EnumSet;
-
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
+namespace Mine.NET.material{
 
 /**
  * Represents a vine

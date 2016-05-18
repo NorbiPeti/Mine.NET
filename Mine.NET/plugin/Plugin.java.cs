@@ -1,15 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.io.FileInfo;
-import java.io.InputStream;
-import java.util.logging.Logger;
-
-import org.bukkit.Server;
-import org.bukkit.command.TabExecutor;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.generator.ChunkGenerator;
-
-import com.avaje.ebean.EbeanServer;
+namespace Mine.NET.plugin{
 
 /**
  * Represents a Plugin

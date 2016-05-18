@@ -1,20 +1,4 @@
-namespace Mine.NET.plugin;
-
-import org.bukkit.Bukkit;
-import org.bukkit.event.server.ServiceRegisterEvent;
-import org.bukkit.event.server.ServiceUnregisterEvent;
-
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-
-import java.util.List;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.IEnumerator;
-import java.util.Map;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Set;
+namespace Mine.NET.plugin{
 
 /**
  * A simple services manager.

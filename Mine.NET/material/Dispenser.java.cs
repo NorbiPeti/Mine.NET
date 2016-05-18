@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 import org.bukkit.block.BlockFaces;
@@ -105,4 +105,4 @@ public class Dispenser : FurnaceAndDispenser {
     public override Dispenser clone() {
         return (Dispenser) base.clone();
     }
-}
+}}

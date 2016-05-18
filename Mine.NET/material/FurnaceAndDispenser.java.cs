@@ -1,4 +1,4 @@
-namespace Mine.NET.material;
+namespace Mine.NET.material{
 
 import org.bukkit.Materials;
 
@@ -39,4 +39,4 @@ public class FurnaceAndDispenser : DirectionalContainer {
     public override FurnaceAndDispenser clone() {
         return (FurnaceAndDispenser) base.clone();
     }
-}
+}}

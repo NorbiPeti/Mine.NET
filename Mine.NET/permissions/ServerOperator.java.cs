@@ -1,6 +1,4 @@
-namespace Mine.NET.permissions;
-
-import org.bukkit.entity.Player;
+namespace Mine.NET.permissions{
 
 /**
  * Represents an object that may become a server operator, such as a {@link

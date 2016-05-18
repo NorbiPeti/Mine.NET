@@ -1,11 +1,4 @@
-namespace Mine.NET.util.io;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-
-import org.bukkit.configuration.serialization.ConfigurationSerializable;
-import org.bukkit.configuration.serialization.ConfigurationSerialization;
+namespace Mine.NET.util.io{
 
 /**
  * This class is designed to be used in conjunction with the {@link

@@ -1,9 +1,4 @@
-namespace Mine.NET.scheduler;
-
-import org.bukkit.plugin.Plugin;
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
-import java.util.List;
+namespace Mine.NET.scheduler{
 
 public interface BukkitScheduler {
 

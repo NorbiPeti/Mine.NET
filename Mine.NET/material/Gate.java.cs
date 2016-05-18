@@ -1,11 +1,8 @@
-namespace Mine.NET.material;
-
-import org.bukkit.Materials;
-import org.bukkit.block.BlockFaces;
+namespace Mine.NET.material{
 
 /**
  * Represents a fence gate
- */
+ */ //Find: "(namespace \S+)(?:;)(?:[^¤]+import .+)" - Replace: "$1{"
 public class Gate : MaterialData : Directional, Openable {
     private static readonly byte OPEN_BIT = 0x4;
     private static readonly byte DIR_BIT = 0x3;

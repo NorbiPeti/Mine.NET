@@ -1,7 +1,4 @@
-namespace Mine.NET.plugin;
-
-import java.util.Collection;
-import java.util.List;
+namespace Mine.NET.plugin{
 
 /**
  * Manages services and service providers. Services are an interface

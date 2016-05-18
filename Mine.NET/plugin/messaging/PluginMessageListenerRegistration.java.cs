@@ -1,6 +1,4 @@
-namespace Mine.NET.plugin.messaging;
-
-import org.bukkit.plugin.Plugin;
+namespace Mine.NET.plugin.messaging{
 
 /**
  * Contains information about a {@link Plugin}s registration to a plugin

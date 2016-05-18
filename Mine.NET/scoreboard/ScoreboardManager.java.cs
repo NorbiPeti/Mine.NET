@@ -1,6 +1,4 @@
-namespace Mine.NET.scoreboard;
-
-import java.lang.ref.WeakReference;
+namespace Mine.NET.scoreboard{
 
 /**
  * Manager of Scoreboards

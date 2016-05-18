@@ -1,10 +1,4 @@
-namespace Mine.NET.metadata;
-
-import java.lang.ref.WeakReference;
-
-import org.apache.commons.lang.Validate;
-import org.bukkit.plugin.Plugin;
-import org.bukkit.util.NumberConversions;
+namespace Mine.NET.metadata{
 
 /**
  * Optional base class for facilitating MetadataValue implementations.
