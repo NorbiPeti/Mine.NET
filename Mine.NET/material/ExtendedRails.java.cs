@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * This is the superclass for the {@link DetectorRail} and {@link PoweredRail}
@@ -55,10 +55,10 @@ public class ExtendedRails : Rails {
         return (byte) (getData() & 0x7);
     }
 
-    public override void setDirection(BlockFace face, bool isOnSlope) {
+    public override void setDirection(BlockFaces face, bool isOnSlope) {
         bool extraBitSet = (getData() & 0x8) == 0x8;
 
-        if (face != BlockFace.WEST && face != BlockFace.EAST && face != BlockFace.NORTH && face != BlockFace.SOUTH) {
+        if (face != BlockFaces.WEST && face != BlockFaces.EAST && face != BlockFaces.NORTH && face != BlockFaces.SOUTH) {
             throw new ArgumentException("Detector rails and powered rails cannot be set on a curve!");
         }
 

@@ -76,39 +76,39 @@ namespace Mine.NET.material.types
         /**
          * Cap texture on the top, north and west faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_NORTH_WEST, new MushroomBlockTexture(1, BlockFace.NORTH_WEST) },
+{ MushroomBlockTextures.CAP_NORTH_WEST, new MushroomBlockTexture(1, BlockFaces.NORTH_WEST) },
         /**
          * Cap texture on the top and north faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_NORTH, new MushroomBlockTexture(2, BlockFace.NORTH) },
+{ MushroomBlockTextures.CAP_NORTH, new MushroomBlockTexture(2, BlockFaces.NORTH) },
         /**
          * Cap texture on the top, north and east faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_NORTH_EAST, new MushroomBlockTexture(3, BlockFace.NORTH_EAST) },
+{ MushroomBlockTextures.CAP_NORTH_EAST, new MushroomBlockTexture(3, BlockFaces.NORTH_EAST) },
         /**
          * Cap texture on the top and west faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_WEST, new MushroomBlockTexture(4, BlockFace.WEST) },
+{ MushroomBlockTextures.CAP_WEST, new MushroomBlockTexture(4, BlockFaces.WEST) },
         /**
          * Cap texture on the top face, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_TOP, new MushroomBlockTexture(5, BlockFace.UP) },
+{ MushroomBlockTextures.CAP_TOP, new MushroomBlockTexture(5, BlockFaces.UP) },
         /**
          * Cap texture on the top and east faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_EAST, new MushroomBlockTexture(6, BlockFace.EAST) },
+{ MushroomBlockTextures.CAP_EAST, new MushroomBlockTexture(6, BlockFaces.EAST) },
         /**
          * Cap texture on the top, south and west faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_SOUTH_WEST, new MushroomBlockTexture(7, BlockFace.SOUTH_WEST) },
+{ MushroomBlockTextures.CAP_SOUTH_WEST, new MushroomBlockTexture(7, BlockFaces.SOUTH_WEST) },
         /**
          * Cap texture on the top and south faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_SOUTH, new MushroomBlockTexture(8, BlockFace.SOUTH) },
+{ MushroomBlockTextures.CAP_SOUTH, new MushroomBlockTexture(8, BlockFaces.SOUTH) },
         /**
          * Cap texture on the top, south and east faces, pores on remaining sides.
          */
-{ MushroomBlockTextures.CAP_SOUTH_EAST, new MushroomBlockTexture(9, BlockFace.SOUTH_EAST) },
+{ MushroomBlockTextures.CAP_SOUTH_EAST, new MushroomBlockTexture(9, BlockFaces.SOUTH_EAST) },
         /**
          * Stem texture on the north, east, south and west faces, pores on top and
          * bottom.
@@ -117,7 +117,7 @@ namespace Mine.NET.material.types
         /**
          * Cap texture on all faces.
          */
-{ MushroomBlockTextures.ALL_CAP, new MushroomBlockTexture(14, BlockFace.SELF) },
+{ MushroomBlockTextures.ALL_CAP, new MushroomBlockTexture(14, BlockFaces.SELF) },
         /**
          * Stem texture on all faces.
          */
@@ -125,12 +125,12 @@ namespace Mine.NET.material.types
     };
 
         private readonly static Dictionary<Byte, MushroomBlockTexture> BY_DATA = new Dictionary<byte, MushroomBlockTexture>();
-        private readonly static Dictionary<BlockFace, MushroomBlockTexture> BY_BLOCKFACE = new Dictionary<BlockFace, MushroomBlockTexture>();
+        private readonly static Dictionary<BlockFaces, MushroomBlockTexture> BY_BLOCKFACE = new Dictionary<BlockFaces, MushroomBlockTexture>();
 
         private readonly Byte data;
-        private readonly BlockFace capFace;
+        private readonly BlockFaces capFace;
 
-        private MushroomBlockTexture(int data, BlockFace capFace)
+        private MushroomBlockTexture(int data, BlockFaces capFace)
         {
             this.data = (byte)data;
             this.capFace = capFace;
@@ -153,7 +153,7 @@ namespace Mine.NET.material.types
          *
          * @return The cap face
          */
-        public BlockFace getCapFace()
+        public BlockFaces getCapFace()
         {
             return capFace;
         }
@@ -179,9 +179,9 @@ namespace Mine.NET.material.types
          * @return The {@link MushroomBlockTexture} representing the given block
          * face, or null if it doesn't exist
          *
-         * @see BlockFace
+         * @see BlockFaces
          */
-        public static MushroomBlockTexture getCapByFace(BlockFace face)
+        public static MushroomBlockTexture getCapByFace(BlockFaces face)
         {
             return BY_BLOCKFACE[face];
         }

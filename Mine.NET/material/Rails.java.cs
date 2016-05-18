@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents minecart rails.
@@ -70,40 +70,40 @@ public class Rails : MaterialData {
      *     is the ascending direction if the track is set on a slope. If it is
      *     set as a curve, the corner of the track is returned.
      */
-    public BlockFace getDirection() {
+    public BlockFaces getDirection() {
         byte d = getConvertedData();
 
         switch (d) {
         case 0x0:
         default:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x1:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x2:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x3:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
 
         case 0x4:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
 
         case 0x5:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x6:
-            return BlockFace.NORTH_WEST;
+            return BlockFaces.NORTH_WEST;
 
         case 0x7:
-            return BlockFace.NORTH_EAST;
+            return BlockFaces.NORTH_EAST;
 
         case 0x8:
-            return BlockFace.SOUTH_EAST;
+            return BlockFaces.SOUTH_EAST;
 
         case 0x9:
-            return BlockFace.SOUTH_WEST;
+            return BlockFaces.SOUTH_WEST;
         }
     }
 
@@ -134,7 +134,7 @@ public class Rails : MaterialData {
      * @param face the direction the track should be facing
      * @param isOnSlope whether or not the track should be on a slope
      */
-    public void setDirection(BlockFace face, bool isOnSlope) {
+    public void setDirection(BlockFaces face, bool isOnSlope) {
         switch (face) {
         case EAST:
             setData((byte) (isOnSlope ? 0x2 : 0x1));

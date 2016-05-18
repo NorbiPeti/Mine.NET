@@ -12,7 +12,7 @@ namespace Mine.NET.Event.block
         private readonly int length;
         private List<Block> blocks;
 
-        public BlockPistonExtendEvent(Block block, List<Block> blocks, BlockFace direction) : base(block, direction)
+        public BlockPistonExtendEvent(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
         {
             this.length = blocks.Count;
             this.blocks = blocks;

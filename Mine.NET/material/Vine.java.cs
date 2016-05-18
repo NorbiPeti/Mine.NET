@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a vine
@@ -14,7 +14,7 @@ public class Vine : MaterialData {
     private static readonly int VINE_EAST = 0x8;
     private static readonly int VINE_WEST = 0x2;
     private static readonly int VINE_SOUTH = 0x1;
-    EnumSet<BlockFace> possibleFaces = EnumSet.of(BlockFace.WEST, BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST);
+    EnumSet<BlockFaces> possibleFaces = EnumSet.of(BlockFaces.WEST, BlockFaces.NORTH, BlockFaces.SOUTH, BlockFaces.EAST);
 
     public Vine() {
         base(Material.VINE);
@@ -39,29 +39,29 @@ public class Vine : MaterialData {
         base(Material.VINE, data);
     }
 
-    public Vine(BlockFace... faces) {
+    public Vine(BlockFaces... faces) {
         this(EnumSet.copyOf(Arrays.asList(faces)));
     }
 
-    public Vine(EnumSet<BlockFace> faces) {
+    public Vine(EnumSet<BlockFaces> faces) {
         this((byte) 0);
         faces.retainAll(possibleFaces);
 
         byte data = 0;
 
-        if (faces.contains(BlockFace.WEST)) {
+        if (faces.contains(BlockFaces.WEST)) {
             data |= VINE_WEST;
         }
 
-        if (faces.contains(BlockFace.NORTH)) {
+        if (faces.contains(BlockFaces.NORTH)) {
             data |= VINE_NORTH;
         }
 
-        if (faces.contains(BlockFace.SOUTH)) {
+        if (faces.contains(BlockFaces.SOUTH)) {
             data |= VINE_SOUTH;
         }
 
-        if (faces.contains(BlockFace.EAST)) {
+        if (faces.contains(BlockFaces.EAST)) {
             data |= VINE_EAST;
         }
 
@@ -71,12 +71,12 @@ public class Vine : MaterialData {
     /**
      * Check if the vine is attached to the specified face of an adjacent
      * block. You can check two faces at once by passing e.g. {@link
-     * BlockFace#NORTH_EAST}.
+     * BlockFaces#NORTH_EAST}.
      *
      * @param face The face to check.
      * @return Whether it is attached to that face.
      */
-    public bool isOnFace(BlockFace face) {
+    public bool isOnFace(BlockFaces face) {
         switch (face) {
             case WEST:
                 return (getData() & VINE_WEST) == VINE_WEST;
@@ -87,13 +87,13 @@ public class Vine : MaterialData {
             case EAST:
                 return (getData() & VINE_EAST) == VINE_EAST;
             case NORTH_EAST:
-                return isOnFace(BlockFace.EAST) && isOnFace(BlockFace.NORTH);
+                return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.NORTH);
             case NORTH_WEST:
-                return isOnFace(BlockFace.WEST) && isOnFace(BlockFace.NORTH);
+                return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.NORTH);
             case SOUTH_EAST:
-                return isOnFace(BlockFace.EAST) && isOnFace(BlockFace.SOUTH);
+                return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.SOUTH);
             case SOUTH_WEST:
-                return isOnFace(BlockFace.WEST) && isOnFace(BlockFace.SOUTH);
+                return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.SOUTH);
             case UP: // It's impossible to be accurate with this since it's contextual
                 return true;
             default:
@@ -106,7 +106,7 @@ public class Vine : MaterialData {
      *
      * @param face The face to attach.
      */
-    public void putOnFace(BlockFace face) {
+    public void putOnFace(BlockFaces face) {
         switch(face) {
             case WEST:
                 setData((byte) (getData() | VINE_WEST));
@@ -121,20 +121,20 @@ public class Vine : MaterialData {
                 setData((byte) (getData() | VINE_EAST));
                 break;
             case NORTH_WEST:
-                putOnFace(BlockFace.WEST);
-                putOnFace(BlockFace.NORTH);
+                putOnFace(BlockFaces.WEST);
+                putOnFace(BlockFaces.NORTH);
                 break;
             case SOUTH_WEST:
-                putOnFace(BlockFace.WEST);
-                putOnFace(BlockFace.SOUTH);
+                putOnFace(BlockFaces.WEST);
+                putOnFace(BlockFaces.SOUTH);
                 break;
             case NORTH_EAST:
-                putOnFace(BlockFace.EAST);
-                putOnFace(BlockFace.NORTH);
+                putOnFace(BlockFaces.EAST);
+                putOnFace(BlockFaces.NORTH);
                 break;
             case SOUTH_EAST:
-                putOnFace(BlockFace.EAST);
-                putOnFace(BlockFace.SOUTH);
+                putOnFace(BlockFaces.EAST);
+                putOnFace(BlockFaces.SOUTH);
                 break;
             case UP:
                 break;
@@ -148,7 +148,7 @@ public class Vine : MaterialData {
      *
      * @param face The face to detach.
      */
-    public void removeFromFace(BlockFace face) {
+    public void removeFromFace(BlockFaces face) {
         switch(face) {
             case WEST:
                 setData((byte) (getData() & ~VINE_WEST));
@@ -163,20 +163,20 @@ public class Vine : MaterialData {
                 setData((byte) (getData() & ~VINE_EAST));
                 break;
             case NORTH_WEST:
-                removeFromFace(BlockFace.WEST);
-                removeFromFace(BlockFace.NORTH);
+                removeFromFace(BlockFaces.WEST);
+                removeFromFace(BlockFaces.NORTH);
                 break;
             case SOUTH_WEST:
-                removeFromFace(BlockFace.WEST);
-                removeFromFace(BlockFace.SOUTH);
+                removeFromFace(BlockFaces.WEST);
+                removeFromFace(BlockFaces.SOUTH);
                 break;
             case NORTH_EAST:
-                removeFromFace(BlockFace.EAST);
-                removeFromFace(BlockFace.NORTH);
+                removeFromFace(BlockFaces.EAST);
+                removeFromFace(BlockFaces.NORTH);
                 break;
             case SOUTH_EAST:
-                removeFromFace(BlockFace.EAST);
-                removeFromFace(BlockFace.SOUTH);
+                removeFromFace(BlockFaces.EAST);
+                removeFromFace(BlockFaces.SOUTH);
                 break;
             case UP:
                 break;

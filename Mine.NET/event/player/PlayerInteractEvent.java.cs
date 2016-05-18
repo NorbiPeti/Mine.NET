@@ -16,22 +16,22 @@ public class PlayerInteractEvent : PlayerEvent, Cancellable {
     protected ItemStack item;
     protected Action action;
     protected Block blockClicked;
-    protected BlockFace blockFace;
+    protected BlockFaces BlockFaces;
     private Result useClickedBlock;
     private EquipmentSlot hand;
 
-    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFace clickedFace) :
+    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFaces clickedFace) :
         this(who, action, item, clickedBlock, clickedFace, EquipmentSlot.HAND)
         {
     }
 
-    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFace clickedFace, EquipmentSlot hand) :
+    public PlayerInteractEvent(Player who, Action action, ItemStack item, Block clickedBlock, BlockFaces clickedFace, EquipmentSlot hand) :
         base(who)
         {
         this.action = action;
         this.item = item;
         this.blockClicked = clickedBlock;
-        this.blockFace = clickedFace;
+        this.BlockFaces = clickedFace;
         this.hand = hand;
 
         UseItemInHand = Result.DEFAULT;
@@ -139,10 +139,10 @@ public class PlayerInteractEvent : PlayerEvent, Cancellable {
     /**
      * Returns the face of the block that was clicked
      *
-     * @return BlockFace returns the face of the block that was clicked
+     * @return BlockFaces returns the face of the block that was clicked
      */
-    public BlockFace getBlockFace() {
-        return blockFace;
+    public BlockFaces getBlockFace() {
+        return BlockFaces;
     }
 
     /**

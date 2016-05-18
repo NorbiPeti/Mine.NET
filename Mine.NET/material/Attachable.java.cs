@@ -11,8 +11,8 @@ namespace Mine.NET.material
         /**
          * Gets the face that this block is attached on
          *
-         * @return BlockFace attached to
+         * @return BlockFaces attached to
          */
-        BlockFace getAttachedFace();
+        BlockFaces getAttachedFace();
     }
 }

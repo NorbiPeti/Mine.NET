@@ -18,82 +18,82 @@ namespace Mine.NET.material
             return getItemType() == Materials.WALL_BANNER;
         }
 
-        public BlockFace getAttachedFace() {
+        public BlockFaces getAttachedFace() {
             if (isWallBanner()) {
                 byte data = getData();
 
                 switch (data) {
                     case 0x2:
-                        return BlockFace.SOUTH;
+                        return BlockFaces.SOUTH;
 
                     case 0x3:
-                        return BlockFace.NORTH;
+                        return BlockFaces.NORTH;
 
                     case 0x4:
-                        return BlockFace.EAST;
+                        return BlockFaces.EAST;
 
                     case 0x5:
-                        return BlockFace.WEST;
+                        return BlockFaces.WEST;
                 }
 
                 return null;
             } else {
-                return BlockFace.DOWN;
+                return BlockFaces.DOWN;
             }
         }
 
-        public BlockFace getFacing() {
+        public BlockFaces getFacing() {
             byte data = getData();
 
             if (!isWallBanner()) {
                 switch (data) {
                     case 0x0:
-                        return BlockFace.SOUTH;
+                        return BlockFaces.SOUTH;
 
                     case 0x1:
-                        return BlockFace.SOUTH_SOUTH_WEST;
+                        return BlockFaces.SOUTH_SOUTH_WEST;
 
                     case 0x2:
-                        return BlockFace.SOUTH_WEST;
+                        return BlockFaces.SOUTH_WEST;
 
                     case 0x3:
-                        return BlockFace.WEST_SOUTH_WEST;
+                        return BlockFaces.WEST_SOUTH_WEST;
 
                     case 0x4:
-                        return BlockFace.WEST;
+                        return BlockFaces.WEST;
 
                     case 0x5:
-                        return BlockFace.WEST_NORTH_WEST;
+                        return BlockFaces.WEST_NORTH_WEST;
 
                     case 0x6:
-                        return BlockFace.NORTH_WEST;
+                        return BlockFaces.NORTH_WEST;
 
                     case 0x7:
-                        return BlockFace.NORTH_NORTH_WEST;
+                        return BlockFaces.NORTH_NORTH_WEST;
 
                     case 0x8:
-                        return BlockFace.NORTH;
+                        return BlockFaces.NORTH;
 
                     case 0x9:
-                        return BlockFace.NORTH_NORTH_EAST;
+                        return BlockFaces.NORTH_NORTH_EAST;
 
                     case 0xA:
-                        return BlockFace.NORTH_EAST;
+                        return BlockFaces.NORTH_EAST;
 
                     case 0xB:
-                        return BlockFace.EAST_NORTH_EAST;
+                        return BlockFaces.EAST_NORTH_EAST;
 
                     case 0xC:
-                        return BlockFace.EAST;
+                        return BlockFaces.EAST;
 
                     case 0xD:
-                        return BlockFace.EAST_SOUTH_EAST;
+                        return BlockFaces.EAST_SOUTH_EAST;
 
                     case 0xE:
-                        return BlockFace.SOUTH_EAST;
+                        return BlockFaces.SOUTH_EAST;
 
                     case 0xF:
-                        return BlockFace.SOUTH_SOUTH_EAST;
+                        return BlockFaces.SOUTH_SOUTH_EAST;
                 }
 
                 return null;
@@ -102,52 +102,52 @@ namespace Mine.NET.material
             }
         }
 
-        public void setFacingDirection(BlockFace face)
+        public void setFacingDirection(BlockFaces face)
         {
             byte data;
 
             if (isWallBanner())
             {
-                if (face == BlockFace.NORTH)
+                if (face == BlockFaces.NORTH)
                     data = 0x2;
-                else if (face == BlockFace.SOUTH)
+                else if (face == BlockFaces.SOUTH)
                     data = 0x3;
-                else if (face == BlockFace.WEST)
+                else if (face == BlockFaces.WEST)
                     data = 0x4;
                 else
                     data = 0x5;
             }
             else
             {
-                if (face == BlockFace.SOUTH)
+                if (face == BlockFaces.SOUTH)
                     data = 0x0;
-                else if (face == BlockFace.SOUTH_SOUTH_WEST)
+                else if (face == BlockFaces.SOUTH_SOUTH_WEST)
                     data = 0x1;
-                else if (face == BlockFace.SOUTH_WEST)
+                else if (face == BlockFaces.SOUTH_WEST)
                     data = 0x2;
-                else if (face == BlockFace.WEST_SOUTH_WEST)
+                else if (face == BlockFaces.WEST_SOUTH_WEST)
                     data = 0x3;
-                else if (face == BlockFace.WEST)
+                else if (face == BlockFaces.WEST)
                     data = 0x4;
-                else if (face == BlockFace.WEST_NORTH_WEST)
+                else if (face == BlockFaces.WEST_NORTH_WEST)
                     data = 0x5;
-                else if (face == BlockFace.NORTH_WEST)
+                else if (face == BlockFaces.NORTH_WEST)
                     data = 0x6;
-                else if (face == BlockFace.NORTH_NORTH_WEST)
+                else if (face == BlockFaces.NORTH_NORTH_WEST)
                     data = 0x7;
-                else if (face == BlockFace.NORTH)
+                else if (face == BlockFaces.NORTH)
                     data = 0x8;
-                else if (face == BlockFace.NORTH_NORTH_EAST)
+                else if (face == BlockFaces.NORTH_NORTH_EAST)
                     data = 0x9;
-                else if (face == BlockFace.NORTH_EAST)
+                else if (face == BlockFaces.NORTH_EAST)
                     data = 0xA;
-                else if (face == BlockFace.EAST_NORTH_EAST)
+                else if (face == BlockFaces.EAST_NORTH_EAST)
                     data = 0xB;
-                else if (face == BlockFace.EAST)
+                else if (face == BlockFaces.EAST)
                     data = 0xC;
-                else if (face == BlockFace.EAST_SOUTH_EAST)
+                else if (face == BlockFaces.EAST_SOUTH_EAST)
                     data = 0xD;
-                else if (face == BlockFace.SOUTH_SOUTH_EAST)
+                else if (face == BlockFaces.SOUTH_SOUTH_EAST)
                     data = 0xF;
                 else
                     data = 0xE;

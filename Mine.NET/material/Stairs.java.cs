@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents stairs.
@@ -44,36 +44,36 @@ public class Stairs : MaterialData : Directional {
     /**
      * @return the direction the stairs ascend towards
      */
-    public BlockFace getAscendingDirection() {
+    public BlockFaces getAscendingDirection() {
         byte data = getData();
 
         switch (data & 0x3) {
         case 0x0:
         default:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x1:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
 
         case 0x2:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x3:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
         }
     }
 
     /**
      * @return the direction the stairs descend towards
      */
-    public BlockFace getDescendingDirection() {
+    public BlockFaces getDescendingDirection() {
         return getAscendingDirection().getOppositeFace();
     }
 
     /**
      * Set the direction the stair part of the block is facing
      */
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data;
 
         switch (face) {
@@ -101,7 +101,7 @@ public class Stairs : MaterialData : Directional {
     /**
      * @return the direction the stair part of the block is facing
      */
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         return getDescendingDirection();
     }
 

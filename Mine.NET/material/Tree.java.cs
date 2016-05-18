@@ -2,7 +2,7 @@ namespace Mine.NET.material;
 
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents the different types of Tree block that face a direction.
@@ -12,7 +12,7 @@ import org.bukkit.block.BlockFace;
  */
 public class Tree : Wood {
     protected static readonly Material DEFAULT_TYPE = Material.LOG;
-    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.UP;
+    protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.UP;
 
     /**
      * Constructs a tree block.
@@ -37,7 +37,7 @@ public class Tree : Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(TreeSpecies species, BlockFace dir) {
+    public Tree(TreeSpecies species, BlockFaces dir) {
         this(DEFAULT_TYPE, species, dir);
     }
 
@@ -77,7 +77,7 @@ public class Tree : Wood {
      * @param species the species of the tree block
      * @param dir the direction the tree block is facing
      */
-    public Tree(Material type, TreeSpecies species, BlockFace dir) {
+    public Tree(Material type, TreeSpecies species, BlockFaces dir) {
         base(type, species);
         setDirection(dir);
     }
@@ -107,34 +107,34 @@ public class Tree : Wood {
      *
      * @return one of:
      * <ul>
-     * <li>BlockFace.TOP for upright (default)
-     * <li>BlockFace.NORTH (east-west)
-     * <li>BlockFace.WEST (north-south)
-     * <li>BlockFace.SELF (directionless)
+     * <li>BlockFaces.TOP for upright (default)
+     * <li>BlockFaces.NORTH (east-west)
+     * <li>BlockFaces.WEST (north-south)
+     * <li>BlockFaces.SELF (directionless)
      * </ul>
      */
     @SuppressWarnings("deprecation")
-    public BlockFace getDirection() {
+    public BlockFaces getDirection() {
         switch ((getData() >> 2) & 0x3) {
             case 0: // Up-down
             default:
-                return BlockFace.UP;
+                return BlockFaces.UP;
             case 1: // North-south
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
             case 2: // East-west
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
             case 3: // Directionless (bark on all sides)
-                return BlockFace.SELF;
+                return BlockFaces.SELF;
         }
     }
 
     /**
      * Set direction of the log
      *
-     * @param dir - direction of end of log (BlockFace.SELF for no direction)
+     * @param dir - direction of end of log (BlockFaces.SELF for no direction)
      */
     @SuppressWarnings("deprecation")
-    public void setDirection(BlockFace dir) {
+    public void setDirection(BlockFaces dir) {
         int dat;
         switch (dir) {
             case UP:

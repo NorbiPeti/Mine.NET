@@ -1,61 +1,34 @@
-namespace Mine.NET.material;
+using Mine.NET.block;
 
-import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
-
-/**
- * Represents a chest
- */
-public class Chest : DirectionalContainer {
-
-    public Chest() {
-        base(Material.CHEST);
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * Instantiate a chest facing in a particular direction.
-     *
-     * @param direction the direction the chest's lit opens towards
+     * Represents a chest
      */
-    public Chest(BlockFace direction) {
-        this();
-        setFacingDirection(direction);
-    }
+    public class Chest : DirectionalContainer
+    {
 
-    /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Chest(int type) {
-        base(type);
-    }
+        public Chest() : base(Materials.CHEST)
+        {
+        }
 
-    public Chest(Material type) {
-        base(type);
-    }
+        /**
+         * Instantiate a chest facing in a particular direction.
+         *
+         * @param direction the direction the chest's lit opens towards
+         */
+        public Chest(BlockFaces direction) : this()
+        {
+            setFacingDirection(direction);
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Chest(int type, readonly byte data) {
-        base(type, data);
-    }
+        public Chest(Materials type) : base(type)
+        {
+        }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Chest(Material type, readonly byte data) {
-        base(type, data);
-    }
-
-    public override Chest clone() {
-        return (Chest) base.clone();
+        public override Chest clone()
+        {
+            return (Chest)base.clone();
+        }
     }
 }

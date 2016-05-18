@@ -12,14 +12,14 @@ namespace Mine.NET.Event.player
         private ItemStack itemStack;
         private bool cancelled = false;
         private readonly Block blockClicked;
-        private readonly BlockFace blockFace;
+        private readonly BlockFaces BlockFaces;
         private readonly Material bucket;
 
-        public PlayerBucketEvent(Player who, Block blockClicked, BlockFace blockFace, Material bucket, ItemStack itemInHand) :
+        public PlayerBucketEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Material bucket, ItemStack itemInHand) :
             base(who)
         {
             this.blockClicked = blockClicked;
-            this.blockFace = blockFace;
+            this.BlockFaces = BlockFaces;
             this.itemStack = itemInHand;
             this.bucket = bucket;
         }
@@ -69,9 +69,9 @@ namespace Mine.NET.Event.player
          *
          * @return the clicked face
          */
-        public BlockFace getBlockFace()
+        public BlockFaces getBlockFace()
         {
-            return blockFace;
+            return BlockFaces;
         }
 
         public bool isCancelled()

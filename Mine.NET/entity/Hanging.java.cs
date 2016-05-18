@@ -18,6 +18,6 @@ namespace Mine.NET.entity
          * @return False if force was false and there was no block for it to
          *     attach to in order to face the given direction.
          */
-        bool setFacingDirection(BlockFace face, bool force);
+        bool setFacingDirection(BlockFaces face, bool force);
     }
 }

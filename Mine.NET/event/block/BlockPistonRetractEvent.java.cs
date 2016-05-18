@@ -11,7 +11,7 @@ namespace Mine.NET.Event.block
         private static readonly HandlerList handlers = new HandlerList();
         private List<Block> blocks;
 
-        public BlockPistonRetractEvent(Block block, List<Block> blocks, BlockFace direction) : base(block, direction)
+        public BlockPistonRetractEvent(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
         {
             this.blocks = blocks;
         }

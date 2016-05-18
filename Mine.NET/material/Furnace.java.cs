@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a furnace.
@@ -17,7 +17,7 @@ public class Furnace : FurnaceAndDispenser {
      *
      * @param direction the direction the furnace's "opening" is facing
      */
-    public Furnace(BlockFace direction) {
+    public Furnace(BlockFaces direction) {
         this();
         setFacingDirection(direction);
     }

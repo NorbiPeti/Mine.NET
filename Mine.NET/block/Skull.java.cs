@@ -38,14 +38,14 @@ namespace Mine.NET.block
          *
          * @return the rotation of the skull
          */
-        BlockFace getRotation();
+        BlockFaces getRotation();
 
         /**
          * Sets the rotation of the skull in the world
          *
          * @param rotation the rotation of the skull
          */
-        void setRotation(BlockFace rotation);
+        void setRotation(BlockFaces rotation);
 
         /**
          * Gets the type of skull

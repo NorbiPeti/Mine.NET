@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a pumpkin.
@@ -17,7 +17,7 @@ public class Pumpkin : MaterialData : Directional {
      *
      * @param direction the direction the pumkin's face is facing
      */
-    public Pumpkin(BlockFace direction) {
+    public Pumpkin(BlockFaces direction) {
         this();
         setFacingDirection(direction);
     }
@@ -59,7 +59,7 @@ public class Pumpkin : MaterialData : Directional {
         return getItemType() == Material.JACK_O_LANTERN;
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data;
 
         switch (face) {
@@ -83,22 +83,22 @@ public class Pumpkin : MaterialData : Directional {
         setData(data);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         byte data = getData();
 
         switch (data) {
         case 0x0:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
 
         case 0x1:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x2:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x3:
         default:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
         }
     }
 

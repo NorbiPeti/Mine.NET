@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a trap door
@@ -82,28 +82,28 @@ public class TrapDoor : SimpleAttachableMaterialData : Openable {
         setData((byte) dat);
     }
 
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         byte data = (byte) (getData() & 0x3);
 
         switch (data) {
             case 0x0:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
 
             case 0x1:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
 
             case 0x2:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
 
             case 0x3:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
         }
 
         return null;
 
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() & 0xC);
 
         switch (face) {

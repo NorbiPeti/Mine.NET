@@ -1,12 +1,12 @@
-namespace Mine.NET.material;
+using Mine.NET.block;
+using System;
 
-import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
-
+namespace Mine.NET.material
+{
 /**
  * Represents the cocoa plant
  */
-public class CocoaPlant : MaterialData : Directional, Attachable {
+public class CocoaPlant : MaterialData<byte>, Directional, Attachable {
 
     public enum CocoaPlantSize {
         SMALL,
@@ -14,8 +14,8 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
         LARGE
     }
 
-    public CocoaPlant() {
-        base(Material.COCOA);
+    public CocoaPlant() :        base(Materials.COCOA)
+        {
     }
 
     /**
@@ -23,27 +23,17 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public CocoaPlant(int type) {
-        base(type);
+    public CocoaPlant(int type) :
+        base(type)
+        {
     }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public CocoaPlant(int type, readonly byte data) {
-        base(type, data);
-    }
-
-    public CocoaPlant(CocoaPlantSize sz) {
-        this();
+    public CocoaPlant(CocoaPlantSize sz) : this()
+        {
         setSize(sz);
     }
 
-    public CocoaPlant(CocoaPlantSize sz, BlockFace dir) {
-        this();
+    public CocoaPlant(CocoaPlantSize sz, BlockFaces dir) :this(){
         setSize(sz);
         setFacingDirection(dir);
     }
@@ -84,11 +74,11 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
         setData((byte) dat);
     }
 
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         return getFacing().getOppositeFace();
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         int dat = getData() & 0xC;
         switch (face) {
             default:
@@ -107,16 +97,16 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
         setData((byte) dat);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         switch (getData() & 0x3) {
             case 0:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
             case 1:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
             case 2:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
             case 3:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
         }
         return null;
     }
@@ -128,4 +118,5 @@ public class CocoaPlant : MaterialData : Directional, Attachable {
     public override string ToString() {
         return base.ToString() + " facing " + getFacing() + " " + getSize();
     }
+}
 }

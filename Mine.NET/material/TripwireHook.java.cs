@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents the tripwire hook
@@ -31,7 +31,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
         base(type, data);
     }
 
-    public TripwireHook(BlockFace dir) {
+    public TripwireHook(BlockFaces dir) {
         this();
         setFacingDirection(dir);
     }
@@ -80,7 +80,7 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
         setData((byte) dat);
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         int dat = getData() & 0xC;
         switch (face) {
         case WEST:
@@ -99,16 +99,16 @@ public class TripwireHook : SimpleAttachableMaterialData : Redstone {
         setData((byte) dat);
     }
 
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         switch (getData() & 0x3) {
         case 0:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
         case 1:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
         case 2:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
         case 3:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
         }
         return null;
     }

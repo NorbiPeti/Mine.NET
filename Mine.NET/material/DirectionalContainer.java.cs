@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a furnace or a dispenser.
@@ -40,7 +40,7 @@ public class DirectionalContainer : MaterialData : Directional {
         base(type, data);
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data;
 
         switch (face) {
@@ -64,22 +64,22 @@ public class DirectionalContainer : MaterialData : Directional {
         setData(data);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         byte data = getData();
 
         switch (data) {
         case 0x2:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
 
         case 0x3:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x4:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
 
         case 0x5:
         default:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
         }
     }
 

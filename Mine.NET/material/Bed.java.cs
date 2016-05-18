@@ -21,7 +21,7 @@ namespace Mine.NET.material
          *
          * @param direction the direction the bed's head is facing
          */
-        public Bed(BlockFace direction) : this()
+        public Bed(BlockFaces direction) : this()
         {
             setFacingDirection(direction);
         }
@@ -54,15 +54,15 @@ namespace Mine.NET.material
          * Set which direction the head of the bed is facing. Note that this will
          * only affect one of the two blocks the bed is made of.
          */
-        public void setFacingDirection(BlockFace face)
+        public void setFacingDirection(BlockFaces face)
         {
             byte data;
 
-            if (face == BlockFace.SOUTH)
+            if (face == BlockFaces.SOUTH)
                 data = 0x0;
-            else if (face == BlockFace.WEST)
+            else if (face == BlockFaces.WEST)
                 data = 0x1;
-            else if (face == BlockFace.NORTH)
+            else if (face == BlockFaces.NORTH)
                 data = 0x2;
             else
                 data = 0x3;
@@ -80,24 +80,24 @@ namespace Mine.NET.material
          *
          * @return the direction the head of the bed is facing
          */
-        public BlockFace getFacing()
+        public BlockFaces getFacing()
         {
             byte data = (byte)(getData() & 0x7);
 
             switch (data)
             {
                 case 0x0:
-                    return BlockFace.SOUTH;
+                    return BlockFaces.SOUTH;
 
                 case 0x1:
-                    return BlockFace.WEST;
+                    return BlockFaces.WEST;
 
                 case 0x2:
-                    return BlockFace.NORTH;
+                    return BlockFaces.NORTH;
 
                 case 0x3:
                 default:
-                    return BlockFace.EAST;
+                    return BlockFaces.EAST;
             }
         }
 

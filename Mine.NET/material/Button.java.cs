@@ -51,31 +51,31 @@ namespace Mine.NET.material
         /**
          * Gets the face that this block is attached on
          *
-         * @return BlockFace attached to
+         * @return BlockFaces attached to
          */
-        public BlockFace getAttachedFace()
+        public BlockFaces getAttachedFace()
         {
             byte data = (byte)(getData() & 0x7);
 
             switch (data)
             {
                 case 0x0:
-                    return BlockFace.UP;
+                    return BlockFaces.UP;
 
                 case 0x1:
-                    return BlockFace.WEST;
+                    return BlockFaces.WEST;
 
                 case 0x2:
-                    return BlockFace.EAST;
+                    return BlockFaces.EAST;
 
                 case 0x3:
-                    return BlockFace.NORTH;
+                    return BlockFaces.NORTH;
 
                 case 0x4:
-                    return BlockFace.SOUTH;
+                    return BlockFaces.SOUTH;
 
                 case 0x5:
-                    return BlockFace.DOWN;
+                    return BlockFaces.DOWN;
             }
 
             return null;
@@ -84,36 +84,22 @@ namespace Mine.NET.material
         /**
          * Sets the direction this button is pointing toward
          */
-        public void setFacingDirection(BlockFace face)
+        public void setFacingDirection(BlockFaces face)
         {
             byte data = (byte)(getData() & 0x8);
 
-            switch (face)
-            {
-                case DOWN:
-                    data |= 0x0;
-                    break;
-
-                case EAST:
-                    data |= 0x1;
-                    break;
-
-                case WEST:
-                    data |= 0x2;
-                    break;
-
-                case SOUTH:
-                    data |= 0x3;
-                    break;
-
-                case NORTH:
-                    data |= 0x4;
-                    break;
-
-                case UP:
-                    data |= 0x5;
-                    break;
-            }
+            if (face == BlockFaces.DOWN)
+                data |= 0x0;
+            else if (face == BlockFaces.EAST)
+                data |= 0x1;
+            else if (face == BlockFaces.WEST)
+                data |= 0x2;
+            else if (face == BlockFaces.SOUTH)
+                data |= 0x3;
+            else if (face == BlockFaces.NORTH)
+                data |= 0x4;
+            else if (face == BlockFaces.UP)
+                data |= 0x5;
 
             setData(data);
         }

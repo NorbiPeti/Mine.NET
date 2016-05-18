@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Material data for the piston base block
@@ -47,7 +47,7 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         base(type, data);
     }
 
-    public override void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() & 0x8);
 
         switch (face) {
@@ -70,24 +70,24 @@ public class PistonBaseMaterial : MaterialData : Directional, Redstone {
         setData(data);
     }
 
-    public override BlockFace getFacing() {
+    public override BlockFaces getFacing() {
         byte dir = (byte) (getData() & 7);
 
         switch (dir) {
         case 0:
-            return BlockFace.DOWN;
+            return BlockFaces.DOWN;
         case 1:
-            return BlockFace.UP;
+            return BlockFaces.UP;
         case 2:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
         case 3:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
         case 4:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
         case 5:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
         default:
-            return BlockFace.SELF;
+            return BlockFaces.SELF;
         }
     }
 

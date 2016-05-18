@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a hopper in an active or deactivated state and facing in a
@@ -11,7 +11,7 @@ import org.bukkit.block.BlockFace;
  */
 public class Hopper : MaterialData : Directional, Redstone {
 
-    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.DOWN;
+    protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.DOWN;
     protected static readonly bool DEFAULT_ACTIVE = true;
 
     /**
@@ -27,9 +27,9 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @param facingDirection the direction the hopper is facing
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Hopper(BlockFace facingDirection) {
+    public Hopper(BlockFaces facingDirection) {
         this(facingDirection, DEFAULT_ACTIVE);
     }
 
@@ -41,9 +41,9 @@ public class Hopper : MaterialData : Directional, Redstone {
      * @param isActive True if the hopper is initially active, false if
      * deactivated
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Hopper(BlockFace facingDirection, bool isActive) {
+    public Hopper(BlockFaces facingDirection, bool isActive) {
         base(Material.HOPPER);
         setFacingDirection(facingDirection);
         setActive(isActive);
@@ -106,9 +106,9 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @param face The direction to set this hopper to
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public override void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFaces face) {
         int data = getData() & 0x8;
 
         switch (face) {
@@ -137,23 +137,23 @@ public class Hopper : MaterialData : Directional, Redstone {
      *
      * @return The direction this hopper is facing
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public override BlockFace getFacing() {
+    public override BlockFaces getFacing() {
         byte data = (byte) (getData() & 0x7);
 
         switch (data) {
             default:
             case 0x0:
-                return BlockFace.DOWN;
+                return BlockFaces.DOWN;
             case 0x2:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
             case 0x3:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
             case 0x4:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
             case 0x5:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
         }
     }
 

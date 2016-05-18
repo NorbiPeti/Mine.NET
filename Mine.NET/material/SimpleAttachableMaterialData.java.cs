@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Simple utility class for attachable MaterialData subclasses
@@ -17,12 +17,12 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
         base(type);
     }
 
-    public SimpleAttachableMaterialData(int type, BlockFace direction) {
+    public SimpleAttachableMaterialData(int type, BlockFaces direction) {
         this(type);
         setFacingDirection(direction);
     }
 
-    public SimpleAttachableMaterialData(Material type, BlockFace direction) {
+    public SimpleAttachableMaterialData(Material type, BlockFaces direction) {
         this(type);
         setFacingDirection(direction);
     }
@@ -51,8 +51,8 @@ public abstract class SimpleAttachableMaterialData : MaterialData : Attachable {
         base(type, data);
     }
 
-    public BlockFace getFacing() {
-        BlockFace attachedFace = getAttachedFace();
+    public BlockFaces getFacing() {
+        BlockFaces attachedFace = getAttachedFace();
         return attachedFace == null ? null : attachedFace.getOppositeFace();
     }
 

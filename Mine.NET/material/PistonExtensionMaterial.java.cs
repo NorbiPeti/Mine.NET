@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Material data for the piston extension block
@@ -40,7 +40,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
         base(type, data);
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() & 0x8);
 
         switch (face) {
@@ -63,24 +63,24 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
         setData(data);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         byte dir = (byte) (getData() & 7);
 
         switch (dir) {
         case 0:
-            return BlockFace.DOWN;
+            return BlockFaces.DOWN;
         case 1:
-            return BlockFace.UP;
+            return BlockFaces.UP;
         case 2:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
         case 3:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
         case 4:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
         case 5:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
         default:
-            return BlockFace.SELF;
+            return BlockFaces.SELF;
         }
     }
 
@@ -102,7 +102,7 @@ public class PistonExtensionMaterial : MaterialData : Attachable {
         setData((byte) (sticky ? (getData() | 0x8) : (getData() & ~0x8)));
     }
 
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         return getFacing().getOppositeFace();
     }
 

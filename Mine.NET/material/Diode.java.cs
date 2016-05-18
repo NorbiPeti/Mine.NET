@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a diode/repeater in the on or off state, with a delay and facing
@@ -12,7 +12,7 @@ import org.bukkit.block.BlockFace;
  */
 public class Diode : MaterialData : Directional, Redstone {
 
-    protected static readonly BlockFace DEFAULT_DIRECTION = BlockFace.NORTH;
+    protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.NORTH;
     protected static readonly int DEFAULT_DELAY = 1;
     protected static readonly bool DEFAULT_STATE = false;
 
@@ -33,9 +33,9 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @param facingDirection the direction the diode is facing
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Diode(BlockFace facingDirection) {
+    public Diode(BlockFaces facingDirection) {
         this(facingDirection, DEFAULT_DELAY, DEFAULT_STATE);
     }
 
@@ -47,9 +47,9 @@ public class Diode : MaterialData : Directional, Redstone {
      * @param delay The number of ticks (1-4) before the diode turns on after
      * being powered
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Diode(BlockFace facingDirection, int delay) {
+    public Diode(BlockFaces facingDirection, int delay) {
         this(facingDirection, delay, DEFAULT_STATE);
     }
 
@@ -62,9 +62,9 @@ public class Diode : MaterialData : Directional, Redstone {
      * being powered
      * @param state True if the diode is in the on state
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Diode(BlockFace facingDirection, int delay, bool state) {
+    public Diode(BlockFaces facingDirection, int delay, bool state) {
         base(state ? Material.DIODE_BLOCK_ON : Material.DIODE_BLOCK_OFF);
         setFacingDirection(facingDirection);
         setDelay(delay);
@@ -134,9 +134,9 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @param face The direction to set this diode to
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public override void setFacingDirection(BlockFace face) {
+    public override void setFacingDirection(BlockFaces face) {
         int delay = getDelay();
         byte data;
 
@@ -164,24 +164,24 @@ public class Diode : MaterialData : Directional, Redstone {
      *
      * @return The direction this diode is facing
      *
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public override BlockFace getFacing() {
+    public override BlockFaces getFacing() {
         byte data = (byte) (getData() & 0x3);
 
         switch (data) {
             case 0x0:
             default:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
 
             case 0x1:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
 
             case 0x2:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
 
             case 0x3:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
         }
     }
 

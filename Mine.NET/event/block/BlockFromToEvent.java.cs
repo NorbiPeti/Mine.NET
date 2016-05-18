@@ -13,10 +13,10 @@ namespace Mine.NET.Event.block
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected Block to;
-        protected BlockFace face;
+        protected BlockFaces face;
         protected bool cancel;
 
-        public BlockFromToEvent(Block block, BlockFace face) : base(block)
+        public BlockFromToEvent(Block block, BlockFaces face) : base(block)
         {
             this.face = face;
             this.cancel = false;
@@ -25,16 +25,16 @@ namespace Mine.NET.Event.block
         public BlockFromToEvent(Block block, Block toBlock) : base(block)
         {
             this.to = toBlock;
-            this.face = BlockFace.SELF;
+            this.face = BlockFaces.SELF;
             this.cancel = false;
         }
 
         /**
-         * Gets the BlockFace that the block is moving to.
+         * Gets the BlockFaces that the block is moving to.
          *
-         * @return The BlockFace that the block is moving to
+         * @return The BlockFaces that the block is moving to
          */
-        public BlockFace getFace()
+        public BlockFaces getFace()
         {
             return face;
         }

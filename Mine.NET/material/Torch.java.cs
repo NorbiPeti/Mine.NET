@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 import org.bukkit.Material;
 
 /**
@@ -47,31 +47,31 @@ public class Torch : SimpleAttachableMaterialData {
     /**
      * Gets the face that this block is attached on
      *
-     * @return BlockFace attached to
+     * @return BlockFaces attached to
      */
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         byte data = getData();
 
         switch (data) {
         case 0x1:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
 
         case 0x2:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x3:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
 
         case 0x4:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x5:
         default:
-            return BlockFace.DOWN;
+            return BlockFaces.DOWN;
         }
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data;
 
         switch (face) {

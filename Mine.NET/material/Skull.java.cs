@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a skull.
@@ -16,7 +16,7 @@ public class Skull : MaterialData : Directional {
      *
      * @param direction the direction the skull's face is facing
      */
-    public Skull(BlockFace direction) {
+    public Skull(BlockFaces direction) {
         this();
         setFacingDirection(direction);
     }
@@ -54,7 +54,7 @@ public class Skull : MaterialData : Directional {
         base(type, data);
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         int data;
 
         switch (face) {
@@ -82,25 +82,25 @@ public class Skull : MaterialData : Directional {
         setData((byte) data);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         int data = getData();
 
         switch (data) {
             case 0x1:
             default:
-                return BlockFace.SELF;
+                return BlockFaces.SELF;
 
             case 0x2:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
 
             case 0x3:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
 
             case 0x4:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
 
             case 0x5:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
         }
     }
 

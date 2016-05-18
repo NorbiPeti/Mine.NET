@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a fence gate
@@ -26,7 +26,7 @@ public class Gate : MaterialData : Directional, Openable {
         base(Material.FENCE_GATE, data);
     }
 
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() &~ DIR_BIT);
 
         switch (face) {
@@ -48,19 +48,19 @@ public class Gate : MaterialData : Directional, Openable {
         setData(data);
     }
 
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         switch (getData() & DIR_BIT) {
             case GATE_SOUTH:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
             case GATE_WEST:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
             case GATE_NORTH:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
             case GATE_EAST:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
         }
 
-        return BlockFace.EAST;
+        return BlockFaces.EAST;
     }
 
     public bool isOpen() {

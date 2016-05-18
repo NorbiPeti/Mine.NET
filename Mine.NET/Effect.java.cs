@@ -135,7 +135,7 @@ namespace Mine.NET
     /**
      * A visual smoke effect. Needs direction as additional info.
      */
-    { Effects.SMOKE, new Effect(2000, EffectType.VISUAL, typeof(BlockFace)) },
+    { Effects.SMOKE, new Effect(2000, EffectType.VISUAL, typeof(BlockFaces)) },
     /**
      * Sound of a block breaking. Needs block ID as additional info.
      */

@@ -1,6 +1,6 @@
 namespace Mine.NET.material;
 
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 import org.bukkit.Material;
 
 /**
@@ -66,31 +66,31 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
     /**
      * Gets the face that this block is attached on
      *
-     * @return BlockFace attached to
+     * @return BlockFaces attached to
      */
-    public BlockFace getAttachedFace() {
+    public BlockFaces getAttachedFace() {
         byte data = (byte) (getData() & 0x7);
 
         switch (data) {
         case 0x1:
-            return BlockFace.WEST;
+            return BlockFaces.WEST;
 
         case 0x2:
-            return BlockFace.EAST;
+            return BlockFaces.EAST;
 
         case 0x3:
-            return BlockFace.NORTH;
+            return BlockFaces.NORTH;
 
         case 0x4:
-            return BlockFace.SOUTH;
+            return BlockFaces.SOUTH;
 
         case 0x5:
         case 0x6:
-            return BlockFace.DOWN;
+            return BlockFaces.DOWN;
 
         case 0x0:
         case 0x7:
-            return BlockFace.UP;
+            return BlockFaces.UP;
 
         }
 
@@ -100,11 +100,11 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
     /**
      * Sets the direction this lever is pointing in
      */
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() & 0x8);
-        BlockFace attach = getAttachedFace();
+        BlockFaces attach = getAttachedFace();
 
-        if (attach == BlockFace.DOWN) {
+        if (attach == BlockFaces.DOWN) {
             switch (face) {
             case SOUTH:
             case NORTH:
@@ -116,7 +116,7 @@ public class Lever : SimpleAttachableMaterialData : Redstone {
                 data |= 0x6;
                 break;
             }
-        } else if (attach == BlockFace.UP) {
+        } else if (attach == BlockFaces.UP) {
             switch (face) {
             case SOUTH:
             case NORTH:

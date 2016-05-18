@@ -2,7 +2,7 @@ namespace Mine.NET.material;
 
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents a door.
@@ -59,12 +59,12 @@ public class Door : MaterialData : Directional, Openable {
      * @see Material#ACACIA_DOOR
      * @see Material#DARK_OAK_DOOR
      *
-     * @see BlockFace#WEST
-     * @see BlockFace#NORTH
-     * @see BlockFace#EAST
-     * @see BlockFace#SOUTH
+     * @see BlockFaces#WEST
+     * @see BlockFaces#NORTH
+     * @see BlockFaces#EAST
+     * @see BlockFaces#SOUTH
      */
-    public Door(Material type, BlockFace face) {
+    public Door(Material type, BlockFaces face) {
         this(type, face, false);
     }
 
@@ -84,12 +84,12 @@ public class Door : MaterialData : Directional, Openable {
      * @see Material#ACACIA_DOOR
      * @see Material#DARK_OAK_DOOR
      *
-     * @see BlockFace#WEST
-     * @see BlockFace#NORTH
-     * @see BlockFace#EAST
-     * @see BlockFace#SOUTH
+     * @see BlockFaces#WEST
+     * @see BlockFaces#NORTH
+     * @see BlockFaces#EAST
+     * @see BlockFaces#SOUTH
      */
-    public Door(Material type, BlockFace face, bool isOpen) {
+    public Door(Material type, BlockFaces face, bool isOpen) {
         base(type);
         setTopHalf(false);
         setFacingDirection(face);
@@ -125,12 +125,12 @@ public class Door : MaterialData : Directional, Openable {
      *
      * @see TreeSpecies
      *
-     * @see BlockFace#WEST
-     * @see BlockFace#NORTH
-     * @see BlockFace#EAST
-     * @see BlockFace#SOUTH
+     * @see BlockFaces#WEST
+     * @see BlockFaces#NORTH
+     * @see BlockFaces#EAST
+     * @see BlockFaces#SOUTH
      */
-    public Door(TreeSpecies species, BlockFace face) {
+    public Door(TreeSpecies species, BlockFaces face) {
         this(getWoodDoorOfSpecies(species), face, false);
     }
 
@@ -144,12 +144,12 @@ public class Door : MaterialData : Directional, Openable {
      *
      * @see TreeSpecies
      *
-     * @see BlockFace#WEST
-     * @see BlockFace#NORTH
-     * @see BlockFace#EAST
-     * @see BlockFace#SOUTH
+     * @see BlockFaces#WEST
+     * @see BlockFaces#NORTH
+     * @see BlockFaces#EAST
+     * @see BlockFaces#SOUTH
      */
-    public Door(TreeSpecies species, BlockFace face, bool isOpen) {
+    public Door(TreeSpecies species, BlockFaces face, bool isOpen) {
         this(getWoodDoorOfSpecies(species), face, isOpen);
     }
 
@@ -247,12 +247,12 @@ public class Door : MaterialData : Directional, Openable {
     }
 
     /**
-     * @return BlockFace.SELF
+     * @return BlockFaces.SELF
      * [Obsolete] This method should not be used; use hinge and facing accessors instead.
      */
     [Obsolete]
-    public BlockFace getHingeCorner() {
-        return BlockFace.SELF;
+    public BlockFaces getHingeCorner() {
+        return BlockFaces.SELF;
     }
 
     public override string ToString() {
@@ -266,7 +266,7 @@ public class Door : MaterialData : Directional, Openable {
      *
      * @param face the direction
      */
-    public void setFacingDirection(BlockFace face) {
+    public void setFacingDirection(BlockFaces face) {
         byte data = (byte) (getData() & 0xC);
         switch (face) {
             case WEST:
@@ -292,17 +292,17 @@ public class Door : MaterialData : Directional, Openable {
      *
      * @return the direction
      */
-    public BlockFace getFacing() {
+    public BlockFaces getFacing() {
         byte data = (byte) (getData() & 0x3);
         switch (data) {
             case 0:
-                return BlockFace.WEST;
+                return BlockFaces.WEST;
             case 1:
-                return BlockFace.NORTH;
+                return BlockFaces.NORTH;
             case 2:
-                return BlockFace.EAST;
+                return BlockFaces.EAST;
             case 3:
-                return BlockFace.SOUTH;
+                return BlockFaces.SOUTH;
             default:
                 throw new IllegalStateException("Unknown door facing (data: " + data + ")");
         }

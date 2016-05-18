@@ -5,7 +5,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 import org.bukkit.material.types.MushroomBlockTexture;
 
 /**
@@ -52,9 +52,9 @@ public class Mushroom : MaterialData {
      *
      * @see Material#HUGE_MUSHROOM_1
      * @see Material#HUGE_MUSHROOM_2
-     * @see BlockFace
+     * @see BlockFaces
      */
-    public Mushroom(Material shroom, BlockFace capFace) {
+    public Mushroom(Material shroom, BlockFaces capFace) {
         this(shroom, MushroomBlockTexture.getCapByFace(capFace));
     }
 
@@ -140,7 +140,7 @@ public class Mushroom : MaterialData {
      * @param face The face to check.
      * @return True if it is painted.
      */
-    public bool isFacePainted(BlockFace face) {
+    public bool isFacePainted(BlockFaces face) {
         byte data = getData();
 
         if (data == MushroomBlockTexture.ALL_PORES.getData() || data == MushroomBlockTexture.STEM_SIDES.getData()
@@ -179,7 +179,7 @@ public class Mushroom : MaterialData {
      * [Obsolete] Use MushroomBlockType cap options
      */
     [Obsolete]
-    public void setFacePainted(BlockFace face, bool painted) {
+    public void setFacePainted(BlockFaces face, bool painted) {
         if (painted == isFacePainted(face)) {
             return;
         }
@@ -253,31 +253,31 @@ public class Mushroom : MaterialData {
      * @return A set of all faces that are currently painted (an empty set if
      *     it is a stem)
      */
-    public HashSet<BlockFace> getPaintedFaces() {
-        EnumSet<BlockFace> faces = EnumSet.noneOf(BlockFace.class);
+    public HashSet<BlockFaces> getPaintedFaces() {
+        EnumSet<BlockFaces> faces = EnumSet.noneOf(BlockFaces.class);
 
-        if (isFacePainted(BlockFace.WEST)) {
-            faces.add(BlockFace.WEST);
+        if (isFacePainted(BlockFaces.WEST)) {
+            faces.add(BlockFaces.WEST);
         }
 
-        if (isFacePainted(BlockFace.NORTH)) {
-            faces.add(BlockFace.NORTH);
+        if (isFacePainted(BlockFaces.NORTH)) {
+            faces.add(BlockFaces.NORTH);
         }
 
-        if (isFacePainted(BlockFace.SOUTH)) {
-            faces.add(BlockFace.SOUTH);
+        if (isFacePainted(BlockFaces.SOUTH)) {
+            faces.add(BlockFaces.SOUTH);
         }
 
-        if (isFacePainted(BlockFace.EAST)) {
-            faces.add(BlockFace.EAST);
+        if (isFacePainted(BlockFaces.EAST)) {
+            faces.add(BlockFaces.EAST);
         }
 
-        if (isFacePainted(BlockFace.UP)) {
-            faces.add(BlockFace.UP);
+        if (isFacePainted(BlockFaces.UP)) {
+            faces.add(BlockFaces.UP);
         }
 
-        if (isFacePainted(BlockFace.DOWN)) {
-            faces.add(BlockFace.DOWN);
+        if (isFacePainted(BlockFaces.DOWN)) {
+            faces.add(BlockFaces.DOWN);
         }
 
         return faces;

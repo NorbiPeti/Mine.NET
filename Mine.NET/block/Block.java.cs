@@ -40,9 +40,9 @@ namespace Mine.NET.block
          *
          * @param face Face of this block to return
          * @return Block at the given face
-         * @see #getRelative(BlockFace, int)
+         * @see #getRelative(BlockFaces, int)
          */
-        Block getRelative(BlockFace face);
+        Block getRelative(BlockFaces face);
 
         /**
          * Gets the block at the given distance of the given face
@@ -52,7 +52,7 @@ namespace Mine.NET.block
          *
          * <pre>
          * Block block = world.getBlockAt(100, 100, 100);
-         * Block shower = block.getRelative(BlockFace.UP, 2);
+         * Block shower = block.getRelative(BlockFaces.UP, 2);
          * shower.setType(Material.WATER);
          * </pre>
          *
@@ -60,7 +60,7 @@ namespace Mine.NET.block
          * @param distance Distance to get the block at
          * @return Block at the given face
          */
-        Block getRelative(BlockFace face, int distance);
+        Block getRelative(BlockFaces face, int distance);
 
         /**
          * Gets the type of this block
@@ -232,15 +232,15 @@ namespace Mine.NET.block
          * Block current = world.getBlockAt(100, 100, 100);
          * Block target = world.getBlockAt(100, 101, 100);
          *
-         * current.getFace(target) == BlockFace.Up;
+         * current.getFace(target) == BlockFaces.Up;
          * }</pre>
          * <br>
          * If the given block is not connected to this block, null may be returned
          *
          * @param block Block to compare against this block
-         * @return BlockFace of this block which has the requested block, or null
+         * @return BlockFaces of this block which has the requested block, or null
          */
-        BlockFace getFace(Block block);
+        BlockFaces getFace(Block block);
 
         /**
          * Captures the current state of this block. You may then cast that state
@@ -287,7 +287,7 @@ namespace Mine.NET.block
          * @param face The block face
          * @return True if the block face is powered.
          */
-        bool isBlockFacePowered(BlockFace face);
+        bool isBlockFacePowered(BlockFaces face);
 
         /**
          * Returns true if the block face is being indirectly powered by Redstone.
@@ -295,16 +295,16 @@ namespace Mine.NET.block
          * @param face The block face
          * @return True if the block face is indirectly powered.
          */
-        bool isBlockFaceIndirectlyPowered(BlockFace face);
+        bool isBlockFaceIndirectlyPowered(BlockFaces face);
 
         /**
          * Returns the redstone power being provided to this block face
          *
-         * @param face the face of the block to query or BlockFace.SELF for the
+         * @param face the face of the block to query or BlockFaces.SELF for the
          *     block itself
          * @return The power level.
          */
-        int getBlockPower(BlockFace face);
+        int getBlockPower(BlockFaces face);
 
         /**
          * Returns the redstone power being provided to this block

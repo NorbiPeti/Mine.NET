@@ -1,7 +1,7 @@
 namespace Mine.NET.material;
 
 import org.bukkit.Material;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 
 /**
  * Represents an ender chest
@@ -17,7 +17,7 @@ public class EnderChest : DirectionalContainer {
      *
      * @param direction the direction the ender chest's lid opens towards
      */
-    public EnderChest(BlockFace direction) {
+    public EnderChest(BlockFaces direction) {
         this();
         setFacingDirection(direction);
     }

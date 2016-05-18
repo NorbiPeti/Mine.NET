@@ -12,13 +12,13 @@ namespace Mine.NET.Event.hanging
         private bool cancelled;
         private readonly Player player;
         private readonly Block block;
-        private readonly BlockFace blockFace;
+        private readonly BlockFaces BlockFaces;
 
-        public HangingPlaceEvent(Hanging hanging, Player player, Block block, BlockFace blockFace) : base(hanging)
+        public HangingPlaceEvent(Hanging hanging, Player player, Block block, BlockFaces BlockFaces) : base(hanging)
         {
             this.player = player;
             this.block = block;
-            this.blockFace = blockFace;
+            this.BlockFaces = BlockFaces;
         }
 
         /**
@@ -46,9 +46,9 @@ namespace Mine.NET.Event.hanging
          *
          * @return the face of the block that the hanging entity was placed on
          */
-        public BlockFace getBlockFace()
+        public BlockFaces getBlockFace()
         {
-            return blockFace;
+            return BlockFaces;
         }
 
         public bool isCancelled()

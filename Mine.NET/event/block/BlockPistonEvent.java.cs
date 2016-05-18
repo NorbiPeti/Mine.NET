@@ -8,9 +8,9 @@ namespace Mine.NET.Event.block
     public abstract class BlockPistonEvent : BlockEvent, Cancellable
     {
         private bool cancelled;
-        private readonly BlockFace direction;
+        private readonly BlockFaces direction;
 
-        public BlockPistonEvent(Block block, BlockFace direction) : base(block)
+        public BlockPistonEvent(Block block, BlockFaces direction) : base(block)
         {
             this.direction = direction;
         }
@@ -40,7 +40,7 @@ namespace Mine.NET.Event.block
          *
          * @return direction of the piston
          */
-        public BlockFace getDirection()
+        public BlockFaces getDirection()
         {
             // Both are meh!
             // return ((PistonBaseMaterial) block.getType().getNewData(block.getData())).getFacing();

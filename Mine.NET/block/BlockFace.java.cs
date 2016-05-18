@@ -1,56 +1,61 @@
 namespace Mine.NET.block
 {
+    public enum BlockFaces
+    {
+        NORTH,
+        EAST,
+        SOUTH,
+        WEST,
+        UP,
+        DOWN,
+        NORTH_EAST,
+        NORTH_WEST,
+        SOUTH_EAST,
+        SOUTH_WEST,
+        WEST_NORTH_WEST,
+        NORTH_NORTH_WEST,
+        NORTH_NORTH_EAST,
+        EAST_NORTH_EAST,
+        EAST_SOUTH_EAST,
+        SOUTH_SOUTH_EAST,
+        SOUTH_SOUTH_WEST,
+        WEST_SOUTH_WEST,
+        SELF
+    }
+
     /**
      * Represents the face of a block
      */
-    public class BlockFace
+    public static class BlockFace
     {
-        public static readonly BlockFace NORTH = new BlockFace(0, 0, -1);
-        public static readonly BlockFace EAST = new BlockFace(1, 0, 0);
-        public static readonly BlockFace SOUTH = new BlockFace(0, 0, 1);
-        public static readonly BlockFace WEST = new BlockFace(-1, 0, 0);
-        public static readonly BlockFace UP = new BlockFace(0, 1, 0);
-        public static readonly BlockFace DOWN = new BlockFace(0, -1, 0);
-        public static readonly BlockFace NORTH_EAST = new BlockFace(NORTH, EAST);
-        public static readonly BlockFace NORTH_WEST = new BlockFace(NORTH, WEST);
-        public static readonly BlockFace SOUTH_EAST = new BlockFace(SOUTH, EAST);
-        public static readonly BlockFace SOUTH_WEST = new BlockFace(SOUTH, WEST);
-        public static readonly BlockFace WEST_NORTH_WEST = new BlockFace(WEST, NORTH_WEST);
-        public static readonly BlockFace NORTH_NORTH_WEST = new BlockFace(NORTH, NORTH_WEST);
-        public static readonly BlockFace NORTH_NORTH_EAST = new BlockFace(NORTH, NORTH_EAST);
-        public static readonly BlockFace EAST_NORTH_EAST = new BlockFace(EAST, NORTH_EAST);
-        public static readonly BlockFace EAST_SOUTH_EAST = new BlockFace(EAST, SOUTH_EAST);
-        public static readonly BlockFace SOUTH_SOUTH_EAST = new BlockFace(SOUTH, SOUTH_EAST);
-        public static readonly BlockFace SOUTH_SOUTH_WEST = new BlockFace(SOUTH, SOUTH_WEST);
-        public static readonly BlockFace WEST_SOUTH_WEST = new BlockFace(WEST, SOUTH_WEST);
-        public static readonly BlockFace SELF = new BlockFace(0, 0, 0);
-
-        private readonly int modX;
-        private readonly int modY;
-        private readonly int modZ;
-
-        private BlockFace(int modX, int modY, int modZ)
-        {
-            this.modX = modX;
-            this.modY = modY;
-            this.modZ = modZ;
-        }
-
-        private BlockFace(BlockFace face1, BlockFace face2)
-        {
-            this.modX = face1.getModX() + face2.getModX();
-            this.modY = face1.getModY() + face2.getModY();
-            this.modZ = face1.getModZ() + face2.getModZ();
-        }
-
         /**
          * Get the amount of X-coordinates to modify to get the represented block
          *
          * @return Amount of X-coordinates to modify
          */
-        public int getModX()
+        public static int getModX(BlockFaces face)
         {
-            return modX;
+            switch (face)
+            {
+                case BlockFaces.EAST:
+                case BlockFaces.NORTH_EAST:
+                case BlockFaces.NORTH_NORTH_EAST:
+                case BlockFaces.EAST_NORTH_EAST:
+                case BlockFaces.EAST_SOUTH_EAST:
+                case BlockFaces.SOUTH_EAST:
+                case BlockFaces.SOUTH_SOUTH_EAST:
+                    return 1;
+                case BlockFaces.WEST:
+                case BlockFaces.NORTH_NORTH_WEST:
+                case BlockFaces.NORTH_WEST:
+                case BlockFaces.SOUTH_SOUTH_WEST:
+                case BlockFaces.SOUTH_WEST:
+                case BlockFaces.WEST_NORTH_WEST:
+                case BlockFaces.WEST_SOUTH_WEST:
+                    return -1;
+                default:
+                    return 0;
+            }
         }
 
         /**
@@ -58,9 +63,17 @@ namespace Mine.NET.block
          *
          * @return Amount of Y-coordinates to modify
          */
-        public int getModY()
+        public static int getModY(BlockFaces face)
         {
-            return modY;
+            switch (face)
+            {
+                case BlockFaces.UP:
+                    return 1;
+                case BlockFaces.DOWN:
+                    return -1;
+                default:
+                    return 0;
+            }
         }
 
         /**
@@ -68,60 +81,72 @@ namespace Mine.NET.block
          *
          * @return Amount of Z-coordinates to modify
          */
-        public int getModZ()
+        public static int getModZ(BlockFaces face)
         {
-            return modZ;
+            switch (face)
+            {
+                case BlockFaces.SOUTH:
+                case BlockFaces.EAST_SOUTH_EAST:
+                case BlockFaces.SOUTH_EAST:
+                case BlockFaces.SOUTH_SOUTH_EAST:
+                case BlockFaces.SOUTH_SOUTH_WEST:
+                case BlockFaces.SOUTH_WEST:
+                case BlockFaces.WEST_SOUTH_WEST:
+                    return 1;
+                case BlockFaces.NORTH:
+                case BlockFaces.EAST_NORTH_EAST:
+                case BlockFaces.NORTH_EAST:
+                case BlockFaces.NORTH_NORTH_EAST:
+                case BlockFaces.NORTH_NORTH_WEST:
+                case BlockFaces.NORTH_WEST:
+                case BlockFaces.WEST_NORTH_WEST:
+                    return -1;
+                default:
+                    return 0;
+            }
         }
 
-        public BlockFace getOppositeFace()
+        public static BlockFaces getOppositeFace(BlockFaces face)
         {
-            if (this == NORTH)
-                return BlockFace.SOUTH;
-            else if (this == SOUTH)
-                return BlockFace.NORTH;
-            else if (this == EAST)
-                return BlockFace.WEST;
-            else if (this == WEST)
-                return BlockFace.EAST;
-            else if (this == UP)
-                return BlockFace.DOWN;
-            else if (this == DOWN)
-                return BlockFace.UP;
-            else if (this == NORTH_EAST)
-                return BlockFace.SOUTH_WEST;
-            else if (this == NORTH_WEST)
-                return BlockFace.SOUTH_EAST;
-            else if (this == SOUTH_EAST)
-                return BlockFace.NORTH_WEST;
-            else if (this == SOUTH_WEST)
-                return BlockFace.NORTH_EAST;
-            else if (this == WEST_NORTH_WEST)
-                return BlockFace.EAST_SOUTH_EAST;
-            else if (this == NORTH_NORTH_WEST)
-                return BlockFace.SOUTH_SOUTH_EAST;
-            else if (this == NORTH_NORTH_EAST)
-                return BlockFace.SOUTH_SOUTH_WEST;
-            else if (this == EAST_NORTH_EAST)
-                return BlockFace.WEST_SOUTH_WEST;
-            else if (this == EAST_SOUTH_EAST)
-                return BlockFace.WEST_NORTH_WEST;
-            else if (this == SOUTH_SOUTH_EAST)
-                return BlockFace.NORTH_NORTH_WEST;
-            else if (this == SOUTH_SOUTH_WEST)
-                return BlockFace.NORTH_NORTH_EAST;
-            else if (this == WEST_SOUTH_WEST)
-                return BlockFace.EAST_NORTH_EAST;
-            else if (this == SELF)
-                return BlockFace.SELF;
-            return BlockFace.SELF;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (GetType() != obj.GetType())
-                return base.Equals(obj);
-            BlockFace other = (BlockFace)obj;
-            return modX == other.modX && modY == other.modY && modZ == other.modZ;
+            if (face == BlockFaces.NORTH)
+                return BlockFaces.SOUTH;
+            else if (face == BlockFaces.SOUTH)
+                return BlockFaces.NORTH;
+            else if (face == BlockFaces.EAST)
+                return BlockFaces.WEST;
+            else if (face == BlockFaces.WEST)
+                return BlockFaces.EAST;
+            else if (face == BlockFaces.UP)
+                return BlockFaces.DOWN;
+            else if (face == BlockFaces.DOWN)
+                return BlockFaces.UP;
+            else if (face == BlockFaces.NORTH_EAST)
+                return BlockFaces.SOUTH_WEST;
+            else if (face == BlockFaces.NORTH_WEST)
+                return BlockFaces.SOUTH_EAST;
+            else if (face == BlockFaces.SOUTH_EAST)
+                return BlockFaces.NORTH_WEST;
+            else if (face == BlockFaces.SOUTH_WEST)
+                return BlockFaces.NORTH_EAST;
+            else if (face == BlockFaces.WEST_NORTH_WEST)
+                return BlockFaces.EAST_SOUTH_EAST;
+            else if (face == BlockFaces.NORTH_NORTH_WEST)
+                return BlockFaces.SOUTH_SOUTH_EAST;
+            else if (face == BlockFaces.NORTH_NORTH_EAST)
+                return BlockFaces.SOUTH_SOUTH_WEST;
+            else if (face == BlockFaces.EAST_NORTH_EAST)
+                return BlockFaces.WEST_SOUTH_WEST;
+            else if (face == BlockFaces.EAST_SOUTH_EAST)
+                return BlockFaces.WEST_NORTH_WEST;
+            else if (face == BlockFaces.SOUTH_SOUTH_EAST)
+                return BlockFaces.NORTH_NORTH_WEST;
+            else if (face == BlockFaces.SOUTH_SOUTH_WEST)
+                return BlockFaces.NORTH_NORTH_EAST;
+            else if (face == BlockFaces.WEST_SOUTH_WEST)
+                return BlockFaces.EAST_NORTH_EAST;
+            else if (face == BlockFaces.SELF)
+                return BlockFaces.SELF;
+            return BlockFaces.SELF;
         }
     }
 }

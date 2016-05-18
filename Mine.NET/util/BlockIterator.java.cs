@@ -5,7 +5,7 @@ import static org.bukkit.util.NumberConversions.*;
 import org.bukkit.World;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockFaces;
 import org.bukkit.entity.LivingEntity;
 
 import java.util.IEnumerator;
@@ -34,9 +34,9 @@ public class BlockIterator : IEnumerator<Block> {
     private int secondStep;
     private int thirdStep;
 
-    private BlockFace mainFace;
-    private BlockFace secondFace;
-    private BlockFace thirdFace;
+    private BlockFaces mainFace;
+    private BlockFaces secondFace;
+    private BlockFaces thirdFace;
 
     /**
      * Constructs the BlockIterator
@@ -179,16 +179,16 @@ public class BlockIterator : IEnumerator<Block> {
         return a.getX() == b.getX() && a.getY() == b.getY() && a.getZ() == b.getZ();
     }
 
-    private BlockFace getXFace(Vector direction) {
-        return ((direction.getX() > 0) ? BlockFace.EAST : BlockFace.WEST);
+    private BlockFaces getXFace(Vector direction) {
+        return ((direction.getX() > 0) ? BlockFaces.EAST : BlockFaces.WEST);
     }
 
-    private BlockFace getYFace(Vector direction) {
-        return ((direction.getY() > 0) ? BlockFace.UP : BlockFace.DOWN);
+    private BlockFaces getYFace(Vector direction) {
+        return ((direction.getY() > 0) ? BlockFaces.UP : BlockFaces.DOWN);
     }
 
-    private BlockFace getZFace(Vector direction) {
-        return ((direction.getZ() > 0) ? BlockFace.SOUTH : BlockFace.NORTH);
+    private BlockFaces getZFace(Vector direction) {
+        return ((direction.getZ() > 0) ? BlockFaces.SOUTH : BlockFaces.NORTH);
     }
 
     private double getXLength(Vector direction) {
