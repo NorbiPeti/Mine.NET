@@ -53,7 +53,7 @@ public sealed class SimplePluginManager : PluginManager {
 
         Pattern[] patterns = instance.getPluginFileFilters();
 
-        synchronized (this) {
+        (this) {
             foreach (Pattern pattern  in  patterns) {
                 fileAssociations.Add(pattern, instance);
             }
@@ -276,7 +276,7 @@ public sealed class SimplePluginManager : PluginManager {
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public synchronized Plugin loadPlugin(FileInfo file) {
+    public Plugin loadPlugin(FileInfo file) {
         if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         checkUpdate(file);
@@ -322,11 +322,11 @@ public sealed class SimplePluginManager : PluginManager {
      * @param name Name of the plugin to check
      * @return Plugin if it exists, otherwise null
      */
-    public synchronized Plugin getPlugin(String name) {
+    public Plugin getPlugin(String name) {
         return lookupNames[name.replace(' ', '_']);
     }
 
-    public synchronized Plugin[] getPlugins() {
+    public Plugin[] getPlugins() {
         return plugins.toArray(new Plugin[0]);
     }
 
@@ -419,7 +419,7 @@ public sealed class SimplePluginManager : PluginManager {
     }
 
     public void clearPlugins() {
-        synchronized (this) {
+        (this) {
             disablePlugins();
             plugins.clear();
             lookupNames.clear();
@@ -441,14 +441,14 @@ public sealed class SimplePluginManager : PluginManager {
     public void callEvent(Event event) {
         if (event.isAsynchronous()) {
             if (Thread.holdsLock(this)) {
-                throw new InvalidOperationException(event.getEventName() + " cannot be triggered asynchronously from inside synchronized code.");
+                throw new InvalidOperationException(event.getEventName() + " cannot be triggered asynchronously from inside code.");
             }
             if (server.isPrimaryThread()) {
                 throw new InvalidOperationException(event.getEventName() + " cannot be triggered asynchronously from primary server thread.");
             }
             fireEvent(event);
         } else {
-            synchronized (this) {
+            (this) {
                 fireEvent(event);
             }
         }

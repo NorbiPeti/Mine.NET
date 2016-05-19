@@ -1041,8 +1041,8 @@ namespace Mine.NET
          * server.
          * <p>
          * <b>Note:</b> this method should not be used to indicate the current
-         * synchronized state of the runtime. A current thread matching the main
-         * thread indicates that it is synchronized, but a mismatch <b>does not
+         * state of the runtime. A current thread matching the main
+         * thread indicates that it is, but a mismatch <b>does not
          * preclude</b> the same assumption.
          *
          * @return true if the current thread matches the expected primary thread,

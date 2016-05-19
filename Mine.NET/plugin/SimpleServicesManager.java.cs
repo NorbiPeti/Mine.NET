@@ -21,7 +21,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     public <T> void register(Class<T> service, T provider, Plugin plugin, ServicePriority priority) {
         RegisteredServiceProvider<T> registeredProvider = null;
-        synchronized (providers) {
+        (providers) {
             List<RegisteredServiceProvider<?>> registered = providers[service];
             if (registered == null) {
                 registered = new List<RegisteredServiceProvider<?>>();
@@ -49,7 +49,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     public void unregisterAll(Plugin plugin) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        synchronized (providers) {
+        (providers) {
             IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
@@ -91,7 +91,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     public void unregister(Class<?> service, Object provider) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        synchronized (providers) {
+        (providers) {
             IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
@@ -138,7 +138,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     public void unregister(Object provider) {
         List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        synchronized (providers) {
+        (providers) {
             IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
 
             try {
@@ -181,7 +181,7 @@ public class SimpleServicesManager : ServicesManager {
      * @return provider or null
      */
     public <T> T load(Class<T> service) {
-        synchronized (providers) {
+        (providers) {
             List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
@@ -203,7 +203,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     @SuppressWarnings("unchecked")
     public <T> RegisteredServiceProvider<T> getRegistration(Class<T> service) {
-        synchronized (providers) {
+        (providers) {
             List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
@@ -223,7 +223,7 @@ public class SimpleServicesManager : ServicesManager {
      */
     public List<RegisteredServiceProvider<?>> getRegistrations(Plugin plugin) {
         ImmutableList.Builder<RegisteredServiceProvider<?>> ret = ImmutableList.<RegisteredServiceProvider<?>>builder();
-        synchronized (providers) {
+        (providers) {
             foreach (List<RegisteredServiceProvider<?>> registered  in  providers.values()) {
                 foreach (RegisteredServiceProvider<?> provider  in  registered) {
                     if (provider.getPlugin().equals(plugin)) {
@@ -246,7 +246,7 @@ public class SimpleServicesManager : ServicesManager {
     @SuppressWarnings("unchecked")
     public <T> List<RegisteredServiceProvider<T>> getRegistrations(Class<T> service) {
         ImmutableList.Builder<RegisteredServiceProvider<T>> ret;
-        synchronized (providers) {
+        (providers) {
             List<RegisteredServiceProvider<?>> registered = providers[service];
 
             if (registered == null) {
@@ -270,7 +270,7 @@ public class SimpleServicesManager : ServicesManager {
      * @return a copy of the set of known services
      */
     public HashSet<Class<?>> getKnownServices() {
-        synchronized (providers) {
+        (providers) {
             return ImmutableSet.<Class<?>>copyOf(providers.keySet());
         }
     }
@@ -283,7 +283,7 @@ public class SimpleServicesManager : ServicesManager {
      * @return true if and only if there are registered providers
      */
     public <T> bool isProvidedFor(Class<T> service) {
-        synchronized (providers) {
+        (providers) {
             return providers.containsKey(service);
         }
     }

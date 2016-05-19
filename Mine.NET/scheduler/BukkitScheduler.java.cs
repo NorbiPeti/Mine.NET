@@ -133,7 +133,7 @@ public interface BukkitScheduler {
      * @param task Task to be executed
      * @return Future Future object related to the task
      */
-    public <T> Future<T> callSyncMethod(Plugin plugin, Callable<T> task);
+    public <T> Future<T> callSyncMethod(Plugin plugin, Func<T> task);
 
     /**
      * Removes task from scheduler.

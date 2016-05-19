@@ -1,36 +1,44 @@
-namespace Mine.NET.metadata{
+using Mine.NET.plugin;
+using System;
 
-/**
- * A FixedMetadataValue is a special case metadata item that contains the same
- * value forever after initialization. Invalidating a FixedMetadataValue has
- * no effect.
- * <p>
- * This class : LazyMetadataValue for historical reasons, even though it
- * overrides all the implementation methods. it is possible that in the future
- * that the inheritance hierarchy may change.
- */
-public class FixedMetadataValue : LazyMetadataValue {
-
+namespace Mine.NET.metadata
+{
     /**
-     * Store the internal value that is represented by this fixed value.
+     * A FixedMetadataValue is a special case metadata item that contains the same
+     * value forever after initialization. Invalidating a FixedMetadataValue has
+     * no effect.
+     * <p>
+     * This class : LazyMetadataValue for historical reasons, even though it
+     * overrides all the implementation methods. it is possible that in the future
+     * that the inheritance hierarchy may change.
      */
-    private readonly Object internalValue;
+    public class FixedMetadataValue : LazyMetadataValue
+    {
 
-    /**
-     * Initializes a FixedMetadataValue with an Object
-     *
-     * @param owningPlugin the {@link Plugin} that created this metadata value
-     * @param value the value assigned to this metadata value
-     */
-    public FixedMetadataValue(Plugin owningPlugin, readonly Object value) : base(owningPlugin) {
-        this.internalValue = value;
-    }
+        /**
+         * Store the internal value that is represented by this fixed value.
+         */
+        private readonly Object internalValue;
 
-    public override void invalidate() {
+        /**
+         * Initializes a FixedMetadataValue with an Object
+         *
+         * @param owningPlugin the {@link Plugin} that created this metadata value
+         * @param value the value assigned to this metadata value
+         */
+        public FixedMetadataValue(Plugin owningPlugin, Object value) : base(owningPlugin)
+        {
+            this.internalValue = value;
+        }
 
-    }
+        public override void invalidate()
+        {
 
-    public override Object value() {
-        return internalValue;
+        }
+
+        public override Object value()
+        {
+            return internalValue;
+        }
     }
 }

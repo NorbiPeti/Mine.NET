@@ -36,7 +36,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
         readonly FileInfo parentFile = file.getParentFile();
         readonly FileInfo dataFolder = new FileInfo(parentFile, description.getName());
-        @SuppressWarnings("deprecation")
+        
         readonly FileInfo oldDataFolder = new FileInfo(parentFile, description.getRawName());
 
         // Found old data folder

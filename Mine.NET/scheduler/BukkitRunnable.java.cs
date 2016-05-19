@@ -11,7 +11,7 @@ public abstract class BukkitRunnable : Runnable {
      *
      * @throws InvalidOperationException if task was not scheduled yet
      */
-    public synchronized void cancel() {
+    public void cancel() {
         Bukkit.getScheduler().cancelTask(getTaskId());
     }
 
@@ -24,7 +24,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTask(Plugin, Runnable)
      */
-    public synchronized BukkitTask runTask(Plugin plugin) {
+    public BukkitTask runTask(Plugin plugin) {
         checkState();
         return setupId(Bukkit.getScheduler().runTask(plugin, (Runnable) this));
     }
@@ -41,7 +41,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskAsynchronously(Plugin, Runnable)
      */
-    public synchronized BukkitTask runTaskAsynchronously(Plugin plugin)  {
+    public BukkitTask runTaskAsynchronously(Plugin plugin)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskAsynchronously(plugin, (Runnable) this));
     }
@@ -56,7 +56,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskLater(Plugin, Runnable, long)
      */
-    public synchronized BukkitTask runTaskLater(Plugin plugin, long delay)  {
+    public BukkitTask runTaskLater(Plugin plugin, long delay)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskLater(plugin, (Runnable) this, delay));
     }
@@ -75,7 +75,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskLaterAsynchronously(Plugin, Runnable, long)
      */
-    public synchronized BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay)  {
+    public BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, (Runnable) this, delay));
     }
@@ -92,7 +92,7 @@ public abstract class BukkitRunnable : Runnable {
      * @throws InvalidOperationException if this was already scheduled
      * @see BukkitScheduler#runTaskTimer(Plugin, Runnable, long, long)
      */
-    public synchronized BukkitTask runTaskTimer(Plugin plugin, long delay, long period)  {
+    public BukkitTask runTaskTimer(Plugin plugin, long delay, long period)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskTimer(plugin, (Runnable) this, delay, period));
     }
@@ -114,7 +114,7 @@ public abstract class BukkitRunnable : Runnable {
      * @see BukkitScheduler#runTaskTimerAsynchronously(Plugin, Runnable, long,
      *     long)
      */
-    public synchronized BukkitTask runTaskTimerAsynchronously(Plugin plugin, long delay, long period)  {
+    public BukkitTask runTaskTimerAsynchronously(Plugin plugin, long delay, long period)  {
         checkState();
         return setupId(Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, (Runnable) this, delay, period));
     }
@@ -125,7 +125,7 @@ public abstract class BukkitRunnable : Runnable {
      * @return the task id that this runnable was scheduled as
      * @throws InvalidOperationException if task was not scheduled yet
      */
-    public synchronized int getTaskId() {
+    public int getTaskId() {
         readonly int id = taskId;
         if (id == -1) {
             throw new InvalidOperationException("Not scheduled yet");

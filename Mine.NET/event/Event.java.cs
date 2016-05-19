@@ -54,7 +54,7 @@ namespace Mine.NET.Event
         public abstract HandlerList getHandlers();
 
         /**
-         * Any custom event that should not by synchronized with other events must
+         * Any custom event that should not by with other events must
          * use the specific constructor. These are the caveats of using an
          * asynchronous event:
          * <ul>

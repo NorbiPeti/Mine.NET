@@ -1,5 +1,8 @@
-namespace Mine.NET.metadata{
+using Mine.NET.plugin;
+using System;
 
+namespace Mine.NET.metadata
+{
 /**
  * Optional base class for facilitating MetadataValue implementations.
  * <p>

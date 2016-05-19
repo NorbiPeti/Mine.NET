@@ -12,7 +12,7 @@ public class StandardMessenger : Messenger {
     private readonly Object outgoingLock = new Object();
 
     private void addToOutgoing(Plugin plugin, String channel) {
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<Plugin> plugins = outgoingByChannel[channel];
             HashSet<String> channels = outgoingByPlugin[plugin];
 
@@ -32,7 +32,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void removeFromOutgoing(Plugin plugin, String channel) {
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<Plugin> plugins = outgoingByChannel[channel];
             HashSet<String> channels = outgoingByPlugin[plugin];
 
@@ -55,7 +55,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void removeFromOutgoing(Plugin plugin) {
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<String> channels = outgoingByPlugin[plugin];
 
             if (channels != null) {
@@ -71,7 +71,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void addToIncoming(PluginMessageListenerRegistration registration) {
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel[registration.getChannel(]);
 
             if (registrations == null) {
@@ -101,7 +101,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void removeFromIncoming(PluginMessageListenerRegistration registration) {
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel[registration.getChannel(]);
 
             if (registrations != null) {
@@ -125,7 +125,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void removeFromIncoming(Plugin plugin, String channel) {
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -141,7 +141,7 @@ public class StandardMessenger : Messenger {
     }
 
     private void removeFromIncoming(Plugin plugin) {
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -240,7 +240,7 @@ public class StandardMessenger : Messenger {
     }
 
     public HashSet<String> getOutgoingChannels() {
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<String> keys = outgoingByChannel.keySet();
             return ImmutableSet.copyOf(keys);
         }
@@ -251,7 +251,7 @@ public class StandardMessenger : Messenger {
             throw new ArgumentException("Plugin cannot be null");
         }
 
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<String> channels = outgoingByPlugin[plugin];
 
             if (channels != null) {
@@ -263,7 +263,7 @@ public class StandardMessenger : Messenger {
     }
 
     public HashSet<String> getIncomingChannels() {
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<String> keys = incomingByChannel.keySet();
             return ImmutableSet.copyOf(keys);
         }
@@ -274,7 +274,7 @@ public class StandardMessenger : Messenger {
             throw new ArgumentException("Plugin cannot be null");
         }
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -296,7 +296,7 @@ public class StandardMessenger : Messenger {
             throw new ArgumentException("Plugin cannot be null");
         }
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -310,7 +310,7 @@ public class StandardMessenger : Messenger {
     public HashSet<PluginMessageListenerRegistration> getIncomingChannelRegistrations(String channel) {
         validateChannel(channel);
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByChannel[channel];
 
             if (registrations != null) {
@@ -327,7 +327,7 @@ public class StandardMessenger : Messenger {
         }
         validateChannel(channel);
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -351,7 +351,7 @@ public class StandardMessenger : Messenger {
             throw new ArgumentException("Registration cannot be null");
         }
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[registration.getPlugin(]);
 
             if (registrations != null) {
@@ -368,7 +368,7 @@ public class StandardMessenger : Messenger {
         }
         validateChannel(channel);
 
-        synchronized (incomingLock) {
+        (incomingLock) {
             HashSet<PluginMessageListenerRegistration> registrations = incomingByPlugin[plugin];
 
             if (registrations != null) {
@@ -389,7 +389,7 @@ public class StandardMessenger : Messenger {
         }
         validateChannel(channel);
 
-        synchronized (outgoingLock) {
+        (outgoingLock) {
             HashSet<String> channels = outgoingByPlugin[plugin];
 
             if (channels != null) {

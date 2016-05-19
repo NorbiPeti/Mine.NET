@@ -79,7 +79,7 @@ sealed class PluginClassLoader : URLClassLoader {
         return classes.keySet();
     }
 
-    synchronized void initialize(JavaPlugin javaPlugin) {
+    void initialize(JavaPlugin javaPlugin) {
         if(javaPlugin==null) throw new ArgumentNullException("Initializing plugin cannot be null");
         if(javaPlugin.getClass().getClassLoader() == this) throw new ArgumentException("Cannot initialize plugin outside of this class loader");
         if (this.plugin != null || this.pluginInit != null) {

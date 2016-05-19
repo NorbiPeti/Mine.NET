@@ -152,7 +152,7 @@ public class PermissibleBase : Permissible {
         }
     }
 
-    public synchronized void clearPermissions() {
+    public void clearPermissions() {
         HashSet<String> perms = permissions.keySet();
 
         foreach (String name  in  perms) {

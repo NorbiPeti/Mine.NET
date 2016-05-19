@@ -598,7 +598,7 @@ namespace Mine.NET.entity
 
         /**
          * Sets the current time on the player's client. When relative is true the
-         * player's time will be kept synchronized to its world time with the
+         * player's time will be kept to its world time with the
          * specified offset.
          * <p>
          * When using non relative time the player's time will stay fixed at the
@@ -638,7 +638,7 @@ namespace Mine.NET.entity
         bool isPlayerTimeRelative();
 
         /**
-         * Restores the normal condition where the player's time is synchronized
+         * Restores the normal condition where the player's time is
          * with the server time.
          * <p>
          * Equivalent to calling setPlayerTime(0, true).

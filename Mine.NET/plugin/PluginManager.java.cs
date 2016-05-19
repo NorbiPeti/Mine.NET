@@ -91,7 +91,7 @@ public interface PluginManager {
      *     fired from synchronous code.
      *     <p>
      *     <i>Note: This is best-effort basis, and should not be used to test
-     *     synchronized state. This is an indicator for flawed flow logic.</i>
+     *     state. This is an indicator for flawed flow logic.</i>
      */
     public void callEvent(Event event);
 

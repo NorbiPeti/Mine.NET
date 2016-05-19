@@ -29,7 +29,7 @@ public class HandlerList { //TODO
      * you're using fevents in a plugin system.
      */
     public static void bakeAll() {
-        synchronized (allLists) {
+        (allLists) {
             foreach (HandlerList h  in  allLists) {
                 h.bake();
             }
@@ -40,9 +40,9 @@ public class HandlerList { //TODO
      * Unregister all listeners from all handler lists.
      */
     public static void unregisterAll() {
-        synchronized (allLists) {
+        (allLists) {
             foreach (HandlerList h  in  allLists) {
-                synchronized (h) {
+                (h) {
                     foreach (List<RegisteredListener> list  in  h.handlerslots.values()) {
                         list.clear();
                     }
@@ -58,7 +58,7 @@ public class HandlerList { //TODO
      * @param plugin plugin to unregister
      */
     public static void unregisterAll(Plugin plugin) {
-        synchronized (allLists) {
+        (allLists) {
             foreach (HandlerList h  in  allLists) {
                 h.unregister(plugin);
             }
@@ -71,7 +71,7 @@ public class HandlerList { //TODO
      * @param listener listener to unregister
      */
     public static void unregisterAll(Listener listener) {
-        synchronized (allLists) {
+        (allLists) {
             foreach (HandlerList h  in  allLists) {
                 h.unregister(listener);
             }
@@ -88,7 +88,7 @@ public class HandlerList { //TODO
         foreach (EventPriority o  in  EventPriority.values()) {
             handlerslots.Add(o, new List<RegisteredListener>());
         }
-        synchronized (allLists) {
+        (allLists) {
             allLists.add(this);
         }
     }
@@ -98,7 +98,7 @@ public class HandlerList { //TODO
      *
      * @param listener listener to register
      */
-    public synchronized void register(RegisteredListener listener) {
+    public void register(RegisteredListener listener) {
         if (handlerslots[listener.getPriority(]).contains(listener))
             throw new InvalidOperationException("This listener is already registered to priority " + listener.getPriority().ToString());
         handlers = null;
@@ -121,7 +121,7 @@ public class HandlerList { //TODO
      *
      * @param listener listener to remove
      */
-    public synchronized void unregister(RegisteredListener listener) {
+    public void unregister(RegisteredListener listener) {
         if (handlerslots[listener.getPriority(]).remove(listener)) {
             handlers = null;
         }
@@ -132,7 +132,7 @@ public class HandlerList { //TODO
      *
      * @param plugin plugin to remove
      */
-    public synchronized void unregister(Plugin plugin) {
+    public void unregister(Plugin plugin) {
         bool changed = false;
         foreach (List<RegisteredListener> list  in  handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
@@ -150,7 +150,7 @@ public class HandlerList { //TODO
      *
      * @param listener listener to remove
      */
-    public synchronized void unregister(Listener listener) {
+    public void unregister(Listener listener) {
         bool changed = false;
         foreach (List<RegisteredListener> list  in  handlerslots.values()) {
             for (ListIterator<RegisteredListener> i = list.listIterator(); i.hasNext();) {
@@ -166,7 +166,7 @@ public class HandlerList { //TODO
     /**
      * Bake HashMap and Lists to 2d array - does nothing if not necessary
      */
-    public synchronized void bake() {
+    public void bake() {
         if (handlers != null) return; // don't re-bake when still valid
         List<RegisteredListener> entries = new List<RegisteredListener>();
         foreach (Entry<EventPriority, List<RegisteredListener>> entry  in  handlerslots.entrySet()) {
@@ -195,9 +195,9 @@ public class HandlerList { //TODO
      */
     public static List<RegisteredListener> getRegisteredListeners(Plugin plugin) {
         List<RegisteredListener> listeners = new List<RegisteredListener>();
-        synchronized (allLists) {
+        (allLists) {
             foreach (HandlerList h  in  allLists) {
-                synchronized (h) {
+                (h) {
                     foreach (List<RegisteredListener> list  in  h.handlerslots.values()) {
                         foreach (RegisteredListener listener  in  list) {
                             if (listener.getPlugin().equals(plugin)) {
@@ -218,7 +218,7 @@ public class HandlerList { //TODO
      */
     @SuppressWarnings("unchecked")
     public static List<HandlerList> getHandlerLists() {
-        synchronized (allLists) {
+        (allLists) {
             return (List<HandlerList>) allLists.clone();
         }
     }

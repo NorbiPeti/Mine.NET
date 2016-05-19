@@ -127,14 +127,14 @@ public abstract class JavaPlugin : PluginBase {
      * @throws ArgumentException if file is null
      * @see ClassLoader#getResourceAsStream(String)
      */
-    @SuppressWarnings("deprecation")
+    
     protected readonly Reader getTextResource(String file) {
         readonly InputStream in = getResource(file);
 
         return in == null ? null : new InputStreamReader(in, Charsets.UTF_8);
     }
 
-    @SuppressWarnings("deprecation")
+    
     public override void reloadConfig() {
         newConfig = YamlConfiguration.loadConfiguration(configFile);
 
