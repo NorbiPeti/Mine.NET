@@ -4,7 +4,7 @@ namespace Mine.NET.plugin.messaging;
  * Thrown if a Plugin attempts to send a message on an unregistered channel.
  */
 @SuppressWarnings("serial")
-public class ChannelNotRegisteredException : RuntimeException {
+public class ChannelNotRegisteredException : AggregateException {
     public ChannelNotRegisteredException() : this("Attempted to send a plugin message through an unregistered channel.") {
     }
 

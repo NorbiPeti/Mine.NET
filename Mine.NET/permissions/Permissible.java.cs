@@ -1,3 +1,5 @@
+using Mine.NET.permissions;
+using Mine.NET.plugin;
 using System;
 using System.Collections.Generic;
 

@@ -290,7 +290,7 @@ public class BlockIterator : IEnumerator<Block> {
     }
 
     public void remove() {
-        throw new UnsupportedOperationException("[BlockIterator] doesn't support block removal");
+        throw new InvalidOperationException("[BlockIterator] doesn't support block removal");
     }
 
     private void scan() {

@@ -120,7 +120,7 @@ namespace Mine.NET.Event.player
          * on access. Any listener accessing the returned set should be aware that
          * it may reduce performance for a lazy set implementation. Listeners
          * should be aware that modifying the list may throw {@link
-         * UnsupportedOperationException} if the event caller provides an
+         * InvalidOperationException} if the event caller provides an
          * unmodifiable set.
          *
          * [Obsolete] This method is provided for backward compatibility with no

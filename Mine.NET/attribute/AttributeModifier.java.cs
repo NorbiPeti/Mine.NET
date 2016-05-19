@@ -73,7 +73,7 @@ namespace Mine.NET.attribute
         }
 
         public static AttributeModifier deserialize(Dictionary<String, Object> args) {
-            return new AttributeModifier((Guid)args["uuid"], (String)args["name"], NumberConversions.toDouble(args["amount"]), Enum.GetValues(typeof(Operation))[NumberConversions.toInt(args["operation"])]);
+            return new AttributeModifier((Guid)args["uuid"], (String)args["name"], NumberConversions.toDouble(args["amount"]), Enum.GetValues(typeof(Operation))[Convert.ToInt32(args["operation"])]);
         }
 
         /**

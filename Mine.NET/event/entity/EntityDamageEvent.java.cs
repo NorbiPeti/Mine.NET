@@ -60,7 +60,7 @@ namespace Mine.NET.Event.entity
          * @param damage the scalar value of the damage's modifier
          * @see #getFinalDamage()
          * @throws ArgumentException if type is null
-         * @throws UnsupportedOperationException if the caller does not support
+         * @throws InvalidOperationException if the caller does not support
          *     the particular DamageModifier, or to rephrase, when {@link
          *     #isApplicable(DamageModifier)} returns false
          */
@@ -89,7 +89,7 @@ namespace Mine.NET.Event.entity
         /**
          * This checks to see if a particular modifier is valid for this event's
          * caller, such that, {@link #setDamage(DamageModifier, double)} will not
-         * throw an {@link UnsupportedOperationException}.
+         * throw an {@link InvalidOperationException}.
          * <p>
          * {@link DamageModifier#BASE} is always applicable.
          *

@@ -5,7 +5,7 @@ namespace Mine.NET.plugin;
  * enabled
  */
 @SuppressWarnings("serial")
-public class IllegalPluginAccessException : RuntimeException {
+public class IllegalPluginAccessException : AggregateException {
 
     /**
      * Creates a new instance of <code>IllegalPluginAccessException</code>

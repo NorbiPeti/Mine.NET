@@ -122,7 +122,7 @@ namespace Mine.NET.Event.server
          * @throws ArgumentException if the {@link CachedServerIcon} is not
          *     created by the caller of this event; null may be accepted for some
          *     implementations
-         * @throws UnsupportedOperationException if the caller of this event does
+         * @throws InvalidOperationException if the caller of this event does
          *     not support setting the server icon
          */
         public void setServerIcon(CachedServerIcon icon)
@@ -148,7 +148,7 @@ namespace Mine.NET.Event.server
          * returned by {@link #getNumPlayers()}, and will not be returned again by
          * any new iterator.
          *
-         * @throws UnsupportedOperationException if the caller of this event does
+         * @throws InvalidOperationException if the caller of this event does
          *     not support removing players
          */
         public IEnumerator<Player> GetEnumerator()

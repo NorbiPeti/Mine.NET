@@ -1,7 +1,7 @@
 namespace Mine.NET.plugin;
 
 @SuppressWarnings("serial")
-public class AuthorNagException : RuntimeException {
+public class AuthorNagException : AggregateException {
     private readonly String message;
 
     /**

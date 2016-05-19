@@ -136,7 +136,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance the chance of the main hand item being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setItemInMainHandDropChance(float chance);
 
@@ -163,7 +163,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance the chance of off hand item being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setItemInOffHandDropChance(float chance);
 
@@ -188,7 +188,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance of the helmet being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setHelmetDropChance(float chance);
 
@@ -215,7 +215,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance of the chest plate being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setChestplateDropChance(float chance);
 
@@ -242,7 +242,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance chance of the leggings being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setLeggingsDropChance(float chance);
 
@@ -267,7 +267,7 @@ namespace Mine.NET.inventory
          * </ul>
          *
          * @param chance of the boots being dropped
-         * @throws UnsupportedOperationException when called on players
+         * @throws InvalidOperationException when called on players
          */
         void setBootsDropChance(float chance);
 

@@ -28,7 +28,7 @@ namespace Mine.NET.Event.inventory
      * <li>{@link InventoryView#close()}
      * </ul>
      * To invoke one of these methods, schedule a task using 
-     * {@link BukkitScheduler#runTask(Plugin, Runnable)}, which will run the task
+     * {@link BukkitScheduler#runTask(Plugin, Action)}, which will run the task
      * on the next tick.  Also be aware that this is not an exhaustive list, and
      * other methods could potentially create issues as well.
      * <p>
@@ -39,7 +39,7 @@ namespace Mine.NET.Event.inventory
      * Any modifications to slots that are modified by the results of this
      * InventoryDragEvent will be overwritten. To change these slots, this event
      * should be cancelled and the changes applied. Alternatively, scheduling a
-     * task using {@link BukkitScheduler#runTask(Plugin, Runnable)}, which would
+     * task using {@link BukkitScheduler#runTask(Plugin, Action)}, which would
      * execute the task on the next tick, would work as well.
      */
     public class InventoryDragEvent : InventoryInteractEvent

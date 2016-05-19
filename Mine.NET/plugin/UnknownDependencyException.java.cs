@@ -3,7 +3,7 @@ namespace Mine.NET.plugin;
 /**
  * Thrown when attempting to load an invalid Plugin file
  */
-public class UnknownDependencyException : RuntimeException {
+public class UnknownDependencyException : AggregateException {
 
     private static readonly long serialVersionUID = 5721389371901775895L;
 

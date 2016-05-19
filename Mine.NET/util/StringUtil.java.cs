@@ -12,7 +12,7 @@ public class StringUtil {
      * @param collection The collection to add matches to
      * @return the collection provided that would have the elements copied
      *     into
-     * @throws UnsupportedOperationException if the collection is immutable
+     * @throws InvalidOperationException if the collection is immutable
      *     and originals contains a string which starts with the specified
      *     search string.
      * @throws ArgumentException if any parameter is is null

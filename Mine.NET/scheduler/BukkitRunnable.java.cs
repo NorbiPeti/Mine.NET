@@ -3,7 +3,7 @@ namespace Mine.NET.scheduler{
 /**
  * This class is provided as an easy way to handle scheduling tasks.
  */
-public abstract class BukkitRunnable : Runnable {
+public abstract class Action : Action {
     private int taskId = -1;
 
     /**
@@ -22,11 +22,11 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTask(Plugin, Runnable)
+     * @see BukkitScheduler#runTask(Plugin, Action)
      */
     public BukkitTask runTask(Plugin plugin) {
         checkState();
-        return setupId(Bukkit.getScheduler().runTask(plugin, (Runnable) this));
+        return setupId(Bukkit.getScheduler().runTask(plugin, (Action) this));
     }
 
     /**
@@ -39,11 +39,11 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTaskAsynchronously(Plugin, Runnable)
+     * @see BukkitScheduler#runTaskAsynchronously(Plugin, Action)
      */
     public BukkitTask runTaskAsynchronously(Plugin plugin)  {
         checkState();
-        return setupId(Bukkit.getScheduler().runTaskAsynchronously(plugin, (Runnable) this));
+        return setupId(Bukkit.getScheduler().runTaskAsynchronously(plugin, (Action) this));
     }
 
     /**
@@ -54,11 +54,11 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTaskLater(Plugin, Runnable, long)
+     * @see BukkitScheduler#runTaskLater(Plugin, Action, long)
      */
     public BukkitTask runTaskLater(Plugin plugin, long delay)  {
         checkState();
-        return setupId(Bukkit.getScheduler().runTaskLater(plugin, (Runnable) this, delay));
+        return setupId(Bukkit.getScheduler().runTaskLater(plugin, (Action) this, delay));
     }
 
     /**
@@ -73,11 +73,11 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTaskLaterAsynchronously(Plugin, Runnable, long)
+     * @see BukkitScheduler#runTaskLaterAsynchronously(Plugin, Action, long)
      */
     public BukkitTask runTaskLaterAsynchronously(Plugin plugin, long delay)  {
         checkState();
-        return setupId(Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, (Runnable) this, delay));
+        return setupId(Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, (Action) this, delay));
     }
 
     /**
@@ -90,11 +90,11 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTaskTimer(Plugin, Runnable, long, long)
+     * @see BukkitScheduler#runTaskTimer(Plugin, Action, long, long)
      */
     public BukkitTask runTaskTimer(Plugin plugin, long delay, long period)  {
         checkState();
-        return setupId(Bukkit.getScheduler().runTaskTimer(plugin, (Runnable) this, delay, period));
+        return setupId(Bukkit.getScheduler().runTaskTimer(plugin, (Action) this, delay, period));
     }
 
     /**
@@ -111,18 +111,18 @@ public abstract class BukkitRunnable : Runnable {
      * @return a BukkitTask that contains the id number
      * @throws ArgumentException if plugin is null
      * @throws InvalidOperationException if this was already scheduled
-     * @see BukkitScheduler#runTaskTimerAsynchronously(Plugin, Runnable, long,
+     * @see BukkitScheduler#runTaskTimerAsynchronously(Plugin, Action, long,
      *     long)
      */
     public BukkitTask runTaskTimerAsynchronously(Plugin plugin, long delay, long period)  {
         checkState();
-        return setupId(Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, (Runnable) this, delay, period));
+        return setupId(Bukkit.getScheduler().runTaskTimerAsynchronously(plugin, (Action) this, delay, period));
     }
 
     /**
-     * Gets the task id for this runnable.
+     * Gets the task id for this Action.
      *
-     * @return the task id that this runnable was scheduled as
+     * @return the task id that this Action was scheduled as
      * @throws InvalidOperationException if task was not scheduled yet
      */
     public int getTaskId() {

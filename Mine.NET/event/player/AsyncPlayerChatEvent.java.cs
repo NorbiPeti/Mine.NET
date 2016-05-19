@@ -109,7 +109,7 @@ namespace Mine.NET.Event.player
          * it may reduce performance for a lazy set implementation.
          * <p>
          * Listeners should be aware that modifying the list may throw {@link
-         * UnsupportedOperationException} if the event caller provides an
+         * InvalidOperationException} if the event caller provides an
          * unmodifiable set.
          *
          * @return All Players who will see this chat message

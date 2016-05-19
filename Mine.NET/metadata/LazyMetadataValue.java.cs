@@ -60,7 +60,7 @@ namespace Mine.NET.metadata
         {
         }
 
-        public Object value()
+        public override Object value()
         {
             eval();
             Object value = ACTUALLY_NULL;
@@ -80,8 +80,8 @@ namespace Mine.NET.metadata
         private void eval()
         {
             object target = null;
-            if (cacheStrategy == CacheStrategy.NEVER_CACHE || !internalValue.TryGetTarget(out target))
-            { //TODO
+            if (cacheStrategy == CacheStrategy.NEVER_CACHE || !internalValue.TryGetTarget(out target)) //TODO
+            {
                 try
                 {
                     Object value = lazyValue();
@@ -98,7 +98,7 @@ namespace Mine.NET.metadata
             }
         }
 
-        public void invalidate()
+        public override void invalidate()
         {
             if (cacheStrategy != CacheStrategy.CACHE_ETERNALLY)
             {
