@@ -951,20 +951,6 @@ namespace Mine.NET
         }
 
         /**
-         * Constructs a new MaterialData relevant for this Materials, with the
-         * given initial data
-         *
-         * @param raw Initial data to construct the MaterialData with
-         * @return New MaterialData with the given data
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public MaterialData getNewData(byte raw)
-        {
-            return (MaterialData)Activator.CreateInstance(datatype, id, raw);
-        }
-
-        /**
          * Checks if this Materials is a placable block
          *
          * @return true if this Materials is a block

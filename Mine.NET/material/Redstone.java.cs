@@ -1,15 +1,17 @@
-namespace Mine.NET.material;
-
-/**
- * Indicated a Materials that may carry or create a Redstone current
- */
-public interface Redstone {
-
+namespace Mine.NET.material
+{
     /**
-     * Gets the current state of this Materials, indicating if it's powered or
-     * unpowered
-     *
-     * @return true if powered, otherwise false
+     * Indicated a Materials that may carry or create a Redstone current
      */
-    public bool isPowered();
+    public interface Redstone
+    {
+
+        /**
+         * Gets the current state of this Materials, indicating if it's powered or
+         * unpowered
+         *
+         * @return true if powered, otherwise false
+         */
+        bool isPowered();
+    }
 }

@@ -1,55 +1,49 @@
-namespace Mine.NET.material{
+using System;
 
-/**
- * Represents a powered rail
- */
-public class PoweredRail : ExtendedRails : Redstone {
-    public PoweredRail() : base(Materials.POWERED_RAIL) {
-    }
+namespace Mine.NET.material
+{
 
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents a powered rail
      */
-    [Obsolete]
-    public PoweredRail(int type) : base(type) {
-    }
+    public class PoweredRail : ExtendedRails, Redstone
+    {
+        public PoweredRail() : base(Materials.POWERED_RAIL)
+        {
+        }
 
-    public PoweredRail(Materials type) : base(type) {
-    }
+        public PoweredRail(Materials type) : base(type)
+        {
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public PoweredRail(int type, readonly byte data) : base(type, data) {
-    }
+        /**
+         * @param type the type
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public PoweredRail(Materials type, byte data) : base(type, data)
+        {
+        }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public PoweredRail(Materials type, readonly byte data) : base(type, data) {
-    }
+        public bool isPowered()
+        {
+            return (getData() & 0x8) == 0x8;
+        }
 
-    public bool isPowered() {
-        return (getData() & 0x8) == 0x8;
-    }
+        /**
+         * Set whether this PoweredRail should be powered or not.
+         *
+         * @param isPowered whether or not the rail is powered
+         */
+        public void setPowered(bool isPowered)
+        {
+            setData((byte)(isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
+        }
 
-    /**
-     * Set whether this PoweredRail should be powered or not.
-     *
-     * @param isPowered whether or not the rail is powered
-     */
-    public void setPowered(bool isPowered) {
-        setData((byte) (isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
-    }
-
-    public override PoweredRail clone() {
-        return (PoweredRail) base.clone();
+        public override PoweredRail clone()
+        {
+            return (PoweredRail)base.clone();
+        }
     }
 }

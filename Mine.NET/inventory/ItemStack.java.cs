@@ -4,6 +4,7 @@ using Mine.NET.inventory.meta;
 using Mine.NET.material;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Mine.NET.inventory
@@ -11,11 +12,11 @@ namespace Mine.NET.inventory
     /**
      * Represents a stack of items
      */
-    public class ItemStack<T> : ItemStack
+    public class ItemStack
     {
         private Materials type;
         private int amount = 0;
-        private MaterialData<T> data = null;
+        private MaterialData data = null;
         private short durability = 0;
         private ItemMeta meta;
 
@@ -64,7 +65,7 @@ namespace Mine.NET.inventory
          * @throws ArgumentException if the specified stack is null or
          *     returns an item meta not created by the item factory
          */
-        public ItemStack(ItemStack<T> stack)
+        public ItemStack(ItemStack stack)
         {
             if (stack == null) throw new ArgumentNullException("Cannot copy null stack");
             this.type = stack.getType();
@@ -96,7 +97,6 @@ namespace Mine.NET.inventory
          */
         public void setType(Materials type)
         {
-            if (type == null) throw new ArgumentNullException("Materials cannot be null");
             this.type = type;
             if (this.meta != null)
             {
@@ -132,7 +132,7 @@ namespace Mine.NET.inventory
          */
         public MaterialData getData()
         {
-            Materials mat = Materials.AllMaterials[getType()];
+            Material mat = Material.AllMaterials[getType()];
             if (data == null && mat != null && mat.getData() != null)
             {
                 data = mat.getNewData((byte)this.getDurability());
@@ -179,23 +179,24 @@ namespace Mine.NET.inventory
          */
         public int getMaxStackSize()
         {
-            Materials Materials = getType();
-            if (Materials != null)
+            Material material = Material.AllMaterials[getType()];
+            if (material != null)
             {
-                return Materials.getMaxStackSize();
+                return material.getMaxStackSize();
             }
             return -1;
         }
 
         private void createData(byte data)
         {
-            if (type == null)
+            var mat = Material.AllMaterials[type];
+            if (mat == null)
             {
-                this.data = new MaterialData(type, data);
+                this.data = new MaterialData(type);
             }
             else
             {
-                this.data = type.getNewData(data);
+                this.data = new MaterialData(type); //TODO
             }
         }
 
@@ -439,7 +440,7 @@ namespace Mine.NET.inventory
          */
         public static ItemStack deserialize(Dictionary<String, Object> args)
         {
-            Materials type = Materials.getMaterial((String)args["type"]);
+            Material type = Material.getMaterial((String)args["type"]);
             short damage = 0;
             int amount = 1;
 
@@ -453,7 +454,7 @@ namespace Mine.NET.inventory
                 amount = ((short)args["amount"]);
             }
 
-            ItemStack result = new ItemStack(type, amount, damage);
+            ItemStack result = new ItemStack(Material.AllMaterials.First(m => m.Value == type).Key, amount, damage);
 
             if (args.ContainsKey("enchantments"))
             { // Backward compatiblity, [Obsolete]
@@ -542,10 +543,5 @@ namespace Mine.NET.inventory
 
             return true;
         }
-    }
-
-    public abstract class ItemStack : ConfigurationSerializable
-    {
-        public abstract Dictionary<string, object> serialize();
     }
 }

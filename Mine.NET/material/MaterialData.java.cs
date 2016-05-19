@@ -6,42 +6,13 @@ namespace Mine.NET.material
     /**
      * Handles specific metadata for certain items or blocks
      */
-    public class MaterialData<TData> : MaterialData
+    public class MaterialData
     {
         private readonly Materials type;
-        private TData data;
 
-        public MaterialData(Materials type, TData data)
-        {
-            this.type = type;
-            this.data = data;
-        }
-        
         public MaterialData(Materials type)
         {
-            this.type = type; //TODO
-        }
-            
-        /**
-         * Gets the raw data in this Materials
-         *
-         * @return Raw data
-         * [Obsolete] Magic value
-         */
-        public TData getData()
-        {
-            return data;
-        }
-
-        /**
-         * Sets the raw data of this Materials
-         *
-         * @param data New raw data
-         * [Obsolete] Magic value
-         */
-        public void setData(TData data)
-        {
-            this.data = data;
+            this.type = type;
         }
 
         /**
@@ -59,9 +30,9 @@ namespace Mine.NET.material
          *
          * @return New ItemStack containing a copy of this MaterialData
          */
-        public ItemStack<TData> toItemStack()
+        public ItemStack toItemStack()
         {
-            return new ItemStack<TData>(type, 0, data);
+            return new ItemStack(type, 0, data);
         }
 
         /**
@@ -103,9 +74,5 @@ namespace Mine.NET.material
         {
             return null; //TODO
         }
-    }
-
-    public abstract class MaterialData
-    {
     }
 }

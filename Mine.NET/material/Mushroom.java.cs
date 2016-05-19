@@ -1,4 +1,10 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using Mine.NET.material.types;
+using System;
+using System.Collections.Generic;
+
+namespace Mine.NET.material
+{
 
 /**
  * Represents a huge mushroom block with certain combinations of faces set to
@@ -45,8 +51,9 @@ public class Mushroom : MaterialData {
      * @see Materials#HUGE_MUSHROOM_2
      * @see BlockFaces
      */
-    public Mushroom(Materials shroom, BlockFaces capFace) {
-        this(shroom, MushroomBlockTexture.getCapByFace(capFace));
+    public Mushroom(Materials shroom, BlockFaces capFace) :
+        this(shroom, MushroomBlockTexture.getCapByFace(capFace))
+        {
     }
 
     /**
@@ -58,8 +65,8 @@ public class Mushroom : MaterialData {
      * @see Materials#HUGE_MUSHROOM_1
      * @see Materials#HUGE_MUSHROOM_2
      */
-    public Mushroom(Materials shroom, MushroomBlockTexture texture) {
-        this(shroom, texture.getData());
+    public Mushroom(Materials shroom, MushroomBlockTexture texture) :        this(shroom, texture.getData())
+        {
     }
 
     /**
@@ -73,21 +80,10 @@ public class Mushroom : MaterialData {
     }
 
     /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Mushroom(int type, byte data){
-        base(type, data);
-        if(type == Materials.HUGE_MUSHROOM_1.getId() || type == Materials.HUGE_MUSHROOM_2.getId()) throw new ArgumentException("Not a mushroom!");
-    }
-
-    /**
      * @return Whether this is a mushroom stem.
      */
     public bool isStem() {
-        return getData() == MushroomBlockTexture.STEM_SIDES.getData() || getData() == MushroomBlockTexture.ALL_STEM.getData();
+        return getData() == MushroomBlockTextures.STEM_SIDES || getData() == MushroomBlockTextures.ALL_STEM;
     }
 
     /**
@@ -103,7 +99,7 @@ public class Mushroom : MaterialData {
      */
     [Obsolete]
     public void setStem() {
-        setData((byte) MushroomBlockTexture.STEM_SIDES.getData());
+            setData((byte)MushroomBlockTextures.STEM_SIDES);
     }
 
     /**
@@ -133,25 +129,25 @@ public class Mushroom : MaterialData {
     public bool isFacePainted(BlockFaces face) {
         byte data = getData();
 
-        if (data == MushroomBlockTexture.ALL_PORES.getData() || data == MushroomBlockTexture.STEM_SIDES.getData()
-                || data == MushroomBlockTexture.ALL_STEM.getData()) {
+        if (data == (byte)MushroomBlockTextures.ALL_PORES || data == (byte)MushroomBlockTextures.STEM_SIDES
+                || data == (byte)MushroomBlockTextures.ALL_STEM) {
             return false;
         }
 
         switch (face) {
-            case WEST:
+            case BlockFaces.WEST:
                 return data < NORTH_LIMIT;
-            case EAST:
+            case BlockFaces.EAST:
                 return data > SOUTH_LIMIT;
-            case NORTH:
+            case BlockFaces.NORTH:
                 return data % EAST_WEST_LIMIT == EAST_REMAINDER;
-            case SOUTH:
+            case BlockFaces.SOUTH:
                 return data % EAST_WEST_LIMIT == WEST_REMAINDER;
-            case UP:
+            case BlockFaces.UP:
                 return true;
-            case DOWN:
-            case SELF:
-                return data == MushroomBlockTexture.ALL_CAP.getData();
+            case BlockFaces.DOWN:
+            case BlockFaces.SELF:
+                    return data == (byte)MushroomBlockTextures.ALL_CAP;
             default:
                 return false;
         }
@@ -176,17 +172,17 @@ public class Mushroom : MaterialData {
 
         byte data = getData();
 
-        if (data == MushroomBlockTexture.ALL_PORES.getData() || isStem()) {
-            data = MushroomBlockTexture.CAP_TOP.getData();
+        if (data == (byte)MushroomBlockTextures.ALL_PORES || isStem()) {
+            data = (byte)MushroomBlockTextures.CAP_TOP;
         }
-        if (data == MushroomBlockTexture.ALL_CAP.getData() && !painted) {
-            data = MushroomBlockTexture.CAP_TOP.getData();
-            face = face.getOppositeFace();
+        if (data == (byte)MushroomBlockTextures.ALL_CAP && !painted) {
+            data = (byte)MushroomBlockTextures.CAP_TOP;
+            face = BlockFace.getOppositeFace(face);
             painted = true;
         }
 
         switch (face) {
-            case WEST:
+            case BlockFaces.WEST:
                 if (painted) {
                     data -= NORTH_SOUTH_MOD;
                 } else {
@@ -194,7 +190,7 @@ public class Mushroom : MaterialData {
                 }
 
                 break;
-            case EAST:
+            case BlockFaces.EAST:
                 if (painted) {
                     data += NORTH_SOUTH_MOD;
                 } else {
@@ -202,7 +198,7 @@ public class Mushroom : MaterialData {
                 }
 
                 break;
-            case NORTH:
+            case BlockFaces.NORTH:
                 if (painted) {
                     data += EAST_WEST_MOD;
                 } else {
@@ -210,7 +206,7 @@ public class Mushroom : MaterialData {
                 }
 
                 break;
-            case SOUTH:
+            case BlockFaces.SOUTH:
                 if (painted) {
                     data -= EAST_WEST_MOD;
                 } else {
@@ -218,18 +214,18 @@ public class Mushroom : MaterialData {
                 }
 
                 break;
-            case UP:
+            case BlockFaces.UP:
                 if (!painted) {
-                    data = MushroomBlockTexture.ALL_PORES.getData();
+                        data = (byte)MushroomBlockTextures.ALL_PORES;
                 }
                 break;
-            case SELF:
-            case DOWN:
+            case BlockFaces.SELF:
+            case BlockFaces.DOWN:
                 if (painted) {
-                    data = MushroomBlockTexture.ALL_CAP.getData();
+                        data = (byte)MushroomBlockTextures.ALL_CAP;
                 }
                 else {
-                    data = MushroomBlockTexture.ALL_PORES.getData();
+                        data = (byte)MushroomBlockTextures.ALL_PORES;
                 }
                 break;
             default:
@@ -243,41 +239,42 @@ public class Mushroom : MaterialData {
      * @return A set of all faces that are currently painted (an empty set if
      *     it is a stem)
      */
-    public HashSet<BlockFaces> getPaintedFaces() {
-        EnumSet<BlockFaces> faces = EnumSet.noneOf(BlockFaces.class);
+    public List<BlockFaces> getPaintedFaces() {
+            List<BlockFaces> faces = new List<BlockFaces>();
 
         if (isFacePainted(BlockFaces.WEST)) {
-            faces.add(BlockFaces.WEST);
+            faces.Add(BlockFaces.WEST);
         }
 
         if (isFacePainted(BlockFaces.NORTH)) {
-            faces.add(BlockFaces.NORTH);
+            faces.Add(BlockFaces.NORTH);
         }
 
         if (isFacePainted(BlockFaces.SOUTH)) {
-            faces.add(BlockFaces.SOUTH);
+            faces.Add(BlockFaces.SOUTH);
         }
 
         if (isFacePainted(BlockFaces.EAST)) {
-            faces.add(BlockFaces.EAST);
+            faces.Add(BlockFaces.EAST);
         }
 
         if (isFacePainted(BlockFaces.UP)) {
-            faces.add(BlockFaces.UP);
+            faces.Add(BlockFaces.UP);
         }
 
         if (isFacePainted(BlockFaces.DOWN)) {
-            faces.add(BlockFaces.DOWN);
+            faces.Add(BlockFaces.DOWN);
         }
 
         return faces;
     }
 
     public override string ToString() {
-        return Materials.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
+        return Material.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
     }
 
     public override Mushroom clone() {
         return (Mushroom) base.clone();
     }
+}
 }

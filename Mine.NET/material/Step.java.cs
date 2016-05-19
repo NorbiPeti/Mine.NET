@@ -1,109 +1,106 @@
-namespace Mine.NET.material{
+using System;
+using System.Collections.Generic;
 
-/**
- * Represents the different types of steps.
- */
-public class Step : TexturedMaterial {
-    private static readonly List<Materials> textures = new List<Materials>();
-    static {
-        textures.add(Materials.STONE);
-        textures.add(Materials.SANDSTONE);
-        textures.add(Materials.WOOD);
-        textures.add(Materials.COBBLESTONE);
-        textures.add(Materials.BRICK);
-        textures.add(Materials.SMOOTH_BRICK);
-        textures.add(Materials.NETHER_BRICK);
-        textures.add(Materials.QUARTZ_BLOCK);
-    }
-
-    public Step() : base(Materials.STEP) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents the different types of steps.
      */
-    [Obsolete]
-    public Step(int type) : base(type) {
-    }
+    public class Step : TexturedMaterial
+    {
+        private static readonly List<Materials> textures = new List<Materials>
+        {
+            Materials.STONE,
+            Materials.SANDSTONE,
+            Materials.WOOD,
+            Materials.COBBLESTONE,
+            Materials.BRICK,
+            Materials.SMOOTH_BRICK,
+            Materials.NETHER_BRICK,
+            Materials.QUARTZ_BLOCK
+        };
 
-    public Step(Materials type) {
-        base((textures.contains(type)) ? Materials.STEP : type);
-        if (textures.contains(type)) {
-            setMaterial(type);
+        public Step() : base(Materials.STEP)
+        {
         }
-    }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Step(int type, readonly byte data) : base(type, data) {
-    }
-
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Step(Materials type, readonly byte data) : base(type, data) {
-    }
-
-    public override List<Materials> getTextures() {
-        return textures;
-    }
-
-    /**
-     * Test if step is inverted
-     *
-     * @return true if inverted (top half), false if normal (bottom half)
-     */
-    public bool isInverted() {
-        return ((getData() & 0x8) != 0);
-    }
-
-    /**
-     * Set step inverted state
-     *
-     * @param inv - true if step is inverted (top half), false if step is
-     *     normal (bottom half)
-     */
-    public void setInverted(bool inv) {
-        int dat = getData() & 0x7;
-        if (inv) {
-            dat |= 0x8;
+        public Step(Materials type) : base((textures.Contains(type)) ? Materials.STEP : type)
+        {
+            if (textures.Contains(type))
+            {
+                setMaterial(type);
+            }
         }
-        setData((byte) dat);
-    }
 
-    /**
-     *
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    @Override
-    protected int getTextureIndex() {
-        return getData() & 0x7;
-    }
+        /**
+         * @param type the type
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public Step(Materials type, byte data) : base(type, data)
+        {
+        }
 
-    /**
-     *
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    @Override
-    protected void setTextureIndex(int idx) {
-        setData((byte) ((getData() & 0x8) | idx));
-    }
+        public override List<Materials> getTextures()
+        {
+            return textures;
+        }
 
-    public override Step clone() {
-        return (Step) base.clone();
-    }
+        /**
+         * Test if step is inverted
+         *
+         * @return true if inverted (top half), false if normal (bottom half)
+         */
+        public bool isInverted()
+        {
+            return ((getData() & 0x8) != 0);
+        }
 
-    public override string ToString() {
-        return base.ToString() + (isInverted()?"inverted":"");
+        /**
+         * Set step inverted state
+         *
+         * @param inv - true if step is inverted (top half), false if step is
+         *     normal (bottom half)
+         */
+        public void setInverted(bool inv)
+        {
+            int dat = getData() & 0x7;
+            if (inv)
+            {
+                dat |= 0x8;
+            }
+            setData((byte)dat);
+        }
+
+        /**
+         *
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        protected override int getTextureIndex()
+        {
+            return getData() & 0x7;
+        }
+
+        /**
+         *
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        protected override void setTextureIndex(int idx)
+        {
+            setData((byte)((getData() & 0x8) | idx));
+        }
+
+        public override Step clone()
+        {
+            return (Step)base.clone();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + (isInverted() ? "inverted" : "");
+        }
     }
 }

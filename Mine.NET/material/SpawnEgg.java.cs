@@ -1,63 +1,64 @@
-namespace Mine.NET.material{
+using Mine.NET.entity;
+using System;
 
-/**
- * Represents a spawn egg that can be used to spawn mobs
- */
-public class SpawnEgg : MaterialData {
-
-    public SpawnEgg() : base(Materials.MONSTER_EGG) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
+     * Represents a spawn egg that can be used to spawn mobs
      */
-    [Obsolete]
-    public SpawnEgg(int type, byte data){
-        base(type, data);
-    }
+    public class SpawnEgg : MaterialData
+    {
 
-    /**
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public SpawnEgg(byte data) : base(Materials.MONSTER_EGG, data) {
-    }
+        public SpawnEgg() : base(Materials.MONSTER_EGG)
+        {
+        }
 
-    public SpawnEgg(EntityType type) {
-        this();
-        setSpawnedType(type);
-    }
+        /**
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public SpawnEgg(byte data) : base(Materials.MONSTER_EGG, data)
+        {
+        }
 
-    /**
-     * Get the type of entity this egg will spawn.
-     *
-     * @return The entity type.
-     * [Obsolete] This is now stored in {@link ItemMeta}. See SPIGOT-1592.
-     */
-    [Obsolete]
-    public EntityType getSpawnedType() {
-        return EntityType.fromId(getData());
-    }
+        public SpawnEgg(EntityType type) : this()
+        {
+            setSpawnedType(type);
+        }
 
-    /**
-     * Set the type of entity this egg will spawn.
-     *
-     * @param type The entity type.
-     * [Obsolete] This is now stored in {@link ItemMeta}. See SPIGOT-1592.
-     */
-    [Obsolete]
-    public void setSpawnedType(EntityType type) {
-        setData((byte) type.getTypeId());
-    }
+        /**
+         * Get the type of entity this egg will spawn.
+         *
+         * @return The entity type.
+         * [Obsolete] This is now stored in {@link ItemMeta}. See SPIGOT-1592.
+         */
+        [Obsolete]
+        public EntityType getSpawnedType()
+        {
+            return EntityType.fromId(getData());
+        }
 
-    public override string ToString() {
-        return "SPAWN EGG{" + getSpawnedType() + "}";
-    }
+        /**
+         * Set the type of entity this egg will spawn.
+         *
+         * @param type The entity type.
+         * [Obsolete] This is now stored in {@link ItemMeta}. See SPIGOT-1592.
+         */
+        [Obsolete]
+        public void setSpawnedType(EntityType type)
+        {
+            setData((byte)type.getTypeId());
+        }
 
-    public override SpawnEgg clone() {
-        return (SpawnEgg) base.clone();
+        public override string ToString()
+        {
+            return "SPAWN EGG{" + getSpawnedType() + "}";
+        }
+
+        public override SpawnEgg clone()
+        {
+            return (SpawnEgg)base.clone();
+        }
     }
 }

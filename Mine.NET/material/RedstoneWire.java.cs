@@ -1,56 +1,49 @@
-namespace Mine.NET.material{
+using System;
 
-/**
- * Represents redstone wire
- */
-public class RedstoneWire : MaterialData : Redstone {
-    public RedstoneWire() : base(Materials.REDSTONE_WIRE) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents redstone wire
      */
-    [Obsolete]
-    public RedstoneWire(int type) : base(type) {
-    }
+    public class RedstoneWire : MaterialData, Redstone
+    {
+        public RedstoneWire() : base(Materials.REDSTONE_WIRE)
+        {
+        }
 
-    public RedstoneWire(Materials type) : base(type) {
-    }
+        public RedstoneWire(Materials type) : base(type)
+        {
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public RedstoneWire(int type, readonly byte data) : base(type, data) {
-    }
+        /**
+         * @param type the type
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public RedstoneWire(Materials type, byte data) : base(type, data)
+        {
+        }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public RedstoneWire(Materials type, readonly byte data) : base(type, data) {
-    }
+        /**
+         * Gets the current state of this Materials, indicating if it's powered or
+         * unpowered
+         *
+         * @return true if powered, otherwise false
+         */
+        public bool isPowered()
+        {
+            return getData() > 0;
+        }
 
-    /**
-     * Gets the current state of this Materials, indicating if it's powered or
-     * unpowered
-     *
-     * @return true if powered, otherwise false
-     */
-    public bool isPowered() {
-        return getData() > 0;
-    }
+        public override string ToString()
+        {
+            return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        }
 
-    public override string ToString() {
-        return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
-    }
-
-    public override RedstoneWire clone() {
-        return (RedstoneWire) base.clone();
+        public override RedstoneWire clone()
+        {
+            return (RedstoneWire)base.clone();
+        }
     }
 }

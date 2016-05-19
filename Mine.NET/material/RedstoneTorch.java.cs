@@ -1,56 +1,49 @@
-namespace Mine.NET.material{
+using System;
 
-/**
- * Represents a redstone torch
- */
-public class RedstoneTorch : Torch : Redstone {
-    public RedstoneTorch() : base(Materials.REDSTONE_TORCH_ON) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents a redstone torch
      */
-    [Obsolete]
-    public RedstoneTorch(int type) : base(type) {
-    }
+    public class RedstoneTorch : Torch, Redstone
+    {
+        public RedstoneTorch() : base(Materials.REDSTONE_TORCH_ON)
+        {
+        }
 
-    public RedstoneTorch(Materials type) : base(type) {
-    }
+        public RedstoneTorch(Materials type) : base(type)
+        {
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public RedstoneTorch(int type, readonly byte data) : base(type, data) {
-    }
+        /**
+         * @param type the type
+         * @param data the raw data value
+         * [Obsolete] Magic value
+         */
+        [Obsolete]
+        public RedstoneTorch(Materials type, byte data) : base(type, data)
+        {
+        }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public RedstoneTorch(Materials type, readonly byte data) : base(type, data) {
-    }
+        /**
+         * Gets the current state of this Materials, indicating if it's powered or
+         * unpowered
+         *
+         * @return true if powered, otherwise false
+         */
+        public bool isPowered()
+        {
+            return getItemType() == Materials.REDSTONE_TORCH_ON;
+        }
 
-    /**
-     * Gets the current state of this Materials, indicating if it's powered or
-     * unpowered
-     *
-     * @return true if powered, otherwise false
-     */
-    public bool isPowered() {
-        return getItemType() == Materials.REDSTONE_TORCH_ON;
-    }
+        public override string ToString()
+        {
+            return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
+        }
 
-    public override string ToString() {
-        return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
-    }
-
-    public override RedstoneTorch clone() {
-        return (RedstoneTorch) base.clone();
+        public override RedstoneTorch clone()
+        {
+            return (RedstoneTorch)base.clone();
+        }
     }
 }

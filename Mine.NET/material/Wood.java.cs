@@ -1,5 +1,7 @@
-namespace Mine.NET.material{
+using System;
 
+namespace Mine.NET.material
+{
 /**
  * Represents wood blocks of different species.
  *
@@ -7,7 +9,7 @@ namespace Mine.NET.material{
  * @see Materials#SAPLING
  * @see Materials#WOOD_DOUBLE_STEP
  */
-public class Wood : MaterialData<byte> {
+public class Wood : MaterialData {
     protected static readonly Materials DEFAULT_TYPE = Materials.WOOD;
     protected static readonly TreeSpecies DEFAULT_SPECIES = TreeSpecies.GENERIC;
 
@@ -26,14 +28,6 @@ public class Wood : MaterialData<byte> {
     }
 
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Wood(int type) : base(type) {
-    }
-
-    /**
      * Constructs a wood block of the given type.
      *
      * @param type the type of wood block
@@ -41,34 +35,25 @@ public class Wood : MaterialData<byte> {
     public Wood(Materials type) : this(type, DEFAULT_SPECIES) {
     }
 
-    /**
-     * Constructs a wood block of the given type and tree species.
-     *
-     * @param type the type of wood block
-     * @param species the species of the wood block
-     */
-    public Wood(Materials type, readonly TreeSpecies species) {
-        // Ensure only valid species-type combinations
-        base(getSpeciesType(type, species));
-        setSpecies(species);
-    }
-
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Wood(int type, readonly byte data) : base(type, data) {
-    }
-
+        /**
+         * Constructs a wood block of the given type and tree species.
+         *
+         * @param type the type of wood block
+         * @param species the species of the wood block
+         */
+        public Wood(Materials type, TreeSpecies species) : base(getSpeciesType(type, species))
+        {
+            // Ensure only valid species-type combinations
+            setSpecies(species);
+        }
+        
     /**
      * @param type the type
      * @param data the raw data value
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public Wood(Materials type, readonly byte data) : base(type, data) {
+    public Wood(Materials type, byte data) : base(type, data) {
     }
 
     /**
@@ -78,17 +63,17 @@ public class Wood : MaterialData<byte> {
      */
     public TreeSpecies getSpecies() {
         switch (getItemType()) {
-            case WOOD:
-            case WOOD_DOUBLE_STEP:
-                return TreeSpecies.getByData((byte) getData());
-            case LOG:
-            case LEAVES:
-                return TreeSpecies.getByData((byte) (getData() & 0x3));
-            case LOG_2:
-            case LEAVES_2:
-                return TreeSpecies.getByData((byte) ((getData() & 0x3) | 0x4));
-            case SAPLING:
-            case WOOD_STEP:
+            case Materials.WOOD:
+            case Materials.WOOD_DOUBLE_STEP:
+                return Materials.getByData((byte) getData());
+            case Materials.LOG:
+            case Materials.LEAVES:
+                return Materials.getByData((byte) (getData() & 0x3));
+            case Materials.LOG_2:
+            case Materials.LEAVES_2:
+                return Materials.getByData((byte) ((getData() & 0x3) | 0x4));
+            case Materials.SAPLING:
+            case Materials.WOOD_STEP:
                 return TreeSpecies.getByData((byte) (getData() & 0x7));
             default:
                 throw new ArgumentException("Invalid block type for tree species");
@@ -104,26 +89,27 @@ public class Wood : MaterialData<byte> {
      */
     private static Materials getSpeciesType(Materials type, TreeSpecies species) {
         switch (species) {
-            case GENERIC:
-            case REDWOOD:
-            case BIRCH:
-            case JUNGLE:
+            case TreeSpecies.GENERIC:
+            case TreeSpecies.REDWOOD:
+            case TreeSpecies.BIRCH:
+            case TreeSpecies.JUNGLE:
                 switch (type) {
-                    case LOG_2:
+                    case Materials.LOG_2:
                         return Materials.LOG;
-                    case LEAVES_2:
+                    case Materials.LEAVES_2:
                         return Materials.LEAVES;
                     default:
                 }
                 break;
-            case ACACIA:
-            case DARK_OAK:
+            case TreeSpecies.ACACIA:
+            case TreeSpecies.DARK_OAK:
                 switch (type) {
-                    case LOG:
+                    case Materials:
                         return Materials.LOG_2;
-                    case LEAVES:
+                    case Materials:
                         return Materials.LEAVES_2;
                     default:
+                            break;
                 }
                 break;
         }

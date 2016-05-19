@@ -7,7 +7,7 @@ namespace Mine.NET.material
     /**
      * Simple utility class for attachable MaterialData subclasses
      */
-    public abstract class SimpleAttachableMaterialData : MaterialData<byte>, Attachable
+    public abstract class SimpleAttachableMaterialData : MaterialData, Attachable
     {
         public SimpleAttachableMaterialData(Materials type, BlockFaces direction) : this(type)
         {

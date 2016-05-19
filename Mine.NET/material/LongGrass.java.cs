@@ -1,36 +1,22 @@
-namespace Mine.NET.material{
+using System;
 
-/**
- * Represents the different types of long grasses.
- */
-public class LongGrass : MaterialData {
-    public LongGrass() : base(Materials.LONG_GRASS) {
-    }
-
-    public LongGrass(GrassSpecies species) {
-        this();
-        setSpecies(species);
-    }
+namespace Mine.NET.material
+{
 
     /**
-     * @param type the raw type id
-     * [Obsolete] Magic value
+     * Represents the different types of long grasses.
      */
-    [Obsolete]
-    public LongGrass(int type) : base(type) {
-    }
+    public class LongGrass : MaterialData<byte> {
+        public LongGrass() : base(Materials.LONG_GRASS) {
+        }
 
-    public LongGrass(Materials type) : base(type) {
-    }
+        public LongGrass(GrassSpecies species) :            this()
+        {
+            setSpecies(species);
+        }
 
-    /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public LongGrass(int type, readonly byte data) : base(type, data) {
-    }
+        public LongGrass(Materials type) : base(type) {
+        }
 
     /**
      * @param type the type
@@ -38,7 +24,7 @@ public class LongGrass : MaterialData {
      * [Obsolete] Magic value
      */
     [Obsolete]
-    public LongGrass(Materials type, readonly byte data) : base(type, data) {
+        public LongGrass(Materials type, byte data) : base(type, data) {
     }
 
     /**
@@ -47,23 +33,24 @@ public class LongGrass : MaterialData {
      * @return GrassSpecies of this grass
      */
     public GrassSpecies getSpecies() {
-        return GrassSpecies.getByData(getData());
-    }
+            return (GrassSpecies)getData();
+        }
 
-    /**
-     * Sets the species of this grass
-     *
-     * @param species New species of this grass
-     */
-    public void setSpecies(GrassSpecies species) {
-        setData(species.getData());
-    }
+        /**
+         * Sets the species of this grass
+         *
+         * @param species New species of this grass
+         */
+        public void setSpecies(GrassSpecies species) {
+            setData((GrassSpecies)species));
+        }
 
-    public override string ToString() {
-        return getSpecies() + " " + base.ToString();
-    }
+        public override string ToString() {
+            return getSpecies() + " " + base.ToString();
+        }
 
-    public override LongGrass clone() {
-        return (LongGrass) base.clone();
+        public override LongGrass clone() {
+            return (LongGrass)base.clone();
+        }
     }
 }

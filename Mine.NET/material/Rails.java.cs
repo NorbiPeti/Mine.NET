@@ -7,7 +7,7 @@ namespace Mine.NET.material
     /**
      * Represents minecart rails.
      */
-    public class Rails : MaterialData<byte> {
+    public class Rails : MaterialData {
 
         public Rails() : base(Materials.RAILS, 0) {
         }

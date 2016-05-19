@@ -1,5 +1,7 @@
-namespace Mine.NET.material;
-
-public interface PressureSensor {
-    public bool isPressed();
+namespace Mine.NET.material
+{
+    public interface PressureSensor
+    {
+        bool isPressed();
+    }
 }

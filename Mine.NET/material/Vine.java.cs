@@ -1,187 +1,183 @@
-namespace Mine.NET.material{
+using Mine.NET.block;
+using System;
+using System.Linq;
 
-/**
- * Represents a vine
- */
-public class Vine : MaterialData {
-    private static readonly int VINE_NORTH = 0x4;
-    private static readonly int VINE_EAST = 0x8;
-    private static readonly int VINE_WEST = 0x2;
-    private static readonly int VINE_SOUTH = 0x1;
-    EnumSet<BlockFaces> possibleFaces = EnumSet.of(BlockFaces.WEST, BlockFaces.NORTH, BlockFaces.SOUTH, BlockFaces.EAST);
-
-    public Vine() : base(Materials.VINE) {
-    }
-
+namespace Mine.NET.material
+{
     /**
-     * @param type the raw type id
-     * @param data the raw data value
-     * [Obsolete] Magic value
+     * Represents a vine
      */
-    [Obsolete]
-    public Vine(int type, byte data){
-        base(type, data);
-    }
+    public class Vine : MaterialData
+    {
+        private static readonly int VINE_NORTH = 0x4;
+        private static readonly int VINE_EAST = 0x8;
+        private static readonly int VINE_WEST = 0x2;
+        private static readonly int VINE_SOUTH = 0x1;
+        BlockFaces[] possibleFaces = new BlockFaces[] { BlockFaces.WEST, BlockFaces.NORTH, BlockFaces.SOUTH, BlockFaces.EAST };
 
-    /**
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public Vine(byte data) : base(Materials.VINE, data) {
-    }
-
-    public Vine(BlockFaces... faces) {
-        this(EnumSet.copyOf(Arrays.asList(faces)));
-    }
-
-    public Vine(EnumSet<BlockFaces> faces) {
-        this((byte) 0);
-        faces.retainAll(possibleFaces);
-
-        byte data = 0;
-
-        if (faces.contains(BlockFaces.WEST)) {
-            data |= VINE_WEST;
+        public Vine() : base(Materials.VINE)
+        {
         }
 
-        if (faces.contains(BlockFaces.NORTH)) {
-            data |= VINE_NORTH;
+        public Vine(params BlockFaces[] faces)
+        {
+            faces.retainAll(possibleFaces);
+            byte data = 0;
+
+            if (faces.Contains(BlockFaces.WEST))
+            {
+                data |= (byte)VINE_WEST;
+            }
+
+            if (faces.Contains(BlockFaces.NORTH))
+            {
+                data |= (byte)VINE_NORTH;
+            }
+
+            if (faces.Contains(BlockFaces.SOUTH))
+            {
+                data |= (byte)VINE_SOUTH;
+            }
+
+            if (faces.Contains(BlockFaces.EAST))
+            {
+                data |= (byte)VINE_EAST;
+            }
+
+            setData(data);
         }
 
-        if (faces.contains(BlockFaces.SOUTH)) {
-            data |= VINE_SOUTH;
+        /**
+         * Check if the vine is attached to the specified face of an adjacent
+         * block. You can check two faces at once by passing e.g. {@link
+         * BlockFaces#NORTH_EAST}.
+         *
+         * @param face The face to check.
+         * @return Whether it is attached to that face.
+         */
+        public bool isOnFace(BlockFaces face)
+        {
+            switch (face)
+            {
+                case BlockFaces.WEST:
+                    return (getData() & VINE_WEST) == VINE_WEST;
+                case BlockFaces.NORTH:
+                    return (getData() & VINE_NORTH) == VINE_NORTH;
+                case BlockFaces.SOUTH:
+                    return (getData() & VINE_SOUTH) == VINE_SOUTH;
+                case BlockFaces.EAST:
+                    return (getData() & VINE_EAST) == VINE_EAST;
+                case BlockFaces.NORTH_EAST:
+                    return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.NORTH);
+                case BlockFaces.NORTH_WEST:
+                    return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.NORTH);
+                case BlockFaces.SOUTH_EAST:
+                    return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.SOUTH);
+                case BlockFaces.SOUTH_WEST:
+                    return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.SOUTH);
+                case BlockFaces.UP: // It's impossible to be accurate with this since it's contextual
+                    return true;
+                default:
+                    return false;
+            }
         }
 
-        if (faces.contains(BlockFaces.EAST)) {
-            data |= VINE_EAST;
+        /**
+         * Attach the vine to the specified face of an adjacent block.
+         *
+         * @param face The face to attach.
+         */
+        public void putOnFace(BlockFaces face)
+        {
+            switch (face)
+            {
+                case BlockFaces.WEST:
+                    setData((byte)(getData() | VINE_WEST));
+                    break;
+                case BlockFaces.NORTH:
+                    setData((byte)(getData() | VINE_NORTH));
+                    break;
+                case BlockFaces.SOUTH:
+                    setData((byte)(getData() | VINE_SOUTH));
+                    break;
+                case BlockFaces.EAST:
+                    setData((byte)(getData() | VINE_EAST));
+                    break;
+                case BlockFaces.NORTH_WEST:
+                    putOnFace(BlockFaces.WEST);
+                    putOnFace(BlockFaces.NORTH);
+                    break;
+                case BlockFaces.SOUTH_WEST:
+                    putOnFace(BlockFaces.WEST);
+                    putOnFace(BlockFaces.SOUTH);
+                    break;
+                case BlockFaces.NORTH_EAST:
+                    putOnFace(BlockFaces.EAST);
+                    putOnFace(BlockFaces.NORTH);
+                    break;
+                case BlockFaces.SOUTH_EAST:
+                    putOnFace(BlockFaces.EAST);
+                    putOnFace(BlockFaces.SOUTH);
+                    break;
+                case BlockFaces.UP:
+                    break;
+                default:
+                    throw new ArgumentException("Vines can't go on face " + face.ToString());
+            }
         }
 
-        setData(data);
-    }
-
-    /**
-     * Check if the vine is attached to the specified face of an adjacent
-     * block. You can check two faces at once by passing e.g. {@link
-     * BlockFaces#NORTH_EAST}.
-     *
-     * @param face The face to check.
-     * @return Whether it is attached to that face.
-     */
-    public bool isOnFace(BlockFaces face) {
-        switch (face) {
-            case WEST:
-                return (getData() & VINE_WEST) == VINE_WEST;
-            case NORTH:
-                return (getData() & VINE_NORTH) == VINE_NORTH;
-            case SOUTH:
-                return (getData() & VINE_SOUTH) == VINE_SOUTH;
-            case EAST:
-                return (getData() & VINE_EAST) == VINE_EAST;
-            case NORTH_EAST:
-                return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.NORTH);
-            case NORTH_WEST:
-                return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.NORTH);
-            case SOUTH_EAST:
-                return isOnFace(BlockFaces.EAST) && isOnFace(BlockFaces.SOUTH);
-            case SOUTH_WEST:
-                return isOnFace(BlockFaces.WEST) && isOnFace(BlockFaces.SOUTH);
-            case UP: // It's impossible to be accurate with this since it's contextual
-                return true;
-            default:
-                return false;
+        /**
+         * Detach the vine from the specified face of an adjacent block.
+         *
+         * @param face The face to detach.
+         */
+        public void removeFromFace(BlockFaces face)
+        {
+            switch (face)
+            {
+                case BlockFaces.WEST:
+                    setData((byte)(getData() & ~VINE_WEST));
+                    break;
+                case BlockFaces.NORTH:
+                    setData((byte)(getData() & ~VINE_NORTH));
+                    break;
+                case BlockFaces.SOUTH:
+                    setData((byte)(getData() & ~VINE_SOUTH));
+                    break;
+                case BlockFaces.EAST:
+                    setData((byte)(getData() & ~VINE_EAST));
+                    break;
+                case BlockFaces.NORTH_WEST:
+                    removeFromFace(BlockFaces.WEST);
+                    removeFromFace(BlockFaces.NORTH);
+                    break;
+                case BlockFaces.SOUTH_WEST:
+                    removeFromFace(BlockFaces.WEST);
+                    removeFromFace(BlockFaces.SOUTH);
+                    break;
+                case BlockFaces.NORTH_EAST:
+                    removeFromFace(BlockFaces.EAST);
+                    removeFromFace(BlockFaces.NORTH);
+                    break;
+                case BlockFaces.SOUTH_EAST:
+                    removeFromFace(BlockFaces.EAST);
+                    removeFromFace(BlockFaces.SOUTH);
+                    break;
+                case BlockFaces.UP:
+                    break;
+                default:
+                    throw new ArgumentException("Vines can't go on face " + face.ToString());
+            }
         }
-    }
 
-    /**
-     * Attach the vine to the specified face of an adjacent block.
-     *
-     * @param face The face to attach.
-     */
-    public void putOnFace(BlockFaces face) {
-        switch(face) {
-            case WEST:
-                setData((byte) (getData() | VINE_WEST));
-                break;
-            case NORTH:
-                setData((byte) (getData() | VINE_NORTH));
-                break;
-            case SOUTH:
-                setData((byte) (getData() | VINE_SOUTH));
-                break;
-            case EAST:
-                setData((byte) (getData() | VINE_EAST));
-                break;
-            case NORTH_WEST:
-                putOnFace(BlockFaces.WEST);
-                putOnFace(BlockFaces.NORTH);
-                break;
-            case SOUTH_WEST:
-                putOnFace(BlockFaces.WEST);
-                putOnFace(BlockFaces.SOUTH);
-                break;
-            case NORTH_EAST:
-                putOnFace(BlockFaces.EAST);
-                putOnFace(BlockFaces.NORTH);
-                break;
-            case SOUTH_EAST:
-                putOnFace(BlockFaces.EAST);
-                putOnFace(BlockFaces.SOUTH);
-                break;
-            case UP:
-                break;
-            default:
-                throw new ArgumentException("Vines can't go on face " + face.ToString());
+        public override string ToString()
+        {
+            return "VINE";
         }
-    }
 
-    /**
-     * Detach the vine from the specified face of an adjacent block.
-     *
-     * @param face The face to detach.
-     */
-    public void removeFromFace(BlockFaces face) {
-        switch(face) {
-            case WEST:
-                setData((byte) (getData() & ~VINE_WEST));
-                break;
-            case NORTH:
-                setData((byte) (getData() & ~VINE_NORTH));
-                break;
-            case SOUTH:
-                setData((byte) (getData() & ~VINE_SOUTH));
-                break;
-            case EAST:
-                setData((byte) (getData() & ~VINE_EAST));
-                break;
-            case NORTH_WEST:
-                removeFromFace(BlockFaces.WEST);
-                removeFromFace(BlockFaces.NORTH);
-                break;
-            case SOUTH_WEST:
-                removeFromFace(BlockFaces.WEST);
-                removeFromFace(BlockFaces.SOUTH);
-                break;
-            case NORTH_EAST:
-                removeFromFace(BlockFaces.EAST);
-                removeFromFace(BlockFaces.NORTH);
-                break;
-            case SOUTH_EAST:
-                removeFromFace(BlockFaces.EAST);
-                removeFromFace(BlockFaces.SOUTH);
-                break;
-            case UP:
-                break;
-            default:
-                throw new ArgumentException("Vines can't go on face " + face.ToString());
+        public override Vine clone()
+        {
+            return (Vine)base.clone();
         }
-    }
-
-    public override string ToString() {
-        return "VINE";
-    }
-
-    public override Vine clone() {
-        return (Vine) base.clone();
     }
 }
