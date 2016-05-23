@@ -90,11 +90,11 @@ namespace Mine.NET.permissions
 
                 if (perm != null)
                 {
-                    return perm.getDefault().getValue(isOp());
+                    return PermissionDefault.getValue(perm.getDefault(), isOp());
                 }
                 else
                 {
-                    return Permission.DEFAULT_PERMISSION.getValue(isOp());
+                    return PermissionDefault.getValue(Permission.DEFAULT_PERMISSION, isOp());
                 }
             }
         }
@@ -112,7 +112,7 @@ namespace Mine.NET.permissions
             {
                 return permissions[name].getValue();
             }
-            return perm.getDefault().getValue(isOp());
+            return PermissionDefault.getValue(perm.getDefault(), isOp());
         }
 
         public PermissionAttachment addAttachment(Plugin plugin, String name, bool value)

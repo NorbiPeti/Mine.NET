@@ -1,16 +1,18 @@
-namespace Mine.NET.permissions;
-
-/**
- * Represents a class which is to be notified when a {@link
- * PermissionAttachment} is removed from a {@link Permissible}
- */
-public interface PermissionRemovedExecutor {
-
+namespace Mine.NET.permissions
+{
     /**
-     * Called when a {@link PermissionAttachment} is removed from a {@link
-     * Permissible}
-     *
-     * @param attachment Attachment which was removed
+     * Represents a class which is to be notified when a {@link
+     * PermissionAttachment} is removed from a {@link Permissible}
      */
-    public void attachmentRemoved(PermissionAttachment attachment);
+    public interface PermissionRemovedExecutor
+    {
+
+        /**
+         * Called when a {@link PermissionAttachment} is removed from a {@link
+         * Permissible}
+         *
+         * @param attachment Attachment which was removed
+         */
+        void attachmentRemoved(PermissionAttachment attachment);
+    }
 }
