@@ -579,9 +579,9 @@
     <Compile Include="plugin\IllegalPluginAccessException.java.cs" />
     <Compile Include="plugin\InvalidDescriptionException.java.cs" />
     <Compile Include="plugin\InvalidPluginException.java.cs" />
-    <Compile Include="plugin\java\JavaPlugin.java.cs" />
-    <Compile Include="plugin\java\JavaPluginLoader.java.cs" />
-    <Compile Include="plugin\java\PluginClassLoader.java.cs" />
+    <Compile Include="plugin\net\JavaPlugin.java.cs" />
+    <Compile Include="plugin\net\JavaPluginLoader.java.cs" />
+    <Compile Include="plugin\net\PluginClassLoader.java.cs" />
     <Compile Include="plugin\messaging\ChannelNameTooLongException.java.cs" />
     <Compile Include="plugin\messaging\ChannelNotRegisteredException.java.cs" />
     <Compile Include="plugin\messaging\MessageTooLargeException.java.cs" />
