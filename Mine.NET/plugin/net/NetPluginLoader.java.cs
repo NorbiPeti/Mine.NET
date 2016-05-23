@@ -1,70 +1,69 @@
-namespace Mine.NET.plugin.java{
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 
+namespace Mine.NET.plugin.net
+{
 /**
  * Represents a Java plugin loader, allowing plugins in the form of .jar
  */
-public sealed class JavaPluginLoader : PluginLoader {
+public sealed class NetPluginLoader : PluginLoader {
     readonly Server server;
-    private readonly Pattern[] fileFilters = new Pattern[] { Pattern.compile("\\.jar$"), };
-    private readonly Dictionary<String, Class<?>> classes = new Dictionary<String, Class<?>>();
-    private readonly Dictionary<String, PluginClassLoader> loaders = new LinkedHashMap<String, PluginClassLoader>();
-
-    /**
-     * This class was not meant to be constructed explicitly
-     * 
-     * @param instance the server instance
-     */
-    [Obsolete]
-    public JavaPluginLoader(Server instance) {
-        if(instance==null) throw new ArgumentNullException("Server cannot be null");
-        server = instance;
-    }
+        private readonly Regex[] fileFilters = new Regex[] { new Regex("\\.jar$") };
+    private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
+    private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
 
     public Plugin loadPlugin(FileInfo file) {
-        if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
+        if(file==null) throw new ArgumentNullException("File cannot be null");
 
-        if (!file.exists()) {
-            throw new InvalidPluginException(new FileNotFoundException(file.getPath() + " does not exist"));
+        if (!file.Exists) {
+            throw new InvalidPluginException(new FileNotFoundException(file.FullName + " does not exist"));
         }
 
-        readonly PluginDescriptionFile description;
+        PluginDescriptionFile description;
         try {
             description = getPluginDescription(file);
         } catch (InvalidDescriptionException ex) {
             throw new InvalidPluginException(ex);
         }
 
-        readonly FileInfo parentFile = file.getParentFile();
-        readonly FileInfo dataFolder = new FileInfo(parentFile, description.getName());
+            DirectoryInfo parentFile = file.Directory;
+        DirectoryInfo dataFolder = new DirectoryInfo(parentFile, description.getName());
         
-        readonly FileInfo oldDataFolder = new FileInfo(parentFile, description.getRawName());
+        DirectoryInfo oldDataFolder = new DirectoryInfo(parentFile, description.getRawName());
 
-        // Found old data folder
-        if (dataFolder.equals(oldDataFolder)) {
-            // They are equal -- nothing needs to be done!
-        } else if (dataFolder.isDirectory() && oldDataFolder.isDirectory()) {
-            server.getLogger().warning(String.format(
-                "While loading %s (%s) found old-data folder: `%s' next to the new one `%s'",
-                description.getFullName(),
-                file,
-                oldDataFolder,
-                dataFolder
-            ));
-        } else if (oldDataFolder.isDirectory() && !dataFolder.exists()) {
-            if (!oldDataFolder.renameTo(dataFolder)) {
-                throw new InvalidPluginException("Unable to rename old data folder: `" + oldDataFolder + "' to: `" + dataFolder + "'");
+            // Found old data folder
+            if (dataFolder.Equals(oldDataFolder)) {
+                // They are equal -- nothing needs to be done!
+            } else if (dataFolder.Exists && oldDataFolder.Exists) {
+                server.getLogger().Warning(String.Format(
+                    "While loading %s (%s) found old-data folder: `%s' next to the new one `%s'",
+                    description.getFullName(),
+                    file,
+                    oldDataFolder,
+                    dataFolder
+                ));
+            } else if (oldDataFolder.Exists && !dataFolder.Exists) {
+                try
+                {
+                    oldDataFolder.MoveTo(dataFolder.FullName);
+                }
+                catch (Exception e)
+                {
+                    throw new InvalidPluginException("Unable to rename old data folder: `" + oldDataFolder + "' to: `" + dataFolder + "'", e);
+                }
+                server.getLogger().Info(String.Format(
+                    "While loading %s (%s) renamed data folder: `%s' to `%s'",
+                    description.getFullName(),
+                    file,
+                    oldDataFolder,
+                    dataFolder
+                ));
             }
-            server.getLogger().log(Level.INFO, String.format(
-                "While loading %s (%s) renamed data folder: `%s' to `%s'",
-                description.getFullName(),
-                file,
-                oldDataFolder,
-                dataFolder
-            ));
-        }
 
-        if (dataFolder.exists() && !dataFolder.isDirectory()) {
-            throw new InvalidPluginException(String.format(
+        if (dataFolder.Exists) {
+            throw new InvalidPluginException(String.Format(
                 "Projected datafolder: `%s' for %s (%s) exists and is not a directory",
                 dataFolder,
                 description.getFullName(),
@@ -83,9 +82,9 @@ public sealed class JavaPluginLoader : PluginLoader {
             }
         }
 
-        readonly PluginClassLoader loader;
+        PluginClassLoader loader;
         try {
-            loader = new PluginClassLoader(this, getClass().getClassLoader(), description, dataFolder, file);
+            loader = new PluginClassLoader(this, GetType(), description, dataFolder, file);
         } catch (InvalidPluginException ex) {
             throw ex;
         } catch (Exception ex) {
@@ -105,7 +104,7 @@ public sealed class JavaPluginLoader : PluginLoader {
 
         try {
             jar = new JarFile(file);
-            JarEntry entry = jar.getJarEntry("plugin.yml");
+            JarEntry entry = jar.getJarEntry("plugin.json"); //TODO
 
             if (entry == null) {
                 throw new InvalidDescriptionException(new FileNotFoundException("Jar does not contain plugin.yml"));
@@ -329,4 +328,5 @@ public sealed class JavaPluginLoader : PluginLoader {
             }
         }
     }
+}
 }

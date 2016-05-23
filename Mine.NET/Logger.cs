@@ -23,6 +23,11 @@ namespace Mine.NET
             throw new NotImplementedException();
         }
 
+        public void Info(string v)
+        {
+            throw new NotImplementedException();
+        }
+
         private static Dictionary<string, Logger> Loggers = new Dictionary<string, Logger>();
         public static Logger getLogger(string name)
         {

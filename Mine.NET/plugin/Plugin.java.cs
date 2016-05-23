@@ -1,178 +1,186 @@
-namespace Mine.NET.plugin{
+using Mine.NET.command;
+using Mine.NET.configuration.file;
+using Mine.NET.generator;
+using System;
+using System.IO;
 
-/**
- * Represents a Plugin
- * <p>
- * The use of {@link PluginBase} is recommended for actual Implementation
- */
-public interface Plugin : TabExecutor {
+namespace Mine.NET.plugin
+{
     /**
-     * Returns the folder that the plugin data's files are located in. The
-     * folder may not yet exist.
-     *
-     * @return The folder
-     */
-    public FileInfo getDataFolder();
-
-    /**
-     * Returns the plugin.yaml file containing the details for this plugin
-     *
-     * @return Contents of the plugin.yaml file
-     */
-    public PluginDescriptionFile getDescription();
-
-    /**
-     * Gets a {@link FileConfiguration} for this plugin, read through
-     * "config.yml"
+     * Represents a Plugin
      * <p>
-     * If there is a default config.yml embedded in this plugin, it will be
-     * provided as a default for this Configuration.
-     *
-     * @return Plugin configuration
+     * The use of {@link PluginBase} is recommended for actual Implementation
      */
-    public FileConfiguration getConfig();
+    public interface Plugin : TabExecutor
+    {
+        /**
+         * Returns the folder that the plugin data's files are located in. The
+         * folder may not yet exist.
+         *
+         * @return The folder
+         */
+        DirectoryInfo getDataFolder();
 
-    /**
-     * Gets an embedded resource in this plugin
-     *
-     * @param filename Filename of the resource
-     * @return FileInfo if found, otherwise null
-     */
-    public InputStream getResource(String filename);
+        /**
+         * Returns the plugin.yaml file containing the details for this plugin
+         *
+         * @return Contents of the plugin.yaml file
+         */
+        PluginDescriptionFile getDescription();
 
-    /**
-     * Saves the {@link FileConfiguration} retrievable by {@link #getConfig()}.
-     */
-    public void saveConfig();
+        /**
+         * Gets a {@link FileConfiguration} for this plugin, read through
+         * "config.yml"
+         * <p>
+         * If there is a default config.yml embedded in this plugin, it will be
+         * provided as a default for this Configuration.
+         *
+         * @return Plugin configuration
+         */
+        FileConfiguration getConfig();
 
-    /**
-     * Saves the raw contents of the default config.yml file to the location
-     * retrievable by {@link #getConfig()}. If there is no default config.yml
-     * embedded in the plugin, an empty config.yml file is saved. This should
-     * fail silently if the config.yml already exists.
-     */
-    public void saveDefaultConfig();
+        /**
+         * Gets an embedded resource in this plugin
+         *
+         * @param filename Filename of the resource
+         * @return FileInfo if found, otherwise null
+         */
+        MemoryStream getResource(String filename);
 
-    /**
-     * Saves the raw contents of any resource embedded with a plugin's .jar
-     * file assuming it can be found using {@link #getResource(String)}.
-     * <p>
-     * The resource is saved into the plugin's data folder using the same
-     * hierarchy as the .jar file (subdirectories are preserved).
-     *
-     * @param resourcePath the embedded resource path to look for within the
-     *     plugin's .jar file. (No preceding slash).
-     * @param replace if true, the embedded resource will overwrite the
-     *     contents of an existing file.
-     * @throws ArgumentException if the resource path is null, empty,
-     *     or points to a nonexistent resource.
-     */
-    public void saveResource(String resourcePath, bool replace);
+        /**
+         * Saves the {@link FileConfiguration} retrievable by {@link #getConfig()}.
+         */
+        void saveConfig();
 
-    /**
-     * Discards any data in {@link #getConfig()} and reloads from disk.
-     */
-    public void reloadConfig();
+        /**
+         * Saves the raw contents of the default config.yml file to the location
+         * retrievable by {@link #getConfig()}. If there is no default config.yml
+         * embedded in the plugin, an empty config.yml file is saved. This should
+         * fail silently if the config.yml already exists.
+         */
+        void saveDefaultConfig();
 
-    /**
-     * Gets the associated PluginLoader responsible for this plugin
-     *
-     * @return PluginLoader that controls this plugin
-     */
-    public PluginLoader getPluginLoader();
+        /**
+         * Saves the raw contents of any resource embedded with a plugin's .jar
+         * file assuming it can be found using {@link #getResource(String)}.
+         * <p>
+         * The resource is saved into the plugin's data folder using the same
+         * hierarchy as the .jar file (subdirectories are preserved).
+         *
+         * @param resourcePath the embedded resource path to look for within the
+         *     plugin's .jar file. (No preceding slash).
+         * @param replace if true, the embedded resource will overwrite the
+         *     contents of an existing file.
+         * @throws ArgumentException if the resource path is null, empty,
+         *     or points to a nonexistent resource.
+         */
+        void saveResource(String resourcePath, bool replace);
 
-    /**
-     * Returns the Server instance currently running this plugin
-     *
-     * @return Server running this plugin
-     */
-    public Server getServer();
+        /**
+         * Discards any data in {@link #getConfig()} and reloads from disk.
+         */
+        void reloadConfig();
 
-    /**
-     * Returns a value indicating whether or not this plugin is currently
-     * enabled
-     *
-     * @return true if this plugin is enabled, otherwise false
-     */
-    public bool isEnabled();
+        /**
+         * Gets the associated PluginLoader responsible for this plugin
+         *
+         * @return PluginLoader that controls this plugin
+         */
+        PluginLoader getPluginLoader();
 
-    /**
-     * Called when this plugin is disabled
-     */
-    public void onDisable();
+        /**
+         * Returns the Server instance currently running this plugin
+         *
+         * @return Server running this plugin
+         */
+        Server getServer();
 
-    /**
-     * Called after a plugin is loaded but before it has been enabled.
-     * <p>
-     * When mulitple plugins are loaded, the onLoad() for all plugins is
-     * called before any onEnable() is called.
-     */
-    public void onLoad();
+        /**
+         * Returns a value indicating whether or not this plugin is currently
+         * enabled
+         *
+         * @return true if this plugin is enabled, otherwise false
+         */
+        bool isEnabled();
 
-    /**
-     * Called when this plugin is enabled
-     */
-    public void onEnable();
+        /**
+         * Called when this plugin is disabled
+         */
+        void onDisable();
 
-    /**
-     * Simple bool if we can still nag to the logs about things
-     *
-     * @return bool whether we can nag
-     */
-    public bool isNaggable();
+        /**
+         * Called after a plugin is loaded but before it has been enabled.
+         * <p>
+         * When mulitple plugins are loaded, the onLoad() for all plugins is
+         * called before any onEnable() is called.
+         */
+        void onLoad();
 
-    /**
-     * Set naggable state
-     *
-     * @param canNag is this plugin still naggable?
-     */
-    public void setNaggable(bool canNag);
+        /**
+         * Called when this plugin is enabled
+         */
+        void onEnable();
 
-    /**
-     * Gets the {@link EbeanServer} tied to this plugin. This will only be
-     * available if enabled in the {@link
-     * PluginDescriptionFile#isDatabaseEnabled()}
-     * <p>
-     * <i>For more information on the use of <a href="http://www.avaje.org/">
-     * Avaje Ebeans ORM</a>, see <a
-     * href="http://www.avaje.org/ebean/documentation.html">Avaje Ebeans
-     * Documentation</a></i>
-     * <p>
-     * <i>For an example using Ebeans ORM, see <a
-     * href="https://github.com/Bukkit/HomeBukkit">Bukkit's Homebukkit Plugin
-     * </a></i>
-     *
-     * @return ebean server instance or null if not enabled
-     */
-    public EbeanServer getDatabase();
+        /**
+         * Simple bool if we can still nag to the logs about things
+         *
+         * @return bool whether we can nag
+         */
+        bool isNaggable();
 
-    /**
-     * Gets a {@link ChunkGenerator} for use in a default world, as specified
-     * in the server configuration
-     *
-     * @param worldName Name of the world that this will be applied to
-     * @param id Unique ID, if any, that was specified to indicate which
-     *     generator was requested
-     * @return ChunkGenerator for use in the default world generation
-     */
-    public ChunkGenerator getDefaultWorldGenerator(String worldName, String id);
+        /**
+         * Set naggable state
+         *
+         * @param canNag is this plugin still naggable?
+         */
+        void setNaggable(bool canNag);
 
-    /**
-     * Returns the plugin logger associated with this server's logger. The
-     * returned logger automatically tags all log messages with the plugin's
-     * name.
-     *
-     * @return Logger associated with this plugin
-     */
-    public Logger getLogger();
+        /**
+         * Gets the {@link EbeanServer} tied to this plugin. This will only be
+         * available if enabled in the {@link
+         * PluginDescriptionFile#isDatabaseEnabled()}
+         * <p>
+         * <i>For more information on the use of <a href="http://www.avaje.org/">
+         * Avaje Ebeans ORM</a>, see <a
+         * href="http://www.avaje.org/ebean/documentation.html">Avaje Ebeans
+         * Documentation</a></i>
+         * <p>
+         * <i>For an example using Ebeans ORM, see <a
+         * href="https://github.com/Bukkit/HomeBukkit">Bukkit's Homebukkit Plugin
+         * </a></i>
+         *
+         * @return ebean server instance or null if not enabled
+         */
+        EbeanServer getDatabase(); //TODO
 
-    /**
-     * Returns the name of the plugin.
-     * <p>
-     * This should return the bare name of the plugin and should be used for
-     * comparison.
-     *
-     * @return name of the plugin
-     */
-    public String getName();
+        /**
+         * Gets a {@link ChunkGenerator} for use in a default world, as specified
+         * in the server configuration
+         *
+         * @param worldName Name of the world that this will be applied to
+         * @param id Unique ID, if any, that was specified to indicate which
+         *     generator was requested
+         * @return ChunkGenerator for use in the default world generation
+         */
+        ChunkGenerator getDefaultWorldGenerator(String worldName, String id);
+
+        /**
+         * Returns the plugin logger associated with this server's logger. The
+         * returned logger automatically tags all log messages with the plugin's
+         * name.
+         *
+         * @return Logger associated with this plugin
+         */
+        Logger getLogger();
+
+        /**
+         * Returns the name of the plugin.
+         * <p>
+         * This should return the bare name of the plugin and should be used for
+         * comparison.
+         *
+         * @return name of the plugin
+         */
+        String getName();
+    }
 }

@@ -1,56 +1,40 @@
-namespace Mine.NET.plugin.java{
+using Mine.NET.configuration.file;
+using System;
+using System.IO;
+
+namespace Mine.NET.plugin.net{
 
 /**
  * Represents a Java plugin
  */
-public abstract class JavaPlugin : PluginBase {
-    private bool isEnabled = false;
+public abstract class NetPlugin : PluginBase {
+    private bool isenabled = false;
     private PluginLoader loader = null;
     private Server server = null;
     private FileInfo file = null;
     private PluginDescriptionFile description = null;
-    private FileInfo dataFolder = null;
-    private ClassLoader classLoader = null;
-    private bool naggable = true;
+    private DirectoryInfo dataFolder = null;
+        //private ClassLoader classLoader = null;
+        private PluginClassLoader classLoader = null;
+        private bool naggable = true;
     private EbeanServer ebean = null;
     private FileConfiguration newConfig = null;
     private FileInfo configFile = null;
     private PluginLogger logger = null;
 
-    public JavaPlugin() {
-        readonly ClassLoader classLoader = this.getClass().getClassLoader();
-        if (!(classLoader is PluginClassLoader)) {
-            throw new InvalidOperationException("JavaPlugin requires " + PluginClassLoader.class.getName());
-        }
-        ((PluginClassLoader) classLoader).initialize(this);
+    public NetPlugin(PluginClassLoader loader) {
+            /*ClassLoader classLoader = this.getClass().getClassLoader();
+            if (!(classLoader is PluginClassLoader)) {
+                throw new InvalidOperationException("JavaPlugin requires " + PluginClassLoader.class.getName());
+            }*/ //TODO: Check if there's something like this in .NET
+            (classLoader = loader).initialize(this);
     }
 
-    /**
-     * [Obsolete] This method is intended for unit testing purposes when the
-     *     other {@linkplain #JavaPlugin(JavaPluginLoader,
-     *     PluginDescriptionFile, FileInfo, FileInfo) constructor} cannot be used.
-     *     <p>
-     *     Its existence may be temporary.
-     * @param loader the plugin loader
-     * @param server the server instance
-     * @param description the plugin's description
-     * @param dataFolder the plugin's data folder
-     * @param file the location of the plugin
-     */
-    [Obsolete]
-    protected JavaPlugin(PluginLoader loader, readonly Server server, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
-        readonly ClassLoader classLoader = this.getClass().getClassLoader();
+    protected NetPlugin(NetPluginLoader loader, PluginDescriptionFile description, FileInfo dataFolder, FileInfo file) {
+        /*Class0Loader classLoader = this.getClass().getClassLoader();
         if (classLoader is PluginClassLoader) {
             throw new InvalidOperationException("Cannot use initialization constructor at runtime");
-        }
-        init(loader, server, description, dataFolder, file, classLoader);
-    }
-
-    protected JavaPlugin(JavaPluginLoader loader, readonly PluginDescriptionFile description, readonly FileInfo dataFolder, readonly FileInfo file) {
-        readonly ClassLoader classLoader = this.getClass().getClassLoader();
-        if (classLoader is PluginClassLoader) {
-            throw new InvalidOperationException("Cannot use initialization constructor at runtime");
-        }
+        }*/
         init(loader, loader.server, description, dataFolder, file, classLoader);
     }
 
@@ -60,7 +44,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return The folder.
      */
-    public override readonly FileInfo getDataFolder() {
+    public override DirectoryInfo getDataFolder() {
         return dataFolder;
     }
 
@@ -69,7 +53,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return PluginLoader that controls this plugin
      */
-    public override readonly PluginLoader getPluginLoader() {
+    public override PluginLoader getPluginLoader() {
         return loader;
     }
 
@@ -78,7 +62,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return Server running this plugin
      */
-    public override readonly Server getServer() {
+    public override Server getServer() {
         return server;
     }
 
@@ -88,8 +72,8 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return true if this plugin is enabled, otherwise false
      */
-    public override readonly bool isEnabled() {
-        return isEnabled;
+    public override bool isEnabled() {
+        return isenabled;
     }
 
     /**
@@ -106,7 +90,7 @@ public abstract class JavaPlugin : PluginBase {
      *
      * @return Contents of the plugin.yaml file
      */
-    public override readonly PluginDescriptionFile getDescription() {
+    public override PluginDescriptionFile getDescription() {
         return description;
     }
 
@@ -128,10 +112,10 @@ public abstract class JavaPlugin : PluginBase {
      * @see ClassLoader#getResourceAsStream(String)
      */
     
-    protected readonly Reader getTextResource(String file) {
-        readonly InputStream in = getResource(file);
+    protected StreamReader getTextResource(String file) {
+        Stream in_ = getResource(file);
 
-        return in == null ? null : new InputStreamReader(in, Charsets.UTF_8);
+        return in_ == null ? null : new InputStreamReader(in_, Charsets.UTF_8);
     }
 
     
@@ -197,7 +181,7 @@ public abstract class JavaPlugin : PluginBase {
         }
     }
 
-    public override InputStream getResource(String filename) {
+    public override MemoryStream getResource(String filename) {
         if (filename == null) {
             throw new ArgumentException("Filename cannot be null");
         }
@@ -426,10 +410,10 @@ public abstract class JavaPlugin : PluginBase {
      * @throws ClassCastException if plugin that provided the class does not
      *     extend the class
      */
-    public static <T : JavaPlugin> T getPlugin(Class<T> clazz) {
+    public static <T : NetPlugin> T getPlugin(Class<T> clazz) {
         if(clazz==null) throw new ArgumentNullException("Null class cannot have a plugin");
-        if (!JavaPlugin.class.isAssignableFrom(clazz)) {
-            throw new ArgumentException(clazz + " does not extend " + JavaPlugin.class);
+        if (!NetPlugin.class.isAssignableFrom(clazz)) {
+            throw new ArgumentException(clazz + " does not extend " + NetPlugin.class);
         }
         readonly ClassLoader cl = clazz.getClassLoader();
         if (!(cl is PluginClassLoader)) {
