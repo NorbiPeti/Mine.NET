@@ -8,12 +8,12 @@ namespace Mine.NET.plugin.net
     /**
      * A ClassLoader for plugins, to allow shared classes across multiple plugins
      */
-    sealed class PluginClassLoader
+    internal sealed class PluginClassLoader
     {
         private readonly NetPluginLoader loader;
         private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
         private readonly PluginDescriptionFile description;
-        private readonly FileInfo dataFolder;
+        private readonly DirectoryInfo dataFolder;
         private readonly FileInfo file;
         internal readonly NetPlugin plugin;
         private NetPlugin pluginInit;
@@ -36,7 +36,7 @@ namespace Mine.NET.plugin.net
                 Type plugintype;
                 try
                 {
-                    plugintype = asm.GetType(description.getMain(), true, true);
+                    plugintype = asm.GetType(description.getMain(), true, true); //TODO: Code analysis
                 }
                 catch (TargetInvocationException ex)
                 {
@@ -75,6 +75,11 @@ namespace Mine.NET.plugin.net
             this.pluginInit = javaPlugin;
 
             javaPlugin.init(loader, loader.server, description, dataFolder, file, this);
+        }
+
+        internal Stream getResource(string filename)
+        {
+            return asm.GetManifestResourceStream(filename);
         }
     }
 }

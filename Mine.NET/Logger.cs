@@ -13,17 +13,17 @@ namespace Mine.NET
         {
             this.name = name;
         }
-        public void Severe(object p)
+        public void Severe(object p, Exception ex = null)
         {
             throw new NotImplementedException(); //TODO
         }
 
-        public void Warning(string v)
+        public void Warning(string v, Exception ex = null)
         {
             throw new NotImplementedException();
         }
 
-        public void Info(string v)
+        public void Info(string v, Exception ex = null)
         {
             throw new NotImplementedException();
         }

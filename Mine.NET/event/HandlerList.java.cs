@@ -84,7 +84,7 @@ public class HandlerList { //TODO
      * The HandlerList is then added to meta-list for use in bakeAll()
      */
     public HandlerList() {
-        handlerslots = new EnumMap<EventPriority, List<RegisteredListener>>(EventPriority.class);
+        handlerslots = new EnumMap<EventPriority, List<RegisteredListener>>(typeof(EventPriority));
         foreach (EventPriority o  in  EventPriority.values()) {
             handlerslots.Add(o, new List<RegisteredListener>());
         }

@@ -23,7 +23,7 @@ public class TimedRegisteredListener : RegisteredListener {
             this.eventClass = newEventClass;
         } else if (!this.eventClass.equals(newEventClass)) {
             multiple = true;
-            this.eventClass = getCommonSuperclass(newEventClass, this.eventClass).asSubclass(Event.class);
+            this.eventClass = getCommonSuperclass(newEventClass, this.eventClass).asSubclass(typeof(Event));
         }
         long start = System.nanoTime();
         base.callEvent(event);

@@ -34,11 +34,11 @@ public sealed class SimplePluginManager : PluginManager {
     public void registerInterface(Class<? : PluginLoader> loader) {
         PluginLoader instance;
 
-        if (PluginLoader.class.isAssignableFrom(loader)) {
+        if (typeof(PluginLoader).isAssignableFrom(loader)) {
             Constructor<? : PluginLoader> constructor;
 
             try {
-                constructor = loader.getConstructor(Server.class);
+                constructor = loader.getConstructor(typeof(Server));
                 instance = constructor.newInstance(server);
             } catch (NoSuchMethodException ex) {
                 String className = loader.getName();
@@ -99,7 +99,7 @@ public sealed class SimplePluginManager : PluginManager {
                 description = loader.getPluginDescription(file);
                 String name = description.getName();
                 if (name.equalsIgnoreCase("bukkit") || name.equalsIgnoreCase("minecraft") || name.equalsIgnoreCase("mojang")) {
-                    server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': Restricted Name");
+                    server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': Restricted Name");
                     continue;
                 } else if (description.rawName.IndexOf(' ') != -1) {
                     server.getLogger().warning(String.format(
@@ -109,7 +109,7 @@ public sealed class SimplePluginManager : PluginManager {
                         ));
                 }
             } catch (InvalidDescriptionException ex) {
-                server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
+                server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
                 continue;
             }
 
@@ -218,7 +218,7 @@ public sealed class SimplePluginManager : PluginManager {
                         loadedPlugins.add(plugin);
                         continue;
                     } catch (InvalidPluginException ex) {
-                        server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
+                        server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
                     }
                 }
             }
@@ -242,7 +242,7 @@ public sealed class SimplePluginManager : PluginManager {
                             loadedPlugins.add(plugin);
                             break;
                         } catch (InvalidPluginException ex) {
-                            server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
+                            server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
                         }
                     }
                 }
@@ -255,7 +255,7 @@ public sealed class SimplePluginManager : PluginManager {
                     while (failedPluginIterator.hasNext()) {
                         FileInfo file = failedPluginIterator.next();
                         failedPluginIterator.remove();
-                        server.getLogger().log(Level.SEVERE, "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': circular dependency detected");
+                        server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': circular dependency detected");
                     }
                 }
             }
@@ -369,7 +369,7 @@ public sealed class SimplePluginManager : PluginManager {
             try {
                 plugin.getPluginLoader().enablePlugin(plugin);
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             HandlerList.bakeAll();
@@ -388,32 +388,32 @@ public sealed class SimplePluginManager : PluginManager {
             try {
                 plugin.getPluginLoader().disablePlugin(plugin);
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while disabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while disabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getScheduler().cancelTasks(plugin);
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while cancelling tasks for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while cancelling tasks for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getServicesManager().unregisterAll(plugin);
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering services for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while unregistering services for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 HandlerList.unregisterAll(plugin);
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering events for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while unregistering events for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
 
             try {
                 server.getMessenger().unregisterIncomingPluginChannel(plugin);
                 server.getMessenger().unregisterOutgoingPluginChannel(plugin);
             } catch(Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Error occurred (in the plugin loader) while unregistering plugin channels for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                server.getLogger().Severe("Error occurred (in the plugin loader) while unregistering plugin channels for " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
             }
         }
     }
@@ -471,7 +471,7 @@ public sealed class SimplePluginManager : PluginManager {
                 if (plugin.isNaggable()) {
                     plugin.setNaggable(false);
 
-                    server.getLogger().log(Level.SEVERE, String.format(
+                    server.getLogger().Severe(String.format(
                             "Nag author(s): '%s' of '%s' about the following: %s",
                             plugin.getDescription().getAuthors(),
                             plugin.getDescription().getFullName(),
@@ -479,7 +479,7 @@ public sealed class SimplePluginManager : PluginManager {
                             ));
                 }
             } catch (Exception ex) {
-                server.getLogger().log(Level.SEVERE, "Could not pass event " + event.getEventName() + " to " + registration.getPlugin().getDescription().getFullName(), ex);
+                server.getLogger().Severe("Could not pass event " + event.getEventName() + " to " + registration.getPlugin().getDescription().getFullName(), ex);
             }
         }
     }
@@ -544,9 +544,9 @@ public sealed class SimplePluginManager : PluginManager {
             return clazz;
         } catch (NoSuchMethodException e) {
             if (clazz.getSuperclass() != null
-                    && !clazz.getSuperclass().equals(Event.class)
-                    && Event.class.isAssignableFrom(clazz.getSuperclass())) {
-                return getRegistrationClass(clazz.getSuperclass().asSubclass(Event.class));
+                    && !clazz.getSuperclass().equals(typeof(Event))
+                    && typeof(Event).isAssignableFrom(clazz.getSuperclass())) {
+                return getRegistrationClass(clazz.getSuperclass().asSubclass(typeof(Event)));
             } else {
                 throw new IllegalPluginAccessException("Unable to find handler list for event " + clazz.getName() + ". Static getHandlerList method required!");
             }

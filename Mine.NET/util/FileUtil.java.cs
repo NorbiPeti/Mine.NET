@@ -13,7 +13,7 @@ public class FileUtil {
      * @return true on success
      */
     public static bool copy(FileInfo inFile, FileInfo outFile) {
-        if (!inFile.exists()) {
+        if (!inFile.Exists) {
             return false;
         }
 
