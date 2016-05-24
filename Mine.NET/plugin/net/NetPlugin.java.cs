@@ -440,7 +440,7 @@ namespace Mine.NET.plugin.net
          *     <code>JavaPlugin.getPlugin(typeof(JavaPlugin))</code>
          * @throws InvalidOperationException if called from the static initializer for
          *     given JavaPlugin
-         * @throws ClassCastException if plugin that provided the class does not
+         * @throws InvalidCastException if plugin that provided the class does not
          *     extend the class
          */
         /*public static T getPlugin<T>() where T : NetPlugin {

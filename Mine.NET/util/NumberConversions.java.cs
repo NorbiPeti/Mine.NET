@@ -32,7 +32,7 @@ public sealed class NumberConversions {
         try {
             return int.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }
@@ -45,7 +45,7 @@ public sealed class NumberConversions {
         try {
             return Float.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }
@@ -58,7 +58,7 @@ public sealed class NumberConversions {
         try {
             return Double.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }
@@ -71,7 +71,7 @@ public sealed class NumberConversions {
         try {
             return Long.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }
@@ -84,7 +84,7 @@ public sealed class NumberConversions {
         try {
             return Short.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }
@@ -97,7 +97,7 @@ public sealed class NumberConversions {
         try {
             return Byte.valueOf(object.ToString());
         } catch (NumberFormatException e) {
-        } catch (NullPointerException e) {
+        } catch (NullReferenceException e) {
         }
         return 0;
     }

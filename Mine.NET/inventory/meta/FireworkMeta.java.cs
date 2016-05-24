@@ -37,7 +37,7 @@ public interface FireworkMeta : ItemMeta<FireworkMeta> {
      * @throws ArgumentException If any effect is null (may be thrown
      *     after changes have occurred)
      */
-    void addEffects(Iterable<FireworkEffect> effects);
+    void addEffects(IEnumerable<FireworkEffect> effects);
 
     /**
      * Get the effects in this firework.

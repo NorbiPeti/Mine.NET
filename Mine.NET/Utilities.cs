@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Mine.NET
@@ -30,6 +31,11 @@ namespace Mine.NET
                     || value is float
                     || value is double
                     || value is decimal;
+        }
+
+        public static string ReplaceAll(this string input, string pattern, string replacement)
+        {
+            return Regex.Replace(input, pattern, replacement);
         }
     }
 }

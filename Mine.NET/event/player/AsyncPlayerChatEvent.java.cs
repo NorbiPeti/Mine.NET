@@ -90,7 +90,7 @@ namespace Mine.NET.Event.player
          *     format string
          * @throws IllegalFormatException if the underlying API throws the
          *     exception
-         * @throws NullPointerException if format is null
+         * @throws NullReferenceException if format is null
          * @see String#format(String, Object...)
          */
         public void setFormat(String format)

@@ -19,7 +19,7 @@ public class StringUtil {
      * @throws ArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static <T : Collection<? base String>> T copyPartialMatches(String token, readonly Iterable<String> originals, readonly T collection) {
+    public static <T : Collection<? base String>> T copyPartialMatches(String token, readonly IEnumerable<String> originals, readonly T collection) {
         if(token==null) throw new ArgumentNullException("Search token cannot be null");
         if(collection==null) throw new ArgumentNullException("Collection cannot be null");
         if(originals==null) throw new ArgumentNullException("Originals cannot be null");
@@ -42,7 +42,7 @@ public class StringUtil {
      * @param prefix Prefix of string to compare
      * @return true if provided string starts with, ignoring case, the prefix
      *     provided
-     * @throws NullPointerException if prefix is null
+     * @throws NullReferenceException if prefix is null
      * @throws ArgumentException if string is null
      */
     public static bool StartsWithIgnoreCase(String string, readonly String prefix) {
