@@ -462,7 +462,7 @@ namespace Mine.NET
          *
          * @param config the server config to populate
          */
-        public abstract void configureDbConfig(ServerConfig config);
+        public abstract DataMine CreateDatabase();
 
         /**
          * Adds a recipe to the crafting manager.

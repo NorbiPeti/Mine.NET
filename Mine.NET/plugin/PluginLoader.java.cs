@@ -9,7 +9,8 @@ namespace Mine.NET.plugin
      * Represents a plugin loader, which handles direct access to specific types
      * of plugins
      */
-    public interface PluginLoader {
+    public interface PluginLoader
+    {
 
         /**
          * Loads the plugin contained in the specified file
@@ -23,17 +24,6 @@ namespace Mine.NET.plugin
          *     be found
          */
         Plugin loadPlugin(FileInfo file);
-
-        /**
-         * Loads a PluginDescriptionFile from the specified file
-         *
-         * @param file FileInfo to attempt to load from
-         * @return A new PluginDescriptionFile loaded from the plugin.yml in the
-         *     specified file
-         * @throws InvalidDescriptionException If the plugin description file
-         *     could not be created
-         */
-        PluginDescriptionFile getPluginDescription(FileInfo file);
 
         /**
          * Returns a list of all filename filters expected by this PluginLoader

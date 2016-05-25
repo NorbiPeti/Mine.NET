@@ -19,17 +19,16 @@ namespace Mine.NET.plugin.net
         private PluginLoader loader = null;
         private Server server = null;
         private FileInfo file = null;
-        private PluginDescriptionFile description = null;
         private DirectoryInfo dataFolder = null;
         //private ClassLoader classLoader = null;
         private PluginClassLoader classLoader = null;
         private bool naggable = true;
-        private EbeanServer ebean = null;
         private FileConfiguration newConfig = null;
         private FileInfo configFile = null;
         private PluginLogger logger = null;
+        private DataMine db = null;
 
-        public NetPlugin(PluginClassLoader loader)
+        internal NetPlugin(PluginClassLoader loader)
         {
             /*ClassLoader classLoader = this.getClass().getClassLoader();
             if (!(classLoader is PluginClassLoader)) {
@@ -38,13 +37,13 @@ namespace Mine.NET.plugin.net
             (classLoader = loader).initialize(this);
         }
 
-        protected NetPlugin(NetPluginLoader loader, PluginDescriptionFile description, FileInfo dataFolder, FileInfo file)
+        protected NetPlugin(NetPluginLoader loader, DirectoryInfo dataFolder, FileInfo file)
         {
             /*Class0Loader classLoader = this.getClass().getClassLoader();
             if (classLoader is PluginClassLoader) {
                 throw new InvalidOperationException("Cannot use initialization constructor at runtime");
             }*/
-            init(loader, loader.server, description, dataFolder, file, classLoader);
+            init(loader, loader.server, dataFolder, file, classLoader);
         }
 
         /**
@@ -84,9 +83,12 @@ namespace Mine.NET.plugin.net
          *
          * @return true if this plugin is enabled, otherwise false
          */
-        public override bool isEnabled()
+        public override bool Enabled
         {
-            return isenabled;
+            get
+            {
+                return isenabled;
+            }
         }
 
         /**
@@ -98,17 +100,7 @@ namespace Mine.NET.plugin.net
         {
             return file;
         }
-
-        /**
-         * Returns the plugin.yaml file containing the details for this plugin
-         *
-         * @return Contents of the plugin.yaml file
-         */
-        public override PluginDescriptionFile getDescription()
-        {
-            return description;
-        }
-
+        
         public override FileConfiguration getConfig()
         {
             if (newConfig == null)
@@ -204,7 +196,7 @@ namespace Mine.NET.plugin.net
                 }
                 else
                 {
-                    logger.Warning("Could not save " + outFile.Name + " to " + outFile + " because " + outFile.getName() + " already exists.");
+                    logger.Warning("Could not save " + outFile.Name + " to " + outFile + " because " + outFile.Name + " already exists.");
                 }
             }
             catch (IOException ex)
@@ -229,7 +221,7 @@ namespace Mine.NET.plugin.net
                     return null;
                 }
 
-                URLConnection connection = url.openConnection();
+                URLConnection connection = url.openConnection(); //TODO: Separate AppDomain for the plugins
                 connection.setUseCaches(false);
                 return connection.getInputStream();
             }
@@ -271,20 +263,19 @@ namespace Mine.NET.plugin.net
             }
         }
 
-        internal void init(PluginLoader loader, Server server, PluginDescriptionFile description, FileInfo dataFolder, FileInfo file, ClassLoader classLoader)
+        internal void init(PluginLoader loader, Server server, DirectoryInfo dataFolder, FileInfo file, PluginClassLoader classLoader)
         {
             this.loader = loader;
             this.server = server;
             this.file = file;
-            this.description = description;
             this.dataFolder = dataFolder;
             this.classLoader = classLoader;
-            this.configFile = new FileInfo(Path.Combine(dataFolder, "config.yml"));
+            this.configFile = new FileInfo(Path.Combine(dataFolder.FullName, "config.yml"));
             this.logger = new PluginLogger(this);
 
-            if (description.isDatabaseEnabled())
+            if (this.HasDatabase)
             {
-                ServerConfig db = new ServerConfig();
+                /*ServerConfig db = new ServerConfig();
 
                 db.setDefaultServer(false);
                 db.setRegister(false);
@@ -301,7 +292,8 @@ namespace Mine.NET.plugin.net
 
                 Thread.currentThread().setContextClassLoader(classLoader);
                 ebean = EbeanServerFactory.create(db);
-                Thread.currentThread().setContextClassLoader(previous);
+                Thread.currentThread().setContextClassLoader(previous);*/
+                db = server.CreateDatabase();
             }
         }
 
@@ -312,13 +304,13 @@ namespace Mine.NET.plugin.net
          */
         public List<Type> getDatabaseClasses()
         {
-            return new List<Type>();
+            return new List<Type>(); //TODO: ???
         }
 
         private String replaceDatabaseString(String input)
         {
             input = Regex.Replace(Regex.Replace(input, "\\{DIR\\}", dataFolder.FullName), "\\\\", "/") + "/";
-            input = Regex.Replace(Regex.Replace(input, "\\{NAME\\}", description.getName()), "[^\\w_-]", "");
+            input = Regex.Replace(Regex.Replace(input, "\\{NAME\\}", this.Name), "[^\\w_-]", "");
             return input;
         }
 
@@ -353,7 +345,7 @@ namespace Mine.NET.plugin.net
 
             if (command == null || command.getPlugin() != this)
             {
-                command = getServer().getPluginCommand(description.getName().ToLower() + ":" + alias);
+                command = getServer().getPluginCommand(this.Name.ToLower() + ":" + alias);
             }
 
             if (command != null && command.getPlugin() == this)
@@ -377,47 +369,55 @@ namespace Mine.NET.plugin.net
             return null;
         }
 
-        public override bool isNaggable()
+        public override bool Naggable
         {
-            return naggable;
+            get
+            {
+                return naggable;
+            }
+            protected set
+            {
+                naggable = value;
+            }
         }
 
-        public override void setNaggable(bool canNag)
+        public override DataMine Database
         {
-            this.naggable = canNag;
-        }
+            get
+            {
+                if (!HasDatabase) throw new InvalidOperationException("Plugin does not have database: true in plugin.yml");
 
-        public override EbeanServer getDatabase()
-        {
-            Preconditions.checkState(description.isDatabaseEnabled(), "Plugin does not have database: true in plugin.yml");
-
-            return ebean;
+                return db;
+            }
         }
 
         protected void installDDL()
         {
-            SpiEbeanServer serv = (SpiEbeanServer)getDatabase();
+            /*SpiEbeanServer serv = (SpiEbeanServer)getDatabase();
             DdlGenerator gen = serv.getDdlGenerator();
 
-            gen.runScript(false, gen.generateCreateDdl());
+            gen.runScript(false, gen.generateCreateDdl());*/ //TODO
         }
 
         protected void removeDDL()
         {
-            SpiEbeanServer serv = (SpiEbeanServer)getDatabase();
+            /*SpiEbeanServer serv = (SpiEbeanServer)getDatabase();
             DdlGenerator gen = serv.getDdlGenerator();
 
-            gen.runScript(true, gen.generateDropDdl());
+            gen.runScript(true, gen.generateDropDdl());*/
         }
 
-        public override Logger getLogger()
+        public override Logger Logger
         {
-            return logger;
+            get
+            {
+                return logger;
+            }
         }
 
         public override string ToString()
         {
-            return description.getFullName();
+            return FullName;
         }
 
         /**

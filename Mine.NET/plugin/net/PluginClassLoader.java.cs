@@ -20,7 +20,7 @@ namespace Mine.NET.plugin.net
         private InvalidOperationException pluginState;
         private readonly Assembly asm;
 
-        internal PluginClassLoader(NetPluginLoader loader, Type parent, PluginDescriptionFile description, DirectoryInfo dataFolder, FileInfo file)
+        internal PluginClassLoader(NetPluginLoader loader, Type parent, DirectoryInfo dataFolder, FileInfo file)
         {
             if (loader == null) throw new ArgumentNullException("Loader cannot be null");
 

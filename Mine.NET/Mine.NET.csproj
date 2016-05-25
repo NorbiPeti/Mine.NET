@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -127,6 +128,7 @@
     <Compile Include="configuration\serialization\ConfigurationSerializable.java.cs" />
     <Compile Include="configuration\serialization\SerializableAs.java.cs" />
     <Compile Include="CropState.java.cs" />
+    <Compile Include="DataMine.cs" />
     <Compile Include="Difficulty.java.cs" />
     <Compile Include="DyeColor.java.cs" />
     <Compile Include="Effect.java.cs" />
@@ -595,7 +597,6 @@
     <Compile Include="plugin\Plugin.java.cs" />
     <Compile Include="plugin\PluginAwareness.java.cs" />
     <Compile Include="plugin\PluginBase.java.cs" />
-    <Compile Include="plugin\PluginDescriptionFile.java.cs" />
     <Compile Include="plugin\PluginLoader.java.cs" />
     <Compile Include="plugin\PluginLoadOrder.java.cs" />
     <Compile Include="plugin\PluginLogger.java.cs" />

@@ -15,7 +15,7 @@ namespace Mine.NET.plugin.net
      */
     public sealed class NetPluginLoader : PluginLoader
     {
-        readonly Server server;
+        internal readonly Server server;
         private readonly Regex[] fileFilters = new Regex[] { new Regex("\\.jar$") };
         private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
         private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
@@ -29,64 +29,8 @@ namespace Mine.NET.plugin.net
                 throw new InvalidPluginException(new FileNotFoundException(file.FullName + " does not exist"));
             }
 
-            PluginDescriptionFile description;
-            try
-            {
-                description = getPluginDescription(file);
-            }
-            catch (InvalidDescriptionException ex)
-            {
-                throw new InvalidPluginException(ex);
-            }
-
             DirectoryInfo parentFile = file.Directory;
-            DirectoryInfo dataFolder = new DirectoryInfo(parentFile, description.getName());
-
-            DirectoryInfo oldDataFolder = new DirectoryInfo(parentFile, description.getRawName());
-
-            // Found old data folder
-            if (dataFolder.Equals(oldDataFolder))
-            {
-                // They are equal -- nothing needs to be done!
-            }
-            else if (dataFolder.Exists && oldDataFolder.Exists)
-            {
-                server.getLogger().Warning(String.Format(
-                    "While loading %s (%s) found old-data folder: `%s' next to the new one `%s'",
-                    description.getFullName(),
-                    file,
-                    oldDataFolder,
-                    dataFolder
-                ));
-            }
-            else if (oldDataFolder.Exists && !dataFolder.Exists)
-            {
-                try
-                {
-                    oldDataFolder.MoveTo(dataFolder.FullName);
-                }
-                catch (Exception e)
-                {
-                    throw new InvalidPluginException("Unable to rename old data folder: `" + oldDataFolder + "' to: `" + dataFolder + "'", e);
-                }
-                server.getLogger().Info(String.Format(
-                    "While loading %s (%s) renamed data folder: `%s' to `%s'",
-                    description.getFullName(),
-                    file,
-                    oldDataFolder,
-                    dataFolder
-                ));
-            }
-
-            if (dataFolder.Exists)
-            {
-                throw new InvalidPluginException(String.Format(
-                    "Projected datafolder: `%s' for %s (%s) exists and is not a directory",
-                    dataFolder,
-                    description.getFullName(),
-                    file
-                ));
-            }
+            DirectoryInfo dataFolder = new DirectoryInfo(Path.Combine(parentFile.FullName, description.getName()));
 
             foreach (String pluginName in description.getDepend())
             {
@@ -103,9 +47,9 @@ namespace Mine.NET.plugin.net
             }
 
             PluginClassLoader loader;
-            try
+            try //TODO: 1. Load plugin 2. Find description 3. Load and enable dependencies 4. Enable plugin
             {
-                loader = new PluginClassLoader(this, GetType(), description, dataFolder, file);
+                loader = new PluginClassLoader(this, GetType(), dataFolder, file);
             }
             catch (InvalidPluginException ex)
             {
@@ -121,7 +65,7 @@ namespace Mine.NET.plugin.net
             return loader.plugin;
         }
 
-        public PluginDescriptionFile getPluginDescription(FileInfo file)
+        /*public PluginDescriptionFile getPluginDescription(FileInfo file)
         {
             if (file == null) throw new ArgumentNullException("FileInfo cannot be null");
 
@@ -175,7 +119,7 @@ namespace Mine.NET.plugin.net
                     }
                 }
             }
-        }
+        }*/
 
         public Regex[] getPluginFileFilters()
         {

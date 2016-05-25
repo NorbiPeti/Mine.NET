@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using Mine.NET.command;
 using System.Collections.Generic;
+using Mine.NET.permissions;
 
 namespace Mine.NET.plugin
 {
@@ -17,7 +18,7 @@ namespace Mine.NET.plugin
     {
         public override int GetHashCode()
         {
-            return getName().GetHashCode();
+            return Name.GetHashCode();
         }
 
         public override bool Equals(Object obj)
@@ -34,16 +35,10 @@ namespace Mine.NET.plugin
             {
                 return false;
             }
-            return getName().Equals(((Plugin)obj).getName());
-        }
-
-        public String getName()
-        {
-            return getDescription().getName();
+            return Name.Equals(((Plugin)obj).Name);
         }
 
         public abstract DirectoryInfo getDataFolder();
-        public abstract PluginDescriptionFile getDescription();
         public abstract FileConfiguration getConfig();
         public abstract MemoryStream getResource(string filename);
         public abstract void saveConfig();
@@ -52,16 +47,84 @@ namespace Mine.NET.plugin
         public abstract void reloadConfig();
         public abstract PluginLoader getPluginLoader();
         public abstract Server getServer();
-        public abstract bool isEnabled();
+        public abstract bool Enabled { get; protected set; }
         public abstract void onDisable();
         public abstract void onLoad();
         public abstract void onEnable();
-        public abstract bool isNaggable();
-        public abstract void setNaggable(bool canNag);
-        public abstract EbeanServer getDatabase();
+        public abstract bool Naggable { get; protected set; }
+        public abstract DataMine Database { get; }
         public abstract ChunkGenerator getDefaultWorldGenerator(string worldName, string id);
-        public abstract Logger getLogger();
+        public abstract Logger Logger { get; }
         public abstract List<string> onTabComplete(CommandSender sender, Command command, string alias, string[] args);
         public abstract bool onCommand(CommandSender sender, Command command, string label, string[] args);
+
+        public abstract string Name { get; }
+        public abstract string Description { get; }
+        public virtual string[] Depends { get; }
+        public virtual string[] SoftDepends { get; }
+        public abstract Version Version { get; }
+        public virtual PluginLoadOrder LoadOrder
+        {
+            get
+            {
+                return PluginLoadOrder.POSTWORLD;
+            }
+        }
+        public virtual string Website
+        {
+            get
+            {
+                return "";
+            }
+        }
+        public virtual bool HasDatabase
+        {
+            get
+            {
+                return false;
+            }
+        }
+        public virtual string[] LoadBefore
+        {
+            get
+            {
+                return new string[0];
+            }
+        }
+        public virtual string Prefix
+        {
+            get
+            {
+                return "";
+            }
+        }
+        public virtual Command[] Commands
+        {
+            get
+            {
+                return new Command[0];
+            }
+        }
+        public virtual Permission[] Permissions
+        {
+            get
+            {
+                return new Permission[0];
+            }
+        }
+        public virtual PermissionDefaults PermissionDefaults
+        {
+            get
+            {
+                return PermissionDefaults.OP;
+            }
+        }
+        public virtual string FullName
+        {
+            get
+            {
+                return Name;
+            }
+        }
     }
 }

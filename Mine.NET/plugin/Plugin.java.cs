@@ -1,6 +1,7 @@
 using Mine.NET.command;
 using Mine.NET.configuration.file;
 using Mine.NET.generator;
+using Mine.NET.permissions;
 using System;
 using System.IO;
 
@@ -26,7 +27,6 @@ namespace Mine.NET.plugin
          *
          * @return Contents of the plugin.yaml file
          */
-        PluginDescriptionFile getDescription();
 
         /**
          * Gets a {@link FileConfiguration} for this plugin, read through
@@ -51,7 +51,7 @@ namespace Mine.NET.plugin
          * Saves the {@link FileConfiguration} retrievable by {@link #getConfig()}.
          */
         void saveConfig();
-
+            
         /**
          * Saves the raw contents of the default config.yml file to the location
          * retrievable by {@link #getConfig()}. If there is no default config.yml
@@ -101,7 +101,7 @@ namespace Mine.NET.plugin
          *
          * @return true if this plugin is enabled, otherwise false
          */
-        bool isEnabled();
+        bool Enabled { get; }
 
         /**
          * Called when this plugin is disabled
@@ -126,14 +126,7 @@ namespace Mine.NET.plugin
          *
          * @return bool whether we can nag
          */
-        bool isNaggable();
-
-        /**
-         * Set naggable state
-         *
-         * @param canNag is this plugin still naggable?
-         */
-        void setNaggable(bool canNag);
+        bool Naggable { get; }
 
         /**
          * Gets the {@link EbeanServer} tied to this plugin. This will only be
@@ -151,7 +144,7 @@ namespace Mine.NET.plugin
          *
          * @return ebean server instance or null if not enabled
          */
-        EbeanServer getDatabase(); //TODO
+        DataMine Database { get; } //TODO
 
         /**
          * Gets a {@link ChunkGenerator} for use in a default world, as specified
@@ -171,7 +164,7 @@ namespace Mine.NET.plugin
          *
          * @return Logger associated with this plugin
          */
-        Logger getLogger();
+        Logger Logger { get; }
 
         /**
          * Returns the name of the plugin.
@@ -181,6 +174,33 @@ namespace Mine.NET.plugin
          *
          * @return name of the plugin
          */
-        String getName();
+        string Name { get; }
+
+        string Description { get; }
+
+        string[] Depends { get; }
+
+        string[] SoftDepends { get; }
+
+        Version Version { get; }
+
+        PluginLoadOrder LoadOrder { get; }
+
+        string Website { get; }
+
+        bool HasDatabase { get; } //TODO: ?
+
+        string[] LoadBefore { get; }
+
+        string Prefix { get; }
+
+        //TODO: Go through every class, if it derives from NetPlugin, store entry point, if from Command, store command
+        Command[] Commands { get; }
+
+        Permission[] Permissions { get; }
+
+        PermissionDefaults PermissionDefaults { get; }
+
+        string FullName { get; }
     }
 }
