@@ -7,11 +7,11 @@ namespace Mine.NET.Event.inventory
      * An abstract base class for events that describe an interaction between a
      * HumanEntity and the contents of an Inventory.
      */
-    public abstract class InventoryInteractEvent : InventoryEvent, Cancellable
+    public abstract class InventoryInteractEventArgs<T> : InventoryEventArgs<T>, Cancellable where T : Inventory
     {
         private Result result = Result.DEFAULT;
 
-        public InventoryInteractEvent(InventoryView transaction) : base(transaction)
+        public InventoryInteractEventArgs(InventoryView transaction) : base(transaction)
         {
         }
 
@@ -77,6 +77,12 @@ namespace Mine.NET.Event.inventory
         {
             setResult(toCancel ? Result.DENY : Result.ALLOW);
         }
+    }
 
+    public class InventoryInteractEventArgs : InventoryInteractEventArgs<Inventory>
+    {
+        public InventoryInteractEventArgs(InventoryView transaction) : base(transaction)
+        {
+        }
     }
 }

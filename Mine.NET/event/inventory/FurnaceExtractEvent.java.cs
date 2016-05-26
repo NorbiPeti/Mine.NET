@@ -7,13 +7,13 @@ namespace Mine.NET.Event.inventory
     /**
      * This event is called when a player takes items out of the furnace
      */
-    public class FurnaceExtractEvent : BlockExpEvent
+    public class FurnaceExtractEventArgs : BlockExpEventArgs
     {
         private readonly Player player;
         private readonly Materials itemType;
         private readonly int itemAmount;
 
-        public FurnaceExtractEvent(Player player, Block block, Materials itemType, int itemAmount, int exp) :
+        public FurnaceExtractEventArgs(Player player, Block block, Materials itemType, int itemAmount, int exp) :
             base(block, exp)
         {
             this.player = player;

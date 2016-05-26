@@ -9,12 +9,11 @@ namespace Mine.NET.Event.player
      * The item that's breaking will exist in the inventory with a stack size of
      * 0. After the event, the item's durability will be reset to 0.
      */
-    public class PlayerItemBreakEvent : PlayerEvent
+    public class PlayerItemBreakEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly ItemStack brokenItem;
 
-        public PlayerItemBreakEvent(Player player, ItemStack brokenItem) : base(player)
+        public PlayerItemBreakEventArgs(Player player, ItemStack brokenItem) : base(player)
         {
             this.brokenItem = brokenItem;
         }
@@ -27,16 +26,6 @@ namespace Mine.NET.Event.player
         public ItemStack getBrokenItem()
         {
             return brokenItem;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

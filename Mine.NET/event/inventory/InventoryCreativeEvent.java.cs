@@ -7,19 +7,14 @@ namespace Mine.NET.Event.inventory
      * an item in their inventory / hotbar and when they drop items from their
      * Inventory while in creative mode.
      */
-    public class InventoryCreativeEvent : InventoryClickEvent
+    public class InventoryCreativeEventArgs : InventoryClickEventArgs<Inventory>
     {
         private ItemStack item;
 
-        public InventoryCreativeEvent(InventoryView what, SlotType type, int slot, ItemStack newItem) :
+        public InventoryCreativeEventArgs(InventoryView what, SlotType type, int slot, ItemStack newItem) :
             base(what, type, slot, ClickTypes.CREATIVE, InventoryAction.PLACE_ALL)
         {
             this.item = newItem;
-        }
-
-        public ItemStack getCursor()
-        {
-            return item;
         }
 
         public void setCursor(ItemStack item)

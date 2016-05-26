@@ -19,9 +19,8 @@ namespace Mine.NET.Event.inventory
      * has not been modified, the source inventory slot will be restored to its
      * former state. Otherwise any additional items will be discarded.
      */
-    public class InventoryMoveItemEvent : Event, Cancellable
+    public class InventoryMoveItemEvent : GameEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly Inventory sourceInventory;
         private readonly Inventory destinationInventory;
@@ -100,16 +99,6 @@ namespace Mine.NET.Event.inventory
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

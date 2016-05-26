@@ -20,9 +20,8 @@ namespace Mine.NET.Event.player
      * Care should be taken to check {@link #isAsynchronous()} and treat the event
      * appropriately.
      */
-    public class AsyncPlayerChatEvent : PlayerEvent, Cancellable
+    public class AsyncPlayerChatEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private String message;
         private String format = "<%1$s> %2$s";
@@ -36,7 +35,7 @@ namespace Mine.NET.Event.player
          * @param players the players to receive the message. This may be a lazy
          *     or unmodifiable collection.
          */
-        public AsyncPlayerChatEvent(bool async, Player who, String message, HashSet<Player> players) : base(who, async)
+        public AsyncPlayerChatEventArgs(bool async, Player who, String message, HashSet<Player> players) : base(who, async)
         {
             this.message = message;
             recipients = players;
@@ -127,16 +126,6 @@ namespace Mine.NET.Event.player
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

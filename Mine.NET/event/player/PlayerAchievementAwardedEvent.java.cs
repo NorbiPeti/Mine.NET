@@ -5,12 +5,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player earns an achievement.
      */
-    public class PlayerAchievementAwardedEvent : PlayerEvent, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class PlayerAchievementAwardedEventArgs : PlayerEventArgs, Cancellable {
         private readonly Achievement achievement;
         private bool iscancelled = false;
 
-        public PlayerAchievementAwardedEvent(Player player, Achievement achievement) : base(player)
+        public PlayerAchievementAwardedEventArgs(Player player, Achievement achievement) : base(player)
         {
             this.achievement = achievement;
         }
@@ -30,14 +29,6 @@ namespace Mine.NET.Event.player
 
         public void setCancelled(bool cancel) {
             this.iscancelled = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

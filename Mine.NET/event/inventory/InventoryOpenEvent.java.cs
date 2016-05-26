@@ -6,12 +6,11 @@ namespace Mine.NET.Event.inventory
     /**
      * Represents a player related inventory event
      */
-    public class InventoryOpenEvent : InventoryEvent, Cancellable
+    public class InventoryOpenEventArgs : InventoryEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
 
-        public InventoryOpenEvent(InventoryView transaction) : base(transaction)
+        public InventoryOpenEventArgs(InventoryView transaction) : base(transaction)
         {
             this.cancelled = false;
         }
@@ -52,16 +51,6 @@ namespace Mine.NET.Event.inventory
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

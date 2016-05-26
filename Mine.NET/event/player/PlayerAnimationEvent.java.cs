@@ -5,8 +5,7 @@ namespace Mine.NET.Event.player
     /**
      * Represents a player animation event
      */
-    public class PlayerAnimationEvent : PlayerEvent, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class PlayerAnimationEventArgs : PlayerEventArgs, Cancellable {
         private readonly PlayerAnimationType animationType;
         private bool iscancelled = false;
 
@@ -15,7 +14,7 @@ namespace Mine.NET.Event.player
          *
          * @param player The player instance
          */
-        public PlayerAnimationEvent(Player player) : base(player)
+        public PlayerAnimationEventArgs(Player player) : base(player)
         {
             // Only supported animation type for now:
             animationType = PlayerAnimationType.ARM_SWING;
@@ -36,14 +35,6 @@ namespace Mine.NET.Event.player
 
         public void setCancelled(bool cancel) {
             this.iscancelled = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

@@ -5,13 +5,12 @@ namespace Mine.NET.Event.player
     /**
      * Called when the GameMode of the player is changed.
      */
-    public class PlayerGameModeChangeEvent : PlayerEvent, Cancellable
+    public class PlayerGameModeChangeEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly GameMode newGameMode;
 
-        public PlayerGameModeChangeEvent(Player player, GameMode newGameMode) : base(player)
+        public PlayerGameModeChangeEventArgs(Player player, GameMode newGameMode) : base(player)
         {
             this.newGameMode = newGameMode;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.player
         public GameMode getNewGameMode()
         {
             return newGameMode;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

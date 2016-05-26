@@ -6,15 +6,14 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player throws an egg and it might hatch
      */
-    public class PlayerEggThrowEvent : PlayerEvent
+    public class PlayerEggThrowEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Egg egg;
         private bool hatching;
         private EntityType hatchType;
         private byte numHatches;
 
-        public PlayerEggThrowEvent(Player player, Egg egg, bool hatching, byte numHatches, EntityType hatchingType) : base(player)
+        public PlayerEggThrowEventArgs(Player player, Egg egg, bool hatching, byte numHatches, EntityType hatchingType) : base(player)
         {
             this.egg = egg;
             this.hatching = hatching;
@@ -102,16 +101,6 @@ namespace Mine.NET.Event.player
         public void setNumHatches(byte numHatches)
         {
             this.numHatches = numHatches;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

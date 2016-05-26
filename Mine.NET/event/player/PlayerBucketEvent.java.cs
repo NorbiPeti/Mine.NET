@@ -7,7 +7,7 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player interacts with a Bucket
      */
-    public abstract class PlayerBucketEvent : PlayerEvent, Cancellable
+    public abstract class PlayerBucketEventArgs : PlayerEventArgs, Cancellable
     {
         private ItemStack itemStack;
         private bool cancelled = false;
@@ -15,7 +15,7 @@ namespace Mine.NET.Event.player
         private readonly BlockFaces BlockFaces;
         private readonly Materials bucket;
 
-        public PlayerBucketEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
+        public PlayerBucketEventArgs(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
             base(who)
         {
             this.blockClicked = blockClicked;

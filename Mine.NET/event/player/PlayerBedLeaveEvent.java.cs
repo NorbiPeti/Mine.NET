@@ -6,12 +6,11 @@ namespace Mine.NET.Event.player
     /**
      * This event is fired when the player is leaving a bed.
      */
-    public class PlayerBedLeaveEvent : PlayerEvent
+    public class PlayerBedLeaveEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Block bed;
 
-        public PlayerBedLeaveEvent(Player who, Block bed) : base(who)
+        public PlayerBedLeaveEventArgs(Player who, Block bed) : base(who)
         {
             this.bed = bed;
         }
@@ -24,16 +23,6 @@ namespace Mine.NET.Event.player
         public Block getBed()
         {
             return bed;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

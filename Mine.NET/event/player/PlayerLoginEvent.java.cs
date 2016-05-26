@@ -7,9 +7,8 @@ namespace Mine.NET.Event.player
     /**
      * Stores details for players attempting to log in
      */
-    public class PlayerLoginEvent : PlayerEvent
+    public class PlayerLoginEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly IPAddress address;
         private readonly String hostname;
         private Result result = Result.ALLOWED;
@@ -24,7 +23,7 @@ namespace Mine.NET.Event.player
          * @param address The address the player used to connect, provided for
          *     timing issues
          */
-        public PlayerLoginEvent(Player player, String hostname, IPAddress address) : base(player)
+        public PlayerLoginEventArgs(Player player, String hostname, IPAddress address) : base(player)
         {
             this.hostname = hostname;
             this.address = address;
@@ -40,7 +39,7 @@ namespace Mine.NET.Event.player
          * @param result The result status for this event
          * @param message The message to be displayed if result denies login
          */
-        public PlayerLoginEvent(Player player, String hostname, IPAddress address, Result result, String message) :
+        public PlayerLoginEventArgs(Player player, String hostname, IPAddress address, Result result, String message) :
             this(player, hostname, address)
         {
             this.result = result;
@@ -131,16 +130,6 @@ namespace Mine.NET.Event.player
         public IPAddress getAddress()
         {
             return address;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

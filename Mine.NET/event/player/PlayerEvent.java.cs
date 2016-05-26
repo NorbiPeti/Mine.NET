@@ -5,16 +5,16 @@ namespace Mine.NET.Event.player
     /**
      * Represents a player related event
      */
-    public abstract class PlayerEvent : Event
+    public abstract class PlayerEventArgs : GameEventArgs
     {
         protected Player player;
 
-        public PlayerEvent(Player who)
+        public PlayerEventArgs(Player who)
         {
             player = who;
         }
 
-        protected PlayerEvent(Player who, bool async) : base(async)
+        protected PlayerEventArgs(Player who, bool async) : base(async)
         {
             player = who;
 

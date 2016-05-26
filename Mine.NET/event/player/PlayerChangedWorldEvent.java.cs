@@ -5,12 +5,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player switches to another world.
      */
-    public class PlayerChangedWorldEvent : PlayerEvent
+    public class PlayerChangedWorldEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly World from;
 
-        public PlayerChangedWorldEvent(Player player, World from) : base(player)
+        public PlayerChangedWorldEventArgs(Player player, World from) : base(player)
         {
             this.from = from;
         }
@@ -23,16 +22,6 @@ namespace Mine.NET.Event.player
         public World getFrom()
         {
             return from;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

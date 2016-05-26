@@ -5,13 +5,12 @@ namespace Mine.NET.Event.player
     /**
      * Called when a players level changes
      */
-    public class PlayerLevelChangeEvent : PlayerEvent
+    public class PlayerLevelChangeEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly int oldLevel;
         private readonly int newLevel;
 
-        public PlayerLevelChangeEvent(Player player, int oldLevel, int newLevel) : base(player)
+        public PlayerLevelChangeEventArgs(Player player, int oldLevel, int newLevel) : base(player)
         {
             this.oldLevel = oldLevel;
             this.newLevel = newLevel;
@@ -35,16 +34,6 @@ namespace Mine.NET.Event.player
         public int getNewLevel()
         {
             return newLevel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -6,19 +6,18 @@ namespace Mine.NET.Event.player
     /**
      * Represents an event that is called when a player right clicks an entity.
      */
-    public class PlayerInteractEntityEvent<T> : PlayerEvent, Cancellable
+    public class PlayerInteractEntityEventArgs<T> : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected Entity clickedEntity;
         bool cancelled = false;
         private EquipmentSlot hand;
 
-        public PlayerInteractEntityEvent(Player who, Entity clickedEntity) :
+        public PlayerInteractEntityEventArgs(Player who, Entity clickedEntity) :
             this(who, clickedEntity, EquipmentSlot.HAND)
         {
         }
 
-        public PlayerInteractEntityEvent(Player who, Entity clickedEntity, EquipmentSlot hand) :
+        public PlayerInteractEntityEventArgs(Player who, Entity clickedEntity, EquipmentSlot hand) :
             base(who)
         {
             this.clickedEntity = clickedEntity;
@@ -54,27 +53,17 @@ namespace Mine.NET.Event.player
         {
             return hand;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 
-    public class PlayerInteractEntityEvent : PlayerInteractEntityEvent<Entity>
+    public class PlayerInteractEntityEventArgs : PlayerInteractEntityEventArgs<Entity>
     {
 
-        public PlayerInteractEntityEvent(Player who, Entity clickedEntity) :
+        public PlayerInteractEntityEventArgs(Player who, Entity clickedEntity) :
             base(who, clickedEntity, EquipmentSlot.HAND)
         {
         }
 
-        public PlayerInteractEntityEvent(Player who, Entity clickedEntity, EquipmentSlot hand) :
+        public PlayerInteractEntityEventArgs(Player who, Entity clickedEntity, EquipmentSlot hand) :
             base(who, clickedEntity, hand)
         {
         }

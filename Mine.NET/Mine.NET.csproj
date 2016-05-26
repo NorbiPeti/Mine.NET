@@ -312,10 +312,10 @@
     <Compile Include="event\entity\SlimeSplitEvent.java.cs" />
     <Compile Include="event\entity\VillagerAcquireTradeEvent.java.cs" />
     <Compile Include="event\entity\VillagerReplenishTradeEvent.java.cs" />
-    <Compile Include="event\GameEventArgs.java.cs" />
     <Compile Include="event\EventException.java.cs" />
     <Compile Include="event\EventHandler.java.cs" />
     <Compile Include="event\EventPriority.java.cs" />
+    <Compile Include="event\GameEventArgs.java.cs" />
     <Compile Include="event\hanging\HangingBreakByEntityEvent.java.cs" />
     <Compile Include="event\hanging\HangingBreakEvent.java.cs" />
     <Compile Include="event\hanging\HangingEvent.java.cs" />

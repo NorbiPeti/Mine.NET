@@ -5,16 +5,15 @@ namespace Mine.NET.Event.player
     /**
      * Thrown when a player is fishing
      */
-    public class PlayerFishEvent : PlayerEvent, Cancellable
+    public class PlayerFishEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Entity entity;
         private bool cancel = false;
         private int exp;
         private readonly State state;
         private readonly FishHook hookEntity;
 
-        public PlayerFishEvent(Player player, Entity entity, FishHook hookEntity, State state) : base(player)
+        public PlayerFishEventArgs(Player player, Entity entity, FishHook hookEntity, State state) : base(player)
         {
             this.entity = entity;
             this.hookEntity = hookEntity;
@@ -89,16 +88,6 @@ namespace Mine.NET.Event.player
         public State getState()
         {
             return state;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

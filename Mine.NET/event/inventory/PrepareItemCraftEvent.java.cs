@@ -2,13 +2,12 @@ using Mine.NET.inventory;
 
 namespace Mine.NET.Event.inventory
 {
-    public class PrepareItemCraftEvent : InventoryEvent<CraftingInventory>
+    public class PrepareItemCraftEventArgs : InventoryEventArgs<CraftingInventory>
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool repair;
         private CraftingInventory matrix;
 
-        public PrepareItemCraftEvent(CraftingInventory what, InventoryView view, bool isRepair) : base(view)
+        public PrepareItemCraftEventArgs(CraftingInventory what, InventoryView view, bool isRepair) : base(view)
         {
             this.matrix = what;
             this.repair = isRepair;
@@ -43,16 +42,6 @@ namespace Mine.NET.Event.inventory
         public bool isRepair()
         {
             return repair;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -6,14 +6,13 @@ namespace Mine.NET.Event.player
     /**
      * Holds information for player movement events
      */
-    public class PlayerMoveEvent : PlayerEvent, Cancellable
+    public class PlayerMoveEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private Location from;
         private Location to;
 
-        public PlayerMoveEvent(Player player, Location from, Location to) : base(player)
+        public PlayerMoveEventArgs(Player player, Location from, Location to) : base(player)
         {
             this.from = from;
             this.to = to;
@@ -95,16 +94,6 @@ namespace Mine.NET.Event.player
         {
             if (loc == null) throw new ArgumentNullException(nameof(loc), "Cannot use null location!");
             if (loc.getWorld() == null) throw new ArgumentNullException(nameof(loc.getWorld), "Cannot use null location with null world!");
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

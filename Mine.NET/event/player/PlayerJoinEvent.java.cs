@@ -6,12 +6,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player joins a server
      */
-    public class PlayerJoinEvent : PlayerEvent
+    public class PlayerJoinEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private String joinMessage;
 
-        public PlayerJoinEvent(Player playerJoined, String joinMessage) : base(playerJoined)
+        public PlayerJoinEventArgs(Player playerJoined, String joinMessage) : base(playerJoined)
         {
             this.joinMessage = joinMessage;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.player
         public void setJoinMessage(String joinMessage)
         {
             this.joinMessage = joinMessage;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

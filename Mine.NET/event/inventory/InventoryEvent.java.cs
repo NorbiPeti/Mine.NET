@@ -9,7 +9,6 @@ namespace Mine.NET.Event.inventory
      */
     public class InventoryEventArgs<T> : GameEventArgs where T : Inventory
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected InventoryView transaction;
 
         public InventoryEventArgs(InventoryView transaction)

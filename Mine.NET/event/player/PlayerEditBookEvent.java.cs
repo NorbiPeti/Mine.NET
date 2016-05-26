@@ -8,16 +8,14 @@ namespace Mine.NET.Event.player
      * Called when a player edits or signs a book and quill item. If the event is
      * cancelled, no changes are made to the BookMeta
      */
-    public class PlayerEditBookEvent : PlayerEvent, Cancellable
+    public class PlayerEditBookEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
         private readonly BookMeta previousBookMeta;
         private readonly int slot;
         private BookMeta newBookMeta;
         private bool cancel;
 
-        public PlayerEditBookEvent(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, bool isSigning) : base(who)
+        public PlayerEditBookEventArgs(Player who, int slot, BookMeta previousBookMeta, BookMeta newBookMeta, bool isSigning) : base(who)
         {
             if (slot >= 0 && slot <= 8) throw new ArgumentException("Slot must be in range 0-8 inclusive");
             if (previousBookMeta == null) throw new ArgumentNullException("Previous book meta must not be null");
@@ -92,16 +90,6 @@ namespace Mine.NET.Event.player
          * @return true if the book is being signed
          */
         public bool Signing { get; set; }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
 
         public bool isCancelled()
         {

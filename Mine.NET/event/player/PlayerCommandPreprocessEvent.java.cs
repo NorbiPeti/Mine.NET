@@ -41,21 +41,20 @@ namespace Mine.NET.Event.player
      * beginning of the message should be preserved. If a slash is added or
      * removed, unexpected behavior may result.
      */
-    public class PlayerCommandPreprocessEvent : PlayerEvent, Cancellable
+    public class PlayerCommandPreprocessEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private String message;
         private String format = "<%1$s> %2$s";
         private readonly HashSet<Player> recipients;
 
-        public PlayerCommandPreprocessEvent(Player player, String message) : base(player)
+        public PlayerCommandPreprocessEventArgs(Player player, String message) : base(player)
         {
             this.recipients = new HashSet<Player>(player.getServer().getOnlinePlayers());
             this.message = message;
         }
 
-        public PlayerCommandPreprocessEvent(Player player, String message, HashSet<Player> recipients) :
+        public PlayerCommandPreprocessEventArgs(Player player, String message, HashSet<Player> recipients) :
             base(player)
         {
             this.recipients = recipients;
@@ -131,16 +130,6 @@ namespace Mine.NET.Event.player
         public HashSet<Player> getRecipients()
         {
             return recipients;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

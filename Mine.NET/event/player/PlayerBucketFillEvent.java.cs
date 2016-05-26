@@ -7,23 +7,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player fills a bucket
      */
-    public class PlayerBucketFillEvent : PlayerBucketEvent
+    public class PlayerBucketFillEventArgs : PlayerBucketEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public PlayerBucketFillEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
+        public PlayerBucketFillEventArgs(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
             base(who, blockClicked, BlockFaces, bucket, itemInHand)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

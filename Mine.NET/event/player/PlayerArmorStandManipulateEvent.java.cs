@@ -6,16 +6,13 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player interacts with an armor stand and will either swap, retrieve or place an item.
      */
-    public class PlayerArmorStandManipulateEvent : PlayerInteractEntityEvent<ArmorStand>
+    public class PlayerArmorStandManipulateEventArgs : PlayerInteractEntityEventArgs<ArmorStand>
     {
-
-        private static readonly HandlerList handlers = new HandlerList();
-
         private readonly ItemStack playerItem;
         private readonly ItemStack armorStandItem;
         private readonly EquipmentSlot slot;
 
-        public PlayerArmorStandManipulateEvent(Player who, ArmorStand clickedEntity, ItemStack playerItem, ItemStack armorStandItem, EquipmentSlot slot) :
+        public PlayerArmorStandManipulateEventArgs(Player who, ArmorStand clickedEntity, ItemStack playerItem, ItemStack armorStandItem, EquipmentSlot slot) :
         base(who, clickedEntity)
         {
             this.playerItem = playerItem;
@@ -59,16 +56,6 @@ namespace Mine.NET.Event.player
         public EquipmentSlot getSlot()
         {
             return this.slot;
-        }
-        
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

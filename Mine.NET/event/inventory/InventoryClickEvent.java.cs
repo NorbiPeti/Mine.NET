@@ -34,9 +34,8 @@ namespace Mine.NET.Event.inventory
      * Plugin, Action)}, which would execute the task on the next tick, would
      * work as well.
      */
-    public class InventoryClickEvent : InventoryInteractEvent
+    public class InventoryClickEventArgs<T> : InventoryInteractEventArgs<T> where T : Inventory
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly ClickTypes click;
         private readonly InventoryAction action;
         private SlotType slot_type;
@@ -45,7 +44,7 @@ namespace Mine.NET.Event.inventory
         private ItemStack current = null;
         private int hotbarKey = -1;
 
-        public InventoryClickEvent(InventoryView view, SlotType type, int slot, ClickTypes click, InventoryAction action) : base(view)
+        public InventoryClickEventArgs(InventoryView view, SlotType type, int slot, ClickTypes click, InventoryAction action) : base(view)
         {
             this.slot_type = type;
             this.rawSlot = slot;
@@ -54,7 +53,7 @@ namespace Mine.NET.Event.inventory
             this.action = action;
         }
 
-        public InventoryClickEvent(InventoryView view, SlotType type, int slot, ClickType click, InventoryAction action, int key) :
+        public InventoryClickEventArgs(InventoryView view, SlotType type, int slot, ClickTypes click, InventoryAction action, int key) :
             this(view, type, slot, click, action)
         {
             this.hotbarKey = key;
@@ -206,16 +205,6 @@ namespace Mine.NET.Event.inventory
         public ClickTypes getClick()
         {
             return click;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -6,13 +6,12 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player gets kicked from the server
      */
-    public class PlayerKickEvent : PlayerEvent, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class PlayerKickEventArgs : PlayerEventArgs, Cancellable {
         private String leaveMessage;
         private String kickReason;
         private bool cancel;
 
-        public PlayerKickEvent(Player playerKicked, String kickReason, String leaveMessage) : base(playerKicked)
+        public PlayerKickEventArgs(Player playerKicked, String kickReason, String leaveMessage) : base(playerKicked)
         {
             this.kickReason = kickReason;
             this.leaveMessage = leaveMessage;
@@ -61,14 +60,6 @@ namespace Mine.NET.Event.player
          */
         public void setLeaveMessage(String leaveMessage) {
             this.leaveMessage = leaveMessage;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

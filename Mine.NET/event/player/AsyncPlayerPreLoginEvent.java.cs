@@ -8,9 +8,8 @@ namespace Mine.NET.Event.player
      * <p>
      * This event is asynchronous, and not run using main thread.
      */
-    public class AsyncPlayerPreLoginEvent : Event
+    public class AsyncPlayerPreLoginEvent : GameEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private Result result;
         private String message;
         private readonly String name;
@@ -116,16 +115,6 @@ namespace Mine.NET.Event.player
         public Guid getUniqueId()
         {
             return uniqueId;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

@@ -1,4 +1,5 @@
 using Mine.NET.inventory;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -42,20 +43,19 @@ namespace Mine.NET.Event.inventory
      * task using {@link BukkitScheduler#runTask(Plugin, Action)}, which would
      * execute the task on the next tick, would work as well.
      */
-    public class InventoryDragEvent : InventoryInteractEvent
+    public class InventoryDragEventArgs : InventoryInteractEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly DragType type;
         private readonly Dictionary<int, ItemStack> addedItems;
         private readonly HashSet<int> containerSlots;
         private readonly ItemStack oldCursor;
         private ItemStack newCursor;
 
-        public InventoryDragEvent(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<int, ItemStack> slots) :
+        public InventoryDragEventArgs(InventoryView what, ItemStack newCursor, ItemStack oldCursor, bool right, Dictionary<int, ItemStack> slots) :
             base(what)
         {
-            Validate.notNull(oldCursor);
-            Validate.notNull(slots);
+            if (oldCursor == null) throw new ArgumentNullException(nameof(oldCursor));
+            if(slots == null) throw new ArgumentNullException(nameof(slots));
 
             type = right ? DragType.SINGLE : DragType.EVEN;
             this.newCursor = newCursor;
@@ -81,7 +81,7 @@ namespace Mine.NET.Event.inventory
          */
         public HashSet<int> getRawSlots()
         {
-            return addedItems.Keys;
+            return new HashSet<int>(addedItems.Keys);
         }
 
         /**
@@ -143,16 +143,6 @@ namespace Mine.NET.Event.inventory
         public DragType getType()
         {
             return type;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

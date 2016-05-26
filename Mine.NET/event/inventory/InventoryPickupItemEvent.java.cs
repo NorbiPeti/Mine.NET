@@ -6,14 +6,13 @@ namespace Mine.NET.Event.inventory
     /**
      * Called when a hopper or hopper minecart picks up a dropped item.
      */
-    public class InventoryPickupItemEvent : Event, Cancellable
+    public class InventoryPickupItemEventArgs : GameEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly Inventory inventory;
         private readonly Item item;
 
-        public InventoryPickupItemEvent(Inventory inventory, Item item) : base()
+        public InventoryPickupItemEventArgs(Inventory inventory, Item item) : base()
         {
             this.inventory = inventory;
             this.item = item;
@@ -47,16 +46,6 @@ namespace Mine.NET.Event.inventory
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

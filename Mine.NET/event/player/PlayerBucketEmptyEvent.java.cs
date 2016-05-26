@@ -7,23 +7,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player empties a bucket
      */
-    public class PlayerBucketEmptyEvent : PlayerBucketEvent
+    public class PlayerBucketEmptyEventArgs : PlayerBucketEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public PlayerBucketEmptyEvent(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
+        public PlayerBucketEmptyEventArgs(Player who, Block blockClicked, BlockFaces BlockFaces, Materials bucket, ItemStack itemInHand) :
             base(who, blockClicked, BlockFaces, bucket, itemInHand)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -6,11 +6,9 @@ namespace Mine.NET.Event.inventory
     /**
      * Represents a player related inventory event
      */
-    public class InventoryCloseEvent : InventoryEvent
+    public class InventoryCloseEventArgs : InventoryEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public InventoryCloseEvent(InventoryView transaction) : base(transaction)
+        public InventoryCloseEventArgs(InventoryView transaction) : base(transaction)
         {
         }
 
@@ -19,19 +17,9 @@ namespace Mine.NET.Event.inventory
          *
          * @return Player who is involved in this event
          */
-        public readonly HumanEntity getPlayer()
+        public HumanEntity getPlayer()
         {
             return transaction.getPlayer();
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -7,15 +7,14 @@ namespace Mine.NET.Event.inventory
     /**
      * Called when an ItemStack is successfully burned as fuel in a furnace.
      */
-    public class FurnaceBurnEvent : BlockEvent, Cancellable
+    public class FurnaceBurnEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly ItemStack fuel;
         private int burnTime;
         private bool cancelled;
         private bool burning;
 
-        public FurnaceBurnEvent(Block furnace, ItemStack fuel, int burnTime) : base(furnace)
+        public FurnaceBurnEventArgs(Block furnace, ItemStack fuel, int burnTime) : base(furnace)
         {
             this.fuel = fuel;
             this.burnTime = burnTime;
@@ -81,16 +80,6 @@ namespace Mine.NET.Event.inventory
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -13,9 +13,8 @@ namespace Mine.NET.Event.player
      * If the event is cancelled the effect will not be applied and the item will
      * not be removed from the player's inventory.
      */
-    public class PlayerItemConsumeEvent : PlayerEvent, Cancellable
+    public class PlayerItemConsumeEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool iscancelled = false;
         private ItemStack item;
 
@@ -23,7 +22,7 @@ namespace Mine.NET.Event.player
          * @param player the player consuming
          * @param item the ItemStack being consumed
          */
-        public PlayerItemConsumeEvent(Player player, ItemStack item) : base(player)
+        public PlayerItemConsumeEventArgs(Player player, ItemStack item) : base(player)
         {
             this.item = item;
         }
@@ -65,16 +64,6 @@ namespace Mine.NET.Event.player
         public void setCancelled(bool cancel)
         {
             this.iscancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

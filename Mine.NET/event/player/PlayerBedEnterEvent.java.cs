@@ -6,13 +6,12 @@ namespace Mine.NET.Event.player
     /**
      * This event is fired when the player is almost about to enter the bed.
      */
-    public class PlayerBedEnterEvent : PlayerEvent, Cancellable
+    public class PlayerBedEnterEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private readonly Block bed;
 
-        public PlayerBedEnterEvent(Player who, Block bed) : base(who)
+        public PlayerBedEnterEventArgs(Player who, Block bed) : base(who)
         {
             this.bed = bed;
         }
@@ -35,16 +34,6 @@ namespace Mine.NET.Event.player
         public Block getBed()
         {
             return bed;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

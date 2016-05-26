@@ -8,13 +8,12 @@ namespace Mine.NET.Event.inventory
      * Called when the brewing of the contents inside the Brewing Stand is
      * complete.
      */
-    public class BrewEvent : BlockEvent, Cancellable
+    public class BrewEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private BrewerInventory contents;
         private bool cancelled;
 
-        public BrewEvent(Block brewer, BrewerInventory contents) : base(brewer)
+        public BrewEventArgs(Block brewer, BrewerInventory contents) : base(brewer)
         {
             this.contents = contents;
         }
@@ -37,16 +36,6 @@ namespace Mine.NET.Event.inventory
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

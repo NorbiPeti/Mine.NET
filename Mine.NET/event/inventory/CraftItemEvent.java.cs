@@ -5,16 +5,16 @@ namespace Mine.NET.Event.inventory
     /**
      * Called when the recipe of an Item is completed inside a crafting matrix.
      */
-    public class CraftItemEvent : InventoryClickEvent
+    public class CraftItemEventArgs : InventoryClickEventArgs<CraftingInventory>
     {
         private Recipe recipe;
 
-        public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, ClickType click, InventoryAction action) :
+        public CraftItemEventArgs(Recipe recipe, InventoryView what, SlotType type, int slot, ClickTypes click, InventoryAction action) :
             base(what, type, slot, click, action) {
             this.recipe = recipe;
         }
 
-        public CraftItemEvent(Recipe recipe, InventoryView what, SlotType type, int slot, ClickType click, InventoryAction action, int key:
+        public CraftItemEventArgs(Recipe recipe, InventoryView what, SlotType type, int slot, ClickTypes click, InventoryAction action, int key):
             base(what, type, slot, click, action, key)
         {
             this.recipe = recipe;
@@ -26,11 +26,6 @@ namespace Mine.NET.Event.inventory
         public Recipe getRecipe()
         {
             return recipe;
-        }
-
-        public override CraftingInventory getInventory()
-        {
-            return (CraftingInventory)base.getInventory();
         }
     }
 }
