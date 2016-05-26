@@ -1,5 +1,6 @@
 using Mine.NET.block;
 using Mine.NET.entity;
+using Mine.NET.Event.inventory;
 using Mine.NET.inventory;
 
 namespace Mine.NET.Event.enchantment
@@ -8,9 +9,8 @@ namespace Mine.NET.Event.enchantment
      * Called when an ItemStack is inserted in an enchantment table - can be
      * called multiple times
      */
-    public class PrepareItemEnchantEvent : InventoryEvent, Cancellable
+    public class PrepareItemEnchantEventArgs : InventoryEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Block table;
         private readonly ItemStack item;
         private readonly int[] levelsOffered;
@@ -18,7 +18,7 @@ namespace Mine.NET.Event.enchantment
         private bool cancelled;
         private readonly Player enchanter;
 
-        public PrepareItemEnchantEvent(Player enchanter, InventoryView view, Block table, ItemStack item, int[] levelsOffered, int bonus) : base(view)
+        public PrepareItemEnchantEventArgs(Player enchanter, InventoryView view, Block table, ItemStack item, int[] levelsOffered, int bonus) : base(view)
         {
             this.enchanter = enchanter;
             this.table = table;
@@ -87,16 +87,6 @@ namespace Mine.NET.Event.enchantment
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

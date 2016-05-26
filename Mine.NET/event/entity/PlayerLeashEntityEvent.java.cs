@@ -5,14 +5,13 @@ namespace Mine.NET.Event.entity
     /**
      * Called immediately prior to a creature being leashed by a player.
      */
-    public class PlayerLeashEntityEvent : Event, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class PlayerLeashEntityEventArgs : GameEventArgs, Cancellable {
         private readonly Entity leashHolder;
         private readonly Entity entity;
         private bool cancelled = false;
         private readonly Player player;
 
-        public PlayerLeashEntityEvent(Entity what, Entity leashHolder, Player leasher) {
+        public PlayerLeashEntityEventArgs(Entity what, Entity leashHolder, Player leasher) {
             this.leashHolder = leashHolder;
             this.entity = what;
             this.player = leasher;
@@ -43,14 +42,6 @@ namespace Mine.NET.Event.entity
          */
         public Player getPlayer() {
             return player;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
 
         public bool isCancelled() {

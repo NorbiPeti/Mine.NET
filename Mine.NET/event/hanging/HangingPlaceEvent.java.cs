@@ -6,15 +6,14 @@ namespace Mine.NET.Event.hanging
     /**
      * Triggered when a hanging entity is created in the world
      */
-    public class HangingPlaceEvent : HangingEvent, Cancellable
+    public class HangingPlaceEventArgs : HangingEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly Player player;
         private readonly Block block;
         private readonly BlockFaces BlockFaces;
 
-        public HangingPlaceEvent(Hanging hanging, Player player, Block block, BlockFaces BlockFaces) : base(hanging)
+        public HangingPlaceEventArgs(Hanging hanging, Player player, Block block, BlockFaces BlockFaces) : base(hanging)
         {
             this.player = player;
             this.block = block;
@@ -59,16 +58,6 @@ namespace Mine.NET.Event.hanging
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

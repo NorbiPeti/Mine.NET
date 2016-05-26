@@ -8,12 +8,12 @@ namespace Mine.NET.Event.entity
      * <p>
      * For players see {@link org.bukkit.event.player.PlayerPortalEvent}
      */
-    public class EntityPortalEvent : EntityTeleportEvent
+    public class EntityPortalEventArgs : EntityTeleportEventArgs
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected TravelAgent travelAgent;
 
-        public EntityPortalEvent(Entity entity, Location from, Location to, TravelAgent pta) : base(entity, from, to)
+        public EntityPortalEventArgs(Entity entity, Location from, Location to, TravelAgent pta) : base(entity, from, to)
         {
             this.travelAgent = pta;
         }
@@ -50,16 +50,6 @@ namespace Mine.NET.Event.entity
         public void setPortalTravelAgent(TravelAgent travelAgent)
         {
             this.travelAgent = travelAgent;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() //TODO
-        {
-            return handlers;
         }
     }
 }

@@ -7,18 +7,17 @@ namespace Mine.NET.Event.entity
     /**
      * Thrown whenever a LivingEntity dies
      */
-    public class EntityDeathEvent<T> : EntityEvent<T> where T : LivingEntity
+    public class EntityDeathEventArgs<T> : EntityEventArgs<T> where T : LivingEntity
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly List<ItemStack> drops;
         private int dropExp = 0;
 
-        public EntityDeathEvent(LivingEntity entity, List<ItemStack> drops) :
+        public EntityDeathEventArgs(LivingEntity entity, List<ItemStack> drops) :
             this(entity, drops, 0)
         {
         }
 
-        public EntityDeathEvent(LivingEntity what, List<ItemStack> drops, int droppedExp) :
+        public EntityDeathEventArgs(LivingEntity what, List<ItemStack> drops, int droppedExp) :
             base(what)
         {
             this.drops = drops;
@@ -60,26 +59,16 @@ namespace Mine.NET.Event.entity
         {
             return drops;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 
-    public class EntityDeathEvent : EntityDeathEvent<LivingEntity>
+    public class EntityDeathEventArgs : EntityDeathEventArgs<LivingEntity>
     {
-        public EntityDeathEvent(LivingEntity entity, List<ItemStack> drops) :
+        public EntityDeathEventArgs(LivingEntity entity, List<ItemStack> drops) :
             base(entity, drops, 0)
         {
         }
 
-        public EntityDeathEvent(LivingEntity what, List<ItemStack> drops, int droppedExp) :
+        public EntityDeathEventArgs(LivingEntity what, List<ItemStack> drops, int droppedExp) :
             base(what, drops, droppedExp)
         {
         }

@@ -9,9 +9,8 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Block Place event is cancelled, the block will not be placed.
      */
-    public class BlockPlaceEvent : BlockEvent, Cancellable
+    public class BlockPlaceEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected bool cancel;
         protected Block placedAgainst;
         protected BlockState replacedBlockState;
@@ -19,7 +18,7 @@ namespace Mine.NET.Event.block
         protected Player player;
         protected EquipmentSlot hand;
 
-        public BlockPlaceEvent(Block placedBlock, BlockState replacedBlockState, Block placedAgainst, ItemStack itemInHand, Player thePlayer, bool canBuild, EquipmentSlot hand) : base(placedBlock)
+        public BlockPlaceEventArgs(Block placedBlock, BlockState replacedBlockState, Block placedAgainst, ItemStack itemInHand, Player thePlayer, bool canBuild, EquipmentSlot hand) : base(placedBlock)
         {
             this.placedAgainst = placedAgainst;
             this.itemInHand = itemInHand;
@@ -112,15 +111,5 @@ namespace Mine.NET.Event.block
          * @return bool whether the server would allow a player to build here
          */
         public bool canBuild { get; set; }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }

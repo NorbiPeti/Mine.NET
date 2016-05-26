@@ -7,12 +7,12 @@ namespace Mine.NET.Event.inventory
     /**
      * Represents a player related inventory event
      */
-    public class InventoryEvent<T> : Event where T : Inventory
+    public class InventoryEventArgs<T> : GameEventArgs where T : Inventory
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected InventoryView transaction;
 
-        public InventoryEvent(InventoryView transaction)
+        public InventoryEventArgs(InventoryView transaction)
         {
             this.transaction = transaction;
         }
@@ -47,21 +47,11 @@ namespace Mine.NET.Event.inventory
         {
             return transaction;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 
-    public class InventoryEvent : InventoryEvent<Inventory>
+    public class InventoryEventArgs : InventoryEventArgs<Inventory>
     {
-        public InventoryEvent(InventoryView transaction) : base(transaction)
+        public InventoryEventArgs(InventoryView transaction) : base(transaction)
         {
         }
     }

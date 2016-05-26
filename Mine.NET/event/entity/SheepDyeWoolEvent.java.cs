@@ -5,13 +5,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a sheep's wool is dyed
      */
-    public class SheepDyeWoolEvent : EntityEvent<Sheep>, Cancellable
+    public class SheepDyeWoolEventArgs : EntityEventArgs<Sheep>, Cancellable
     { //TODO: Convert to .NET events
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private DyeColor color;
 
-        public SheepDyeWoolEvent(Sheep sheep, DyeColor color) : base(sheep)
+        public SheepDyeWoolEventArgs(Sheep sheep, DyeColor color) : base(sheep)
         {
             this.cancel = false;
             this.color = color;
@@ -46,16 +45,5 @@ namespace Mine.NET.Event.entity
         {
             this.color = color;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
-
     }
 }

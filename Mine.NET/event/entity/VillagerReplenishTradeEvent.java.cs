@@ -9,16 +9,14 @@ namespace Mine.NET.Event.entity
      *
      * @see MerchantRecipe#getMaxUses()
      */
-    public class VillagerReplenishTradeEvent : EntityEvent<Villager>, Cancellable
+    public class VillagerReplenishTradeEventArgs : EntityEventArgs<Villager>, Cancellable
     {
-
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         //
         private MerchantRecipe recipe;
         private int bonus;
 
-        public VillagerReplenishTradeEvent(Villager what, MerchantRecipe recipe, int bonus) : base(what)
+        public VillagerReplenishTradeEventArgs(Villager what, MerchantRecipe recipe, int bonus) : base(what)
         {
             this.recipe = recipe;
             this.bonus = bonus;
@@ -74,16 +72,6 @@ namespace Mine.NET.Event.entity
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

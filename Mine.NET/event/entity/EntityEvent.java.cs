@@ -5,11 +5,11 @@ namespace Mine.NET.Event.entity
     /**
      * Represents an Entity-related event
      */
-    public abstract class EntityEvent<T> : Event where T : Entity
+    public abstract class EntityEventArgs<T> : GameEventArgs where T : Entity
     {
         protected Entity entity;
 
-        public EntityEvent(Entity what)
+        public EntityEventArgs(Entity what)
         {
             entity = what;
         }

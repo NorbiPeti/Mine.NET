@@ -8,11 +8,10 @@ namespace Mine.NET.Event.block
      * If a Block Burn event is cancelled, the block will not be destroyed as a
      * result of being burnt by fire.
      */
-    public class BlockBurnEvent : BlockEvent, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class BlockBurnEventArgs : BlockEventArgs, Cancellable {
         private bool cancelled;
 
-        public BlockBurnEvent(Block block) : base(block)
+        public BlockBurnEventArgs(Block block) : base(block)
         {
             this.cancelled = false;
         }

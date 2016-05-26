@@ -9,13 +9,12 @@ namespace Mine.NET.Event.entity
      * This event allows you to modify the velocity of the entity after they have
      * successfully exited the portal.
      */
-    public class EntityPortalExitEvent : EntityTeleportEvent
+    public class EntityPortalExitEventArgs : EntityTeleportEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private Vector before;
         private Vector after;
 
-        public EntityPortalExitEvent(Entity entity, Location from, Location to, Vector before, Vector after) :
+        public EntityPortalExitEventArgs(Entity entity, Location from, Location to, Vector before, Vector after) :
             base(entity, from, to)
         {
             this.before = before;
@@ -52,16 +51,6 @@ namespace Mine.NET.Event.entity
         public void setAfter(Vector after)
         {
             this.after = after.clone();
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

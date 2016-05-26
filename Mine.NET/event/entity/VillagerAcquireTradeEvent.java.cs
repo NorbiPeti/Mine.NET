@@ -6,14 +6,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called whenever a villager acquires a new trade.
      */
-    public class VillagerAcquireTradeEvent : EntityEvent<Villager>, Cancellable {
-
-        private static readonly HandlerList handlers = new HandlerList();
+    public class VillagerAcquireTradeEventArgs : EntityEventArgs<Villager>, Cancellable {
         private bool cancelled;
         //
         private MerchantRecipe recipe;
 
-        public VillagerAcquireTradeEvent(Villager what, MerchantRecipe recipe) : base(what)
+        public VillagerAcquireTradeEventArgs(Villager what, MerchantRecipe recipe) : base(what)
         {
             this.recipe = recipe;
         }
@@ -42,14 +40,6 @@ namespace Mine.NET.Event.entity
 
         public void setCancelled(bool cancel) {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

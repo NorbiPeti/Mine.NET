@@ -7,13 +7,12 @@ namespace Mine.NET.Event.entity
      * <p>
      * If an Entity Combust event is cancelled, the entity will not combust.
      */
-    public class EntityCombustEvent<T> : EntityEvent<T>, Cancellable where T : Entity
+    public class EntityCombustEventArgs<T> : EntityEventArgs<T>, Cancellable where T : Entity
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private int duration;
         private bool cancel;
 
-        public EntityCombustEvent(Entity combustee, int duration) : base(combustee)
+        public EntityCombustEventArgs(Entity combustee, int duration) : base(combustee)
         {
             this.duration = duration;
             this.cancel = false;
@@ -49,16 +48,6 @@ namespace Mine.NET.Event.entity
         public void setDuration(int duration)
         {
             this.duration = duration;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

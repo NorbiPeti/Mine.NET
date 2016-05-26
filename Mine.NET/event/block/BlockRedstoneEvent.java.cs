@@ -5,13 +5,12 @@ namespace Mine.NET.Event.block
     /**
      * Called when a redstone current changes
      */
-    public class BlockRedstoneEvent : BlockEvent
+    public class BlockRedstoneEventArgs : BlockEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly int oldCurrent;
         private int newCurrent;
 
-        public BlockRedstoneEvent(Block block, int oldCurrent, int newCurrent) : base(block)
+        public BlockRedstoneEventArgs(Block block, int oldCurrent, int newCurrent) : base(block)
         {
             this.oldCurrent = oldCurrent;
             this.newCurrent = newCurrent;
@@ -45,16 +44,6 @@ namespace Mine.NET.Event.block
         public void setNewCurrent(int newCurrent)
         {
             this.newCurrent = newCurrent;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

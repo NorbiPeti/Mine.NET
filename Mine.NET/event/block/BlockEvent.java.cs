@@ -5,11 +5,11 @@ namespace Mine.NET.Event.block
     /**
      * Represents a block related event.
      */
-    public abstract class BlockEvent : Event
+    public abstract class BlockEventArgs : GameEventArgs
     {
         protected Block block;
 
-        public BlockEvent(Block theBlock)
+        public BlockEventArgs(Block theBlock)
         {
             block = theBlock;
         }

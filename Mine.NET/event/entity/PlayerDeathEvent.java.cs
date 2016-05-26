@@ -8,7 +8,7 @@ namespace Mine.NET.Event.entity
     /**
      * Thrown whenever a {@link Player} dies
      */
-    public class PlayerDeathEvent : EntityDeathEvent<Player>
+    public class PlayerDeathEventArgs : EntityDeathEventArgs<Player>
     {
         private int newExp = 0;
         private String deathMessage = "";
@@ -17,17 +17,17 @@ namespace Mine.NET.Event.entity
         private bool keepLevel = false;
         private bool keepInventory = false;
 
-        public PlayerDeathEvent(Player player, List<ItemStack> drops, int droppedExp, String deathMessage) :
+        public PlayerDeathEventArgs(Player player, List<ItemStack> drops, int droppedExp, String deathMessage) :
             this(player, drops, droppedExp, 0, deathMessage)
         {
         }
 
-        public PlayerDeathEvent(Player player, List<ItemStack> drops, int droppedExp, int newExp, String deathMessage) :
+        public PlayerDeathEventArgs(Player player, List<ItemStack> drops, int droppedExp, int newExp, String deathMessage) :
             this(player, drops, droppedExp, newExp, 0, 0, deathMessage)
         {
         }
 
-        public PlayerDeathEvent(Player player, List<ItemStack> drops, int droppedExp, int newExp, int newTotalExp, int newLevel, String deathMessage) :
+        public PlayerDeathEventArgs(Player player, List<ItemStack> drops, int droppedExp, int newExp, int newTotalExp, int newLevel, String deathMessage) :
             base(player, drops, droppedExp)
         {
             this.newExp = newExp;

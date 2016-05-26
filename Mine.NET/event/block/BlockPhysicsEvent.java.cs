@@ -6,13 +6,12 @@ namespace Mine.NET.Event.block
     /**
      * Thrown when a block physics check is called
      */
-    public class BlockPhysicsEvent : BlockEvent, Cancellable
+    public class BlockPhysicsEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Materials changed;
         private bool cancel = false;
 
-        public BlockPhysicsEvent(Block block, Materials changed) : base(block)
+        public BlockPhysicsEventArgs(Block block, Materials changed) : base(block)
         {
             this.changed = changed;
         }
@@ -35,16 +34,6 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

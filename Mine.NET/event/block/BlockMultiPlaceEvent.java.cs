@@ -12,11 +12,11 @@ namespace Mine.NET.Event.block
      * the placed block would exist if the placement only affected a single
      * block.
      */
-    public class BlockMultiPlaceEvent : BlockPlaceEvent
+    public class BlockMultiPlaceEventArgs : BlockPlaceEventArgs
     {
         private readonly List<BlockState> states;
 
-        public BlockMultiPlaceEvent(List<BlockState> states, Block clicked, ItemStack itemInHand, Player thePlayer, bool canBuild) : base(states[0].getBlock(), states[0], clicked, itemInHand, thePlayer, canBuild)
+        public BlockMultiPlaceEventArgs(List<BlockState> states, Block clicked, ItemStack itemInHand, Player thePlayer, bool canBuild, EquipmentSlot hand) : base(states[0].getBlock(), states[0], clicked, itemInHand, thePlayer, canBuild, hand)
         {
             this.states = new List<BlockState>(states);
         }

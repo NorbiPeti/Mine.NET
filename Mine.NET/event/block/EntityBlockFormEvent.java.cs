@@ -12,11 +12,11 @@ namespace Mine.NET.Event.block
      * <li>Frosted Ice formed by the Frost Walker enchantment.
      * </ul>
      */
-    public class EntityBlockFormEvent : BlockFormEvent
+    public class EntityBlockFormEventArgs : BlockFormEventArgs
     {
         private readonly Entity entity;
 
-        public EntityBlockFormEvent(Entity entity, Block block, BlockState blockstate) : base(block, blockstate)
+        public EntityBlockFormEventArgs(Entity entity, Block block, BlockState blockstate) : base(block, blockstate)
         {
             this.entity = entity;
         }

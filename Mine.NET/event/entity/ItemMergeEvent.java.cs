@@ -2,13 +2,12 @@ using Mine.NET.entity;
 
 namespace Mine.NET.Event.entity
 {
-    public class ItemMergeEvent : EntityEvent<Item>, Cancellable {
-
-        private static readonly HandlerList handlers = new HandlerList();
+    public class ItemMergeEventArgs : EntityEventArgs<Item>, Cancellable {
+        
         private bool cancelled;
         private readonly Item target;
 
-        public ItemMergeEvent(Item item, Item target) : base(item)
+        public ItemMergeEventArgs(Item item, Item target) : base(item)
         {
             this.target = target;
         }
@@ -28,14 +27,6 @@ namespace Mine.NET.Event.entity
          */
         public Item getTarget() {
             return target;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

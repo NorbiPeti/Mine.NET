@@ -16,12 +16,11 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Block Grow event is cancelled, the block will not grow.
      */
-    public class BlockGrowEvent : BlockEvent, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class BlockGrowEventArgs : BlockEventArgs, Cancellable {
         private readonly BlockState newState;
         private bool cancelled = false;
 
-        public BlockGrowEvent(Block block, BlockState newState) : base(block)
+        public BlockGrowEventArgs(Block block, BlockState newState) : base(block)
         {
             this.newState = newState;
         }
@@ -41,14 +40,6 @@ namespace Mine.NET.Event.block
 
         public void setCancelled(bool cancel) {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

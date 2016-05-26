@@ -18,22 +18,10 @@ namespace Mine.NET.Event.block
      *
      * @see BlockSpreadEvent
      */
-    public class BlockFormEvent : BlockGrowEvent, Cancellable
+    public class BlockFormEventArgs : BlockGrowEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public BlockFormEvent(Block block, BlockState newState) : base(block, newState)
+        public BlockFormEventArgs(Block block, BlockState newState) : base(block, newState)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

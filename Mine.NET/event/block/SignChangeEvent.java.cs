@@ -9,14 +9,14 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Sign Change event is cancelled, the sign will not be changed.
      */
-    public class SignChangeEvent : BlockEvent, Cancellable
+    public class SignChangeEventArgs : BlockEventArgs, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private readonly Player player;
         private readonly String[] lines;
 
-        public SignChangeEvent(Block theBlock, Player thePlayer, String[] theLines) : base(theBlock)
+        public SignChangeEventArgs(Block theBlock, Player thePlayer, String[] theLines) : base(theBlock)
         {
             this.player = thePlayer;
             this.lines = theLines;
@@ -77,16 +77,6 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

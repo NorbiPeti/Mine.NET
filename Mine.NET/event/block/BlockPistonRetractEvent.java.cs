@@ -6,12 +6,11 @@ namespace Mine.NET.Event.block
     /**
      * Called when a piston retracts
      */
-    public class BlockPistonRetractEvent : BlockPistonEvent
+    public class BlockPistonRetractEventArgs : BlockPistonEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private List<Block> blocks;
 
-        public BlockPistonRetractEvent(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
+        public BlockPistonRetractEventArgs(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
         {
             this.blocks = blocks;
         }
@@ -25,16 +24,6 @@ namespace Mine.NET.Event.block
         public List<Block> getBlocks()
         {
             return blocks;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

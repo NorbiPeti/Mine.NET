@@ -8,16 +8,11 @@ namespace Mine.NET.Event.entity
      * <p>
      * Cancelling the event will cause the event to be delayed
      */
-    public class EntityBreakDoorEvent<T> : EntityChangeBlockEvent<T> where T : Entity
+    public class EntityBreakDoorEventArgs<T> : EntityChangeBlockEventArgs<T> where T : Entity
     {
-        public EntityBreakDoorEvent(LivingEntity entity, Block targetBlock) :
+        public EntityBreakDoorEventArgs(LivingEntity entity, Block targetBlock) :
             base(entity, targetBlock, Materials.AIR, (byte)0)
         {
-        }
-
-        public override LivingEntity getEntity()
-        {
-            return (LivingEntity)entity;
         }
     }
 }

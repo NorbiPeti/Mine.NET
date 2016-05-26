@@ -5,12 +5,12 @@ namespace Mine.NET.Event.hanging
     /**
      * Triggered when a hanging entity is removed by an entity
      */
-    public class HangingBreakByEntityEvent : HangingBreakEvent
+    public class HangingBreakByEntityEventArgs : HangingBreakEventArgs
     {
         private readonly Entity remover;
 
-        public HangingBreakByEntityEvent(Hanging hanging, Entity remover) :
-                base(hanging, HangingBreakEvent.RemoveCause.ENTITY)
+        public HangingBreakByEntityEventArgs(Hanging hanging, Entity remover) :
+                base(hanging, RemoveCause.ENTITY)
         {
             this.remover = remover;
         }

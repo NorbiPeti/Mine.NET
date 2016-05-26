@@ -6,14 +6,13 @@ namespace Mine.NET.Event.block
     /**
      * Called when a block explodes
      */
-    public class BlockExplodeEvent : BlockEvent, Cancellable
+    public class BlockExplodeEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private readonly List<Block> blocks;
         private float yield;
 
-        public BlockExplodeEvent(Block what, List<Block> blocks, float yield) : base(what)
+        public BlockExplodeEventArgs(Block what, List<Block> blocks, float yield) : base(what)
         {
             this.blocks = blocks;
             this.yield = yield;

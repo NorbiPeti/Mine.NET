@@ -24,11 +24,11 @@ namespace Mine.NET.Event.block
      * If a Block Break event is cancelled, the block will not break and
      * experience will not drop.
      */
-    public class BlockBreakEvent : BlockExpEvent, Cancellable {
+    public class BlockBreakEventArgs : BlockExpEventArgs, Cancellable {
         private readonly Player player;
         private bool cancel;
 
-        public BlockBreakEvent(Block theBlock, Player player) : base(theBlock, 0)
+        public BlockBreakEventArgs(Block theBlock, Player player) : base(theBlock, 0)
         {
             this.player = player;
         }

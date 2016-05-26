@@ -5,12 +5,11 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a projectile is launched.
      */
-    public class ProjectileLaunchEvent : EntityEvent<Projectile>, Cancellable
+    public class ProjectileLaunchEventArgs : EntityEventArgs<Projectile>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
 
-        public ProjectileLaunchEvent(Entity what) : base(what)
+        public ProjectileLaunchEventArgs(Entity what) : base(what)
         {
         }
 
@@ -22,16 +21,6 @@ namespace Mine.NET.Event.entity
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

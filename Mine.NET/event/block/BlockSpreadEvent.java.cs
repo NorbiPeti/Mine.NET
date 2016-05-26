@@ -18,12 +18,11 @@ namespace Mine.NET.Event.block
      *
      * @see BlockFormEvent
      */
-    public class BlockSpreadEvent : BlockFormEvent
+    public class BlockSpreadEventArgs : BlockFormEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Block source;
 
-        public BlockSpreadEvent(Block block, Block source, BlockState newState) : base(block, newState)
+        public BlockSpreadEventArgs(Block block, Block source, BlockState newState) : base(block, newState)
         {
             this.source = source;
         }
@@ -36,16 +35,6 @@ namespace Mine.NET.Event.block
         public Block getSource()
         {
             return source;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

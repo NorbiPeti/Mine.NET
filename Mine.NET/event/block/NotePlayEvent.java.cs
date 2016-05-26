@@ -6,7 +6,7 @@ namespace Mine.NET.Event.block
      * Called when a note block is being played through player interaction or a
      * redstone current.
      */
-    public class NotePlayEvent : BlockEvent, Cancellable
+    public class NotePlayEventArgs : BlockEventArgs, Cancellable
     {
 
         private static HandlerList handlers = new HandlerList();
@@ -14,7 +14,7 @@ namespace Mine.NET.Event.block
         private Note note;
         private bool cancelled = false;
 
-        public NotePlayEvent(Block block, Instrument instrument, Note note) : base(block)
+        public NotePlayEventArgs(Block block, Instrument instrument, Note note) : base(block)
         {
             this.instrument = instrument;
             this.note = note;
@@ -57,11 +57,7 @@ namespace Mine.NET.Event.block
          */
         public void setInstrument(Instrument instrument)
         {
-            if (instrument != null)
-            {
-                this.instrument = instrument;
-            }
-
+            this.instrument = instrument;
         }
 
         /**
@@ -75,16 +71,6 @@ namespace Mine.NET.Event.block
             {
                 this.note = note;
             }
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -5,12 +5,12 @@ namespace Mine.NET.Event.block
     /**
      * Called when a piston block is triggered
      */
-    public abstract class BlockPistonEvent : BlockEvent, Cancellable
+    public abstract class BlockPistonEventArgs : BlockEventArgs, Cancellable
     {
         private bool cancelled;
         private readonly BlockFaces direction;
 
-        public BlockPistonEvent(Block block, BlockFaces direction) : base(block)
+        public BlockPistonEventArgs(Block block, BlockFaces direction) : base(block)
         {
             this.direction = direction;
         }
@@ -32,7 +32,7 @@ namespace Mine.NET.Event.block
          */
         public bool isSticky()
         {
-            return block.getType() == Materials.AllMaterials[Materials.PISTON_STICKY_BASE] || block.getType() == Materials.AllMaterials[Materials.PISTON_MOVING_PIECE];
+            return block.getType() == Materials.PISTON_STICKY_BASE || block.getType() == Materials.PISTON_MOVING_PIECE;
         }
 
         /**

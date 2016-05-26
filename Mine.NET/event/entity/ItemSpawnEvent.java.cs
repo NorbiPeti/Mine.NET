@@ -5,13 +5,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an item is spawned into a world
      */
-    public class ItemSpawnEvent : EntityEvent<Item>, Cancellable
+    public class ItemSpawnEventArgs : EntityEventArgs<Item>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Location location;
         private bool canceled;
 
-        public ItemSpawnEvent(Item spawnee, Location loc) : base(spawnee)
+        public ItemSpawnEventArgs(Item spawnee, Location loc) : base(spawnee)
         {
             this.location = loc;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.entity
         public Location getLocation()
         {
             return location;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

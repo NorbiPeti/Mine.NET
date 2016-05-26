@@ -5,9 +5,8 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a ThrownExpBottle hits and releases experience.
      */
-    public class ExpBottleEvent : ProjectileHitEvent<ThrownExpBottle>
+    public class ExpBottleEvent : ProjectileHitEventArgs<ThrownExpBottle>
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private int exp;
         private bool showEffect = true;
 
@@ -61,16 +60,6 @@ namespace Mine.NET.Event.entity
         public void setExperience(int exp)
         {
             this.exp = exp;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

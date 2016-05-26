@@ -8,13 +8,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a splash potion hits an area
      */
-    public class PotionSplashEvent : ProjectileHitEvent<ThrownPotion>, Cancellable
+    public class PotionSplashEventArgs : ProjectileHitEventArgs<ThrownPotion>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly Dictionary<LivingEntity, Double> affectedEntities;
 
-        public PotionSplashEvent(ThrownPotion potion, Dictionary<LivingEntity, Double> affectedEntities) :
+        public PotionSplashEventArgs(ThrownPotion potion, Dictionary<LivingEntity, Double> affectedEntities) :
             base(potion)
         {
             this.affectedEntities = affectedEntities;
@@ -83,16 +82,6 @@ namespace Mine.NET.Event.entity
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public new static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -5,11 +5,11 @@ namespace Mine.NET.Event.hanging
     /**
      * Represents a hanging entity-related event.
      */
-    public abstract class HangingEvent : Event
+    public abstract class HangingEventArgs : GameEventArgs
     {
         protected Hanging hanging;
 
-        protected HangingEvent(Hanging painting)
+        protected HangingEventArgs(Hanging painting)
         {
             this.hanging = painting;
         }

@@ -5,23 +5,10 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a projectile hits an object
      */
-    public class ProjectileHitEvent<T> : EntityEvent<T> where T : Entity
+    public class ProjectileHitEventArgs<T> : EntityEventArgs<T> where T : Entity
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public ProjectileHitEvent(Projectile projectile) : base(projectile)
+        public ProjectileHitEventArgs(Projectile projectile) : base(projectile)
         {
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
-
     }
 }

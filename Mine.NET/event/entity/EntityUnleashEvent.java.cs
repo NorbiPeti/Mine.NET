@@ -5,9 +5,8 @@ namespace Mine.NET.Event.entity
     /**
      * Called immediately prior to an entity being unleashed.
      */
-    public class EntityUnleashEvent : EntityEvent<Entity>
+    public class EntityUnleashEventArgs : EntityEventArgs<Entity>
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly UnleashReason reason;
 
         public EntityUnleashEvent(Entity entity, UnleashReason reason) : base(entity)
@@ -23,16 +22,6 @@ namespace Mine.NET.Event.entity
         public UnleashReason getReason()
         {
             return reason;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         public enum UnleashReason

@@ -7,15 +7,14 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity explodes
      */
-    public class EntityExplodeEvent : EntityEvent<Explosive>, Cancellable
+    public class EntityExplodeEventArgs : EntityEventArgs<Explosive>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private readonly Location location;
         private readonly List<Block> blocks;
         private float yield;
 
-        public EntityExplodeEvent(Entity what, Location location, List<Block> blocks, float yield) :
+        public EntityExplodeEventArgs(Entity what, Location location, List<Block> blocks, float yield) :
             base(what)
         {
             this.location = location;
@@ -76,16 +75,6 @@ namespace Mine.NET.Event.entity
         public void setYield(float yield)
         {
             this.yield = yield;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

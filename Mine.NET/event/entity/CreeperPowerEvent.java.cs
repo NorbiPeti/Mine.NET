@@ -7,19 +7,18 @@ namespace Mine.NET.Event.entity
      * <p>
      * If a Creeper Power event is cancelled, the Creeper will not be powered.
      */
-    public class CreeperPowerEvent : EntityEvent<Creeper>, Cancellable
+    public class CreeperPowerEventArgs : EntityEventArgs<Creeper>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly PowerCause cause;
         private LightningStrike bolt;
 
-        public CreeperPowerEvent(Creeper creeper, LightningStrike bolt, PowerCause cause) : this(creeper, cause)
+        public CreeperPowerEventArgs(Creeper creeper, LightningStrike bolt, PowerCause cause) : this(creeper, cause)
         {
             this.bolt = bolt;
         }
 
-        public CreeperPowerEvent(Creeper creeper, PowerCause cause) : base(creeper)
+        public CreeperPowerEventArgs(Creeper creeper, PowerCause cause) : base(creeper)
         {
 
             this.cause = cause;
@@ -53,16 +52,6 @@ namespace Mine.NET.Event.entity
         public PowerCause getCause()
         {
             return cause;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

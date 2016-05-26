@@ -9,13 +9,12 @@ namespace Mine.NET.Event.entity
      * Cancelling the event results in the item being allowed to exist for 5 more
      * minutes. This behavior is not guaranteed and may change in future versions.
      */
-    public class ItemDespawnEvent : EntityEvent<Item>, Cancellable
+    public class ItemDespawnEventArgs : EntityEventArgs<Item>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly Location location;
 
-        public ItemDespawnEvent(Item despawnee, Location loc) : base(despawnee)
+        public ItemDespawnEventArgs(Item despawnee, Location loc) : base(despawnee)
         {
             location = loc;
         }
@@ -38,16 +37,6 @@ namespace Mine.NET.Event.entity
         public Location getLocation()
         {
             return location;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

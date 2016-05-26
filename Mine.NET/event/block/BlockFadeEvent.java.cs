@@ -15,13 +15,12 @@ namespace Mine.NET.Event.block
      * If a Block Fade event is cancelled, the block will not fade, melt or
      * disappear.
      */
-    public class BlockFadeEvent : BlockEvent, Cancellable
+    public class BlockFadeEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly BlockState newState;
 
-        public BlockFadeEvent(Block block, BlockState newState) : base(block)
+        public BlockFadeEventArgs(Block block, BlockState newState) : base(block)
         {
             this.newState = newState;
             this.cancelled = false;

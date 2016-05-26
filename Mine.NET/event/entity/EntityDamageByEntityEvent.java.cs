@@ -7,11 +7,11 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity is damaged by an entity
      */
-    public class EntityDamageByEntityEvent<T> : EntityDamageEvent<T> where T : Entity
+    public class EntityDamageByEntityEventArgs<T> : EntityDamageEventArgs<T> where T : Entity
     {
         private readonly Entity damager;
 
-        public EntityDamageByEntityEvent(Entity damager, Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions) :
+        public EntityDamageByEntityEventArgs(Entity damager, Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions) :
             base(damagee, cause, modifiers, modifierFunctions)
         {
             this.damager = damager;

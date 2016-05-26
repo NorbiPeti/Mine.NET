@@ -7,14 +7,13 @@ namespace Mine.NET.Event.entity
     /**
      * Stores data for health-regain events
      */
-    public class EntityRegainHealthEvent : EntityEvent<Entity>, Cancellable
+    public class EntityRegainHealthEventArgs : EntityEventArgs<Entity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private double amount;
         private readonly RegainReason regainReason;
 
-        public EntityRegainHealthEvent(Entity entity, double amount, RegainReason regainReason) :
+        public EntityRegainHealthEventArgs(Entity entity, double amount, RegainReason regainReason) :
             base(entity)
         {
             this.amount = amount;
@@ -41,12 +40,12 @@ namespace Mine.NET.Event.entity
             this.amount = amount;
         }
 
-        public override bool isCancelled()
+        public bool isCancelled()
         {
             return cancelled;
         }
 
-        public override void setCancelled(bool cancel)
+        public void setCancelled(bool cancel)
         {
             cancelled = cancel;
         }
@@ -60,16 +59,6 @@ namespace Mine.NET.Event.entity
         public RegainReason getRegainReason()
         {
             return regainReason;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

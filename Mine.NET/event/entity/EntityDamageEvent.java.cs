@@ -8,9 +8,8 @@ namespace Mine.NET.Event.entity
     /**
      * Stores data for damage events
      */
-    public class EntityDamageEvent<T> : EntityEvent<T>, Cancellable where T : Entity
+    public class EntityDamageEventArgs<T> : EntityEventArgs<T>, Cancellable where T : Entity
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private static readonly DamageModifier[] MODIFIERS = new DamageModifier[] { DamageModifier.ABSORPTION, DamageModifier.ARMOR, DamageModifier.BASE, DamageModifier.BLOCKING, DamageModifier.HARD_HAT, DamageModifier.MAGIC, DamageModifier.RESISTANCE };
         private static readonly Func<Double, Double> ZERO = new Func<double, double>(delegate { return 0; });
         private readonly Dictionary<DamageModifier, Double> modifiers;
@@ -19,7 +18,7 @@ namespace Mine.NET.Event.entity
         private bool cancelled;
         private readonly DamageCause cause;
 
-        public EntityDamageEvent(Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions) :
+        public EntityDamageEventArgs(Entity damagee, DamageCause cause, Dictionary<DamageModifier, Double> modifiers, Dictionary<DamageModifier, Func<Double, Double>> modifierFunctions) :
             base(damagee)
         {
             if (modifiers.ContainsKey(DamageModifier.BASE)) throw new ArgumentException("BASE DamageModifier missing");
@@ -193,16 +192,6 @@ namespace Mine.NET.Event.entity
         public DamageCause getCause()
         {
             return cause;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

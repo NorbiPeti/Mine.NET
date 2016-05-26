@@ -6,13 +6,13 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity interacts with an object
      */
-    public class EntityInteractEvent : EntityEvent<Entity>, Cancellable
+    public class EntityInteractEventArgs : EntityEventArgs<Entity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         protected Block block;
         private bool cancelled;
 
-        public EntityInteractEvent(Entity entity, Block block) : base(entity)
+        public EntityInteractEventArgs(Entity entity, Block block) : base(entity)
         {
             this.block = block;
         }
@@ -35,16 +35,6 @@ namespace Mine.NET.Event.entity
         public Block getBlock()
         {
             return block;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

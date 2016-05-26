@@ -9,25 +9,24 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Block Ignite event is cancelled, the block will not be ignited.
      */
-    public class BlockIgniteEvent : BlockEvent, Cancellable
+    public class BlockIgniteEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly IgniteCause cause;
         private readonly Entity ignitingEntity;
         private readonly Block ignitingBlock;
         private bool cancel;
 
-        public BlockIgniteEvent(Block theBlock, IgniteCause cause, Entity ignitingEntity) : this(theBlock, cause, ignitingEntity, null)
+        public BlockIgniteEventArgs(Block theBlock, IgniteCause cause, Entity ignitingEntity) : this(theBlock, cause, ignitingEntity, null)
         {
 
         }
 
-        public BlockIgniteEvent(Block theBlock, IgniteCause cause, Block ignitingBlock) : this(theBlock, cause, null, ignitingBlock)
+        public BlockIgniteEventArgs(Block theBlock, IgniteCause cause, Block ignitingBlock) : this(theBlock, cause, null, ignitingBlock)
         {
 
         }
 
-        public BlockIgniteEvent(Block theBlock, IgniteCause cause, Entity ignitingEntity, Block ignitingBlock) : base(theBlock)
+        public BlockIgniteEventArgs(Block theBlock, IgniteCause cause, Entity ignitingEntity, Block ignitingBlock) : base(theBlock)
         {
             this.cause = cause;
             this.ignitingEntity = ignitingEntity;
@@ -124,16 +123,6 @@ namespace Mine.NET.Event.block
              * Block ignition caused by explosion.
              */
             EXPLOSION,
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -5,14 +5,13 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a creature targets or untargets another entity
      */
-    public class EntityTargetEvent : EntityEvent<Entity>, Cancellable
+    public class EntityTargetEventArgs : EntityEventArgs<Entity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private Entity target;
         private readonly TargetReason reason;
 
-        public EntityTargetEvent(Entity entity, Entity target, TargetReason reason) : base(entity)
+        public EntityTargetEventArgs(Entity entity, Entity target, TargetReason reason) : base(entity)
         {
             this.target = target;
             this.reason = reason;
@@ -66,16 +65,6 @@ namespace Mine.NET.Event.entity
         public virtual void setTarget(Entity target)
         {
             this.target = target;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

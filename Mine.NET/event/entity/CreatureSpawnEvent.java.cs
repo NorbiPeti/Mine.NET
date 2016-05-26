@@ -7,13 +7,12 @@ namespace Mine.NET.Event.entity
      * <p>
      * If a Creature Spawn event is cancelled, the creature will not spawn.
      */
-    public class CreatureSpawnEvent : EntityEvent<LivingEntity>, Cancellable
+    public class CreatureSpawnEventArgs : EntityEventArgs<LivingEntity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly SpawnReason spawnReason;
 
-        public CreatureSpawnEvent(LivingEntity spawnee, SpawnReason spawnReason) : base(spawnee)
+        public CreatureSpawnEventArgs(LivingEntity spawnee, SpawnReason spawnReason) : base(spawnee)
         {
             this.spawnReason = spawnReason;
         }
@@ -47,16 +46,6 @@ namespace Mine.NET.Event.entity
         public SpawnReason getSpawnReason()
         {
             return spawnReason;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

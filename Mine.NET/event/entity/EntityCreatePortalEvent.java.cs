@@ -7,14 +7,14 @@ namespace Mine.NET.Event.entity
     /**
      * Thrown when a Living Entity creates a portal in a world.
      */
-    public class EntityCreatePortalEvent : EntityEvent<LivingEntity>, Cancellable
+    public class EntityCreatePortalEventArgs : EntityEventArgs<LivingEntity>, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly List<BlockState> blocks;
         private bool cancelled = false;
         private PortalType type = PortalType.CUSTOM;
 
-        public EntityCreatePortalEvent(LivingEntity what, List<BlockState> blocks, PortalType type) : base(what)
+        public EntityCreatePortalEventArgs(LivingEntity what, List<BlockState> blocks, PortalType type) : base(what)
         {
             this.blocks = blocks;
             this.type = type;
@@ -48,16 +48,6 @@ namespace Mine.NET.Event.entity
         public PortalType getPortalType()
         {
             return type;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

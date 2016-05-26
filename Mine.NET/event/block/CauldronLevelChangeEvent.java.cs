@@ -4,9 +4,8 @@ using System;
 
 namespace Mine.NET.Event.block
 {
-    public class CauldronLevelChangeEvent : BlockEvent, Cancellable {
-
-        private static readonly HandlerList handlers = new HandlerList();
+    public class CauldronLevelChangeEventArgs : BlockEventArgs, Cancellable {
+        
         private bool cancelled;
         //
         private readonly Entity entity;
@@ -14,7 +13,7 @@ namespace Mine.NET.Event.block
         private readonly int oldLevel;
         private int newLevel;
 
-        public CauldronLevelChangeEvent(Block block, Entity entity, ChangeReason reason, int oldLevel, int newLevel) : base(block)
+        public CauldronLevelChangeEventArgs(Block block, Entity entity, ChangeReason reason, int oldLevel, int newLevel) : base(block)
         {
             this.entity = entity;
             this.reason = reason;
@@ -44,24 +43,16 @@ namespace Mine.NET.Event.block
         }
 
         public void setNewLevel(int newLevel) {
-            if (0 <= newLevel && newLevel <= 3) throw new ArgumentOutOfRangeException(nameof(newLevel), "Cauldron level out of bounds 0 <= %s <= 3", newLevel);
+            if (0 <= newLevel && newLevel <= 3) throw new ArgumentOutOfRangeException(nameof(newLevel), newLevel, "Cauldron level out of bounds 0 <= %s <= 3");
             this.newLevel = newLevel;
         }
 
-        public override bool isCancelled() {
+        public bool isCancelled() {
             return cancelled;
         }
 
-        public override void setCancelled(bool cancelled) {
+        public void setCancelled(bool cancelled) {
             this.cancelled = cancelled;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
 
         public enum ChangeReason {

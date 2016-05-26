@@ -5,14 +5,13 @@ namespace Mine.NET.Event.entity
     /**
      * Stores data for pigs being zapped
      */
-    public class PigZapEvent : EntityEvent<Pig>, Cancellable
+    public class PigZapEventArgs : EntityEventArgs<Pig>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly PigZombie pigzombie;
         private readonly LightningStrike bolt;
 
-        public PigZapEvent(Pig pig, LightningStrike bolt, PigZombie pigzombie) : base(pig)
+        public PigZapEventArgs(Pig pig, LightningStrike bolt, PigZombie pigzombie) : base(pig)
         {
             this.bolt = bolt;
             this.pigzombie = pigzombie;
@@ -47,16 +46,6 @@ namespace Mine.NET.Event.entity
         public PigZombie getPigZombie()
         {
             return pigzombie;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

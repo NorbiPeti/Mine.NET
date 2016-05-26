@@ -6,14 +6,13 @@ namespace Mine.NET.Event.entity
      * Thrown when a non-player entity (such as an Enderman) tries to teleport
      * from one location to another.
      */
-    public class EntityTeleportEvent : EntityEvent<Entity>, Cancellable
+    public class EntityTeleportEventArgs : EntityEventArgs<Entity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private Location from;
         private Location to;
 
-        public EntityTeleportEvent(Entity what, Location from, Location to) : base(what)
+        public EntityTeleportEventArgs(Entity what, Location from, Location to) : base(what)
         {
             this.from = from;
             this.to = to;
@@ -68,16 +67,6 @@ namespace Mine.NET.Event.entity
         public void setTo(Location to)
         {
             this.to = to;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

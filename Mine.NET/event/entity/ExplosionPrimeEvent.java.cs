@@ -5,21 +5,20 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity has made a decision to explode.
      */
-    public class ExplosionPrimeEvent : EntityEvent<Explosive>, Cancellable
+    public class ExplosionPrimeEventArgs : EntityEventArgs<Explosive>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private float radius;
         private bool fire;
 
-        public ExplosionPrimeEvent(Entity what, float radius, bool fire) : base(what)
+        public ExplosionPrimeEventArgs(Entity what, float radius, bool fire) : base(what)
         {
             this.cancel = false;
             this.radius = radius;
             this.fire = fire;
         }
 
-        public ExplosionPrimeEvent(Explosive explosive) :
+        public ExplosionPrimeEventArgs(Explosive explosive) :
             this(explosive, explosive.getYield(), explosive.isIncendiary())
         {
         }
@@ -72,16 +71,6 @@ namespace Mine.NET.Event.entity
         public void setFire(bool fire)
         {
             this.fire = fire;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

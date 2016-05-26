@@ -6,13 +6,12 @@ namespace Mine.NET.Event.block
     /**
      * Called when a piston :
      */
-    public class BlockPistonExtendEvent : BlockPistonEvent
+    public class BlockPistonExtendEventArgs : BlockPistonEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly int length;
         private List<Block> blocks;
 
-        public BlockPistonExtendEvent(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
+        public BlockPistonExtendEventArgs(Block block, List<Block> blocks, BlockFaces direction) : base(block, direction)
         {
             this.length = blocks.Count;
             this.blocks = blocks;
@@ -36,16 +35,6 @@ namespace Mine.NET.Event.block
                 blocks = tmp;
             }
             return blocks;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

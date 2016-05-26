@@ -6,15 +6,15 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an EnderDragon switches controller phase.
      */
-    public class EnderDragonChangePhaseEvent : EntityEvent<EnderDragon>, Cancellable {
+    public class EnderDragonChangePhaseEventArgs : EntityEventArgs<EnderDragon>, Cancellable
+    {
 
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private readonly EnderDragonPhase currentPhase;
         private EnderDragonPhase newPhase;
 
-        public EnderDragonChangePhaseEvent(EnderDragon enderDragon, EnderDragon.Phase currentPhase, EnderDragon.Phase newPhase) : base(enderDragon)
-        {    
+        public EnderDragonChangePhaseEventArgs(EnderDragon enderDragon, EnderDragonPhase currentPhase, EnderDragonPhase newPhase) : base(enderDragon)
+        {
             this.currentPhase = currentPhase;
             this.setNewPhase(newPhase);
         }
@@ -25,7 +25,8 @@ namespace Mine.NET.Event.entity
          * 
          * @return the current dragon phase
          */
-        public EnderDragonPhase getCurrentPhase() {
+        public EnderDragonPhase getCurrentPhase()
+        {
             return currentPhase;
         }
 
@@ -34,7 +35,8 @@ namespace Mine.NET.Event.entity
          * 
          * @return the new dragon phase
          */
-        public EnderDragonPhase getNewPhase() {
+        public EnderDragonPhase getNewPhase()
+        {
             return newPhase;
         }
 
@@ -43,25 +45,19 @@ namespace Mine.NET.Event.entity
          * 
          * @param newPhase the new dragon phase
          */
-        public void setNewPhase(EnderDragonPhase newPhase) {
-            if (newPhase == null) throw new ArgumentNullException("New dragon phase cannot be null");
+        public void setNewPhase(EnderDragonPhase newPhase)
+        {
             this.newPhase = newPhase;
         }
 
-        public bool isCancelled() {
+        public bool isCancelled()
+        {
             return cancel;
         }
 
-        public void setCancelled(bool cancel) {
+        public void setCancelled(bool cancel)
+        {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

@@ -10,14 +10,14 @@ namespace Mine.NET.Event.block
      * If a Block Dispense event is cancelled, the block will not dispense the
      * item.
      */
-    public class BlockDispenseEvent : BlockEvent, Cancellable
+    public class BlockDispenseEventArgs : BlockEventArgs, Cancellable
     {
         private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled = false;
         private ItemStack item;
         private Vector velocity;
 
-        public BlockDispenseEvent(Block block, ItemStack dispensed, Vector velocity) : base(block)
+        public BlockDispenseEventArgs(Block block, ItemStack dispensed, Vector velocity) : base(block)
         {
             this.item = dispensed;
             this.velocity = velocity;

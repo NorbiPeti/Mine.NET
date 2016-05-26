@@ -9,20 +9,19 @@ namespace Mine.NET.Event.block
      * If a Block From To event is cancelled, the block will not move (the liquid
      * will not flow).
      */
-    public class BlockFromToEvent : BlockEvent, Cancellable
+    public class BlockFromToEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected Block to;
         protected BlockFaces face;
         protected bool cancel;
 
-        public BlockFromToEvent(Block block, BlockFaces face) : base(block)
+        public BlockFromToEventArgs(Block block, BlockFaces face) : base(block)
         {
             this.face = face;
             this.cancel = false;
         }
 
-        public BlockFromToEvent(Block block, Block toBlock) : base(block)
+        public BlockFromToEventArgs(Block block, Block toBlock) : base(block)
         {
             this.to = toBlock;
             this.face = BlockFaces.SELF;
@@ -61,16 +60,6 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -51,8 +51,6 @@ namespace Mine.NET.Event
             return name;
         }
 
-        public abstract HandlerList getHandlers();
-
         /**
          * Any custom event that should not by with other events must
          * use the specific constructor. These are the caveats of using an

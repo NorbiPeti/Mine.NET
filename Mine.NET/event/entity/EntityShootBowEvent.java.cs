@@ -6,15 +6,14 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a LivingEntity shoots a bow firing an arrow
      */
-    public class EntityShootBowEvent : EntityEvent<LivingEntity>, Cancellable
+    public class EntityShootBowEventArgs : EntityEventArgs<LivingEntity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly ItemStack bow;
         private Entity projectile;
         private readonly float force;
         private bool cancelled;
 
-        public EntityShootBowEvent(LivingEntity shooter, ItemStack bow, Projectile projectile, float force) :
+        public EntityShootBowEventArgs(LivingEntity shooter, ItemStack bow, Projectile projectile, float force) :
                 base(shooter)
         {
             this.bow = bow;
@@ -70,16 +69,6 @@ namespace Mine.NET.Event.entity
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

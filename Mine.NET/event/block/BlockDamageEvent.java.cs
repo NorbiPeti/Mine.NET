@@ -9,14 +9,14 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Block Damage event is cancelled, the block will not be damaged.
      */
-    public class BlockDamageEvent : BlockEvent, Cancellable {
+    public class BlockDamageEventArgs : BlockEventArgs, Cancellable {
         private static readonly HandlerList handlers = new HandlerList();
         private readonly Player player;
         private bool instaBreak;
         private bool cancel;
         private readonly ItemStack itemstack;
 
-        public BlockDamageEvent(Player player, Block block, ItemStack itemInHand, bool instaBreak) : base(block)
+        public BlockDamageEventArgs(Player player, Block block, ItemStack itemInHand, bool instaBreak) : base(block)
         {
             this.instaBreak = instaBreak;
             this.player = player;
@@ -49,8 +49,8 @@ namespace Mine.NET.Event.block
          * @param bool true if you want the block to instantly break when damaged
          *     by the player
          */
-        public void setInstaBreak(bool bool) {
-            this.instaBreak = bool;
+        public void setInstaBreak(bool bool_) {
+            this.instaBreak = bool_;
         }
 
         /**

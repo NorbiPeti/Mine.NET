@@ -5,13 +5,12 @@ namespace Mine.NET.Event.entity
     /**
      * Thrown when a LivingEntity is tamed
      */
-    public class EntityTameEvent : EntityEvent<LivingEntity>, Cancellable
+    public class EntityTameEventArgs : EntityEventArgs<LivingEntity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly AnimalTamer owner;
 
-        public EntityTameEvent(LivingEntity entity, AnimalTamer owner) : base(entity)
+        public EntityTameEventArgs(LivingEntity entity, AnimalTamer owner) : base(entity)
         {
             this.owner = owner;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.entity
         public AnimalTamer getOwner()
         {
             return owner;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

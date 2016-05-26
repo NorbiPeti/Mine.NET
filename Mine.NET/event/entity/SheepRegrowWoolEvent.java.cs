@@ -5,11 +5,10 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a sheep regrows its wool
      */
-    public class SheepRegrowWoolEvent : EntityEvent<Sheep>, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
+    public class SheepRegrowWoolEventArgs : EntityEventArgs<Sheep>, Cancellable {
         private bool cancel;
 
-        public SheepRegrowWoolEvent(Sheep sheep) : base(sheep)
+        public SheepRegrowWoolEventArgs(Sheep sheep) : base(sheep)
         {
             this.cancel = false;
         }
@@ -20,14 +19,6 @@ namespace Mine.NET.Event.entity
 
         public void setCancelled(bool cancel) {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
 
     }

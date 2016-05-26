@@ -7,12 +7,11 @@ namespace Mine.NET.Event.block
      * <p>
      * If a Leaves Decay event is cancelled, the leaves will not decay.
      */
-    public class LeavesDecayEvent : BlockEvent, Cancellable
+    public class LeavesDecayEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
 
-        public LeavesDecayEvent(Block block) : base(block)
+        public LeavesDecayEventArgs(Block block) : base(block)
         {
         }
 
@@ -24,16 +23,6 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

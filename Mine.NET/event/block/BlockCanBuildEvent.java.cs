@@ -1,3 +1,5 @@
+using Mine.NET.block;
+
 namespace Mine.NET.Event.block
 {
     /**
@@ -11,11 +13,14 @@ namespace Mine.NET.Event.block
      *     #getMaterial()} or {@link #getMaterialId()} instead.
      * </ul>
      */
-    public class BlockCanBuildEvent : BlockEvent
+    public class BlockCanBuildEventArgs : BlockEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected bool buildable;
-        private Materials Materials;
+        private Materials material;
+
+        public BlockCanBuildEventArgs(Block block, bool buildable, Materials material) : base(block)
+        {
+        }
 
         /**
          * Gets whether or not the block can be built here.
@@ -48,7 +53,7 @@ namespace Mine.NET.Event.block
          */
         public Materials getMaterial()
         {
-            return Materials;
+            return material;
         }
 
         public override HandlerList getHandlers()
