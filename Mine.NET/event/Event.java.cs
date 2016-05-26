@@ -10,7 +10,7 @@ namespace Mine.NET.Event
      * @see PluginManager#callEvent(Event)
      * @see PluginManager#registerEvents(Listener,Plugin)
      */
-    public abstract class Event
+    public abstract class GameEventArgs : EventArgs
     {
         private String name;
         private readonly bool async;
@@ -19,7 +19,7 @@ namespace Mine.NET.Event
          * The default constructor is defined for cleaner code. This constructor
          * assumes the event is synchronous.
          */
-        public Event() : this(false)
+        public GameEventArgs() : this(false)
         {
         }
 
@@ -30,7 +30,7 @@ namespace Mine.NET.Event
          * @param isAsync true indicates the event will fire asynchronously, false
          *     by default from default constructor
          */
-        public Event(bool isAsync)
+        public GameEventArgs(bool isAsync)
         {
             this.async = isAsync;
         }

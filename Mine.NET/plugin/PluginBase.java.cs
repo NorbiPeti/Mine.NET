@@ -40,7 +40,7 @@ namespace Mine.NET.plugin
 
         public abstract DirectoryInfo getDataFolder();
         public abstract FileConfiguration getConfig();
-        public abstract MemoryStream getResource(string filename);
+        public abstract Stream getResource(string filename);
         public abstract void saveConfig();
         public abstract void saveDefaultConfig();
         public abstract void saveResource(string resourcePath, bool replace);

@@ -5,11 +5,11 @@ namespace Mine.NET.Event.server
     /**
      * Used for plugin enable and disable events
      */
-    public abstract class PluginEvent : ServerEvent
+    public abstract class PluginEventArgs : ServerEventArgs
     {
         private readonly Plugin plugin;
 
-        public PluginEvent(Plugin plugin)
+        public PluginEventArgs(Plugin plugin)
         {
             this.plugin = plugin;
         }

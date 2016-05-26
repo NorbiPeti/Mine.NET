@@ -5,8 +5,8 @@ namespace Mine.NET.Event
     /**
      * An annotation to mark methods as being event handler methods
      */
-    [AttributeUsage(AttributeTargets.Method)]
-    public class EventHandler : Attribute {
+    /*[AttributeUsage(AttributeTargets.Method)]
+    public class EventHandler : Attribute {*/
 
         /**
          * Define the priority of the event.
@@ -23,7 +23,7 @@ namespace Mine.NET.Event
          * 
          * @return the priority
          */
-        EventPriority priority() default EventPriority.NORMAL; //TODO
+        //EventPriority priority() default EventPriority.NORMAL; //TODO
 
     /**
      * Define if the handler ignores a cancelled event.
@@ -33,6 +33,6 @@ namespace Mine.NET.Event
      * 
      * @return whether cancelled events should be ignored
      */
-    bool ignoreCancelled() default false;
-    }
+    /*bool ignoreCancelled() default false;
+    }*/
 }

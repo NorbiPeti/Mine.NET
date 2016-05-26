@@ -5,11 +5,11 @@ namespace Mine.NET.Event.server
     /**
      * Called when a plugin is enabled.
      */
-    public class PluginEnableEvent : PluginEvent
+    public class PluginEnableEventArgs : PluginEventArgs
     {
         private static readonly HandlerList handlers = new HandlerList();
 
-        public PluginEnableEvent(Plugin plugin) : base(plugin)
+        public PluginEnableEventArgs(Plugin plugin) : base(plugin)
         {
         }
 

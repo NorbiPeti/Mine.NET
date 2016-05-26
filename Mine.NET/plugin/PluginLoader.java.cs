@@ -40,7 +40,7 @@ namespace Mine.NET.plugin
          * @param plugin The plugin to use when creating registered listeners
          * @return The registered listeners.
          */
-        Dictionary<T, HashSet<RegisteredListener>> createRegisteredListeners<T>(Listener listener, Plugin plugin) where T : Event.Event;
+        //Dictionary<T, HashSet<RegisteredListener>> createRegisteredListeners<T>(Listener listener, Plugin plugin) where T : Event.Event;
 
         /**
          * Enables the specified plugin

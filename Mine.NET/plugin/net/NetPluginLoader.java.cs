@@ -17,7 +17,7 @@ namespace Mine.NET.plugin.net
     {
         internal readonly Server server;
         private readonly Regex[] fileFilters = new Regex[] { new Regex("\\.jar$") };
-        private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
+        //private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
         private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
 
         public Plugin loadPlugin(FileInfo file)
@@ -30,21 +30,7 @@ namespace Mine.NET.plugin.net
             }
 
             DirectoryInfo parentFile = file.Directory;
-            DirectoryInfo dataFolder = new DirectoryInfo(Path.Combine(parentFile.FullName, description.getName()));
-
-            foreach (String pluginName in description.getDepend())
-            {
-                if (loaders == null)
-                {
-                    throw new UnknownDependencyException(pluginName);
-                }
-                PluginClassLoader current = loaders[pluginName];
-
-                if (current == null)
-                {
-                    throw new UnknownDependencyException(pluginName);
-                }
-            }
+            DirectoryInfo dataFolder = new DirectoryInfo(Path.Combine(parentFile.FullName, Path.GetFileNameWithoutExtension(file.Name)));
 
             PluginClassLoader loader;
             try //TODO: 1. Load plugin 2. Find description 3. Load and enable dependencies 4. Enable plugin
@@ -60,7 +46,21 @@ namespace Mine.NET.plugin.net
                 throw new InvalidPluginException(ex);
             }
 
-            loaders.Add(description.getName(), loader);
+            loaders.Add(loader.plugin.Name, loader);
+
+            foreach (String pluginName in loader.plugin.Depends)
+            {
+                if (loaders == null)
+                {
+                    throw new UnknownDependencyException(pluginName);
+                }
+                PluginClassLoader current = loaders[pluginName];
+
+                if (current == null)
+                {
+                    throw new UnknownDependencyException(pluginName);
+                }
+            }
 
             return loader.plugin;
         }
@@ -146,7 +146,7 @@ namespace Mine.NET.plugin.net
             return null;
         }*/
 
-        void setClass(String name, Type clazz)
+        /*void setClass(String name, Type clazz)
         {
             if (!classes.ContainsKey(name))
             {
@@ -176,25 +176,25 @@ namespace Mine.NET.plugin.net
                 // (Native methods throwing NPEs is not fun when you can't stop it before-hand)
             }
             classes.Remove(name);
-        }
+        }*/
 
-        [Obsolete("Use event handlers")]
+        /*[Obsolete("Use event handlers")] //TODO: Use event handlers
         public Dictionary<T, HashSet<RegisteredListener>> createRegisteredListeners<T>(Listener listener, Plugin plugin) where T : Event.Event
         {
             throw new NotImplementedException();
-        }
+        }*/
 
         public void enablePlugin(Plugin plugin)
         {
             if (plugin is NetPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
-            if (!plugin.isEnabled())
+            if (!plugin.Enabled)
             {
-                plugin.getLogger().Info("Enabling " + plugin.getDescription().getFullName());
+                plugin.Logger.Info("Enabling " + plugin.FullName);
 
                 NetPlugin jPlugin = (NetPlugin)plugin;
 
-                String pluginName = jPlugin.getDescription().getName();
+                String pluginName = jPlugin.Name;
 
                 if (!loaders.ContainsKey(pluginName))
                 {
@@ -207,7 +207,7 @@ namespace Mine.NET.plugin.net
                 }
                 catch (Exception ex)
                 {
-                    server.getLogger().Severe("Error occurred while enabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                    server.getLogger().Severe("Error occurred while enabling " + plugin.FullName + " (Is it up to date?)", ex);
                 }
 
                 // Perhaps abort here, rather than continue going, but as it stands,
@@ -220,10 +220,10 @@ namespace Mine.NET.plugin.net
         {
             if (!(plugin is NetPlugin)) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
-            if (plugin.isEnabled())
+            if (plugin.Enabled)
             {
-                String message = String.Format("Disabling %s", plugin.getDescription().getFullName());
-                plugin.getLogger().Info(message);
+                String message = String.Format("Disabling %s", plugin.FullName);
+                plugin.Logger.Info(message);
 
                 server.getPluginManager().callEvent(new PluginDisableEvent(plugin));
 
@@ -236,27 +236,22 @@ namespace Mine.NET.plugin.net
                 }
                 catch (Exception ex)
                 {
-                    server.getLogger().Severe("Error occurred while disabling " + plugin.getDescription().getFullName() + " (Is it up to date?)", ex);
+                    server.getLogger().Severe("Error occurred while disabling " + plugin.FullName + " (Is it up to date?)", ex);
                 }
 
-                loaders.Remove(jPlugin.getDescription().getName());
+                loaders.Remove(jPlugin.Name);
 
                 if (cloader is PluginClassLoader)
                 {
                     PluginClassLoader loader = (PluginClassLoader)cloader;
-                    HashSet<String> names = loader.getClasses();
+                    /*HashSet<String> names = loader.getClasses();
 
                     foreach (String name in names)
                     {
                         removeClass(name);
-                    }
+                    }*/
                 }
             }
-        }
-
-        internal static Stream getResource(Assembly asm, string filename)
-        {
-            return asm.GetManifestResourceStream(filename);
         }
     }
 }

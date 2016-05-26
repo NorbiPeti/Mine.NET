@@ -12,7 +12,6 @@ namespace Mine.NET.plugin.net
     {
         private readonly NetPluginLoader loader;
         private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
-        private readonly PluginDescriptionFile description;
         private readonly DirectoryInfo dataFolder;
         private readonly FileInfo file;
         internal readonly NetPlugin plugin;
@@ -21,11 +20,10 @@ namespace Mine.NET.plugin.net
         private readonly Assembly asm;
 
         internal PluginClassLoader(NetPluginLoader loader, Type parent, DirectoryInfo dataFolder, FileInfo file)
-        {
+        { //TODO: Code analysis
             if (loader == null) throw new ArgumentNullException("Loader cannot be null");
 
             this.loader = loader;
-            this.description = description;
             this.dataFolder = dataFolder;
             this.file = file;
 
@@ -33,18 +31,20 @@ namespace Mine.NET.plugin.net
             {
                 asm = Assembly.LoadFile(file.FullName);
 
-                Type plugintype;
-                try
+                Type plugintype = null;
+                foreach (Type type in asm.GetTypes())
                 {
-                    plugintype = asm.GetType(description.getMain(), true, true); //TODO: Code analysis
-                }
-                catch (TargetInvocationException ex)
-                {
-                    throw new InvalidPluginException("Cannot find main class `" + description.getMain() + "'", ex);
+                    if (typeof(NetPlugin).IsAssignableFrom(type))
+                    {
+                        if (plugintype == null)
+                            plugintype = type;
+                        else
+                            throw new InvalidPluginException("More than one types found that extend NetPlugin! '" + plugintype + "' and '" + type + "'");
+                    }
                 }
 
-                if (plugintype.BaseType != typeof(NetPlugin))
-                    throw new InvalidPluginException("main class `" + description.getMain() + "' does not extend JavaPlugin");
+                if (plugintype == null)
+                    throw new InvalidPluginException("Cannot find main class!");
 
                 plugin = (NetPlugin)Activator.CreateInstance(plugintype);
             }
@@ -74,7 +74,7 @@ namespace Mine.NET.plugin.net
             pluginState = new InvalidOperationException("Initial initialization");
             this.pluginInit = javaPlugin;
 
-            javaPlugin.init(loader, loader.server, description, dataFolder, file, this);
+            javaPlugin.init(loader, loader.server, dataFolder, file, this);
         }
 
         internal Stream getResource(string filename)

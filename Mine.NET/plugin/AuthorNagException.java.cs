@@ -1,19 +1,16 @@
-namespace Mine.NET.plugin;
+using System;
 
-@SuppressWarnings("serial")
-public class AuthorNagException : AggregateException {
-    private readonly String message;
-
-    /**
-     * Constructs a new AuthorNagException based on the given Exception
-     *
-     * @param message Brief message explaining the cause of the exception
-     */
-    public AuthorNagException(String message) {
-        this.message = message;
-    }
-
-    public override String getMessage() {
-        return message;
+namespace Mine.NET.plugin
+{
+    public class AuthorNagException : AggregateException
+    {
+        /**
+         * Constructs a new AuthorNagException based on the given Exception
+         *
+         * @param message Brief message explaining the cause of the exception
+         */
+        public AuthorNagException(String message) : base(message)
+        {
+        }
     }
 }

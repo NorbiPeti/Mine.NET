@@ -3,7 +3,7 @@ namespace Mine.NET.Event.server
     /**
      * Miscellaneous server events
      */
-    public abstract class ServerEvent : Event
+    public abstract class ServerEventArgs : GameEventArgs
     {
     }
 }

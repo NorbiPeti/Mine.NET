@@ -205,7 +205,7 @@ namespace Mine.NET.plugin.net
             }
         }
 
-        public override MemoryStream getResource(String filename)
+        public override Stream getResource(String filename)
         {
             if (filename == null)
             {
@@ -214,18 +214,17 @@ namespace Mine.NET.plugin.net
 
             try
             {
-                URL url = getClassLoader().getResource(filename);
+                Stream stream = getClassLoader().getResource(filename);
 
-                if (url == null)
+                if (stream.Length == 0) //TODO
                 {
                     return null;
                 }
 
-                URLConnection connection = url.openConnection(); //TODO: Separate AppDomain for the plugins
-                connection.setUseCaches(false);
-                return connection.getInputStream();
+                //TODO: Separate AppDomain for the plugins
+                return stream;
             }
-            catch (IOException ex)
+            catch (Exception)
             {
                 return null;
             }
