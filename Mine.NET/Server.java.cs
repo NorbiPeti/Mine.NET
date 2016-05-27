@@ -927,5 +927,28 @@ namespace Mine.NET
 
         public event EventHandler<BlockBreakEventArgs> BlockBreakEvent;
         public event EventHandler<BlockBurnEventArgs> BlockBurnEvent;
+        public event EventHandler<BlockCanBuildEventArgs> BlockCanBuildEvent;
+        public event EventHandler<BlockDamageEventArgs> BlockDamageEvent;
+        public event EventHandler<BlockDispenseEventArgs> BlockDispenseEvent;
+        public event EventHandler<BlockExpEventArgs> BlockExpEvent;
+        public event EventHandler<BlockExplodeEventArgs> BlockExplodeEvent;
+        public event EventHandler<BlockFadeEventArgs> BlockFadeEvent;
+        public event EventHandler<BlockFromToEventArgs> BlockFromToEvent;
+        public event EventHandler<BlockGrowEventArgs> BlockGrowEvent;
+        public event EventHandler<BlockIgniteEventArgs> BlockIgniteEvent;
+        public event EventHandler<BlockMultiPlaceEventArgs> BlockMultiPlaceEvent;
+        public event EventHandler<BlockPhysicsEventArgs> BlockPhysicsEvent;
+        public event EventHandler<BlockPistonEventArgs> BlockPistonEvent;
+        public event EventHandler<BlockPistonExtendEventArgs> BlockPistonExtendEvent;
+        public event EventHandler<BlockPistonRetractEventArgs> BlockPistonRetractEvent;
+        public event EventHandler<BlockPlaceEventArgs> BlockPlaceEvent;
+        public event EventHandler<BlockRedstoneEventArgs> BlockRedstoneEvent;
+        public event EventHandler<BlockSpreadEventArgs> BlockSpreadEvent;
+        public event EventHandler<CauldronLevelChangeEventArgs> CauldronLevelChangeEvent;
+        public event EventHandler<EntityBlockFormEventArgs> EntityBlockFormEvent;
+        public event EventHandler<LeavesDecayEventArgs> LeavesDecayEvent;
+        public event EventHandler<NotePlayEventArgs> NotePlayEvent;
+        public event EventHandler<SignChangeEventArgs> SignChangeEvent;
     }
 }
+    
