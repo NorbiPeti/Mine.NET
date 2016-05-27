@@ -5,13 +5,12 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when an entity enters a vehicle.
      */
-    public class VehicleEnterEvent : VehicleEvent, Cancellable
+    public class VehicleEnterEventArgs : VehicleEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly Entity entered;
 
-        public VehicleEnterEvent(Vehicle vehicle, Entity entered) : base(vehicle)
+        public VehicleEnterEventArgs(Vehicle vehicle, Entity entered) : base(vehicle)
         {
             this.entered = entered;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.vehicle
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

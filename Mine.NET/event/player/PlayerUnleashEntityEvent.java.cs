@@ -6,12 +6,12 @@ namespace Mine.NET.Event.player
     /**
      * Called prior to an entity being unleashed due to a player's action.
      */
-    public class PlayerUnleashEntityEvent : EntityUnleashEvent, Cancellable
+    public class PlayerUnleashEntityEventArgs : EntityUnleashEventArgs, Cancellable
     {
         private readonly Player player;
         private bool cancelled = false;
 
-        public PlayerUnleashEntityEvent(Entity entity, Player player) :
+        public PlayerUnleashEntityEventArgs(Entity entity, Player player) :
             base(entity, UnleashReason.PLAYER_UNLEASH)
         {
             this.player = player;

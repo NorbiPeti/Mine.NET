@@ -5,14 +5,13 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when a vehicle receives damage.
      */
-    public class VehicleDamageEvent : VehicleEvent, Cancellable
+    public class VehicleDamageEventArgs : VehicleEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Entity attacker;
         private double damage;
         private bool cancelled;
 
-        public VehicleDamageEvent(Vehicle vehicle, Entity attacker, double damage) : base(vehicle)
+        public VehicleDamageEventArgs(Vehicle vehicle, Entity attacker, double damage) : base(vehicle)
         {
             this.attacker = attacker;
             this.damage = damage;
@@ -39,19 +38,6 @@ namespace Mine.NET.Event.vehicle
         }
 
         /**
-         * This method exists for legacy reasons to provide backwards
-         * compatibility. It will not exist at runtime and should not be used
-         * under any circumstances.
-         * 
-         * @return the damage
-         */
-        [Obsolete]
-        public int _INVALID_getDamage()
-        {
-            return NumberConversions.ceil(getDamage());
-        }
-
-        /**
          * Sets the damage done to the vehicle
          *
          * @param damage The damage
@@ -59,19 +45,6 @@ namespace Mine.NET.Event.vehicle
         public void setDamage(double damage)
         {
             this.damage = damage;
-        }
-
-        /**
-         * This method exists for legacy reasons to provide backwards
-         * compatibility. It will not exist at runtime and should not be used
-         * under any circumstances.
-         * 
-         * @param damage the damage
-         */
-        [Obsolete]
-        public void _INVALID_setDamage(int damage)
-        {
-            setDamage(damage);
         }
 
         public bool isCancelled()
@@ -82,16 +55,6 @@ namespace Mine.NET.Event.vehicle
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

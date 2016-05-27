@@ -6,16 +6,14 @@ namespace Mine.NET.Event.player
      * Called when a player swap items between main hand and off hand using the
      * hotkey.
      */
-    public class PlayerSwapHandItemsEvent : PlayerEvent, Cancellable
+    public class PlayerSwapHandItemsEventArgs : PlayerEventArgs, Cancellable
     {
-
-        private static readonly HandlerList handlers = new HandlerList();
         //
         private ItemStack mainHandItem;
         private ItemStack offHandItem;
         private bool cancelled;
 
-        public PlayerSwapHandItemsEvent(NET.entity.Player player, ItemStack mainHandItem, ItemStack offHandItem) : base(player)
+        public PlayerSwapHandItemsEventArgs(NET.entity.Player player, ItemStack mainHandItem, ItemStack offHandItem) : base(player)
         {
             this.mainHandItem = mainHandItem;
             this.offHandItem = offHandItem;
@@ -61,24 +59,14 @@ namespace Mine.NET.Event.player
             this.offHandItem = offHandItem;
         }
 
-        public override bool isCancelled()
+        public bool isCancelled()
         {
             return cancelled;
         }
 
-        public override void setCancelled(bool cancel)
+        public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

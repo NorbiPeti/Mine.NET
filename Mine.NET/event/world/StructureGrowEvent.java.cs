@@ -8,9 +8,8 @@ namespace Mine.NET.Event.world
      * Event that is called when an organic structure attempts to grow (Sapling {@literal ->}
      * Tree), (Mushroom {@literal ->} Huge Mushroom), naturally or using bonemeal.
      */
-    public class StructureGrowEvent : WorldEvent, Cancellable
+    public class StructureGrowEventArgs : WorldEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled = false;
         private readonly Location location;
         private readonly TreeType species;
@@ -18,7 +17,7 @@ namespace Mine.NET.Event.world
         private readonly Player player;
         private readonly List<BlockState> blocks;
 
-        public StructureGrowEvent(Location location, TreeType species, bool bonemeal, Player player, List<BlockState> blocks) :
+        public StructureGrowEventArgs(Location location, TreeType species, bool bonemeal, Player player, List<BlockState> blocks) :
             base(location.getWorld())
         {
             this.location = location;
@@ -88,16 +87,6 @@ namespace Mine.NET.Event.world
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

@@ -5,12 +5,11 @@ namespace Mine.NET.Event.server
     /**
      * Called when a map is initialized.
      */
-    public class MapInitializeEvent : ServerEvent
+    public class MapInitializeEventArgs : ServerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly MapView mapView;
 
-        public MapInitializeEvent(MapView mapView)
+        public MapInitializeEventArgs(MapView mapView)
         {
             this.mapView = mapView;
         }
@@ -23,16 +22,6 @@ namespace Mine.NET.Event.server
         public MapView getMap()
         {
             return mapView;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

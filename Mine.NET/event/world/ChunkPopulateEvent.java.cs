@@ -6,22 +6,10 @@ namespace Mine.NET.Event.world
      * If your intent is to populate the chunk using this event, please see {@link
      * BlockPopulator}
      */
-    public class ChunkPopulateEvent : ChunkEvent
+    public class ChunkPopulateEventArgs : ChunkEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public ChunkPopulateEvent(Chunk chunk) : base(chunk)
+        public ChunkPopulateEventArgs(Chunk chunk) : base(chunk)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

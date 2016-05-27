@@ -5,13 +5,12 @@ namespace Mine.NET.Event.weather
     /**
      * Stores data for lightning striking
      */
-    public class LightningStrikeEvent : WeatherEvent, Cancellable
+    public class LightningStrikeEventArgs : WeatherEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly LightningStrike bolt;
 
-        public LightningStrikeEvent(World world, LightningStrike bolt) : base(world)
+        public LightningStrikeEventArgs(World world, LightningStrike bolt) : base(world)
         {
             this.bolt = bolt;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.weather
         public LightningStrike getLightning()
         {
             return bolt;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

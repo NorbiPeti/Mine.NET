@@ -5,12 +5,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player toggles their sneaking state
      */
-    public class PlayerToggleSneakEvent : PlayerEvent, Cancellable
+    public class PlayerToggleSneakEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
 
-        public PlayerToggleSneakEvent(Player player, bool isSneaking) : base(player)
+        public PlayerToggleSneakEventArgs(Player player, bool isSneaking) : base(player)
         {
             this.isSneaking = isSneaking;
         }
@@ -30,16 +29,6 @@ namespace Mine.NET.Event.player
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

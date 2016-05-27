@@ -5,22 +5,10 @@ namespace Mine.NET.Event.vehicle
     /**
      * Called when a vehicle updates
      */
-    public class VehicleUpdateEvent : VehicleEvent
+    public class VehicleUpdateEventArgs : VehicleEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public VehicleUpdateEvent(Vehicle vehicle) : base(vehicle)
+        public VehicleUpdateEventArgs(Vehicle vehicle) : base(vehicle)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

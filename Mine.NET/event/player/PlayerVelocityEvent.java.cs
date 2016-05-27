@@ -6,13 +6,12 @@ namespace Mine.NET.Event.player
     /**
      * Called when the velocity of a player changes.
      */
-    public class PlayerVelocityEvent : PlayerEvent, Cancellable
+    public class PlayerVelocityEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private Vector velocity;
 
-        public PlayerVelocityEvent(Player player, Vector velocity) : base(player)
+        public PlayerVelocityEventArgs(Player player, Vector velocity) : base(player)
         {
             this.velocity = velocity;
         }
@@ -45,16 +44,6 @@ namespace Mine.NET.Event.player
         public void setVelocity(Vector velocity)
         {
             this.velocity = velocity;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

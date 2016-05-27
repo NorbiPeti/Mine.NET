@@ -37,14 +37,13 @@ namespace Mine.NET.Event.server
      * beginning of the message should be preserved. If a slash is added or
      * removed, unexpected behavior may result.
      */
-    public class ServerCommandEvent : ServerEvent, Cancellable
+    public class ServerCommandEventArgs : ServerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private String command;
         private readonly CommandSender sender;
         private bool cancel = false;
 
-        public ServerCommandEvent(CommandSender sender, String command)
+        public ServerCommandEventArgs(CommandSender sender, String command)
         {
             this.command = command;
             this.sender = sender;
@@ -79,16 +78,6 @@ namespace Mine.NET.Event.server
         public CommandSender getSender()
         {
             return sender;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         public bool isCancelled()

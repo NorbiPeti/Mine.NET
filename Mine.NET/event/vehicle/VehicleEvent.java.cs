@@ -5,11 +5,11 @@ namespace Mine.NET.Event.vehicle
     /**
      * Represents a vehicle-related event.
      */
-    public abstract class VehicleEvent : Event
+    public abstract class VehicleEventArgs : GameEventArgs
     {
         protected Vehicle vehicle;
 
-        public VehicleEvent(Vehicle vehicle)
+        public VehicleEventArgs(Vehicle vehicle)
         {
             this.vehicle = vehicle;
         }

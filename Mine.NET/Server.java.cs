@@ -1,6 +1,7 @@
 using Mine.NET.boss;
 using Mine.NET.command;
 using Mine.NET.entity;
+using Mine.NET.Event.block;
 using Mine.NET.Event.inventory;
 using Mine.NET.generator;
 using Mine.NET.help;
@@ -923,5 +924,8 @@ namespace Mine.NET
 
         public abstract void sendPluginMessage(Plugin source, string channel, byte[] message);
         public abstract HashSet<string> getListeningPluginChannels();
+
+        public event EventHandler<BlockBreakEventArgs> BlockBreakEvent;
+        public event EventHandler<BlockBurnEventArgs> BlockBurnEvent;
     }
 }

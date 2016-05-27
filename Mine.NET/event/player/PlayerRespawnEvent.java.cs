@@ -6,12 +6,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player respawns.
      */
-    public class PlayerRespawnEvent : PlayerEvent
+    public class PlayerRespawnEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private Location respawnLocation;
 
-        public PlayerRespawnEvent(Player respawnPlayer, Location respawnLocation, bool isBedSpawn) : base(respawnPlayer)
+        public PlayerRespawnEventArgs(Player respawnPlayer, Location respawnLocation, bool isBedSpawn) : base(respawnPlayer)
         {
             this.respawnLocation = respawnLocation;
             this.isBedSpawn = isBedSpawn;
@@ -46,15 +45,5 @@ namespace Mine.NET.Event.player
          * @return true if the respawn location is the player's bed.
          */
         public bool isBedSpawn { get; private set; }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }

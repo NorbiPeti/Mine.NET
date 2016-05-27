@@ -3,11 +3,11 @@ namespace Mine.NET.Event.world
     /**
      * Represents a Chunk related event
      */
-    public abstract class ChunkEvent : WorldEvent
+    public abstract class ChunkEventArgs : WorldEventArgs
     {
         protected Chunk chunk;
 
-        protected ChunkEvent(Chunk chunk) : base(chunk.getWorld())
+        protected ChunkEventArgs(Chunk chunk) : base(chunk.getWorld())
         {
             this.chunk = chunk;
         }

@@ -7,14 +7,13 @@ namespace Mine.NET.Event.world
     /**
      * Called when a portal is created
      */
-    public class PortalCreateEvent : WorldEvent, Cancellable
+    public class PortalCreateEventArgs : WorldEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private readonly List<Block> blocks = new List<Block>();
         private CreateReason reason = CreateReason.FIRE;
 
-        public PortalCreateEvent(Collection<Block> blocks, World world, CreateReason reason) : base(world)
+        public PortalCreateEventArgs(Collection<Block> blocks, World world, CreateReason reason) : base(world)
         {
             this.blocks.AddRange(blocks);
             this.reason = reason;
@@ -48,16 +47,6 @@ namespace Mine.NET.Event.world
         public CreateReason getReason()
         {
             return reason;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

@@ -9,41 +9,36 @@ namespace Mine.NET.Event.player
      * movement based statistics.
      *
      */
-    public class PlayerStatisticIncrementEvent : PlayerEvent, Cancellable
+    public class PlayerStatisticIncrementEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected readonly Statistic statistic;
         private readonly int initialValue;
         private readonly int newValue;
         private bool iscancelled = false;
-        private readonly EntityType entityType;
-        private readonly Materials Materials;
+        private readonly EntityTypes entityType;
+        private readonly Materials material;
 
-        public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue) : base(player)
+        public PlayerStatisticIncrementEventArgs(Player player, Statistic statistic, int initialValue, int newValue) : base(player)
         {
             this.statistic = statistic;
             this.initialValue = initialValue;
             this.newValue = newValue;
-            this.entityType = null;
-            this.Materials = null;
         }
 
-        public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue, EntityType entityType) : base(player)
+        public PlayerStatisticIncrementEventArgs(Player player, Statistic statistic, int initialValue, int newValue, EntityTypes entityType) : base(player)
         {
             this.statistic = statistic;
             this.initialValue = initialValue;
             this.newValue = newValue;
             this.entityType = entityType;
-            this.Materials = null;
         }
 
-        public PlayerStatisticIncrementEvent(Player player, Statistic statistic, int initialValue, int newValue, Materials Materials) : base(player)
+        public PlayerStatisticIncrementEventArgs(Player player, Statistic statistic, int initialValue, int newValue, Materials Materials) : base(player)
         {
             this.statistic = statistic;
             this.initialValue = initialValue;
             this.newValue = newValue;
-            this.entityType = null;
-            this.Materials = Materials;
+            this.material = Materials;
         }
 
         /**
@@ -82,7 +77,7 @@ namespace Mine.NET.Event.player
          *
          * @return the EntityType of the statistic
          */
-        public EntityType getEntityType()
+        public EntityTypes getEntityType()
         {
             return entityType;
         }
@@ -95,7 +90,7 @@ namespace Mine.NET.Event.player
          */
         public Materials getMaterial()
         {
-            return Materials;
+            return material;
         }
 
         public bool isCancelled()
@@ -106,16 +101,6 @@ namespace Mine.NET.Event.player
         public void setCancelled(bool cancel)
         {
             this.iscancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

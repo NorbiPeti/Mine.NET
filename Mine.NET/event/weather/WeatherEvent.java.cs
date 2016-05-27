@@ -3,11 +3,11 @@ namespace Mine.NET.Event.weather
     /**
      * Represents a Weather-related event
      */
-    public abstract class WeatherEvent : Event
+    public abstract class WeatherEventArgs : GameEventArgs
     {
         protected World world;
 
-        public WeatherEvent(World where)
+        public WeatherEventArgs(World where)
         {
             world = where;
         }

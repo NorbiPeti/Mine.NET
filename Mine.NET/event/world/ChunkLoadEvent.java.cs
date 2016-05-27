@@ -3,12 +3,11 @@ namespace Mine.NET.Event.world
     /**
      * Called when a chunk is loaded
      */
-    public class ChunkLoadEvent : ChunkEvent
+    public class ChunkLoadEventArgs : ChunkEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly bool newChunk;
 
-        public ChunkLoadEvent(Chunk chunk, bool newChunk) : base(chunk)
+        public ChunkLoadEventArgs(Chunk chunk, bool newChunk) : base(chunk)
         {
             this.newChunk = newChunk;
         }
@@ -23,16 +22,6 @@ namespace Mine.NET.Event.world
         public bool isNewChunk()
         {
             return newChunk;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

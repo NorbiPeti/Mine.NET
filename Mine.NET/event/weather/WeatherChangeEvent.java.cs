@@ -3,13 +3,12 @@ namespace Mine.NET.Event.weather
     /**
      * Stores data for weather changing in a world
      */
-    public class WeatherChangeEvent : WeatherEvent, Cancellable
+    public class WeatherChangeEventArgs : WeatherEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool canceled;
         private readonly bool to;
 
-        public WeatherChangeEvent(World world, bool to) : base(world)
+        public WeatherChangeEventArgs(World world, bool to) : base(world)
         {
             this.to = to;
         }
@@ -32,16 +31,6 @@ namespace Mine.NET.Event.weather
         public bool toWeatherState()
         {
             return to;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

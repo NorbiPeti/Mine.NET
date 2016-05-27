@@ -9,7 +9,7 @@ namespace Mine.NET.Event.entity
     {
         private readonly UnleashReason reason;
 
-        public EntityUnleashEvent(Entity entity, UnleashReason reason) : base(entity)
+        public EntityUnleashEventArgs(Entity entity, UnleashReason reason) : base(entity)
         {
             this.reason = reason;
         }

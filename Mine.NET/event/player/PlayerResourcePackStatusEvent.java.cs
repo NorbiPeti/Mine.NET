@@ -6,13 +6,11 @@ namespace Mine.NET.Event.player
      * Called when a player takes action on a resource pack request sent via
      * {@link Player#setResourcePack(java.lang.String)}.
      */
-    public class PlayerResourcePackStatusEvent : PlayerEvent
+    public class PlayerResourcePackStatusEventArgs : PlayerEventArgs
     {
-
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Status status;
 
-        public PlayerResourcePackStatusEvent(Player who, Status resourcePackStatus) : base(who)
+        public PlayerResourcePackStatusEventArgs(Player who, Status resourcePackStatus) : base(who)
         {
             this.status = resourcePackStatus;
         }
@@ -25,16 +23,6 @@ namespace Mine.NET.Event.player
         public Status getStatus()
         {
             return status;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

@@ -6,10 +6,9 @@ namespace Mine.NET.Event.player
     /**
      * This is called immediately after a player unregisters for a plugin channel.
      */
-    public class PlayerUnregisterChannelEvent : PlayerChannelEvent
+    public class PlayerUnregisterChannelEventArgs : PlayerChannelEventArgs
     {
-
-        public PlayerUnregisterChannelEvent(Player player, String channel) :
+        public PlayerUnregisterChannelEventArgs(Player player, String channel) :
             base(player, channel)
         {
         }

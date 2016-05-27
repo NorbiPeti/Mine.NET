@@ -5,13 +5,12 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when a living entity exits a vehicle.
      */
-    public class VehicleExitEvent : VehicleEvent, Cancellable
+    public class VehicleExitEventArgs : VehicleEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled;
         private readonly LivingEntity exited;
 
-        public VehicleExitEvent(Vehicle vehicle, LivingEntity exited) : base(vehicle)
+        public VehicleExitEventArgs(Vehicle vehicle, LivingEntity exited) : base(vehicle)
         {
             this.exited = exited;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.vehicle
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

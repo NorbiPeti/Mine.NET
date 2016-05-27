@@ -11,16 +11,15 @@ namespace Mine.NET.Event.server
      * Called when a server list ping is coming in. Displayed players can be
      * checked and removed by {@link #iterator() iterating} over this event.
      */
-    public class ServerListPingEvent : ServerEvent, IEnumerable<Player>
+    public class ServerListPingEventArgs : ServerEventArgs, IEnumerable<Player>
     {
         private static readonly int MAGIC_PLAYER_COUNT = int.MinValue;
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly IPAddress address;
         private String motd;
         private readonly int numPlayers;
         private int maxPlayers;
 
-        public ServerListPingEvent(IPAddress address, String motd, int numPlayers, int maxPlayers)
+        public ServerListPingEventArgs(IPAddress address, String motd, int numPlayers, int maxPlayers)
         {
             if (numPlayers >= 0) throw new ArgumentException("Cannot have negative number of players online", nameof(numPlayers));
             this.address = address;
@@ -38,7 +37,7 @@ namespace Mine.NET.Event.server
          * @param motd the message of the day
          * @param maxPlayers the max number of players
          */
-        protected ServerListPingEvent(IPAddress address, String motd, int maxPlayers)
+        protected ServerListPingEventArgs(IPAddress address, String motd, int maxPlayers)
         {
             this.numPlayers = MAGIC_PLAYER_COUNT;
             this.address = address;
@@ -128,16 +127,6 @@ namespace Mine.NET.Event.server
         public void setServerIcon(CachedServerIcon icon)
         {
             throw new InvalidOperationException();
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
 
         /**

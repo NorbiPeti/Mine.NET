@@ -5,15 +5,14 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when a vehicle collides with an entity.
      */
-    public class VehicleEntityCollisionEvent : VehicleCollisionEvent, Cancellable
+    public class VehicleEntityCollisionEventArgs : VehicleCollisionEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Entity entity;
         private bool cancelled = false;
         private bool cancelledPickup = false;
         private bool cancelledCollision = false;
 
-        public VehicleEntityCollisionEvent(Vehicle vehicle, Entity entity) : base(vehicle)
+        public VehicleEntityCollisionEventArgs(Vehicle vehicle, Entity entity) : base(vehicle)
         {
             this.entity = entity;
         }
@@ -51,16 +50,6 @@ namespace Mine.NET.Event.vehicle
         public void setCollisionCancelled(bool cancel)
         {
             cancelledCollision = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

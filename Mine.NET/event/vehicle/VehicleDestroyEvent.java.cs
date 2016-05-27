@@ -7,13 +7,12 @@ namespace Mine.NET.Event.vehicle
      * player or the environment. This is not raised if the boat is simply
      * 'removed' due to other means.
      */
-    public class VehicleDestroyEvent : VehicleEvent, Cancellable
+    public class VehicleDestroyEventArgs : VehicleEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Entity attacker;
         private bool cancelled;
 
-        public VehicleDestroyEvent(Vehicle vehicle, Entity attacker) : base(vehicle)
+        public VehicleDestroyEventArgs(Vehicle vehicle, Entity attacker) : base(vehicle)
         {
             this.attacker = attacker;
         }
@@ -36,16 +35,6 @@ namespace Mine.NET.Event.vehicle
         public void setCancelled(bool cancel)
         {
             this.cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

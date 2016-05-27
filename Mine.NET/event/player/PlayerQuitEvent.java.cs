@@ -6,12 +6,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player leaves a server
      */
-    public class PlayerQuitEvent : PlayerEvent
+    public class PlayerQuitEventArgs : PlayerEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private String quitMessage;
 
-        public PlayerQuitEvent(Player who, String quitMessage) : base(who)
+        public PlayerQuitEventArgs(Player who, String quitMessage) : base(who)
         {
             this.quitMessage = quitMessage;
         }
@@ -34,16 +33,6 @@ namespace Mine.NET.Event.player
         public void setQuitMessage(String quitMessage)
         {
             this.quitMessage = quitMessage;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

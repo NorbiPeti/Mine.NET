@@ -5,22 +5,10 @@ namespace Mine.NET.Event.server
     /**
      * Called when a plugin is disabled.
      */
-    public class PluginDisableEvent : PluginEvent
+    public class PluginDisableEventArgs : PluginEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
-        public PluginDisableEvent(Plugin plugin) : base(plugin)
+        public PluginDisableEventArgs(Plugin plugin) : base(plugin)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

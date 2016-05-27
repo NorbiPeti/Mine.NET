@@ -5,13 +5,12 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when a vehicle moves.
      */
-    public class VehicleMoveEvent : VehicleEvent
+    public class VehicleMoveEventArgs : VehicleEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Location from;
         private readonly Location to;
 
-        public VehicleMoveEvent(Vehicle vehicle, Location from, Location to) : base(vehicle)
+        public VehicleMoveEventArgs(Vehicle vehicle, Location from, Location to) : base(vehicle)
         {
             this.from = from;
             this.to = to;
@@ -35,17 +34,6 @@ namespace Mine.NET.Event.vehicle
         public Location getTo()
         {
             return to;
-        }
-
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

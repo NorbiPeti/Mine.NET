@@ -5,12 +5,11 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player toggles their flying state
      */
-    public class PlayerToggleFlightEvent : PlayerEvent, Cancellable
+    public class PlayerToggleFlightEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
 
-        public PlayerToggleFlightEvent(Player player, bool isFlying) : base(player)
+        public PlayerToggleFlightEventArgs(Player player, bool isFlying) : base(player)
         {
             this.isFlying = isFlying;
         }
@@ -30,16 +29,6 @@ namespace Mine.NET.Event.player
         public void setCancelled(bool cancel)
         {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

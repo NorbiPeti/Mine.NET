@@ -340,7 +340,6 @@
     <Compile Include="event\inventory\InventoryType.java.cs" />
     <Compile Include="event\inventory\PrepareAnvilEvent.java.cs" />
     <Compile Include="event\inventory\PrepareItemCraftEvent.java.cs" />
-    <Compile Include="event\Listener.java.cs" />
     <Compile Include="event\player\AsyncPlayerChatEvent.java.cs" />
     <Compile Include="event\player\AsyncPlayerPreLoginEvent.java.cs" />
     <Compile Include="event\player\PlayerAchievementAwardedEvent.java.cs" />

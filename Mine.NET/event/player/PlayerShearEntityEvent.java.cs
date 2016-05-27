@@ -5,13 +5,12 @@ namespace Mine.NET.Event.player
     /**
      * Called when a player shears an entity
      */
-    public class PlayerShearEntityEvent : PlayerEvent, Cancellable
+    public class PlayerShearEntityEventArgs : PlayerEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel;
         private readonly Entity what;
 
-        public PlayerShearEntityEvent(Player who, Entity what) : base(who)
+        public PlayerShearEntityEventArgs(Player who, Entity what) : base(who)
         {
             this.cancel = false;
             this.what = what;
@@ -36,16 +35,5 @@ namespace Mine.NET.Event.player
         {
             return what;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
-
     }
 }

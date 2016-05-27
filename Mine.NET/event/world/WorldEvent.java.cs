@@ -3,11 +3,11 @@ namespace Mine.NET.Event.world
     /**
      * Represents events within a world
      */
-    public abstract class WorldEvent : Event
+    public abstract class WorldEventArgs : GameEventArgs
     {
         private readonly World world;
 
-        public WorldEvent(World world)
+        public WorldEventArgs(World world)
         {
             this.world = world;
         }

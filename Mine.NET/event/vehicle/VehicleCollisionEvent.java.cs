@@ -5,9 +5,9 @@ namespace Mine.NET.Event.vehicle
     /**
      * Raised when a vehicle collides.
      */
-    public abstract class VehicleCollisionEvent : VehicleEvent
+    public abstract class VehicleCollisionEventArgs : VehicleEventArgs
     {
-        public VehicleCollisionEvent(Vehicle vehicle) : base(vehicle)
+        public VehicleCollisionEventArgs(Vehicle vehicle) : base(vehicle)
         {
         }
     }
