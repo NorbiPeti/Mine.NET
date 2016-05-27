@@ -8,7 +8,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity is damaged by a block
      */
-    public class EntityDamageByBlockEventArgs<T> : EntityDamageEventArgs<T> where T : Entity
+    public class EntityDamageByBlockEventArgs : EntityDamageEventArgs
     {
         private readonly Block damager;
 

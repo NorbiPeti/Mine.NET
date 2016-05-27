@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when any Entity, excluding players, changes a block.
      */
-    public class EntityChangeBlockEventArgs<T> : EntityEventArgs<T>, Cancellable where T : Entity
+    public class EntityChangeBlockEventArgs : EntityEventArgs<Entity>, Cancellable
     {
         private readonly Block block;
         private bool cancel;

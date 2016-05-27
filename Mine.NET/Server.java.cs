@@ -2,6 +2,8 @@ using Mine.NET.boss;
 using Mine.NET.command;
 using Mine.NET.entity;
 using Mine.NET.Event.block;
+using Mine.NET.Event.enchantment;
+using Mine.NET.Event.entity;
 using Mine.NET.Event.inventory;
 using Mine.NET.generator;
 using Mine.NET.help;
@@ -949,6 +951,54 @@ namespace Mine.NET
         public event EventHandler<LeavesDecayEventArgs> LeavesDecayEvent;
         public event EventHandler<NotePlayEventArgs> NotePlayEvent;
         public event EventHandler<SignChangeEventArgs> SignChangeEvent;
+
+        public event EventHandler<EnchantItemEventArgs> EnchantItemEvent;
+        public event EventHandler<PrepareItemEnchantEventArgs> PrepareItemEnchantEvent;
+
+        public event EventHandler<AreaEffectCloudApplyEventArgs> AreaEffectCloadApplyEvent;
+        public event EventHandler<CreatureSpawnEventArgs> CreatureSpawnEvent;
+        public event EventHandler<CreeperPowerEventArgs> CreeperPowerEvent;
+        public event EventHandler<EnderDragonChangePhaseEventArgs> EnderDragonChangePhaseEvent;
+        public event EventHandler<EntityBreakDoorEventArgs> EntityBreakDoorEvent;
+        public event EventHandler<EntityChangeBlockEventArgs> EntityChangeBlockEvent;
+        public event EventHandler<EntityCombustByBlockEventArgs> EntityCombustByBlockEvent;
+        public event EventHandler<EntityCombustByEntityEventArgs> EntityCombustByEntityEvent;
+        public event EventHandler<EntityCombustEventArgs> EntityCombustEventArgs;
+        public event EventHandler<EntityCreatePortalEventArgs> EntityCreatePortalEvent;
+        public event EventHandler<EntityDamageByBlockEventArgs> EntityDamageByBlockEvent;
+        public event EventHandler<EntityDamageByEntityEventArgs> EntityDamageByEntityEvent;
+        public event EventHandler<EntityDeathEventArgs> EntityDeathEvent;
+        public event EventHandler<EntityExplodeEventArgs> EntityExplodeEvent;
+        public event EventHandler<EntityInteractEventArgs> EntityInteractEvent;
+        public event EventHandler<EntityPortalEnterEventArgs> EntityPortalEnterEvent;
+        public event EventHandler<EntityPortalExitEventArgs> EntityPortalExitEvent;
+        public event EventHandler<EntityRegainHealthEventArgs> EntityRegainHealthEvent;
+        public event EventHandler<EntityShootBowEventArgs> EntityShootBowEvent;
+        public event EventHandler<EntityTameEventArgs> EntityTameEvent;
+        public event EventHandler<EntityTargetEventArgs> EntityTargetEvent;
+        public event EventHandler<EntityTargetLivingEntityEventArgs> EntityTargetLivingEntityEvent;
+        public event EventHandler<EntityTeleportEventArgs> EntityTeleportEvent;
+        public event EventHandler<EntityToggleGlideEventArgs> EntityToggleGlideEvent;
+        public event EventHandler<EntityUnleashEventArgs> EntityUnleashEvent;
+        public event EventHandler<ExpBottleEventArgs> ExpBottleEvent;
+        public event EventHandler<ExplosionPrimeEventArgs> ExplosionPrimeEvent;
+        public event EventHandler<FoodLevelChangeEventArgs> FoodLevelChangeEvent;
+        public event EventHandler<HorseJumpEventArgs> HorseJumpEvent;
+        public event EventHandler<ItemDespawnEventArgs> ItemDespawnEvent;
+        public event EventHandler<ItemMergeEventArgs> ItemMergeEvent;
+        public event EventHandler<ItemSpawnEventArgs> ItemSpawnEvent;
+        public event EventHandler<LingeringPotionSplashEventArgs> LingeringPotionSplashEvent;
+        public event EventHandler<PigZapEventArgs> PigZapEvent;
+        public event EventHandler<PlayerDeathEventArgs> PlayerDeathEvent;
+        public event EventHandler<PlayerLeashEntityEventArgs> PlayerLeashEntityEvent;
+        public event EventHandler<PotionSplashEventArgs> PotionSplashEvent;
+        public event EventHandler<ProjectileHitEventArgs<Entity>> ProjectileHitEvent; //TODO: Check for unused events (may be base event)
+        public event EventHandler<ProjectileLaunchEventArgs> ProjectileLaunchEvent;
+        public event EventHandler<SheepDyeWoolEventArgs> SheepDyeWoolEvent;
+        public event EventHandler<SheepRegrowWoolEventArgs> SheepRegrowWoolEvent;
+        public event EventHandler<SlimeSplitEventArgs> SlimeSplitEvent;
+        public event EventHandler<VillagerAcquireTradeEventArgs> VillagerAcquireTradeEvent;
+        public event EventHandler<VillagerReplenishTradeEventArgs> VillagerReplenishTradeEvent;
     }
 }
     

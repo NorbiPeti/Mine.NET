@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
      * <p>
      * If an Entity Combust event is cancelled, the entity will not combust.
      */
-    public class EntityCombustEventArgs<T> : EntityEventArgs<T>, Cancellable where T : Entity
+    public class EntityCombustEventArgs : EntityEventArgs<Entity>, Cancellable
     {
         private int duration;
         private bool cancel;

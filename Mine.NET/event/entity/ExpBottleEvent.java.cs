@@ -5,12 +5,12 @@ namespace Mine.NET.Event.entity
     /**
      * Called when a ThrownExpBottle hits and releases experience.
      */
-    public class ExpBottleEvent : ProjectileHitEventArgs<ThrownExpBottle>
+    public class ExpBottleEventArgs : ProjectileHitEventArgs<ThrownExpBottle>
     {
         private int exp;
         private bool showEffect = true;
 
-        public ExpBottleEvent(ThrownExpBottle bottle, int exp) : base(bottle)
+        public ExpBottleEventArgs(ThrownExpBottle bottle, int exp) : base(bottle)
         {
             this.exp = exp;
         }

@@ -7,7 +7,7 @@ namespace Mine.NET.Event.entity
     /**
      * Called when an entity is damaged by an entity
      */
-    public class EntityDamageByEntityEventArgs<T> : EntityDamageEventArgs<T> where T : Entity
+    public class EntityDamageByEntityEventArgs : EntityDamageEventArgs
     {
         private readonly Entity damager;
 

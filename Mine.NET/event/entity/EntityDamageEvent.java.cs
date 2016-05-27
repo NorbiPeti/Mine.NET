@@ -8,7 +8,7 @@ namespace Mine.NET.Event.entity
     /**
      * Stores data for damage events
      */
-    public class EntityDamageEventArgs<T> : EntityEventArgs<T>, Cancellable where T : Entity
+    public class EntityDamageEventArgs : EntityEventArgs<Entity>, Cancellable
     {
         private static readonly DamageModifier[] MODIFIERS = new DamageModifier[] { DamageModifier.ABSORPTION, DamageModifier.ARMOR, DamageModifier.BASE, DamageModifier.BLOCKING, DamageModifier.HARD_HAT, DamageModifier.MAGIC, DamageModifier.RESISTANCE };
         private static readonly Func<Double, Double> ZERO = new Func<double, double>(delegate { return 0; });
