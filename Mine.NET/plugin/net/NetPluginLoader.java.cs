@@ -16,17 +16,17 @@ namespace Mine.NET.plugin.net
     public sealed class NetPluginLoader : PluginLoader
     {
         internal readonly Server server;
-        private readonly Regex[] fileFilters = new Regex[] { new Regex("\\.jar$") };
+        //private readonly Regex[] fileFilters = new Regex[] { new Regex("\\.dll$") };
         //private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
-        private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
+        //private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
 
         internal NetPluginLoader(Server server)
         {
             this.server = server;
         }
 
-        public Plugin loadPlugin(FileInfo file, Assembly asm)
-        {
+        public Plugin loadPlugin(FileInfo file, Assembly asm, Plugin plugin)
+        { //TODO: Remove this?
             if (file == null) throw new ArgumentNullException("File cannot be null");
 
             if (!file.Exists)
@@ -36,24 +36,10 @@ namespace Mine.NET.plugin.net
 
             DirectoryInfo parentFile = file.Directory;
             DirectoryInfo dataFolder = new DirectoryInfo(Path.Combine(parentFile.FullName, Path.GetFileNameWithoutExtension(file.Name)));
+            
+            //TODO: 1. Load plugin 2. Find description 3. Load and enable dependencies 4. Enable plugin
 
-            PluginClassLoader loader;
-            try //TODO: 1. Load plugin 2. Find description 3. Load and enable dependencies 4. Enable plugin
-            {
-                loader = new PluginClassLoader(this, GetType(), dataFolder, file);
-            }
-            catch (InvalidPluginException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidPluginException(ex);
-            }
-
-            loaders.Add(loader.plugin.Name, loader);
-
-            foreach (String pluginName in loader.plugin.Depends)
+            /*foreach (String pluginName in plugin.Depends)
             {
                 if (loaders == null)
                 {
@@ -65,9 +51,9 @@ namespace Mine.NET.plugin.net
                 {
                     throw new UnknownDependencyException(pluginName);
                 }
-            }
+            }*/
 
-            return loader.plugin;
+            return plugin;
         }
 
         /*public PluginDescriptionFile getPluginDescription(FileInfo file)
@@ -126,10 +112,10 @@ namespace Mine.NET.plugin.net
             }
         }*/
 
-        public Regex[] getPluginFileFilters()
+        /*public Regex[] getPluginFileFilters()
         {
             return fileFilters; //TODO: Clone?
-        }
+        }*/
 
         /*Type getClassByName(String name) {
             Class<?> cachedClass = classes[name];
@@ -191,7 +177,7 @@ namespace Mine.NET.plugin.net
 
         public void enablePlugin(Plugin plugin)
         {
-            if (plugin is NetPlugin) throw new ArgumentException("Plugin is not associated with this PluginLoader");
+            if (!(plugin is NetPlugin)) throw new ArgumentException("Plugin is not associated with this PluginLoader");
 
             if (!plugin.Enabled)
             {
@@ -201,10 +187,10 @@ namespace Mine.NET.plugin.net
 
                 String pluginName = jPlugin.Name;
 
-                if (!loaders.ContainsKey(pluginName))
+                /*if (!loaders.ContainsKey(pluginName))
                 {
                     loaders.Add(pluginName, (PluginClassLoader)jPlugin.getClassLoader());
-                }
+                }*/
 
                 try
                 {
@@ -233,7 +219,7 @@ namespace Mine.NET.plugin.net
                 server.CallEvent(new PluginDisableEventArgs(plugin));
 
                 NetPlugin jPlugin = (NetPlugin)plugin;
-                PluginClassLoader cloader = jPlugin.getClassLoader();
+                //PluginClassLoader cloader = jPlugin.getClassLoader();
 
                 try
                 {
@@ -244,18 +230,18 @@ namespace Mine.NET.plugin.net
                     server.getLogger().Severe("Error occurred while disabling " + plugin.FullName + " (Is it up to date?)", ex);
                 }
 
-                loaders.Remove(jPlugin.Name);
+                /*loaders.Remove(jPlugin.Name);
 
                 if (cloader is PluginClassLoader)
                 {
-                    PluginClassLoader loader = (PluginClassLoader)cloader;
+                    PluginClassLoader loader = (PluginClassLoader)cloader;*/
                     /*HashSet<String> names = loader.getClasses();
 
                     foreach (String name in names)
                     {
                         removeClass(name);
                     }*/
-                }
+                //}
             }
         }
     }

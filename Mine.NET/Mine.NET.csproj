@@ -580,7 +580,6 @@
     <Compile Include="plugin\InvalidPluginException.java.cs" />
     <Compile Include="plugin\net\NetPlugin.java.cs" />
     <Compile Include="plugin\net\NetPluginLoader.java.cs" />
-    <Compile Include="plugin\net\PluginClassLoader.java.cs" />
     <Compile Include="plugin\messaging\ChannelNameTooLongException.java.cs" />
     <Compile Include="plugin\messaging\ChannelNotRegisteredException.java.cs" />
     <Compile Include="plugin\messaging\MessageTooLargeException.java.cs" />

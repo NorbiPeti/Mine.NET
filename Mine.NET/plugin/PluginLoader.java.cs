@@ -24,14 +24,14 @@ namespace Mine.NET.plugin
          * @throws UnknownDependencyException If a required dependency could not
          *     be found
          */
-        Plugin loadPlugin(FileInfo file, Assembly asm);
+        Plugin loadPlugin(FileInfo file, Assembly asm, Plugin plugin);
 
         /**
          * Returns a list of all filename filters expected by this PluginLoader
          *
          * @return The filters
          */
-        Regex[] getPluginFileFilters();
+        //Regex[] getPluginFileFilters();
 
         /**
          * Creates and returns registered listeners for the event classes used in

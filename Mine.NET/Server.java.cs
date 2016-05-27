@@ -1,6 +1,7 @@
 using Mine.NET.boss;
 using Mine.NET.command;
 using Mine.NET.entity;
+using Mine.NET.Event;
 using Mine.NET.Event.block;
 using Mine.NET.Event.enchantment;
 using Mine.NET.Event.entity;
@@ -25,13 +26,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 
 namespace Mine.NET
 {
     /**
     * Represents a server implementation.
     */
-    public abstract class Server : PluginMessageRecipient {
+    public abstract class Server : PluginMessageRecipient
+    {
 
         /**
          * Used for all administrative messages, such as an operator using a
@@ -1005,7 +1008,7 @@ namespace Mine.NET
         public event EventHandler<SlimeSplitEventArgs> SlimeSplitEvent;
         public event EventHandler<VillagerAcquireTradeEventArgs> VillagerAcquireTradeEvent;
         public event EventHandler<VillagerReplenishTradeEventArgs> VillagerReplenishTradeEvent;
-        
+
         //Idea: Get file list, change it to the correct format - Find: "(.+).java.cs" - Replace: "public event EventHandler<$1Args> $1;"
         public event EventHandler<HangingBreakByEntityEventArgs> HangingBreakByEntityEvent;
         public event EventHandler<HangingBreakEventArgs> HangingBreakEvent;
@@ -1122,13 +1125,39 @@ namespace Mine.NET
         public event EventHandler<WorldUnloadEventArgs> WorldUnloadEvent;
         //That was fast - cd inventory - dir /b - Copy - Replace All - Copy
 
-        public void CallEvent<T>(T args) where T : EventArgs
+        public void CallEvent<T>(T args) where T : GameEventArgs
         {
-            foreach(var e in this.GetType().GetEvents())
+            if (args.isAsynchronous())
+            {
+                if (Monitor.IsEntered(this))
+                {
+                    throw new InvalidOperationException(args.getEventName() + " cannot be triggered asynchronously from inside code.");
+                }
+                if (this.isPrimaryThread())
+                {
+                    throw new InvalidOperationException(args.getEventName() + " cannot be triggered asynchronously from primary server thread.");
+                }
+                /*fireEvent(args);
+        } else {
+            (this) {
+                fireEvent(event);*/
+            }
+            foreach (var e in this.GetType().GetEvents())
             {
                 if (e.EventHandlerType.GetGenericArguments()[0] == typeof(T))
+                {
                     foreach (var m in e.GetOtherMethods())
-                        m.Invoke(this, new object[] { this, args }); //TODO: Test
+                    {
+                        try
+                        {
+                            m.Invoke(this, new object[] { this, args }); //TODO: Test
+                        }
+                        catch (Exception ex)
+                        {
+                            this.getLogger().Severe("Could not pass event " + args.getEventName() + " to "+m.DeclaringType.Name, ex); //TODO: Test if it shows plugin name
+                        }
+                    }
+                }
             }
         }
     }

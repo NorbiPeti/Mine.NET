@@ -4,6 +4,7 @@ using Mine.NET.generator;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -21,41 +22,35 @@ namespace Mine.NET.plugin.net
         private FileInfo file = null;
         private DirectoryInfo dataFolder = null;
         //private ClassLoader classLoader = null;
-        private PluginClassLoader classLoader = null;
+        //private PluginClassLoader classLoader = null;
         private bool naggable = true;
         private FileConfiguration newConfig = null;
         private FileInfo configFile = null;
         private PluginLogger logger = null;
         private DataMine db = null;
-        
-        /// <summary>
-        /// Used to load plugin data without doing further work
-        /// </summary>
-        internal NetPlugin()
-        {
-        }
+        private Assembly asm = null;
 
-        private void Init(PluginClassLoader loader)
+        /*private void Init(PluginClassLoader loader)
         {
             (classLoader = loader).initialize(this);
         }
 
         internal NetPlugin(PluginClassLoader loader)
-        {
+        {*/
             /*ClassLoader classLoader = this.getClass().getClassLoader();
             if (!(classLoader is PluginClassLoader)) {
                 throw new InvalidOperationException("JavaPlugin requires " + typeof(PluginClassLoader).getName());
             }*/ //TODO: Check if there's something like this in .NET
-            (classLoader = loader).initialize(this);
-        }
+            /*(classLoader = loader).initialize(this);
+        }*/
 
-        protected NetPlugin(NetPluginLoader loader, DirectoryInfo dataFolder, FileInfo file)
+        protected NetPlugin(NetPluginLoader loader, DirectoryInfo dataFolder, FileInfo file, Assembly asm)
         {
             /*Class0Loader classLoader = this.getClass().getClassLoader();
             if (classLoader is PluginClassLoader) {
                 throw new InvalidOperationException("Cannot use initialization constructor at runtime");
             }*/
-            init(loader, loader.server, dataFolder, file, classLoader);
+            init(loader, loader.server, dataFolder, file, asm);
         }
 
         /**
@@ -226,7 +221,7 @@ namespace Mine.NET.plugin.net
 
             try
             {
-                Stream stream = getClassLoader().getResource(filename);
+                Stream stream = asm.GetManifestResourceStream(filename);
 
                 if (stream.Length == 0) //TODO
                 {
@@ -240,16 +235,6 @@ namespace Mine.NET.plugin.net
             {
                 return null;
             }
-        }
-
-        /**
-         * Returns the ClassLoader which holds this plugin
-         *
-         * @return ClassLoader holding this plugin
-         */
-        internal PluginClassLoader getClassLoader()
-        {
-            return classLoader;
         }
 
         /**
@@ -274,15 +259,15 @@ namespace Mine.NET.plugin.net
             }
         }
 
-        internal void init(PluginLoader loader, Server server, DirectoryInfo dataFolder, FileInfo file, PluginClassLoader classLoader)
+        internal void init(PluginLoader loader, Server server, DirectoryInfo dataFolder, FileInfo file, Assembly asm)
         {
             this.loader = loader;
             this.server = server;
             this.file = file;
             this.dataFolder = dataFolder;
-            this.classLoader = classLoader;
             this.configFile = new FileInfo(Path.Combine(dataFolder.FullName, "config.yml"));
             this.logger = new PluginLogger(this);
+            this.asm = asm;
 
             if (this.HasDatabase)
             {
