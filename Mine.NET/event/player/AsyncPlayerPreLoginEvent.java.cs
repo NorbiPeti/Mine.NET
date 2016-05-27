@@ -8,7 +8,7 @@ namespace Mine.NET.Event.player
      * <p>
      * This event is asynchronous, and not run using main thread.
      */
-    public class AsyncPlayerPreLoginEvent : GameEventArgs
+    public class AsyncPlayerPreLoginEventArgs : GameEventArgs
     {
         private Result result;
         private String message;
@@ -16,7 +16,7 @@ namespace Mine.NET.Event.player
         private readonly IPAddress ipAddress;
         private readonly Guid uniqueId;
 
-        public AsyncPlayerPreLoginEvent(String name, IPAddress ipAddress, Guid uniqueId) : base(true)
+        public AsyncPlayerPreLoginEventArgs(String name, IPAddress ipAddress, Guid uniqueId) : base(true)
         {
             this.result = Result.ALLOWED;
             this.message = "";

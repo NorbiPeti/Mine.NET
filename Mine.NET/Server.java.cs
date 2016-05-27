@@ -4,7 +4,13 @@ using Mine.NET.entity;
 using Mine.NET.Event.block;
 using Mine.NET.Event.enchantment;
 using Mine.NET.Event.entity;
+using Mine.NET.Event.hanging;
 using Mine.NET.Event.inventory;
+using Mine.NET.Event.player;
+using Mine.NET.Event.server;
+using Mine.NET.Event.vehicle;
+using Mine.NET.Event.weather;
+using Mine.NET.Event.world;
 using Mine.NET.generator;
 using Mine.NET.help;
 using Mine.NET.inventory;
@@ -999,6 +1005,122 @@ namespace Mine.NET
         public event EventHandler<SlimeSplitEventArgs> SlimeSplitEvent;
         public event EventHandler<VillagerAcquireTradeEventArgs> VillagerAcquireTradeEvent;
         public event EventHandler<VillagerReplenishTradeEventArgs> VillagerReplenishTradeEvent;
+        
+        //Idea: Get file list, change it to the correct format - Find: "(.+).java.cs" - Replace: "public event EventHandler<$1Args> $1;"
+        public event EventHandler<HangingBreakByEntityEventArgs> HangingBreakByEntityEvent;
+        public event EventHandler<HangingBreakEventArgs> HangingBreakEvent;
+        public event EventHandler<HangingEventArgs> HangingEvent;
+        public event EventHandler<HangingPlaceEventArgs> HangingPlaceEvent;
+
+        public event EventHandler<BrewEventArgs> BrewEvent;
+        public event EventHandler<CraftItemEventArgs> CraftItemEvent;
+        public event EventHandler<FurnaceBurnEventArgs> FurnaceBurnEvent;
+        public event EventHandler<FurnaceExtractEventArgs> FurnaceExtractEvent;
+        public event EventHandler<FurnaceSmeltEventArgs> FurnaceSmeltEvent;
+        public event EventHandler<InventoryClickEventArgs<Inventory>> InventoryClickEvent;
+        public event EventHandler<InventoryCloseEventArgs> InventoryCloseEvent;
+        public event EventHandler<InventoryCreativeEventArgs> InventoryCreativeEvent;
+        public event EventHandler<InventoryDragEventArgs> InventoryDragEvent;
+        public event EventHandler<InventoryEventArgs> InventoryEvent;
+        public event EventHandler<InventoryInteractEventArgs> InventoryInteractEvent;
+        public event EventHandler<InventoryMoveItemEventArgs> InventoryMoveItemEvent;
+        public event EventHandler<InventoryOpenEventArgs> InventoryOpenEvent;
+        public event EventHandler<InventoryPickupItemEventArgs> InventoryPickupItemEvent;
+        public event EventHandler<PrepareAnvilEventArgs> PrepareAnvilEvent;
+        public event EventHandler<PrepareItemCraftEventArgs> PrepareItemCraftEvent;
+
+        public event EventHandler<AsyncPlayerChatEventArgs> AsyncPlayerChatEvent;
+        public event EventHandler<AsyncPlayerPreLoginEventArgs> AsyncPlayerPreLoginEvent;
+        public event EventHandler<PlayerAchievementAwardedEventArgs> PlayerAchievementAwardedEvent;
+        public event EventHandler<PlayerAnimationEventArgs> PlayerAnimationEvent;
+        public event EventHandler<PlayerArmorStandManipulateEventArgs> PlayerArmorStandManipulateEvent;
+        public event EventHandler<PlayerBedEnterEventArgs> PlayerBedEnterEvent;
+        public event EventHandler<PlayerBedLeaveEventArgs> PlayerBedLeaveEvent;
+        public event EventHandler<PlayerBucketEmptyEventArgs> PlayerBucketEmptyEvent;
+        public event EventHandler<PlayerBucketEventArgs> PlayerBucketEvent;
+        public event EventHandler<PlayerBucketFillEventArgs> PlayerBucketFillEvent;
+        public event EventHandler<PlayerChangedWorldEventArgs> PlayerChangedWorldEvent;
+        public event EventHandler<PlayerChannelEventArgs> PlayerChannelEvent;
+        public event EventHandler<PlayerChatTabCompleteEventArgs> PlayerChatTabCompleteEvent;
+        public event EventHandler<PlayerCommandPreprocessEventArgs> PlayerCommandPreprocessEvent;
+        public event EventHandler<PlayerDropItemEventArgs> PlayerDropItemEvent;
+        public event EventHandler<PlayerEditBookEventArgs> PlayerEditBookEvent;
+        public event EventHandler<PlayerEggThrowEventArgs> PlayerEggThrowEvent;
+        public event EventHandler<PlayerEventArgs> PlayerEvent;
+        public event EventHandler<PlayerExpChangeEventArgs> PlayerExpChangeEvent;
+        public event EventHandler<PlayerFishEventArgs> PlayerFishEvent;
+        public event EventHandler<PlayerGameModeChangeEventArgs> PlayerGameModeChangeEvent;
+        public event EventHandler<PlayerInteractAtEntityEventArgs> PlayerInteractAtEntityEvent;
+        public event EventHandler<PlayerInteractEntityEventArgs> PlayerInteractEntityEvent;
+        public event EventHandler<PlayerInteractEventArgs> PlayerInteractEvent;
+        public event EventHandler<PlayerItemBreakEventArgs> PlayerItemBreakEvent;
+        public event EventHandler<PlayerItemConsumeEventArgs> PlayerItemConsumeEvent;
+        public event EventHandler<PlayerItemHeldEventArgs> PlayerItemHeldEvent;
+        public event EventHandler<PlayerJoinEventArgs> PlayerJoinEvent;
+        public event EventHandler<PlayerKickEventArgs> PlayerKickEvent;
+        public event EventHandler<PlayerLevelChangeEventArgs> PlayerLevelChangeEvent;
+        public event EventHandler<PlayerLoginEventArgs> PlayerLoginEvent;
+        public event EventHandler<PlayerMoveEventArgs> PlayerMoveEvent;
+        public event EventHandler<PlayerPickupArrowEventArgs> PlayerPickupArrowEvent;
+        public event EventHandler<PlayerPickupItemEventArgs> PlayerPickupItemEvent;
+        public event EventHandler<PlayerPortalEventArgs> PlayerPortalEvent;
+        public event EventHandler<PlayerQuitEventArgs> PlayerQuitEvent;
+        public event EventHandler<PlayerRegisterChannelEventArgs> PlayerRegisterChannelEvent;
+        public event EventHandler<PlayerResourcePackStatusEventArgs> PlayerResourcePackStatusEvent;
+        public event EventHandler<PlayerRespawnEventArgs> PlayerRespawnEvent;
+        public event EventHandler<PlayerShearEntityEventArgs> PlayerShearEntityEvent;
+        public event EventHandler<PlayerStatisticIncrementEventArgs> PlayerStatisticIncrementEvent;
+        public event EventHandler<PlayerSwapHandItemsEventArgs> PlayerSwapHandItemsEvent;
+        public event EventHandler<PlayerTeleportEventArgs> PlayerTeleportEvent;
+        public event EventHandler<PlayerToggleFlightEventArgs> PlayerToggleFlightEvent;
+        public event EventHandler<PlayerToggleSneakEventArgs> PlayerToggleSneakEvent;
+        public event EventHandler<PlayerToggleSprintEventArgs> PlayerToggleSprintEvent;
+        public event EventHandler<PlayerUnleashEntityEventArgs> PlayerUnleashEntityEvent;
+        public event EventHandler<PlayerUnregisterChannelEventArgs> PlayerUnregisterChannelEvent;
+        public event EventHandler<PlayerVelocityEventArgs> PlayerVelocityEvent;
+
+        public event EventHandler<MapInitializeEventArgs> MapInitializeEvent;
+        public event EventHandler<PluginDisableEventArgs> PluginDisableEvent;
+        public event EventHandler<PluginEnableEventArgs> PluginEnableEvent;
+        public event EventHandler<PluginEventArgs> PluginEvent;
+        public event EventHandler<RemoteServerCommandEventArgs> RemoteServerCommandEvent;
+        public event EventHandler<ServerCommandEventArgs> ServerCommandEvent;
+        public event EventHandler<ServerEventArgs> ServerEvent;
+        public event EventHandler<ServerListPingEventArgs> ServerListPingEvent;
+        public event EventHandler<ServiceEventArgs> ServiceEvent;
+        public event EventHandler<ServiceRegisterEventArgs> ServiceRegisterEvent;
+        public event EventHandler<ServiceUnregisterEventArgs> ServiceUnregisterEvent;
+
+        public event EventHandler<VehicleBlockCollisionEventArgs> VehicleBlockCollisionEvent;
+        public event EventHandler<VehicleCollisionEventArgs> VehicleCollisionEvent;
+        public event EventHandler<VehicleCreateEventArgs> VehicleCreateEvent;
+        public event EventHandler<VehicleDamageEventArgs> VehicleDamageEvent;
+        public event EventHandler<VehicleDestroyEventArgs> VehicleDestroyEvent;
+        public event EventHandler<VehicleEnterEventArgs> VehicleEnterEvent;
+        public event EventHandler<VehicleEntityCollisionEventArgs> VehicleEntityCollisionEvent;
+        public event EventHandler<VehicleEventArgs> VehicleEvent;
+        public event EventHandler<VehicleExitEventArgs> VehicleExitEvent;
+        public event EventHandler<VehicleMoveEventArgs> VehicleMoveEvent;
+        public event EventHandler<VehicleUpdateEventArgs> VehicleUpdateEvent;
+
+        public event EventHandler<LightningStrikeEventArgs> LightningStrikeEvent;
+        public event EventHandler<ThunderChangeEventArgs> ThunderChangeEvent;
+        public event EventHandler<WeatherChangeEventArgs> WeatherChangeEvent;
+        public event EventHandler<WeatherEventArgs> WeatherEvent;
+
+        public event EventHandler<ChunkEventArgs> ChunkEvent;
+        public event EventHandler<ChunkLoadEventArgs> ChunkLoadEvent;
+        public event EventHandler<ChunkPopulateEventArgs> ChunkPopulateEvent;
+        public event EventHandler<ChunkUnloadEventArgs> ChunkUnloadEvent;
+        public event EventHandler<PortalCreateEventArgs> PortalCreateEvent;
+        public event EventHandler<SpawnChangeEventArgs> SpawnChangeEvent;
+        public event EventHandler<StructureGrowEventArgs> StructureGrowEvent;
+        public event EventHandler<WorldEventArgs> WorldEvent;
+        public event EventHandler<WorldInitEventArgs> WorldInitEvent;
+        public event EventHandler<WorldLoadEventArgs> WorldLoadEvent;
+        public event EventHandler<WorldSaveEventArgs> WorldSaveEvent;
+        public event EventHandler<WorldUnloadEventArgs> WorldUnloadEvent;
+        //That was fast - cd inventory - dir /b - Copy - Replace All - Copy
     }
 }
     

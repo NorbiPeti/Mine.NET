@@ -19,7 +19,7 @@ namespace Mine.NET.Event.inventory
      * has not been modified, the source inventory slot will be restored to its
      * former state. Otherwise any additional items will be discarded.
      */
-    public class InventoryMoveItemEvent : GameEventArgs, Cancellable
+    public class InventoryMoveItemEventArgs : GameEventArgs, Cancellable
     {
         private bool cancelled;
         private readonly Inventory sourceInventory;
@@ -27,7 +27,7 @@ namespace Mine.NET.Event.inventory
         private ItemStack itemStack;
         private readonly bool didSourceInitiate;
 
-        public InventoryMoveItemEvent(Inventory sourceInventory, ItemStack itemStack, Inventory destinationInventory, bool didSourceInitiate)
+        public InventoryMoveItemEventArgs(Inventory sourceInventory, ItemStack itemStack, Inventory destinationInventory, bool didSourceInitiate)
         {
             if (itemStack == null) throw new ArgumentNullException("ItemStack cannot be null");
             this.sourceInventory = sourceInventory;
