@@ -27,6 +27,18 @@ namespace Mine.NET.plugin.net
         private FileInfo configFile = null;
         private PluginLogger logger = null;
         private DataMine db = null;
+        
+        /// <summary>
+        /// Used to load plugin data without doing further work
+        /// </summary>
+        internal NetPlugin()
+        {
+        }
+
+        private void Init(PluginClassLoader loader)
+        {
+            (classLoader = loader).initialize(this);
+        }
 
         internal NetPlugin(PluginClassLoader loader)
         {

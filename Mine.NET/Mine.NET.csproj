@@ -575,7 +575,6 @@
     <Compile Include="permissions\PermissionRemovedExecutor.java.cs" />
     <Compile Include="permissions\ServerOperator.java.cs" />
     <Compile Include="plugin\AuthorNagException.java.cs" />
-    <Compile Include="plugin\EventExecutor.java.cs" />
     <Compile Include="plugin\IllegalPluginAccessException.java.cs" />
     <Compile Include="plugin\InvalidDescriptionException.java.cs" />
     <Compile Include="plugin\InvalidPluginException.java.cs" />
@@ -599,7 +598,6 @@
     <Compile Include="plugin\PluginLoadOrder.java.cs" />
     <Compile Include="plugin\PluginLogger.java.cs" />
     <Compile Include="plugin\PluginManager.java.cs" />
-    <Compile Include="plugin\RegisteredListener.java.cs" />
     <Compile Include="plugin\RegisteredServiceProvider.java.cs" />
     <Compile Include="plugin\ServicePriority.java.cs" />
     <Compile Include="plugin\ServicesManager.java.cs" />

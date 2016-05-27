@@ -45,7 +45,7 @@ namespace Mine.NET.plugin
          * @param filename Filename of the resource
          * @return FileInfo if found, otherwise null
          */
-        MemoryStream getResource(String filename);
+        Stream getResource(String filename);
 
         /**
          * Saves the {@link FileConfiguration} retrievable by {@link #getConfig()}.

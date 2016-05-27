@@ -1,6 +1,7 @@
 using Mine.NET.Event;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Mine.NET.plugin
@@ -23,7 +24,7 @@ namespace Mine.NET.plugin
          * @throws UnknownDependencyException If a required dependency could not
          *     be found
          */
-        Plugin loadPlugin(FileInfo file);
+        Plugin loadPlugin(FileInfo file, Assembly asm);
 
         /**
          * Returns a list of all filename filters expected by this PluginLoader

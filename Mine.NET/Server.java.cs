@@ -1121,6 +1121,16 @@ namespace Mine.NET
         public event EventHandler<WorldSaveEventArgs> WorldSaveEvent;
         public event EventHandler<WorldUnloadEventArgs> WorldUnloadEvent;
         //That was fast - cd inventory - dir /b - Copy - Replace All - Copy
+
+        public void CallEvent<T>(T args) where T : EventArgs
+        {
+            foreach(var e in this.GetType().GetEvents())
+            {
+                if (e.EventHandlerType.GetGenericArguments()[0] == typeof(T))
+                    foreach (var m in e.GetOtherMethods())
+                        m.Invoke(this, new object[] { this, args }); //TODO: Test
+            }
+        }
     }
 }
     

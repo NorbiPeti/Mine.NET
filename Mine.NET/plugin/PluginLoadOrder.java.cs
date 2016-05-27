@@ -1,17 +1,19 @@
-namespace Mine.NET.plugin;
-
-/**
- * Represents the order in which a plugin should be initialized and enabled
- */
-public enum PluginLoadOrder {
-
+namespace Mine.NET.plugin
+{
     /**
-     * Indicates that the plugin will be loaded at startup
+     * Represents the order in which a plugin should be initialized and enabled
      */
-    STARTUP,
-    /**
-     * Indicates that the plugin will be loaded after the first/default world
-     * was created
-     */
-    POSTWORLD
+    public enum PluginLoadOrder
+    {
+
+        /**
+         * Indicates that the plugin will be loaded at startup
+         */
+        STARTUP,
+        /**
+         * Indicates that the plugin will be loaded after the first/default world
+         * was created
+         */
+        POSTWORLD
+    }
 }

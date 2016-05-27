@@ -1,5 +1,6 @@
-namespace Mine.NET.plugin{
+using Mine.NET.Event;
 
+namespace Mine.NET.plugin{
 /**
  * Stores relevant information for plugin listeners
  */
@@ -10,7 +11,7 @@ public class RegisteredListener {
     private readonly EventExecutor executor;
     private readonly bool ignoreCancelled;
 
-    public RegisteredListener(Listener listener, readonly EventExecutor executor, readonly EventPriority priority, readonly Plugin plugin, readonly bool ignoreCancelled) {
+    public RegisteredListener(Listener listener, EventExecutor executor, EventPriority priority, Plugin plugin, bool ignoreCancelled) {
         this.listener = listener;
         this.priority = priority;
         this.plugin = plugin;

@@ -1,46 +1,54 @@
-namespace Mine.NET.plugin;
+using System;
 
-/**
- * A registered service provider.
- *
- * @param <T> Service
- */
-public class RegisteredServiceProvider<T> : Comparable<RegisteredServiceProvider<?>> {
+namespace Mine.NET.plugin
+{
+    /**
+     * A registered service provider.
+     *
+     * @param <T> Service
+     */
+    public class RegisteredServiceProvider<T> : RegisteredServiceProvider {
+        private Plugin plugin;
+        private T provider;
+        private ServicePriority priority;
 
-    private Class<T> service;
-    private Plugin plugin;
-    private T provider;
-    private ServicePriority priority;
-
-    public RegisteredServiceProvider(Class<T> service, T provider, ServicePriority priority, Plugin plugin) {
-
-        this.service = service;
-        this.plugin = plugin;
-        this.provider = provider;
-        this.priority = priority;
-    }
-
-    public Class<T> getService() {
-        return service;
-    }
-
-    public Plugin getPlugin() {
-        return plugin;
-    }
-
-    public T getProvider() {
-        return provider;
-    }
-
-    public ServicePriority getPriority() {
-        return priority;
-    }
-
-    public int compareTo(RegisteredServiceProvider<?> other) {
-        if (priority.ordinal() == other.getPriority().ordinal()) {
-            return 0;
-        } else {
-            return priority.ordinal() < other.getPriority().ordinal() ? 1 : -1;
+        //public RegisteredServiceProvider(Class<T> service, T provider, ServicePriority priority, Plugin plugin)
+        public RegisteredServiceProvider(T provider, ServicePriority priority, Plugin plugin)
+        {
+            this.plugin = plugin;
+            this.provider = provider;
+            this.priority = priority;
         }
+
+        /*public Class<T> getService() {
+            return service;
+        }*/
+
+        public Plugin getPlugin() {
+            return plugin;
+        }
+
+        public T getProvider() {
+            return provider;
+        }
+
+        public override ServicePriority getPriority() {
+            return priority;
+        }
+
+        public override int CompareTo(RegisteredServiceProvider other) {
+            if (priority == other.getPriority()) {
+                return 0;
+            } else {
+                return priority < other.getPriority() ? 1 : -1;
+            }
+        }
+    }
+
+    public abstract class RegisteredServiceProvider : IComparable<RegisteredServiceProvider>
+    {
+        public abstract int CompareTo(RegisteredServiceProvider other);
+
+        public abstract ServicePriority getPriority();
     }
 }

@@ -1,3 +1,14 @@
+using Mine.NET.command;
+using Mine.NET.permissions;
+using Mine.NET.plugin.net;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
+
 namespace Mine.NET.plugin{
 
 /**
@@ -5,13 +16,13 @@ namespace Mine.NET.plugin{
  */
 public sealed class SimplePluginManager : PluginManager {
     private readonly Server server;
-    private readonly Dictionary<Pattern, PluginLoader> fileAssociations = new Dictionary<Pattern, PluginLoader>();
+    private readonly Dictionary<Regex, PluginLoader> fileAssociations = new Dictionary<Regex, PluginLoader>();
     private readonly List<Plugin> plugins = new List<Plugin>();
     private readonly Dictionary<String, Plugin> lookupNames = new Dictionary<String, Plugin>();
-    private static FileInfo updateDirectory = null;
+    private static DirectoryInfo updateDirectory = null;
     private readonly SimpleCommandMap commandMap;
     private readonly Dictionary<String, Permission> permissions = new Dictionary<String, Permission>();
-    private readonly Dictionary<bool, HashSet<Permission>> defaultPerms = new LinkedHashMap<bool, HashSet<Permission>>();
+    private readonly Dictionary<bool, HashSet<Permission>> defaultPerms = new Dictionary<bool, HashSet<Permission>>();
     private readonly Dictionary<String, Dictionary<Permissible, bool>> permSubs = new Dictionary<String, Dictionary<Permissible, bool>>();
     private readonly Dictionary<bool, Dictionary<Permissible, bool>> defSubs = new Dictionary<bool, Dictionary<Permissible, bool>>();
     private bool useTimings = false;
@@ -24,41 +35,37 @@ public sealed class SimplePluginManager : PluginManager {
         defaultPerms.Add(false, new HashSet<Permission>());
     }
 
-    /**
-     * Registers the specified plugin loader
-     *
-     * @param loader Class name of the PluginLoader to register
-     * @throws ArgumentException Thrown when the given Class is not a
-     *     valid PluginLoader
-     */
-    public void registerInterface(Class<? : PluginLoader> loader) {
-        PluginLoader instance;
+        /**
+         * Registers the specified plugin loader
+         *
+         * @param loader Class name of the PluginLoader to register
+         * @throws ArgumentException Thrown when the given Class is not a
+         *     valid PluginLoader
+         */
+        public void registerInterface(Type loader) {
+            PluginLoader instance = null;
 
-        if (typeof(PluginLoader).isAssignableFrom(loader)) {
-            Constructor<? : PluginLoader> constructor;
+            if (typeof(PluginLoader).IsAssignableFrom(loader)) {
+                try {
+                    instance = (PluginLoader)Activator.CreateInstance(loader, server);
+                } catch (MissingMethodException ex) {
+                    String className = loader.Name;
 
-            try {
-                constructor = loader.getConstructor(typeof(Server));
-                instance = constructor.newInstance(server);
-            } catch (NoSuchMethodException ex) {
-                String className = loader.getName();
-
-                throw new ArgumentException(String.format("Class %s does not have a public %s(Server) constructor", className, className), ex);
-            } catch (Exception ex) {
-                throw new ArgumentException(String.format("Unexpected exception %s while attempting to construct a new instance of %s", ex.getClass().getName(), loader.getName()), ex);
+                    throw new ArgumentException(String.Format("Class %s does not have a public %s(Server) constructor", className, className), ex);
+                } catch (Exception ex) {
+                    throw new ArgumentException(String.Format("Unexpected exception %s while attempting to construct a new instance of %s", ex.getClass().getName(), loader.getName()), ex);
+                }
+            } else {
+                throw new ArgumentException(String.Format("Class %s does not implement interface PluginLoader", loader.Name));
             }
-        } else {
-            throw new ArgumentException(String.format("Class %s does not implement interface PluginLoader", loader.getName()));
-        }
 
-        Pattern[] patterns = instance.getPluginFileFilters();
+            Regex[] patterns = instance.getPluginFileFilters();
 
-        (this) {
-            foreach (Pattern pattern  in  patterns) {
+            foreach (Regex pattern in patterns)
+            {
                 fileAssociations.Add(pattern, instance);
             }
         }
-    }
 
     /**
      * Loads the plugins contained within the specified directory
@@ -66,162 +73,206 @@ public sealed class SimplePluginManager : PluginManager {
      * @param directory Directory to check for plugins
      * @return A list of all plugins loaded
      */
-    public Plugin[] loadPlugins(FileInfo directory) {
+    public Plugin[] loadPlugins(DirectoryInfo directory) {
         if(directory==null) throw new ArgumentNullException("Directory cannot be null");
-        if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory");
+        //if(directory.isDirectory()) throw new ArgumentException("Directory must be a directory"); - lol
 
         List<Plugin> result = new List<Plugin>();
-        HashSet<Pattern> filters = fileAssociations.keySet();
+            HashSet<Regex> filters = new HashSet<Regex>(fileAssociations.Keys);
 
-        if (!(server.getUpdateFolder().equals(""))) {
-            updateDirectory = new FileInfo(directory, server.getUpdateFolder());
+        if (!(server.getUpdateFolder().Equals(""))) {
+                updateDirectory = new DirectoryInfo(Path.Combine(directory.FullName, server.getUpdateFolder()));
         }
 
         Dictionary<String, FileInfo> plugins = new Dictionary<String, FileInfo>();
         HashSet<String> loadedPlugins = new HashSet<String>();
-        Dictionary<String, Collection<String>> dependencies = new Dictionary<String, Collection<String>>();
-        Dictionary<String, Collection<String>> softDependencies = new Dictionary<String, Collection<String>>();
+        Dictionary<String, List<String>> dependencies = new Dictionary<String, List<String>>();
+        Dictionary<String, List<String>> softDependencies = new Dictionary<String, List<String>>();
+            Dictionary<string, Assembly> pluginasm=new Dictionary<string, Assembly>()
 
         // This is where it figures out all possible plugins
-        foreach (FileInfo file  in  directory.listFiles()) {
+        foreach (FileInfo file  in  directory.EnumerateFiles()) {
             PluginLoader loader = null;
-            foreach (Pattern filter  in  filters) {
-                Matcher match = filter.matcher(file.getName());
-                if (match.find()) {
+            foreach (Regex filter  in  filters) {
+                Match match = filter.Match(file.Name);
+                if (match.Success) {
                     loader = fileAssociations[filter];
                 }
             }
 
             if (loader == null) continue;
 
-            PluginDescriptionFile description = null;
-            try {
-                description = loader.getPluginDescription(file);
-                String name = description.getName();
-                if (name.equalsIgnoreCase("bukkit") || name.equalsIgnoreCase("minecraft") || name.equalsIgnoreCase("mojang")) {
-                    server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "': Restricted Name");
+                Assembly asm = null;
+                Plugin plugin = null;
+                try
+                {
+                    asm = Assembly.LoadFile(file.FullName);
+
+                    Type plugintype = null;
+                    foreach (Type type in asm.GetTypes())
+                    {
+                        if (typeof(NetPlugin).IsAssignableFrom(type))
+                        {
+                            if (plugintype == null)
+                                plugintype = type;
+                            else
+                                throw new InvalidPluginException("More than one types found that extend NetPlugin! '" + plugintype + "' and '" + type + "'");
+                        }
+                    }
+
+                    if (plugintype == null)
+                        throw new InvalidPluginException("Cannot find main class!");
+
+                    plugin = (NetPlugin)Activator.CreateInstance(plugintype);
+                }
+                catch (MethodAccessException ex)
+                {
+                    throw new InvalidPluginException("No public constructor", ex);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    throw new InvalidPluginException("Abnormal plugin type", ex);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidPluginException(ex);
+                }
+
+                try {
+                    String name = plugin.Name;
+                if (name.Equals("bukkit", StringComparison.InvariantCultureIgnoreCase) || name.Equals("minecraft", StringComparison.InvariantCultureIgnoreCase) || name.Equals("mojang", StringComparison.InvariantCultureIgnoreCase)) {
+                    server.getLogger().Severe("Could not load '" + file.Name + "' in folder '" + directory.Name + "': Restricted Name");
                     continue;
-                } else if (description.rawName.IndexOf(' ') != -1) {
-                    server.getLogger().warning(String.format(
+                } else if (plugin.Name.IndexOf(' ') != -1) {
+                    server.getLogger().Warning(String.Format(
                         "Plugin `%s' uses the space-char (0x20) in its name `%s' - this is discouraged",
-                        description.getFullName(),
-                        description.rawName
-                        ));
+                        plugin.FullName,
+                        plugin.Name
+                        )); //TODO: ? - Also, rawname?
                 }
             } catch (InvalidDescriptionException ex) {
-                server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
+                server.getLogger().Severe("Could not load '" + file.Name + "' in folder '" + directory.Name + "'", ex);
                 continue;
             }
 
-            FileInfo replacedFile = plugins.Add(description.getName(), file);
-            if (replacedFile != null) {
-                server.getLogger().severe(String.format(
-                    "Ambiguous plugin name `%s' for files `%s' and `%s' in `%s'",
-                    description.getName(),
-                    file.getPath(),
-                    replacedFile.getPath(),
-                    directory.getPath()
-                    ));
-            }
+                /*FileInfo replacedFile = plugins.Add(plugin.Name, file);
+                if (replacedFile != null) {
+                    server.getLogger().severe(String.format(
+                        "Ambiguous plugin name `%s' for files `%s' and `%s' in `%s'",
+                        plugin.Name,
+                        file.getPath(),
+                        replacedFile.getPath(),
+                        directory.getPath()
+                        ));
+                }*/ //TODO
 
-            Collection<String> softDependencySet = description.getSoftDepend();
-            if (softDependencySet != null && !softDependencySet.isEmpty()) {
-                if (softDependencies.containsKey(description.getName())) {
-                    // Duplicates do not matter, they will be removed together if applicable
-                    softDependencies[description.getName(]).addAll(softDependencySet);
+                Collection<String> softDependencySet = new Collection<string>(plugin.SoftDepends);
+            if (softDependencySet != null && softDependencySet.Count!=0) {
+                if (softDependencies.ContainsKey(plugin.Name)) {
+                        // Duplicates do not matter, they will be removed together if applicable
+                        foreach (var item in softDependencySet)
+                            softDependencies[plugin.Name].Add(item);
                 } else {
-                    softDependencies.Add(description.getName(), new LinkedList<String>(softDependencySet));
+                    softDependencies.Add(plugin.Name, new List<String>(softDependencySet));
                 }
             }
 
-            Collection<String> dependencySet = description.getDepend();
-            if (dependencySet != null && !dependencySet.isEmpty()) {
-                dependencies.Add(description.getName(), new LinkedList<String>(dependencySet));
+                Collection<String> dependencySet = new Collection<string>(plugin.Depends);
+            if (dependencySet != null && dependencySet.Count!=0) {
+                dependencies.Add(plugin.Name, new List<String>(dependencySet));
             }
 
-            Collection<String> loadBeforeSet = description.getLoadBefore();
-            if (loadBeforeSet != null && !loadBeforeSet.isEmpty()) {
+                Collection<String> loadBeforeSet = new Collection<string>(plugin.LoadBefore);
+            if (loadBeforeSet != null && loadBeforeSet.Count!=0) {
                 foreach (String loadBeforeTarget  in  loadBeforeSet) {
-                    if (softDependencies.containsKey(loadBeforeTarget)) {
-                        softDependencies[loadBeforeTarget].add(description.getName());
+                    if (softDependencies.ContainsKey(loadBeforeTarget)) {
+                        softDependencies[loadBeforeTarget].Add(plugin.Name);
                     } else {
                         // softDependencies is never iterated, so 'ghost' plugins aren't an issue
-                        Collection<String> shortSoftDependency = new LinkedList<String>();
-                        shortSoftDependency.add(description.getName());
+                        Collection<String> shortSoftDependency = new Collection<String>();
+                        shortSoftDependency.Add(plugin.Name);
                         softDependencies.Add(loadBeforeTarget, shortSoftDependency);
                     }
                 }
             }
         }
 
-        while (!plugins.isEmpty()) {
+        while (plugins.Count!=0) {
             bool missingDependency = true;
-            IEnumerator<String> pluginIterator = plugins.keySet().iterator();
+                //IEnumerator<String> pluginIterator = plugins.Keys.GetEnumerator();
 
-            while (pluginIterator.hasNext()) {
-                String plugin = pluginIterator.next();
+                //while (pluginIterator.MoveNext()) {
+                plugins.Where(kv =>
+                {
+                    bool keepplugin = true;
+                    String plugin = kv.Key;
 
-                if (dependencies.containsKey(plugin)) {
-                    IEnumerator<String> dependencyIterator = dependencies[plugin].iterator();
+                    if (dependencies.ContainsKey(plugin))
+                    {
+                        dependencies.Where(dkv =>
+                        {
+                            bool keepdependency = true;
+                            String dependency = dkv.Key;
 
-                    while (dependencyIterator.hasNext()) {
-                        String dependency = dependencyIterator.next();
+                            // Dependency loaded
+                            if (loadedPlugins.Contains(dependency))
+                            {
+                                keepdependency = false;
 
-                        // Dependency loaded
-                        if (loadedPlugins.contains(dependency)) {
-                            dependencyIterator.remove();
+                                // We have a dependency not found
+                            }
+                            else if (!plugins.ContainsKey(dependency))
+                            {
+                                missingDependency = false;
+                                FileInfo file = plugins[plugin];
+                                //pluginIterator.remove();
+                                
+                                softDependencies.Remove(plugin);
+                                dependencies.Remove(plugin);
 
-                        // We have a dependency not found
-                        } else if (!plugins.containsKey(dependency)) {
-                            missingDependency = false;
-                            FileInfo file = plugins[plugin];
-                            pluginIterator.remove();
-                            softDependencies.remove(plugin);
-                            dependencies.remove(plugin);
+                                server.getLogger().Severe(
+                                    "Could not load '" + file.Name + "' in folder '" + directory.Name + "'",
+                                    new UnknownDependencyException(dependency));
+                                //break; //TODO
+                                keepdependency = false;
+                            }
+                            return keepdependency;
+                        });
 
-                            server.getLogger().log(
-                                Level.SEVERE,
-                                "Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'",
-                                new UnknownDependencyException(dependency));
-                            break;
+                        if (dependencies.ContainsKey(plugin) && dependencies[plugin].Count == 0)
+                        {
+                            dependencies.Remove(plugin);
                         }
                     }
+                    if (softDependencies.ContainsKey(plugin))
+                    {
+                        softDependencies[plugin].RemoveAll(d => !plugins.ContainsKey(d));
 
-                    if (dependencies.containsKey(plugin) && dependencies[plugin].isEmpty()) {
-                        dependencies.remove(plugin);
-                    }
-                }
-                if (softDependencies.containsKey(plugin)) {
-                    IEnumerator<String> softDependencyIterator = softDependencies[plugin].iterator();
-
-                    while (softDependencyIterator.hasNext()) {
-                        String softDependency = softDependencyIterator.next();
-
-                        // Soft depend is no longer around
-                        if (!plugins.containsKey(softDependency)) {
-                            softDependencyIterator.remove();
+                        if (softDependencies[plugin].Count == 0)
+                        {
+                            softDependencies.Remove(plugin);
                         }
                     }
+                    if (!(dependencies.ContainsKey(plugin) || softDependencies.ContainsKey(plugin)) && plugins.ContainsKey(plugin))
+                    {
+                        // We're clear to load, no more soft or hard dependencies left
+                        FileInfo file = plugins[plugin];
+                        keepplugin = false;
+                        missingDependency = false;
 
-                    if (softDependencies[plugin].isEmpty()) {
-                        softDependencies.remove(plugin);
+                        try
+                        {
+                            result.Add(loadPlugin(file, asm));
+                            loadedPlugins.Add(plugin);
+                            //continue;
+                        }
+                        catch (InvalidPluginException ex)
+                        {
+                            server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
+                        }
                     }
-                }
-                if (!(dependencies.containsKey(plugin) || softDependencies.containsKey(plugin)) && plugins.containsKey(plugin)) {
-                    // We're clear to load, no more soft or hard dependencies left
-                    FileInfo file = plugins[plugin];
-                    pluginIterator.remove();
-                    missingDependency = false;
-
-                    try {
-                        result.add(loadPlugin(file));
-                        loadedPlugins.add(plugin);
-                        continue;
-                    } catch (InvalidPluginException ex) {
-                        server.getLogger().Severe("Could not load '" + file.getPath() + "' in folder '" + directory.getPath() + "'", ex);
-                    }
-                }
-            }
+                    return keepplugin;
+                });
 
             if (missingDependency) {
                 // We now iterate over plugins until something loads
@@ -238,7 +289,7 @@ public sealed class SimplePluginManager : PluginManager {
                         pluginIterator.remove();
 
                         try {
-                            result.add(loadPlugin(file));
+                            result.Add(loadPlugin(file, asm));
                             loadedPlugins.add(plugin);
                             break;
                         } catch (InvalidPluginException ex) {
@@ -276,28 +327,28 @@ public sealed class SimplePluginManager : PluginManager {
      * @throws UnknownDependencyException If a required dependency could not
      *     be found
      */
-    public Plugin loadPlugin(FileInfo file) {
+    public Plugin loadPlugin(FileInfo file, Assembly asm) {
         if(file==null) throw new ArgumentNullException("FileInfo cannot be null");
 
         checkUpdate(file);
 
-        HashSet<Pattern> filters = fileAssociations.keySet();
+            HashSet<Regex> filters = new HashSet<Regex>(fileAssociations.Keys);
         Plugin result = null;
 
-        foreach (Pattern filter  in  filters) {
-            String name = file.getName();
-            Matcher match = filter.matcher(name);
+        foreach (Regex filter  in  filters) {
+                String name = file.Name;
+            Match match = filter.Match(name);
 
-            if (match.find()) {
+            if (match.Success) {
                 PluginLoader loader = fileAssociations[filter];
 
-                result = loader.loadPlugin(file);
+                result = loader.loadPlugin(file, asm);
             }
         }
 
         if (result != null) {
-            plugins.add(result);
-            lookupNames.Add(result.getDescription().getName(), result);
+            plugins.Add(result);
+            lookupNames.Add(result.Name, result);
         }
 
         return result;

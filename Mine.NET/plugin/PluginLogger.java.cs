@@ -1,31 +1,28 @@
-namespace Mine.NET.plugin{
+using System;
+using System.Text;
 
-/**
- * The PluginLogger class is a modified {@link Logger} that prepends all
- * logging calls with the name of the plugin doing the logging. The API for
- * PluginLogger is exactly the same as {@link Logger}.
- *
- * @see Logger
- */
-public class PluginLogger : Logger {
-    private String pluginName;
-
+namespace Mine.NET.plugin
+{
     /**
-     * Creates a new PluginLogger that extracts the name from a plugin.
+     * The PluginLogger class is a modified {@link Logger} that prepends all
+     * logging calls with the name of the plugin doing the logging. The API for
+     * PluginLogger is exactly the same as {@link Logger}.
      *
-     * @param context A reference to the plugin
+     * @see Logger
      */
-    public PluginLogger(Plugin context) {
-        base(context.getClass().getCanonicalName(), null);
-        String prefix = context.getDescription().getPrefix();
-        pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : "[" + context.getDescription().getName() + "] ";
-        setParent(context.getServer().getLogger());
-        setLevel(Level.ALL);
-    }
+    public class PluginLogger : Logger
+    {
+        private String pluginName;
 
-    public override void log(LogRecord logRecord) {
-        logRecord.setMessage(pluginName + logRecord.getMessage());
-        base.log(logRecord);
+        /**
+         * Creates a new PluginLogger that extracts the name from a plugin.
+         *
+         * @param context A reference to the plugin
+         */
+        public PluginLogger(Plugin context) : base(context.Name)
+        {
+            String prefix = context.Prefix;
+            pluginName = prefix != null ? new StringBuilder().Append("[").Append(prefix).Append("] ").ToString() : "[" + context.Name + "] ";
+        }
     }
-
 }

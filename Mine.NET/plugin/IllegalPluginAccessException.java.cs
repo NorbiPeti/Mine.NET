@@ -1,24 +1,28 @@
-namespace Mine.NET.plugin;
+using System;
 
-/**
- * Thrown when a plugin attempts to interact with the server when it is not
- * enabled
- */
-@SuppressWarnings("serial")
-public class IllegalPluginAccessException : AggregateException {
-
+namespace Mine.NET.plugin
+{
     /**
-     * Creates a new instance of <code>IllegalPluginAccessException</code>
-     * without detail message.
+     * Thrown when a plugin attempts to interact with the server when it is not
+     * enabled
      */
-    public IllegalPluginAccessException() {}
+    public class IllegalPluginAccessException : AggregateException
+    {
 
-    /**
-     * Constructs an instance of <code>IllegalPluginAccessException</code>
-     * with the specified detail message.
-     *
-     * @param msg the detail message.
-     */
-    public IllegalPluginAccessException(String msg) : base(msg) {
+        /**
+         * Creates a new instance of <code>IllegalPluginAccessException</code>
+         * without detail message.
+         */
+        public IllegalPluginAccessException() { }
+
+        /**
+         * Constructs an instance of <code>IllegalPluginAccessException</code>
+         * with the specified detail message.
+         *
+         * @param msg the detail message.
+         */
+        public IllegalPluginAccessException(String msg) : base(msg)
+        {
+        }
     }
 }

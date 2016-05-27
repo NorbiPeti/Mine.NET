@@ -20,7 +20,12 @@ namespace Mine.NET.plugin.net
         //private readonly Dictionary<String, Type> classes = new Dictionary<String, Type>();
         private readonly Dictionary<String, PluginClassLoader> loaders = new Dictionary<String, PluginClassLoader>();
 
-        public Plugin loadPlugin(FileInfo file)
+        internal NetPluginLoader(Server server)
+        {
+            this.server = server;
+        }
+
+        public Plugin loadPlugin(FileInfo file, Assembly asm)
         {
             if (file == null) throw new ArgumentNullException("File cannot be null");
 
@@ -212,7 +217,7 @@ namespace Mine.NET.plugin.net
 
                 // Perhaps abort here, rather than continue going, but as it stands,
                 // an abort is not possible the way it's currently written //TODO
-                server.getPluginManager().callEvent(new PluginEnableEvent(plugin));
+                server.CallEvent(new PluginEnableEventArgs(plugin));
             }
         }
 
@@ -225,7 +230,7 @@ namespace Mine.NET.plugin.net
                 String message = String.Format("Disabling %s", plugin.FullName);
                 plugin.Logger.Info(message);
 
-                server.getPluginManager().callEvent(new PluginDisableEvent(plugin));
+                server.CallEvent(new PluginDisableEventArgs(plugin));
 
                 NetPlugin jPlugin = (NetPlugin)plugin;
                 PluginClassLoader cloader = jPlugin.getClassLoader();

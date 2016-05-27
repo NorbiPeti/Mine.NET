@@ -19,47 +19,14 @@ namespace Mine.NET.plugin.net
         private InvalidOperationException pluginState;
         private readonly Assembly asm;
 
-        internal PluginClassLoader(NetPluginLoader loader, Type parent, DirectoryInfo dataFolder, FileInfo file)
+        internal PluginClassLoader(NetPluginLoader loader, Type parent, DirectoryInfo dataFolder, FileInfo file, Assembly asm)
         { //TODO: Code analysis
             if (loader == null) throw new ArgumentNullException("Loader cannot be null");
 
             this.loader = loader;
             this.dataFolder = dataFolder;
             this.file = file;
-
-            try
-            {
-                asm = Assembly.LoadFile(file.FullName);
-
-                Type plugintype = null;
-                foreach (Type type in asm.GetTypes())
-                {
-                    if (typeof(NetPlugin).IsAssignableFrom(type))
-                    {
-                        if (plugintype == null)
-                            plugintype = type;
-                        else
-                            throw new InvalidPluginException("More than one types found that extend NetPlugin! '" + plugintype + "' and '" + type + "'");
-                    }
-                }
-
-                if (plugintype == null)
-                    throw new InvalidPluginException("Cannot find main class!");
-
-                plugin = (NetPlugin)Activator.CreateInstance(plugintype);
-            }
-            catch (MethodAccessException ex)
-            {
-                throw new InvalidPluginException("No public constructor", ex);
-            }
-            catch (TargetInvocationException ex)
-            {
-                throw new InvalidPluginException("Abnormal plugin type", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidPluginException(ex);
-            }
+            this.asm = asm;
         }
 
         internal void initialize(NetPlugin javaPlugin)
