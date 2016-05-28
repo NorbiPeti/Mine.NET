@@ -8,9 +8,9 @@ namespace Mine.NET.Event.server
      * Warning: The order in which register and unregister events are called
      * should not be relied upon.
      */
-    public class ServiceRegisterEventArgs<T> : ServiceEventArgs<T>
+    public class ServiceRegisterEventArgs : ServiceEventArgs
     {
-        public ServiceRegisterEventArgs(RegisteredServiceProvider<T> registeredProvider) :
+        public ServiceRegisterEventArgs(RegisteredServiceProvider registeredProvider) :
             base(registeredProvider)
         {
         }

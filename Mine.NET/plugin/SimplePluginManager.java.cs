@@ -430,9 +430,9 @@ namespace Mine.NET.plugin
         {
             if (!plugin.Enabled)
             {
-                List<Command> pluginCommands = PluginCommandYamlParser.parse(plugin);
+                Command[] pluginCommands = plugin.Commands;
 
-                if (pluginCommands.Count != 0)
+                if (pluginCommands.Length != 0)
                 {
                     commandMap.registerAll(plugin.Name, pluginCommands);
                 }

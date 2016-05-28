@@ -118,7 +118,7 @@ namespace Mine.NET.plugin.net
         }*/
 
         /*Type getClassByName(String name) {
-            Class<?> cachedClass = classes[name];
+            Type cachedClass = classes[name];
 
             if (cachedClass != null) {
                 return cachedClass;

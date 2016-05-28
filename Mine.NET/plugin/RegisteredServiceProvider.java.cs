@@ -24,7 +24,7 @@ namespace Mine.NET.plugin
             return service;
         }*/
 
-        public Plugin getPlugin() {
+        public override Plugin getPlugin() {
             return plugin;
         }
 
@@ -43,6 +43,11 @@ namespace Mine.NET.plugin
                 return priority < other.getPriority() ? 1 : -1;
             }
         }
+
+        public override object getProviderObject()
+        {
+            return provider;
+        }
     }
 
     public abstract class RegisteredServiceProvider : IComparable<RegisteredServiceProvider>
@@ -50,5 +55,9 @@ namespace Mine.NET.plugin
         public abstract int CompareTo(RegisteredServiceProvider other);
 
         public abstract ServicePriority getPriority();
+
+        public abstract Plugin getPlugin();
+
+        public abstract object getProviderObject();
     }
 }

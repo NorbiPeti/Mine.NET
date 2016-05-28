@@ -1,3 +1,5 @@
+using Mine.NET.command.defaults;
+using Mine.NET.entity;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +37,7 @@ namespace Mine.NET.command
         /**
          * {@inheritDoc}
          */
-        public void registerAll(String fallbackPrefix, List<Command> commands)
+        public void registerAll(String fallbackPrefix, Command[] commands)
         {
             if (commands != null)
             {
@@ -198,7 +200,7 @@ namespace Mine.NET.command
 
                     String name = commandEntry.Key; // Use the alias, not command name
 
-                    if (StringUtil.StartsWithIgnoreCase(name, cmdLine))
+                    if (name.StartsWith(cmdLine, StringComparison.InvariantCultureIgnoreCase))
                     {
                         completions.Add(prefix + name);
                     }

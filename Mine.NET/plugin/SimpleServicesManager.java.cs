@@ -1,290 +1,320 @@
-namespace Mine.NET.plugin{
+using Mine.NET.Event.server;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-/**
- * A simple services manager.
- */
-public class SimpleServicesManager : ServicesManager {
-
+namespace Mine.NET.plugin
+{
     /**
-     * Map of providers.
+     * A simple services manager.
      */
-    private readonly Dictionary<Class<?>, List<RegisteredServiceProvider<?>>> providers = new Dictionary<Class<?>, List<RegisteredServiceProvider<?>>>();
+    public class SimpleServicesManager : ServicesManager
+    {
 
-    /**
-     * Register a provider of a service.
-     *
-     * @param <T> Provider
-     * @param service service class
-     * @param provider provider to register
-     * @param plugin plugin with the provider
-     * @param priority priority of the provider
-     */
-    public <T> void register(Class<T> service, T provider, Plugin plugin, ServicePriority priority) {
-        RegisteredServiceProvider<T> registeredProvider = null;
-        (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers[service];
-            if (registered == null) {
-                registered = new List<RegisteredServiceProvider<?>>();
-                providers.Add(service, registered);
+        /**
+         * Map of providers.
+         */
+        private readonly Dictionary<Type, List<RegisteredServiceProvider>> providers = new Dictionary<Type, List<RegisteredServiceProvider>>();
+
+        /**
+         * Register a provider of a service.
+         *
+         * @param <T> Provider
+         * @param service service class
+         * @param provider provider to register
+         * @param plugin plugin with the provider
+         * @param priority priority of the provider
+         */
+        public void register<T>(T provider, Plugin plugin, ServicePriority priority)
+        {
+            Type service = typeof(T);
+            RegisteredServiceProvider<T> registeredProvider = null;
+            lock (providers)
+            {
+                List<RegisteredServiceProvider> registered = providers[service];
+                if (registered == null)
+                {
+                    registered = new List<RegisteredServiceProvider>();
+                    providers.Add(service, registered);
+                }
+
+                registeredProvider = new RegisteredServiceProvider<T>(provider, priority, plugin);
+
+                // Insert the provider into the collection, much more efficient big O than sort
+                int position = registered.BinarySearch(registeredProvider);
+                if (position < 0)
+                {
+                    registered.Insert(-(position + 1), registeredProvider);
+                }
+                else
+                {
+                    registered.Insert(position, registeredProvider);
+                }
+
             }
-
-            registeredProvider = new RegisteredServiceProvider<T>(service, provider, priority, plugin);
-
-            // Insert the provider into the collection, much more efficient big O than sort
-            int position = Collections.binarySearch(registered, registeredProvider);
-            if (position < 0) {
-                registered.add(-(position + 1), registeredProvider);
-            } else {
-                registered.add(position, registeredProvider);
-            }
-
+            Bukkit.getServer().CallEvent(new ServiceRegisterEventArgs(registeredProvider));
         }
-        Bukkit.getServer().getPluginManager().callEvent(new ServiceRegisterEvent(registeredProvider));
-    }
 
-    /**
-     * Unregister all the providers registered by a particular plugin.
-     *
-     * @param plugin The plugin
-     */
-    public void unregisterAll(Plugin plugin) {
-        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        (providers) {
-            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+        /**
+         * Unregister all the providers registered by a particular plugin.
+         *
+         * @param plugin The plugin
+         */
+        public void unregisterAll(Plugin plugin)
+        {
+            List<ServiceUnregisterEventArgs> unregisteredEvents = new List<ServiceUnregisterEventArgs>();
+            lock (providers)
+            {
+                providers.Where(kv =>
+                {
+                    KeyValuePair<Type, List<RegisteredServiceProvider>> entry = kv;
+                    // Removed entries that are from this plugin
+                    entry.Value.Where(kv2 =>
+                    {
+                        RegisteredServiceProvider registered = kv2;
 
-            try {
-                while (it.hasNext()) {
-                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
-
-                    try {
-                        // Removed entries that are from this plugin
-
-                        while (it2.hasNext()) {
-                            RegisteredServiceProvider<?> registered = it2.next();
-
-                            if (registered.getPlugin().equals(plugin)) {
-                                it2.remove();
-                                unregisteredEvents.add(new ServiceUnregisterEvent(registered));
-                            }
+                        if (registered.getPlugin().Equals(plugin))
+                        {
+                            unregisteredEvents.Add(new ServiceUnregisterEventArgs(registered));
+                            return false;
                         }
-                    } catch (NoSuchElementException e) { // Why does Java suck
-                    }
+                        return true;
+                    });
 
                     // Get rid of the empty list
-                    if (entry.Value.Count == 0) {
-                        it.remove();
+                    if (entry.Value.Count == 0)
+                    {
+                        return false;
                     }
-                }
-            } catch (NoSuchElementException e) {}
+                    return true;
+                });
+            }
+            foreach (ServiceUnregisterEventArgs event_ in unregisteredEvents)
+            {
+                Bukkit.getServer().CallEvent(event_);
+            }
         }
-        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
-            Bukkit.getServer().getPluginManager().callEvent(event);
-        }
-    }
 
-    /**
-     * Unregister a particular provider for a particular service.
-     *
-     * @param service The service interface
-     * @param provider The service provider implementation
-     */
-    public void unregister(Class<?> service, Object provider) {
-        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        (providers) {
-            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
-
-            try {
-                while (it.hasNext()) {
-                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
+        /**
+         * Unregister a particular provider for a particular service.
+         *
+         * @param service The service interface
+         * @param provider The service provider implementation
+         */
+        public void unregister(Type service, Object provider)
+        {
+            List<ServiceUnregisterEventArgs> unregisteredEvents = new List<ServiceUnregisterEventArgs>();
+            lock (providers)
+            {
+                providers.Where(kv => //TODO: Assign result of Where everywhere
+                {
+                    var entry = kv;
 
                     // We want a particular service
-                    if (entry.Key != service) {
-                        continue;
+                    if (entry.Key != service)
+                    {
+                        //continue;
+                        return true;
                     }
+                    // Removed entries that are from this plugin
+                    entry.Value.Where(kv2 =>
+                    {
+                        RegisteredServiceProvider registered = kv2;
 
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
-
-                    try {
-                        // Removed entries that are from this plugin
-
-                        while (it2.hasNext()) {
-                            RegisteredServiceProvider<?> registered = it2.next();
-
-                            if (registered.getProvider() == provider) {
-                                it2.remove();
-                                unregisteredEvents.add(new ServiceUnregisterEvent(registered));
-                            }
+                        if (registered.getProviderObject() == provider)
+                        {
+                            unregisteredEvents.Add(new ServiceUnregisterEventArgs(registered));
+                            return false;
                         }
-                    } catch (NoSuchElementException e) { // Why does Java suck
-                    }
+                        return true;
+                    });
 
                     // Get rid of the empty list
-                    if (entry.Value.Count == 0) {
-                        it.remove();
+                    if (entry.Value.Count == 0)
+                    {
+                        return false;
                     }
+                    return true;
+                });
+                foreach (ServiceUnregisterEventArgs event_ in unregisteredEvents)
+                {
+                    Bukkit.getServer().CallEvent(event_);
                 }
-            } catch (NoSuchElementException e) {}
+            }
         }
-        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
-            Bukkit.getServer().getPluginManager().callEvent(event);
-        }
-    }
 
-    /**
-     * Unregister a particular provider.
-     *
-     * @param provider The service provider implementation
-     */
-    public void unregister(Object provider) {
-        List<ServiceUnregisterEvent> unregisteredEvents = new List<ServiceUnregisterEvent>();
-        (providers) {
-            IEnumerator<KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>>> it = providers.entrySet().iterator();
+        /**
+         * Unregister a particular provider.
+         *
+         * @param provider The service provider implementation
+         */
+        public void unregister(Object provider)
+        {
+            List<ServiceUnregisterEventArgs> unregisteredEvents = new List<ServiceUnregisterEventArgs>();
+            lock (providers)
+            {
+                providers.Where(kv => //TODO: Assign result of Where everywhere
+                {
+                    var entry = kv;
 
-            try {
-                while (it.hasNext()) {
-                    KeyValuePair<Class<?>, List<RegisteredServiceProvider<?>>> entry = it.next();
-                    IEnumerator<RegisteredServiceProvider<?>> it2 = entry.Value.iterator();
+                    // Removed entries that are from this plugin
+                    entry.Value.Where(kv2 =>
+                    {
+                        RegisteredServiceProvider registered = kv2;
 
-                    try {
-                        // Removed entries that are from this plugin
-
-                        while (it2.hasNext()) {
-                            RegisteredServiceProvider<?> registered = it2.next();
-
-                            if (registered.getProvider().equals(provider)) {
-                                it2.remove();
-                                unregisteredEvents.add(new ServiceUnregisterEvent(registered));
-                            }
+                        if (registered.getProviderObject() == provider)
+                        {
+                            unregisteredEvents.Add(new ServiceUnregisterEventArgs(registered));
+                            return false;
                         }
-                    } catch (NoSuchElementException e) { // Why does Java suck
-                    }
+                        return true;
+                    });
 
                     // Get rid of the empty list
-                    if (entry.Value.Count == 0) {
-                        it.remove();
+                    if (entry.Value.Count == 0)
+                    {
+                        return false;
                     }
-                }
-            } catch (NoSuchElementException e) {}
-        }
-        foreach (ServiceUnregisterEvent event  in  unregisteredEvents) {
-            Bukkit.getServer().getPluginManager().callEvent(event);
-        }
-    }
-
-    /**
-     * Queries for a provider. This may return if no provider has been
-     * registered for a service. The highest priority provider is returned.
-     *
-     * @param <T> The service interface
-     * @param service The service interface
-     * @return provider or null
-     */
-    public <T> T load(Class<T> service) {
-        (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers[service];
-
-            if (registered == null) {
-                return null;
-            }
-
-            // This should not be null!
-            return service.cast(registered[0].getProvider());
-        }
-    }
-
-    /**
-     * Queries for a provider registration. This may return if no provider
-     * has been registered for a service.
-     *
-     * @param <T> The service interface
-     * @param service The service interface
-     * @return provider registration or null
-     */
-    @SuppressWarnings("unchecked")
-    public <T> RegisteredServiceProvider<T> getRegistration(Class<T> service) {
-        (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers[service];
-
-            if (registered == null) {
-                return null;
-            }
-
-            // This should not be null!
-            return (RegisteredServiceProvider<T>) registered[0];
-        }
-    }
-
-    /**
-     * Get registrations of providers for a plugin.
-     *
-     * @param plugin The plugin
-     * @return provider registration or null
-     */
-    public List<RegisteredServiceProvider<?>> getRegistrations(Plugin plugin) {
-        ImmutableList.Builder<RegisteredServiceProvider<?>> ret = ImmutableList.<RegisteredServiceProvider<?>>builder();
-        (providers) {
-            foreach (List<RegisteredServiceProvider<?>> registered  in  providers.values()) {
-                foreach (RegisteredServiceProvider<?> provider  in  registered) {
-                    if (provider.getPlugin().equals(plugin)) {
-                        ret.add(provider);
-                    }
+                    return true;
+                });
+                foreach (ServiceUnregisterEventArgs event_ in unregisteredEvents)
+                {
+                    Bukkit.getServer().CallEvent(event_);
                 }
             }
         }
-        return ret.build();
-    }
 
-    /**
-     * Get registrations of providers for a service. The returned list is
-     * an unmodifiable copy.
-     *
-     * @param <T> The service interface
-     * @param service The service interface
-     * @return a copy of the list of registrations
-     */
-    @SuppressWarnings("unchecked")
-    public <T> List<RegisteredServiceProvider<T>> getRegistrations(Class<T> service) {
-        ImmutableList.Builder<RegisteredServiceProvider<T>> ret;
-        (providers) {
-            List<RegisteredServiceProvider<?>> registered = providers[service];
+        /**
+         * Queries for a provider. This may return if no provider has been
+         * registered for a service. The highest priority provider is returned.
+         *
+         * @param <T> The service interface
+         * @param service The service interface
+         * @return provider or null
+         */
+        public T load<T>()
+        {
+            lock (providers)
+            { //TODO: Check for potential removed locks
+                List<RegisteredServiceProvider> registered = providers[typeof(T)];
 
-            if (registered == null) {
-                return ImmutableList.<RegisteredServiceProvider<T>>of();
+                if (registered == null)
+                {
+                    return default(T);
+                }
+
+                // This should not be null!
+                return (T)registered[0].getProviderObject();
             }
+        }
 
-            ret = ImmutableList.<RegisteredServiceProvider<T>>builder();
+        /**
+         * Queries for a provider registration. This may return if no provider
+         * has been registered for a service.
+         *
+         * @param <T> The service interface
+         * @param service The service interface
+         * @return provider registration or null
+         */
+        public RegisteredServiceProvider<T> getRegistration<T>()
+        {
+            lock (providers)
+            {
+                List<RegisteredServiceProvider> registered = providers[typeof(T)];
 
-            foreach (RegisteredServiceProvider<?> provider  in  registered) {
-                ret.add((RegisteredServiceProvider<T>) provider);
+                if (registered == null)
+                {
+                    return null;
+                }
+
+                // This should not be null!
+                return (RegisteredServiceProvider<T>)registered[0];
             }
-
         }
-        return ret.build();
-    }
 
-    /**
-     * Get a list of known services. A service is known if it has registered
-     * providers for it.
-     *
-     * @return a copy of the set of known services
-     */
-    public HashSet<Class<?>> getKnownServices() {
-        (providers) {
-            return ImmutableSet.<Class<?>>copyOf(providers.keySet());
+        /**
+         * Get registrations of providers for a plugin.
+         *
+         * @param plugin The plugin
+         * @return provider registration or null
+         */
+        public List<RegisteredServiceProvider> getRegistrations(Plugin plugin)
+        {
+            List<RegisteredServiceProvider> ret = new List<RegisteredServiceProvider>();
+            lock (providers)
+            {
+                foreach (List<RegisteredServiceProvider> registered in providers.Values)
+                {
+                    foreach (RegisteredServiceProvider provider in registered)
+                    {
+                        if (provider.getPlugin().Equals(plugin))
+                        {
+                            ret.Add(provider);
+                        }
+                    }
+                }
+            }
+            return ret;
         }
-    }
 
-    /**
-     * Returns whether a provider has been registered for a service.
-     *
-     * @param <T> service
-     * @param service service to check
-     * @return true if and only if there are registered providers
-     */
-    public <T> bool isProvidedFor(Class<T> service) {
-        (providers) {
-            return providers.containsKey(service);
+        /**
+         * Get registrations of providers for a service. The returned list is
+         * an unmodifiable copy.
+         *
+         * @param <T> The service interface
+         * @param service The service interface
+         * @return a copy of the list of registrations
+         */
+        public List<RegisteredServiceProvider<T>> getRegistrations<T>()
+        {
+            List<RegisteredServiceProvider<T>> ret;
+            lock (providers)
+            {
+                List<RegisteredServiceProvider> registered = providers[typeof(T)];
+
+                if (registered == null)
+                {
+                    return new List<RegisteredServiceProvider<T>>();
+                }
+
+                ret = new List<RegisteredServiceProvider<T>>();
+
+                foreach (RegisteredServiceProvider provider in registered)
+                {
+                    ret.Add((RegisteredServiceProvider<T>)provider);
+                }
+
+            }
+            return ret;
+        }
+
+        /**
+         * Get a list of known services. A service is known if it has registered
+         * providers for it.
+         *
+         * @return a copy of the set of known services
+         */
+        public HashSet<Type> getKnownServices()
+        {
+            lock (providers)
+            {
+                return new HashSet<Type>(providers.Keys);
+            }
+        }
+
+        /**
+         * Returns whether a provider has been registered for a service.
+         *
+         * @param <T> service
+         * @param service service to check
+         * @return true if and only if there are registered providers
+         */
+        public bool isProvidedFor<T>()
+        {
+            lock (providers)
+            {
+                return providers.ContainsKey(typeof(T));
+            }
         }
     }
 }

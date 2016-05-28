@@ -20,7 +20,7 @@ namespace Mine.NET.command
          *     a ':' one or more times to make the command unique
          * @param commands a list of commands to register
          */
-        void registerAll(String fallbackPrefix, List<Command> commands);
+        void registerAll(String fallbackPrefix, Command[] commands);
 
         /**
          * Registers a command. Returns true on success; false if name is already

@@ -30,7 +30,7 @@ public class TimedRegisteredListener : RegisteredListener {
         totalTime += System.nanoTime() - start;
     }
 
-    private static Class<?> getCommonSuperclass(Class<?> class1, Class<?> class2) {
+    private static Type getCommonSuperclass(Type class1, Type class2) {
         while (!class1.isAssignableFrom(class2)) {
             class1 = class1.getSuperclass();
         }

@@ -6,16 +6,16 @@ namespace Mine.NET.Event.server
      * An event relating to a registered service. This is called in a {@link
      * org.bukkit.plugin.ServicesManager}
      */
-    public abstract class ServiceEventArgs<T> : ServerEventArgs
+    public abstract class ServiceEventArgs : ServerEventArgs
     {
-        private readonly RegisteredServiceProvider<T> provider;
+        private readonly RegisteredServiceProvider provider;
 
-        public ServiceEventArgs(RegisteredServiceProvider<T> provider)
+        public ServiceEventArgs(RegisteredServiceProvider provider)
         {
             this.provider = provider;
         }
 
-        public RegisteredServiceProvider<T> getProvider()
+        public RegisteredServiceProvider getProvider()
         {
             return provider;
         }
