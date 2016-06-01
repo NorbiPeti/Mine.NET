@@ -83,7 +83,7 @@ namespace Mine.NET.plugin
          * @param service The service interface
          * @return list of registrations
          */
-        Collection<RegisteredServiceProvider<T>> getRegistrations<T>();
+        List<RegisteredServiceProvider<T>> getRegistrations<T>();
 
         /**
          * Get a list of known services. A service is known if it has registered
@@ -91,7 +91,7 @@ namespace Mine.NET.plugin
          *
          * @return list of known services
          */
-        Collection<Type> getKnownServices();
+        List<Type> getKnownServices();
 
         /**
          * Returns whether a provider has been registered for a service. Do not

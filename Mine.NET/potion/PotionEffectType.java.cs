@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace Mine.NET.potion{
 
 /**
@@ -168,17 +171,6 @@ public abstract class PotionEffectType {
     public abstract double getDurationModifier();
 
     /**
-     * Returns the unique ID of this type.
-     *
-     * @return Unique ID
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-    public int getId() {
-        return id;
-    }
-
-    /**
      * Returns the name of this effect type.
      *
      * @return The name of this effect type
@@ -199,7 +191,7 @@ public abstract class PotionEffectType {
         if (!(obj is PotionEffectType)) {
             return false;
         }
-        readonly PotionEffectType other = (PotionEffectType) obj;
+        PotionEffectType other = (PotionEffectType) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -241,7 +233,7 @@ public abstract class PotionEffectType {
      */
     public static PotionEffectType getByName(String name) {
         if(name==null) throw new ArgumentNullException("name cannot be null");
-        return byName[name.ToLower(]);
+        return byName[name.ToLower()];
     }
 
     /**
@@ -252,7 +244,7 @@ public abstract class PotionEffectType {
      * @param type PotionType to register
      */
     public static void registerPotionEffectType(PotionEffectType type) {
-        if (byId[type.id] != null || byName.containsKey(type.getName().ToLower())) {
+        if (byId[type.id] != null || byName.ContainsKey(type.getName().ToLower())) {
             throw new ArgumentException("Cannot set already-set type");
         } else if (!acceptingNew) {
             throw new InvalidOperationException(
@@ -277,6 +269,6 @@ public abstract class PotionEffectType {
      * @return Array of types.
      */
     public static PotionEffectType[] values() {
-        return byId.clone();
+        return byId.clone(); //TODO
     }
 }

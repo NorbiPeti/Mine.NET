@@ -602,10 +602,8 @@
     <Compile Include="plugin\ServicesManager.java.cs" />
     <Compile Include="plugin\SimplePluginManager.java.cs" />
     <Compile Include="plugin\SimpleServicesManager.java.cs" />
-    <Compile Include="plugin\TimedRegisteredListener.java.cs" />
     <Compile Include="plugin\UnknownDependencyException.java.cs" />
     <Compile Include="PortalType.java.cs" />
-    <Compile Include="potion\Potion.java.cs" />
     <Compile Include="potion\PotionBrewer.java.cs" />
     <Compile Include="potion\PotionData.java.cs" />
     <Compile Include="potion\PotionEffect.java.cs" />
