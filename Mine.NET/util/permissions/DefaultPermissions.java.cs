@@ -24,7 +24,7 @@ namespace Mine.NET.util.permissions
             {
                 Bukkit.getPluginManager().addPermission(perm);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 result = Bukkit.getPluginManager().getPermission(perm.getName());
             }

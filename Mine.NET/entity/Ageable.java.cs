@@ -24,7 +24,7 @@ namespace Mine.NET.entity
          *
          * @param lock new lock
          */
-        void setAgeLock(bool lock);
+        void setAgeLock(bool lock_);
 
         /**
          * Gets the current agelock.

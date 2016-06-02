@@ -8,6 +8,9 @@ namespace Mine.NET.material
      */
     public class Button : SimpleAttachableMaterialData, Redstone
     {
+        private bool powered = false;
+        private BlockFaces face;
+
         public Button() : base(Materials.STONE_BUTTON)
         {
         }
@@ -34,7 +37,8 @@ namespace Mine.NET.material
          */
         public bool isPowered()
         {
-            return (getData() & 0x8) == 0x8;
+            //return (getData() & 0x8) == 0x8;
+            return powered;
         }
 
         /**
@@ -45,7 +49,8 @@ namespace Mine.NET.material
          */
         public void setPowered(bool bool_)
         {
-            setData((byte)(bool_ ? (getData() | 0x8) : (getData() & ~0x8)));
+            //setData((byte)(bool_ ? (getData() | 0x8) : (getData() & ~0x8)));
+            powered = bool_;
         }
 
         /**
@@ -53,11 +58,11 @@ namespace Mine.NET.material
          *
          * @return BlockFaces attached to
          */
-        public BlockFaces getAttachedFace()
+        public override BlockFaces getAttachedFace()
         {
-            byte data = (byte)(getData() & 0x7);
+            //byte data = (byte)(getData() & 0x7);
 
-            switch (data)
+            /*switch (data)
             {
                 case 0x0:
                     return BlockFaces.UP;
@@ -76,19 +81,19 @@ namespace Mine.NET.material
 
                 case 0x5:
                     return BlockFaces.DOWN;
-            }
+            }*/
 
-            return null;
+            return face;
         }
 
         /**
          * Sets the direction this button is pointing toward
          */
-        public void setFacingDirection(BlockFaces face)
+        public override void setFacingDirection(BlockFaces face)
         {
-            byte data = (byte)(getData() & 0x8);
+            //byte data = (byte)(getData() & 0x8);
 
-            if (face == BlockFaces.DOWN)
+            /*if (face == BlockFaces.DOWN)
                 data |= 0x0;
             else if (face == BlockFaces.EAST)
                 data |= 0x1;
@@ -99,9 +104,9 @@ namespace Mine.NET.material
             else if (face == BlockFaces.NORTH)
                 data |= 0x4;
             else if (face == BlockFaces.UP)
-                data |= 0x5;
+                data |= 0x5;*/
 
-            setData(data);
+            this.face = face;
         }
 
         public override string ToString()

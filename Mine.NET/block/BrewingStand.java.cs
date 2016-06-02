@@ -5,7 +5,7 @@ namespace Mine.NET.block
     /**
      * Represents a brewing stand.
      */
-    public interface BrewingStand : BlockState, InventoryHolder
+    public interface BrewingStand : BlockState, InventoryHolder<BrewerInventory>
     {
 
         /**
@@ -35,7 +35,5 @@ namespace Mine.NET.block
          * @param level fuel level
          */
         void setFuelLevel(int level);
-
-        BrewerInventory getInventory();
     }
 }

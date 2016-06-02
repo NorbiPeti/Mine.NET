@@ -386,7 +386,7 @@ namespace Mine.NET.inventory
         Location getLocation();
     }
 
-    public interface Inventory : Inventory<InventoryHolder>
+    public interface Inventory : Inventory<InventoryHolder> //TODO
     {
     }
 }

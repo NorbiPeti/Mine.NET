@@ -34,15 +34,5 @@ namespace Mine.NET.Event.block
         {
             this.exp = exp;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }

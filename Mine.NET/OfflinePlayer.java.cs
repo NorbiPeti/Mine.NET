@@ -1,8 +1,11 @@
+using Mine.NET.configuration.serialization;
+using Mine.NET.entity;
+using Mine.NET.permissions;
 using System;
 
 namespace Mine.NET
 {
-    public interface OfflinePlayer : ServerOperator, AnimalTamer, ConfigurationSerializable
+    public interface OfflinePlayer : ServerOperator, AnimalTamer, ConfigurationSerializable, INamedEntity
     {
 
         /**
@@ -11,23 +14,6 @@ namespace Mine.NET
          * @return true if they are online
          */
         bool isOnline();
-
-        /**
-         * Returns the name of this player
-         * <p>
-         * Names are no longer unique past a single game session. For persistent storage
-         * it is recommended that you use {@link #getUniqueId()} instead.
-         *
-         * @return Player name or null if we have not seen a name for this player yet
-         */
-        String getName(); //TODO
-
-        /**
-         * Returns the Guid of this player
-         *
-         * @return Player Guid
-         */
-        Guid getUniqueId();
 
         /**
          * Checks if this player is banned or not

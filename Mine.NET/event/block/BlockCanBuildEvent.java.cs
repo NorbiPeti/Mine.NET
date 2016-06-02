@@ -55,15 +55,5 @@ namespace Mine.NET.Event.block
         {
             return material;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }

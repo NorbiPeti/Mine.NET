@@ -23,13 +23,5 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel) {
             this.cancelled = cancel;
         }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-            
-        public static HandlerList getHandlerList() {
-            return handlers;
-        }
     }
 }

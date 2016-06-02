@@ -7,6 +7,8 @@ namespace Mine.NET.material
      */
     public class Bed : MaterialData, Directional
     {
+        private bool ishead = false;
+        private BlockFaces face;
 
         /**
          * Default constructor for a bed.
@@ -37,7 +39,8 @@ namespace Mine.NET.material
          */
         public bool isHeadOfBed()
         {
-            return (getData() & 0x8) == 0x8;
+            //return (getData() & 0x8) == 0x8;
+            return ishead;
         }
 
         /**
@@ -47,7 +50,8 @@ namespace Mine.NET.material
          */
         public void setHeadOfBed(bool isHeadOfBed)
         {
-            setData((byte)(isHeadOfBed ? (getData() | 0x8) : (getData() & ~0x8)));
+            //setData((byte)(isHeadOfBed ? (getData() | 0x8) : (getData() & ~0x8)));
+            ishead = isHeadOfBed;
         }
 
         /**
@@ -56,9 +60,7 @@ namespace Mine.NET.material
          */
         public void setFacingDirection(BlockFaces face)
         {
-            byte data;
-
-            if (face == BlockFaces.SOUTH)
+            /*if (face == BlockFaces.SOUTH)
                 data = 0x0;
             else if (face == BlockFaces.WEST)
                 data = 0x1;
@@ -70,9 +72,9 @@ namespace Mine.NET.material
             if (isHeadOfBed())
             {
                 data |= 0x8;
-            }
+            }*/
 
-            setData(data);
+            this.face = face;
         }
 
         /**
@@ -82,23 +84,7 @@ namespace Mine.NET.material
          */
         public BlockFaces getFacing()
         {
-            byte data = (byte)(getData() & 0x7);
-
-            switch (data)
-            {
-                case 0x0:
-                    return BlockFaces.SOUTH;
-
-                case 0x1:
-                    return BlockFaces.WEST;
-
-                case 0x2:
-                    return BlockFaces.NORTH;
-
-                case 0x3:
-                default:
-                    return BlockFaces.EAST;
-            }
+            return face;
         }
 
         public override string ToString()

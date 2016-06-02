@@ -1,3 +1,4 @@
+using Mine.NET.configuration.serialization;
 using System;
 using System.Collections.Generic;
 
@@ -63,17 +64,17 @@ namespace Mine.NET.attribute
             return operation;
         }
         
-    public override Dictionary<String, Object> serialize() {
+    public Dictionary<String, Object> serialize() {
             Dictionary<String, Object> data = new Dictionary<string, object>();
             data.Add("uuid", uuid);
             data.Add("name", name);
-            data.Add("operation", (int)operation));
+            data.Add("operation", (int)operation);
             data.Add("amount", amount);
             return data;
         }
 
         public static AttributeModifier deserialize(Dictionary<String, Object> args) {
-            return new AttributeModifier((Guid)args["uuid"], (String)args["name"], NumberConversions.toDouble(args["amount"]), Enum.GetValues(typeof(Operation))[Convert.ToInt32(args["operation"])]);
+            return new AttributeModifier((Guid)args["uuid"], (String)args["name"], Convert.ToDouble(args["amount"]), (Operation)(Enum.GetValues(typeof(Operation)).GetValue(Convert.ToInt32(args["operation"]))));
         }
 
         /**
@@ -92,7 +93,7 @@ namespace Mine.NET.attribute
             /**
              * Multiply amount by this value, after adding 1 to it.
              */
-            MULTIPLY_SCALAR_1;
+            MULTIPLY_SCALAR_1
         }
     }
 }

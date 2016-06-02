@@ -12,7 +12,6 @@ namespace Mine.NET.Event.block
      */
     public class BlockDispenseEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancelled = false;
         private ItemStack item;
         private Vector velocity;
@@ -76,16 +75,6 @@ namespace Mine.NET.Event.block
         public void setCancelled(bool cancel)
         {
             cancelled = cancel;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

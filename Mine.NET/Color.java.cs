@@ -1,3 +1,4 @@
+using Mine.NET.configuration.serialization;
 using System;
 using System.Collections.Generic;
 
@@ -8,7 +9,7 @@ namespace Mine.NET
     * return a new color. The color names listed as fields are HTML4 standards,
     * but subject to change.
 */
-    [SerializableAs(]
+    [SerializableAs("Color")]
     public class Color : ConfigurationSerializable
     {
         private static readonly int BIT_MASK = 0xff;

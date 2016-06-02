@@ -1,3 +1,5 @@
+using Mine.NET.block;
+
 namespace Mine.NET.command
 {
     public interface BlockCommandSender : CommandSender

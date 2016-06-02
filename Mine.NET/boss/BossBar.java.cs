@@ -1,3 +1,4 @@
+using Mine.NET.entity;
 using System;
 using System.Collections.Generic;
 

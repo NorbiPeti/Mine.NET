@@ -7,6 +7,7 @@ namespace Mine.NET.material
      * Represents a dispenser.
      */
     public class Dispenser : FurnaceAndDispenser {
+        private BlockFaces face;
 
         public Dispenser() : base(Materials.DISPENSER) {
         }
@@ -16,28 +17,11 @@ namespace Mine.NET.material
             setFacingDirection(direction);
         }
 
-        /**
-         * @param type the raw type id
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Dispenser(int type) : base(type) {
-        }
-
         public Dispenser(Materials type) : base(type) {
         }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public Dispenser(Materials type, byte data) : base(type, data) {
-    }
-
     public override void setFacingDirection(BlockFaces face) {
-            byte data;
+            /*byte data;
 
             switch (face) {
                 case BlockFaces.DOWN:
@@ -66,11 +50,12 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            this.face = face;
         }
 
         public override BlockFaces getFacing() {
-            int data = getData() & 0x7;
+            /*int data = getData() & 0x7;
 
             switch (data) {
                 case 0x0:
@@ -91,7 +76,8 @@ namespace Mine.NET.material
                 case 0x5:
                 default:
                     return BlockFaces.EAST;
-            }
+            }*/
+            return face;
         }
 
         public override Dispenser clone() {

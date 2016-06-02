@@ -1,8 +1,9 @@
+using Mine.NET.entity;
 using System;
 
 namespace Mine.NET.command
 {
-    public interface CommandSender : Permissible
+    public interface CommandSender : Permissible, INamedEntity
     {
 
         /**
@@ -25,12 +26,5 @@ namespace Mine.NET.command
          * @return Server instance
          */
         Server getServer();
-
-        /**
-         * Gets the name of this command sender
-         *
-         * @return Name of the sender
-         */
-        String getName();
     }
 }

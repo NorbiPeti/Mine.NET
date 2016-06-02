@@ -6,21 +6,14 @@ namespace Mine.NET.material
     /**
      * Represents a furnace or a dispenser.
      */
-    public class DirectionalContainer : MaterialData<byte>, Directional {
+    public class DirectionalContainer : MaterialData, Directional {
+        private BlockFaces face;
+
         public DirectionalContainer(Materials type) : base(type) {
         }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public DirectionalContainer(Materials type, byte data) : base(type, data) {
-    }
-
     public virtual void setFacingDirection(BlockFaces face) {
-            byte data;
+            /*byte data;
 
             switch (face) {
                 case BlockFaces.NORTH:
@@ -41,11 +34,12 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            this.face = face;
         }
 
         public virtual BlockFaces getFacing() {
-            byte data = getData();
+            /*byte data = getData();
 
             switch (data) {
                 case 0x2:
@@ -60,7 +54,8 @@ namespace Mine.NET.material
                 case 0x5:
                 default:
                     return BlockFaces.EAST;
-            }
+            }*/
+            return face;
         }
 
         public override string ToString() {

@@ -9,10 +9,15 @@ namespace Mine.NET.material
      * @see Materials#REDSTONE_COMPARATOR_OFF
      * @see Materials#REDSTONE_COMPARATOR_ON
      */
-    public class Comparator : MaterialData<byte>, Directional, Redstone {
+    public class Comparator : MaterialData, Directional, Redstone {
         protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.NORTH;
         protected static readonly bool DEFAULT_SUBTRACTION_MODE = false;
         protected static readonly bool DEFAULT_STATE = false;
+
+        private bool subtraction = false;
+        private BlockFaces face;
+        private bool powered = false;
+        private bool isbeingpowered;
 
         /**
          * Constructs a comparator switched off, with the default mode (normal) and facing the default direction (north).
@@ -56,23 +61,13 @@ namespace Mine.NET.material
          * @see BlockFaces
          */
         public Comparator(BlockFaces facingDirection, bool isSubtraction, bool state) :
-            base(state ? Materials.REDSTONE_COMPARATOR_ON : Materials.REDSTONE_COMPARATOR_OFF, 0)
+            base(state ? Materials.REDSTONE_COMPARATOR_ON : Materials.REDSTONE_COMPARATOR_OFF)
         {
             setFacingDirection(facingDirection);
             setSubtractionMode(isSubtraction);
         }
 
-        public Comparator(Materials type) :            base(type, 0)
-        {
-        }
-
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Comparator(Materials type, byte data) :            base(type, data)
+        public Comparator(Materials type) :            base(type)
         {
         }
 
@@ -82,7 +77,8 @@ namespace Mine.NET.material
          * @param isSubtraction True if the comparator is in subtraction mode, false for normal comparator operation
          */
         public void setSubtractionMode(bool isSubtraction) {
-            setData((byte)(getData() & 0xB | (isSubtraction ? 0x4 : 0x0)));
+            //setData((byte)(getData() & 0xB | (isSubtraction ? 0x4 : 0x0)));
+            subtraction = isSubtraction;
         }
 
         /**
@@ -91,7 +87,8 @@ namespace Mine.NET.material
          * @return True if the comparator is in subtraction mode, false if normal comparator operation
          */
         public bool isSubtractionMode() {
-            return (getData() & 0x4) != 0;
+            //return (getData() & 0x4) != 0;
+            return subtraction;
         }
 
         /**
@@ -101,8 +98,8 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public override void setFacingDirection(BlockFaces face) {
-            int data = getData() & 0xC;
+        public void setFacingDirection(BlockFaces face) {
+            /*int data = getData() & 0xC;
 
             switch (face) {
                 case BlockFaces.EAST:
@@ -123,7 +120,9 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData((byte)data);
+            setData((byte)data);*/
+
+            this.face = face;
         }
 
         /**
@@ -133,8 +132,8 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public override BlockFaces getFacing() {
-            byte data = (byte)(getData() & 0x3);
+        public BlockFaces getFacing() {
+            /*byte data = (byte)(getData() & 0x3);
 
             switch (data) {
                 case 0x0:
@@ -149,7 +148,9 @@ namespace Mine.NET.material
 
                 case 0x3:
                     return BlockFaces.WEST;
-            }
+            }*/
+
+            return face;
         }
 
         public override string ToString() {
@@ -165,8 +166,9 @@ namespace Mine.NET.material
          *
          * @return true if the comparator is powered
          */
-        public override bool isPowered() {
-            return getItemType() == Materials.REDSTONE_COMPARATOR_ON;
+        public bool isPowered() {
+            //return getItemType() == Materials.REDSTONE_COMPARATOR_ON;
+            return powered;
         }
 
         /**
@@ -175,7 +177,8 @@ namespace Mine.NET.material
          * @return true if the comparator is being powered
          */
         public bool isBeingPowered() {
-            return (getData() & 0x8) != 0;
+            //return (getData() & 0x8) != 0;
+            return isbeingpowered;
         }
     }
 }

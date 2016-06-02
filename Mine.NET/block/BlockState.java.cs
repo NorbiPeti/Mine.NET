@@ -1,3 +1,5 @@
+using Mine.NET.material;
+using Mine.NET.metadata;
 using System;
 
 namespace Mine.NET.block

@@ -10,7 +10,6 @@ namespace Mine.NET.Event.block
      * If a Block Damage event is cancelled, the block will not be damaged.
      */
     public class BlockDamageEventArgs : BlockEventArgs, Cancellable {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly Player player;
         private bool instaBreak;
         private bool cancel;
@@ -68,14 +67,6 @@ namespace Mine.NET.Event.block
 
         public void setCancelled(bool cancel) {
             this.cancel = cancel;
-        }
-
-        public override HandlerList getHandlers() {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList() {
-            return handlers;
         }
     }
 }

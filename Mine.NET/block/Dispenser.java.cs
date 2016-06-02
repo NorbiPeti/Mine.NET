@@ -1,3 +1,6 @@
+using Mine.NET.inventory;
+using Mine.NET.projectiles;
+
 namespace Mine.NET.block
 {
     /**

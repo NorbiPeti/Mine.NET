@@ -1,3 +1,6 @@
+using Mine.NET.entity;
+using Mine.NET.entity.minecart;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 
@@ -406,7 +409,7 @@ namespace Mine.NET.command
             {
                 CommandMinecart commandMinecart = (CommandMinecart)source;
 
-                if (commandMinecart.getWorld().getGameRuleValue("commandBlockOutput").equalsIgnoreCase("false"))
+                if (commandMinecart.getWorld().getGameRuleValue("commandBlockOutput").Equals("false", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Bukkit.getConsoleSender().sendMessage(result);
                     return;

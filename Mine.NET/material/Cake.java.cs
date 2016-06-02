@@ -4,6 +4,8 @@ namespace Mine.NET.material
 {
     public class Cake : MaterialData
     {
+        private byte sliceseaten = 0;
+
         public Cake(): base(Materials.CAKE_BLOCK)
         {
         }
@@ -17,10 +19,10 @@ namespace Mine.NET.material
          * @param data the raw data value
          * [Obsolete] Magic value
          */
-        [Obsolete]
-        public Cake(Materials type, byte data):            base(type, data)
+        public Cake(Materials type, byte sliceseaten):            base(type)
         {
-        }   
+            this.sliceseaten = sliceseaten;
+        }
 
         /**
          * Gets the number of slices eaten from this cake
@@ -29,7 +31,7 @@ namespace Mine.NET.material
          */
         public int getSlicesEaten()
         {
-            return getData();
+            return sliceseaten;
         }
 
         /**
@@ -39,7 +41,7 @@ namespace Mine.NET.material
          */
         public int getSlicesRemaining()
         {
-            return 6 - getData();
+            return 6 - sliceseaten;
         }
 
         /**
@@ -51,7 +53,7 @@ namespace Mine.NET.material
         {
             if (n < 6)
             {
-                setData((byte)n);
+                sliceseaten = (byte)n;
             } // TODO: else destroy the block? Probably not possible though
         }
 
@@ -66,7 +68,7 @@ namespace Mine.NET.material
             {
                 n = 6;
             }
-            setData((byte)(6 - n));
+            sliceseaten = (byte)(6 - n);
         }
 
         public override string ToString()

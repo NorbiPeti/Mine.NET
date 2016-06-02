@@ -11,11 +11,15 @@ namespace Mine.NET.material
      * @see Materials#DIODE_BLOCK_OFF
      * @see Materials#DIODE_BLOCK_ON
      */ //Find: "(namespace \S+);([^¤]+)([^¤]$)" - Replace: "$1{$2}$3"
-    public class Diode : MaterialData<byte>, Directional, Redstone {
+    public class Diode : MaterialData, Directional, Redstone
+    {
 
         protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.NORTH;
         protected static readonly int DEFAULT_DELAY = 1;
         protected static readonly bool DEFAULT_STATE = false;
+
+        private int delay = 0;
+        private BlockFaces face;
 
         /**
          * Constructs a diode switched on, with a delay of 1 and facing the default
@@ -24,7 +28,8 @@ namespace Mine.NET.material
          * By default this constructor creates a diode that is switched on for
          * backwards compatibility with past implementations.
          */
-        public Diode() : this(DEFAULT_DIRECTION, DEFAULT_DELAY, true) {
+        public Diode() : this(DEFAULT_DIRECTION, DEFAULT_DELAY, true)
+        {
         }
 
         /**
@@ -35,7 +40,8 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public Diode(BlockFaces facingDirection) : this(facingDirection, DEFAULT_DELAY, DEFAULT_STATE) {
+        public Diode(BlockFaces facingDirection) : this(facingDirection, DEFAULT_DELAY, DEFAULT_STATE)
+        {
         }
 
         /**
@@ -48,7 +54,8 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public Diode(BlockFaces facingDirection, int delay) : this(facingDirection, delay, DEFAULT_STATE) {
+        public Diode(BlockFaces facingDirection, int delay) : this(facingDirection, delay, DEFAULT_STATE)
+        {
         }
 
         /**
@@ -62,21 +69,14 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public Diode(BlockFaces facingDirection, int delay, bool state) : base(state ? Materials.DIODE_BLOCK_ON : Materials.DIODE_BLOCK_OFF) {
+        public Diode(BlockFaces facingDirection, int delay, bool state) : base(state ? Materials.DIODE_BLOCK_ON : Materials.DIODE_BLOCK_OFF)
+        {
             setFacingDirection(facingDirection);
             setDelay(delay);
         }
 
-        public Diode(Materials type) : base(type) {
-        }
-        
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Diode(Materials type, byte data) : base(type, data) {
+        public Diode(Materials type) : base(type)
+        {
         }
 
         /**
@@ -84,16 +84,20 @@ namespace Mine.NET.material
          *
          * @param delay The new delay (1-4)
          */
-        public void setDelay(int delay) {
-            if (delay > 4) {
+        public void setDelay(int delay)
+        {
+            if (delay > 4)
+            {
                 delay = 4;
             }
-            if (delay < 1) {
+            if (delay < 1)
+            {
                 delay = 1;
             }
-            byte newData = (byte)(getData() & 0x3);
+            /*byte newData = (byte)(getData() & 0x3);
 
-            setData((byte)(newData | ((delay - 1) << 2)));
+            setData((byte)(newData | ((delay - 1) << 2)));*/
+            this.delay = delay;
         }
 
         /**
@@ -101,8 +105,10 @@ namespace Mine.NET.material
          *
          * @return The delay (1-4)
          */
-        public int getDelay() {
-            return (getData() >> 2) + 1;
+        public int getDelay()
+        {
+            //return (getData() >> 2) + 1;
+            return delay;
         }
 
         /**
@@ -112,8 +118,9 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public void setFacingDirection(BlockFaces face) {
-            int delay = getDelay();
+        public void setFacingDirection(BlockFaces face)
+        {
+            /*int delay = getDelay();
             byte data;
 
             switch (face) {
@@ -133,7 +140,8 @@ namespace Mine.NET.material
             }
 
             setData(data);
-            setDelay(delay);
+            setDelay(delay);*/
+            this.face = face;
         }
 
         /**
@@ -143,8 +151,9 @@ namespace Mine.NET.material
          *
          * @see BlockFaces
          */
-        public BlockFaces getFacing() {
-            byte data = (byte)(getData() & 0x3);
+        public BlockFaces getFacing()
+        {
+            /*byte data = (byte)(getData() & 0x3);
 
             switch (data) {
                 case 0x0:
@@ -159,14 +168,18 @@ namespace Mine.NET.material
 
                 case 0x3:
                     return BlockFaces.WEST;
-            }
+            }*/
+
+            return face;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return base.ToString() + " facing " + getFacing() + " with " + getDelay() + " ticks delay";
         }
 
-        public override Diode clone() {
+        public override Diode clone()
+        {
             return (Diode)base.clone();
         }
 
@@ -175,7 +188,8 @@ namespace Mine.NET.material
          *
          * @return true if the diode is powered
          */
-        public bool isPowered() {
+        public bool isPowered()
+        {
             return getItemType() == Materials.DIODE_BLOCK_ON;
         }
     }

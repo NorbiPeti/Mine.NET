@@ -11,9 +11,11 @@ namespace Mine.NET.material
      * @see Materials#BEETROOT_BLOCK
      * @see Materials#NETHER_WARTS
      */
-    public class Crops : MaterialData<byte> {
+    public class Crops : MaterialData {
         protected static readonly Materials DEFAULT_TYPE = Materials.CROPS;
         protected static readonly CropState DEFAULT_STATE = CropState.SEEDED;
+
+        private CropState state;
 
         /**
          * Constructs a wheat crop block in the seeded state.
@@ -36,7 +38,7 @@ namespace Mine.NET.material
          * @param type The type of crops
          * @param state The growth state of the crops
          */ //Find: "\) \{\r\n\s+base\(([^)]+)\);" - Replace: ") : base($1) {"
-        public Crops(Materials type, CropState state) : base(type, 0) {
+        public Crops(Materials type, CropState state) : base(type) {
             setState(state);
         }
 
@@ -46,15 +48,6 @@ namespace Mine.NET.material
          * @param type The type of crops
          */
         public Crops(Materials type) : this(type, DEFAULT_STATE) {
-        }
-
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Crops(Materials type, byte data) : base(type, data) {
         }
 
         /**
@@ -71,12 +64,14 @@ namespace Mine.NET.material
                 case Materials.CARROT:
                 case Materials.POTATO:
                     // Mask the data just in case top bit set
-                    return (CropState)(getData() & 0x7);
+                    //return (CropState)(getData() & 0x7);
+                    return state;
                 case Materials.BEETROOT_BLOCK:
                 case Materials.NETHER_WARTS:
                     // Mask the data just in case top bits are set
                     // Will return SEEDED, SMALL, TALL, RIPE for the three growth data values
-                    return (CropState)(((getData() & 0x3) * 7 + 2) / 3);
+                    //return (CropState)(((getData() & 0x3) * 7 + 2) / 3);
+                    return state;
                 default:
                     throw new ArgumentException("Block type is not a crop");
             }
@@ -102,12 +97,14 @@ namespace Mine.NET.material
                 case Materials.CARROT:
                 case Materials.POTATO:
                     // Preserve the top bit in case it is set
-                    setData((byte)((getData() & 0x8) | (byte)state)));
+                    //setData((byte)((getData() & 0x8) | (byte)state)));
+                    this.state = state;
                     break;
                 case Materials.NETHER_WARTS:
                 case Materials.BEETROOT_BLOCK:
                     // Preserve the top bits in case they are set
-                    setData((byte)((getData() & 0xC) | ((byte)state >> 1)));
+                    //setData((byte)((getData() & 0xC) | ((byte)state >> 1)));
+                    this.state = state;
                     break;
                 default:
                     throw new ArgumentException("Block type is not a crop");

@@ -10,6 +10,8 @@ namespace Mine.NET.material
         private static readonly int CAULDRON_FULL = 3;
         private static readonly int CAULDRON_EMPTY = 0;
 
+        private byte waterlevel = 0;
+
         public Cauldron() :
             base(Materials.CAULDRON)
         {
@@ -20,9 +22,9 @@ namespace Mine.NET.material
          * @param data the raw data value
          * [Obsolete] Magic value
          */
-        [Obsolete]
-        public Cauldron(byte data) : base(Materials.CAULDRON, data)
+        public Cauldron(byte level) : base(Materials.CAULDRON)
         {
+            waterlevel = level;
         }
 
         /**
@@ -32,7 +34,7 @@ namespace Mine.NET.material
          */
         public bool isFull()
         {
-            return getData() >= CAULDRON_FULL;
+            return waterlevel >= CAULDRON_FULL;
         }
 
         /**
@@ -42,12 +44,12 @@ namespace Mine.NET.material
          */
         public bool isEmpty()
         {
-            return getData() <= CAULDRON_EMPTY;
+            return waterlevel <= CAULDRON_EMPTY;
         }
 
         public override string ToString()
         {
-            return (isEmpty() ? "EMPTY" : (isFull() ? "FULL" : getData() + "/3 FULL")) + " CAULDRON";
+            return (isEmpty() ? "EMPTY" : (isFull() ? "FULL" : waterlevel + "/3 FULL")) + " CAULDRON";
         }
 
         public override Cauldron clone()

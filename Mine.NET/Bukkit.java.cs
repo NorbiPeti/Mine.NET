@@ -1,6 +1,20 @@
+using Mine.NET.boss;
+using Mine.NET.command;
+using Mine.NET.entity;
+using Mine.NET.Event.inventory;
+using Mine.NET.generator;
+using Mine.NET.help;
+using Mine.NET.inventory;
+using Mine.NET.map;
+using Mine.NET.plugin;
+using Mine.NET.plugin.messaging;
+using Mine.NET.scheduler;
+using Mine.NET.scoreboard;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
 
 namespace Mine.NET
@@ -42,7 +56,7 @@ namespace Mine.NET
             }
 
             Bukkit.server = server;
-            server.getLogger().info("This server is running " + getName() + " version " + getVersion() + " (Implementing API version " + getBukkitVersion() + ")");
+            server.getLogger().Info("This server is running " + getName() + " version " + getVersion() + " (Implementing API version " + getBukkitVersion() + ")");
         }
 
         /**
@@ -76,22 +90,6 @@ namespace Mine.NET
         }
 
         /**
-         * Gets an array copy of all currently logged in players.
-         * <p>
-         * This method exists for legacy reasons to provide backwards
-         * compatibility. It will not exist at runtime and should not be used
-         * under any circumstances.
-         *
-         * [Obsolete] superseded by {@link #getOnlinePlayers()}
-         * @return an array of Players that are currently online
-         */
-        [Obsolete]
-        public static Player[] _INVALID_getOnlinePlayers()
-        {
-            return server._INVALID_getOnlinePlayers();
-        }
-
-        /**
          * Gets a view of all currently logged in players. This {@linkplain
          * Collections#unmodifiableCollection(Collection) view} is a reused
          * object, making some operations like {@link Collection#size()}
@@ -118,7 +116,7 @@ namespace Mine.NET
          *
          * @return a view of currently online players.
          */
-        public static Collection<Player> getOnlinePlayers()
+        public static List<Player> getOnlinePlayers()
         {
             return server.getOnlinePlayers();
         }
@@ -297,9 +295,9 @@ namespace Mine.NET
          *
          * @return the update folder
          */
-        public static FileInfo getUpdateFolderFile()
+        public static DirectoryInfo getUpdateFolderFile()
         {
-            return server.getUpdateFolderFile();
+            return server.getUpdateFolderInfo();
         }
 
         /**
@@ -414,7 +412,7 @@ namespace Mine.NET
          * @param id Guid of the player to retrieve
          * @return a player object if one was found, null otherwise
          */
-        public static Player getPlayer(GUID id)
+        public static Player getPlayer(Guid id)
         {
             return server.getPlayer(id);
         }
@@ -602,10 +600,10 @@ namespace Mine.NET
          *
          * @param config the server config to populate
          */
-        public static void configureDbConfig(ServerConfig config)
+        /*public static void configureDbConfig(ServerConfig config)
         {
             server.configureDbConfig(config);
-        }
+        }*/ //TODO
 
         /**
          * Adds a recipe to the crafting manager.
@@ -845,7 +843,7 @@ namespace Mine.NET
          * @param type the type of list to fetch, cannot be null
          * @return a ban list of the specified type
          */
-        public static BanList getBanList(BanList.Type type)
+        public static BanList getBanList(BanListType type)
         {
             return server.getBanList(type);
         }
@@ -896,7 +894,7 @@ namespace Mine.NET
          *
          * @return folder that contains all worlds
          */
-        public static FileInfo getWorldContainer()
+        public static DirectoryInfo getWorldContainer()
         {
             return server.getWorldContainer();
         }
@@ -1150,7 +1148,7 @@ namespace Mine.NET
          * @return a cached server-icon that can be used for a {@link
          *     ServerListPingEvent#setServerIcon(CachedServerIcon)}
          */
-        public static CachedServerIcon loadServerIcon(BufferedImage image)
+        public static CachedServerIcon loadServerIcon(Image image)
         {
             return server.loadServerIcon(image);
         }

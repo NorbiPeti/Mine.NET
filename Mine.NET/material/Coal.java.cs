@@ -5,6 +5,8 @@ namespace Mine.NET.material
      */
     public class Coal : MaterialData
     {
+        private CoalType type;
+
         public Coal() : base(Materials.COAL)
         {
         }
@@ -25,7 +27,7 @@ namespace Mine.NET.material
          */
         public CoalType getType()
         {
-            return (CoalType)getData();
+            return type;
         }
 
         /**
@@ -35,7 +37,7 @@ namespace Mine.NET.material
          */
         public void setType(CoalType type)
         {
-            setData((byte)type);
+            this.type = type;
         }
 
         public override string ToString()

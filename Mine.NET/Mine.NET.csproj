@@ -180,6 +180,7 @@
     <Compile Include="entity\Hanging.java.cs" />
     <Compile Include="entity\Horse.java.cs" />
     <Compile Include="entity\HumanEntity.java.cs" />
+    <Compile Include="entity\INamedEntity.cs" />
     <Compile Include="entity\IronGolem.java.cs" />
     <Compile Include="entity\Item.java.cs" />
     <Compile Include="entity\ItemFrame.java.cs" />

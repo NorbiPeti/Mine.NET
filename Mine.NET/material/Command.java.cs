@@ -5,23 +5,15 @@ namespace Mine.NET.material
     /**
      * Represents a command block
      */
-    public class Command : MaterialData<byte>, Redstone
+    public class Command : MaterialData, Redstone
     {
-        public Command() : base(Materials.COMMAND, 0)
+        private bool powered = false;
+
+        public Command() : base(Materials.COMMAND)
         {
         }
 
-        public Command(Materials type) : base(type, 0)
-        {
-        }
-
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Command(Materials type, byte data) : base(type, data)
+        public Command(Materials type) : base(type)
         {
         }
 
@@ -33,7 +25,8 @@ namespace Mine.NET.material
          */
         public bool isPowered()
         {
-            return (getData() & 1) != 0;
+            //return (getData() & 1) != 0;
+            return powered;
         }
 
         /**
@@ -44,7 +37,8 @@ namespace Mine.NET.material
          */
         public void setPowered(bool bool_)
         {
-            setData((byte)(bool_ ? (getData() | 1) : (getData() & -2)));
+            //setData((byte)(bool_ ? (getData() | 1) : (getData() & -2)));
+            powered = bool_;
         }
 
         public override string ToString()

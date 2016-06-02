@@ -47,15 +47,5 @@ namespace Mine.NET.Event.block
         {
             this.cancelled = cancel;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }

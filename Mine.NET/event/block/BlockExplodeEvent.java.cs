@@ -59,15 +59,5 @@ namespace Mine.NET.Event.block
         {
             this.yield = yield;
         }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
-        }
     }
 }
