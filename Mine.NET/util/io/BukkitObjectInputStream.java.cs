@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+
 namespace Mine.NET.util.io{
 
 /**
@@ -29,12 +32,11 @@ public class BukkitObjectInputStream : ObjectInputStream {
      * @throws IOException if an I/O error occurs while reading stream header
      * @see ObjectInputStream#ObjectInputStream(InputStream)
      */
-    public BukkitObjectInputStream(InputStream in) : base(in) {
+    public BukkitObjectInputStream(Stream in_) : base(in_) {
         base.enableResolveObject(true);
     }
-
-    @Override
-    protected Object resolveObject(Object obj) {
+        
+    protected override Object resolveObject(Object obj) {
         if (obj is Wrapper) {
             try {
                 (obj = ConfigurationSerialization.deserializeObject(((Wrapper<?>) obj).map)).getClass(); // NPE

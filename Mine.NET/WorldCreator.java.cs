@@ -1,4 +1,8 @@
 using Mine.NET;
+using Mine.NET.command;
+using Mine.NET.generator;
+using Mine.NET.plugin;
+using Mine.NET.util;
 using System;
 
 namespace Mine.NET
@@ -6,7 +10,8 @@ namespace Mine.NET
     /**
     * Represents various types of options that may be used to create a world.
 */
-    public class WorldCreator {
+    public class WorldCreator
+    {
         private readonly String name;
         private long seed;
         private WorldEnvironment environment = WorldEnvironment.NORMAL;
@@ -20,13 +25,15 @@ namespace Mine.NET
          *
          * @param name Name of the world that will be created
          */
-        public WorldCreator(String name) {
-            if (name == null) {
+        public WorldCreator(String name)
+        {
+            if (name == null)
+            {
                 throw new ArgumentException("World name cannot be null");
             }
 
             this.name = name;
-            this.seed = new Random().NextLong(long.MinValue, long.MaxValue);
+            this.seed = new JavaRand().NextLong();
         }
 
         /**
@@ -35,8 +42,10 @@ namespace Mine.NET
          * @param world World to copy options from
          * @return This object, for chaining
          */
-        public WorldCreator copy(World world) {
-            if (world == null) {
+        public WorldCreator copy(World world)
+        {
+            if (world == null)
+            {
                 throw new ArgumentException("World cannot be null");
             }
 
@@ -53,8 +62,10 @@ namespace Mine.NET
          * @param creator World creator to copy options from
          * @return This object, for chaining
          */
-        public WorldCreator copy(WorldCreator creator) {
-            if (creator == null) {
+        public WorldCreator copy(WorldCreator creator)
+        {
+            if (creator == null)
+            {
                 throw new ArgumentException("Creator cannot be null");
             }
 
@@ -116,7 +127,8 @@ namespace Mine.NET
          * @param generator Name of the generator to use, in "plugin:id" notation
          * @return This object, for chaining
          */
-        public WorldCreator SetGenerator(String generator) {
+        public WorldCreator SetGenerator(String generator)
+        {
             this.Generator = getGeneratorForName(name, generator, Bukkit.getConsoleSender());
 
             return this;
@@ -137,7 +149,8 @@ namespace Mine.NET
          *     messages
          * @return This object, for chaining
          */
-        public WorldCreator SetGenerator(String generator, CommandSender output) {
+        public WorldCreator SetGenerator(String generator, CommandSender output)
+        {
             this.generator = getGeneratorForName(name, generator, output);
 
             return this;
@@ -168,7 +181,8 @@ namespace Mine.NET
          *
          * @return Newly created or loaded world
          */
-        public World createWorld() {
+        public World createWorld()
+        {
             return Bukkit.createWorld(this);
         }
 
@@ -178,7 +192,8 @@ namespace Mine.NET
          * @param name Name of the world to load or create
          * @return Resulting WorldCreator
          */
-        public static WorldCreator FromName(String name) {
+        public static WorldCreator FromName(String name)
+        {
             return new WorldCreator(name);
         }
 
@@ -198,27 +213,36 @@ namespace Mine.NET
          * @param output Where to output if errors are present
          * @return Resulting generator, or null
          */
-        public static ChunkGenerator getGeneratorForName(String world, String name, CommandSender output) {
+        public static ChunkGenerator getGeneratorForName(String world, String name, CommandSender output)
+        {
             ChunkGenerator result = null;
 
-            if (world == null) {
+            if (world == null)
+            {
                 throw new ArgumentException("World name must be specified");
             }
 
-            if (output == null) {
+            if (output == null)
+            {
                 output = Bukkit.getConsoleSender();
             }
 
-            if (name != null) {
+            if (name != null)
+            {
                 String[] split = name.Split(new char[] { ':' }, 2);
                 String id = (split.Length > 1) ? split[1] : null;
                 Plugin plugin = Bukkit.getPluginManager().getPlugin(split[0]);
 
-                if (plugin == null) {
+                if (plugin == null)
+                {
                     output.sendMessage("Could not set generator for world '" + world + "': Plugin '" + split[0] + "' does not exist");
-                } else if (!plugin.isEnabled()) {
-                    output.sendMessage("Could not set generator for world '" + world + "': Plugin '" + plugin.getDescription().getFullName() + "' is not enabled");
-                } else {
+                }
+                else if (!plugin.Enabled)
+                {
+                    output.sendMessage("Could not set generator for world '" + world + "': Plugin '" + plugin.FullName + "' is not enabled");
+                }
+                else
+                {
                     result = plugin.getDefaultWorldGenerator(world, id);
                 }
             }

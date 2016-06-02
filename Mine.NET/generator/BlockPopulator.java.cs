@@ -24,6 +24,6 @@ namespace Mine.NET.generator
          * @param random The random generator to use
          * @param source The chunk to generate for
          */
-        public abstract void populate(World world, Random random, Chunk source);
+        public abstract void populate(World world, JavaRand random, Chunk source);
     }
 }

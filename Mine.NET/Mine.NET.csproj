@@ -615,13 +615,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rotation.java.cs" />
     <Compile Include="SandstoneType.java.cs" />
-    <Compile Include="scheduler\BukkitRunnable.java.cs" />
     <Compile Include="scheduler\BukkitScheduler.java.cs" />
     <Compile Include="scheduler\BukkitTask.java.cs" />
     <Compile Include="scheduler\BukkitWorker.java.cs" />
     <Compile Include="scoreboard\Criterias.java.cs" />
     <Compile Include="scoreboard\DisplaySlot.java.cs" />
-    <Compile Include="scoreboard\NameTagVisibility.java.cs" />
     <Compile Include="scoreboard\Objective.java.cs" />
     <Compile Include="scoreboard\Score.java.cs" />
     <Compile Include="scoreboard\Scoreboard.java.cs" />
@@ -641,11 +639,7 @@
     <Compile Include="util\CachedServerIcon.java.cs" />
     <Compile Include="util\ChatPaginator.java.cs" />
     <Compile Include="util\EulerAngle.java.cs" />
-    <Compile Include="util\FileUtil.java.cs" />
-    <Compile Include="util\io\BukkitObjectInputStream.java.cs" />
-    <Compile Include="util\io\BukkitObjectOutputStream.java.cs" />
-    <Compile Include="util\io\Wrapper.java.cs" />
-    <Compile Include="util\Java15Compat.java.cs" />
+    <Compile Include="util\JavaRand.cs" />
     <Compile Include="util\noise\NoiseGenerator.java.cs" />
     <Compile Include="util\noise\OctaveGenerator.java.cs" />
     <Compile Include="util\noise\PerlinNoiseGenerator.java.cs" />

@@ -1,33 +1,37 @@
-namespace Mine.NET.scheduler{
+using Mine.NET.plugin;
 
-/**
- * Represents a task being executed by the scheduler
- */
-public interface BukkitTask {
-
+namespace Mine.NET.scheduler
+{
     /**
-     * Returns the taskId for the task.
-     *
-     * @return Task id number
+     * Represents a task being executed by the scheduler
      */
-    public int getTaskId();
+    public interface BukkitTask
+    {
 
-    /**
-     * Returns the Plugin that owns this task.
-     *
-     * @return The Plugin that owns the task
-     */
-    public Plugin getOwner();
+        /**
+         * Returns the taskId for the task.
+         *
+         * @return Task id number
+         */
+        int getTaskId();
 
-    /**
-     * Returns true if the Task is a sync task.
-     *
-     * @return true if the task is run by main thread
-     */
-    public bool isSync();
+        /**
+         * Returns the Plugin that owns this task.
+         *
+         * @return The Plugin that owns the task
+         */
+        Plugin getOwner();
 
-    /**
-     * Will attempt to cancel this task.
-     */
-    public void cancel();
+        /**
+         * Returns true if the Task is a sync task.
+         *
+         * @return true if the task is run by main thread
+         */
+        bool isSync();
+
+        /**
+         * Will attempt to cancel this task.
+         */
+        void cancel();
+    }
 }

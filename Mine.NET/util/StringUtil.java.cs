@@ -1,7 +1,10 @@
-namespace Mine.NET.util{
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
+namespace Mine.NET.util
+{
 public class StringUtil {
-
     /**
      * Copies all elements from the iterable collection of originals to the
      * collection provided.
@@ -19,14 +22,14 @@ public class StringUtil {
      * @throws ArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static <T : Collection<? base String>> T copyPartialMatches(String token, readonly IEnumerable<String> originals, readonly T collection) {
+    public static T copyPartialMatches<T>(String token, IEnumerable<String> originals, T collection) where T : Collection<string> {
         if(token==null) throw new ArgumentNullException("Search token cannot be null");
         if(collection==null) throw new ArgumentNullException("Collection cannot be null");
         if(originals==null) throw new ArgumentNullException("Originals cannot be null");
 
-        foreach (String string  in  originals) {
-            if (StartsWithIgnoreCase(string, token)) {
-                collection.add(string);
+        foreach (String string_  in  originals) {
+            if (StartsWithIgnoreCase(string_, token)) {
+                collection.Add(string_);
             }
         }
 
@@ -45,11 +48,12 @@ public class StringUtil {
      * @throws NullReferenceException if prefix is null
      * @throws ArgumentException if string is null
      */
-    public static bool StartsWithIgnoreCase(String string, readonly String prefix) {
-        if(string==null) throw new ArgumentNullException("Cannot check a null string for a match");
-        if (string.Length < prefix.Length) {
+    public static bool StartsWithIgnoreCase(String string_, String prefix) {
+        if(string_==null) throw new ArgumentNullException("Cannot check a null string for a match");
+        if (string_.Length < prefix.Length) {
             return false;
         }
-        return string.regionMatches(true, 0, prefix, 0, prefix.Length);
+            return string_.Substring(0, prefix.Length).ToLower() == prefix.ToLower(); //TODO
     }
+}
 }

@@ -1,32 +1,37 @@
-namespace Mine.NET.scheduler{
+using Mine.NET.plugin;
+using System.Threading;
 
-/**
- * Represents a worker thread for the scheduler. This gives information about
- * the Thread object for the task, owner of the task and the taskId.
- * <p>
- * Workers are used to execute async tasks.
- */
-public interface BukkitWorker {
-
+namespace Mine.NET.scheduler
+{
     /**
-     * Returns the taskId for the task being executed by this worker.
-     *
-     * @return Task id number
+     * Represents a worker thread for the scheduler. This gives information about
+     * the Thread object for the task, owner of the task and the taskId.
+     * <p>
+     * Workers are used to execute async tasks.
      */
-    public int getTaskId();
+    public interface BukkitWorker //TODO
+    {
 
-    /**
-     * Returns the Plugin that owns this task.
-     *
-     * @return The Plugin that owns the task
-     */
-    public Plugin getOwner();
+        /**
+         * Returns the taskId for the task being executed by this worker.
+         *
+         * @return Task id number
+         */
+        int getTaskId();
 
-    /**
-     * Returns the thread for the worker.
-     *
-     * @return The Thread object for the worker
-     */
-    public Thread getThread();
+        /**
+         * Returns the Plugin that owns this task.
+         *
+         * @return The Plugin that owns the task
+         */
+        Plugin getOwner();
 
+        /**
+         * Returns the thread for the worker.
+         *
+         * @return The Thread object for the worker
+         */
+        Thread getThread();
+
+    }
 }

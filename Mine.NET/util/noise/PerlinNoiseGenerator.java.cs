@@ -1,19 +1,21 @@
-namespace Mine.NET.util.noise{
+using System;
 
-/**
- * Generates noise using the "classic" perlin generator
- *
- * @see SimplexNoiseGenerator "Improved" and faster version with slighly
- *     different results
- */
-public class PerlinNoiseGenerator : NoiseGenerator {
-    protected static readonly int grad3[][] = {{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0},
+namespace Mine.NET.util.noise
+{
+    /**
+     * Generates noise using the "classic" perlin generator
+     *
+     * @see SimplexNoiseGenerator "Improved" and faster version with slighly
+     *     different results
+     */
+    public class PerlinNoiseGenerator : NoiseGenerator { //TODO: Check if it's the same as the vanilla version
+        protected static readonly int[,] grad3 = {{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0},
         {1, 0, 1}, {-1, 0, 1}, {1, 0, -1}, {-1, 0, -1},
         {0, 1, 1}, {0, -1, 1}, {0, 1, -1}, {0, -1, -1}};
     private static readonly PerlinNoiseGenerator instance = new PerlinNoiseGenerator();
 
-    protected PerlinNoiseGenerator() {
-        int p[] = {151, 160, 137, 91, 90, 15, 131, 13, 201,
+        protected PerlinNoiseGenerator() {
+            int[] p = {151, 160, 137, 91, 90, 15, 131, 13, 201,
             95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37,
             240, 21, 10, 23, 190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62,
             94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33, 88, 237, 149, 56,
@@ -32,182 +34,181 @@ public class PerlinNoiseGenerator : NoiseGenerator {
             176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205, 93, 222,
             114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180};
 
-        for (int i = 0; i < 512; i++) {
-            perm[i] = p[i & 255];
-        }
-    }
-
-    /**
-     * Creates a seeded perlin noise generator for the given world
-     *
-     * @param world World to construct this generator for
-     */
-    public PerlinNoiseGenerator(World world) {
-        this(new Random(world.getSeed()));
-    }
-
-    /**
-     * Creates a seeded perlin noise generator for the given seed
-     *
-     * @param seed Seed to construct this generator for
-     */
-    public PerlinNoiseGenerator(long seed) {
-        this(new Random(seed));
-    }
-
-    /**
-     * Creates a seeded perlin noise generator with the given Random
-     *
-     * @param rand Random to construct with
-     */
-    public PerlinNoiseGenerator(Random rand) {
-        offsetX = rand.nextDouble() * 256;
-        offsetY = rand.nextDouble() * 256;
-        offsetZ = rand.nextDouble() * 256;
-
-        for (int i = 0; i < 256; i++) {
-            perm[i] = rand.nextInt(256);
+            for (int i = 0; i < 512; i++) {
+                perm[i] = p[i & 255];
+            }
         }
 
-        for (int i = 0; i < 256; i++) {
-            int pos = rand.nextInt(256 - i) + i;
-            int old = perm[i];
-
-            perm[i] = perm[pos];
-            perm[pos] = old;
-            perm[i + 256] = perm[i];
+        /**
+         * Creates a seeded perlin noise generator for the given world
+         *
+         * @param world World to construct this generator for
+         */
+        public PerlinNoiseGenerator(World world) :            this(new JavaRand(world.getSeed())) {
         }
-    }
 
-    /**
-     * Computes and returns the 1D unseeded perlin noise for the given
-     * coordinates in 1D space
-     *
-     * @param x X coordinate
-     * @return Noise at given location, from range -1 to 1
-     */
-    public static double getNoise(double x) {
-        return instance.noise(x);
-    }
+        /**
+         * Creates a seeded perlin noise generator for the given seed
+         *
+         * @param seed Seed to construct this generator for
+         */
+        public PerlinNoiseGenerator(long seed) :            this(new JavaRand(seed)) {
+        }
 
-    /**
-     * Computes and returns the 2D unseeded perlin noise for the given
-     * coordinates in 2D space
-     *
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @return Noise at given location, from range -1 to 1
-     */
-    public static double getNoise(double x, double y) {
-        return instance.noise(x, y);
-    }
+        /**
+         * Creates a seeded perlin noise generator with the given JavaRand
+         *
+         * @param rand JavaRand to construct with
+         */
+        public PerlinNoiseGenerator(JavaRand rand) {
+            offsetX = rand.NextDouble() * 256;
+            offsetY = rand.NextDouble() * 256;
+            offsetZ = rand.NextDouble() * 256;
 
-    /**
-     * Computes and returns the 3D unseeded perlin noise for the given
-     * coordinates in 3D space
-     *
-     * @param x X coordinate
-     * @param y Y coordinate
-     * @param z Z coordinate
-     * @return Noise at given location, from range -1 to 1
-     */
-    public static double getNoise(double x, double y, double z) {
-        return instance.noise(x, y, z);
-    }
+            for (int i = 0; i < 256; i++) {
+                perm[i] = rand.NextInt(256);
+            }
 
-    /**
-     * Gets the singleton unseeded instance of this generator
-     *
-     * @return Singleton
-     */
-    public static PerlinNoiseGenerator getInstance() {
-        return instance;
-    }
+            for (int i = 0; i < 256; i++) {
+                int pos = rand.NextInt(256 - i) + i;
+                int old = perm[i];
 
-    public override double noise(double x, double y, double z) {
-        x += offsetX;
-        y += offsetY;
-        z += offsetZ;
+                perm[i] = perm[pos];
+                perm[pos] = old;
+                perm[i + 256] = perm[i];
+            }
+        }
 
-        int floorX = floor(x);
-        int floorY = floor(y);
-        int floorZ = floor(z);
+        /**
+         * Computes and returns the 1D unseeded perlin noise for the given
+         * coordinates in 1D space
+         *
+         * @param x X coordinate
+         * @return Noise at given location, from range -1 to 1
+         */
+        public static double getNoise(double x) {
+            return instance.noise(x);
+        }
 
-        // Find unit cube containing the point
-        int X = floorX & 255;
-        int Y = floorY & 255;
-        int Z = floorZ & 255;
+        /**
+         * Computes and returns the 2D unseeded perlin noise for the given
+         * coordinates in 2D space
+         *
+         * @param x X coordinate
+         * @param y Y coordinate
+         * @return Noise at given location, from range -1 to 1
+         */
+        public static double getNoise(double x, double y) {
+            return instance.noise(x, y);
+        }
 
-        // Get relative xyz coordinates of the point within the cube
-        x -= floorX;
-        y -= floorY;
-        z -= floorZ;
+        /**
+         * Computes and returns the 3D unseeded perlin noise for the given
+         * coordinates in 3D space
+         *
+         * @param x X coordinate
+         * @param y Y coordinate
+         * @param z Z coordinate
+         * @return Noise at given location, from range -1 to 1
+         */
+        public static double getNoise(double x, double y, double z) {
+            return instance.noise(x, y, z);
+        }
 
-        // Compute fade curves for xyz
-        double fX = fade(x);
-        double fY = fade(y);
-        double fZ = fade(z);
+        /**
+         * Gets the singleton unseeded instance of this generator
+         *
+         * @return Singleton
+         */
+        public static PerlinNoiseGenerator getInstance() {
+            return instance;
+        }
 
-        // Hash coordinates of the cube corners
-        int A = perm[X] + Y;
-        int AA = perm[A] + Z;
-        int AB = perm[A + 1] + Z;
-        int B = perm[X + 1] + Y;
-        int BA = perm[B] + Z;
-        int BB = perm[B + 1] + Z;
+        public override double noise(double x, double y, double z) {
+            x += offsetX;
+            y += offsetY;
+            z += offsetZ;
 
-        return lerp(fZ, lerp(fY, lerp(fX, grad(perm[AA], x, y, z),
-                        grad(perm[BA], x - 1, y, z)),
-                    lerp(fX, grad(perm[AB], x, y - 1, z),
-                        grad(perm[BB], x - 1, y - 1, z))),
-                lerp(fY, lerp(fX, grad(perm[AA + 1], x, y, z - 1),
-                        grad(perm[BA + 1], x - 1, y, z - 1)),
-                    lerp(fX, grad(perm[AB + 1], x, y - 1, z - 1),
-                        grad(perm[BB + 1], x - 1, y - 1, z - 1))));
-    }
+            int floorX = floor(x);
+            int floorY = floor(y);
+            int floorZ = floor(z);
 
-    /**
-     * Generates noise for the 1D coordinates using the specified number of
-     * octaves and parameters
-     *
-     * @param x X-coordinate
-     * @param octaves Number of octaves to use
-     * @param frequency How much to alter the frequency by each octave
-     * @param amplitude How much to alter the amplitude by each octave
-     * @return Resulting noise
-     */
-    public static double getNoise(double x, int octaves, double frequency, double amplitude) {
-        return instance.noise(x, octaves, frequency, amplitude);
-    }
+            // Find unit cube containing the point
+            int X = floorX & 255;
+            int Y = floorY & 255;
+            int Z = floorZ & 255;
 
-    /**
-     * Generates noise for the 2D coordinates using the specified number of
-     * octaves and parameters
-     *
-     * @param x X-coordinate
-     * @param y Y-coordinate
-     * @param octaves Number of octaves to use
-     * @param frequency How much to alter the frequency by each octave
-     * @param amplitude How much to alter the amplitude by each octave
-     * @return Resulting noise
-     */
-    public static double getNoise(double x, double y, int octaves, double frequency, double amplitude) {
-        return instance.noise(x, y, octaves, frequency, amplitude);
-    }
+            // Get relative xyz coordinates of the point within the cube
+            x -= floorX;
+            y -= floorY;
+            z -= floorZ;
 
-    /**
-     * Generates noise for the 3D coordinates using the specified number of
-     * octaves and parameters
-     *
-     * @param x X-coordinate
-     * @param y Y-coordinate
-     * @param z Z-coordinate
-     * @param octaves Number of octaves to use
-     * @param frequency How much to alter the frequency by each octave
-     * @param amplitude How much to alter the amplitude by each octave
-     * @return Resulting noise
-     */
-    public static double getNoise(double x, double y, double z, int octaves, double frequency, double amplitude) {
-        return instance.noise(x, y, z, octaves, frequency, amplitude);
+            // Compute fade curves for xyz
+            double fX = fade(x);
+            double fY = fade(y);
+            double fZ = fade(z);
+
+            // Hash coordinates of the cube corners
+            int A = perm[X] + Y;
+            int AA = perm[A] + Z;
+            int AB = perm[A + 1] + Z;
+            int B = perm[X + 1] + Y;
+            int BA = perm[B] + Z;
+            int BB = perm[B + 1] + Z;
+
+            return lerp(fZ, lerp(fY, lerp(fX, grad(perm[AA], x, y, z),
+                            grad(perm[BA], x - 1, y, z)),
+                        lerp(fX, grad(perm[AB], x, y - 1, z),
+                            grad(perm[BB], x - 1, y - 1, z))),
+                    lerp(fY, lerp(fX, grad(perm[AA + 1], x, y, z - 1),
+                            grad(perm[BA + 1], x - 1, y, z - 1)),
+                        lerp(fX, grad(perm[AB + 1], x, y - 1, z - 1),
+                            grad(perm[BB + 1], x - 1, y - 1, z - 1))));
+        }
+
+        /**
+         * Generates noise for the 1D coordinates using the specified number of
+         * octaves and parameters
+         *
+         * @param x X-coordinate
+         * @param octaves Number of octaves to use
+         * @param frequency How much to alter the frequency by each octave
+         * @param amplitude How much to alter the amplitude by each octave
+         * @return Resulting noise
+         */
+        public static double getNoise(double x, int octaves, double frequency, double amplitude) {
+            return instance.noise(x, octaves, frequency, amplitude);
+        }
+
+        /**
+         * Generates noise for the 2D coordinates using the specified number of
+         * octaves and parameters
+         *
+         * @param x X-coordinate
+         * @param y Y-coordinate
+         * @param octaves Number of octaves to use
+         * @param frequency How much to alter the frequency by each octave
+         * @param amplitude How much to alter the amplitude by each octave
+         * @return Resulting noise
+         */
+        public static double getNoise(double x, double y, int octaves, double frequency, double amplitude) {
+            return instance.noise(x, y, octaves, frequency, amplitude);
+        }
+
+        /**
+         * Generates noise for the 3D coordinates using the specified number of
+         * octaves and parameters
+         *
+         * @param x X-coordinate
+         * @param y Y-coordinate
+         * @param z Z-coordinate
+         * @param octaves Number of octaves to use
+         * @param frequency How much to alter the frequency by each octave
+         * @param amplitude How much to alter the amplitude by each octave
+         * @return Resulting noise
+         */
+        public static double getNoise(double x, double y, double z, int octaves, double frequency, double amplitude) {
+            return instance.noise(x, y, z, octaves, frequency, amplitude);
+        }
     }
 }

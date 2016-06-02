@@ -123,7 +123,7 @@ namespace Mine.NET.generator
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public short[][] generateExtBlockSections(World world, Random random, int x, int z, BiomeGrid biomes)
+        public short[][] generateExtBlockSections(World world, JavaRand random, int x, int z, BiomeGrid biomes)
         {
             return null; // Default - returns null, which drives call to generateBlockSections()
         }
@@ -182,7 +182,7 @@ namespace Mine.NET.generator
          * [Obsolete] Magic value
          */
         [Obsolete]
-        public byte[][] generateBlockSections(World world, Random random, int x, int z, BiomeGrid biomes)
+        public byte[][] generateBlockSections(World world, JavaRand random, int x, int z, BiomeGrid biomes)
         {
             return null; // Default - returns null, which drives call to generate()
         }
@@ -211,7 +211,7 @@ namespace Mine.NET.generator
          * @return ChunkData containing the types for each block created by this
          *     generator
          */
-        public ChunkData generateChunkData(World world, Random random, int x, int z, BiomeGrid biome)
+        public ChunkData generateChunkData(World world, JavaRand random, int x, int z, BiomeGrid biome)
         {
             return null; // Default - returns null, which drives call to generateExtBlockSections()
         }
@@ -269,10 +269,10 @@ namespace Mine.NET.generator
          * and will instead attempt to find one randomly.
          *
          * @param world The world to locate a spawn point for
-         * @param random Random generator to use in the calculation
+         * @param random JavaRand generator to use in the calculation
          * @return Location containing a new spawn point, otherwise null
          */
-        public Location getFixedSpawnLocation(World world, Random random)
+        public Location getFixedSpawnLocation(World world, JavaRand random)
         {
             return null;
         }

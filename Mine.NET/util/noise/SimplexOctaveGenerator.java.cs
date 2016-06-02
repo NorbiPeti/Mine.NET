@@ -13,7 +13,7 @@ public class SimplexOctaveGenerator : OctaveGenerator {
      * @param octaves Amount of octaves to create
      */
     public SimplexOctaveGenerator(World world, int octaves) {
-        this(new Random(world.getSeed()), octaves);
+        this(new JavaRand(world.getSeed()), octaves);
     }
 
     /**
@@ -23,16 +23,16 @@ public class SimplexOctaveGenerator : OctaveGenerator {
      * @param octaves Amount of octaves to create
      */
     public SimplexOctaveGenerator(long seed, int octaves) {
-        this(new Random(seed), octaves);
+        this(new JavaRand(seed), octaves);
     }
 
     /**
-     * Creates a simplex octave generator for the given {@link Random}
+     * Creates a simplex octave generator for the given {@link JavaRand}
      *
-     * @param rand Random object to construct this generator for
+     * @param rand JavaRand object to construct this generator for
      * @param octaves Amount of octaves to create
      */
-    public SimplexOctaveGenerator(Random rand, int octaves) {
+    public SimplexOctaveGenerator(JavaRand rand, int octaves) {
         base(createOctaves(rand, octaves));
     }
 
@@ -113,7 +113,7 @@ public class SimplexOctaveGenerator : OctaveGenerator {
         return result;
     }
 
-    private static NoiseGenerator[] createOctaves(Random rand, int octaves) {
+    private static NoiseGenerator[] createOctaves(JavaRand rand, int octaves) {
         NoiseGenerator[] result = new NoiseGenerator[octaves];
 
         for (int i = 0; i < octaves; i++) {

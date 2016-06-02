@@ -6,7 +6,8 @@ namespace Mine.NET.projectiles
     /**
      * Represents a valid source of a projectile.
      */
-    public interface ProjectileSource {
+    public interface ProjectileSource
+    {
 
         /**
          * Launches a {@link Projectile} from the ProjectileSource.
