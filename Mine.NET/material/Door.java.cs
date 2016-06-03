@@ -18,7 +18,7 @@ namespace Mine.NET.material
      * @see Materials#ACACIA_DOOR
      * @see Materials#DARK_OAK_DOOR
      */
-    public class Door : MaterialData<byte>, Directional, Openable {
+    public class Door : MaterialData, Directional, Openable {
 
         // This class breaks API contracts on Directional and Openable because
         // of the way doors are currently implemented. Beware!
@@ -147,15 +147,6 @@ namespace Mine.NET.material
         }
 
     /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public Door(Materials type, byte data) : base(type, data) {
-    }
-
-    /**
      * Returns the item type of a wooden door for the given tree species.
      *
      * @param species The species of wood door required.
@@ -186,25 +177,30 @@ namespace Mine.NET.material
             }
         }
 
+        private bool isopen = false;
         /**
          * Result is undefined if <code>isTopHalf()</code> is true.
          */
         public bool isOpen() {
-            return ((getData() & 0x4) == 0x4);
+            //return ((getData() & 0x4) == 0x4);
+            return isopen;
         }
 
         /**
          * Set whether the door is open. Undefined if <code>isTopHalf()</code> is true.
          */
         public void setOpen(bool isOpen) {
-            setData((byte)(isOpen ? (getData() | 0x4) : (getData() & ~0x4)));
+            //setData((byte)(isOpen ? (getData() | 0x4) : (getData() & ~0x4)));
+            isopen = isOpen;
         }
 
+        private bool istophalf = false;
         /**
          * @return whether this is the top half of the door
          */
         public bool isTopHalf() {
-            return ((getData() & 0x8) == 0x8);
+            //return ((getData() & 0x8) == 0x8);
+            return istophalf;
         }
 
         /**
@@ -213,22 +209,15 @@ namespace Mine.NET.material
          * @param isTopHalf True to make it the top half.
          */
         public void setTopHalf(bool isTopHalf) {
-            setData((byte)(isTopHalf ? (getData() | 0x8) : (getData() & ~0x8)));
-        }
-
-        /**
-         * @return BlockFaces.SELF
-         * [Obsolete] This method should not be used; use hinge and facing accessors instead.
-         */
-        [Obsolete]
-        public BlockFaces getHingeCorner() {
-            return BlockFaces.SELF;
+            //setData((byte)(isTopHalf ? (getData() | 0x8) : (getData() & ~0x8)));
+            istophalf = isTopHalf;
         }
 
         public override string ToString() {
             return (isTopHalf() ? "TOP" : "BOTTOM") + " half of " + base.ToString();
         }
 
+        private BlockFaces face;
         /**
          * Set the direction that this door should is facing.
          *
@@ -237,7 +226,7 @@ namespace Mine.NET.material
          * @param face the direction
          */
         public void setFacingDirection(BlockFaces face) {
-            byte data = (byte)(getData() & 0xC);
+            /*byte data = (byte)(getData() & 0xC);
             switch (face) {
                 case BlockFaces.WEST:
                     data |= 0x0;
@@ -252,7 +241,8 @@ namespace Mine.NET.material
                     data |= 0x3;
                     break;
             }
-            setData(data);
+            setData(data);*/
+            this.face = face;
         }
 
         /**
@@ -263,7 +253,7 @@ namespace Mine.NET.material
          * @return the direction
          */
         public BlockFaces getFacing() {
-            byte data = (byte)(getData() & 0x3);
+            /*byte data = (byte)(getData() & 0x3);
             switch (data) {
                 case 0:
                     return BlockFaces.WEST;
@@ -275,9 +265,11 @@ namespace Mine.NET.material
                     return BlockFaces.SOUTH;
                 default:
                     throw new InvalidOperationException("Unknown door facing (data: " + data + ")");
-            }
+            }*/
+            return face;
         }
 
+        private bool hinge = false;
         /**
          * Returns the side of the door the hinge is on.
          *
@@ -286,7 +278,8 @@ namespace Mine.NET.material
          * @return false for left hinge, true for right hinge
          */
         public bool getHinge() {
-            return (getData() & 0x1) == 1;
+            //return (getData() & 0x1) == 1;
+            return hinge;
         }
 
         /**
@@ -297,7 +290,8 @@ namespace Mine.NET.material
          * @param isHingeRight True if the hinge is on the right hand side, false if the hinge is on the left hand side.
          */
         public void setHinge(bool isHingeRight) {
-            setData((byte)(isHingeRight ? (getData() | 0x1) : (getData() & ~0x1)));
+            //setData((byte)(isHingeRight ? (getData() | 0x1) : (getData() & ~0x1)));
+            hinge = isHingeRight;
         }
 
         public override Door clone() {

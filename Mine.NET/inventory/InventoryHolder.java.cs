@@ -10,13 +10,13 @@ namespace Mine.NET.inventory
         Inventory getInventory();
     }
 
-    public interface InventoryHolder<T>
+    public interface InventoryHolder<T> : InventoryHolder
     {
         /**
          * Get the object's inventory.
          *
          * @return The inventory.
          */
-        T getInventory();
+        new T getInventory();
     }
 }
