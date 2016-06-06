@@ -105,8 +105,6 @@ namespace Mine.NET.material
             return base.ToString() + " containing " + getContents();
         }
 
-        public override FlowerPot clone() {
-            return (FlowerPot)base.clone();
-        }
+        public new FlowerPot Clone() { return (FlowerPot)base.Clone(); }
     }
 }

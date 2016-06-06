@@ -121,8 +121,6 @@ namespace Mine.NET.material {
             return getSpecies() + (isDecayable() ? " DECAYABLE " : " PERMANENT ") + (isDecaying() ? " DECAYING " : " ") + base.ToString();
         }
 
-        public override Leaves clone() {
-            return (Leaves)base.clone();
-        }
+        public new Leaves Clone() { return (Leaves)base.Clone(); }
     }
 }

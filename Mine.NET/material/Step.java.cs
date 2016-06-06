@@ -93,10 +93,7 @@ namespace Mine.NET.material
             setData((byte)((getData() & 0x8) | idx));
         }
 
-        public override Step clone()
-        {
-            return (Step)base.clone();
-        }
+        public new Step Clone() { return (Step)base.Clone(); }
 
         public override string ToString()
         {

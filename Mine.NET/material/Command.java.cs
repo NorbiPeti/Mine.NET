@@ -46,9 +46,6 @@ namespace Mine.NET.material
             return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
         }
 
-        public override Command clone()
-        {
-            return (Command)base.clone();
-        }
+        public new Command Clone() { return (Command)base.Clone(); }
     }
 }

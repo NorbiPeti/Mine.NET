@@ -114,9 +114,9 @@ namespace Mine.NET.material
             return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
         }
 
-        public override Button clone()
+        public new Button Clone()
         {
-            return (Button)base.clone(); //TODO
+            return (Button)base.Clone();
         }
     }
 }

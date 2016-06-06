@@ -267,7 +267,6 @@ namespace Mine.NET.enchantments
          */
         public static void stopAcceptingRegistrations() {
             acceptingNew = false;
-            EnchantCommand.buildEnchantments();
         }
 
         /**

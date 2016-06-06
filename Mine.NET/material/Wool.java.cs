@@ -56,9 +56,6 @@ namespace Mine.NET.material
             return getColor() + " " + base.ToString();
         }
 
-        public override Wool clone()
-        {
-            return (Wool)base.clone();
-        }
+        public new Wool Clone() { return (Wool)base.Clone(); }
     }
 }

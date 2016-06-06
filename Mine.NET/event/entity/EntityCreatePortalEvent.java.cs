@@ -9,7 +9,6 @@ namespace Mine.NET.Event.entity
      */
     public class EntityCreatePortalEventArgs : EntityEventArgs<LivingEntity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private readonly List<BlockState> blocks;
         private bool cancelled = false;
         private PortalType type = PortalType.CUSTOM;

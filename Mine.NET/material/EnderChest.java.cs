@@ -23,18 +23,7 @@ namespace Mine.NET.material
 
         public EnderChest(Materials type) : base(type) {
         }
-        
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public EnderChest(Materials type, byte data) : base(type, data) {
-    }
 
-    public override EnderChest clone() {
-            return (EnderChest)base.clone();
-        }
+    public new EnderChest Clone() { return (EnderChest)base.Clone(); }
     }
 }

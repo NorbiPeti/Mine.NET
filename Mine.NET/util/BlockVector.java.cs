@@ -110,7 +110,7 @@ namespace Mine.NET.util
          *
          * @return vector
          */
-        public override BlockVector clone()
+        public BlockVector Clone()
         {
             return (BlockVector)base.clone(); //TODO
         }

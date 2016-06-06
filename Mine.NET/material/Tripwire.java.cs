@@ -81,10 +81,7 @@ namespace Mine.NET.material
             setData((byte)dat);
         }
 
-        public override Tripwire clone()
-        {
-            return (Tripwire)base.clone();
-        }
+        public new Tripwire Clone() { return (Tripwire)base.Clone(); }
 
         public override string ToString()
         {

@@ -107,10 +107,9 @@ public class CocoaPlant : MaterialData, Directional, Attachable {
             return null;*/
             return face;
     }
-
-    public override CocoaPlant clone() {
-        return (CocoaPlant) base.clone();
-    }
+        //Find: "public override (\w+) clone\(\)[\s\r]+{[\s\r]+return \(\1\)\s*base.clone\(\);[\s\r]+}" - Replace: "public new $1 Clone() { return ($1)base.Clone(); }"
+        //Had to tweak it to include this one (see Chest for original)
+        public new CocoaPlant Clone() { return (CocoaPlant)base.Clone(); }
 
     public override string ToString() {
         return base.ToString() + " facing " + getFacing() + " " + getSize();

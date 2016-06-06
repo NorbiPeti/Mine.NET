@@ -39,10 +39,7 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing();
         }
 
-        public override SimpleAttachableMaterialData clone()
-        {
-            return (SimpleAttachableMaterialData)base.clone();
-        }
+        public new SimpleAttachableMaterialData Clone() { return (SimpleAttachableMaterialData)base.Clone(); }
 
         public abstract BlockFaces getAttachedFace();
         public abstract void setFacingDirection(BlockFaces face);

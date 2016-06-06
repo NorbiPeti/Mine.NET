@@ -26,9 +26,7 @@ namespace Mine.NET.material
         {
         }
 
-        public override Chest clone()
-        {
-            return (Chest)base.clone();
-        }
+        //Find: "public override (\w+) clone\(\)[\s\r]+{[\s\r]+return \(\1\)base.clone\(\);[\s\r]+}" - Replace: "public new $1 Clone() { return ($1)base.Clone(); }"
+        public new Chest Clone() { return (Chest)base.Clone(); }
     }
 }

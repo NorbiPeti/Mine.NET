@@ -124,9 +124,6 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing() + (isInverted() ? " inverted" : "");
         }
 
-        public override Stairs clone()
-        {
-            return (Stairs)base.clone();
-        }
+        public new Stairs Clone() { return (Stairs)base.Clone(); }
     }
 }

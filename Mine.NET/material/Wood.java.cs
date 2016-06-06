@@ -165,8 +165,6 @@ public class Wood : MaterialData {
         return getSpecies() + " " + base.ToString();
     }
 
-    public override Wood clone() {
-        return (Wood) base.clone();
-    }
+    public new Wood Clone() { return (Wood)base.Clone(); }
 }
 }

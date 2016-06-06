@@ -41,9 +41,6 @@ namespace Mine.NET.material
             return base.ToString() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
         }
 
-        public override RedstoneWire clone()
-        {
-            return (RedstoneWire)base.clone();
-        }
+        public new RedstoneWire Clone() { return (RedstoneWire)base.Clone(); }
     }
 }

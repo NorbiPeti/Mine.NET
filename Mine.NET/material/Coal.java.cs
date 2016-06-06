@@ -45,9 +45,6 @@ namespace Mine.NET.material
             return getType() + " " + base.ToString();
         }
 
-        public override Coal clone()
-        {
-            return (Coal)base.clone();
-        }
+        public new Coal Clone() { return (Coal)base.Clone(); }
     }
 }

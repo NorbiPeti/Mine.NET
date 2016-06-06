@@ -43,8 +43,6 @@ namespace Mine.NET.material {
             setData((byte)(extraBitSet ? (getData() | 0x8) : (getData() & ~0x8)));
         }
 
-        public override ExtendedRails clone() {
-            return (ExtendedRails)base.clone();
-        }
+        public new ExtendedRails Clone() { return (ExtendedRails)base.Clone(); }
     }
 }

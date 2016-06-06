@@ -75,7 +75,5 @@ public class Ladder : SimpleAttachableMaterialData {
 
     }
 
-    public override Ladder clone() {
-        return (Ladder) base.clone();
-    }
+    public new Ladder Clone() { return (Ladder)base.Clone(); }
 }

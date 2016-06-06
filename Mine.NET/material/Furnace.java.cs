@@ -33,8 +33,6 @@ namespace Mine.NET.material
         public Furnace(Materials type, byte data) : base(type, data) {
     }
 
-    public override Furnace clone() {
-            return (Furnace)base.clone();
-        }
+    public new Furnace Clone() { return (Furnace)base.Clone(); }
     }
 }

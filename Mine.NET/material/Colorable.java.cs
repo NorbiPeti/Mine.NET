@@ -11,14 +11,14 @@ namespace Mine.NET.material
          *
          * @return The DyeColor of this object.
          */
-        DyeColor getColor();
+        DyeColor.Colors getColor();
 
         /**
          * Sets the color of this object to the specified DyeColor.
          *
          * @param color The color of the object, as a DyeColor.
          */
-        void setColor(DyeColor color);
+        void setColor(DyeColor.Colors color);
 
     }
 }

@@ -1,3 +1,4 @@
+using Mine.NET.entity;
 using Mine.NET.entity.minecart;
 using System;
 using System.Collections.Generic;
@@ -378,7 +379,7 @@ namespace Mine.NET.entity
     /**
      * A fishing line and bobber.
      */
-{ EntityTypes.FISHING_HOOK, new EntityType(null, typeof(Fish), -1, false) },
+{ EntityTypes.FISHING_HOOK, new EntityType(null, typeof(FishHook), -1, false) },
     /**
      * A bolt of lightning.
      * <p>

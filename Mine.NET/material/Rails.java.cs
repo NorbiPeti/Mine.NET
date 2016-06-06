@@ -149,8 +149,6 @@ namespace Mine.NET.material
             }
         }
 
-        public override Rails clone() {
-            return (Rails)base.clone();
-        }
+        public new Rails Clone() { return (Rails)base.Clone(); }
     }
 }

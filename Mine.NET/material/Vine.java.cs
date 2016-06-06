@@ -175,9 +175,6 @@ namespace Mine.NET.material
             return "VINE";
         }
 
-        public override Vine clone()
-        {
-            return (Vine)base.clone();
-        }
+        public new Vine Clone() { return (Vine)base.Clone(); }
     }
 }

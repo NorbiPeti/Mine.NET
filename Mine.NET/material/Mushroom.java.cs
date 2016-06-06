@@ -273,8 +273,6 @@ public class Mushroom : MaterialData {
         return Material.getMaterial(getItemTypeId()).ToString() + (isStem() ? " STEM " : " CAP ") + getPaintedFaces();
     }
 
-    public override Mushroom clone() {
-        return (Mushroom) base.clone();
-    }
+    public new Mushroom Clone() { return (Mushroom)base.Clone(); }
 }
 }

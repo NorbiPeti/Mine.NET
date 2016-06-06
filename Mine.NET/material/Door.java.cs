@@ -294,8 +294,6 @@ namespace Mine.NET.material
             hinge = isHingeRight;
         }
 
-        public override Door clone() {
-            return (Door)base.clone();
-        }
+        public new Door Clone() { return (Door)base.Clone(); }
     }
 }

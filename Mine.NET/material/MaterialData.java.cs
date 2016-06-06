@@ -15,6 +15,11 @@ namespace Mine.NET.material
             this.type = type;
         }
 
+        public MaterialData(MaterialData data)
+        {
+            this.type = data.type;
+        }
+
         /**
          * Gets the Materials that this MaterialData represents
          *
@@ -32,7 +37,7 @@ namespace Mine.NET.material
          */
         public ItemStack toItemStack()
         {
-            return new ItemStack(type, 0, data);
+            return new ItemStack(type, 0);
         }
 
         /**
@@ -41,19 +46,20 @@ namespace Mine.NET.material
          * @param amount The stack size of the new stack
          * @return New ItemStack containing a copy of this MaterialData
          */
-        public ItemStack<TData> toItemStack(int amount)
+        public ItemStack toItemStack(int amount)
         {
-            return new ItemStack<TData>(type, amount, data);
+            return new ItemStack(type, amount);
         }
 
         public override string ToString()
         {
-            return getItemType() + "(" + getData() + ")";
+            return getItemType().ToString();
         }
 
         public override int GetHashCode()
         {
-            return ((getItemTypeId() << 8) ^ getData());
+            //return ((getItemTypeId() << 8) ^ getData());
+            return (int)getItemType();
         }
 
         public override bool Equals(Object obj)
@@ -62,7 +68,7 @@ namespace Mine.NET.material
             {
                 MaterialData md = (MaterialData)obj;
 
-                return (md.getItemTypeId() == getItemTypeId() && md.getData() == getData());
+                return (md.getItemType() == getItemType()); //TODO: Equality for subtypes
             }
             else
             {
@@ -72,7 +78,7 @@ namespace Mine.NET.material
 
         public MaterialData Clone()
         {
-            return null; //TODO
+            return new MaterialData(this); //TODO
         }
     }
 }

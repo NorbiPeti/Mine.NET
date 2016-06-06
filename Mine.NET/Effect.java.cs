@@ -1,3 +1,5 @@
+using Mine.NET.block;
+using Mine.NET.potion;
 using System;
 using System.Collections.Generic;
 
@@ -144,7 +146,7 @@ namespace Mine.NET
      * Visual effect of a splash potion breaking. Needs potion data value as
      * additional info.
      */
-    { Effects.POTION_BREAK, new Effect(2002, EffectType.VISUAL, typeof(Potion)) },
+    { Effects.POTION_BREAK, new Effect(2002, EffectType.VISUAL, typeof(PotionTypes)) }, //TODO: PotionTypes?
     /**
      * An ender eye signal; a visual effect.
      */

@@ -1,3 +1,5 @@
+using Mine.NET.inventory;
+
 namespace Mine.NET.block
 {
     /**
@@ -14,7 +16,7 @@ namespace Mine.NET.block
 
         public Inventory getInventory()
         {
-            return inventory;
+            return (Inventory)inventory;
         }
 
         public InventoryHolder getLeftSide()

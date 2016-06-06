@@ -1,4 +1,6 @@
 using Mine.NET.command;
+using Mine.NET.Event.entity;
+using Mine.NET.Event.player;
 using Mine.NET.metadata;
 using Mine.NET.util;
 using System;
@@ -214,7 +216,7 @@ namespace Mine.NET.entity
          *
          * @param event a {@link EntityDamageEvent}
          */
-        void setLastDamageCause(EntityDamageEvent event_);
+        void setLastDamageCause(EntityDamageEventArgs event_);
 
         /**
          * Retrieve the last {@link EntityDamageEvent} inflicted on this entity.
@@ -223,7 +225,7 @@ namespace Mine.NET.entity
          * @return the last known {@link EntityDamageEvent} or null if hitherto
          *     unharmed
          */
-        EntityDamageEvent getLastDamageCause();
+        EntityDamageEventArgs getLastDamageCause();
 
         /**
          * Returns a unique and persistent id for this entity

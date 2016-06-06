@@ -120,9 +120,6 @@ namespace Mine.NET.material
             return (isOpen() ? "OPEN " : "CLOSED ") + base.ToString() + " with hinges set " + getAttachedFace() + (isInverted() ? " inverted" : "");
         }
 
-        public override TrapDoor clone()
-        {
-            return (TrapDoor)base.clone();
-        }
+        public new TrapDoor Clone() { return (TrapDoor)base.Clone(); }
     }
 }

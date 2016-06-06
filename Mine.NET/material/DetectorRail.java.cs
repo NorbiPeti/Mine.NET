@@ -39,9 +39,6 @@ namespace Mine.NET.material
             pressed = isPressed;
         }
 
-        public override DetectorRail clone()
-        {
-            return (DetectorRail)base.clone();
-        }
+        public new DetectorRail Clone() { return (DetectorRail)base.Clone(); }
     }
 }

@@ -31,7 +31,7 @@ namespace Mine.NET.Event.block
          */
         public ItemStack getItem()
         {
-            return item.clone(); //TODO
+            return item.Clone();
         }
 
         /**

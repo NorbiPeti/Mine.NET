@@ -95,9 +95,6 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing() + " " + (isLit() ? "" : "NOT ") + "LIT";
         }
 
-        public override Pumpkin clone()
-        {
-            return (Pumpkin)base.clone();
-        }
+        public new Pumpkin Clone() { return (Pumpkin)base.Clone(); }
     }
 }

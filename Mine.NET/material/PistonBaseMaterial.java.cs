@@ -97,9 +97,6 @@ namespace Mine.NET.material
             return this.getItemType() == Materials.PISTON_STICKY_BASE;
         }
 
-        public override PistonBaseMaterial clone()
-        {
-            return (PistonBaseMaterial)base.clone();
-        }
+        public new PistonBaseMaterial Clone() { return (PistonBaseMaterial)base.Clone(); }
     }
 }

@@ -8,7 +8,6 @@ namespace Mine.NET.Event.entity
      */
     public class EntityInteractEventArgs : EntityEventArgs<Entity>, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected Block block;
         private bool cancelled;
 

@@ -80,9 +80,6 @@ namespace Mine.NET.material
             return getState() + " " + base.ToString();
         }
 
-        public override NetherWarts clone()
-        {
-            return (NetherWarts)base.clone();
-        }
+        public new NetherWarts Clone() { return (NetherWarts)base.Clone(); }
     }
 }

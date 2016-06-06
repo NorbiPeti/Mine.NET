@@ -56,9 +56,6 @@ namespace Mine.NET.material
             return "SPAWN EGG{" + getSpawnedType() + "}";
         }
 
-        public override SpawnEgg clone()
-        {
-            return (SpawnEgg)base.clone();
-        }
+        public new SpawnEgg Clone() { return (SpawnEgg)base.Clone(); }
     }
 }

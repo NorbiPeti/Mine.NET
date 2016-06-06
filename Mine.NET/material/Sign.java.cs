@@ -246,9 +246,6 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing();
         }
 
-        public override Sign clone()
-        {
-            return (Sign)base.clone();
-        }
+        public new Sign Clone() { return (Sign)base.Clone(); }
     }
 }

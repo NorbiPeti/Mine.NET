@@ -245,18 +245,18 @@ namespace Mine.NET.inventory
             return getType() == stack.getType() && getDurability() == stack.getDurability() && hasItemMeta() == stack.hasItemMeta() && (hasItemMeta() ? Bukkit.getItemFactory().equals(getItemMeta(), stack.getItemMeta()) : true);
         }
 
-        public object Clone()
+        public ItemStack Clone()
         {
             ItemStack itemStack = new ItemStack(this);
 
             if (this.meta != null)
             {
-                itemStack.meta = this.meta.clone();
+                itemStack.meta = this.meta.Clone();
             }
 
             if (this.data != null)
             {
-                itemStack.data = this.data.clone();
+                itemStack.data = this.data.Clone();
             }
 
             return itemStack;
@@ -494,7 +494,7 @@ namespace Mine.NET.inventory
          */
         public ItemMeta getItemMeta()
         {
-            return this.meta == null ? Bukkit.getItemFactory().getItemMeta(getType()) : this.meta.clone();
+            return this.meta == null ? Bukkit.getItemFactory().getItemMeta(getType()) : this.meta.Clone();
         }
 
         /**
@@ -538,7 +538,7 @@ namespace Mine.NET.inventory
             this.meta = Bukkit.getItemFactory().asMetaFor(itemMeta, Materials);
             if (this.meta == itemMeta)
             {
-                this.meta = itemMeta.clone();
+                this.meta = itemMeta.Clone();
             }
 
             return true;

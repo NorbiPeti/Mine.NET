@@ -96,9 +96,6 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing();
         }
 
-        public override Skull clone()
-        {
-            return (Skull)base.clone();
-        }
+        public new Skull Clone() { return (Skull)base.Clone(); }
     }
 }

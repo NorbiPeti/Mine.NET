@@ -62,8 +62,11 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing();
         }
 
-        public override DirectionalContainer clone() {
-            return (DirectionalContainer)base.clone();
+        public new DirectionalContainer Clone()
+        {
+            var dc = (DirectionalContainer)base.Clone();
+            dc.setFacingDirection(this.getFacing());
+            return dc;
         }
     }
 }

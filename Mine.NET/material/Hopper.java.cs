@@ -151,10 +151,7 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing();
         }
 
-        public override Hopper clone()
-        {
-            return (Hopper)base.clone();
-        }
+        public new Hopper Clone() { return (Hopper)base.Clone(); }
 
         /**
          * Checks if the hopper is powered.

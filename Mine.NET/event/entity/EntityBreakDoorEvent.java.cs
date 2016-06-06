@@ -11,7 +11,7 @@ namespace Mine.NET.Event.entity
     public class EntityBreakDoorEventArgs : EntityChangeBlockEventArgs
     {
         public EntityBreakDoorEventArgs(LivingEntity entity, Block targetBlock) :
-            base(entity, targetBlock, Materials.AIR, (byte)0)
+            base(entity, targetBlock, Materials.AIR, null)
         {
         }
     }

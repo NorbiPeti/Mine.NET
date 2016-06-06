@@ -96,9 +96,6 @@ namespace Mine.NET.material
             return getFacing().getOppositeFace();
         }
 
-        public override PistonExtensionMaterial clone()
-        {
-            return (PistonExtensionMaterial)base.clone();
-        }
+        public new PistonExtensionMaterial Clone() { return (PistonExtensionMaterial)base.Clone(); }
     }
 }

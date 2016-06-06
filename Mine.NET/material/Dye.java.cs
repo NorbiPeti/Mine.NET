@@ -5,27 +5,24 @@ namespace Mine.NET.material
     /**
      * Represents dye
      */
-    public class Dye : MaterialData<byte>, Colorable {
-        public Dye() : base(Materials.INK_SACK) {
+    public class Dye : MaterialData, Colorable
+    {
+        private DyeColor.Colors color;
+
+        public Dye() : base(Materials.INK_SACK)
+        {
         }
 
-        public Dye(Materials type) : base(type) {
+        public Dye(Materials type) : base(type)
+        {
         }
-
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public Dye(Materials type, byte data) : base(type, data) {
-    }
 
         /**
          * @param color color of the dye
          */
-        public Dye(DyeColor color) : base(Materials.INK_SACK, color.getDyeData())
+        public Dye(DyeColor.Colors color) : base(Materials.INK_SACK)
         {
+            this.color = color;
         }
 
         /**
@@ -33,8 +30,9 @@ namespace Mine.NET.material
          *
          * @return DyeColor of this dye
          */
-        public DyeColor getColor() {
-            return DyeColor.getByDyeData(getData());
+        public DyeColor.Colors getColor()
+        {
+            return color;
         }
 
         /**
@@ -42,16 +40,16 @@ namespace Mine.NET.material
          *
          * @param color New color of this dye
          */
-        public void setColor(DyeColor color) {
-            setData(color.getDyeData());
+        public void setColor(DyeColor.Colors color)
+        {
+            this.color = color;
         }
 
-        public override string ToString() {
-            return getColor() + " DYE(" + getData() + ")";
+        public override string ToString()
+        {
+            return getColor() + " DYE(" + color + ")";
         }
 
-        public override Dye clone() {
-            return (Dye)base.clone();
-        }
+        public new Dye Clone() { return (Dye)base.Clone(); }
     }
 }

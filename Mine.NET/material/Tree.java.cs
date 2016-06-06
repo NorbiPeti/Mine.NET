@@ -145,9 +145,6 @@ namespace Mine.NET.material
             return getSpecies() + " " + getDirection() + " " + base.ToString();
         }
 
-        public override Tree clone()
-        {
-            return (Tree)base.clone();
-        }
+        public new Tree Clone() { return (Tree)base.Clone(); }
     }
 }

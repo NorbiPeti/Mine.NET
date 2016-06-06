@@ -55,9 +55,6 @@ namespace Mine.NET.material
             return getType() + " " + base.ToString();
         }
 
-        public override Sandstone clone()
-        {
-            return (Sandstone)base.clone();
-        }
+        public new Sandstone Clone() { return (Sandstone)base.Clone(); }
     }
 }

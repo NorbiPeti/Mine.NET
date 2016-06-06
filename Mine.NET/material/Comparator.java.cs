@@ -157,9 +157,7 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing() + " in " + (isSubtractionMode() ? "subtraction" : "comparator") + " mode";
         }
 
-        public override Comparator clone() {
-            return (Comparator)base.clone();
-        }
+        public new Comparator Clone() { return (Comparator)base.Clone(); }
 
         /**
          * Checks if the comparator is powered

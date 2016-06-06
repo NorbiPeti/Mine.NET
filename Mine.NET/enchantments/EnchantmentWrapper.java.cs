@@ -19,7 +19,8 @@ namespace Mine.NET.enchantments
          */
         public Enchantment getEnchantment()
         {
-            return Enchantment.getById(getId());
+            //return Enchantment.getById(getId());
+            return this; //TODO
         }
 
         public override int getMaxLevel()

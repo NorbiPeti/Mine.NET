@@ -10,7 +10,6 @@ namespace Mine.NET.Event.entity
      */
     public class EntityPortalEventArgs : EntityTeleportEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected TravelAgent travelAgent;
 
         public EntityPortalEventArgs(Entity entity, Location from, Location to, TravelAgent pta) : base(entity, from, to)

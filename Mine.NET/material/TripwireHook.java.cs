@@ -129,10 +129,7 @@ namespace Mine.NET.material
             return isActivated();
         }
 
-        public override TripwireHook clone()
-        {
-            return (TripwireHook)base.clone();
-        }
+        public new TripwireHook Clone() { return (TripwireHook)base.Clone(); }
 
         public override string ToString()
         {

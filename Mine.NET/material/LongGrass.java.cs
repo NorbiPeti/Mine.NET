@@ -49,8 +49,6 @@ namespace Mine.NET.material
             return getSpecies() + " " + base.ToString();
         }
 
-        public override LongGrass clone() {
-            return (LongGrass)base.clone();
-        }
+        public new LongGrass Clone() { return (LongGrass)base.Clone(); }
     }
 }

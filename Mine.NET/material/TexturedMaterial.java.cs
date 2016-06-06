@@ -74,8 +74,6 @@ namespace Mine.NET.material
             return getMaterial() + " " + base.ToString();
         }
 
-        public override TexturedMaterial clone() {
-            return (TexturedMaterial)base.clone();
-        }
+        public new TexturedMaterial Clone() { return (TexturedMaterial)base.Clone(); }
     }
 }

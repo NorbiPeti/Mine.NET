@@ -115,8 +115,6 @@ namespace Mine.NET.material
             return getState() + " " + base.ToString();
         }
 
-        public override Crops clone() {
-            return (Crops)base.clone();
-        }
+        public new Crops Clone() { return (Crops)base.Clone(); }
     }
 }

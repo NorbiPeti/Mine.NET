@@ -41,9 +41,6 @@ namespace Mine.NET.material
             setData((byte)(isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
         }
 
-        public override PoweredRail clone()
-        {
-            return (PoweredRail)base.clone();
-        }
+        public new PoweredRail Clone() { return (PoweredRail)base.Clone(); }
     }
 }

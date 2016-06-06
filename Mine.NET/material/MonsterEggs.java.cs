@@ -39,8 +39,6 @@ public class MonsterEggs : TexturedMaterial {
         return textures;
     }
 
-    public override MonsterEggs clone() {
-        return (MonsterEggs) base.clone();
-    }
+    public new MonsterEggs Clone() { return (MonsterEggs)base.Clone(); }
 }
 }

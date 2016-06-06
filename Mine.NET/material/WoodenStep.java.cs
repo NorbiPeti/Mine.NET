@@ -78,10 +78,7 @@ namespace Mine.NET.material
             setData((byte)dat);
         }
 
-        public override WoodenStep clone()
-        {
-            return (WoodenStep)base.clone();
-        }
+        public new WoodenStep Clone() { return (WoodenStep)base.Clone(); }
 
         public override string ToString()
         {

@@ -6,7 +6,8 @@ namespace Mine.NET.util
      * EulerAngle is used to represent 3 angles, one for each
      * axis (x, y, z). The angles are in radians
      */
-    public class EulerAngle {
+    public class EulerAngle
+    {
 
         /**
          * A EulerAngle with every axis set to 0
@@ -25,7 +26,8 @@ namespace Mine.NET.util
          * @param y the angle for the x axis in radians
          * @param z the angle for the x axis in radians
          */
-        public EulerAngle(double x, double y, double z) {
+        public EulerAngle(double x, double y, double z)
+        {
             this.x = x;
             this.y = y;
             this.z = z;
@@ -36,7 +38,8 @@ namespace Mine.NET.util
          *
          * @return the angle in radians
          */
-        public double getX() {
+        public double getX()
+        {
             return x;
         }
 
@@ -45,7 +48,8 @@ namespace Mine.NET.util
          *
          * @return the angle in radians
          */
-        public double getY() {
+        public double getY()
+        {
             return y;
         }
 
@@ -54,7 +58,8 @@ namespace Mine.NET.util
          *
          * @return the angle in radians
          */
-        public double getZ() {
+        public double getZ()
+        {
             return z;
         }
 
@@ -65,7 +70,8 @@ namespace Mine.NET.util
          * @param x the angle in radians
          * @return the resultant EulerAngle
          */
-        public EulerAngle setX(double x) {
+        public EulerAngle setX(double x)
+        {
             return new EulerAngle(x, y, z);
         }
 
@@ -76,7 +82,8 @@ namespace Mine.NET.util
          * @param y the angle in radians
          * @return the resultant EulerAngle
          */
-        public EulerAngle setY(double y) {
+        public EulerAngle setY(double y)
+        {
             return new EulerAngle(x, y, z);
         }
 
@@ -87,7 +94,8 @@ namespace Mine.NET.util
          * @param z the angle in radians
          * @return the resultant EulerAngle
          */
-        public EulerAngle setZ(double z) {
+        public EulerAngle setZ(double z)
+        {
             return new EulerAngle(x, y, z);
         }
 
@@ -100,7 +108,8 @@ namespace Mine.NET.util
          * @param z the angle to add to the z axis in radians
          * @return the resultant EulerAngle
          */
-        public EulerAngle add(double x, double y, double z) {
+        public EulerAngle add(double x, double y, double z)
+        {
             return new EulerAngle(
                     this.x + x,
                     this.y + y,
@@ -117,31 +126,35 @@ namespace Mine.NET.util
          * @param z the angle to subtract to the z axis in radians
          * @return the resultant EulerAngle
          */
-        public EulerAngle subtract(double x, double y, double z) {
+        public EulerAngle subtract(double x, double y, double z)
+        {
             return add(-x, -y, -z);
         }
 
-        public override bool Equals(Object o) {
+        public override bool Equals(Object o)
+        {
             if (this == o) return true;
             if (o == null || GetType() != o.GetType()) return false;
 
             EulerAngle that = (EulerAngle)o;
 
-            return Double.compare(that.x, x) == 0
-                    && Double.compare(that.y, y) == 0
-                    && Double.compare(that.z, z) == 0;
+            //Find: "Double.compare\(([^,]+),\s*([^)]+)\)" - Replace: "$1.CompareTo($2)" - Replaced these 3...
+            return that.x.CompareTo(x) == 0
+                    && that.y.CompareTo(y) == 0
+                    && that.z.CompareTo(z) == 0;
 
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             int result;
-            long temp;
-            temp = Double.doubleToLongBits(x);
-            result = (int)(temp ^ (temp >>> 32));
-            temp = Double.doubleToLongBits(y);
-            result = 31 * result + (int)(temp ^ (temp >>> 32));
-            temp = Double.doubleToLongBits(z);
-            result = 31 * result + (int)(temp ^ (temp >>> 32));
+            long temp; //Find: "Double.doubleToLongBits\(([^)]+)\)" - Replace: "BitConverter.DoubleToInt64Bits($1)"
+            temp = BitConverter.DoubleToInt64Bits(x);
+            result = (int)((ulong)temp ^ (unchecked((ulong)temp) >> 32));
+            temp = BitConverter.DoubleToInt64Bits(y);
+            result = 31 * result + (int)((ulong)temp ^ (unchecked((ulong)temp) >> 32));
+            temp = BitConverter.DoubleToInt64Bits(z);
+            result = 31 * result + (int)((ulong)temp ^ (unchecked((ulong)temp) >> 32));
             return result;
         }
     }

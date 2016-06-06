@@ -80,8 +80,6 @@ namespace Mine.NET.material
             return face;
         }
 
-        public override Dispenser clone() {
-            return (Dispenser)base.clone();
-        }
+        public new Dispenser Clone() { return (Dispenser)base.Clone(); }
     }
 }

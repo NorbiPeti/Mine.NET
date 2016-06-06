@@ -52,9 +52,9 @@ namespace Mine.NET.material
             return (isEmpty() ? "EMPTY" : (isFull() ? "FULL" : waterlevel + "/3 FULL")) + " CAULDRON";
         }
 
-        public override Cauldron clone()
+        public new Cauldron Clone()
         {
-            return (Cauldron)base.clone();
+            return (Cauldron)base.Clone();
         }
     }
 }

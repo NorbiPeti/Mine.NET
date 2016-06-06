@@ -76,9 +76,9 @@ namespace Mine.NET.material
             return base.ToString() + " " + getSlicesEaten() + "/" + getSlicesRemaining() + " slices eaten/remaining";
         }
 
-        public override Cake clone()
+        public new Cake Clone()
         {
-            return (Cake)base.clone();
+            return (Cake)base.Clone();
         }
     }
 }

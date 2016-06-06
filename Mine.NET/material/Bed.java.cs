@@ -92,9 +92,22 @@ namespace Mine.NET.material
             return (isHeadOfBed() ? "HEAD" : "FOOT") + " of " + base.ToString() + " facing " + getFacing();
         }
 
-        public override Bed clone()
+        public new Bed Clone()
         {
-            return (Bed)base.clone(); //TODo
+            return (Bed)base.Clone();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Bed))
+                return false;
+            var data = (Bed)obj;
+            return base.Equals(obj) && this.face == data.face && this.ishead==data.ishead;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode() + (int)face;
         }
     }
 }

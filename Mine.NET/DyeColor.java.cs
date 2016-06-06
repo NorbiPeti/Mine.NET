@@ -223,63 +223,6 @@ namespace Mine.NET
         }
 
         /**
-         * Gets the DyeColor with the given (wool) data value.
-         *
-         * @param data (wool) data value to fetch
-         * @return The {@link DyeColor} representing the given value, or null if
-         *     it doesn't exist
-         * [Obsolete] The name is misleading. It would imply {@link
-         *     Materials#INK_SACK} but uses {@link Materials#WOOL}
-         * @see #getByDyeData(byte)
-         * @see #getByWoolData(byte)
-         */
-        [Obsolete]
-        public static DyeColor getByData(byte data)
-        {
-            return getByWoolData(data);
-        }
-
-        /**
-         * Gets the DyeColor with the given wool data value.
-         *
-         * @param data Wool data value to fetch
-         * @return The {@link DyeColor} representing the given value, or null if
-         *     it doesn't exist
-         * @see #getByDyeData(byte)
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public static DyeColor getByWoolData(byte data)
-        {
-            int i = 0xff & data;
-            if (i >= BY_WOOL_DATA.Length)
-            {
-                return null;
-            }
-            return BY_WOOL_DATA[i];
-        }
-
-        /**
-         * Gets the DyeColor with the given dye data value.
-         *
-         * @param data Dye data value to fetch
-         * @return The {@link DyeColor} representing the given value, or null if
-         *     it doesn't exist
-         * @see #getByWoolData(byte)
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public static DyeColor getByDyeData(byte data)
-        {
-            int i = 0xff & data;
-            if (i >= BY_DYE_DATA.Length)
-            {
-                return null;
-            }
-            return BY_DYE_DATA[i];
-        }
-
-        /**
          * Gets the DyeColor with the given color value.
          *
          * @param color Color value to get the dye by

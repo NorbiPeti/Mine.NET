@@ -44,9 +44,6 @@ namespace Mine.NET.material
             return textures;
         }
 
-        public override SmoothBrick clone()
-        {
-            return (SmoothBrick)base.clone();
-        }
+        public new SmoothBrick Clone() { return (SmoothBrick)base.Clone(); }
     }
 }

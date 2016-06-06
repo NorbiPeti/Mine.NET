@@ -517,9 +517,9 @@ namespace Mine.NET
             int hash = 3;
             //TODO
             /*hash = 19 * hash + (this.world != null ? this.world.GetH    ashCode() : 0);
-            hash = 19 * hash + (int) (Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
-            hash = 19 * hash + (int) (Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
-            hash = 19 * hash + (int) (Double.doubleToLongBits(this.z) ^ (Double.doubleToLongBits(this.z) >>> 32));
+            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >>> 32));
+            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >>> 32));
+            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >>> 32));
             hash = 19 * hash + Float.floatToIntBits(this.pitch);
             hash = 19 * hash + Float.floatToIntBits(this.yaw);*/
             return hash;

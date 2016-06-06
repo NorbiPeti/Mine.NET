@@ -1,5 +1,6 @@
 using Mine.NET.block;
 using Mine.NET.entity;
+using Mine.NET.material;
 using System;
 
 namespace Mine.NET.Event.entity
@@ -12,7 +13,7 @@ namespace Mine.NET.Event.entity
         private readonly Block block;
         private bool cancel;
         private readonly Materials to;
-        private readonly byte data;
+        private readonly MaterialData data;
 
         /**
          *
@@ -22,8 +23,7 @@ namespace Mine.NET.Event.entity
          * @param data the future block data
          * [Obsolete] Magic value
          */
-        [Obsolete]
-        public EntityChangeBlockEventArgs(Entity what, Block block, Materials to, byte data) : base(what)
+        public EntityChangeBlockEventArgs(Entity what, Block block, Materials to, MaterialData data) : base(what)
         {
             this.block = block;
             this.cancel = false;
@@ -67,10 +67,9 @@ namespace Mine.NET.Event.entity
          * @return the data for the block that would be changed into
          * [Obsolete] Magic value
          */
-        [Obsolete]
-        public byte getData()
+        public MaterialData getData()
         {
-            return data;
+            return data; //May be null
         }
     }
 }

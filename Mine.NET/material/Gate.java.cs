@@ -76,8 +76,6 @@ namespace Mine.NET.material {
             return (isOpen() ? "OPEN " : "CLOSED ") + " facing and opening " + getFacing();
         }
 
-        public override Gate clone() {
-            return (Gate)base.clone();
-        }
+        public new Gate Clone() { return (Gate)base.Clone(); }
     }
 }

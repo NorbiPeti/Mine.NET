@@ -106,9 +106,6 @@ namespace Mine.NET.material
             return getSpecies() + " " + (isInstantGrowable() ? " IS_INSTANT_GROWABLE " : "") + " " + base.ToString();
         }
 
-        public override Sapling clone()
-        {
-            return (Sapling)base.clone();
-        }
+        public new Sapling Clone() { return (Sapling)base.Clone(); }
     }
 }

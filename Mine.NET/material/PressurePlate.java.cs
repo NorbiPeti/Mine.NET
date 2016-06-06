@@ -36,9 +36,6 @@ namespace Mine.NET.material
             return base.ToString() + (isPressed() ? " PRESSED" : "");
         }
 
-        public override PressurePlate clone()
-        {
-            return (PressurePlate)base.clone();
-        }
+        public new PressurePlate Clone() { return (PressurePlate)base.Clone(); }
     }
 }

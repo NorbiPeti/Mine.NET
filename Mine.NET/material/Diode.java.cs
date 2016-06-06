@@ -178,10 +178,7 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing() + " with " + getDelay() + " ticks delay";
         }
 
-        public override Diode clone()
-        {
-            return (Diode)base.clone();
-        }
+        public new Diode Clone() { return (Diode)base.Clone(); }
 
         /**
          * Checks if the diode is powered.

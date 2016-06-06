@@ -151,9 +151,6 @@ namespace Mine.NET.material
             return base.ToString() + " facing " + getFacing() + " " + (isPowered() ? "" : "NOT ") + "POWERED";
         }
 
-        public override Lever clone()
-        {
-            return (Lever)base.clone();
-        }
+        public new Lever Clone() { return (Lever)base.Clone(); }
     }
 }

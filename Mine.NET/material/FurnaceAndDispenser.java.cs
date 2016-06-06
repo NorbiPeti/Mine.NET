@@ -18,8 +18,6 @@ namespace Mine.NET.material
         public FurnaceAndDispenser(Materials type, byte data) : base(type, data) {
     }
 
-    public override FurnaceAndDispenser clone() {
-            return (FurnaceAndDispenser)base.clone();
-        }
+    public new FurnaceAndDispenser Clone() { return (FurnaceAndDispenser)base.Clone(); }
     }
 }

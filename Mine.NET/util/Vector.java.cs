@@ -553,9 +553,9 @@ public class Vector : ConfigurationSerializable {
         public override int GetHashCode() {
             int hash = 7;
 
-            hash = 79 * hash + (int)(Double.doubleToLongBits(this.x) ^ (Double.doubleToLongBits(this.x) >>> 32));
-            hash = 79 * hash + (int)(Double.doubleToLongBits(this.y) ^ (Double.doubleToLongBits(this.y) >>> 32));
-            hash = 79 * hash + (int)(Double.doubleToLongBits(this.z) ^ (Double.doubleToLongBits(this.z) >>> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >>> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >>> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >>> 32));
             return hash;
         }
 

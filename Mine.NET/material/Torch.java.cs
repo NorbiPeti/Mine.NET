@@ -86,9 +86,6 @@ namespace Mine.NET.material
             setData(data);
         }
 
-        public override Torch clone()
-        {
-            return (Torch)base.clone();
-        }
+        public new Torch Clone() { return (Torch)base.Clone(); }
     }
 }
