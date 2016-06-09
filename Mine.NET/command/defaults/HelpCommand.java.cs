@@ -1,3 +1,5 @@
+using Mine.NET.help;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -152,7 +154,7 @@ namespace Mine.NET.command.defaults
 
                 if (damerauLevenshteinDistance(searchString, trimmedTopic.Substring(0, searchString.Length)) < maxDistance)
                 {
-                    possibleMatches.add(topic);
+                    possibleMatches.Add(topic);
                 }
             }
 

@@ -8,6 +8,10 @@ namespace Mine.NET.configuration
      */
     public interface Configuration : ConfigurationSection
     {
+    }
+    
+    public interface Configuration<T> : Configuration where T : ConfigurationOptions
+    {
         /**
          * Sets the default value of the given path as provided.
          * <p>
@@ -82,6 +86,6 @@ namespace Mine.NET.configuration
          *
          * @return Options for this configuration
          */
-        ConfigurationOptions options();
+        T options();
     }
 }

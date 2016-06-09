@@ -8,8 +8,6 @@ namespace Mine.NET.Event.block
      */
     public class NotePlayEventArgs : BlockEventArgs, Cancellable
     {
-
-        private static HandlerList handlers = new HandlerList();
         private Instrument instrument;
         private Note note;
         private bool cancelled = false;

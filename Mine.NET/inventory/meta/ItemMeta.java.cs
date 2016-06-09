@@ -11,7 +11,7 @@ namespace Mine.NET.inventory.meta
      * An implementation will handle the creation and application for ItemMeta.
      * This class should not be implemented by a plugin in a live environment.
      */
-    public interface ItemMeta<T> : ConfigurationSerializable where T : ItemMeta<T> //Recursion FTW
+    public interface ItemMeta<T> : ItemMeta where T : ItemMeta<T> //Recursion FTW
     {
 
         /**
@@ -156,7 +156,7 @@ namespace Mine.NET.inventory.meta
         T Clone();
     }
 
-    public interface ItemMeta : ItemMeta<ItemMeta>
+    public interface ItemMeta : ConfigurationSerializable
     {
     }
 }

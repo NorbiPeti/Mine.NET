@@ -1,11 +1,13 @@
 using Mine.NET.configuration.serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mine.NET.block.banner
 {
     [SerializableAs("Pattern")]
-    public class Pattern : ConfigurationSerializable {
+    public class Pattern : ConfigurationSerializable
+    {
 
         private static readonly String COLOR = "color";
         private static readonly String PATTERN = "pattern";
@@ -20,7 +22,8 @@ namespace Mine.NET.block.banner
          * @param color   the pattern color
          * @param pattern the pattern type
          */
-        public Pattern(DyeColor color, PatternType pattern) {
+        public Pattern(DyeColor color, PatternType pattern)
+        {
             this.color = color;
             this.pattern = pattern;
         }
@@ -30,24 +33,28 @@ namespace Mine.NET.block.banner
          *
          * @param map the map to deserialize from
          */
-        public Pattern(Dictionary<String, Object> map) {
+        public Pattern(Dictionary<String, Object> map)
+        {
             color = DyeColor.AllColors[(DyeColor.Colors)Enum.Parse(typeof(DyeColor.Colors), getString(map, COLOR))];
-            pattern = PatternType.getByIdentifier(getString(map, PATTERN));
+            pattern = PatternTypeC.byString[getString(map, PATTERN)];
         }
 
-        private static String getString<T,V>(Dictionary<T,V> map, T key) {
+        private static String getString<T, V>(Dictionary<T, V> map, T key)
+        {
             object str = map[key];
-            if (str is String) {
+            if (str is String)
+            {
                 return (String)str;
             }
             throw new KeyNotFoundException(map + " does not contain " + key);
         }
-        
-        public override Dictionary<String, Object> serialize() {
+
+        public Dictionary<String, Object> serialize()
+        {
             return new Dictionary<string, object>
             {
                 { COLOR, color.ToString() },
-                { PATTERN, pattern.getIdentifier() }
+                { PATTERN, PatternTypeC.byString.Single(pts => pts.Value == pattern).Key }
             };
         }
 
@@ -56,7 +63,8 @@ namespace Mine.NET.block.banner
          *
          * @return the color of the pattern
          */
-        public DyeColor getColor() {
+        public DyeColor getColor()
+        {
             return color;
         }
 
@@ -65,22 +73,27 @@ namespace Mine.NET.block.banner
          *
          * @return the pattern type
          */
-        public PatternType getPattern() {
+        public PatternType getPattern()
+        {
             return pattern;
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             int hash = 3;
             hash = 97 * hash + (this.color != null ? this.color.GetHashCode() : 0);
             hash = 97 * hash + this.pattern.GetHashCode();
             return hash;
         }
 
-        public override bool Equals(Object obj) {
-            if (obj == null) {
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
             Pattern other = (Pattern)obj;

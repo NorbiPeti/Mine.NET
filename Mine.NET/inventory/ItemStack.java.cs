@@ -135,7 +135,7 @@ namespace Mine.NET.inventory
             Material mat = Material.AllMaterials[getType()];
             if (data == null && mat != null && mat.getData() != null)
             {
-                data = mat.getNewData((byte)this.getDurability());
+                //data = mat.getNewData((byte)this.getDurability()); //TODO
             }
 
             return data;

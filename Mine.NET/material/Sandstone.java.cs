@@ -20,16 +20,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Sandstone(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private SandstoneType type;
         /**
          * Gets the current type of this sandstone
          *
@@ -37,7 +28,7 @@ namespace Mine.NET.material
          */
         public SandstoneType getType()
         {
-            return SandstoneType.getByData(getData());
+            return type;
         }
 
         /**
@@ -47,7 +38,8 @@ namespace Mine.NET.material
          */
         public void setType(SandstoneType type)
         {
-            setData(type.getData());
+            //setData(type.getData());
+            this.type = type;
         }
 
         public override string ToString()

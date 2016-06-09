@@ -5,34 +5,30 @@ namespace Mine.NET.material
     /**
      * Represents a flower pot.
      */
-    public class FlowerPot : MaterialData<byte> {
+    public class FlowerPot : MaterialData
+    {
 
         /**
          * Default constructor for a flower pot.
          */
-        public FlowerPot() : base(Materials.FLOWER_POT) {
+        public FlowerPot() : base(Materials.FLOWER_POT)
+        {
         }
 
-        public FlowerPot(Materials type) : base(type) {
+        public FlowerPot(Materials type) : base(type)
+        {
         }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public FlowerPot(Materials type, byte data) : base(type, data) {
-    }
-
-    /**
-     * Get the Materials in the flower pot
-     *
-     * @return Materials MaterialData for the block currently in the flower pot
-     *     or null if empty
-     */
-    public MaterialData getContents() {
-            switch (getData()) {
+        private MaterialData data;
+        /**
+         * Get the Materials in the flower pot
+         *
+         * @return Materials MaterialData for the block currently in the flower pot
+         *     or null if empty
+         */
+        public MaterialData getContents()
+        {
+            /*switch (getData()) {
                 case 1:
                     return new MaterialData<byte>(Materials.RED_ROSE);
                 case 2:
@@ -57,7 +53,8 @@ namespace Mine.NET.material
                     return new LongGrass(GrassSpecies.FERN_LIKE);
                 default:
                     return null;
-            }
+            }*/
+            return data;
         }
 
         /**
@@ -65,8 +62,9 @@ namespace Mine.NET.material
          *
          * @param materialData MaterialData of the block to put in the flower pot.
          */
-        public void setContents(MaterialData<byte> materialData) {
-            Materials mat = materialData.getItemType();
+        public void setContents(MaterialData materialData)
+        {
+            /*Materials mat = materialData.getItemType();
 
             if (mat == Materials.RED_ROSE) {
                 setData((byte)1);
@@ -98,10 +96,12 @@ namespace Mine.NET.material
                 if (species == GrassSpecies.FERN_LIKE) {
                     setData((byte)11);
                 }
-            }
+            }*/
+            data = materialData;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return base.ToString() + " containing " + getContents();
         }
 

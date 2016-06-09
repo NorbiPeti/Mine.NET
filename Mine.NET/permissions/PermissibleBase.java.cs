@@ -125,9 +125,9 @@ namespace Mine.NET.permissions
             {
                 throw new ArgumentException("Plugin cannot be null");
             }
-            else if (!plugin.isEnabled())
+            else if (!plugin.Enabled)
             {
-                throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+                throw new ArgumentException("Plugin " + plugin.FullName + " is disabled");
             }
 
             PermissionAttachment result = addAttachment(plugin);
@@ -144,14 +144,14 @@ namespace Mine.NET.permissions
             {
                 throw new ArgumentException("Plugin cannot be null");
             }
-            else if (!plugin.isEnabled())
+            else if (!plugin.Enabled)
             {
-                throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+                throw new ArgumentException("Plugin " + plugin.FullName + " is disabled");
             }
 
             PermissionAttachment result = new PermissionAttachment(plugin, parent);
 
-            attachments.add(result);
+            attachments.AddLast(result);
             recalculatePermissions();
 
             return result;
@@ -247,9 +247,9 @@ namespace Mine.NET.permissions
             {
                 throw new ArgumentException("Plugin cannot be null");
             }
-            else if (!plugin.isEnabled())
+            else if (!plugin.Enabled)
             {
-                throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+                throw new ArgumentException("Plugin " + plugin.FullName + " is disabled");
             }
 
             PermissionAttachment result = addAttachment(plugin, ticks);
@@ -268,16 +268,16 @@ namespace Mine.NET.permissions
             {
                 throw new ArgumentException("Plugin cannot be null");
             }
-            else if (!plugin.isEnabled())
+            else if (!plugin.Enabled)
             {
-                throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+                throw new ArgumentException("Plugin " + plugin.FullName + " is disabled");
             }
 
             PermissionAttachment result = addAttachment(plugin);
 
             if (Bukkit.getServer().getScheduler().runTaskLater(plugin, () => RemoveAttachment(result), ticks) == null)
             {
-                Bukkit.getServer().getLogger().Warning("Could not add PermissionAttachment to " + parent + " for plugin " + plugin.getDescription().getFullName() + ": Scheduler returned -1");
+                Bukkit.getServer().getLogger().Warning("Could not add PermissionAttachment to " + parent + " for plugin " + plugin.FullName + ": Scheduler returned -1");
                 result.remove();
                 return null;
             }

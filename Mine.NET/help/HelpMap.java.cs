@@ -1,3 +1,4 @@
+using Mine.NET.command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,7 +65,7 @@ namespace Mine.NET.help
          * @throws ArgumentException Thrown if {@code commandClass} does
          *     not derive from a legal base class.
          */
-        void registerHelpTopicFactory<T>(HelpTopicFactory<T> factory);
+        void registerHelpTopicFactory<T>(HelpTopicFactory<T> factory) where T : Command;
 
         /**
          * Gets the list of plugins the server administrator has chosen to exclude

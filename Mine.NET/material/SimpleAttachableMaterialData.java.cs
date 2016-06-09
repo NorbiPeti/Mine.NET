@@ -18,16 +18,6 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public SimpleAttachableMaterialData(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public BlockFaces getFacing()
         {
             BlockFaces attachedFace = getAttachedFace();

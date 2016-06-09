@@ -21,16 +21,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public NetherWarts(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private NetherWartsState state;
         /**
          * Gets the current growth state of this nether wart
          *
@@ -38,7 +29,7 @@ namespace Mine.NET.material
          */
         public NetherWartsState getState()
         {
-            switch (getData())
+            /*switch (getData())
             {
                 case 0:
                     return NetherWartsState.SEEDED;
@@ -48,7 +39,8 @@ namespace Mine.NET.material
                     return NetherWartsState.STAGE_TWO;
                 default:
                     return NetherWartsState.RIPE;
-            }
+            }*/
+            return state;
         }
 
         /**
@@ -58,7 +50,7 @@ namespace Mine.NET.material
          */
         public void setState(NetherWartsState state)
         {
-            switch (state)
+            /*switch (state)
             {
                 case NetherWartsState.SEEDED:
                     setData((byte)0x0);
@@ -72,7 +64,8 @@ namespace Mine.NET.material
                 case NetherWartsState.RIPE:
                     setData((byte)0x3);
                     return;
-            }
+            }*/
+            this.state = state;
         }
 
         public override string ToString()

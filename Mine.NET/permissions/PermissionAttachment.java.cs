@@ -21,9 +21,9 @@ namespace Mine.NET.permissions
             {
                 throw new ArgumentException("Plugin cannot be null");
             }
-            else if (!plugin.isEnabled())
+            else if (!plugin.Enabled)
             {
-                throw new ArgumentException("Plugin " + plugin.getDescription().getFullName() + " is disabled");
+                throw new ArgumentException("Plugin " + plugin.FullName + " is disabled");
             }
 
             this.permissible = Permissible;

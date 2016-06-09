@@ -2,6 +2,7 @@ using Mine.NET.command;
 using Mine.NET.entity;
 using Mine.NET.util;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
@@ -20,14 +21,14 @@ namespace Mine.NET.help
 
         protected String permission;
         protected String preamble;
-        protected Collection<HelpTopic> allTopics;
+        protected ICollection<HelpTopic> allTopics;
 
-        public IndexHelpTopic(String name, String shortText, String permission, Collection<HelpTopic> topics) :
+        public IndexHelpTopic(String name, String shortText, String permission, ICollection<HelpTopic> topics) :
             this(name, shortText, permission, topics, null)
         {
         }
 
-        public IndexHelpTopic(String name, String shortText, String permission, Collection<HelpTopic> topics, String preamble)
+        public IndexHelpTopic(String name, String shortText, String permission, ICollection<HelpTopic> topics, String preamble)
         {
             this.name = name;
             this.shortText = shortText;
@@ -41,7 +42,7 @@ namespace Mine.NET.help
          *
          * @param topics The topics to set.
          */
-        protected void setTopicsCollection(Collection<HelpTopic> topics)
+        protected void setTopicsCollection(ICollection<HelpTopic> topics)
         {
             this.allTopics = topics;
         }

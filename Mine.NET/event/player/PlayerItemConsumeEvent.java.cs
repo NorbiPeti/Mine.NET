@@ -36,7 +36,7 @@ namespace Mine.NET.Event.player
          */
         public ItemStack getItem()
         {
-            return item.clone();
+            return item.Clone();
         }
 
         /**

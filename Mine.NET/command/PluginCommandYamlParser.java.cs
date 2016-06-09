@@ -1,3 +1,4 @@
+using Mine.NET.plugin;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace Mine.NET.command
         public static List<Command> parse(Plugin plugin) {
             List<Command> pluginCmds = new List<Command>();
 
-            Dictionary<String, Dictionary<String, Object>> map = plugin.getDescription().getCommands();
+            Dictionary<String, Dictionary<String, Object>> map = plugin.Commands; //TODO
 
             if (map == null) {
                 return pluginCmds;

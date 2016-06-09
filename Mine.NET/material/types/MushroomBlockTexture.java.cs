@@ -1,6 +1,7 @@
 using Mine.NET.block;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mine.NET.material.types
 {
@@ -124,13 +125,10 @@ namespace Mine.NET.material.types
 { MushroomBlockTextures.ALL_STEM, new MushroomBlockTexture(15, null) }
     };
 
-        private readonly static Dictionary<Byte, MushroomBlockTexture> BY_DATA = new Dictionary<byte, MushroomBlockTexture>();
-        private readonly static Dictionary<BlockFaces, MushroomBlockTexture> BY_BLOCKFACE = new Dictionary<BlockFaces, MushroomBlockTexture>();
-
         private readonly Byte data;
-        private readonly BlockFaces capFace;
+        private readonly BlockFaces? capFace;
 
-        private MushroomBlockTexture(int data, BlockFaces capFace)
+        private MushroomBlockTexture(int data, BlockFaces? capFace)
         {
             this.data = (byte)data;
             this.capFace = capFace;
@@ -153,23 +151,9 @@ namespace Mine.NET.material.types
          *
          * @return The cap face
          */
-        public BlockFaces getCapFace()
+        public BlockFaces? getCapFace()
         {
             return capFace;
-        }
-
-        /**
-         * Gets the MushroomBlockType with the given data value.
-         *
-         * @param data Data value to fetch
-         * @return The {@link MushroomBlockTexture} representing the given value, or
-         * null if it doesn't exist
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public static MushroomBlockTexture getByData(byte data)
-        {
-            return BY_DATA[data];
         }
 
         /**
@@ -183,7 +167,7 @@ namespace Mine.NET.material.types
          */
         public static MushroomBlockTexture getCapByFace(BlockFaces face)
         {
-            return BY_BLOCKFACE[face];
+            return AllMBT.Single(mbt => mbt.Value.capFace == face).Value;
         }
 
         /*static {
@@ -191,6 +175,6 @@ namespace Mine.NET.material.types
                 BY_DATA.Add(type.data, type);
                 BY_BLOCKFACE.Add(type.capFace, type);
             }
-        }*/ //TODO
+        }*/
     }
 }

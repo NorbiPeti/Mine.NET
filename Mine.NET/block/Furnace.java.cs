@@ -5,7 +5,7 @@ namespace Mine.NET.block
     /**
      * Represents a furnace.
      */
-    public interface Furnace : BlockState, InventoryHolder
+    public interface Furnace : BlockState, InventoryHolder<FurnaceInventory>
     {
 
         /**
@@ -35,7 +35,5 @@ namespace Mine.NET.block
          * @param cookTime Cook time
          */
         void setCookTime(short cookTime);
-
-        FurnaceInventory getInventory();
     }
 }

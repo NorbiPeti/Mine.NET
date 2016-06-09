@@ -28,7 +28,7 @@ public class InvalidConfigurationException : Exception {
          *
          * @param cause The cause of the exception.
          */
-        public InvalidConfigurationException(Exception cause) : base(cause) {
+        public InvalidConfigurationException(Exception cause) : base("", cause) {
         }
 
         /**

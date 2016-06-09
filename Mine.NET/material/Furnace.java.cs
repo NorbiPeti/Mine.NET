@@ -6,9 +6,11 @@ namespace Mine.NET.material
     /**
      * Represents a furnace.
      */
-    public class Furnace : FurnaceAndDispenser {
+    public class Furnace : FurnaceAndDispenser
+    {
 
-        public Furnace() : base(Materials.FURNACE) {
+        public Furnace() : base(Materials.FURNACE)
+        {
         }
 
         /**
@@ -21,18 +23,10 @@ namespace Mine.NET.material
             setFacingDirection(direction);
         }
 
-        public Furnace(Materials type) : base(type) {
+        public Furnace(Materials type) : base(type)
+        {
         }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public Furnace(Materials type, byte data) : base(type, data) {
-    }
-
-    public new Furnace Clone() { return (Furnace)base.Clone(); }
+        public new Furnace Clone() { return (Furnace)base.Clone(); }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Mine.NET.command.defaults
 {
-    [Obsolete]
+    //[Obsolete] //TODO: Obsolete?
     public abstract class VanillaCommand : Command {
         static readonly int MAX_COORD = 30000000;
         static readonly int MIN_COORD_MINUS_ONE = -30000001;
@@ -72,7 +72,7 @@ namespace Mine.NET.command.defaults
         public static double getDouble(CommandSender sender, String input) {
             try {
                 return Double.Parse(input);
-            } catch (FormatException ex) { //TODO: Change these to TryParse
+            } catch (FormatException) { //TODO: Change these to TryParse
                 return MIN_COORD_MINUS_ONE;
             }
         }

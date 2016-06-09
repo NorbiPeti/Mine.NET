@@ -7,41 +7,42 @@ namespace Mine.NET.material
     /**
      * Represents minecart rails.
      */
-    public class Rails : MaterialData {
+    public class Rails : MaterialData
+    {
 
-        public Rails() : base(Materials.RAILS, 0) {
+        public Rails() : base(Materials.RAILS)
+        {
         }
 
-        public Rails(Materials type) : base(type, 0) {
+        public Rails(Materials type) : base(type)
+        {
         }
 
-    /**
-     * @param type the type
-     * @param data the raw data value
-     * [Obsolete] Magic value
-     */
-    [Obsolete]
-        public Rails(Materials type, byte data) : base(type, data) {
-    }
+        private bool onslope;
+        /**
+         * @return the whether this track is set on a slope
+         */
+        public bool isOnSlope()
+        {
+            /*byte d = getConvertedData();
 
-    /**
-     * @return the whether this track is set on a slope
-     */
-    public bool isOnSlope() {
-            byte d = getConvertedData();
-
-            return (d == 0x2 || d == 0x3 || d == 0x4 || d == 0x5);
+            return (d == 0x2 || d == 0x3 || d == 0x4 || d == 0x5);*/
+            return onslope;
         }
 
+        private bool curve;
         /**
          * @return the whether this track is set as a curve
          */
-        public virtual bool isCurve() {
-            byte d = getConvertedData();
+        public virtual bool isCurve()
+        {
+            /*byte d = getConvertedData();
 
-            return (d == 0x6 || d == 0x7 || d == 0x8 || d == 0x9);
+            return (d == 0x6 || d == 0x7 || d == 0x8 || d == 0x9);*/
+            return curve;
         }
 
+        private BlockFaces direction;
         /**
          * @return the direction these tracks are set
          *     <p>
@@ -49,8 +50,9 @@ namespace Mine.NET.material
          *     is the ascending direction if the track is set on a slope. If it is
          *     set as a curve, the corner of the track is returned.
          */
-        public BlockFaces getDirection() {
-            byte d = getConvertedData();
+        public BlockFaces getDirection()
+        {
+            /*byte d = getConvertedData();
 
             switch (d) {
                 case 0x0:
@@ -83,24 +85,13 @@ namespace Mine.NET.material
 
                 case 0x9:
                     return BlockFaces.SOUTH_WEST;
-            }
+            }*/
+            return direction;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return base.ToString() + " facing " + getDirection() + (isCurve() ? " on a curve" : (isOnSlope() ? " on a slope" : ""));
-        }
-
-        /**
-         * Return the data without the extended properties used by {@link
-         * PoweredRail} and {@link DetectorRail}. Overridden in {@link
-         * ExtendedRails}
-         *
-         * @return the data without the extended part
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        protected virtual byte getConvertedData() {
-            return getData();
         }
 
         /**
@@ -113,8 +104,9 @@ namespace Mine.NET.material
          * @param face the direction the track should be facing
          * @param isOnSlope whether or not the track should be on a slope
          */
-        public virtual void setDirection(BlockFaces face, bool isOnSlope) {
-            switch (face) {
+        public virtual void setDirection(BlockFaces face, bool isOnSlope)
+        {
+            /*switch (face) {
                 case BlockFaces.EAST:
                     setData((byte)(isOnSlope ? 0x2 : 0x1));
                     break;
@@ -146,7 +138,9 @@ namespace Mine.NET.material
                 case BlockFaces.SOUTH_WEST:
                     setData((byte)0x9);
                     break;
-            }
+            }*/
+            direction = face;
+            onslope = isOnSlope;
         }
 
         public new Rails Clone() { return (Rails)base.Clone(); }

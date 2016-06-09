@@ -12,21 +12,10 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * Constructs a PistonBaseMaterial.
-         * 
-         * @param type the Materials type to use
-         * @param data the raw data value 
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public PistonBaseMaterial(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces facing;
         public void setFacingDirection(BlockFaces face)
         {
-            byte data = (byte)(getData() & 0x8);
+            /*byte data = (byte)(getData() & 0x8);
 
             switch (face)
             {
@@ -46,12 +35,13 @@ namespace Mine.NET.material
                     data |= 5;
                     break;
             }
-            setData(data);
+            setData(data);*/
+            facing = face;
         }
 
         public BlockFaces getFacing()
         {
-            byte dir = (byte)(getData() & 7);
+            /*byte dir = (byte)(getData() & 7);
 
             switch (dir)
             {
@@ -69,12 +59,15 @@ namespace Mine.NET.material
                     return BlockFaces.EAST;
                 default:
                     return BlockFaces.SELF;
-            }
+            }*/
+            return facing;
         }
 
+        private bool powered;
         public bool isPowered()
         {
-            return (getData() & 0x8) == 0x8;
+            //return (getData() & 0x8) == 0x8;
+            return powered;
         }
 
         /**
@@ -84,7 +77,8 @@ namespace Mine.NET.material
          */
         public void setPowered(bool powered)
         {
-            setData((byte)(powered ? (getData() | 0x8) : (getData() & ~0x8)));
+            //setData((byte)(powered ? (getData() | 0x8) : (getData() & ~0x8)));
+            this.powered = powered;
         }
 
         /**

@@ -55,5 +55,13 @@ namespace Mine.NET
             }
             return field;
         }
+
+        public static int FloatToInt32Bits(this float f)
+        {
+            byte[] bytes = BitConverter.GetBytes(f);
+            Array.Reverse(bytes);
+            int i = BitConverter.ToInt32(bytes, 0);
+            return i; //TODO: Test
+        } //http://stackoverflow.com/questions/26394616/c-sharp-equivalent-to-javas-float-floattointbits
     }
 }

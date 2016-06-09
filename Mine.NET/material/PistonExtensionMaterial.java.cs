@@ -13,19 +13,10 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public PistonExtensionMaterial(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces facing;
         public void setFacingDirection(BlockFaces face)
         {
-            byte data = (byte)(getData() & 0x8);
+            /*byte data = (byte)(getData() & 0x8);
 
             switch (face)
             {
@@ -45,12 +36,13 @@ namespace Mine.NET.material
                     data |= 5;
                     break;
             }
-            setData(data);
+            setData(data);*/
+            facing = face;
         }
 
         public BlockFaces getFacing()
         {
-            byte dir = (byte)(getData() & 7);
+            /*byte dir = (byte)(getData() & 7);
 
             switch (dir)
             {
@@ -68,9 +60,11 @@ namespace Mine.NET.material
                     return BlockFaces.EAST;
                 default:
                     return BlockFaces.SELF;
-            }
+            }*/
+            return facing;
         }
 
+        private bool sticky;
         /**
          * Checks if this piston extension is sticky, and returns true if so
          *
@@ -78,7 +72,8 @@ namespace Mine.NET.material
          */
         public bool isSticky()
         {
-            return (getData() & 8) == 8;
+            //return (getData() & 8) == 8;
+            return sticky;
         }
 
         /**
@@ -88,12 +83,13 @@ namespace Mine.NET.material
          */
         public void setSticky(bool sticky)
         {
-            setData((byte)(sticky ? (getData() | 0x8) : (getData() & ~0x8)));
+            //setData((byte)(sticky ? (getData() | 0x8) : (getData() & ~0x8)));
+            this.sticky = sticky;
         }
 
         public BlockFaces getAttachedFace()
         {
-            return getFacing().getOppositeFace();
+            return BlockFace.getOppositeFace(getFacing());
         }
 
         public new PistonExtensionMaterial Clone() { return (PistonExtensionMaterial)base.Clone(); }

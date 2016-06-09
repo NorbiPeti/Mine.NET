@@ -16,19 +16,11 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public PressurePlate(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool pressed;
         public bool isPressed()
         {
-            return getData() == 0x1;
+            //return getData() == 0x1;
+            return pressed;
         }
 
         public override string ToString()

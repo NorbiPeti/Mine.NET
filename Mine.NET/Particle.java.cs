@@ -1,3 +1,5 @@
+using Mine.NET.inventory;
+using Mine.NET.material;
 using System;
 
 namespace Mine.NET

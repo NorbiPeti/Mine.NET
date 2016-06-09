@@ -66,7 +66,7 @@ namespace Mine.NET.help
             fullText = sb.ToString();
         }
 
-        public bool canSee(CommandSender sender)
+        public override bool canSee(CommandSender sender)
         {
             if (!command.isRegistered() && !(command is VanillaCommand))
             {

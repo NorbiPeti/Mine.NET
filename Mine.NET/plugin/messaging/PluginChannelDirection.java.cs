@@ -1,17 +1,19 @@
-namespace Mine.NET.plugin.messaging;
-
-/**
- * Represents the different directions a plugin channel may go.
- */
-public enum PluginChannelDirection {
-
+namespace Mine.NET.plugin.messaging
+{
     /**
-     * The plugin channel is being sent to the server from a client.
+     * Represents the different directions a plugin channel may go.
      */
-    INCOMING,
+    public enum PluginChannelDirection
+    {
 
-    /**
-     * The plugin channel is being sent to a client from the server.
-     */
-    OUTGOING
+        /**
+         * The plugin channel is being sent to the server from a client.
+         */
+        INCOMING,
+
+        /**
+         * The plugin channel is being sent to a client from the server.
+         */
+        OUTGOING
+    }
 }

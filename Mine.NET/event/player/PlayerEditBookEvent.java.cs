@@ -40,7 +40,7 @@ namespace Mine.NET.Event.player
          */
         public BookMeta getPreviousBookMeta()
         {
-            return previousBookMeta.clone();
+            return previousBookMeta.Clone();
         }
 
         /**
@@ -54,7 +54,7 @@ namespace Mine.NET.Event.player
          */
         public BookMeta getNewBookMeta()
         {
-            return newBookMeta.clone();
+            return newBookMeta.Clone();
         }
 
         /**
@@ -80,7 +80,7 @@ namespace Mine.NET.Event.player
         {
             if (newBookMeta == null) throw new ArgumentNullException("New book meta must not be null");
             Bukkit.getItemFactory().equals(newBookMeta, null);
-            this.newBookMeta = newBookMeta.clone();
+            this.newBookMeta = newBookMeta.Clone();
         }
 
         /**

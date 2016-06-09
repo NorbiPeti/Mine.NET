@@ -20,16 +20,6 @@ namespace Mine.NET.material
         }
 
         /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Button(Materials type, byte data) : base(type, data)
-        {
-        }
-
-        /**
          * Gets the current state of this Materials, indicating if it's powered or
          * unpowered
          *

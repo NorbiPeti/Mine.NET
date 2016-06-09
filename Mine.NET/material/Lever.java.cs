@@ -17,16 +17,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Lever(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool powered;
         /**
          * Gets the current state of this Materials, indicating if it's powered or
          * unpowered
@@ -35,7 +26,8 @@ namespace Mine.NET.material
          */
         public bool isPowered()
         {
-            return (getData() & 0x8) == 0x8;
+            //return (getData() & 0x8) == 0x8;
+            return powered;
         }
 
         /**
@@ -45,9 +37,11 @@ namespace Mine.NET.material
          */
         public void setPowered(bool isPowered)
         {
-            setData((byte)(isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
+            //setData((byte)(isPowered ? (getData() | 0x8) : (getData() & ~0x8)));
+            powered = isPowered;
         }
 
+        private BlockFaces attached;
         /**
          * Gets the face that this block is attached on
          *
@@ -55,7 +49,7 @@ namespace Mine.NET.material
          */
         public override BlockFaces getAttachedFace()
         {
-            byte data = (byte)(getData() & 0x7);
+            /*byte data = (byte)(getData() & 0x7);
 
             switch (data)
             {
@@ -81,15 +75,18 @@ namespace Mine.NET.material
 
             }
 
-            return BlockFaces.SELF;
+            return BlockFaces.SELF;*/
+
+            return attached;
         }
 
+        private BlockFaces facing;
         /**
          * Sets the direction this lever is pointing in
          */
         public override void setFacingDirection(BlockFaces face)
         {
-            byte data = (byte)(getData() & 0x8);
+            //byte data = (byte)(getData() & 0x8);
             BlockFaces attach = getAttachedFace();
 
             if (attach == BlockFaces.DOWN)
@@ -98,12 +95,14 @@ namespace Mine.NET.material
                 {
                     case BlockFaces.SOUTH:
                     case BlockFaces.NORTH:
-                        data |= 0x5;
+                        //data |= 0x5;
+                        facing = face;
                         break;
 
                     case BlockFaces.EAST:
                     case BlockFaces.WEST:
-                        data |= 0x6;
+                        //data |= 0x6;
+                        facing = face;
                         break;
                 }
             }
@@ -113,12 +112,14 @@ namespace Mine.NET.material
                 {
                     case BlockFaces.SOUTH:
                     case BlockFaces.NORTH:
-                        data |= 0x7;
+                        //data |= 0x7;
+                        facing = face;
                         break;
 
                     case BlockFaces.EAST:
                     case BlockFaces.WEST:
-                        data |= 0x0;
+                        //data |= 0x0;
+                        facing = face;
                         break;
                 }
             }
@@ -127,23 +128,24 @@ namespace Mine.NET.material
                 switch (face)
                 {
                     case BlockFaces.EAST:
-                        data |= 0x1;
-                        break;
+                    //data |= 0x1;
+                    //break;
 
                     case BlockFaces.WEST:
-                        data |= 0x2;
-                        break;
+                    //data |= 0x2;
+                    //break;
 
                     case BlockFaces.SOUTH:
-                        data |= 0x3;
-                        break;
+                    //data |= 0x3;
+                    //break;
 
                     case BlockFaces.NORTH:
-                        data |= 0x4;
+                        //data |= 0x4;
+                        facing = face;
                         break;
                 }
             }
-            setData(data);
+            //setData(data);
         }
 
         public override string ToString()

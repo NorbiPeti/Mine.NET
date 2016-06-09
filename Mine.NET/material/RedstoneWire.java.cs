@@ -15,16 +15,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public RedstoneWire(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private byte powerlevel;
         /**
          * Gets the current state of this Materials, indicating if it's powered or
          * unpowered
@@ -33,7 +24,7 @@ namespace Mine.NET.material
          */
         public bool isPowered()
         {
-            return getData() > 0;
+            return powerlevel > 0; //TODO: Set?
         }
 
         public override string ToString()

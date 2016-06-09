@@ -592,7 +592,6 @@
     <Compile Include="plugin\messaging\ReservedChannelException.java.cs" />
     <Compile Include="plugin\messaging\StandardMessenger.java.cs" />
     <Compile Include="plugin\Plugin.java.cs" />
-    <Compile Include="plugin\PluginAwareness.java.cs" />
     <Compile Include="plugin\PluginBase.java.cs" />
     <Compile Include="plugin\PluginLoader.java.cs" />
     <Compile Include="plugin\PluginLoadOrder.java.cs" />

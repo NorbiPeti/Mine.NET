@@ -1,3 +1,5 @@
+using Mine.NET.block;
+using Mine.NET.util;
 using System;
 using System.Collections.Generic;
 
@@ -6,7 +8,8 @@ namespace Mine.NET
     /**
     * Represents a 3-dimensional position in a world
 */
-    public class Location : ICloneable, ConfigurationSerializable {
+    public class Location : ICloneable, ConfigurationSerializable
+    {
         private World world;
         private double x;
         private double y;
@@ -22,7 +25,8 @@ namespace Mine.NET
          * @param y The y-coordinate of this new location
          * @param z The z-coordinate of this new location
          */
-        public Location(World world, double x, double y, double z) {
+        public Location(World world, double x, double y, double z)
+        {
             new Location(world, x, y, z, 0, 0);
         }
 
@@ -36,7 +40,8 @@ namespace Mine.NET
          * @param yaw The absolute rotation on the x-plane, in degrees
          * @param pitch The absolute rotation on the y-plane, in degrees
          */
-        public Location(World world, double x, double y, double z, float yaw, float pitch) {
+        public Location(World world, double x, double y, double z, float yaw, float pitch)
+        {
             this.world = world;
             this.x = x;
             this.y = y;
@@ -50,7 +55,8 @@ namespace Mine.NET
          *
          * @param world New world that this location resides in
          */
-        public void setWorld(World world) {
+        public void setWorld(World world)
+        {
             this.world = world;
         }
 
@@ -59,7 +65,8 @@ namespace Mine.NET
          *
          * @return World that contains this location
          */
-        public World getWorld() {
+        public World getWorld()
+        {
             return world;
         }
 
@@ -68,7 +75,8 @@ namespace Mine.NET
          *
          * @return Chunk at the represented location
          */
-        public Chunk getChunk() {
+        public Chunk getChunk()
+        {
             return world.getChunkAt(this);
         }
 
@@ -77,7 +85,8 @@ namespace Mine.NET
          *
          * @return Block at the represented location
          */
-        public Block getBlock() {
+        public Block getBlock()
+        {
             return world.getBlockAt(this);
         }
 
@@ -86,7 +95,8 @@ namespace Mine.NET
          *
          * @param x X-coordinate
          */
-        public void setX(double x) {
+        public void setX(double x)
+        {
             this.x = x;
         }
 
@@ -95,7 +105,8 @@ namespace Mine.NET
          *
          * @return x-coordinate
          */
-        public double getX() {
+        public double getX()
+        {
             return x;
         }
 
@@ -105,7 +116,8 @@ namespace Mine.NET
          *
          * @return block X
          */
-        public int getBlockX() {
+        public int getBlockX()
+        {
             return locToBlock(x);
         }
 
@@ -114,7 +126,8 @@ namespace Mine.NET
          *
          * @param y y-coordinate
          */
-        public void setY(double y) {
+        public void setY(double y)
+        {
             this.y = y;
         }
 
@@ -123,7 +136,8 @@ namespace Mine.NET
          *
          * @return y-coordinate
          */
-        public double getY() {
+        public double getY()
+        {
             return y;
         }
 
@@ -133,7 +147,8 @@ namespace Mine.NET
          *
          * @return block y
          */
-        public int getBlockY() {
+        public int getBlockY()
+        {
             return locToBlock(y);
         }
 
@@ -142,7 +157,8 @@ namespace Mine.NET
          *
          * @param z z-coordinate
          */
-        public void setZ(double z) {
+        public void setZ(double z)
+        {
             this.z = z;
         }
 
@@ -151,7 +167,8 @@ namespace Mine.NET
          *
          * @return z-coordinate
          */
-        public double getZ() {
+        public double getZ()
+        {
             return z;
         }
 
@@ -161,7 +178,8 @@ namespace Mine.NET
          *
          * @return block z
          */
-        public int getBlockZ() {
+        public int getBlockZ()
+        {
             return locToBlock(z);
         }
 
@@ -179,7 +197,8 @@ namespace Mine.NET
          *
          * @param yaw new rotation's yaw
          */
-        public void setYaw(float yaw) {
+        public void setYaw(float yaw)
+        {
             this.yaw = yaw;
         }
 
@@ -197,7 +216,8 @@ namespace Mine.NET
          *
          * @return the rotation's yaw
          */
-        public float getYaw() {
+        public float getYaw()
+        {
             return yaw;
         }
 
@@ -213,7 +233,8 @@ namespace Mine.NET
          *
          * @param pitch new incline's pitch
          */
-        public void setPitch(float pitch) {
+        public void setPitch(float pitch)
+        {
             this.pitch = pitch;
         }
 
@@ -229,7 +250,8 @@ namespace Mine.NET
          *
          * @return the incline's pitch
          */
-        public float getPitch() {
+        public float getPitch()
+        {
             return pitch;
         }
 
@@ -240,7 +262,8 @@ namespace Mine.NET
          * @return a vector pointing the direction of this location's {@link
          *     #getPitch() pitch} and {@link #getYaw() yaw}
          */
-        public Vector getDirection() {
+        public Vector getDirection()
+        {
             Vector vector = new Vector();
 
             double rotX = this.getYaw();
@@ -263,7 +286,8 @@ namespace Mine.NET
          * @param vector the direction vector
          * @return the same location
          */
-        public Location setDirection(Vector vector) {
+        public Location setDirection(Vector vector)
+        {
             /*
              * Sin = Opp / Hyp
              * Cos = Adj / Hyp
@@ -276,7 +300,8 @@ namespace Mine.NET
             double x = vector.getX();
             double z = vector.getZ();
 
-            if (x == 0 && z == 0) {
+            if (x == 0 && z == 0)
+            {
                 pitch = vector.getY() > 0 ? -90 : 90;
                 return this;
             }
@@ -300,8 +325,10 @@ namespace Mine.NET
          * @return the same location
          * @throws ArgumentException for differing worlds
          */
-        public Location add(Location vec) {
-            if (vec == null || vec.getWorld() != getWorld()) {
+        public Location add(Location vec)
+        {
+            if (vec == null || vec.getWorld() != getWorld())
+            {
                 throw new ArgumentException("Cannot add Locations of differing worlds");
             }
 
@@ -318,7 +345,8 @@ namespace Mine.NET
          * @param vec Vector to use
          * @return the same location
          */
-        public Location add(Vector vec) {
+        public Location add(Vector vec)
+        {
             this.x += vec.getX();
             this.y += vec.getY();
             this.z += vec.getZ();
@@ -334,7 +362,8 @@ namespace Mine.NET
          * @param z Z coordinate
          * @return the same location
          */
-        public Location add(double x, double y, double z) {
+        public Location add(double x, double y, double z)
+        {
             this.x += x;
             this.y += y;
             this.z += z;
@@ -349,8 +378,10 @@ namespace Mine.NET
          * @return the same location
          * @throws ArgumentException for differing worlds
          */
-        public Location subtract(Location vec) {
-            if (vec == null || vec.getWorld() != getWorld()) {
+        public Location subtract(Location vec)
+        {
+            if (vec == null || vec.getWorld() != getWorld())
+            {
                 throw new ArgumentException("Cannot add Locations of differing worlds");
             }
 
@@ -367,7 +398,8 @@ namespace Mine.NET
          * @param vec The vector to use
          * @return the same location
          */
-        public Location subtract(Vector vec) {
+        public Location subtract(Vector vec)
+        {
             this.x -= vec.getX();
             this.y -= vec.getY();
             this.z -= vec.getZ();
@@ -384,7 +416,8 @@ namespace Mine.NET
          * @param z Z coordinate
          * @return the same location
          */
-        public Location subtract(double x, double y, double z) {
+        public Location subtract(double x, double y, double z)
+        {
             this.x -= x;
             this.y -= y;
             this.z -= z;
@@ -402,8 +435,12 @@ namespace Mine.NET
          * @see Vector
          * @return the magnitude
          */
-        public double Length {
-            return Math.Sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
+        public double Length
+        {
+            get
+            {
+                return Math.Sqrt(x * x + y * y + z * z); //NumberConversions.square(x)?
+            }
         }
 
         /**
@@ -413,8 +450,12 @@ namespace Mine.NET
          * @see Vector
          * @return the magnitude
          */
-        public double lengthSquared() {
-            return NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z);
+        public double LengthSquared
+        {
+            get
+            {
+                return x * x + y * y + z * z; //NumberConversions.square(x)?
+            }
         }
 
         /**
@@ -429,7 +470,8 @@ namespace Mine.NET
          * @return the distance
          * @throws ArgumentException for differing worlds
          */
-        public double distance(Location o) {
+        public double distance(Location o)
+        {
             return Math.Sqrt(distanceSquared(o));
         }
 
@@ -441,16 +483,22 @@ namespace Mine.NET
          * @return the distance
          * @throws ArgumentException for differing worlds
          */
-        public double distanceSquared(Location o) {
-            if (o == null) {
+        public double distanceSquared(Location o)
+        {
+            if (o == null)
+            {
                 throw new ArgumentException("Cannot measure distance to a null location");
-            } else if (o.getWorld() == null || getWorld() == null) {
+            }
+            else if (o.getWorld() == null || getWorld() == null)
+            {
                 throw new ArgumentException("Cannot measure distance to a null world");
-            } else if (o.getWorld() != getWorld()) {
+            }
+            else if (o.getWorld() != getWorld())
+            {
                 throw new ArgumentException("Cannot measure distance between " + getWorld().getName() + " and " + o.getWorld().getName());
             }
 
-            return NumberConversions.square(x - o.x) + NumberConversions.square(y - o.y) + NumberConversions.square(z - o.z);
+            return (x - o.x) * (x - o.x) + (y - o.y) * (y - o.y) + (z - o.z) * (z - o.z); //NumberConversions.square(x - o.x)?
         }
 
         /**
@@ -461,7 +509,8 @@ namespace Mine.NET
          * @see Vector
          * @return the same location
          */
-        public Location multiply(double m) {
+        public Location multiply(double m)
+        {
             x *= m;
             y *= m;
             z *= m;
@@ -474,26 +523,32 @@ namespace Mine.NET
          * @see Vector
          * @return the same location
          */
-        public Location zero() {
+        public Location zero()
+        {
             x = 0;
             y = 0;
             z = 0;
             return this;
         }
 
-        public override bool Equals(Object obj) {
-            if (obj == null) {
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
                 return false;
             }
-            if (GetType() != obj.GetType()) {
+            if (GetType() != obj.GetType())
+            {
                 return false;
             }
             Location other = (Location)obj;
 
-            if (this.world != other.world && (this.world == null || !this.world.Equals(other.world))) {
+            if (this.world != other.world && (this.world == null || !this.world.Equals(other.world)))
+            {
                 return false;
             }
-            if (Math.Abs(this.x - other.x) > 0.0000001) {
+            if (Math.Abs(this.x - other.x) > 0.0000001)
+            {
                 return false;
             }
             if (Math.Abs(this.y - other.y) > 0.0000001)
@@ -504,28 +559,32 @@ namespace Mine.NET
             {
                 return false;
             }
-            if (Math.Abs(this.pitch - other.pitch) > 0.0000001) {
+            if (Math.Abs(this.pitch - other.pitch) > 0.0000001)
+            {
                 return false;
             }
-            if (Math.Abs(this.yaw - other.yaw) > 0.0000001) {
+            if (Math.Abs(this.yaw - other.yaw) > 0.0000001)
+            {
                 return false;
             }
             return true;
         }
 
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             int hash = 3;
             //TODO
-            /*hash = 19 * hash + (this.world != null ? this.world.GetH    ashCode() : 0);
-            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >>> 32));
-            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >>> 32));
-            hash = 19 * hash + (int) (BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >>> 32));
-            hash = 19 * hash + Float.floatToIntBits(this.pitch);
-            hash = 19 * hash + Float.floatToIntBits(this.yaw);*/
+            hash = 19 * hash + (this.world != null ? this.world.GetHashCode() : 0);
+            hash = 19 * hash + (int)(BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >> 32));
+            hash = 19 * hash + (int)(BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >> 32));
+            hash = 19 * hash + (int)(BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >> 32));
+            hash = 19 * hash + this.pitch.FloatToInt32Bits();
+            hash = 19 * hash + this.yaw.FloatToInt32Bits();
             return hash;
         }
 
-        public override String ToString() {
+        public override String ToString()
+        {
             return "Location{" + "world=" + world + ",x=" + x + ",y=" + y + ",z=" + z + ",pitch=" + pitch + ",yaw=" + yaw + '}';
         }
 
@@ -535,7 +594,8 @@ namespace Mine.NET
          * @return New Vector containing the coordinates represented by this
          *     Location
          */
-        public Vector toVector() {
+        public Vector toVector()
+        {
             return new Vector(x, y, z);
         }
 
@@ -551,12 +611,14 @@ namespace Mine.NET
          * @param loc Precise coordinate
          * @return Block coordinate
          */
-        public static int locToBlock(double loc) {
+        public static int locToBlock(double loc)
+        {
             return NumberConversions.floor(loc);
         }
 
-        [Utility]
-        public Dictionary<String, Object> Serialize() {
+        //[Utility]
+        public Dictionary<String, Object> Serialize()
+        {
             Dictionary<String, Object> data = new Dictionary<string, object>();
             data.Add("world", this.world.getName());
 
@@ -578,13 +640,15 @@ namespace Mine.NET
         * @throws ArgumentException if the world don't exists
         * @see ConfigurationSerializable
         */
-        public static Location deserialize(Dictionary<String, Object> args) {
+        public static Location deserialize(Dictionary<String, Object> args)
+        {
             World world = Bukkit.getWorld((String)args["world"]);
-            if (world == null) {
+            if (world == null)
+            {
                 throw new ArgumentException("unknown world");
             }
 
-            return new Location(world, NumberConversions.toDouble(args[("x"]), NumberConversions.toDouble(args[("y"]), NumberConversions.toDouble(args["z"]), NumberConversions.toFloat(args["yaw"]), NumberConversions.toFloat(args["pitch"]));
+            return new Location(world, NumberConversions.toDouble(args["x"]), NumberConversions.toDouble(args["y"]), NumberConversions.toDouble(args["z"]), NumberConversions.toFloat(args["yaw"]), NumberConversions.toFloat(args["pitch"]));
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Mine.NET.inventory
          */
         public ShapelessRecipe addIngredient(int count, MaterialData ingredient)
         {
-            return addIngredient(count, ingredient.getItemType(), ingredient.getData());
+            return addIngredient(count, ingredient.getItemType());
         }
 
         /**
@@ -106,7 +106,7 @@ namespace Mine.NET.inventory
          */
         public ShapelessRecipe removeIngredient(MaterialData ingredient)
         {
-            return removeIngredient(ingredient.getItemType(), ingredient.getData());
+            return removeIngredient(ingredient.getItemType());
         }
 
         /**
@@ -136,7 +136,7 @@ namespace Mine.NET.inventory
          */
         public ShapelessRecipe removeIngredient(int count, MaterialData ingredient)
         {
-            return removeIngredient(count, ingredient.getItemType(), ingredient.getData());
+            return removeIngredient(count, ingredient.getItemType());
         }
 
         /**

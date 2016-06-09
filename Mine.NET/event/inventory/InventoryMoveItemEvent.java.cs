@@ -54,7 +54,7 @@ namespace Mine.NET.Event.inventory
          */
         public ItemStack getItem()
         {
-            return itemStack.clone();
+            return itemStack.Clone();
         }
 
         /**
@@ -67,7 +67,7 @@ namespace Mine.NET.Event.inventory
         public void setItem(ItemStack itemStack)
         {
             if (itemStack == null) throw new ArgumentNullException("ItemStack cannot be null.  Cancel the event if you want nothing to be transferred.");
-            this.itemStack = itemStack.clone();
+            this.itemStack = itemStack.Clone();
         }
 
         /**

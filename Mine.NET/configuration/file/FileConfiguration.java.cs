@@ -24,7 +24,7 @@ namespace Mine.NET.configuration.file
          *
          * @param defaults Default value provider
          */
-        public FileConfiguration(global::Configuration defaults) : base(defaults)
+        public FileConfiguration(Configuration defaults) : base(defaults)
         {
         }
 

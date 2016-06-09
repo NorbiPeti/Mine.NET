@@ -1,3 +1,5 @@
+using Mine.NET.plugin;
+
 namespace Mine.NET.command
 {
     /**

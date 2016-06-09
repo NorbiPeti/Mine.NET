@@ -8,7 +8,6 @@ namespace Mine.NET.material
      */
     public class Pumpkin : MaterialData, Directional
     {
-
         public Pumpkin() : base(Materials.PUMPKIN)
         {
         }
@@ -27,24 +26,15 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Pumpkin(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public bool isLit()
         {
             return getItemType() == Materials.JACK_O_LANTERN;
         }
 
+        private BlockFaces facing;
         public void setFacingDirection(BlockFaces face)
         {
-            byte data;
+            /*byte data;
 
             switch (face)
             {
@@ -66,12 +56,13 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            facing = face;
         }
 
         public BlockFaces getFacing()
         {
-            byte data = getData();
+            /*byte data = getData();
 
             switch (data)
             {
@@ -87,7 +78,8 @@ namespace Mine.NET.material
                 case 0x3:
                 default:
                     return BlockFaces.EAST;
-            }
+            }*/
+            return facing;
         }
 
         public override string ToString()

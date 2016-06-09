@@ -1,3 +1,4 @@
+using Mine.NET.configuration.serialization;
 using System;
 using System.Collections.Generic;
 
@@ -6,7 +7,7 @@ namespace Mine.NET
     /**
     * Represents a single firework effect.
 */
-    [SerializableAs(]
+    [SerializableAs(nameof(FireworkEffect))]
     public sealed class FireworkEffect : ConfigurationSerializable
     {
 

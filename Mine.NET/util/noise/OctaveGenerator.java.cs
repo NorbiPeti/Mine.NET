@@ -23,7 +23,7 @@ namespace Mine.NET.util.noise
          *
          * @param scale New value to scale each coordinate by
          */
-        public void setScale(double scale)
+        public virtual void setScale(double scale)
         {
             setXScale(scale);
             setYScale(scale);

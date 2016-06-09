@@ -30,7 +30,7 @@ namespace Mine.NET.inventory
          * @param source The input Materials.
          */
         public FurnaceRecipe(ItemStack result, MaterialData source) :
-            this(result, source.getItemType(), source.getData(), 0)
+            this(result, source.getItemType(), 0, 0) //TODO: MaterialData byte replacement?
         {
         }
 
@@ -42,7 +42,7 @@ namespace Mine.NET.inventory
          * @param experience The experience given by this recipe
          */
         public FurnaceRecipe(ItemStack result, MaterialData source, float experience) :
-            this(result, source.getItemType(), source.getData(), experience)
+            this(result, source.getItemType(), 0, experience) //TODO: MaterialData byte replacement?
         {
         } //TODO
 
@@ -55,7 +55,6 @@ namespace Mine.NET.inventory
          *     CraftBukkit server.)
          * [Obsolete] Magic value
          */
-        [Obsolete]
         public FurnaceRecipe(ItemStack result, Materials source, int data) :
             this(result, source, data, 0)
         {
@@ -71,7 +70,6 @@ namespace Mine.NET.inventory
          * @param experience The experience given by this recipe
          * [Obsolete] Magic value
          */
-        [Obsolete]
         public FurnaceRecipe(ItemStack result, Materials source, int data, float experience)
         {
             this.output = new ItemStack(result);
@@ -87,7 +85,7 @@ namespace Mine.NET.inventory
          */
         public FurnaceRecipe setInput(MaterialData input)
         {
-            return setInput(input.getItemType(), input.getData());
+            return setInput(input.getItemType());
         }
 
         /**
@@ -110,7 +108,6 @@ namespace Mine.NET.inventory
          * @return The changed recipe, so you can chain calls.
          * [Obsolete] Magic value
          */
-        [Obsolete]
         public FurnaceRecipe setInput(Materials input, int data)
         {
             this.ingredient = new ItemStack(input, 1, (short)data);
@@ -124,7 +121,7 @@ namespace Mine.NET.inventory
          */
         public ItemStack getInput()
         {
-            return this.ingredient.clone();
+            return this.ingredient.Clone();
         }
 
         /**
@@ -134,7 +131,7 @@ namespace Mine.NET.inventory
          */
         public ItemStack getResult()
         {
-            return output.clone();
+            return output.Clone();
         }
 
         /**

@@ -70,16 +70,7 @@ namespace Mine.NET.material
             setIsInstantGrowable(isInstantGrowable);
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Sapling(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool instantgrowable;
         /**
          * Checks if the Sapling would grow when next ticked with bonemeal
          *
@@ -87,7 +78,8 @@ namespace Mine.NET.material
          */
         public bool isInstantGrowable()
         {
-            return (getData() & 0x8) == 0x8;
+            //return (getData() & 0x8) == 0x8;
+            return instantgrowable;
         }
 
         /**
@@ -98,7 +90,8 @@ namespace Mine.NET.material
          */
         public void setIsInstantGrowable(bool isInstantGrowable)
         {
-            setData(isInstantGrowable ? (byte)((getData() & 0x7) | 0x8) : (byte)(getData() & 0x7));
+            //setData(isInstantGrowable ? (byte)((getData() & 0x7) | 0x8) : (byte)(getData() & 0x7));
+            instantgrowable = isInstantGrowable;
         }
 
         public override string ToString()

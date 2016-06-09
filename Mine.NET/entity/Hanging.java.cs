@@ -1,3 +1,4 @@
+using Mine.NET.block;
 using Mine.NET.material;
 
 namespace Mine.NET.entity

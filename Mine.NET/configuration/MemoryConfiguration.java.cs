@@ -8,7 +8,7 @@ namespace Mine.NET.configuration
      * from any source, and stores all values in memory only.
      * This is useful for temporary Configurations for providing defaults.
      */
-    public class MemoryConfiguration : MemorySection, Configuration
+    public class MemoryConfiguration : MemorySection, Configuration<MemoryConfigurationOptions>
     {
         protected Configuration defaults;
         protected MemoryConfigurationOptions options_;

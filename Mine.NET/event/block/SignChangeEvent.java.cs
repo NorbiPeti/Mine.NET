@@ -11,7 +11,6 @@ namespace Mine.NET.Event.block
      */
     public class SignChangeEventArgs : BlockEventArgs, Cancellable
     {
-        private static readonly HandlerList handlers = new HandlerList();
         private bool cancel = false;
         private readonly Player player;
         private readonly String[] lines;

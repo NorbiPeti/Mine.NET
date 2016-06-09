@@ -10,7 +10,7 @@ namespace Mine.NET.util
     {
         public JavaRand()
         {
-            _seed = new JavaRand().Next();
+            _seed = new Random().Next();
             _seed = NextLong();
         }
 

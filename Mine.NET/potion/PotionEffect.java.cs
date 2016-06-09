@@ -118,7 +118,7 @@ public class PotionEffect : ConfigurationSerializable {
 
         public Dictionary<String, Object> serialize() {
             return new Dictionary<string, object> {
-                { TYPE, type.getId() },
+                { TYPE, type },
                 { DURATION, duration },
                 { AMPLIFIER, amplifier },
                 { AMBIENT, ambient },

@@ -7,20 +7,8 @@ namespace Mine.NET.Event.server
      */
     public class PluginEnableEventArgs : PluginEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
-
         public PluginEnableEventArgs(Plugin plugin) : base(plugin)
         {
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

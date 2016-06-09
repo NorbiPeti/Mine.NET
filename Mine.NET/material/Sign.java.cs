@@ -17,16 +17,6 @@ namespace Mine.NET.material
         }
 
         /**
-         * @param type the raw type id
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Sign(Materials type, byte data) : base(type, data)
-        {
-        }
-
-        /**
          * Check if this sign is attached to a wall
          *
          * @return true if this sign is attached to a wall, false if set on top of
@@ -37,6 +27,7 @@ namespace Mine.NET.material
             return getItemType() == Materials.WALL_SIGN;
         }
 
+        private BlockFaces attached;
         /**
          * Gets the face that this block is attached on
          *
@@ -46,7 +37,7 @@ namespace Mine.NET.material
         {
             if (isWallSign())
             {
-                byte data = getData();
+                /*byte data = getData();
 
                 switch (data)
                 {
@@ -63,7 +54,8 @@ namespace Mine.NET.material
                         return BlockFaces.WEST;
                 }
 
-                return BlockFaces.SELF;
+                return BlockFaces.SELF;*/
+                return attached;
             }
             else
             {
@@ -71,6 +63,7 @@ namespace Mine.NET.material
             }
         }
 
+        private BlockFaces face;
         /**
          * Gets the direction that this sign is currently facing
          *
@@ -78,11 +71,11 @@ namespace Mine.NET.material
          */
         public BlockFaces getFacing()
         {
-            byte data = getData();
+            //byte data = getData();
 
             if (!isWallSign())
             {
-                switch (data)
+                /*switch (data)
                 {
                     case 0x0:
                         return BlockFaces.SOUTH;
@@ -133,17 +126,18 @@ namespace Mine.NET.material
                         return BlockFaces.SOUTH_SOUTH_EAST;
                 }
 
-                return BlockFaces.SELF;
+                return BlockFaces.SELF;*/
+                return face;
             }
             else
             {
-                return getAttachedFace().getOppositeFace();
+                return BlockFace.getOppositeFace(getAttachedFace());
             }
         }
 
         public void setFacingDirection(BlockFaces face)
         {
-            byte data;
+            /*byte data;
 
             if (isWallSign())
             {
@@ -238,7 +232,8 @@ namespace Mine.NET.material
                 }
             }
 
-            setData(data);
+            setData(data);*/
+            this.face = face;
         }
 
         public override string ToString()

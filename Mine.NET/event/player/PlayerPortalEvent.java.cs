@@ -10,16 +10,15 @@ namespace Mine.NET.Event.player
      */
     public class PlayerPortalEventArgs : PlayerTeleportEventArgs
     {
-        private static readonly HandlerList handlers = new HandlerList();
         protected TravelAgent travelAgent;
 
-        public PlayerPortalEvent(Player player, Location from, Location to, TravelAgent pta) :
+        public PlayerPortalEventArgs(Player player, Location from, Location to, TravelAgent pta) :
             base(player, from, to)
         {
             this.travelAgent = pta;
         }
 
-        public PlayerPortalEvent(Player player, Location from, Location to, TravelAgent pta, TeleportCause cause) :
+        public PlayerPortalEventArgs(Player player, Location from, Location to, TravelAgent pta, TeleportCause cause) :
             base(player, from, to, cause)
         {
             this.travelAgent = pta;
@@ -57,16 +56,6 @@ namespace Mine.NET.Event.player
         public void setPortalTravelAgent(TravelAgent travelAgent)
         {
             this.travelAgent = travelAgent;
-        }
-
-        public override HandlerList getHandlers()
-        {
-            return handlers;
-        }
-
-        public static HandlerList getHandlerList()
-        {
-            return handlers;
         }
     }
 }

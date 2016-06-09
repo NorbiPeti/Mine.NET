@@ -128,7 +128,7 @@ namespace Mine.NET.Event.inventory
          */
         public ItemStack getOldCursor()
         {
-            return oldCursor.clone();
+            return oldCursor.Clone();
         }
 
         /**

@@ -9,7 +9,7 @@ namespace Mine.NET.Event.player
     public class PlayerRegisterChannelEventArgs : PlayerChannelEventArgs
     {
 
-        public PlayerRegisterChannelEvent(Player player, String channel) :
+        public PlayerRegisterChannelEventArgs(Player player, String channel) :
             base(player, channel)
         {
         }

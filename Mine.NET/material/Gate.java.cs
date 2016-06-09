@@ -1,11 +1,13 @@
 using Mine.NET.block;
 
-namespace Mine.NET.material {
+namespace Mine.NET.material
+{
 
     /**
      * Represents a fence gate
      */ //Find: "(namespace \S+)(?:;)(?:[^¤]+import .+)" - Replace: "$1{"
-    public class Gate : MaterialData<byte>, Directional, Openable {
+    public class Gate : MaterialData, Directional, Openable
+    {
         private static readonly byte OPEN_BIT = 0x4;
         private static readonly byte DIR_BIT = 0x3;
         private static readonly byte GATE_SOUTH = 0x0;
@@ -13,14 +15,15 @@ namespace Mine.NET.material {
         private static readonly byte GATE_NORTH = 0x2;
         private static readonly byte GATE_EAST = 0x3;
 
-        public Gate() : base(Materials.FENCE_GATE) {
+        private BlockFaces face;
+        private bool isopen = false;
+        public Gate() : base(Materials.FENCE_GATE)
+        {
         }
 
-        public Gate(byte data) : base(Materials.FENCE_GATE, data) {
-        }
-
-        public void setFacingDirection(BlockFaces face) {
-            byte data = (byte)(getData() & ~DIR_BIT);
+        public void setFacingDirection(BlockFaces face)
+        {
+            /*byte data = (byte)(getData() & ~DIR_BIT);
 
             switch (face) {
                 default:
@@ -38,11 +41,13 @@ namespace Mine.NET.material {
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            this.face = face;
         }
 
-        public BlockFaces getFacing() {
-            switch (getData() & DIR_BIT) {
+        public BlockFaces getFacing()
+        {
+            /*switch (getData() & DIR_BIT) {
                 case BlockFaces.GATE_SOUTH:
                     return BlockFaces.EAST;
                 case BlockFaces.GATE_WEST:
@@ -53,15 +58,19 @@ namespace Mine.NET.material {
                     return BlockFaces.NORTH;
             }
 
-            return BlockFaces.EAST;
+            return BlockFaces.EAST;*/
+            return face;
         }
 
-        public bool isOpen() {
-            return (getData() & OPEN_BIT) > 0;
+        public bool isOpen()
+        {
+            //return (getData() & OPEN_BIT) > 0;
+            return isopen;
         }
 
-        public void setOpen(bool isOpen) {
-            byte data = getData();
+        public void setOpen(bool isOpen)
+        {
+            /*byte data = getData();
 
             if (isOpen) {
                 data |= OPEN_BIT;
@@ -69,10 +78,12 @@ namespace Mine.NET.material {
                 data &= (byte)~OPEN_BIT;
             }
 
-            setData(data);
+            setData(data);*/
+            isopen = isOpen;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             return (isOpen() ? "OPEN " : "CLOSED ") + " facing and opening " + getFacing();
         }
 

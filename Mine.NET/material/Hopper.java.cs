@@ -10,7 +10,7 @@ namespace Mine.NET.material
      *
      * @see Materials#HOPPER
      */
-    public class Hopper : MaterialData<byte>, Directional, Redstone
+    public class Hopper : MaterialData, Directional, Redstone
     {
 
         protected static readonly BlockFaces DEFAULT_DIRECTION = BlockFaces.DOWN;
@@ -55,16 +55,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Hopper(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool active = false;
         /**
          * Sets whether the hopper is active or not.
          *
@@ -73,7 +64,8 @@ namespace Mine.NET.material
          */
         public void setActive(bool isActive)
         {
-            setData((byte)(getData() & 0x7 | (isActive ? 0x0 : 0x8)));
+            //setData((byte)(getData() & 0x7 | (isActive ? 0x0 : 0x8)));
+            active = isActive;
         }
 
         /**
@@ -83,9 +75,11 @@ namespace Mine.NET.material
          */
         public bool isActive()
         {
-            return (getData() & 0x8) == 0;
+            //return (getData() & 0x8) == 0;
+            return active;
         }
 
+        private BlockFaces face;
         /**
          * Sets the direction this hopper is facing
          *
@@ -95,7 +89,7 @@ namespace Mine.NET.material
          */
         public void setFacingDirection(BlockFaces face)
         {
-            int data = getData() & 0x8;
+            /*int data = getData() & 0x8;
 
             switch (face)
             {
@@ -116,7 +110,8 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData((byte)data);
+            setData((byte)data);*/
+            this.face = face;
         }
 
         /**
@@ -128,7 +123,7 @@ namespace Mine.NET.material
          */
         public BlockFaces getFacing()
         {
-            byte data = (byte)(getData() & 0x7);
+            /*byte data = (byte)(getData() & 0x7);
 
             switch (data)
             {
@@ -143,7 +138,8 @@ namespace Mine.NET.material
                     return BlockFaces.WEST;
                 case 0x5:
                     return BlockFaces.EAST;
-            }
+            }*/
+            return face;
         }
 
         public override string ToString()
@@ -153,6 +149,7 @@ namespace Mine.NET.material
 
         public new Hopper Clone() { return (Hopper)base.Clone(); }
 
+        private bool powered;
         /**
          * Checks if the hopper is powered.
          *
@@ -160,7 +157,8 @@ namespace Mine.NET.material
          */
         public bool isPowered()
         {
-            return (getData() & 0x8) != 0;
+            //return (getData() & 0x8) != 0;
+            return powered;
         }
     }
 }
