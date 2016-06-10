@@ -93,6 +93,7 @@ namespace Mine.NET.plugin
                     if (plugintype == null)
                         throw new InvalidPluginException("Cannot find main class!");
 
+                    var datafolder = new DirectoryInfo(file.Name); //TODO
                     plugin = (NetPlugin)Activator.CreateInstance(plugintype, loader, server, datafolder, file, asm);
                 }
                 catch (MethodAccessException ex)
@@ -253,7 +254,8 @@ namespace Mine.NET.plugin
 
                           try
                           {
-                              result.Add(loadPlugin(file, asm, plugin));
+                              Assembly asm = null; //TODO
+                              result.Add(loadPlugin(file, asm));
                               loadedPlugins.Add(plugin);
                               //continue;
                           }
@@ -263,7 +265,7 @@ namespace Mine.NET.plugin
                           }
                       }
                       return keepplugin;
-                  });
+                  }).ToDictionary(k => k.Key, v => v.Value);
 
                 if (missingDependency)
                 {
@@ -286,6 +288,7 @@ namespace Mine.NET.plugin
 
                             try
                             {
+                                Assembly asm = null;
                                 result.Add(loadPlugin(file, asm));
                                 loadedPlugins.Add(plugin);
                                 //break;
@@ -345,7 +348,7 @@ namespace Mine.NET.plugin
 
             if (file.Extension == "dll")
             {
-                result = loader.loadPlugin(file, asm);
+                result = loader.loadPlugin(file, asm, result); //TODO: Fix plugin system
             }
 
             if (result != null)
