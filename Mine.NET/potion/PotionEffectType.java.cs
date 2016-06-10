@@ -287,7 +287,7 @@ namespace Mine.NET.potion
          */
         public static PotionEffectType[] values()
         {
-            return byId.Clone(); //TODO
+            return (PotionEffectType[])byId.Clone(); //TODO
         }
     }
 }

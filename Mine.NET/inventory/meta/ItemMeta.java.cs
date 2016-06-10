@@ -13,6 +13,12 @@ namespace Mine.NET.inventory.meta
      */
     public interface ItemMeta<T> : ItemMeta where T : ItemMeta<T> //Recursion FTW
     {
+        new T Clone(); //TODO
+    }
+
+    public interface ItemMeta : ConfigurationSerializable
+    {
+        ItemMeta Clone();
 
         /**
          * Checks for existence of a display name.
@@ -152,11 +158,5 @@ namespace Mine.NET.inventory.meta
          * @return if it is present
          */
         bool hasItemFlag(ItemFlag flag);
-
-        T Clone();
-    }
-
-    public interface ItemMeta : ConfigurationSerializable
-    {
     }
 }

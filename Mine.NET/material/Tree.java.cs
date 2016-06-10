@@ -73,16 +73,7 @@ namespace Mine.NET.material
             setDirection(dir);
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Tree(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces dir;
         /**
          * Get direction of the log
          *
@@ -96,7 +87,7 @@ namespace Mine.NET.material
          */
         public BlockFaces getDirection()
         {
-            switch ((getData() >> 2) & 0x3)
+            /*switch ((getData() >> 2) & 0x3)
             {
                 case 0: // Up-down
                 default:
@@ -107,7 +98,8 @@ namespace Mine.NET.material
                     return BlockFaces.NORTH;
                 case 3: // Directionless (bark on all sides)
                     return BlockFaces.SELF;
-            }
+            }*/
+            return dir;
         }
 
         /**
@@ -117,7 +109,7 @@ namespace Mine.NET.material
          */
         public void setDirection(BlockFaces dir)
         {
-            int dat;
+            /*int dat;
             switch (dir)
             {
                 case BlockFaces.UP:
@@ -137,7 +129,8 @@ namespace Mine.NET.material
                     dat = 12; // 3<<2
                     break;
             }
-            setData((byte)((getData() & 0x3) | dat));
+            setData((byte)((getData() & 0x3) | dat));*/
+            this.dir = dir;
         }
 
         public override string ToString()

@@ -13,30 +13,12 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the raw type id
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public TripwireHook(int type) : base(type)
-        {
-        }
-
-        /**
-         * @param type the raw type id
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public TripwireHook(int type, byte data) : base(type, data)
-        {
-        }
-
         public TripwireHook(BlockFaces dir) : this()
         {
             setFacingDirection(dir);
         }
 
+        private bool connected;
         /**
          * Test if tripwire is connected
          *
@@ -44,7 +26,8 @@ namespace Mine.NET.material
          */
         public bool isConnected()
         {
-            return (getData() & 0x4) != 0;
+            //return (getData() & 0x4) != 0;
+            return connected;
         }
 
         /**
@@ -54,14 +37,16 @@ namespace Mine.NET.material
          */
         public void setConnected(bool connected)
         {
-            int dat = getData() & (0x8 | 0x3);
+            /*int dat = getData() & (0x8 | 0x3);
             if (connected)
             {
                 dat |= 0x4;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            this.connected = connected;
         }
 
+        private bool activated;
         /**
          * Test if hook is currently activated
          *
@@ -69,7 +54,8 @@ namespace Mine.NET.material
          */
         public bool isActivated()
         {
-            return (getData() & 0x8) != 0;
+            //return (getData() & 0x8) != 0;
+            return activated;
         }
 
         /**
@@ -79,17 +65,19 @@ namespace Mine.NET.material
          */
         public void setActivated(bool act)
         {
-            int dat = getData() & (0x4 | 0x3);
+            /*int dat = getData() & (0x4 | 0x3);
             if (act)
             {
                 dat |= 0x8;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            activated = act;
         }
 
+        private BlockFaces facing;
         public override void setFacingDirection(BlockFaces face)
         {
-            int dat = getData() & 0xC;
+            /*int dat = getData() & 0xC;
             switch (face)
             {
                 case BlockFaces.WEST:
@@ -105,12 +93,13 @@ namespace Mine.NET.material
                 default:
                     break;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            facing = face;
         }
 
         public override BlockFaces getAttachedFace()
         {
-            switch (getData() & 0x3)
+            /*switch (getData() & 0x3)
             {
                 case 0:
                     return BlockFaces.NORTH;
@@ -121,7 +110,8 @@ namespace Mine.NET.material
                 case 3:
                     return BlockFaces.WEST;
             }
-            return BlockFaces.SELF;
+            return BlockFaces.SELF;*/
+            return BlockFace.getOppositeFace(facing); //TODO: Equals?
         }
 
         public bool isPowered()

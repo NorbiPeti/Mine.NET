@@ -25,7 +25,8 @@ namespace Mine.NET.potion
          */
         public PotionEffectType getType()
         {
-            return PotionEffectType.getById(getId());
+            //return PotionEffectType.getById(getId());
+            return null; //TODO
         }
 
         public override bool isInstant()

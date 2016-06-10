@@ -16,24 +16,16 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public TrapDoor(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool open;
         public bool isOpen()
         {
-            return ((getData() & 0x4) == 0x4);
+            //return ((getData() & 0x4) == 0x4);
+            return open;
         }
 
         public void setOpen(bool isOpen)
         {
-            byte data = getData();
+            /*byte data = getData();
 
             if (isOpen)
             {
@@ -44,9 +36,11 @@ namespace Mine.NET.material
                 data &= ~0x4;
             }
 
-            setData(data);
+            setData(data);*/
+            open = isOpen;
         }
 
+        private bool inverted;
         /**
          * Test if trapdoor is inverted
          *
@@ -54,7 +48,8 @@ namespace Mine.NET.material
          */
         public bool isInverted()
         {
-            return ((getData() & 0x8) != 0);
+            //return ((getData() & 0x8) != 0);
+            return inverted;
         }
 
         /**
@@ -64,17 +59,19 @@ namespace Mine.NET.material
          */
         public void setInverted(bool inv)
         {
-            int dat = getData() & 0x7;
+            /*int dat = getData() & 0x7;
             if (inv)
             {
                 dat |= 0x8;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            inverted = inv;
         }
 
+        private BlockFaces attached;
         public override BlockFaces getAttachedFace()
         {
-            byte data = (byte)(getData() & 0x3);
+            /*byte data = (byte)(getData() & 0x3);
 
             switch (data)
             {
@@ -91,13 +88,14 @@ namespace Mine.NET.material
                     return BlockFaces.WEST;
             }
 
-            return null;
+            return null;*/
+            return attached;
 
         }
 
         public override void setFacingDirection(BlockFaces face)
         {
-            byte data = (byte)(getData() & 0xC);
+            /*byte data = (byte)(getData() & 0xC);
 
             switch (face)
             {
@@ -112,7 +110,8 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            attached = BlockFace.getOppositeFace(face); //TODO: Equals?
         }
 
         public override string ToString()

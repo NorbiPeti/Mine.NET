@@ -39,7 +39,7 @@ namespace Mine.NET.plugin
         }
 
         public abstract DirectoryInfo getDataFolder();
-        public abstract FileConfiguration getConfig();
+        //public abstract FileConfiguration getConfig();
         public abstract Stream getResource(string filename);
         public abstract void saveConfig();
         public abstract void saveDefaultConfig();
@@ -124,6 +124,13 @@ namespace Mine.NET.plugin
             get
             {
                 return Name;
+            }
+        }
+        public virtual string[] Authors
+        {
+            get
+            {
+                return new string[0];
             }
         }
     }

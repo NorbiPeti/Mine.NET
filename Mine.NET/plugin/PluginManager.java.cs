@@ -2,6 +2,7 @@ using Mine.NET.permissions;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace Mine.NET.plugin
 {
@@ -17,7 +18,7 @@ namespace Mine.NET.plugin
          * @throws ArgumentException Thrown when the given Class is not a
          *     valid PluginLoader
          */
-        void registerInterface<T>() where T : PluginLoader;
+        //void registerInterface<T>() where T : PluginLoader;
 
         /**
          * Checks if the given plugin is loaded and returns it when applicable
@@ -68,7 +69,7 @@ namespace Mine.NET.plugin
          * @throws UnknownDependencyException If a required dependency could not
          *     be resolved
          */
-        Plugin loadPlugin(FileInfo file);
+        Plugin loadPlugin(FileInfo file, Assembly asm);
 
         /**
          * Loads the plugins contained within the specified directory

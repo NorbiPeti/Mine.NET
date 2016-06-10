@@ -1,3 +1,4 @@
+using Mine.NET.entity;
 using Mine.NET.inventory;
 using System.Collections.Generic;
 
@@ -14,14 +15,14 @@ namespace Mine.NET.entity
          *
          * @return Current profession.
          */
-        Profession getProfession();
+        VillagerProfession getProfession();
 
         /**
          * Sets the new profession of this villager.
          *
          * @param profession New profession.
          */
-        void setProfession(Profession profession);
+        void setProfession(VillagerProfession profession);
 
         /**
          * Get a list of trades currently available from this villager.

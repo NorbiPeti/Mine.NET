@@ -24,7 +24,7 @@ namespace Mine.NET.plugin.net
         //private ClassLoader classLoader = null;
         //private PluginClassLoader classLoader = null;
         private bool naggable = true;
-        private FileConfiguration newConfig = null;
+        //private FileConfiguration newConfig = null;
         private FileInfo configFile = null;
         private PluginLogger logger = null;
         private DataMine db = null;
@@ -108,14 +108,14 @@ namespace Mine.NET.plugin.net
             return file;
         }
         
-        public override FileConfiguration getConfig()
+        /*public override FileConfiguration getConfig()
         {
             if (newConfig == null)
             {
                 reloadConfig();
             }
             return newConfig;
-        }
+        }*/
 
         /**
          * Provides a reader for a text file located inside the jar.
@@ -136,7 +136,7 @@ namespace Mine.NET.plugin.net
         }
 
 
-        public override void reloadConfig()
+        /*public override void reloadConfig()
         {
             newConfig = JsonConfiguration.loadConfiguration(configFile);
 
@@ -167,7 +167,7 @@ namespace Mine.NET.plugin.net
             {
                 saveResource("config.yml", false);
             }
-        }
+        }*/
 
         public override void saveResource(String resourcePath, bool replace)
         {

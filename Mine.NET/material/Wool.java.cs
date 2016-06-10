@@ -12,7 +12,7 @@ namespace Mine.NET.material
         {
         }
 
-        public Wool(DyeColor color) : this()
+        public Wool(DyeColor.Colors color) : this()
         {
             setColor(color);
         }
@@ -21,24 +21,16 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Wool(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private DyeColor.Colors color;
         /**
          * Gets the current color of this dye
          *
          * @return DyeColor of this dye
          */
-        public DyeColor getColor()
+        public DyeColor.Colors getColor()
         {
-            return DyeColor.getByWoolData(getData());
+            //return DyeColor.getByWoolData(getData());
+            return color;
         }
 
         /**
@@ -46,9 +38,10 @@ namespace Mine.NET.material
          *
          * @param color New color of this dye
          */
-        public void setColor(DyeColor color)
+        public void setColor(DyeColor.Colors color)
         {
-            setData(color.getWoolData());
+            //setData(color.getWoolData());
+            this.color = color;
         }
 
         public override string ToString()

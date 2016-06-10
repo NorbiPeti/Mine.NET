@@ -52,7 +52,8 @@ namespace Mine.NET
          *
          * @return the relative rotation
          */
-        public Rotation rotateClockwise() {
+        public Rotation rotateClockwise()
+        {
             return rotations[(Array.IndexOf(rotations, this) + 1) & 0x7];
         }
 
@@ -61,8 +62,9 @@ namespace Mine.NET
          *
          * @return the relative rotation
          */
-        public Rotation rotateCounterClockwise() {
-            return rotations[((Array.IndexOf(rotations, this) - 1) & 0x7];
+        public Rotation rotateCounterClockwise()
+        {
+            return rotations[(Array.IndexOf(rotations, this) - 1) & 0x7];
         }
     }
 }

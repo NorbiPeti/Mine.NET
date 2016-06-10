@@ -26,19 +26,10 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Skull(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces facing;
         public void setFacingDirection(BlockFaces face)
         {
-            int data;
+            /*int data;
 
             switch (face)
             {
@@ -64,12 +55,14 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData((byte)data);
+            setData((byte)data);*/
+
+            facing = face;
         }
 
         public BlockFaces getFacing()
         {
-            int data = getData();
+            /*int data = getData();
 
             switch (data)
             {
@@ -88,7 +81,9 @@ namespace Mine.NET.material
 
                 case 0x5:
                     return BlockFaces.WEST;
-            }
+            }*/
+
+            return facing;
         }
 
         public override string ToString()

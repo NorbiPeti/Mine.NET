@@ -37,7 +37,7 @@ namespace Mine.NET.plugin
          *
          * @return Plugin configuration
          */
-        FileConfiguration getConfig();
+        //FileConfiguration getConfig();
 
         /**
          * Gets an embedded resource in this plugin
@@ -202,5 +202,7 @@ namespace Mine.NET.plugin
         PermissionDefaults PermissionDefaults { get; }
 
         string FullName { get; }
+
+        string[] Authors { get; }
     }
 }

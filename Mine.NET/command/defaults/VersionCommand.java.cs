@@ -1,3 +1,5 @@
+using Mine.NET.plugin;
+using Mine.NET.util;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -44,7 +46,7 @@ namespace Mine.NET.command.defaults
                 Plugin exactPlugin = Bukkit.getPluginManager().getPlugin(pluginName);
                 if (exactPlugin != null)
                 {
-                    describeToSender(exactPlugin, sender);
+                    pluginribeToSender(exactPlugin, sender);
                     return true;
                 }
 
@@ -52,9 +54,9 @@ namespace Mine.NET.command.defaults
                 pluginName = pluginName.ToLower();
                 foreach (Plugin plugin in Bukkit.getPluginManager().getPlugins())
                 { //Find: "for\s*\((.+):(.+)\)" - Replace: "foreach ($1 in $2)"
-                    if (plugin.getName().ToLower().contains(pluginName))
+                    if (plugin.Name.ToLower().Contains(pluginName))
                     {
-                        describeToSender(plugin, sender);
+                        pluginribeToSender(plugin, sender);
                         found = true;
                     }
                 }
@@ -68,46 +70,45 @@ namespace Mine.NET.command.defaults
             return true;
         }
 
-        private void describeToSender(Plugin plugin, CommandSender sender)
+        private void pluginribeToSender(Plugin plugin, CommandSender sender)
         {
-            PluginDescriptionFile desc = plugin.getDescription();
-            sender.sendMessage(ChatColors.GREEN + desc.getName() + ChatColors.WHITE + " version " + ChatColors.GREEN + desc.getVersion());
+            sender.sendMessage(ChatColors.GREEN + plugin.Name + ChatColors.WHITE + " version " + ChatColors.GREEN + plugin.Version);
 
-            if (desc.getDescription() != null)
+            if (plugin.Description != null)
             {
-                sender.sendMessage(desc.getDescription());
+                sender.sendMessage(plugin.Description);
             }
 
-            if (desc.getWebsite() != null)
+            if (plugin.Website != null)
             {
-                sender.sendMessage("Website: " + ChatColors.GREEN + desc.getWebsite());
+                sender.sendMessage("Website: " + ChatColors.GREEN + plugin.Website);
             }
 
-            if (!desc.getAuthors().isEmpty())
+            if (plugin.Authors.Length!=0)
             {
-                if (desc.getAuthors().Count == 1)
+                if (plugin.Authors.Length == 1)
                 {
-                    sender.sendMessage("Author: " + getAuthors(desc));
+                    sender.sendMessage("Author: " + getAuthors(plugin));
                 }
                 else
                 {
-                    sender.sendMessage("Authors: " + getAuthors(desc));
+                    sender.sendMessage("Authors: " + getAuthors(plugin));
                 }
             }
         }
 
-        private String getAuthors(PluginDescriptionFile desc)
+        private String getAuthors(Plugin plugin)
         {
             StringBuilder result = new StringBuilder();
-            List<String> authors = desc.getAuthors();
+            string[] authors = plugin.Authors;
 
-            for (int i = 0; i < authors.Count; i++)
+            for (int i = 0; i < authors.Length; i++)
             {
                 if (result.Length > 0)
                 {
                     result.Append(ChatColors.WHITE);
 
-                    if (i < authors.Count - 1)
+                    if (i < authors.Length - 1)
                     {
                         result.Append(", ");
                     }
@@ -136,9 +137,9 @@ namespace Mine.NET.command.defaults
                 String toComplete = args[0].ToLower();
                 foreach (Plugin plugin in Bukkit.getPluginManager().getPlugins())
                 {
-                    if (StringUtil.StartsWithIgnoreCase(plugin.getName(), toComplete))
+                    if (StringUtil.StartsWithIgnoreCase(plugin.Name, toComplete))
                     {
-                        completions.Add(plugin.getName());
+                        completions.Add(plugin.Name);
                     }
                 }
                 return completions;

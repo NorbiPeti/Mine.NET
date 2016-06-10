@@ -4,14 +4,8 @@ using System.Collections.Generic;
 
 namespace Mine.NET.plugin.messaging
 {
-
-    /**
-     * A class responsible for managing the registrations of plugin channels and
-     * their listeners.
-     */
-    public interface Messenger
+    public static class MessengerConst
     {
-
         /**
          * Represents the largest size that an individual Plugin Message may be.
          */
@@ -21,7 +15,14 @@ namespace Mine.NET.plugin.messaging
          * Represents the largest size that a Plugin Channel may be.
          */
         public static readonly int MAX_CHANNEL_SIZE = 20;
+    }
 
+    /**
+     * A class responsible for managing the registrations of plugin channels and
+     * their listeners.
+     */
+    public interface Messenger
+    {
         /**
          * Checks if the specified channel is a reserved name.
          *

@@ -22,7 +22,7 @@ public class StringUtil {
      * @throws ArgumentException if originals contains a null element.
      *     <b>Note: the collection may be modified before this is thrown</b>
      */
-    public static T copyPartialMatches<T>(String token, IEnumerable<String> originals, T collection) where T : Collection<string> {
+    public static T copyPartialMatches<T>(String token, IEnumerable<String> originals, T collection) where T : IList<string> {
         if(token==null) throw new ArgumentNullException("Search token cannot be null");
         if(collection==null) throw new ArgumentNullException("Collection cannot be null");
         if(originals==null) throw new ArgumentNullException("Originals cannot be null");

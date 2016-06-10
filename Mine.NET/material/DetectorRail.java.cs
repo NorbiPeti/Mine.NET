@@ -17,16 +17,6 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public DetectorRail(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public bool isPressed()
         {
             //return (getData() & 0x8) == 0x8;

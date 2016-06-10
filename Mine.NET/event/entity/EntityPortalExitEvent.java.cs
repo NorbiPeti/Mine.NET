@@ -29,7 +29,7 @@ namespace Mine.NET.Event.entity
          */
         public Vector getBefore()
         {
-            return this.before.clone();
+            return this.before.Clone();
         }
 
         /**
@@ -40,7 +40,7 @@ namespace Mine.NET.Event.entity
          */
         public Vector getAfter()
         {
-            return this.after.clone();
+            return this.after.Clone();
         }
 
         /**
@@ -50,7 +50,7 @@ namespace Mine.NET.Event.entity
          */
         public void setAfter(Vector after)
         {
-            this.after = after.clone();
+            this.after = after.Clone();
         }
     }
 }

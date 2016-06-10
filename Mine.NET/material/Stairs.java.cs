@@ -13,22 +13,13 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Stairs(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces ascendingdir;
         /**
          * @return the direction the stairs ascend towards
          */
         public BlockFaces getAscendingDirection()
         {
-            byte data = getData();
+            /*byte data = getData();
 
             switch (data & 0x3)
             {
@@ -44,7 +35,8 @@ namespace Mine.NET.material
 
                 case 0x3:
                     return BlockFaces.NORTH;
-            }
+            }*/
+            return ascendingdir;
         }
 
         /**
@@ -60,7 +52,7 @@ namespace Mine.NET.material
          */
         public void setFacingDirection(BlockFaces face)
         {
-            byte data;
+            /*byte data;
 
             switch (face)
             {
@@ -82,7 +74,8 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData((byte)((getData() & 0xC) | data));
+            setData((byte)((getData() & 0xC) | data));*/
+            ascendingdir = face;
         }
 
         /**
@@ -93,6 +86,7 @@ namespace Mine.NET.material
             return getDescendingDirection();
         }
 
+        private bool inverted = false;
         /**
          * Test if step is inverted
          *
@@ -100,7 +94,8 @@ namespace Mine.NET.material
          */
         public bool isInverted()
         {
-            return ((getData() & 0x4) != 0);
+            //return ((getData() & 0x4) != 0);
+            return inverted;
         }
 
         /**
@@ -111,12 +106,13 @@ namespace Mine.NET.material
          */
         public void setInverted(bool inv)
         {
-            int dat = getData() & 0x3;
+            /*int dat = getData() & 0x3;
             if (inv)
             {
                 dat |= 0x4;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            inverted = inv;
         }
 
         public override string ToString()

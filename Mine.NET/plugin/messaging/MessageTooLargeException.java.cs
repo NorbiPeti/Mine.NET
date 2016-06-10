@@ -7,7 +7,7 @@ namespace Mine.NET.plugin.messaging
      */
     public class MessageTooLargeException : AggregateException
     {
-        public MessageTooLargeException() : this("Attempted to send a plugin message that was too large. The maximum length a plugin message may be is " + Messenger.MAX_MESSAGE_SIZE + " bytes.")
+        public MessageTooLargeException() : this("Attempted to send a plugin message that was too large. The maximum length a plugin message may be is " + MessengerConst.MAX_MESSAGE_SIZE + " bytes.")
         {
         }
 
@@ -16,7 +16,7 @@ namespace Mine.NET.plugin.messaging
         }
 
         public MessageTooLargeException(int length) :
-            this("Attempted to send a plugin message that was too large. The maximum length a plugin message may be is " + Messenger.MAX_MESSAGE_SIZE + " bytes (tried to send one that is " + length + " bytes long).")
+            this("Attempted to send a plugin message that was too large. The maximum length a plugin message may be is " + MessengerConst.MAX_MESSAGE_SIZE + " bytes (tried to send one that is " + length + " bytes long).")
         {
         }
 

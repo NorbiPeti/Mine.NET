@@ -16,16 +16,7 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Torch(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private BlockFaces attached;
         /**
          * Gets the face that this block is attached on
          *
@@ -33,7 +24,7 @@ namespace Mine.NET.material
          */
         public override BlockFaces getAttachedFace()
         {
-            byte data = getData();
+            /*byte data = getData();
 
             switch (data)
             {
@@ -52,12 +43,13 @@ namespace Mine.NET.material
                 case 0x5:
                 default:
                     return BlockFaces.DOWN;
-            }
+            }*/
+            return attached;
         }
 
         public override void setFacingDirection(BlockFaces face)
         {
-            byte data;
+            /*byte data;
 
             switch (face)
             {
@@ -83,7 +75,8 @@ namespace Mine.NET.material
                     break;
             }
 
-            setData(data);
+            setData(data);*/
+            attached = BlockFace.getOppositeFace(face);
         }
 
         public new Torch Clone() { return (Torch)base.Clone(); }

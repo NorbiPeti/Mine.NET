@@ -1,5 +1,6 @@
 using Mine.NET.block;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Mine.NET.material
@@ -19,10 +20,12 @@ namespace Mine.NET.material
         {
         }
 
-        public Vine(params BlockFaces[] faces)
+        private List<BlockFaces> faces;
+        public Vine(params BlockFaces[] faces) : this()
         {
-            faces.retainAll(possibleFaces);
-            byte data = 0;
+            if (!faces.All(f => possibleFaces.Contains(f)))
+                throw new ArgumentException(); //TODO?
+            /*byte data = 0;
 
             if (faces.Contains(BlockFaces.WEST))
             {
@@ -44,7 +47,8 @@ namespace Mine.NET.material
                 data |= (byte)VINE_EAST;
             }
 
-            setData(data);
+            setData(data);*/
+            this.faces = new List<BlockFaces>(faces);
         }
 
         /**
@@ -57,7 +61,7 @@ namespace Mine.NET.material
          */
         public bool isOnFace(BlockFaces face)
         {
-            switch (face)
+            /*switch (face)
             {
                 case BlockFaces.WEST:
                     return (getData() & VINE_WEST) == VINE_WEST;
@@ -79,7 +83,8 @@ namespace Mine.NET.material
                     return true;
                 default:
                     return false;
-            }
+            }*/
+            return faces.Contains(face);
         }
 
         /**
@@ -89,7 +94,7 @@ namespace Mine.NET.material
          */
         public void putOnFace(BlockFaces face)
         {
-            switch (face)
+            /*switch (face)
             {
                 case BlockFaces.WEST:
                     setData((byte)(getData() | VINE_WEST));
@@ -123,7 +128,9 @@ namespace Mine.NET.material
                     break;
                 default:
                     throw new ArgumentException("Vines can't go on face " + face.ToString());
-            }
+            }*/
+            if (!faces.Contains(face))
+                faces.Add(face);
         }
 
         /**
@@ -133,7 +140,7 @@ namespace Mine.NET.material
          */
         public void removeFromFace(BlockFaces face)
         {
-            switch (face)
+            /*switch (face)
             {
                 case BlockFaces.WEST:
                     setData((byte)(getData() & ~VINE_WEST));
@@ -167,7 +174,8 @@ namespace Mine.NET.material
                     break;
                 default:
                     throw new ArgumentException("Vines can't go on face " + face.ToString());
-            }
+            }*/
+            faces.Remove(face);
         }
 
         public override string ToString()

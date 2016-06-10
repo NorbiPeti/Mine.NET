@@ -53,7 +53,7 @@ namespace Mine.NET.util
             this.world = world;
             this.maxDistance = maxDistance;
 
-            Vector startClone = start.clone();
+            Vector startClone = start.Clone();
 
             startClone.setY(startClone.getY() + yOffset);
 

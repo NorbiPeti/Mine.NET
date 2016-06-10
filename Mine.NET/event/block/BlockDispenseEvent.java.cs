@@ -54,7 +54,7 @@ namespace Mine.NET.Event.block
          */
         public Vector getVelocity()
         {
-            return velocity.clone();
+            return velocity.Clone();
         }
 
         /**

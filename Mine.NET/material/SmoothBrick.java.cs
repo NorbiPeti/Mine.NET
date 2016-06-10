@@ -29,16 +29,6 @@ namespace Mine.NET.material
             }
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public SmoothBrick(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public override List<Materials> getTextures()
         {
             return textures;

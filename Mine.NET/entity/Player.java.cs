@@ -10,7 +10,7 @@ namespace Mine.NET.entity
     /**
      * Represents a player, connected or not
      */
-    public interface Player : HumanEntity, Conversable, CommandSender, OfflinePlayer, PluginMessageRecipient {
+    public interface Player : HumanEntity, CommandSender, OfflinePlayer, PluginMessageRecipient {
 
         /**
          * Gets the "friendly" name to display of this player. This may include

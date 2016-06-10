@@ -17,16 +17,6 @@ namespace Mine.NET.material
         {
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public PoweredRail(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public bool isPowered()
         {
             //return (getData() & 0x8) == 0x8;

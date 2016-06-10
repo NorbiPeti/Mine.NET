@@ -4,14 +4,15 @@ using System.Collections.Generic;
 
 namespace Mine.NET.util
 {
-/**
- * Represents a mutable vector. Because the components of Vectors are mutable,
- * storing Vectors long term may be dangerous if passing code modifies the
- * Vector later. If you want to keep around a Vector, it may be wise to call
- * <code>clone()</code> in order to get a copy.
- */
-[SerializableAs("Vector")]
-public class Vector : ConfigurationSerializable {
+    /**
+     * Represents a mutable vector. Because the components of Vectors are mutable,
+     * storing Vectors long term may be dangerous if passing code modifies the
+     * Vector later. If you want to keep around a Vector, it may be wise to call
+     * <code>clone()</code> in order to get a copy.
+     */
+    [SerializableAs("Vector")]
+    public class Vector : ConfigurationSerializable
+    {
         private static readonly long serialVersionUID = -2657651106777219169L;
 
         private static JavaRand random = new JavaRand();
@@ -28,7 +29,8 @@ public class Vector : ConfigurationSerializable {
         /**
          * Construct the vector with all components as 0.
          */
-        public Vector() {
+        public Vector()
+        {
             this.x = 0;
             this.y = 0;
             this.z = 0;
@@ -41,7 +43,8 @@ public class Vector : ConfigurationSerializable {
          * @param y Y component
          * @param z Z component
          */
-        public Vector(int x, int y, int z) {
+        public Vector(int x, int y, int z)
+        {
             this.x = x;
             this.y = y;
             this.z = z;
@@ -54,7 +57,8 @@ public class Vector : ConfigurationSerializable {
          * @param y Y component
          * @param z Z component
          */
-        public Vector(double x, double y, double z) {
+        public Vector(double x, double y, double z)
+        {
             this.x = x;
             this.y = y;
             this.z = z;
@@ -67,7 +71,8 @@ public class Vector : ConfigurationSerializable {
          * @param y Y component
          * @param z Z component
          */
-        public Vector(float x, float y, float z) {
+        public Vector(float x, float y, float z)
+        {
             this.x = x;
             this.y = y;
             this.z = z;
@@ -79,7 +84,8 @@ public class Vector : ConfigurationSerializable {
          * @param vec The other vector
          * @return the same vector
          */
-        public Vector add(Vector vec) {
+        public Vector add(Vector vec)
+        {
             x += vec.x;
             y += vec.y;
             z += vec.z;
@@ -92,7 +98,8 @@ public class Vector : ConfigurationSerializable {
          * @param vec The other vector
          * @return the same vector
          */
-        public Vector subtract(Vector vec) {
+        public Vector subtract(Vector vec)
+        {
             x -= vec.x;
             y -= vec.y;
             z -= vec.z;
@@ -105,7 +112,8 @@ public class Vector : ConfigurationSerializable {
          * @param vec The other vector
          * @return the same vector
          */
-        public Vector multiply(Vector vec) {
+        public Vector multiply(Vector vec)
+        {
             x *= vec.x;
             y *= vec.y;
             z *= vec.z;
@@ -118,7 +126,8 @@ public class Vector : ConfigurationSerializable {
          * @param vec The other vector
          * @return the same vector
          */
-        public Vector divide(Vector vec) {
+        public Vector divide(Vector vec)
+        {
             x /= vec.x;
             y /= vec.y;
             z /= vec.z;
@@ -131,7 +140,8 @@ public class Vector : ConfigurationSerializable {
          * @param vec The other vector
          * @return the same vector
          */
-        public Vector copy(Vector vec) {
+        public Vector copy(Vector vec)
+        {
             x = vec.x;
             y = vec.y;
             z = vec.z;
@@ -147,7 +157,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return the magnitude
          */
-        public double Length {
+        public double Length
+        {
             get
             {
                 return Math.Sqrt(NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z));
@@ -159,7 +170,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return the magnitude
          */
-        public double lengthSquared() {
+        public double lengthSquared()
+        {
             return NumberConversions.square(x) + NumberConversions.square(y) + NumberConversions.square(z);
         }
 
@@ -173,7 +185,8 @@ public class Vector : ConfigurationSerializable {
          * @param o The other vector
          * @return the distance
          */
-        public double distance(Vector o) {
+        public double distance(Vector o)
+        {
             return Math.Sqrt(NumberConversions.square(x - o.x) + NumberConversions.square(y - o.y) + NumberConversions.square(z - o.z));
         }
 
@@ -183,7 +196,8 @@ public class Vector : ConfigurationSerializable {
          * @param o The other vector
          * @return the distance
          */
-        public double distanceSquared(Vector o) {
+        public double distanceSquared(Vector o)
+        {
             return NumberConversions.square(x - o.x) + NumberConversions.square(y - o.y) + NumberConversions.square(z - o.z);
         }
 
@@ -193,7 +207,8 @@ public class Vector : ConfigurationSerializable {
          * @param other The other vector
          * @return angle in radians
          */
-        public float angle(Vector other) {
+        public float angle(Vector other)
+        {
             double dot_ = dot(other) / (Length * other.Length);
 
             return (float)Math.Acos(dot_);
@@ -205,7 +220,8 @@ public class Vector : ConfigurationSerializable {
          * @param other The other vector
          * @return this same vector (now a midpoint)
          */
-        public Vector midpoint(Vector other) {
+        public Vector midpoint(Vector other)
+        {
             x = (x + other.x) / 2;
             y = (y + other.y) / 2;
             z = (z + other.z) / 2;
@@ -218,7 +234,8 @@ public class Vector : ConfigurationSerializable {
          * @param other The other vector
          * @return a new midpoint vector
          */
-        public Vector getMidpoint(Vector other) {
+        public Vector getMidpoint(Vector other)
+        {
             double x = (this.x + other.x) / 2;
             double y = (this.y + other.y) / 2;
             double z = (this.z + other.z) / 2;
@@ -232,7 +249,8 @@ public class Vector : ConfigurationSerializable {
          * @param m The factor
          * @return the same vector
          */
-        public Vector multiply(int m) {
+        public Vector multiply(int m)
+        {
             x *= m;
             y *= m;
             z *= m;
@@ -246,7 +264,8 @@ public class Vector : ConfigurationSerializable {
          * @param m The factor
          * @return the same vector
          */
-        public Vector multiply(double m) {
+        public Vector multiply(double m)
+        {
             x *= m;
             y *= m;
             z *= m;
@@ -260,7 +279,8 @@ public class Vector : ConfigurationSerializable {
          * @param m The factor
          * @return the same vector
          */
-        public Vector multiply(float m) {
+        public Vector multiply(float m)
+        {
             x *= m;
             y *= m;
             z *= m;
@@ -274,7 +294,8 @@ public class Vector : ConfigurationSerializable {
          * @param other The other vector
          * @return dot product
          */
-        public double dot(Vector other) {
+        public double dot(Vector other)
+        {
             return x * other.x + y * other.y + z * other.z;
         }
 
@@ -290,7 +311,8 @@ public class Vector : ConfigurationSerializable {
          * @param o The other vector
          * @return the same vector
          */
-        public Vector crossProduct(Vector o) {
+        public Vector crossProduct(Vector o)
+        {
             double newX = y * o.z - o.y * z;
             double newY = z * o.x - o.z * x;
             double newZ = x * o.y - o.x * y;
@@ -313,7 +335,8 @@ public class Vector : ConfigurationSerializable {
          * @param o The other vector
          * @return a new vector
          */
-        public Vector getCrossProduct(Vector o) {
+        public Vector getCrossProduct(Vector o)
+        {
             double x = this.y * o.z - o.y * this.z;
             double y = this.z * o.x - o.z * this.x;
             double z = this.x * o.y - o.x * this.y;
@@ -325,7 +348,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return the same vector
          */
-        public Vector normalize() {
+        public Vector normalize()
+        {
             double length = Length;
 
             x /= length;
@@ -340,7 +364,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return the same vector
          */
-        public Vector zero() {
+        public Vector zero()
+        {
             x = 0;
             y = 0;
             z = 0;
@@ -357,7 +382,8 @@ public class Vector : ConfigurationSerializable {
          * @param max Maximum vector
          * @return whether this vector is in the AABB
          */
-        public bool isInAABB(Vector min, Vector max) {
+        public bool isInAABB(Vector min, Vector max)
+        {
             return x >= min.x && x <= max.x && y >= min.y && y <= max.y && z >= min.z && z <= max.z;
         }
 
@@ -368,7 +394,8 @@ public class Vector : ConfigurationSerializable {
          * @param radius Sphere radius
          * @return whether this vector is in the sphere
          */
-        public bool isInSphere(Vector origin, double radius) {
+        public bool isInSphere(Vector origin, double radius)
+        {
             return (NumberConversions.square(origin.x - x) + NumberConversions.square(origin.y - y) + NumberConversions.square(origin.z - z)) <= NumberConversions.square(radius);
         }
 
@@ -377,7 +404,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return The X component.
          */
-        public double getX() {
+        public double getX()
+        {
             return x;
         }
 
@@ -387,7 +415,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return block X
          */
-        public int getBlockX() {
+        public int getBlockX()
+        {
             return NumberConversions.floor(x);
         }
 
@@ -396,7 +425,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return The Y component.
          */
-        public double getY() {
+        public double getY()
+        {
             return y;
         }
 
@@ -406,7 +436,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return block y
          */
-        public int getBlockY() {
+        public int getBlockY()
+        {
             return NumberConversions.floor(y);
         }
 
@@ -415,7 +446,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return The Z component.
          */
-        public double getZ() {
+        public double getZ()
+        {
             return z;
         }
 
@@ -425,7 +457,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return block z
          */
-        public int getBlockZ() {
+        public int getBlockZ()
+        {
             return NumberConversions.floor(z);
         }
 
@@ -435,7 +468,8 @@ public class Vector : ConfigurationSerializable {
          * @param x The new X component.
          * @return This vector.
          */
-        public Vector setX(int x) {
+        public Vector setX(int x)
+        {
             this.x = x;
             return this;
         }
@@ -446,7 +480,8 @@ public class Vector : ConfigurationSerializable {
          * @param x The new X component.
          * @return This vector.
          */
-        public Vector setX(double x) {
+        public Vector setX(double x)
+        {
             this.x = x;
             return this;
         }
@@ -457,7 +492,8 @@ public class Vector : ConfigurationSerializable {
          * @param x The new X component.
          * @return This vector.
          */
-        public Vector setX(float x) {
+        public Vector setX(float x)
+        {
             this.x = x;
             return this;
         }
@@ -468,7 +504,8 @@ public class Vector : ConfigurationSerializable {
          * @param y The new Y component.
          * @return This vector.
          */
-        public Vector setY(int y) {
+        public Vector setY(int y)
+        {
             this.y = y;
             return this;
         }
@@ -479,7 +516,8 @@ public class Vector : ConfigurationSerializable {
          * @param y The new Y component.
          * @return This vector.
          */
-        public Vector setY(double y) {
+        public Vector setY(double y)
+        {
             this.y = y;
             return this;
         }
@@ -490,7 +528,8 @@ public class Vector : ConfigurationSerializable {
          * @param y The new Y component.
          * @return This vector.
          */
-        public Vector setY(float y) {
+        public Vector setY(float y)
+        {
             this.y = y;
             return this;
         }
@@ -501,7 +540,8 @@ public class Vector : ConfigurationSerializable {
          * @param z The new Z component.
          * @return This vector.
          */
-        public Vector setZ(int z) {
+        public Vector setZ(int z)
+        {
             this.z = z;
             return this;
         }
@@ -512,7 +552,8 @@ public class Vector : ConfigurationSerializable {
          * @param z The new Z component.
          * @return This vector.
          */
-        public Vector setZ(double z) {
+        public Vector setZ(double z)
+        {
             this.z = z;
             return this;
         }
@@ -523,7 +564,8 @@ public class Vector : ConfigurationSerializable {
          * @param z The new Z component.
          * @return This vector.
          */
-        public Vector setZ(float z) {
+        public Vector setZ(float z)
+        {
             this.z = z;
             return this;
         }
@@ -535,8 +577,10 @@ public class Vector : ConfigurationSerializable {
          * to account for floating point errors. The epsilon can be retrieved
          * with epsilon.
          */
-        public override bool Equals(Object obj) {
-            if (!(obj is Vector)) {
+        public override bool Equals(Object obj)
+        {
+            if (!(obj is Vector))
+            {
                 return false;
             }
 
@@ -550,12 +594,13 @@ public class Vector : ConfigurationSerializable {
          *
          * @return hash code
          */
-        public override int GetHashCode() {
+        public override int GetHashCode()
+        {
             int hash = 7;
 
-            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >>> 32));
-            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >>> 32));
-            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >>> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.x) ^ (BitConverter.DoubleToInt64Bits(this.x) >> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.y) ^ (BitConverter.DoubleToInt64Bits(this.y) >> 32));
+            hash = 79 * hash + (int)(BitConverter.DoubleToInt64Bits(this.z) ^ (BitConverter.DoubleToInt64Bits(this.z) >> 32));
             return hash;
         }
 
@@ -564,18 +609,16 @@ public class Vector : ConfigurationSerializable {
          *
          * @return vector
          */
-        public override Vector clone() {
-            try {
-                return (Vector)base.clone();
-            } catch (CloneNotSupportedException e) {
-                throw new Error(e);
-            }
+        public Vector Clone()
+        {
+            return (Vector)base.MemberwiseClone();
         }
 
         /**
          * Returns this vector's components as x,y,z.
          */
-        public override string ToString() {
+        public override string ToString()
+        {
             return x + "," + y + "," + z;
         }
 
@@ -585,7 +628,8 @@ public class Vector : ConfigurationSerializable {
          * @param world The world to link the location to.
          * @return the location
          */
-        public Location toLocation(World world) {
+        public Location toLocation(World world)
+        {
             return new Location(world, x, y, z);
         }
 
@@ -597,7 +641,8 @@ public class Vector : ConfigurationSerializable {
          * @param pitch The desired pitch.
          * @return the location
          */
-        public Location toLocation(World world, float yaw, float pitch) {
+        public Location toLocation(World world, float yaw, float pitch)
+        {
             return new Location(world, x, y, z, yaw, pitch);
         }
 
@@ -606,7 +651,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return A block vector.
          */
-        public BlockVector toBlockVector() {
+        public BlockVector toBlockVector()
+        {
             return new BlockVector(x, y, z);
         }
 
@@ -615,7 +661,8 @@ public class Vector : ConfigurationSerializable {
          *
          * @return The epsilon.
          */
-        public static double getEpsilon() {
+        public static double getEpsilon()
+        {
             return epsilon;
         }
 
@@ -626,7 +673,8 @@ public class Vector : ConfigurationSerializable {
          * @param v2 The second vector.
          * @return minimum
          */
-        public static Vector getMinimum(Vector v1, Vector v2) {
+        public static Vector getMinimum(Vector v1, Vector v2)
+        {
             return new Vector(Math.Min(v1.x, v2.x), Math.Min(v1.y, v2.y), Math.Min(v1.z, v2.z));
         }
 
@@ -637,7 +685,8 @@ public class Vector : ConfigurationSerializable {
          * @param v2 The second vector.
          * @return maximum
          */
-        public static Vector getMaximum(Vector v1, Vector v2) {
+        public static Vector getMaximum(Vector v1, Vector v2)
+        {
             return new Vector(Math.Max(v1.x, v2.x), Math.Max(v1.y, v2.y), Math.Max(v1.z, v2.z));
         }
 
@@ -647,11 +696,13 @@ public class Vector : ConfigurationSerializable {
          *
          * @return A random vector.
          */
-        public static Vector getRandom() {
+        public static Vector getRandom()
+        {
             return new Vector(random.NextDouble(), random.NextDouble(), random.NextDouble());
         }
 
-        public Dictionary<String, Object> serialize() {
+        public Dictionary<String, Object> serialize()
+        {
             Dictionary<String, Object> result = new Dictionary<String, Object>();
 
             result.Add("x", getX());
@@ -661,18 +712,22 @@ public class Vector : ConfigurationSerializable {
             return result;
         }
 
-        public static Vector deserialize(Dictionary<String, Object> args) {
+        public static Vector deserialize(Dictionary<String, Object> args)
+        {
             double x = 0;
             double y = 0;
             double z = 0;
 
-            if (args.ContainsKey("x")) {
+            if (args.ContainsKey("x"))
+            {
                 x = (Double)args["x"];
             }
-            if (args.ContainsKey("y")) {
+            if (args.ContainsKey("y"))
+            {
                 y = (Double)args["y"];
             }
-            if (args.ContainsKey("z")) {
+            if (args.ContainsKey("z"))
+            {
                 z = (Double)args["z"];
             }
 

@@ -8,7 +8,7 @@ namespace Mine.NET
     /**
     * Represents a 3-dimensional position in a world
 */
-    public class Location : ICloneable, ConfigurationSerializable
+    public class Location : ICloneable
     {
         private World world;
         private double x;
@@ -599,7 +599,7 @@ namespace Mine.NET
             return new Vector(x, y, z);
         }
 
-        public override object Clone()
+        public object Clone()
         {
             return base.MemberwiseClone();
         }

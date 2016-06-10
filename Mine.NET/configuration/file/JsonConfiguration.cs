@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Mine.NET.configuration.file
 {
-    public class JsonConfiguration : FileConfiguration
+    public class JsonConfiguration
     {
         private JsonConfiguration() { }
 
-        public override void loadFromString(string contents)
+        public void loadFromString(string contents)
         {
             throw new NotImplementedException(); //TODO
         }
 
-        public override string saveToString()
+        public string saveToString()
         {
             throw new NotImplementedException();
         }
 
-        protected override string buildHeader()
+        protected string buildHeader()
         {
             throw new NotImplementedException();
         }

@@ -40,16 +40,7 @@ namespace Mine.NET.material
             setInverted(inv);
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public WoodenStep(Materials type, byte data) : base(type, data)
-        {
-        }
-
+        private bool inverted;
         /**
          * Test if step is inverted
          *
@@ -58,7 +49,8 @@ namespace Mine.NET.material
 
         public bool isInverted()
         {
-            return ((getData() & 0x8) != 0);
+            //return ((getData() & 0x8) != 0);
+            return inverted;
         }
 
         /**
@@ -70,12 +62,13 @@ namespace Mine.NET.material
 
         public void setInverted(bool inv)
         {
-            int dat = getData() & 0x7;
+            /*int dat = getData() & 0x7;
             if (inv)
             {
                 dat |= 0x8;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            inverted = inv;
         }
 
         public new WoodenStep Clone() { return (WoodenStep)base.Clone(); }

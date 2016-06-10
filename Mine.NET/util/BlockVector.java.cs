@@ -110,9 +110,9 @@ namespace Mine.NET.util
          *
          * @return vector
          */
-        public BlockVector Clone()
+        public new BlockVector Clone()
         {
-            return (BlockVector)base.clone(); //TODO
+            return (BlockVector)base.Clone(); //TODO
         }
 
         public static new BlockVector deserialize(Dictionary<String, Object> args)

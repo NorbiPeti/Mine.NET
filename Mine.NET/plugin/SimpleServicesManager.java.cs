@@ -294,11 +294,11 @@ namespace Mine.NET.plugin
          *
          * @return a copy of the set of known services
          */
-        public HashSet<Type> getKnownServices()
+        public List<Type> getKnownServices()
         {
             lock (providers)
             {
-                return new HashSet<Type>(providers.Keys);
+                return new List<Type>(providers.Keys);
             }
         }
 

@@ -32,21 +32,12 @@ namespace Mine.NET.material
             }
         }
 
-        /**
-         * @param type the type
-         * @param data the raw data value
-         * [Obsolete] Magic value
-         */
-        [Obsolete]
-        public Step(Materials type, byte data) : base(type, data)
-        {
-        }
-
         public override List<Materials> getTextures()
         {
             return textures;
         }
 
+        private bool inverted;
         /**
          * Test if step is inverted
          *
@@ -54,7 +45,8 @@ namespace Mine.NET.material
          */
         public bool isInverted()
         {
-            return ((getData() & 0x8) != 0);
+            //return ((getData() & 0x8) != 0);
+            return inverted;
         }
 
         /**
@@ -65,33 +57,34 @@ namespace Mine.NET.material
          */
         public void setInverted(bool inv)
         {
-            int dat = getData() & 0x7;
+            /*int dat = getData() & 0x7;
             if (inv)
             {
                 dat |= 0x8;
             }
-            setData((byte)dat);
+            setData((byte)dat);*/
+            inverted = inv;
         }
 
         /**
          *
          * [Obsolete] Magic value
          */
-        [Obsolete]
+        /*[Obsolete]
         protected override int getTextureIndex()
         {
             return getData() & 0x7;
-        }
+        }*/
 
         /**
          *
          * [Obsolete] Magic value
          */
-        [Obsolete]
+        /*[Obsolete]
         protected override void setTextureIndex(int idx)
         {
             setData((byte)((getData() & 0x8) | idx));
-        }
+        }*/ //TODO
 
         public new Step Clone() { return (Step)base.Clone(); }
 

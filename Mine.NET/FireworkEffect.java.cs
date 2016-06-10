@@ -384,7 +384,7 @@ namespace Mine.NET
                 .build();
         }
 
-        public override Dictionary<String, Object> serialize()
+        public Dictionary<String, Object> serialize()
         {
             return new Dictionary<string, object>
             {

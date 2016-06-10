@@ -25,7 +25,7 @@ namespace Mine.NET.Event.player
 
         public Vector getClickedPosition()
         {
-            return position.clone();
+            return position.Clone();
         }
     }
 }
