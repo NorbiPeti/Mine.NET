@@ -1,6 +1,7 @@
 ﻿using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
 using Newtonsoft.Json.Linq;
+using SharpDiff;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -151,7 +152,7 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
             }
-            Console.WriteLine("\nExtracting server files...");
+            /*Console.WriteLine("\nExtracting server files...");
             Directory.CreateDirectory(Path.Combine("work", "decompile - " + id, "classes"));
             var zip = ZipFile.OpenRead(finalMappedJar.FullName);
             foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))
@@ -169,12 +170,13 @@ namespace BuildTools
                 Console.WriteLine(p.StandardOutput.ReadLine());
             p.WaitForExit();
             if (p.ExitCode != 0)
-                throw new Exception(p.ExitCode.ToString());
+                throw new Exception(p.ExitCode.ToString());*/ //TODO: Uncomment
 
 
             Console.WriteLine("Applying CraftBukkit Patches");
             DirectoryInfo nmsDir = new DirectoryInfo(Path.Combine("CraftBukkit", "src", "main", "java", "net"));
             DirectoryInfo patchDir = new DirectoryInfo(Path.Combine("CraftBukkit", "nms-patches"));
+            var craftrepo = new Repository("CraftBukkit");
             foreach (FileInfo file in patchDir.EnumerateFiles())
             {
                 String targetFile = Path.Combine("net", "minecraft", "server", file.Name.Replace(".patch", ".java"));
@@ -202,31 +204,30 @@ namespace BuildTools
                     readFile.Insert(0, "+++");
                 }
 
-                var craftrepo = new Repository("CraftBukkit");
                 //craftrepo.ApplyPatch();
-                /*Patch parsedPatch = parseUnifiedDiff(readFile);
-                List <?> modifiedLines = DiffUtils.patch(Files.readLines(clean, Charsets.UTF_8), parsedPatch);
-
-                BufferedWriter bw = new BufferedWriter(new FileWriter(t));
-                for (String line : (List<String>)modifiedLines)
+                var diffs = Differ.Load(readFile.Aggregate((a, b) => a + "\r\n" + b));
+                foreach(var diff in diffs)
                 {
-                    bw.write(line);
-                    bw.newLine();
+                    var patch = new SharpDiff.Patch(diff);
+                    patch.ApplyTo(clean.FullName);
                 }
-                bw.close();*/ //TODO
             }
-            DirectoryInfo tmpNms = new DirectoryInfo(Path.Combine("CraftBukkit", "tmp-nms"));   
-            FileUtils.copyDirectory(nmsDir, tmpNms);
+            Console.WriteLine("\nCopying CraftBukkit to tmp-nms...");
+            DirectoryInfo tmpNms = new DirectoryInfo(Path.Combine("CraftBukkit", "tmp-nms"));
+            nmsDir.CopyTo(tmpNms.FullName, true);
 
-            craftBukkitGit.branchDelete().setBranchNames("patched").setForce(true).call();
-            craftBukkitGit.checkout().setCreateBranch(true).setForce(true).setName("patched").call();
-            craftBukkitGit.add().addFilepattern("src/main/java/net/").call();
-            craftBukkitGit.commit().setMessage("CraftBukkit $ " + new Date()).call();
-            craftBukkitGit.checkout().setName(buildInfo.getRefs().getCraftBukkit()).call();
+            Console.WriteLine("\nCheckout, commit, checkout");
+            craftrepo.Branches.Remove("patched");
+            craftrepo.Checkout(craftrepo.Branches["patched"], new CheckoutOptions { CheckoutModifiers = CheckoutModifiers.Force });
+            craftrepo.Stage("src/main/java/net/");
+            var signature = new Signature("Mine.NET", "mine.net@norbipeti.github.io", DateTimeOffset.Now);
+            craftrepo.Commit("CraftBukkit $ " + DateTime.Now, signature, signature);
+            craftrepo.Checkout((string)obj["refs"]["CraftBukkit"]);
 
-            FileUtils.moveDirectory(tmpNms, nmsDir);
+            Console.WriteLine("Moving tmp-nms to CraftBukkit...");
+            tmpNms.MoveTo(nmsDir.FullName);
 
-            File spigotApi = new File(spigot, "Bukkit");
+            /*File spigotApi = new File(spigot, "Bukkit");
             if (!spigotApi.exists())
             {
                 clone("file://" + bukkit.getAbsolutePath(), spigotApi);
@@ -285,7 +286,7 @@ namespace BuildTools
                 System.out.println("Success! Everything compiled successfully. Copying final .jar files now.");
                 copyJar("CraftBukkit/target", "craftbukkit", "craftbukkit-" + versionInfo.getMinecraftVersion() + ".jar");
                 copyJar("Spigot/Spigot-Server/target", "spigot", "spigot-" + versionInfo.getMinecraftVersion() + ".jar");
-            }
+            }*/
 
             Console.WriteLine("\n\n\n\n\t\tFINISHED");
         }
