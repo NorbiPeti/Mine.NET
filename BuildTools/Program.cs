@@ -1,7 +1,7 @@
 ﻿using LibGit2Sharp;
 using LibGit2Sharp.Handlers;
 using Newtonsoft.Json.Linq;
-using SharpDiff;
+using SharpDiff.FileStructure;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -61,7 +61,7 @@ namespace BuildTools
                 Console.WriteLine(Repository.Clone("https://hub.spigotmc.org/stash/scm/spigot/builddata.git", "BuildData", options));
                 Console.WriteLine();
             }
-            if (!File.Exists("work" + Path.DirectorySeparatorChar + "minecraft_server." + Version + ".jar"))
+            if (!System.IO.File.Exists("work" + Path.DirectorySeparatorChar + "minecraft_server." + Version + ".jar"))
             {
                 Console.WriteLine("Downloading vanilla server...");
                 var client = new WebClient();
@@ -98,7 +98,7 @@ namespace BuildTools
             Pull("CraftBukkit", obj);
             Pull("Spigot", obj);
 
-            var info = JObject.Parse(File.ReadAllText("BuildData" + Path.DirectorySeparatorChar + "info.json"));
+            var info = JObject.Parse(System.IO.File.ReadAllText("BuildData" + Path.DirectorySeparatorChar + "info.json"));
             var buildrepo = new Repository("BuildData");
             string id = null;
             foreach (Commit commit in buildrepo.Commits)
@@ -152,7 +152,7 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
             }
-            /*Console.WriteLine("\nExtracting server files...");
+            Console.WriteLine("\nExtracting server files...");
             Directory.CreateDirectory(Path.Combine("work", "decompile - " + id, "classes"));
             var zip = ZipFile.OpenRead(finalMappedJar.FullName);
             foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))
@@ -170,7 +170,7 @@ namespace BuildTools
                 Console.WriteLine(p.StandardOutput.ReadLine());
             p.WaitForExit();
             if (p.ExitCode != 0)
-                throw new Exception(p.ExitCode.ToString());*/ //TODO: Uncomment
+                throw new Exception(p.ExitCode.ToString()); //TODO: Uncomment
 
 
             Console.WriteLine("Applying CraftBukkit Patches");
@@ -187,7 +187,7 @@ namespace BuildTools
 
                 Console.WriteLine("Patching with " + file.Name);
 
-                List<String> readFile = File.ReadAllLines(file.FullName).ToList();
+                List<String> readFile = System.IO.File.ReadAllLines(file.FullName).ToList();
 
                 // Manually append prelude if it is not found in the first few lines.
                 bool preludeFound = false;
@@ -203,13 +203,19 @@ namespace BuildTools
                 {
                     readFile.Insert(0, "+++");
                 }
-
-                //craftrepo.ApplyPatch();
-                var diffs = Differ.Load(readFile.Aggregate((a, b) => a + "\r\n" + b));
-                foreach(var diff in diffs)
+                
+                var diffs = ParseDiff.Diff.Parse(readFile.Aggregate((a, b) => a + "\r\n" + b));
+                foreach (var diff in diffs)
                 {
-                    var patch = new SharpDiff.Patch(diff);
-                    patch.ApplyTo(clean.FullName);
+                    if (new FileInfo(Path.Combine("work", "decompile - " + id, diff.From)).FullName != clean.FullName)
+                        continue;
+                    /*foreach (var item in diff.Chunks.Where(c => c.Changes.Any(ch => !ch.Add && !ch.Delete)))
+                        foreach (var item2 in item.Changes)
+                            Console.WriteLine("-------- " + item2.Content);*/
+                    var patch = new SharpDiff.Patch(new SharpDiff.FileStructure.Diff(new UnifiedDiffHeader(diff.Add, diff.Deleted), diff.Chunks.Select(c => new Chunk(new ChunkRange(new ChangeRange(c.OldStart, c.OldLines), new ChangeRange(c.NewStart, c.NewLines)), c.Changes.Select(ch => ch.Content.StartsWith("+") ? (ISnippet)new AdditionSnippet(new ILine[] { new AdditionLine(ch.Content.Substring(1)) }) : ch.Content.StartsWith("-") ? new SubtractionSnippet(new ILine[] { new SubtractionLine(ch.Content.Substring(1)) }) : (ISnippet)new ContextSnippet(new ILine[] { new ContextLine(ch.Content) }))))));
+                    if (diff.From != diff.To)
+                        System.IO.File.Delete(Path.Combine("work", "decompile - " + id, diff.From));
+                    System.IO.File.WriteAllText(Path.Combine("work", "decompile - " + id, diff.To), patch.ApplyTo(clean.FullName));
                 }
             }
             Console.WriteLine("\nCopying CraftBukkit to tmp-nms...");

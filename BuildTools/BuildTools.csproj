@@ -44,9 +44,9 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SharpDiff, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Downloads\sharpdiff-master\src\SharpDiff\bin\Debug\SharpDiff.dll</HintPath>
+    <Reference Include="ParseDiff, Version=1.0.15322.1101, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ParseDiff.1.0.15322.1101\lib\net40\ParseDiff.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,11 +62,18 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnifiedDiffHeader.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Downloads\sharpdiff-master\src\SharpDiff\SharpDiff.csproj">
+      <Project>{91e98035-4805-4f55-84ab-ab6e00bbc526}</Project>
+      <Name>SharpDiff</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
