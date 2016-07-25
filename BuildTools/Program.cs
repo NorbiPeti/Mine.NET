@@ -79,6 +79,39 @@ namespace BuildTools
 
         private static void ContinueDoingIt()
         {
+            DirectoryInfo maven;
+            String m2Home = Environment.GetEnvironmentVariable("M2_HOME");
+            if (m2Home == null || !(maven = new DirectoryInfo(m2Home)).Exists)
+            {
+                maven = new DirectoryInfo("apache-maven-3.2.5");
+
+                if (!maven.Exists)
+                {
+                    Console.WriteLine("Maven does not exist, downloading. Please wait.");
+
+                    FileInfo mvnTemp = new FileInfo("mvn.zip");
+
+                    var client = new WebClient();
+                    client.DownloadFile("https://static.spigotmc.org/maven/apache-maven-3.2.5-bin.zip", mvnTemp.FullName);
+                    Console.WriteLine("Unzipping Maven...");
+                    maven.Create();
+                    var zipfile = ZipFile.OpenRead(mvnTemp.FullName);
+                    foreach (var entry in zipfile.Entries)
+                    {
+                        if (entry.FullName.EndsWith("/"))
+                        {
+                            Directory.CreateDirectory(entry.FullName);
+                            continue;
+                        }
+                        Console.WriteLine("Extracting " + entry.FullName);
+                        entry.ExtractToFile(Path.Combine(maven.Parent.FullName, entry.FullName), true);
+                    }
+                    zipfile.Dispose();
+                    mvnTemp.Delete();
+                }
+            }
+            string java_home = GetJavaInstallationPath();
+            Environment.SetEnvironmentVariable("JAVA_HOME", java_home);
             Console.WriteLine();
             JObject obj = JObject.Parse(new WebClient().DownloadString("https://hub.spigotmc.org/versions/" + Version + ".json"));
             Pull("BuildData", obj);
@@ -138,7 +171,10 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
             }
-            /*Console.WriteLine("\nExtracting server files...");
+
+            RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=1.9-SNAPSHOT");
+
+            Console.WriteLine("\nExtracting server files...");
             Directory.CreateDirectory(Path.Combine("work", "decompile - " + id, "classes"));
             var zip = ZipFile.OpenRead(finalMappedJar.FullName);
             foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))
@@ -156,7 +192,7 @@ namespace BuildTools
                 Console.WriteLine(p.StandardOutput.ReadLine());
             p.WaitForExit();
             if (p.ExitCode != 0)
-                throw new Exception(p.ExitCode.ToString());*/ //TODO: Uncomment
+                throw new Exception(p.ExitCode.ToString());
 
 
             Console.WriteLine("Applying CraftBukkit Patches");
@@ -195,14 +231,6 @@ namespace BuildTools
                 {
                     if (new FileInfo(Path.Combine("work", "decompile - " + id, diff.From)).FullName != clean.FullName)
                         continue;
-                    /*foreach (var item in diff.Chunks.Where(c => c.Changes.Any(ch => !ch.Add && !ch.Delete)))
-                        foreach (var item2 in item.Changes)
-                            Console.WriteLine("-------- " + item2.Content);*/
-                    /*foreach (var item in diff.Chunks.Where(c => c.Changes.Any(ch => !ch.Add && !ch.Delete)))
-                        foreach (var item2 in item.Changes)
-                            if (item2.Add != item2.Content.StartsWith("+") || item2.Delete != item2.Content.StartsWith("-"))
-                                throw new Exception("!");*/
-
                     var patch = new SharpDiff.Patch(new SharpDiff.FileStructure.Diff(new UnifiedDiffHeader(diff.Add, diff.Deleted), diff.Chunks.Select(c => new Chunk(new ChunkRange(new ChangeRange(c.OldStart, c.OldLines), new ChangeRange(c.NewStart, c.NewLines)), c.Changes.Select(ch => ch.Add ? (ISnippet)new AdditionSnippet(new ILine[] { new AdditionLine(ch.Content.Substring(1)) }) : ch.Delete ? new SubtractionSnippet(new ILine[] { new SubtractionLine(ch.Content.Substring(1)) }) : (ISnippet)new ContextSnippet(new ILine[] { new ContextLine(ch.Content) }))))));
                     if (diff.From != diff.To)
                         System.IO.File.Delete(Path.Combine("work", "decompile - " + id, diff.From));
@@ -227,6 +255,9 @@ namespace BuildTools
             craftrepo.Checkout((string)obj["refs"]["CraftBukkit"]);
 
             tmpNms.MoveTo(nmsDir.FullName);
+
+            Console.WriteLine("Compiling CraftBukkit...");
+            RunMaven("clean install", "CraftBukkit"); //TODO: Error: Method has the same closure as...
 
             Console.WriteLine("Copying CraftBukkit to CraftMine.NET...");
             Directory.CreateDirectory("CraftMine.NET");
@@ -273,6 +304,45 @@ namespace BuildTools
             }
 
             return false;
+        }
+        
+        private static void RunMaven(string args, string wd = null)
+        {
+            string path = "";
+            if (wd != null)
+            {
+                string[] spl = wd.Split(new char[] { '\\', '/' });
+                for (int i = 0; i < spl.Length; i++)
+                    path += ".."+Path.DirectorySeparatorChar;
+            }
+            string cmdargs = "/C \"" + (wd != null ? "cd " + wd + " && " : "") + Path.Combine(path, "apache-maven-3.2.5", "bin", "mvn") + " " + args + "\"";
+            ProcessStartInfo psi = new ProcessStartInfo("cmd", cmdargs);
+            psi.RedirectStandardOutput = true;
+            psi.UseShellExecute = false;
+            Process process = Process.Start(psi);
+            while (!process.StandardOutput.EndOfStream)
+                Console.WriteLine(process.StandardOutput.ReadLine());
+            if (process.ExitCode > 0)
+                throw new Exception("Process exited with code " + process.ExitCode);
+        }
+
+        private static string GetJavaInstallationPath()
+        {
+            string environmentPath = Environment.GetEnvironmentVariable("JAVA_HOME");
+            if (!string.IsNullOrEmpty(environmentPath))
+            {
+                return environmentPath;
+            }
+
+            string javaKey = "SOFTWARE\\JavaSoft\\Java Runtime Environment\\";
+            using (Microsoft.Win32.RegistryKey rk = Microsoft.Win32.Registry.LocalMachine.OpenSubKey(javaKey))
+            {
+                string currentVersion = rk.GetValue("CurrentVersion").ToString();
+                using (Microsoft.Win32.RegistryKey key = rk.OpenSubKey(currentVersion))
+                {
+                    return key.GetValue("JavaHome").ToString();
+                }
+            }
         }
     }
 }
