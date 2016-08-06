@@ -175,25 +175,28 @@ namespace BuildTools
             RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=1.9-SNAPSHOT");
 
             Console.WriteLine("\nExtracting server files...");
-            Directory.CreateDirectory(Path.Combine("work", "decompile - " + id, "classes"));
-            var zip = ZipFile.OpenRead(finalMappedJar.FullName);
-            foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))
+            var decompiledi = new DirectoryInfo(Path.Combine("work", "decompile - " + id, "classes"));
+            if (!decompiledi.Exists)
             {
-                if (entry.FullName.EndsWith("/"))
-                    continue;
-                Console.WriteLine("Extracting " + entry.FullName);
-                new FileInfo(Path.Combine("work", "decompile - " + id, "classes", entry.FullName)).Directory.Create();
-                entry.ExtractToFile(Path.Combine("work", "decompile - " + id, "classes", entry.FullName), true);
+                decompiledi.Create();
+                var zip = ZipFile.OpenRead(finalMappedJar.FullName);
+                foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))
+                {
+                    if (entry.FullName.EndsWith("/"))
+                        continue;
+                    Console.WriteLine("Extracting " + entry.FullName);
+                    new FileInfo(Path.Combine("work", "decompile - " + id, "classes", entry.FullName)).Directory.Create();
+                    entry.ExtractToFile(Path.Combine("work", "decompile - " + id, "classes", entry.FullName), true);
+                }
+                Console.WriteLine("\nDecompiling...");
+                pi.Arguments = "-jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -rbr=0 -asc=1 -udv=0 \"work" + Path.DirectorySeparatorChar + "decompile - " + id + Path.DirectorySeparatorChar + "classes\" \"work" + Path.DirectorySeparatorChar + "decompile - " + id + "\"";
+                p = Process.Start(pi);
+                while (!p.StandardOutput.EndOfStream)
+                    Console.WriteLine(p.StandardOutput.ReadLine());
+                p.WaitForExit();
+                if (p.ExitCode != 0)
+                    throw new Exception(p.ExitCode.ToString());
             }
-            Console.WriteLine("\nDecompiling...");
-            pi.Arguments = "-jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -rbr=0 -asc=1 -udv=0 \"work" + Path.DirectorySeparatorChar + "decompile - " + id + Path.DirectorySeparatorChar + "classes\" \"work" + Path.DirectorySeparatorChar + "decompile - " + id + "\"";
-            p = Process.Start(pi);
-            while (!p.StandardOutput.EndOfStream)
-                Console.WriteLine(p.StandardOutput.ReadLine());
-            p.WaitForExit();
-            if (p.ExitCode != 0)
-                throw new Exception(p.ExitCode.ToString());
-
 
             Console.WriteLine("Applying CraftBukkit Patches");
             DirectoryInfo nmsDir = new DirectoryInfo(Path.Combine("CraftBukkit", "src", "main", "java", "net"));
@@ -231,8 +234,8 @@ namespace BuildTools
                 {
                     if (new FileInfo(Path.Combine("work", "decompile - " + id, diff.From)).FullName != clean.FullName)
                         continue;
-                    var patch = new SharpDiff.Patch(new SharpDiff.FileStructure.Diff(new UnifiedDiffHeader(diff.Add, diff.Deleted), diff.Chunks.Select(c => new Chunk(new ChunkRange(new ChangeRange(c.OldStart, c.OldLines), new ChangeRange(c.NewStart, c.NewLines)), c.Changes.Select(ch => ch.Add ? (ISnippet)new AdditionSnippet(new ILine[] { new AdditionLine(ch.Content.Substring(1)) }) : ch.Delete ? new SubtractionSnippet(new ILine[] { new SubtractionLine(ch.Content.Substring(1)) }) : (ISnippet)new ContextSnippet(new ILine[] { new ContextLine(ch.Content) }))))));
-                    if (diff.From != diff.To)
+                    var patch = new SharpDiff.Patch(new SharpDiff.FileStructure.Diff(new UnifiedDiffHeader(diff.Add, diff.Deleted), diff.Chunks.Select(c => new Chunk(new ChunkRange(new ChangeRange(c.OldStart, c.OldLines), new ChangeRange(c.NewStart, c.NewLines)), c.Changes.Select(ch => ch.Add ? new AdditionSnippet(new ILine[] { new AdditionLine(ch.Content.Substring(1)) }) : ch.Delete ? new SubtractionSnippet(new ILine[] { new SubtractionLine(ch.Content.Substring(1)) }) : (ISnippet)new ContextSnippet(new ILine[] { new ContextLine(ch.Content) })))))); //NewStart + 1 <-- only on certain files...
+                    if (diff.From != diff.To) //TODO: Fix patch applying
                         System.IO.File.Delete(Path.Combine("work", "decompile - " + id, diff.From));
                     var path = Path.Combine(nmsDir.Parent.FullName, diff.To);
                     new FileInfo(path).Directory.Create();
