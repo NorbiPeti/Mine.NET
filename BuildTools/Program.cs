@@ -207,8 +207,6 @@ namespace BuildTools
                 String targetFile = Path.Combine("net", "minecraft", "server", file.Name.Replace(".patch", ".java"));
 
                 FileInfo clean = new FileInfo(Path.Combine("work", "decompile - " + id, targetFile));
-                FileInfo t = new FileInfo(Path.Combine(nmsDir.Parent.FullName, targetFile));
-                t.Directory.Create();
 
                 Console.WriteLine("Patching with " + file.Name);
 
