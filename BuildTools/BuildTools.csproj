@@ -60,6 +60,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="P3Mapping.cs" />
+    <Compile Include="P2Maven.cs" />
+    <Compile Include="P1Clone.cs" />
+    <Compile Include="P4Decompiling.cs" />
+    <Compile Include="P5CBPatches.cs" />
+    <Compile Include="P6CBCompile.cs" />
+    <Compile Include="P7DLLConvert.cs" />
+    <Compile Include="P8DLLDecompile.cs" />
+    <Compile Include="P9DLLPatches.cs" />
+    <Compile Include="PAFinished.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnifiedDiffHeader.cs" />
@@ -74,6 +84,9 @@
       <Project>{91e98035-4805-4f55-84ab-ab6e00bbc526}</Project>
       <Name>SharpDiff</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IKVM_LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
