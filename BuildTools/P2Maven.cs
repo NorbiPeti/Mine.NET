@@ -51,10 +51,10 @@ namespace BuildTools
             }
             string java_home = GetJavaInstallationPath();
             Environment.SetEnvironmentVariable("JAVA_HOME", java_home);
-            Console.WriteLine();
+            Console.WriteLine("Downloading version info...");
             obj = JObject.Parse(new WebClient().DownloadString("https://hub.spigotmc.org/versions/" + Program.Version + ".json"));
-            Pull(P1Clone.GetBuildDataGit(), "master");
-            Pull(P1Clone.GetCraftBukkitGit(), "master");
+            Pull(P1Clone.GetBuildDataGit(), (string)obj["refs"]["BuildData"]);
+            Pull(P1Clone.GetCraftBukkitGit(), (string)obj["refs"]["CraftBukkit"]);
             P3Mapping.DoIt();
         }
 

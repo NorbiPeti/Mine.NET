@@ -46,7 +46,7 @@ namespace BuildTools
                     readFile.Insert(0, "+++");
                 }
                 craftrepo.Apply().SetPatch(new MemoryStream(Encoding.UTF8.GetBytes(readFile.Aggregate((a, b) => a + "\n" + b)))).Call();
-            }
+            } //TODO: Remove \r from the lines in ApplyCommand.cs in private void Apply(FilePath f, FileHeader fh)
             DirectoryInfo tmpNms = new DirectoryInfo(Path.Combine("CraftBukkit", "tmp-nms"));
             nmsDir.CopyTo(tmpNms.FullName, true);
 
