@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\..\Downloads\ngit-master\ngit-master\bin\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="JustDecompile.EngineInfrastructure, Version=2016.2.718.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\JustDecompile.EngineInfrastructure.dll</HintPath>
@@ -48,17 +51,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\JustDecompiler.dll</HintPath>
     </Reference>
-    <Reference Include="LibGit2Sharp, Version=0.22.0.0, Culture=neutral, PublicKeyToken=7cbde695407f0333, processorArchitecture=MSIL">
-      <HintPath>..\packages\LibGit2Sharp.0.22.0\lib\net40\LibGit2Sharp.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\..\..\Downloads\ngit-master\ngit-master\bin\Mono.Security.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ParseDiff, Version=1.0.15322.1101, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ParseDiff.1.0.15322.1101\lib\net40\ParseDiff.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="NGit">
+      <HintPath>..\..\..\..\Downloads\ngit-master\ngit-master\bin\NGit.dll</HintPath>
+    </Reference>
+    <Reference Include="NSch">
+      <HintPath>..\..\..\..\Downloads\ngit-master\ngit-master\bin\NSch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sharpen">
+      <HintPath>..\..\..\..\Downloads\ngit-master\ngit-master\bin\Sharpen.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -89,19 +96,12 @@
     <Compile Include="PAFinished.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnifiedDiffHeader.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="JustDecompileEngine_License.md" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Downloads\sharpdiff-master\src\SharpDiff\SharpDiff.csproj">
-      <Project>{91e98035-4805-4f55-84ab-ab6e00bbc526}</Project>
-      <Name>SharpDiff</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="IKVM_LICENSE.txt" />

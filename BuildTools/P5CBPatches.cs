@@ -1,12 +1,10 @@
-﻿using LibGit2Sharp;
-using Newtonsoft.Json.Linq;
-using SharpDiff.FileStructure;
+﻿using NGit.Api;
+using NGit.Patch;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BuildTools
 {
@@ -17,12 +15,14 @@ namespace BuildTools
             Console.WriteLine("Applying CraftBukkit Patches");
             DirectoryInfo nmsDir = new DirectoryInfo(Path.Combine("CraftBukkit", "src", "main", "java", "net"));
             DirectoryInfo patchDir = new DirectoryInfo(Path.Combine("CraftBukkit", "nms-patches"));
-            var craftrepo = new Repository("CraftBukkit");
+            //var craftrepo = new Repository("CraftBukkit");
+            var craftrepo = Git.Open("CraftBukkit");
             foreach (FileInfo file in patchDir.EnumerateFiles())
             {
                 String targetFile = Path.Combine("net", "minecraft", "server", file.Name.Replace(".patch", ".java"));
 
                 FileInfo clean = new FileInfo(Path.Combine("work", "decompile - " + id, targetFile));
+                var t = new FileInfo(Path.Combine(nmsDir.Parent.FullName, targetFile));
 
                 Console.WriteLine("Patching with " + file.Name);
 
@@ -35,41 +35,27 @@ namespace BuildTools
                     if (readFile[i].StartsWith("+++"))
                     {
                         preludeFound = true;
+                        readFile[i] = readFile[i].Replace("net/minecraft/server", "src/main/java/net/minecraft/server");
                         break;
                     }
+                    else if(readFile[i].StartsWith("---"))
+                        readFile[i] = readFile[i].Replace("net/minecraft/server", "src/main/java/net/minecraft/server");
                 }
                 if (!preludeFound)
                 {
                     readFile.Insert(0, "+++");
                 }
-
-                var diffs = ParseDiff.Diff.Parse(readFile.Aggregate((a, b) => a + "\r\n" + b));
-                foreach (var diff in diffs)
-                {
-                    if (new FileInfo(Path.Combine("work", "decompile - " + id, diff.From)).FullName != clean.FullName)
-                        continue;
-                    var patch = new SharpDiff.Patch(new SharpDiff.FileStructure.Diff(new UnifiedDiffHeader(diff.Add, diff.Deleted), diff.Chunks.Select(c => new Chunk(new ChunkRange(new ChangeRange(c.OldStart, c.OldLines), new ChangeRange(c.NewStart, c.NewLines)), c.Changes.Select(ch => ch.Add ? new AdditionSnippet(new ILine[] { new AdditionLine(ch.Content.Substring(1)) }) : ch.Delete ? new SubtractionSnippet(new ILine[] { new SubtractionLine(ch.Content.Substring(1)) }) : (ISnippet)new ContextSnippet(new ILine[] { new ContextLine(ch.Content) })))))); //NewStart + 1 <-- only on certain files...
-                    if (diff.From != diff.To) //TODO: Fix patch applying
-                        System.IO.File.Delete(Path.Combine("work", "decompile - " + id, diff.From));
-                    var path = Path.Combine(nmsDir.Parent.FullName, diff.To);
-                    new FileInfo(path).Directory.Create();
-                    System.IO.File.WriteAllText(path, patch.ApplyTo(clean.FullName));
-                }
+                craftrepo.Apply().SetPatch(new MemoryStream(Encoding.UTF8.GetBytes(readFile.Aggregate((a, b) => a + "\n" + b)))).Call();
             }
             DirectoryInfo tmpNms = new DirectoryInfo(Path.Combine("CraftBukkit", "tmp-nms"));
             nmsDir.CopyTo(tmpNms.FullName, true);
 
             Console.WriteLine("\nCheckout, commit, checkout?");
-            craftrepo.Branches.Remove("patched");
-            //craftrepo.Checkout(branch, new CheckoutOptions { CheckoutModifiers = CheckoutModifiers.Force });
-            Branch trackedBranch = craftrepo.Branches["origin/master"];
-            Branch branch = craftrepo.CreateBranch("patched", trackedBranch.Tip);
-            Branch updatedBranch = craftrepo.Branches.Update(branch,
-                b => b.TrackedBranch = trackedBranch.CanonicalName);
-            craftrepo.Stage("src/main/java/net/");
-            var signature = new Signature("Mine.NET", "mine.net@norbipeti.github.io", DateTimeOffset.Now);
-            craftrepo.Commit("CraftBukkit $ " + DateTime.Now, signature, signature);
-            craftrepo.Checkout((string)P2Maven.obj["refs"]["CraftBukkit"]);
+            craftrepo.BranchDelete().SetBranchNames("patched").SetForce(true).Call();
+            craftrepo.Checkout().SetCreateBranch(true).SetForce(true).SetName("patched").Call();
+            craftrepo.Add().AddFilepattern("src/main/java/net/").Call();
+            craftrepo.Commit().SetMessage("CraftBukkit $ " + DateTime.Now).Call();
+            craftrepo.Checkout().SetName("master").Call();
             tmpNms.MoveTo(nmsDir.FullName);
             P6CBCompile.DoIt();
         }

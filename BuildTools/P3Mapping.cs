@@ -1,6 +1,7 @@
-﻿using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using NGit.Api;
+using NGit.Revwalk;
+using NGit.Revwalk.Depthwalk;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,6 +9,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,16 +20,22 @@ namespace BuildTools
         public static void DoIt()
         {
             var info = JObject.Parse(File.ReadAllText("BuildData" + Path.DirectorySeparatorChar + "info.json"));
-            var buildrepo = new Repository("BuildData");
-            string id = null;
-            foreach (Commit commit in buildrepo.Commits)
+            var buildrepo = P1Clone.GetBuildDataGit();
+            IEnumerable<RevCommit> mappings = buildrepo.Log()
+        .AddPath("mappings/" + (string)info["accessTransforms"])
+        .AddPath("mappings/" + (string)info["classMappings"])
+        .AddPath("mappings/" + (string)info["memberMappings"])
+        .AddPath("mappings/" + (string)info["packageMappings"])
+        .SetMaxCount(1).Call();
+
+            //MD5 mappingsHash = MD5.Create();
+            string hashstr = "";
+            foreach (RevCommit rev in mappings)
             {
-                if (TreeContainsFile(commit.Tree, (string)info["accessTransforms"]) || TreeContainsFile(commit.Tree, (string)info["classMappings"]) || TreeContainsFile(commit.Tree, (string)info["memberMappings"]) || TreeContainsFile(commit.Tree, (string)info["packageMappings"]))
-                {
-                    id = commit.Id.Sha.Substring(24);
-                    break;
-                }
+                hashstr += rev.Name;
             }
+            //String mappingsVersion = Encoding.UTF8.GetString(mappingsHash.ComputeHash(Encoding.UTF8.GetBytes(hashstr))).Substring(24); // Last 8 chars
+            string id = hashstr.Substring(24); // Last 8 chars
             var pi = new ProcessStartInfo("java");
             Process p = null;
             FileInfo finalMappedJar = new FileInfo("work" + Path.DirectorySeparatorChar + "mapped." + id + ".jar");
@@ -73,32 +81,6 @@ namespace BuildTools
 
             Program.RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=1.9-SNAPSHOT");
             P4Decompiling.DoIt(finalMappedJar, id);
-        }
-
-        /// <summary>
-        /// Checks a GIT tree to see if a file exists
-        /// </summary>
-        /// <param name="tree">The GIT tree</param>
-        /// <param name="filename">The file name</param>
-        /// <returns>true if file exists</returns>
-        private static bool TreeContainsFile(Tree tree, string filename)
-        {
-            if (tree.Any(x => Path.GetFileName(x.Path) == filename))
-            {
-                return true;
-            }
-            else
-            {
-                foreach (Tree branch in tree.Where(x => x.TargetType == TreeEntryTargetType.Tree).Select(x => x.Target as Tree))
-                {
-                    if (TreeContainsFile(branch, filename))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
         }
     }
 }

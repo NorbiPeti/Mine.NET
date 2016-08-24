@@ -31,6 +31,8 @@ namespace BuildTools
                 Console.WriteLine("\nDecompiling...");
                 var pi = new ProcessStartInfo("java");
                 pi.Arguments = "-jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -rbr=0 -asc=1 -udv=0 \"work" + Path.DirectorySeparatorChar + "decompile - " + id + Path.DirectorySeparatorChar + "classes\" \"work" + Path.DirectorySeparatorChar + "decompile - " + id + "\"";
+                pi.UseShellExecute = false;
+                pi.RedirectStandardOutput = true;
                 Process p = Process.Start(pi);
                 while (!p.StandardOutput.EndOfStream)
                     Console.WriteLine(p.StandardOutput.ReadLine());
@@ -38,6 +40,8 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
             }
+            Console.WriteLine("Copying decompiled directory...");
+            new DirectoryInfo(decompiledi.Parent.FullName + Path.DirectorySeparatorChar + "net").CopyTo(Path.Combine("CraftBukkit", "src", "main", "java", "net"), true);
             P5CBPatches.DoIt(id);
         }
     }

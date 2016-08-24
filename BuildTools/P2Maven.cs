@@ -1,6 +1,5 @@
-﻿using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using NGit.Api;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,14 +14,15 @@ namespace BuildTools
     public static class P2Maven
     {
         public static JObject obj;
-        
+
         public static void DoIt()
         {
-            DirectoryInfo maven;
+            DirectoryInfo maven = null;
             String m2Home = Environment.GetEnvironmentVariable("M2_HOME");
             if (m2Home == null || !(maven = new DirectoryInfo(m2Home)).Exists)
             {
-                maven = new DirectoryInfo("apache-maven-3.2.5");
+                if (maven == null)
+                    maven = new DirectoryInfo("apache-maven-3.2.5");
 
                 if (!maven.Exists)
                 {
@@ -53,8 +53,8 @@ namespace BuildTools
             Environment.SetEnvironmentVariable("JAVA_HOME", java_home);
             Console.WriteLine();
             obj = JObject.Parse(new WebClient().DownloadString("https://hub.spigotmc.org/versions/" + Program.Version + ".json"));
-            Pull("BuildData", obj);
-            Pull("CraftBukkit", obj);
+            Pull(P1Clone.GetBuildDataGit(), "master");
+            Pull(P1Clone.GetCraftBukkitGit(), "master");
             P3Mapping.DoIt();
         }
 
@@ -77,16 +77,21 @@ namespace BuildTools
             }
         }
 
-        private static void Pull(string name, JObject obj)
+        public static void Pull(Git repo, string ref_)
         {
-            Console.WriteLine("\nPulling " + name);
-            var repo = new Repository(name);
-            repo.Reset(ResetMode.Hard, "origin/master");
-            repo.Fetch("origin");
-            Console.WriteLine("Fetched updates!");
-            var reff = (string)obj["refs"][name];
-            repo.Reset(ResetMode.Hard, reff);
-            Console.WriteLine("Checked out: " + reff);
+            Console.WriteLine("Pulling updates for " + repo.GetRepository().Directory);
+
+            repo.Reset().SetRef("origin/master").SetMode(ResetCommand.ResetType.HARD).Call();
+            repo.Fetch().Call();
+
+            Console.WriteLine("Successfully fetched updates!");
+
+            repo.Reset().SetRef(ref_).SetMode(ResetCommand.ResetType.HARD).Call();
+            if (ref_ == "master")
+            {
+                repo.Reset().SetRef("origin/master").SetMode(ResetCommand.ResetType.HARD).Call();
+            }
+            Console.WriteLine("Checked out: " + ref_);
         }
     }
 }

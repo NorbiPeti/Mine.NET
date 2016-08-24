@@ -1,9 +1,6 @@
-﻿using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
-using Newtonsoft.Json.Linq;
-using SharpDiff.FileStructure;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -20,15 +17,34 @@ namespace BuildTools
         static void Main(string[] args)
         {
             Console.WriteLine("Started BuildTools\n");
+            /*try
+            {
+                var psi = new ProcessStartInfo("git", "--version");
+                psi.UseShellExecute = false;
+                var p = Process.Start(psi);
+                p.WaitForExit();
+                if (p.ExitCode > 0)
+                {
+                    Console.WriteLine("Git not found! Please run from Git bash on Windows.");
+                    Console.ReadLine();
+                    return;
+                }
+            }
+            catch (Win32Exception e)
+            {
+                Console.WriteLine("Git not found! Please run from Git bash on Windows.");
+                Console.ReadLine();
+                return;
+            }*/
             try
             {
-                P7DLLConvert.DoIt();
+                P1Clone.DoIt();
             }
             catch (Exception e)
             {
                 Console.WriteLine("Fatal error during install!\n" + e);
             }
-            Console.ReadLine();
+            Console.ReadLine(); //TODO: PATCH FILES ARE COMPLETELY DIFFERENT THAN THE SOURCE FILES
         }
 
         public static void RunMaven(string args, string wd = null)

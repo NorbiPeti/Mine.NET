@@ -1,5 +1,4 @@
-﻿using LibGit2Sharp;
-using LibGit2Sharp.Handlers;
+﻿using NGit.Api;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,24 +11,35 @@ namespace BuildTools
 {
     public static class P1Clone
     {
+        private static Git CraftBukkitGit = null;
+        private static Git BuildDataGit = null;
+
+        public static Git GetCraftBukkitGit()
+        {
+            return P1Clone.CraftBukkitGit ?? Git.Open("CraftBukkit");
+        }
+
+        public static Git GetBuildDataGit()
+        {
+            return P1Clone.BuildDataGit ?? Git.Open("BuildData");
+        }
+
         public static void DoIt()
         {
             Directory.CreateDirectory("work");
-            var options = new CloneOptions();
-            options.OnProgress += new ProgressHandler(CloneProgress);
             if (!Directory.Exists("CraftBukkit"))
             {
                 Console.WriteLine("Cloning CraftBukkit...");
-                Console.WriteLine(Repository.Clone("https://hub.spigotmc.org/stash/scm/spigot/craftbukkit.git", "CraftBukkit", options));
+                CraftBukkitGit = Clone("https://hub.spigotmc.org/stash/scm/spigot/craftbukkit.git", "CraftBukkit");
                 Console.WriteLine();
             }
             if (!Directory.Exists("BuildData"))
             {
                 Console.WriteLine("Cloning BuildData...");
-                Console.WriteLine(Repository.Clone("https://hub.spigotmc.org/stash/scm/spigot/builddata.git", "BuildData", options));
+                BuildDataGit=Clone("https://hub.spigotmc.org/stash/scm/spigot/builddata.git", "BuildData");
                 Console.WriteLine();
             }
-            if (!System.IO.File.Exists("work" + Path.DirectorySeparatorChar + "minecraft_server." + Program.Version + ".jar"))
+            if (!File.Exists("work" + Path.DirectorySeparatorChar + "minecraft_server." + Program.Version + ".jar"))
             {
                 Console.WriteLine("Downloading vanilla server...");
                 var client = new WebClient();
@@ -41,20 +51,19 @@ namespace BuildTools
                 P2Maven.DoIt();
         }
 
+        private static Git Clone(string url, string target)
+        {
+            return Git.CloneRepository().SetURI(url).SetDirectory("CraftBukkit").Call();
+        }
+
         private static void ServerDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
-            Console.Write("\rProgress: " + e.ProgressPercentage + " (" + e.BytesReceived + "/" + e.TotalBytesToReceive + ")");
+            Console.Write("\rProgress: " + e.ProgressPercentage + "% (" + e.BytesReceived + "/" + e.TotalBytesToReceive + ")");
         }
 
         private static void ServerDownloadFinished(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
             P2Maven.DoIt();
-        }
-
-        private static bool CloneProgress(string progress)
-        {
-            Console.Write(progress);
-            return true;
         }
     }
 }
