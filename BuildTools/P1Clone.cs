@@ -53,7 +53,7 @@ namespace BuildTools
 
         private static Git Clone(string url, string target)
         {
-            return Git.CloneRepository().SetURI(url).SetDirectory("CraftBukkit").Call();
+            return Git.CloneRepository().SetURI(url).SetDirectory(target).Call();
         }
 
         private static void ServerDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
