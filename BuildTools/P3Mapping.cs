@@ -78,7 +78,7 @@ namespace BuildTools
                     throw new Exception(p.ExitCode.ToString());
             }
 
-            Program.RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=1.9-SNAPSHOT");
+            Program.RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=" + Program.Version + "-SNAPSHOT");
             P4Decompiling.DoIt(finalMappedJar, id);
         }
     }

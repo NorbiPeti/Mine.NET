@@ -17,12 +17,12 @@ namespace BuildTools
             DirectoryInfo patchDir = new DirectoryInfo(Path.Combine("CraftBukkit", "nms-patches"));
             //var craftrepo = new Repository("CraftBukkit");
             var craftrepo = Git.Open("CraftBukkit");
+            var deletefiles = new List<string>(Directory.EnumerateFiles(Path.Combine(nmsDir.FullName, "minecraft", "server")));
             foreach (FileInfo file in patchDir.EnumerateFiles())
             {
                 String targetFile = Path.Combine("net", "minecraft", "server", file.Name.Replace(".patch", ".java"));
 
                 FileInfo clean = new FileInfo(Path.Combine("work", "decompile - " + id, targetFile));
-                var t = new FileInfo(Path.Combine(nmsDir.Parent.FullName, targetFile));
 
                 Console.WriteLine("Patching with " + file.Name);
 
@@ -46,11 +46,14 @@ namespace BuildTools
                     readFile.Insert(0, "+++");
                 }
                 craftrepo.Apply().SetPatch(new MemoryStream(Encoding.UTF8.GetBytes(readFile.Aggregate((a, b) => a + "\n" + b)))).Call();
-            } //TODO: Remove \r from the lines in ApplyCommand.cs in private void Apply(FilePath f, FileHeader fh)
+                deletefiles.Remove(Path.Combine(nmsDir.Parent.FullName, targetFile));
+            }
+            Console.WriteLine("Deleting unnecessary files...");
+            deletefiles.ForEach(file => File.Delete(file));
             DirectoryInfo tmpNms = new DirectoryInfo(Path.Combine("CraftBukkit", "tmp-nms"));
             nmsDir.CopyTo(tmpNms.FullName, true);
 
-            Console.WriteLine("\nCheckout, commit, checkout?");
+            Console.WriteLine("\nCommitting patched branch...");
             craftrepo.BranchDelete().SetBranchNames("patched").SetForce(true).Call();
             craftrepo.Checkout().SetCreateBranch(true).SetForce(true).SetName("patched").Call();
             craftrepo.Add().AddFilepattern("src/main/java/net/").Call();
