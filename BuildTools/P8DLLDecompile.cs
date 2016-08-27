@@ -20,6 +20,7 @@ namespace BuildTools
         public static void DoIt()
         {
             Console.WriteLine("Decompiling DLL...");
+            Directory.CreateDirectory("CraftMine.NET");
             AssemblyDefinition assembly = Telerik.JustDecompiler.Decompiler.Utilities.GetAssembly("craftbukkit-" + Program.Version + "-R0.1-SNAPSHOT.dll");
             TargetPlatform targetPlatform = assembly.MainModule.AssemblyResolver.GetTargetPlatform(assembly.MainModule.FilePath);
             var preferences = new DecompilationPreferences();
@@ -29,12 +30,12 @@ namespace BuildTools
             MSBuildProjectBuilder builder;
             if (targetPlatform == TargetPlatform.WinRT)
             {
-                builder = new WinRTProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET", LanguageFactory.GetLanguage(CSharpVersion.V6), preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
+                builder = new WinRTProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET" + Path.DirectorySeparatorChar + "CraftMine_NET", LanguageFactory.GetLanguage(CSharpVersion.V5), preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
             }
             else
             {
-                IFrameworkResolver frameworkResolver = new ConsoleFrameworkResolver(FrameworkVersion.v4_5);
-                builder = new MSBuildProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET" + Path.DirectorySeparatorChar + "CraftMine_NET", LanguageFactory.GetLanguage(CSharpVersion.V6), frameworkResolver, preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
+                IFrameworkResolver frameworkResolver = new ConsoleFrameworkResolver(FrameworkVersion.v2_0);
+                builder = new MSBuildProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET" + Path.DirectorySeparatorChar + "CraftMine_NET", LanguageFactory.GetLanguage(CSharpVersion.V5), frameworkResolver, preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
             }
             builder.ProjectFileCreated += OnProjectFileCreated;
             builder.ProjectGenerationFailure += OnProjectGenerationFailure;

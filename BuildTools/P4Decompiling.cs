@@ -14,10 +14,10 @@ namespace BuildTools
     {
         public static void DoIt(FileInfo finalMappedJar, string id, JObject info)
         {
-            Console.WriteLine("\nExtracting server files...");
             var decompiledi = new DirectoryInfo(Path.Combine("work", "decompile - " + id, "classes"));
             if (!decompiledi.Exists)
             {
+                Console.WriteLine("\nExtracting server files...");
                 decompiledi.Create();
                 var zip = ZipFile.OpenRead(finalMappedJar.FullName);
                 foreach (var entry in zip.Entries.Where(e => e.FullName.StartsWith("net/minecraft/server")))

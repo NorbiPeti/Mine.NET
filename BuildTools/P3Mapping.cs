@@ -77,7 +77,7 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
             }
-
+            Console.WriteLine("Installing mapped JAR...");
             Program.RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=" + Program.Version + "-SNAPSHOT");
             P4Decompiling.DoIt(finalMappedJar, id, info);
         }
