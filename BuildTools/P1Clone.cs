@@ -63,6 +63,7 @@ namespace BuildTools
 
         private static void ServerDownloadFinished(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
         {
+            Console.WriteLine();
             P2Maven.DoIt();
         }
     }

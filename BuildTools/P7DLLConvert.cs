@@ -21,7 +21,7 @@ namespace BuildTools
             psi.RedirectStandardError = true;
             psi.WorkingDirectory = Environment.CurrentDirectory;
             psi.FileName = "IKVM_BIN" + Path.DirectorySeparatorChar + "ikvmc";
-            psi.Arguments = "-target:library " + Path.Combine("CraftBukkit", "target", "craftbukkit-" + Program.Version + ".jar");
+            psi.Arguments = "-target:library " + Path.Combine("CraftBukkit", "target", "craftbukkit-" + Program.Version + "-R0.1-SNAPSHOT.jar");
             process = Process.Start(psi);
             process.OutputDataReceived += Process_OutputDataReceived;
             process.ErrorDataReceived += Process_ErrorDataReceived;

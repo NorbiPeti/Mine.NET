@@ -11,6 +11,7 @@ namespace BuildTools
         public static void DoIt()
         {
             Console.WriteLine("\n\nCloning CraftMine.NET patches...");
+            PAFinished.DoIt();
         }
     }
 }

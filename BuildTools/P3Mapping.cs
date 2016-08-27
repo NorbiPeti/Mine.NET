@@ -48,7 +48,7 @@ namespace BuildTools
                 FileInfo clMappedJar = new FileInfo("work" + Path.DirectorySeparatorChar + "mapped." + id + "-cl.jar");
                 FileInfo mMappedJar = new FileInfo("work" + Path.DirectorySeparatorChar + "mapped." + id + "-m.jar");
 
-                Console.WriteLine("Mapping 1");
+                Console.WriteLine("Mapping classes... (1/3)");
                 pi.Arguments = "-jar BuildData/bin/SpecialSource-2.jar map -i work" + Path.DirectorySeparatorChar + "minecraft_server." + Program.Version + ".jar -m BuildData/mappings/" + (string)info["classMappings"] + " -o \"" + clMappedJar.FullName + "\"";
                 p = Process.Start(pi);
                 while (!p.StandardOutput.EndOfStream)
@@ -57,7 +57,7 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
 
-                Console.WriteLine("Mapping 2");
+                Console.WriteLine("Mapping members... (2/3)");
                 pi.Arguments = "-jar BuildData/bin/SpecialSource-2.jar map -i \"" + clMappedJar.FullName +
                             "\" -m BuildData/mappings/" + (string)info["memberMappings"] + " -o \"" + mMappedJar.FullName + "\"";
                 p = Process.Start(pi);
@@ -67,7 +67,7 @@ namespace BuildTools
                 if (p.ExitCode != 0)
                     throw new Exception(p.ExitCode.ToString());
 
-                Console.WriteLine("Mapping 3");
+                Console.WriteLine("Mapping packages... (3/3)");
                 pi.Arguments = "-jar BuildData/bin/SpecialSource.jar --kill-lvt -i \"" + mMappedJar.FullName + "\" --access-transformer BuildData/mappings/" + (string)info["accessTransforms"] +
                         " -m BuildData/mappings/" + (string)info["packageMappings"] + " -o \"" + finalMappedJar.FullName + "\"";
                 p = Process.Start(pi);
@@ -79,7 +79,7 @@ namespace BuildTools
             }
 
             Program.RunMaven("install:install-file -Dfile=\"" + finalMappedJar.FullName + "\" -Dpackaging=jar -DgroupId=org.spigotmc -DartifactId=minecraft-server -Dversion=" + Program.Version + "-SNAPSHOT");
-            P4Decompiling.DoIt(finalMappedJar, id);
+            P4Decompiling.DoIt(finalMappedJar, id, info);
         }
     }
 }

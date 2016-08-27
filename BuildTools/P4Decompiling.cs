@@ -12,7 +12,7 @@ namespace BuildTools
 {
     public static class P4Decompiling
     {
-        public static void DoIt(FileInfo finalMappedJar, string id)
+        public static void DoIt(FileInfo finalMappedJar, string id, JObject info)
         {
             Console.WriteLine("\nExtracting server files...");
             var decompiledi = new DirectoryInfo(Path.Combine("work", "decompile - " + id, "classes"));
@@ -30,7 +30,13 @@ namespace BuildTools
                 }
                 Console.WriteLine("\nDecompiling...");
                 var pi = new ProcessStartInfo("java");
-                pi.Arguments = "-jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -rbr=0 -asc=1 -udv=0 \"work" + Path.DirectorySeparatorChar + "decompile - " + id + Path.DirectorySeparatorChar + "classes\" \"work" + Path.DirectorySeparatorChar + "decompile - " + id + "\"";
+                if (info["decompileCommand"] == null)
+                {
+                    pi.Arguments = "-jar BuildData/bin/fernflower.jar -dgs=1 -hdc=0 -rbr=0 -asc=1 -udv=0 {0} {1}";
+                }
+                else
+                    pi.Arguments = ((string)info["decompileCommand"]).Substring(5); //Remove Java
+                pi.Arguments = string.Format(pi.Arguments, "\"work" + Path.DirectorySeparatorChar + "decompile - " + id + Path.DirectorySeparatorChar + "classes\"", "\"work" + Path.DirectorySeparatorChar + "decompile - " + id + "\"");
                 pi.UseShellExecute = false;
                 pi.RedirectStandardOutput = true;
                 Process p = Process.Start(pi);

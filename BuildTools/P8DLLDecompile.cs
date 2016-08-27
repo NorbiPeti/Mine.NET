@@ -4,6 +4,7 @@ using Mono.Cecil;
 using Mono.Cecil.AssemblyResolver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace BuildTools
         public static void DoIt()
         {
             Console.WriteLine("Decompiling DLL...");
-            AssemblyDefinition assembly = Telerik.JustDecompiler.Decompiler.Utilities.GetAssembly("craftbukkit-" + Program.Version + ".jar");
+            AssemblyDefinition assembly = Telerik.JustDecompiler.Decompiler.Utilities.GetAssembly("craftbukkit-" + Program.Version + "-R0.1-SNAPSHOT.dll");
             TargetPlatform targetPlatform = assembly.MainModule.AssemblyResolver.GetTargetPlatform(assembly.MainModule.FilePath);
             var preferences = new DecompilationPreferences();
             preferences.RenameInvalidMembers = true;
@@ -32,13 +33,14 @@ namespace BuildTools
             }
             else
             {
-                IFrameworkResolver frameworkResolver = new ConsoleFrameworkResolver(FrameworkVersion.v4_6);
-                builder = new MSBuildProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET", LanguageFactory.GetLanguage(CSharpVersion.V6), frameworkResolver, preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
+                IFrameworkResolver frameworkResolver = new ConsoleFrameworkResolver(FrameworkVersion.v4_5);
+                builder = new MSBuildProjectBuilder(assembly.MainModule.FilePath, "CraftMine.NET" + Path.DirectorySeparatorChar + "CraftMine_NET", LanguageFactory.GetLanguage(CSharpVersion.V6), frameworkResolver, preferences, null, NoCacheAssemblyInfoService.Instance, VisualStudioVersion.VS2015);
             }
             builder.ProjectFileCreated += OnProjectFileCreated;
             builder.ProjectGenerationFailure += OnProjectGenerationFailure;
             builder.ResourceWritingFailure += OnResourceWritingFailure;
             builder.ExceptionThrown += OnExceptionThrown;
+            builder.BuildProject();
         }
 
         private static void OnExceptionThrown(object sender, Exception e)
@@ -59,12 +61,9 @@ namespace BuildTools
         private static void OnProjectFileCreated(object sender, ProjectFileCreated e)
         {
             if (e.HasErrors)
-                Console.WriteLine("One or more error occured while creating project file!");
+                Console.WriteLine("One or more error occured while creating source file" + e.Name + "!");
             else
-            {
-                Console.WriteLine("Project file \"" + e.Name + "\" created!");
-                P9DLLPatches.DoIt();
-            }
+                Console.WriteLine("Source file \"" + e.Name + "\" converted!");
         }
     }
 }
