@@ -46,7 +46,7 @@ namespace BuildTools
 
         private static void OnExceptionThrown(object sender, Exception e)
         {
-            Console.WriteLine("Error while decompiling DLL!\n" + e);
+            Console.WriteLine("Error while decompiling a source file: " + e.Message);
         }
 
         private static void OnResourceWritingFailure(object sender, string resourceName, Exception ex)
