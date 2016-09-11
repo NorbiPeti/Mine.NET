@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuildTools
 {
-    public static class P9DLLPatches
+    public static class P9DLLAutoPatches
     {
         public static void DoIt()
         {

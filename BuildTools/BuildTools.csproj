@@ -92,7 +92,7 @@
     <Compile Include="P6CBCompile.cs" />
     <Compile Include="P7DLLConvert.cs" />
     <Compile Include="P8DLLDecompile.cs" />
-    <Compile Include="P9DLLPatches.cs" />
+    <Compile Include="P9DLLAutoPatches.cs" />
     <Compile Include="PAFinished.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

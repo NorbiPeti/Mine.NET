@@ -16,26 +16,8 @@ namespace BuildTools
         public const string Version = "1.9";
         static void Main(string[] args)
         {
-            Console.WriteLine("Started BuildTools\n");
-            /*try
-            {
-                var psi = new ProcessStartInfo("git", "--version");
-                psi.UseShellExecute = false;
-                var p = Process.Start(psi);
-                p.WaitForExit();
-                if (p.ExitCode > 0)
-                {
-                    Console.WriteLine("Git not found! Please run from Git bash on Windows.");
-                    Console.ReadLine();
-                    return;
-                }
-            }
-            catch (Win32Exception e)
-            {
-                Console.WriteLine("Git not found! Please run from Git bash on Windows.");
-                Console.ReadLine();
-                return;
-            }*/
+            Console.WriteLine("Mine.NET BuildTools");
+            Console.WriteLine("License and source code is available at https://github.com/NorbiPeti/Mine.NET");
             try
             {
                 P1Clone.DoIt();
