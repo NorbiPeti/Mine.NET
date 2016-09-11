@@ -44,7 +44,7 @@ namespace BuildTools
             {
                 Console.WriteLine("Fatal error during install!\n" + e);
             }
-            Console.ReadLine(); //TODO: PATCH FILES ARE COMPLETELY DIFFERENT THAN THE SOURCE FILES
+            Console.ReadLine();
         }
 
         public static void RunMaven(string args, string wd = null)
